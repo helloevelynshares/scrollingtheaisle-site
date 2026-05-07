@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scrolling the Aisle</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #fafafa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 36px 20px 80px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: #ff385c;
+    }
+
+    .admin-link {
+      border: none;
+      background: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .hero {
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin: 0 0 14px;
+    }
+
+    .subhead {
+      color: #666;
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .admin-panel {
+      display: none;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      margin-bottom: 32px;
+    }
+
+    .admin-panel h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-family: inherit;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button.primary {
+      background: #ff385c;
+      color: white;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button.primary:hover {
+      background: #e03150;
+    }
+
+    .feed {
+      display: grid;
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+      max-height: 420px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .card-body p {
+      margin: 0;
+      line-height: 1.45;
+      font-size: 16px;
+    }
+
+    .timestamp {
+      margin-top: 10px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .empty {
+      color: #777;
+      background: white;
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    .small {
+      font-size: 13px;
+      color: #999;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">SCROLLING THE AISLE</div>
+      <button class="admin-link" onclick="unlockAdmin()">Admin</button>
+    </header>
+
+    <section class="hero">
+      <h1>Today’s grocery finds</h1>
+      <p class="subhead">A curated feed of deals, new products, and aisle finds worth knowing about.</p>
+    </section>
+
+    <section id="adminPanel" class="admin-panel">
+      <h2>Publish a new find</h2>
+      <input id="photoInput" type="file" accept="image/*" />
+      <textarea id="descriptionInput" placeholder="Write a short description..."></textarea>
+      <button class="primary" onclick="publishPost()">Publish to feed</button>
+      <div class="small">Posts save in this browser for now.</div>
+    </section>
+
+    <main id="feed" class="feed"></main>
+  </div>
+
+  <script>
+    const ADMIN_PASSWORD = "evelyn";
+    const STORAGE_KEY = "scrollingTheAisleFeed";
+
+    function unlockAdmin() {
+      const password = prompt("Enter admin password:");
+
+      if (password === ADMIN_PASSWORD) {
+        document.getElementById("adminPanel").style.display = "block";
+      } else if (password !== null) {
+        alert("Incorrect password");
+      }
+    }
+
+    function getPosts() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    }
+
+    function savePosts(posts) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+    }
+
+    function publishPost() {
+      const photoInput = document.getElementById("photoInput");
+      const descriptionInput = document.getElementById("descriptionInput");
+
+      const file = photoInput.files[0];
+      const description = descriptionInput.value.trim();
+
+      if (!file) {
+        alert("Please upload a photo.");
+        return;
+      }
+
+      if (!description) {
+        alert("Please add a description.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+        const posts = getPosts();
+
+        posts.unshift({
+          image: event.target.result,
+          description,
+          createdAt: new Date().toLocaleString()
+        });
+
+        savePosts(posts);
+
+        photoInput.value = "";
+        descriptionInput.value = "";
+
+        renderFeed();
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    function renderFeed() {
+      const feed = document.getElementById("feed");
+      const posts = getPosts();
+
+      if (posts.length === 0) {
+        feed.innerHTML = `
+          <div class="empty">
+            No finds yet. Check back soon.
+          </div>
+        `;
+        return;
+      }
+
+      feed.innerHTML = posts.map(post => `
+        <article class="card">
+          <img src="${post.image}" alt="Grocery find" />
+          <div class="card-body">
+            <p>${escapeHtml(post.description)}</p>
+            <div class="timestamp">${post.createdAt}</div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    renderFeed();
+  </script>
+</body>
+</html>
