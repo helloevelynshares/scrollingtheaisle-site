@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scrolling the Aisle</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      background: #fafafa;
+      color: #222;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      max-width: 480px;
+      margin: 0 auto;
+      background: white;
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    button {
+      background: #ff385c;
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #e03150;
+    }
+
+    .logo {
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .success {
+      margin-top: 20px;
+      color: #2e7d32;
+      font-size: 16px;
+      display: none;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">SCROLLING THE AISLE</div>
+
+    <h1>Find the best grocery deals, fast</h1>
+
+    <p>
+      We track the best weekly deals across stores so you don’t have to.
+      Be the first to know when new deals drop.
+    </p>
+
+    <div class="input-group">
+      <input id="email" type="email" placeholder="Enter your email"/>
+      <button onclick="submitEmail()">Join</button>
+    </div>
+
+    <div id="success" class="success">
+      You're on the list 👀
+    </div>
+
+    <footer>
+      Built for deal hunters 🛒
+    </footer>
+  </div>
+
+  <script>
+    function submitEmail() {
+      const email = document.getElementById("email").value;
+      const success = document.getElementById("success");
+
+      if (!email || !email.includes("@")) {
+        alert("Enter a valid email");
+        return;
+      }
+
+      // For now: just simulate success
+      success.style.display = "block";
+
+      // Optional: clear input
+      document.getElementById("email").value = "";
+
+      // Later you can replace this with:
+      // - Google Sheets
+      // - Beehiiv
+      // - Mailchimp
+      // - Supabase
+    }
+  </script>
+</body>
+</html>
