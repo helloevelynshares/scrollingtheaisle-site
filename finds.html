@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live grocery finds — Scrolling the Aisle</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <a href="index.html" class="brand">SCROLLING THE AISLE</a>
+    <a href="submit.html" class="btn btn-primary btn-sm">Post a find</a>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <h1>Live grocery finds</h1>
+      <p>Fresh deals spotted by shoppers in-store. Finds expire after a few days to keep the feed useful.</p>
+    </section>
+
+    <div id="success-banner" class="success-banner" hidden>Your find is live.</div>
+
+    <div id="finds-feed" class="finds-feed" aria-live="polite"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a find — Scrolling the Aisle</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="page-header">
+    <a href="index.html" class="brand">SCROLLING THE AISLE</a>
+    <a href="finds.html" class="btn btn-ghost">View finds</a>
+  </header>
+
+  <main class="page-main">
+    <section class="hero">
+      <h1>Post a grocery find</h1>
+      <p>Spotted a great in-store deal? Share the item, price, store, and a quick photo.</p>
+    </section>
+
+    <form id="submit-form" class="submit-form" novalidate>
+      <div class="form-group">
+        <label for="photo" class="photo-upload">
+          <span class="photo-upload-label">Add a photo</span>
+          <span class="photo-upload-hint">Optional — helps others spot the deal</span>
+          <input type="file" id="photo" name="photo" accept="image/*" />
+        </label>
+        <div id="photo-preview" class="photo-preview" aria-live="polite"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="item_name">Item name</label>
+        <input type="text" id="item_name" name="item_name" required autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" step="0.01" min="0" required />
+      </div>
+
+      <div class="form-group">
+        <label for="store_name">Store</label>
+        <input type="text" id="store_name" name="store_name" required autocomplete="organization" />
+      </div>
+
+      <div class="form-group">
+        <label for="location_label">Location <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <input type="text" id="location_label" name="location_label" placeholder="e.g. Downtown, Austin" autocomplete="off" />
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Notes <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Aisle, limit, coupon tip…"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Post find</button>
+      </div>
+
+      <p id="submit-status" class="submit-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

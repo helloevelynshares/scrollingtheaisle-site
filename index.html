@@ -4,72 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Scrolling the Aisle</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      background: #fafafa;
-      color: #222;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 36px;
-      font-weight: 600;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
-
-    p {
-      font-size: 18px;
-      color: #666;
-      margin-bottom: 40px;
-      line-height: 1.5;
-    }
-
-    .logo {
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #999;
-      margin-bottom: 20px;
-    }
-
-    .beehiiv-form-wrapper {
-      max-width: 520px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      background: #fafafa;
-    }
-
-    .beehiiv-form-wrapper iframe,
-    .beehiiv-form-wrapper div {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    footer {
-      margin-top: 80px;
-      font-size: 14px;
-      color: #aaa;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="landing">
   <div class="container">
     <div class="logo">SCROLLING THE AISLE</div>
 
     <h1>Find the best grocery deals, fast</h1>
 
-    <p>
+    <p class="subtitle">
       We track the best weekly deals across stores so you don’t have to.
       Be the first to know when new deals drop.
     </p>
@@ -81,6 +25,15 @@
         data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
       </script>
     </div>
+
+    <section class="finds-promo" aria-labelledby="finds-promo-title">
+      <h2 id="finds-promo-title">Fresh finds from shoppers</h2>
+      <p>See grocery deals people are spotting in-store right now, or post one you found.</p>
+      <div class="finds-promo-actions">
+        <a href="finds.html" class="btn btn-secondary">View live finds</a>
+        <a href="submit.html" class="btn btn-primary">Post a find</a>
+      </div>
+    </section>
 
     <footer>
       Built for deal hunters 🛒
