@@ -34,42 +34,6 @@
       line-height: 1.5;
     }
 
-    .input-group {
-      display: flex;
-      gap: 10px;
-      max-width: 480px;
-      margin: 0 auto;
-      background: white;
-      padding: 8px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    }
-
-    input {
-      flex: 1;
-      border: none;
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    button {
-      background: #ff385c;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    button:hover {
-      background: #e03150;
-    }
-
     .logo {
       font-size: 14px;
       letter-spacing: 2px;
@@ -77,11 +41,9 @@
       margin-bottom: 20px;
     }
 
-    .success {
-      margin-top: 20px;
-      color: #2e7d32;
-      font-size: 16px;
-      display: none;
+    .beehiiv-form-wrapper {
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     footer {
@@ -103,42 +65,17 @@
       Be the first to know when new deals drop.
     </p>
 
-    <div class="input-group">
-      <input id="email" type="email" placeholder="Enter your email"/>
-      <button onclick="submitEmail()">Join</button>
-    </div>
-
-    <div id="success" class="success">
-      You're on the list 👀
+    <div class="beehiiv-form-wrapper">
+      <script
+        async
+        src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+        data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
+      </script>
     </div>
 
     <footer>
       Built for deal hunters 🛒
     </footer>
   </div>
-
-  <script>
-    function submitEmail() {
-      const email = document.getElementById("email").value;
-      const success = document.getElementById("success");
-
-      if (!email || !email.includes("@")) {
-        alert("Enter a valid email");
-        return;
-      }
-
-      // For now: just simulate success
-      success.style.display = "block";
-
-      // Optional: clear input
-      document.getElementById("email").value = "";
-
-      // Later you can replace this with:
-      // - Google Sheets
-      // - Beehiiv
-      // - Mailchimp
-      // - Supabase
-    }
-  </script>
 </body>
 </html>
