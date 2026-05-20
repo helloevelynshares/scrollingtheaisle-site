@@ -79,36 +79,6 @@ img {
   margin-right: auto;
 }
 
-.finds-promo {
-  max-width: 520px;
-  margin: 48px auto 0;
-  padding: 28px 24px;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-
-.finds-promo h2 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0 0 10px;
-  letter-spacing: -0.3px;
-}
-
-.finds-promo p {
-  font-size: 16px;
-  color: var(--muted);
-  margin: 0 0 20px;
-  line-height: 1.5;
-}
-
-.finds-promo-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .landing footer {
   margin-top: 80px;
   font-size: 14px;
@@ -449,10 +419,6 @@ img {
   .landing h1,
   .hero h1 {
     font-size: 36px;
-  }
-
-  .finds-promo {
-    padding: 32px 28px;
   }
 
   .submit-form {
