@@ -415,6 +415,111 @@ img {
   color: #c13515;
 }
 
+/* Staging pages (unlisted) */
+.staging-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(255, 56, 92, 0.1);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.staging-hero {
+  margin-bottom: 28px;
+}
+
+.staging-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
+
+.staging-hero h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 10px;
+  letter-spacing: -0.4px;
+}
+
+.staging-hero p {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.staging-section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.staging-section-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.staging-section-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  letter-spacing: -0.2px;
+}
+
+.staging-section-card > p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.staging-placeholder {
+  padding: 20px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.staging-note {
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.staging-note a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.staging-note a:hover {
+  color: var(--accent-dark);
+}
+
+.staging-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+  text-align: center;
+}
+
+.staging-footer p {
+  font-size: 13px;
+  color: #aaa;
+  margin: 0;
+}
+
 @media (min-width: 640px) {
   .landing h1,
   .hero h1 {
@@ -428,5 +533,18 @@ img {
   .form-actions .btn-primary {
     width: auto;
     min-width: 180px;
+  }
+
+  .staging-hero h1 {
+    font-size: 32px;
+  }
+
+  .staging-section-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .staging-section-card {
+    padding: 28px;
   }
 }

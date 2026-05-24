@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /staging-price-tracker/
+Disallow: /staging-live-finds/
