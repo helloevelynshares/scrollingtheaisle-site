@@ -107,6 +107,13 @@ img {
   color: var(--text);
 }
 
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 .page-main {
   max-width: 720px;
   margin: 0 auto;

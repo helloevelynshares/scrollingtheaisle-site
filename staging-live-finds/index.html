@@ -4,60 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Live Finds (Staging) — Scrolling the Aisle</title>
+  <title>Live grocery finds (Staging) — Scrolling the Aisle</title>
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
-<body class="staging-page">
+<body>
   <header class="page-header">
     <a href="../index.html" class="brand">SCROLLING THE AISLE</a>
-    <span class="staging-label">Staging</span>
+    <div class="page-header-actions">
+      <span class="staging-label">Staging</span>
+      <a href="submit.html" class="btn btn-primary btn-sm">Post a find</a>
+    </div>
   </header>
 
   <main class="page-main">
-    <section class="staging-hero">
-      <p class="staging-eyebrow">Experimental · not indexed</p>
+    <section class="hero">
       <h1>Live grocery finds</h1>
-      <p>A staging preview of shopper-submitted deals spotted in-store.</p>
+      <p>Fresh deals spotted by shoppers in-store. Finds expire after a few days to keep the feed useful.</p>
     </section>
 
-    <div class="staging-section-grid">
-      <section class="staging-section-card">
-        <h2>Recently spotted deals</h2>
-        <p>A rolling feed of fresh finds with store, price, and time posted.</p>
-        <div class="staging-placeholder" aria-hidden="true">Live feed preview — coming soon</div>
-      </section>
+    <div id="success-banner" class="success-banner" hidden>Your find is live.</div>
 
-      <section class="staging-section-card">
-        <h2>Upload a find</h2>
-        <p>Start with a shelf tag or product photo and share what you spotted.</p>
-        <div class="staging-placeholder" aria-hidden="true">Photo upload flow — coming soon</div>
-      </section>
-
-      <section class="staging-section-card">
-        <h2>Store, item, price, and photo</h2>
-        <p>Structured fields so others can find the deal quickly in-store.</p>
-        <div class="staging-placeholder" aria-hidden="true">Find detail fields — coming soon</div>
-      </section>
-
-      <section class="staging-section-card">
-        <h2>Community-submitted finds</h2>
-        <p>Deals contributed by shoppers, with light moderation and expiry.</p>
-        <div class="staging-placeholder" aria-hidden="true">Community feed — coming soon</div>
-      </section>
-    </div>
-
-    <p class="staging-note">
-      Production flow lives at
-      <a href="../finds.html">finds.html</a>
-      and
-      <a href="../submit.html">submit.html</a>
-      (staging only; not linked from homepage).
-    </p>
+    <div id="finds-feed" class="finds-feed" aria-live="polite"></div>
   </main>
 
   <footer class="staging-footer">
     <p>Staging preview · not linked from the public homepage</p>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../app.js"></script>
 </body>
 </html>

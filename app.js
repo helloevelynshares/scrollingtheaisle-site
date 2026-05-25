@@ -21,6 +21,21 @@ function getVisitorId() {
   return id;
 }
 
+function getStagingLiveFindsBase() {
+  const match = window.location.pathname.match(/^(.*\/staging-live-finds)\/?/);
+  return match ? `${match[1]}/` : null;
+}
+
+function getSubmitPageUrl() {
+  const stagingBase = getStagingLiveFindsBase();
+  return stagingBase ? `${stagingBase}submit.html` : "submit.html";
+}
+
+function getFindsFeedAfterPostUrl() {
+  const stagingBase = getStagingLiveFindsBase();
+  return stagingBase ? `${stagingBase}?posted=1` : "finds.html?posted=1";
+}
+
 function escapeHtml(text) {
   if (text == null || text === "") return "";
   const div = document.createElement("div");
@@ -128,7 +143,7 @@ async function submitFind(event) {
 
     if (error) throw error;
 
-    window.location.href = "finds.html?posted=1";
+    window.location.href = getFindsFeedAfterPostUrl();
   } catch (err) {
     console.error(err);
     statusEl.textContent = formatSubmitError(err.cause || err);
@@ -143,7 +158,7 @@ function renderEmptyState() {
   empty.innerHTML = `
     <h2>No fresh finds yet</h2>
     <p>Be the first to post a grocery deal you spotted in-store.</p>
-    <a href="submit.html" class="btn btn-primary">Post a find</a>
+    <a href="${getSubmitPageUrl()}" class="btn btn-primary">Post a find</a>
   `;
   return empty;
 }
