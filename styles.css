@@ -239,30 +239,44 @@ img {
   resize: vertical;
 }
 
-.photo-upload {
+.photo-dropzone {
   position: relative;
   display: block;
   border: 2px dashed var(--border);
   border-radius: var(--radius);
-  padding: 28px 20px;
+  padding: 32px 20px;
   text-align: center;
   background: var(--bg);
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 
-.photo-upload:hover,
-.photo-upload:focus-within {
+.photo-dropzone:hover,
+.photo-dropzone:focus-visible {
   border-color: var(--accent);
   background: #fff;
+  outline: none;
 }
 
-.photo-upload input[type="file"] {
+.photo-dropzone.is-dragover {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.12);
+}
+
+.photo-dropzone.is-disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.photo-dropzone input[type="file"] {
   position: absolute;
   width: 1px;
   height: 1px;
   opacity: 0;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }
 
 .photo-upload-label {
@@ -274,21 +288,75 @@ img {
 }
 
 .photo-upload-hint {
+  display: block;
   font-size: 13px;
   color: var(--muted);
+  line-height: 1.45;
 }
 
 .photo-preview {
   margin-top: 16px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
-  max-height: 240px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  max-height: 360px;
 }
 
 .photo-preview img {
   width: 100%;
   height: auto;
-  object-fit: cover;
+  max-height: 360px;
+  object-fit: contain;
+  background: #111;
+}
+
+.photo-analyze-status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  min-height: 1.25em;
+}
+
+.photo-analyze-status.error {
+  color: #c13515;
+}
+
+.ai-helper-text {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+
+.ai-fill-banner {
+  font-size: 14px;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin: 0 0 20px;
+}
+
+.ai-fill-banner[hidden] {
+  display: none;
+}
+
+.field-warning {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #b45309;
+}
+
+.field-warning[hidden] {
+  display: none;
+}
+
+.label-muted {
+  font-weight: 400;
+  color: var(--muted);
 }
 
 .form-actions {

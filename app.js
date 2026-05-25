@@ -1,9 +1,36 @@
 const SUPABASE_URL = "https://wurmdtqysegytsjcudve.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_8Wt-it-oIHHIkQOi0D9y_g_qMoH51ZX";
 
+function getSupabaseProjectRef() {
+  const match = SUPABASE_URL.match(/https:\/\/([^.]+)\.supabase\.co/);
+  return match ? match[1] : null;
+}
+
+/** Override for local: http://127.0.0.1:54321/functions/v1/analyze-find-photo */
+const ANALYZE_PHOTO_ENDPOINT = (() => {
+  const ref = getSupabaseProjectRef();
+  return ref
+    ? `https://${ref}.functions.supabase.co/analyze-find-photo`
+    : "YOUR_ANALYZE_PHOTO_ENDPOINT";
+})();
+
 const VISITOR_ID_KEY = "sta_visitor_id";
+const MAX_PHOTO_BYTES = 8 * 1024 * 1024;
+const ALLOWED_PHOTO_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+const CONFIDENCE_THRESHOLDS = { item_name: 0.7, price: 0.7, store_name: 0.6 };
 
 let supabaseClient = null;
+let selectedPhotoFile = null;
+let previewObjectUrl = null;
+let aiExtractionState = null;
+let isAnalyzingPhoto = false;
+const fieldTouched = {
+  item_name: false,
+  price: false,
+  store_name: false,
+  location_label: false,
+  notes: false,
+};
 
 function getSupabase() {
   if (!supabaseClient && window.supabase) {
@@ -50,6 +77,36 @@ function formatPrice(price) {
     style: "currency",
     currency: "USD",
   }).format(num);
+}
+
+function displayFindPrice(find) {
+  if (find.price_display) return find.price_display;
+  if (find.price != null && find.price !== "") return formatPrice(find.price);
+  return "";
+}
+
+function isAnalyzeEndpointConfigured() {
+  return Boolean(
+    ANALYZE_PHOTO_ENDPOINT && !ANALYZE_PHOTO_ENDPOINT.includes("YOUR_ANALYZE_PHOTO_ENDPOINT")
+  );
+}
+
+function parsePriceNumeric(priceText) {
+  if (!priceText) return 0;
+  const dollarMatches = [...String(priceText).matchAll(/\$(\d+(?:\.\d{1,2})?)/g)].map((m) =>
+    parseFloat(m[1])
+  );
+  if (dollarMatches.length > 0) {
+    return Math.min(...dollarMatches.filter((n) => Number.isFinite(n)));
+  }
+  const plain = parseFloat(String(priceText).replace(/[^0-9.]/g, ""));
+  return Number.isFinite(plain) ? plain : 0;
+}
+
+function normalizeStoreName(store) {
+  const s = String(store || "").trim();
+  if (!s || /^unknown$/i.test(s)) return "";
+  return s;
 }
 
 function timeAgo(dateString) {
@@ -104,17 +161,18 @@ async function submitFind(event) {
 
   const form = event.target;
   const statusEl = document.getElementById("submit-status");
-  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtn = document.getElementById("submit-btn") || form.querySelector('button[type="submit"]');
+
+  if (isAnalyzingPhoto) return;
 
   const itemName = form.item_name.value.trim();
-  const price = parseFloat(form.price.value);
+  const priceDisplay = form.price.value.trim();
   const storeName = form.store_name.value.trim();
   const locationLabel = form.location_label.value.trim();
   const notes = form.notes.value.trim();
-  const photoInput = form.photo;
 
-  if (!itemName || !storeName || Number.isNaN(price)) {
-    statusEl.textContent = "Please fill in all required fields.";
+  if (!itemName || !storeName || !priceDisplay) {
+    statusEl.textContent = "Please fill in item name, price, and store.";
     statusEl.className = "submit-status error";
     return;
   }
@@ -125,24 +183,33 @@ async function submitFind(event) {
 
   try {
     let photoUrl = null;
-    if (photoInput.files && photoInput.files[0]) {
-      photoUrl = await uploadFindPhoto(photoInput.files[0]);
+    if (selectedPhotoFile) {
+      photoUrl = await uploadFindPhoto(selectedPhotoFile);
     }
 
-    const supabase = getSupabase();
-    const { error } = await supabase.from("finds").insert({
+    const priceNumeric = parsePriceNumeric(priceDisplay);
+    const insertRow = {
       item_name: itemName,
-      price,
+      price: priceNumeric > 0 ? priceNumeric : 0.01,
+      price_display: priceDisplay,
       store_name: storeName,
       location_label: locationLabel || null,
       photo_url: photoUrl,
       notes: notes || null,
       submitted_by: getVisitorId(),
       status: "approved",
-    });
+      ai_extracted: Boolean(aiExtractionState?.used),
+      ai_confidence: aiExtractionState?.confidence || null,
+      raw_ai_extraction: aiExtractionState?.raw || null,
+    };
+
+    const supabase = getSupabase();
+    const { error } = await supabase.from("finds").insert(insertRow);
 
     if (error) throw error;
 
+    selectedPhotoFile = null;
+    aiExtractionState = null;
     window.location.href = getFindsFeedAfterPostUrl();
   } catch (err) {
     console.error(err);
@@ -188,7 +255,7 @@ function renderFindCard(find) {
 
   const priceEl = document.createElement("p");
   priceEl.className = "find-card-price";
-  priceEl.textContent = formatPrice(find.price);
+  priceEl.textContent = displayFindPrice(find);
 
   const meta = document.createElement("p");
   meta.className = "find-card-meta";
@@ -319,20 +386,213 @@ async function reportFind(findId) {
   }
 }
 
-function initPhotoPreview() {
-  const photoInput = document.getElementById("photo");
+function validatePhotoFile(file) {
+  if (!file) return "No file selected.";
+  if (!ALLOWED_PHOTO_TYPES.includes(file.type)) {
+    return "Please use a JPG, PNG, or WebP image.";
+  }
+  if (file.size > MAX_PHOTO_BYTES) {
+    return "Image must be 8MB or smaller.";
+  }
+  return null;
+}
+
+function setAnalyzingPhoto(active) {
+  isAnalyzingPhoto = active;
+  const submitBtn = document.getElementById("submit-btn");
+  const dropzone = document.getElementById("photo-dropzone");
+  if (submitBtn) submitBtn.disabled = active;
+  if (dropzone) dropzone.classList.toggle("is-disabled", active);
+}
+
+function setPhotoAnalyzeStatus(message, isError = false) {
+  const el = document.getElementById("photo-analyze-status");
+  if (!el) return;
+  el.textContent = message || "";
+  el.classList.toggle("error", isError);
+}
+
+function showPhotoPreview(file) {
   const preview = document.getElementById("photo-preview");
-  if (!photoInput || !preview) return;
+  if (!preview) return;
+
+  if (previewObjectUrl) {
+    URL.revokeObjectURL(previewObjectUrl);
+    previewObjectUrl = null;
+  }
+
+  preview.innerHTML = "";
+  previewObjectUrl = URL.createObjectURL(file);
+  const img = document.createElement("img");
+  img.src = previewObjectUrl;
+  img.alt = "Uploaded deal photo preview";
+  preview.appendChild(img);
+  preview.hidden = false;
+}
+
+function markFieldTouched(fieldName) {
+  if (fieldTouched[fieldName] !== undefined) {
+    fieldTouched[fieldName] = true;
+  }
+}
+
+function setFieldWarning(fieldName, show) {
+  const el = document.getElementById(`${fieldName}-warning`);
+  if (el) el.hidden = !show;
+}
+
+function applyConfidenceWarnings(confidence) {
+  if (!confidence) return;
+  setFieldWarning("item_name", (confidence.item_name ?? 1) < CONFIDENCE_THRESHOLDS.item_name);
+  setFieldWarning("price", (confidence.price ?? 1) < CONFIDENCE_THRESHOLDS.price);
+  setFieldWarning("store_name", (confidence.store_name ?? confidence.store ?? 1) < CONFIDENCE_THRESHOLDS.store_name);
+}
+
+function fillFieldIfAllowed(fieldName, value) {
+  if (fieldTouched[fieldName]) return;
+  const el = document.getElementById(fieldName);
+  if (!el) return;
+  el.value = String(value || "").trim();
+}
+
+function applyAiExtraction(data) {
+  if (!data) return;
+
+  fillFieldIfAllowed("item_name", data.item_name);
+  fillFieldIfAllowed("price", data.price);
+  fillFieldIfAllowed("store_name", normalizeStoreName(data.store));
+  fillFieldIfAllowed("location_label", data.location);
+  fillFieldIfAllowed("notes", data.notes);
+
+  const confidence = data.confidence || {};
+  applyConfidenceWarnings({
+    item_name: confidence.item_name,
+    price: confidence.price,
+    store_name: confidence.store_name ?? confidence.store,
+  });
+
+  aiExtractionState = {
+    used: true,
+    confidence,
+    raw: data.raw_extraction ?? data,
+  };
+
+  const banner = document.getElementById("ai-fill-banner");
+  if (banner) banner.hidden = false;
+}
+
+async function analyzePhotoFile(file) {
+  if (!isAnalyzeEndpointConfigured()) {
+    setPhotoAnalyzeStatus("AI photo analysis is not configured. Fill in the form manually.");
+    return;
+  }
+
+  setAnalyzingPhoto(true);
+  setPhotoAnalyzeStatus("Analyzing photo…");
+
+  try {
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const response = await fetch(ANALYZE_PHOTO_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        apikey: SUPABASE_ANON_KEY,
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data?.error || "Could not analyze photo");
+    }
+
+    applyAiExtraction(data);
+    setPhotoAnalyzeStatus("Analysis complete — please review the fields below.");
+  } catch (err) {
+    console.error(err);
+    setPhotoAnalyzeStatus(
+      "Could not extract details from your photo. You can still fill in the form manually.",
+      true
+    );
+  } finally {
+    setAnalyzingPhoto(false);
+  }
+}
+
+async function handlePhotoSelected(file) {
+  const validationError = validatePhotoFile(file);
+  if (validationError) {
+    setPhotoAnalyzeStatus(validationError, true);
+    return;
+  }
+
+  Object.keys(fieldTouched).forEach((key) => {
+    fieldTouched[key] = false;
+  });
+  setFieldWarning("item_name", false);
+  setFieldWarning("price", false);
+  setFieldWarning("store_name", false);
+
+  selectedPhotoFile = file;
+  aiExtractionState = null;
+  showPhotoPreview(file);
+  setPhotoAnalyzeStatus("");
+  const banner = document.getElementById("ai-fill-banner");
+  if (banner) banner.hidden = true;
+
+  if (isAnalyzeEndpointConfigured()) {
+    await analyzePhotoFile(file);
+  } else {
+    setPhotoAnalyzeStatus("Photo added. Fill in the details below, or configure AI analysis in app.js.");
+  }
+}
+
+function initPhotoUploadFlow() {
+  const photoInput = document.getElementById("photo");
+  const dropzone = document.getElementById("photo-dropzone");
+  if (!photoInput || !dropzone) return;
+
+  document.querySelectorAll("[data-ai-field]").forEach((el) => {
+    const name = el.name || el.id;
+    el.addEventListener("input", () => markFieldTouched(name));
+    el.addEventListener("change", () => markFieldTouched(name));
+  });
+
+  dropzone.addEventListener("click", (e) => {
+    if (isAnalyzingPhoto) return;
+    if (e.target === photoInput) return;
+    photoInput.click();
+  });
+
+  dropzone.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      if (!isAnalyzingPhoto) photoInput.click();
+    }
+  });
 
   photoInput.addEventListener("change", () => {
-    preview.innerHTML = "";
-    const file = photoInput.files && photoInput.files[0];
-    if (!file) return;
+    const file = photoInput.files?.[0];
+    if (file) handlePhotoSelected(file);
+  });
 
-    const img = document.createElement("img");
-    img.src = URL.createObjectURL(file);
-    img.alt = "Photo preview";
-    preview.appendChild(img);
+  dropzone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    if (!isAnalyzingPhoto) dropzone.classList.add("is-dragover");
+  });
+
+  dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove("is-dragover");
+  });
+
+  dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropzone.classList.remove("is-dragover");
+    if (isAnalyzingPhoto) return;
+    const file = e.dataTransfer?.files?.[0];
+    if (file) handlePhotoSelected(file);
   });
 }
 
@@ -352,7 +612,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const submitForm = document.getElementById("submit-form");
   if (submitForm) {
     submitForm.addEventListener("submit", submitFind);
-    initPhotoPreview();
+    initPhotoUploadFlow();
   }
 
   if (document.getElementById("finds-feed")) {

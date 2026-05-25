@@ -1,0 +1,19 @@
+.env
+.DS_Store
+.cursor/
+node_modules/
+
+api-extract-example/.env
+api-extract-example/.env.local
+api-extract-example/test-fixtures/
+supabase/.env.local
+supabase/.branches
+supabase/.temp
+scripts/.env
+scripts/output/
+scripts/.playwright-profile/
+# Keep data/processed and data/canonical tracked in git; ignore raw transcripts if large
+data/raw/bulk_transcripts.csv
+.venv/
+__pycache__/
+*.pyc

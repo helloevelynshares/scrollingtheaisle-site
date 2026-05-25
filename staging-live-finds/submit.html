@@ -20,46 +20,67 @@
   <main class="page-main">
     <section class="hero">
       <h1>Post a grocery find</h1>
-      <p>Spotted a great in-store deal? Share the item, price, store, and a quick photo.</p>
+      <p>Upload a shelf tag or product photo — we’ll try to fill in the details. Review everything before you post.</p>
     </section>
 
     <form id="submit-form" class="submit-form" novalidate>
-      <div class="form-group">
-        <label for="photo" class="photo-upload">
+      <div class="form-group photo-step">
+        <div id="photo-dropzone" class="photo-dropzone" tabindex="0" role="button" aria-label="Upload a grocery deal photo">
+          <input
+            type="file"
+            id="photo"
+            name="photo"
+            accept="image/jpeg,image/jpg,image/png,image/webp"
+            capture="environment"
+          />
           <span class="photo-upload-label">Add a photo</span>
-          <span class="photo-upload-hint">Optional — helps others spot the deal</span>
-          <input type="file" id="photo" name="photo" accept="image/*" />
-        </label>
-        <div id="photo-preview" class="photo-preview" aria-live="polite"></div>
+          <span class="photo-upload-hint">Tap to upload or drag a shelf tag / product photo here</span>
+        </div>
+        <div id="photo-preview" class="photo-preview" hidden aria-live="polite"></div>
+        <p id="photo-analyze-status" class="photo-analyze-status" role="status" aria-live="polite"></p>
       </div>
+
+      <p class="ai-helper-text">AI can make mistakes. Please confirm the item and price before posting.</p>
+      <p id="ai-fill-banner" class="ai-fill-banner" hidden>We filled this in from your photo — please double-check.</p>
 
       <div class="form-group">
         <label for="item_name">Item name</label>
-        <input type="text" id="item_name" name="item_name" required autocomplete="off" />
+        <input type="text" id="item_name" name="item_name" required autocomplete="off" data-ai-field />
+        <p id="item_name-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
       </div>
 
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" id="price" name="price" step="0.01" min="0" required />
+        <input
+          type="text"
+          id="price"
+          name="price"
+          required
+          autocomplete="off"
+          placeholder="e.g. $3.99 or 50% off — reg. $7.99"
+          data-ai-field
+        />
+        <p id="price-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
       </div>
 
       <div class="form-group">
         <label for="store_name">Store</label>
-        <input type="text" id="store_name" name="store_name" required autocomplete="organization" />
+        <input type="text" id="store_name" name="store_name" required autocomplete="organization" data-ai-field />
+        <p id="store_name-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
       </div>
 
       <div class="form-group">
-        <label for="location_label">Location <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-        <input type="text" id="location_label" name="location_label" placeholder="e.g. Downtown, Austin" autocomplete="off" />
+        <label for="location_label">Location <span class="label-muted">(optional)</span></label>
+        <input type="text" id="location_label" name="location_label" placeholder="e.g. Downtown, Austin" autocomplete="off" data-ai-field />
       </div>
 
       <div class="form-group">
-        <label for="notes">Notes <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-        <textarea id="notes" name="notes" placeholder="Aisle, limit, coupon tip…"></textarea>
+        <label for="notes">Notes <span class="label-muted">(optional)</span></label>
+        <textarea id="notes" name="notes" placeholder="Aisle, limit, coupon tip…" data-ai-field></textarea>
       </div>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Post find</button>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Post find</button>
       </div>
 
       <p id="submit-status" class="submit-status" role="status" aria-live="polite"></p>

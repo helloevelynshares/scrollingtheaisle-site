@@ -124,33 +124,104 @@ using (
 );
 ```
 
-## Local testing
+### 5. AI photo columns (optional migration)
 
-Serve the folder with any static server (or open files directly; some browsers block Supabase from `file://`):
+If the table already exists, run `supabase/migrations/20260524_add_ai_find_columns.sql` in the SQL Editor to add:
 
-```bash
-python3 -m http.server 8080
+- `price_display` — human-readable price text
+- `ai_extracted`, `ai_confidence`, `raw_ai_extraction`
+
+## AI photo analysis
+
+Architecture:
+
+```text
+GitHub Pages → Supabase Edge Function (analyze-find-photo) → OpenAI Vision
+            → auto-fill form → Supabase Storage + finds table
 ```
 
-Then:
+The OpenAI key lives in **Supabase secrets**, not in the frontend.
 
-1. Open `http://localhost:8080/submit.html`
-2. Fill in item name, price, store; optionally add a photo and notes
-3. Click **Post find**
-4. Confirm redirect to `finds.html?posted=1` and the green “Your find is live.” banner
-5. Confirm your card appears in the feed with photo, price, store, and actions
+### Setup
 
-From the home page (`index.html`), use **View live finds** or **Post a find** to enter the same flow.
+1. Install [Supabase CLI](https://supabase.com/docs/guides/cli) and link your project:
+
+```bash
+supabase login
+supabase link --project-ref wurmdtqysegytsjcudve
+```
+
+2. Set the secret:
+
+```bash
+supabase secrets set OPENAI_API_KEY=sk-your-key-here
+```
+
+3. Deploy the function:
+
+```bash
+supabase functions deploy analyze-find-photo
+```
+
+4. **`app.js`** — endpoint is derived from `SUPABASE_URL` automatically:
+
+```text
+https://wurmdtqysegytsjcudve.functions.supabase.co/analyze-find-photo
+```
+
+Override only for local CLI testing (see `supabase/functions/README.md`).
+
+Without `OPENAI_API_KEY`, the function returns **mock Keebler JSON** so you can test the UI.
+
+Full details: **`supabase/functions/README.md`**
+
+## Local testing
+
+**Static site:**
+
+```bash
+python3 -m http.server 8000
+```
+
+**Edge Function (optional):**
+
+```bash
+supabase functions serve analyze-find-photo --env-file supabase/.env.local --no-verify-jwt
+```
+
+Use `http://127.0.0.1:54321/functions/v1/analyze-find-photo` in `app.js` while testing locally.
+
+**Test flow:**
+
+1. Open `http://localhost:8000/submit.html` or `http://localhost:8000/staging-live-finds/submit.html`
+2. Upload a shelf-tag photo (e.g. Keebler Fudge Stripes with 50% off sticker)
+3. Wait for “Analyzing photo…” — fields should auto-fill
+4. Review and edit, then **Post find**
+5. Confirm redirect and feed card with photo and price text
+
+**curl:**
+
+```bash
+curl -s -X POST \
+  "https://wurmdtqysegytsjcudve.functions.supabase.co/analyze-find-photo" \
+  -F "image=@/path/to/photo.jpg" | python3 -m json.tool
+```
 
 ## Pages
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Landing + Beehiiv signup + finds promo |
-| `submit.html` | Post a grocery find |
+| `index.html` | Landing + Beehiiv signup |
+| `submit.html` | Post a grocery find (with AI photo flow) |
 | `finds.html` | Live public feed |
+| `staging-live-finds/` | Staging feed + submit |
 | `app.js` | Supabase client and shared logic |
 | `styles.css` | Shared styles |
+| `supabase/functions/` | Edge Functions (AI photo analysis) |
+
+## Project notes
+
+Implementation findings, API gotchas, and repeatable debugging notes live in [`docs/PROJECT_NOTES.md`](docs/PROJECT_NOTES.md).
 
 ## GitHub Pages
 
