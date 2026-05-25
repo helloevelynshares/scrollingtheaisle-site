@@ -386,15 +386,41 @@ async function reportFind(findId) {
   }
 }
 
+function resolvePhotoMime(file) {
+  const fromBrowser = (file?.type || "").toLowerCase();
+  if (fromBrowser && ALLOWED_PHOTO_TYPES.includes(fromBrowser)) return fromBrowser;
+
+  const name = (file?.name || "").toLowerCase();
+  if (name.endsWith(".jpg") || name.endsWith(".jpeg")) return "image/jpeg";
+  if (name.endsWith(".png")) return "image/png";
+  if (name.endsWith(".webp")) return "image/webp";
+  return fromBrowser || "";
+}
+
+function photoFileForUpload(file) {
+  const mime = resolvePhotoMime(file);
+  if (!mime || file.type === mime) return file;
+  return new File([file], file.name, { type: mime });
+}
+
 function validatePhotoFile(file) {
   if (!file) return "No file selected.";
-  if (!ALLOWED_PHOTO_TYPES.includes(file.type)) {
+  const mime = resolvePhotoMime(file);
+  if (!mime || !ALLOWED_PHOTO_TYPES.includes(mime)) {
     return "Please use a JPG, PNG, or WebP image.";
   }
   if (file.size > MAX_PHOTO_BYTES) {
     return "Image must be 8MB or smaller.";
   }
   return null;
+}
+
+function isExtractionEmpty(data) {
+  if (!data) return true;
+  const item = String(data.item_name || "").trim();
+  const price = String(data.price || "").trim();
+  const store = String(data.store || "").trim();
+  return !item && !price && !store;
 }
 
 function setAnalyzingPhoto(active) {
@@ -492,7 +518,7 @@ async function analyzePhotoFile(file) {
 
   try {
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append("image", photoFileForUpload(file));
 
     const response = await fetch(ANALYZE_PHOTO_ENDPOINT, {
       method: "POST",
@@ -506,6 +532,14 @@ async function analyzePhotoFile(file) {
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data?.error || "Could not analyze photo");
+    }
+
+    if (isExtractionEmpty(data)) {
+      setPhotoAnalyzeStatus(
+        "We couldn’t read details from this photo. Try a clearer shelf-tag shot, or fill in the form manually.",
+        true
+      );
+      return;
     }
 
     applyAiExtraction(data);
@@ -558,12 +592,6 @@ function initPhotoUploadFlow() {
     const name = el.name || el.id;
     el.addEventListener("input", () => markFieldTouched(name));
     el.addEventListener("change", () => markFieldTouched(name));
-  });
-
-  dropzone.addEventListener("click", (e) => {
-    if (isAnalyzingPhoto) return;
-    if (e.target === photoInput) return;
-    photoInput.click();
   });
 
   dropzone.addEventListener("keydown", (e) => {

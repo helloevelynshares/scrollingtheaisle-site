@@ -146,6 +146,22 @@ async function analyzeWithOpenAI(
   return normalizeExtraction({ ...parsed, raw_extraction: parsed });
 }
 
+function inferMimeFromFilename(name: string): string {
+  const lower = name.toLowerCase();
+  if (lower.endsWith(".jpg") || lower.endsWith(".jpeg")) return "image/jpeg";
+  if (lower.endsWith(".png")) return "image/png";
+  if (lower.endsWith(".webp")) return "image/webp";
+  return "";
+}
+
+function resolveImageMime(file: File): string {
+  const fromType = (file.type || "").toLowerCase();
+  if (ALLOWED_MIME.has(fromType)) return fromType;
+  const fromName = inferMimeFromFilename(file.name || "");
+  if (ALLOWED_MIME.has(fromName)) return fromName;
+  return fromType || "application/octet-stream";
+}
+
 function getImageFromFormData(formData: FormData): File | null {
   const image = formData.get("image");
   if (image instanceof File) return image;
@@ -177,7 +193,7 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "Missing image file (field: image)" }, 400);
     }
 
-    const mime = image.type || "application/octet-stream";
+    const mime = resolveImageMime(image);
     if (!ALLOWED_MIME.has(mime)) {
       return jsonResponse(
         { error: "Invalid file type. Use JPG, PNG, or WebP." },
