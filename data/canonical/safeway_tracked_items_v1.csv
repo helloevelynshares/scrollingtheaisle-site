@@ -1,0 +1,51 @@
+canonical_id,content_theme,display_name,search_query,accepted_product_name,accepted_pid,accepted_upc,tracking_unit,priority,status,notes
+chicken_breast_value_pack,protein_deal,Chicken Breast Value Pack,boneless skinless chicken breast value pack,,,,lb,P0,needs_selection,Cheaper-than-Costco style hook
+atlantic_salmon_value_pack,protein_deal,Atlantic Salmon Fillet Value Pack,Atlantic salmon fillet value pack,,,,lb,P0,needs_selection,Strong Friday/weekend deal hook
+ground_beef_90_lean,protein_deal,90% Lean Ground Beef,90 lean ground beef,,,,lb,P0,needs_selection,Protein deal staple
+beef_chuck_roast,protein_deal,Beef Chuck Roast,beef chuck roast boneless,,,,lb,P0,needs_selection,Stock-up dinner/protein deal
+red_seedless_grapes,produce_deal,Red Seedless Grapes,red seedless grapes,,,,lb,P0,needs_selection,Recurring crispy grapes deal hook
+green_seedless_grapes,produce_deal,Green Seedless Grapes,green seedless grapes,,,,lb,P0,needs_selection,Recurring produce deal
+bell_peppers,produce_deal,Bell Peppers,bell peppers,,,,lb_or_each,P0,needs_selection,Common Friday deal item
+sweet_corn,produce_deal,Sweet Corn,sweet corn,,,,each,P0,needs_selection,Seasonal produce deal
+strawberries_1lb,produce_deal,Strawberries 1 lb,strawberries 1 lb,,,,package,P0,needs_selection,High-interest produce deal
+blueberries_6oz,produce_deal,Blueberries 6 oz,blueberries 6 oz,,,,package,P0,needs_selection,High-interest produce deal
+gala_apples,produce_deal,Gala Apples,gala apples,,,,lb,P0,needs_selection,Common fruit deal
+navel_oranges,produce_deal,Navel Oranges,navel oranges,,,,lb,P0,needs_selection,Common fruit deal
+oreo_original_family_size,snack_cookie,Oreo Original Family Size,Oreo Original Family Size,,,,package,P0,needs_selection,Strong cookie stock-up item
+oreo_double_stuf_family_size,snack_cookie,Oreo Double Stuf Family Size,Oreo Double Stuf Family Size,,,,package,P0,needs_selection,Common Oreo variant
+oreo_cakesters,snack_cookie,Oreo Cakesters,Oreo Cakesters,,,,package,P0,needs_selection,Novelty Oreo snack
+chips_ahoy_original,snack_cookie,Chips Ahoy Original,Chips Ahoy Original,,,,package,P0,needs_selection,Snack/cookie stock-up
+chips_ahoy_reeses,snack_cookie,Chips Ahoy Reese's,Chips Ahoy Reese's,,,,package,P0,needs_selection,Novelty cookie flavor
+nilla_wafers_original,snack_cookie,Nilla Wafers Original,Nilla Wafers Original,,,,package,P0,needs_selection,Banana pudding / recipe anchor
+ritz_original_family_size,crackers,Ritz Original Family Size,Ritz Original Family Size,,,,package,P0,needs_selection,Snack/hosting item
+ritz_toasted_chips,crackers,Ritz Toasted Chips,Ritz Toasted Chips,,,,package,P0,needs_selection,Ritz variant
+ritz_bits_peanut_butter,crackers,Ritz Bits Peanut Butter,Ritz Bits Peanut Butter,,,,package,P0,needs_selection,Snack variant
+ritz_bits_cheese,crackers,Ritz Bits Cheese,Ritz Bits Cheese,,,,package,P0,needs_selection,Snack variant
+wheat_thins_original,crackers,Wheat Thins Original,Wheat Thins Original,,,,package,P0,needs_selection,Snack/hosting item
+triscuit_original,crackers,Triscuit Original,Triscuit Original,,,,package,P0,needs_selection,Snack/hosting item
+lays_classic,chips,Lay's Classic Potato Chips,Lay's Classic Potato Chips,,,,package,P0,needs_selection,Core chip SKU
+lays_barbecue,chips,Lay's Barbecue Potato Chips,Lay's Barbecue Potato Chips,,,,package,P0,needs_selection,Core chip flavor
+doritos_nacho_cheese,chips,Doritos Nacho Cheese,Doritos Nacho Cheese,,,,package,P0,needs_selection,Core Frito-Lay SKU
+doritos_cool_ranch,chips,Doritos Cool Ranch,Doritos Cool Ranch,,,,package,P0,needs_selection,Core Frito-Lay SKU
+cheetos_crunchy,chips,Cheetos Crunchy,Cheetos Crunchy,,,,package,P0,needs_selection,Core Frito-Lay SKU
+cheetos_flamin_hot,chips,Cheetos Flamin' Hot,Cheetos Flamin Hot,,,,package,P0,needs_selection,Core Frito-Lay SKU
+tostitos_scoops,chips,Tostitos Scoops,Tostitos Scoops,,,,package,P0,needs_selection,Party/hosting chip
+tostitos_cantina_thin_crispy,chips,Tostitos Cantina Thin & Crispy,Tostitos Cantina Thin Crispy,,,,package,P0,needs_selection,Party/hosting chip
+fritos_original,chips,Fritos Original Corn Chips,Fritos Original Corn Chips,,,,package,P0,needs_selection,Core chip SKU
+miss_vickies_jalapeno,chips,Miss Vickie's Jalapeño,Miss Vickie's Jalapeno,,,,package,P0,needs_selection,Premium chip SKU
+kettle_jalapeno,chips,Kettle Brand Jalapeño,Kettle Brand Jalapeno Chips,,,,package,P0,needs_selection,Premium chip SKU
+kettle_sea_salt,chips,Kettle Brand Sea Salt,Kettle Brand Sea Salt Chips,,,,package,P0,needs_selection,Premium chip SKU
+kettle_honey_dijon,chips,Kettle Brand Honey Dijon,Kettle Brand Honey Dijon Chips,,,,package,P0,needs_selection,Premium chip flavor
+sargento_shredded_cheese,dairy_cheese,Sargento Shredded Cheese,Sargento shredded cheese,,,,package,P0,needs_selection,Cheese stock-up content
+sargento_pepper_jack,dairy_cheese,Sargento Pepper Jack Slices,Sargento Pepper Jack cheese,,,,package,P0,needs_selection,Specific cheese variety
+sargento_balanced_breaks,dairy_cheese,Sargento Balanced Breaks,Sargento Balanced Breaks,,,,package,P0,needs_selection,Snackable cheese item
+lucerne_butter_16oz,dairy_cheese,Lucerne Butter 16 oz,Lucerne butter 16 oz,,,,package,P0,needs_selection,Stock-up dairy staple
+kerrygold_butter,dairy_cheese,Kerrygold Butter,Kerrygold Butter,,,,package,P0,needs_selection,Premium butter comparison
+philadelphia_whipped_cream_cheese,breakfast_hosting,Philadelphia Whipped Cream Cheese,Philadelphia Whipped Cream Cheese,,,,package,P0,needs_selection,Bagel/hosting item
+thomas_english_muffins,breakfast_hosting,Thomas English Muffins,Thomas English Muffins,,,,package,P0,needs_selection,Breakfast item
+thomas_bagels,breakfast_hosting,Thomas Bagels,Thomas Bagels,,,,package,P0,needs_selection,Breakfast item
+breyers_carb_smart_vanilla,dessert_ice_cream,Breyers Carb Smart Vanilla,Breyers Carb Smart Vanilla,,,,package,P0,needs_selection,Protein ice cream hack content
+breyers_carb_smart_rocky_road,dessert_ice_cream,Breyers Carb Smart Rocky Road,Breyers Carb Smart Rocky Road,,,,package,P0,needs_selection,Protein ice cream hack variant
+ben_jerrys_ice_cream_bars,dessert_ice_cream,Ben & Jerry's Ice Cream Bars,Ben Jerry ice cream bars,,,,package,P0,needs_selection,Dessert novelty item
+haagen_dazs_vanilla_bean,dessert_ice_cream,Häagen-Dazs Vanilla Bean,Haagen Dazs Vanilla Bean,,,,package,P0,needs_selection,Premium ice cream comparison
+duncan_hines_devil_food,baking_dessert,Duncan Hines Devil's Food Cake Mix,Duncan Hines Devil's Food Cake Mix,,,,package,P0,needs_selection,Cake mix deal

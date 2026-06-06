@@ -634,3 +634,245 @@ img {
     padding: 28px;
   }
 }
+
+/* Safeway price tracker (staging) */
+.price-tracker-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+}
+
+.price-tracker-hero {
+  margin-bottom: 28px;
+}
+
+.price-tracker-subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+.price-tracker-explainer {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 0 16px;
+  line-height: 1.55;
+}
+
+.price-tracker-cta {
+  font-size: 15px;
+  margin: 0;
+}
+
+.price-tracker-cta a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.price-tracker-cta a:hover {
+  text-decoration: underline;
+}
+
+.price-tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .price-tracker-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .price-tracker-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.price-tracker-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-tracker-card-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  letter-spacing: -0.3px;
+}
+
+.price-tracker-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.price-tracker-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.price-tracker-badge--accent {
+  background: rgba(255, 56, 92, 0.1);
+  color: var(--accent);
+}
+
+.price-tracker-badge--success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.price-tracker-badge--muted {
+  background: #f0f0f0;
+  color: var(--muted);
+}
+
+.price-tracker-product-meta {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.price-tracker-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 0;
+}
+
+.price-tracker-stats dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 2px;
+}
+
+.price-tracker-stats dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.price-tracker-stat-current {
+  color: var(--accent);
+  font-size: 20px !important;
+}
+
+.price-tracker-chart {
+  margin-top: 4px;
+}
+
+.price-tracker-chart-empty {
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  padding: 32px 16px;
+  background: #f5f5f5;
+  border-radius: var(--radius-sm);
+  margin: 0;
+}
+
+.price-tracker-source {
+  font-size: 13px;
+  margin: 0;
+}
+
+.price-tracker-source a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.price-tracker-source a:hover {
+  text-decoration: underline;
+}
+
+.price-tracker-source--muted {
+  color: var(--muted);
+}
+
+.price-tracker-dev-note {
+  font-size: 11px;
+  color: #aaa;
+  margin: 0;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.price-tracker-hero h1 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
+
+.price-tracker-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.price-tracker-chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-tracker-chart-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+.price-tracker-chart-dot--ad {
+  background: #222;
+}
+
+.price-tracker-chart-dot--baseline {
+  background: #bbb;
+}
+
+.price-tracker-footer {
+  text-align: center;
+  padding: 24px 20px 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.price-tracker-footer p {
+  margin: 0;
+}
+
+.landing-link {
+  margin: 24px 0 0;
+}
+
+.landing-link a {
+  color: var(--accent, #ff385c);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.landing-link a:hover {
+  text-decoration: underline;
+}

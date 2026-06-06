@@ -63,6 +63,8 @@ grant select, insert on public.finds to anon;
 grant select, insert on public.find_votes to anon;
 grant insert on public.find_reports to anon;
 
+-- Do not grant update/delete on finds to anon (see supabase/migrations/20260525_revoke_finds_update.sql)
+
 create policy "Anyone can read approved active finds"
 on finds for select
 using (
@@ -222,6 +224,18 @@ curl -s -X POST \
 ## Project notes
 
 Implementation findings, API gotchas, and repeatable debugging notes live in [`docs/PROJECT_NOTES.md`](docs/PROJECT_NOTES.md).
+
+## Price tracker (live)
+
+Safeway price tracker (React + Recharts, weekly ad data + baseline fallback):
+
+```bash
+npm install
+npm run dev:price-tracker    # local dev → /staging-price-tracker/
+npm run build:price-tracker  # build → staging-price-tracker/
+```
+
+Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). Only **high-confidence** ad matches change the chart; other weeks stay at baseline.
 
 ## GitHub Pages
 

@@ -31,6 +31,15 @@ Fix / workaround: Use Playwright Chromium with browser-like headers and `.env` c
 How to verify: `python scripts/seed_safeway_tracked_playwright.py --query oreo_original_family_size --headful -v`  
 Related files: `scripts/seed_safeway_search_playwright.py`, `scripts/seed_safeway_tracked_playwright.py`
 
+### Resume Playwright batch after cookie expiry mid-run
+
+Date discovered: 2026-05-24  
+Context: Full 50-item ledger crawl; session died around item 39 (spinner stuck).  
+What happened: First 38 items succeeded, then pgmsearch stopped firing until cookie refresh. Re-running without `--resume` overwrote JSONL and redid all 38.  
+Fix / workaround: `python scripts/seed_safeway_tracked_playwright.py --headful --delay 3 --resume` skips `canonical_id` rows that already have `ok: true` in the output JSONL. Refresh `SAFEWAY_COOKIE` first. Use `--retry-failed` to re-attempt prior failures.  
+How to verify: Log shows `Resume: 50 in scope, 38 already ok (skipped), 12 to run`.  
+Related files: `scripts/seed_safeway_tracked_playwright.py`
+
 ### pgmsearch endpoint and ledger workflow
 
 Date discovered: 2026-05-24  
@@ -48,7 +57,13 @@ Required `.env` for web pgmsearch (requests path): `SAFEWAY_SUBSCRIPTION_KEY`, `
 
 ## Data Extraction Notes
 
-Add notes here for weekly ad parsing, OCR/vision extraction, canonical item matching, package size issues, and price normalization.
+Weekly ad prices for the staging price tracker:
+
+- Manifest (week → PDF): `data/weekly_ads/flyer_manifest_safeway.csv` (synced from `scrolling-the-aisle/inputs/weekly_ads/`)
+- Offer rows: `scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`
+- Regenerate: `npm run generate:weekly-ad-prices` → `src/data/weeklyAdPrices.generated.ts`
+
+Gotchas: grouped offers split into per-item rows — matchers in `scripts/generate_weekly_ad_prices.py` pick the best split row per canonical item. Multi-buy promos need per-unit normalization (`3 for $5`, `when you buy 3`, etc.). Some tracker items have no ad match yet (e.g. Coke Zero 12pk) or use a close proxy (Fairlife → Premier Protein 4pk).
 
 TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_transcripts.csv` → `data/processed/tiktok_item_mentions.csv`.
 

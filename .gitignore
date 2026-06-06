@@ -14,6 +14,8 @@ scripts/output/
 scripts/.playwright-profile/
 # Keep data/processed and data/canonical tracked in git; ignore raw transcripts if large
 data/raw/bulk_transcripts.csv
-.venv/
+node_modules/
+price-tracker-dist/
+price-tracker/
 __pycache__/
 *.pyc
