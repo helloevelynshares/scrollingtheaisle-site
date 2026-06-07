@@ -235,8 +235,20 @@ npm run dev:price-tracker    # local dev → /staging-price-tracker/
 npm run build:price-tracker  # build → staging-price-tracker/
 ```
 
-Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). Only **high-confidence** ad matches change the chart; other weeks stay at baseline.
+Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). If a product isn’t in that week’s ad, the chart uses the baseline price.
 
 ## GitHub Pages
 
 Push to your `gh-pages` branch (or main, depending on settings). No build step required.
+
+## Web analytics (Cloudflare)
+
+Visitor and page-view tracking uses [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/).
+
+1. In the [Cloudflare dashboard](https://dash.cloudflare.com/) go to **Web Analytics** → **Add a site** → hostname `scrollingtheaisle.com`.
+2. Choose **Enable with JS Snippet installation** (required for GitHub Pages — the site is not proxied through Cloudflare).
+3. Copy the `token` from the snippet Cloudflare gives you.
+4. Paste it into `analytics.js` (replace `YOUR_CF_WEB_ANALYTICS_TOKEN`).
+5. Deploy. Open the live site, then check **Web Analytics** in Cloudflare for traffic within a few minutes.
+
+The shared `analytics.js` is included on all public HTML pages (`/`, `/finds.html`, `/submit.html`, `/staging-price-tracker/`, etc.). Page paths appear separately in the dashboard.

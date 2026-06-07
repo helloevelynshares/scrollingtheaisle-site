@@ -69,7 +69,14 @@ TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_tr
 
 ## Price Tracking Logic
 
-Add notes here for baseline prices, promo expiration behavior, effective price, lowest seen price, and canonical item rules.
+### Friday-only deals should dip on one day, not the whole week
+
+Date discovered: 2026-06-07  
+Context: Safeway weekly ads + staging price tracker charts (`/staging-price-tracker/`).  
+What happened: Some Safeway promos are **Friday-only** (e.g. `$5 FRIDAY MAR. 27TH` in `friday_only_block` layout). The price tracker currently plots **one price per flyer week** (`week_start` → `week_end`), so a Friday deal can look like it applies all week.  
+Fix / workaround (future): Use `availability_type_guess` / `price_role_guess` from `split_offer_items.csv` (`friday_only`, `short_term_dip`). Options: (a) for Friday-only matches, keep the weekly chart at **baseline** and annotate “Friday $X” in the tooltip; or (b) switch to **daily** points within the ad week (baseline Mon–Thu, ad price on Friday only). Do not treat `friday_only` rows as the effective price for the full week.  
+How to verify: Find a `friday_only` row in `scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`; confirm chart behavior matches chosen rule.  
+Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.ts`, `src/staging-price-tracker/PriceTrendChart.tsx`, `scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv` (`availability_type_guess`, `promo_text`).
 
 ## Cursor / Dev Workflow Notes
 

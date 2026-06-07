@@ -80,7 +80,7 @@ export function ProductCard({ product }: Props) {
         <p className="price-tracker-source price-tracker-source--muted">
           Latest week: {latestWeek.sourceLabel}
           {latestWeek.isBaselineFallback
-            ? " · no high-confidence ad match (using baseline)"
+            ? " · not in this week's ad (using baseline)"
             : latestWeek.offerText
               ? ` · ${latestWeek.offerText}`
               : ""}

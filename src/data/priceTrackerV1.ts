@@ -54,7 +54,11 @@ function effectiveWeeklyPrice(
 > {
   const adPrice = entry?.price ?? null;
   const matchConfidence = entry?.confidence ?? null;
-  const useAd = matchConfidence === "high" && adPrice != null;
+  // No ad match (or no usable price) → plot baseline for that week.
+  const useAd =
+    adPrice != null &&
+    matchConfidence != null &&
+    matchConfidence !== "low";
 
   return {
     price: useAd ? adPrice : baselinePrice,

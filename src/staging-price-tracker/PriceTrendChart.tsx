@@ -68,7 +68,7 @@ export function PriceTrendChart({ product }: Props) {
             formatter={(value: number, _name, item) => {
               const row = item.payload as ChartRow;
               const kind = row.isBaselineFallback
-                ? "Baseline (no high-confidence ad match)"
+                ? "Baseline (not in weekly ad)"
                 : "Weekly ad";
               return [formatPrice(value), kind];
             }}

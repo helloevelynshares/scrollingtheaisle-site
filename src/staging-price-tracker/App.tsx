@@ -18,9 +18,9 @@ export function App() {
             Area.
           </p>
           <p className="price-tracker-explainer">
-            Each product starts from a Safeway shelf-price baseline. When a
-            high-confidence match appears in that week&apos;s Safeway weekly ad, we
-            plot the ad price; otherwise the chart holds at baseline for that week.
+            Each product starts from a Safeway shelf-price baseline. When we
+            find it in that week&apos;s Safeway ad, we plot the ad price; if
+            it&apos;s not in the ad, the chart stays at baseline for that week.
           </p>
           <p className="price-tracker-cta">
             Want a product tracked?{" "}

@@ -39,6 +39,12 @@ export const WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-05-19",
     "sourceFile": "safeway 5-12 - 5-19.pdf",
     "sourceLabel": "Safeway weekly ad 05/12\u201305/19"
+  },
+  {
+    "weekStart": "2026-06-03",
+    "weekEnd": "2026-06-09",
+    "sourceFile": "safeway 6-3 - 6-9.pdf",
+    "sourceLabel": "Safeway weekly ad 06/03\u201306/09"
   }
 ];
 
@@ -66,6 +72,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 4.99,
       "offerText": "Strawberries LARGE PACK",
       "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 4.99,
+      "offerText": "Strawberries",
+      "confidence": "medium"
     }
   },
   "avocados": {
@@ -86,6 +97,11 @@ export const WEEKLY_AD_PRICES: Record<
     },
     "2026-05-12": {
       "price": 1.25,
+      "offerText": "Hass Avocado",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 1.67,
       "offerText": "Hass Avocado",
       "confidence": "high"
     }
@@ -110,6 +126,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 4.99,
       "offerText": "Doritos",
       "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
     }
   },
   "cheetos_crunchy": {
@@ -132,6 +153,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 4.99,
       "offerText": "Cheetos, Tostitos, Fritos",
       "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 4.99,
+      "offerText": "Cheetos, Rold Gold, Select Simply Cheetos 6.5-10 oz. Selected varieties.",
+      "confidence": "medium"
     }
   },
   "coke_zero": {
@@ -151,6 +177,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -176,6 +207,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 0.99,
       "offerText": "Chobani Greek Yogurt",
       "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "cheerios": {
@@ -198,6 +234,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 1.99,
       "offerText": "General Mills Cheerios",
       "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "tillamook_ice_cream": {
@@ -220,6 +261,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-03": {
+      "price": 3.99,
+      "offerText": "Tillamook Ice Cream",
+      "confidence": "high"
     }
   },
   "mission_tortilla_chips": {
@@ -239,6 +285,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": "high"
     },
     "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -264,6 +315,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 1.99,
       "offerText": "Nature Valley Bars",
       "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   }
 };
