@@ -91,6 +91,8 @@ on find_reports for insert
 with check (true);
 ```
 
+**Price tracker suggestions** — run `supabase/migrations/20260607_tracker_suggestions.sql` in the SQL Editor (or paste its contents). Submissions land in `tracker_suggestions` (review in Supabase → Table Editor). Optional photos reuse the `find-photos` bucket under `tracker-suggestions/`.
+
 ### 3. Create the storage bucket
 
 **Option A — Dashboard**
@@ -232,10 +234,11 @@ Safeway price tracker (React + Recharts, weekly ad data + baseline fallback):
 ```bash
 npm install
 npm run dev:price-tracker    # local dev → /src/staging-price-tracker/
-npm run build:price-tracker  # build from src/staging-price-tracker/index.html → staging-price-tracker/
+npm run build:price-tracker  # build → staging-price-tracker/ (auto-verifies bundle has latest weeks)
+npm run verify:price-tracker # re-check deployed bundle without rebuilding
 ```
 
-Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). If a product isn’t in that week’s ad, the chart uses the baseline price.
+Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). If a product isn’t in that week’s ad, the chart uses the baseline price. Visitors can suggest new products via the form on that page (`tracker_suggestions` table).
 
 ## GitHub Pages
 

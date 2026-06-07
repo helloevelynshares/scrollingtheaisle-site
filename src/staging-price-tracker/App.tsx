@@ -1,5 +1,6 @@
 import { trackedProducts } from "../data/priceTrackerV1";
 import { ProductCard } from "./ProductCard";
+import { TrackSuggestionForm } from "./TrackSuggestionForm";
 
 export function App() {
   return (
@@ -22,18 +23,9 @@ export function App() {
             find it in that week&apos;s Safeway ad, we plot the ad price; if
             it&apos;s not in the ad, the chart stays at baseline for that week.
           </p>
-          <p className="price-tracker-cta">
-            Want a product tracked?{" "}
-            <a
-              href="https://www.tiktok.com/@scrollingtheaisle"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              DM us @scrollingtheaisle
-            </a>
-            .
-          </p>
         </section>
+
+        <TrackSuggestionForm />
 
         <div className="price-tracker-grid">
           {trackedProducts.map((product) => (
