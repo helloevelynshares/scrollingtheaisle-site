@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: "price-tracker-dist",
     emptyOutDir: true,
     rollupOptions: {
-      input: resolve(__dirname, "staging-price-tracker/index.html"),
+      input: resolve(__dirname, "src/staging-price-tracker/index.html"),
     },
   },
 });

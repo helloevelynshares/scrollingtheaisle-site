@@ -231,8 +231,8 @@ Safeway price tracker (React + Recharts, weekly ad data + baseline fallback):
 
 ```bash
 npm install
-npm run dev:price-tracker    # local dev → /staging-price-tracker/
-npm run build:price-tracker  # build → staging-price-tracker/
+npm run dev:price-tracker    # local dev → /src/staging-price-tracker/
+npm run build:price-tracker  # build from src/staging-price-tracker/index.html → staging-price-tracker/
 ```
 
 Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). If a product isn’t in that week’s ad, the chart uses the baseline price.

@@ -11,6 +11,7 @@ const assetsTarget = join(target, "assets");
 const indexCandidates = [
   join(dist, "index.html"),
   join(dist, "staging-price-tracker", "index.html"),
+  join(dist, "src/staging-price-tracker", "index.html"),
 ];
 const builtIndex = indexCandidates.find((p) => existsSync(p));
 
