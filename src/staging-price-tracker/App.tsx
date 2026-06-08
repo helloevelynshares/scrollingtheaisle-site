@@ -1,6 +1,6 @@
 import { trackedProducts } from "../data/priceTrackerV1";
 import { ProductCard } from "./ProductCard";
-import { TrackSuggestionForm } from "./TrackSuggestionForm";
+import { TrackVoteModule } from "./TrackVoteModule";
 
 export function App() {
   return (
@@ -15,17 +15,12 @@ export function App() {
         <section className="price-tracker-hero">
           <h1>Safeway Price Tracker</h1>
           <p className="price-tracker-subtitle">
-            Week-by-week prices for Costco-comparable grocery staples in the Bay
-            Area.
-          </p>
-          <p className="price-tracker-explainer">
-            Each product starts from a Safeway shelf-price baseline. When we
-            find it in that week&apos;s Safeway ad, we plot the ad price; if
-            it&apos;s not in the ad, the chart stays at baseline for that week.
+            Track weekly price changes on grocery staples and spot better deals
+            before your next Costco or grocery run.
           </p>
         </section>
 
-        <TrackSuggestionForm />
+        <TrackVoteModule />
 
         <div className="price-tracker-grid">
           {trackedProducts.map((product) => (
