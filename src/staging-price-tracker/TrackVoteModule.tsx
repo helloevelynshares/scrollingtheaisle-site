@@ -295,7 +295,11 @@ export function TrackVoteModule() {
   }
 
   return (
-    <section className="price-tracker-vote" aria-labelledby="price-tracker-vote-title">
+    <section
+      id="track-vote"
+      className="price-tracker-vote"
+      aria-labelledby="price-tracker-vote-title"
+    >
       <h2 id="price-tracker-vote-title">What should we track next?</h2>
       <p className="price-tracker-vote-lead">
         Vote for an item you want added to the tracker, or suggest your own.
