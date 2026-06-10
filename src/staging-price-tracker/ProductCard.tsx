@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import {
   countWeeklyAdMatches,
   formatDiscount,
+  formatDiscountVsBaseline,
   formatPrice,
   getCurrentPrice,
   getDiscountPercent,
@@ -18,12 +19,18 @@ type Props = {
 function Badge({
   children,
   tone,
+  compact = false,
 }: {
   children: ReactNode;
   tone: "accent" | "muted" | "success";
+  compact?: boolean;
 }) {
   return (
-    <span className={`price-tracker-badge price-tracker-badge--${tone}`}>
+    <span
+      className={`price-tracker-badge price-tracker-badge--${tone}${
+        compact ? " price-tracker-badge--compact" : ""
+      }`}
+    >
       {children}
     </span>
   );
@@ -38,7 +45,40 @@ export function ProductCard({ product }: Props) {
 
   return (
     <article className="price-tracker-card">
-      <header className="price-tracker-card-header">
+      <div className="price-tracker-card-compact price-tracker-mobile-only">
+        <header className="price-tracker-card-compact-header">
+          <h2>{product.displayName}</h2>
+          <div className="price-tracker-card-compact-badges">
+            {product.confidence === "high" ? (
+              <Badge tone="success" compact>
+                High
+              </Badge>
+            ) : null}
+            {product.costcoComparable ? (
+              <Badge tone="accent" compact>
+                Costco
+              </Badge>
+            ) : null}
+          </div>
+        </header>
+
+        <div className="price-tracker-card-compact-price">
+          <span className="price-tracker-card-compact-current">
+            {formatPrice(current)}
+          </span>
+          <span
+            className={`price-tracker-card-compact-vs${
+              discount && discount > 0
+                ? " price-tracker-card-compact-vs--deal"
+                : ""
+            }`}
+          >
+            {formatDiscountVsBaseline(discount)}
+          </span>
+        </div>
+      </div>
+
+      <header className="price-tracker-card-header price-tracker-desktop-only">
         <h2>{product.displayName}</h2>
         <div className="price-tracker-badges">
           <Badge tone={product.confidence === "high" ? "success" : "muted"}>
@@ -50,12 +90,12 @@ export function ProductCard({ product }: Props) {
         </div>
       </header>
 
-      <p className="price-tracker-product-meta">
+      <p className="price-tracker-product-meta price-tracker-desktop-only">
         {product.acceptedProduct.productName}
         {product.acceptedProduct.size ? ` · ${product.acceptedProduct.size}` : ""}
       </p>
 
-      <dl className="price-tracker-stats">
+      <dl className="price-tracker-stats price-tracker-desktop-only">
         <div>
           <dt>Current</dt>
           <dd className="price-tracker-stat-current">{formatPrice(current)}</dd>
@@ -76,8 +116,12 @@ export function ProductCard({ product }: Props) {
 
       <PriceTrendChart product={product} />
 
+      <p className="price-tracker-card-compact-footer price-tracker-mobile-only">
+        Matched {adMatches}/{product.weeklyPrices.length} weeks
+      </p>
+
       {latestWeek ? (
-        <p className="price-tracker-source price-tracker-source--muted">
+        <p className="price-tracker-source price-tracker-source--muted price-tracker-desktop-only">
           Latest week: {latestWeek.sourceLabel}
           {latestWeek.isBaselineFallback
             ? " · not in this week's ad (using baseline)"

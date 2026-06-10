@@ -347,6 +347,13 @@ export function formatDiscount(percent: number | null): string {
   return `${percent}% off`;
 }
 
+export function formatDiscountVsBaseline(percent: number | null): string {
+  if (percent == null || percent <= 0) {
+    return "At baseline";
+  }
+  return `${percent}% off baseline`;
+}
+
 export function formatWeekLabel(weekStart: string): string {
   if (weekStart === "baseline") {
     return "Baseline";
