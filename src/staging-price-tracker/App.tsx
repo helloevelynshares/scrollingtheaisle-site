@@ -43,12 +43,6 @@ export function App() {
           ))}
         </div>
       </main>
-
-      <footer className="price-tracker-footer">
-        <p>
-          Prices from Safeway weekly ads · Updated when new flyers are processed
-        </p>
-      </footer>
     </>
   );
 }
