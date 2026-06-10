@@ -53,13 +53,14 @@ export function PriceTrendChart({ product }: Props) {
         compact ? " price-tracker-chart--compact" : ""
       }`}
     >
-      <ResponsiveContainer width="100%" height="100%">
+      <div className="price-tracker-chart-plot">
+        <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={chartData}
           margin={
             compact
               ? { top: 4, right: 2, left: 0, bottom: 0 }
-              : { top: 8, right: 8, left: 0, bottom: 4 }
+              : { top: 8, right: 8, left: 0, bottom: 8 }
           }
         >
           {!compact ? (
@@ -163,7 +164,8 @@ export function PriceTrendChart({ product }: Props) {
             connectNulls
           />
         </LineChart>
-      </ResponsiveContainer>
+        </ResponsiveContainer>
+      </div>
       <p className="price-tracker-chart-legend price-tracker-desktop-only">
         <span className="price-tracker-chart-legend-item">
           <span className="price-tracker-chart-dot price-tracker-chart-dot--ad" />

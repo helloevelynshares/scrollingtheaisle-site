@@ -1007,13 +1007,19 @@ img {
 
 .price-tracker-chart {
   margin-top: 4px;
-  height: 200px;
   min-width: 0;
 }
 
+.price-tracker-chart-plot {
+  height: 200px;
+}
+
 .price-tracker-chart--compact {
-  height: 80px;
   margin-top: 2px;
+}
+
+.price-tracker-chart--compact .price-tracker-chart-plot {
+  height: 80px;
 }
 
 .price-tracker-chart-empty {
@@ -1063,8 +1069,10 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 16px;
-  margin: 8px 0 0;
+  margin: 10px 0 0;
+  padding-bottom: 2px;
   font-size: 12px;
+  line-height: 1.4;
   color: var(--muted);
 }
 
