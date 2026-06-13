@@ -7,16 +7,17 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  type TooltipProps,
 } from "recharts";
 import {
   formatPrice,
   getAllPricePoints,
-  type TrackedProduct,
-} from "../data/priceTrackerV1";
+} from "../data/priceTrackerUtils";
+import type { FeedProductView } from "../data/priceTrackerTypes";
 import { useCompactLayout } from "./useCompactLayout";
 
 type Props = {
-  product: TrackedProduct;
+  product: FeedProductView;
 };
 
 type ChartRow = {
@@ -25,9 +26,46 @@ type ChartRow = {
   price: number;
   priceType: string;
   isBaselineFallback: boolean;
-  sourceLabel: string;
-  offerText?: string;
 };
+
+function getTooltipStatus(row: ChartRow): "Weekly deal" | "Regular price" {
+  if (
+    row.weekStart === "baseline" ||
+    row.isBaselineFallback ||
+    row.priceType === "baseline"
+  ) {
+    return "Regular price";
+  }
+  return "Weekly deal";
+}
+
+function PriceChartTooltip({
+  active,
+  payload,
+  compact,
+}: TooltipProps<number, string> & { compact: boolean }) {
+  if (!active || !payload?.length) {
+    return null;
+  }
+
+  const row = payload[0].payload as ChartRow;
+
+  return (
+    <div
+      className={`price-tracker-chart-tooltip${
+        compact ? " price-tracker-chart-tooltip--compact" : ""
+      }`}
+    >
+      <div className="price-tracker-chart-tooltip-date">{row.label}</div>
+      <div className="price-tracker-chart-tooltip-price">
+        {formatPrice(row.price)}
+      </div>
+      <div className="price-tracker-chart-tooltip-status">
+        {getTooltipStatus(row)}
+      </div>
+    </div>
+  );
+}
 
 export function PriceTrendChart({ product }: Props) {
   const compact = useCompactLayout();
@@ -39,8 +77,6 @@ export function PriceTrendChart({ product }: Props) {
     price: point.price,
     priceType: point.priceType,
     isBaselineFallback: point.isBaselineFallback,
-    sourceLabel: point.sourceLabel ?? "",
-    offerText: point.offerText,
   }));
 
   const yMin = Math.min(...chartData.map((row) => row.price));
@@ -83,35 +119,7 @@ export function PriceTrendChart({ product }: Props) {
               width={48}
             />
           )}
-          <Tooltip
-            formatter={(value: number, _name, item) => {
-              const row = item.payload as ChartRow;
-              const kind = row.isBaselineFallback
-                ? "Baseline (not in weekly ad)"
-                : "Weekly ad";
-              return [formatPrice(value), kind];
-            }}
-            labelFormatter={(_, payload) => {
-              const row = payload?.[0]?.payload as ChartRow | undefined;
-              if (!row) {
-                return "";
-              }
-              if (row.weekStart === "baseline") {
-                return product.baselineSource;
-              }
-              const parts = [row.sourceLabel];
-              if (row.offerText) {
-                parts.push(row.offerText);
-              }
-              return parts.filter(Boolean).join(" · ");
-            }}
-            contentStyle={{
-              borderRadius: 8,
-              border: "1px solid #eee",
-              fontSize: compact ? 12 : 13,
-              maxWidth: 280,
-            }}
-          />
+          <Tooltip content={<PriceChartTooltip compact={compact} />} />
           <ReferenceLine
             y={product.baselinePrice}
             stroke="#ff385c"

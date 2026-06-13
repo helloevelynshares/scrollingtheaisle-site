@@ -93,6 +93,23 @@ with check (true);
 
 **Price tracker voting** — run `supabase/migrations/20260608_product_track_voting.sql` in the SQL Editor (or `supabase db push` from this repo). Votes and suggestions land in `product_track_votes` / `product_track_suggestions` (review in Supabase → Table Editor). The `product_track_suggestion_totals` view powers vote counts on the page.
 
+**Price tracker feeds** — run these in order in the SQL Editor (or `supabase db push`):
+
+1. `supabase/migrations/20260609_price_tracker_feeds.sql` — `canonical_products`, `price_feeds`, `feed_product_matches`, `weekly_price_observations`
+2. `supabase/migrations/20260609_price_tracker_seed.sql` — Safeway Bay Area baseline + weekly observations (regenerate with `npm run generate:price-tracker-seed` after weekly ad updates)
+
+**Vons / Albertsons baselines (SoCal)** — same Albertsons `pgmsearch` API via [Vons search](https://www.vons.com/shop/search-results.html?q=grapes&tab=products):
+
+```bash
+# 1. In Chrome on vons.com: set SoCal store, search any item, copy Cookie from Network → pgmsearch
+# 2. Add to scripts/.env: VONS_COOKIE=...  (or use a vons.com-specific cookie; SAFEWAY_COOKIE alone may not work)
+python scripts/seed_vons_baseline_playwright.py --headful --delay 3
+python scripts/generate_vons_feed_matches.py   # → Supabase seed + src/data/vonsBaseline.generated.ts
+# 3. Run supabase/migrations/20260612_vons_feed_matches_seed.sql in SQL Editor
+```
+
+Queries: `data/canonical/price_tracker_baseline_queries.csv`. Output: `data/processed/vons_baseline_candidates_v1.csv`.
+
 ### 3. Create the storage bucket
 
 **Option A — Dashboard**
@@ -229,16 +246,15 @@ Implementation findings, API gotchas, and repeatable debugging notes live in [`d
 
 ## Price tracker (live)
 
-Safeway price tracker (React + Recharts, weekly ad data + baseline fallback):
+Multi-feed price tracker (React + Recharts + Supabase, with Safeway static fallback):
 
 ```bash
 npm install
-npm run dev:price-tracker    # local dev → /src/staging-price-tracker/
-npm run build:price-tracker  # build → staging-price-tracker/ (auto-verifies bundle has latest weeks)
-npm run verify:price-tracker # re-check deployed bundle without rebuilding
+npm run dev:price-tracker    # local dev → /staging-price-tracker/
+npm run build:price-tracker  # build → staging-price-tracker/
 ```
 
-Public URL: `/staging-price-tracker/` (https://scrollingtheaisle.com/staging-price-tracker/). Edit products in `src/data/priceTrackerV1.ts` (`trackedProducts`). Weekly ad prices are generated from `data/weekly_ads/flyer_manifest_safeway.csv` + `scrolling-the-aisle` offer extraction (`npm run generate:weekly-ad-prices`). If a product isn’t in that week’s ad, the chart uses the baseline price. Visitors can vote on or suggest products to track (`product_track_suggestions` / `product_track_votes`).
+Public URL: `/staging-price-tracker/`. Canonical products live in `src/data/canonicalProducts.ts`; feed tabs in `src/data/priceFeeds.ts`. Safeway weekly ad prices are generated from `data/weekly_ads/` + `scrolling-the-aisle` offer extraction. Switch tabs to compare Bay Area Safeway vs SoCal Vons/Albertsons.
 
 ## GitHub Pages
 

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Generate weekly ad prices for the staging price tracker.
 
-Reads Safeway flyer manifest from data/weekly_ads/ and offer rows from the
+Reads Safeway and Vons flyer manifests from data/weekly_ads/ and offer rows from the
 scrolling-the-aisle repo (split_offer_items.csv). Writes
-src/data/weeklyAdPrices.generated.ts for import in priceTrackerV1.ts.
+src/data/weeklyAdPrices.generated.ts and src/data/vonsWeeklyAdPrices.generated.ts.
 
 Usage:
   python3 scripts/generate_weekly_ad_prices.py
@@ -22,11 +22,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_ROOT = Path.home() / "Documents" / "scrolling-the-aisle"
 DATA_ROOT = Path(os.environ.get("SCROLLING_THE_AISLE_ROOT", DEFAULT_DATA_ROOT))
-MANIFEST_PATH = ROOT / "data" / "weekly_ads" / "flyer_manifest_safeway.csv"
-SPLIT_ITEMS_PATH = (
-    DATA_ROOT / "outputs" / "product_discovery_safeway" / "split_offer_items.csv"
-)
-OUTPUT_PATH = ROOT / "src" / "data" / "weeklyAdPrices.generated.ts"
 
 TRACKER_CANONICAL_IDS = [
     "strawberries",
@@ -39,7 +34,48 @@ TRACKER_CANONICAL_IDS = [
     "tillamook_ice_cream",
     "mission_tortilla_chips",
     "nature_valley_bars",
+    "fage_greek_yogurt",
+    "frito_lay_multipack_chips",
+    "haagen_dazs_ice_cream",
+    "grapes",
+    "eggs_18_count",
+    "oreos_sandwich_cookies",
+    "protein_bars",
+    "kettle_brand_chips",
 ]
+
+
+@dataclass(frozen=True)
+class FeedConfig:
+    feed_label: str
+    manifest_path: Path
+    split_items_path: Path
+    output_path: Path
+    banner_filter: str | None = None
+
+
+FEEDS: tuple[FeedConfig, ...] = (
+    FeedConfig(
+        feed_label="Safeway",
+        manifest_path=ROOT / "data" / "weekly_ads" / "flyer_manifest_safeway.csv",
+        split_items_path=DATA_ROOT
+        / "outputs"
+        / "product_discovery_safeway"
+        / "split_offer_items.csv",
+        output_path=ROOT / "src" / "data" / "weeklyAdPrices.generated.ts",
+        banner_filter="Safeway",
+    ),
+    FeedConfig(
+        feed_label="Vons",
+        manifest_path=ROOT / "data" / "weekly_ads" / "flyer_manifest_vons.csv",
+        split_items_path=DATA_ROOT
+        / "outputs"
+        / "product_discovery_vons"
+        / "split_offer_items.csv",
+        output_path=ROOT / "src" / "data" / "vonsWeeklyAdPrices.generated.ts",
+        banner_filter="Vons",
+    ),
+)
 
 
 @dataclass(frozen=True)
@@ -53,9 +89,9 @@ class ProductMatcher:
 MATCHERS: tuple[ProductMatcher, ...] = (
     ProductMatcher(
         "strawberries",
-        patterns=(r"strawberries",),
+        patterns=(r"strawberries", r"fresh strawberries", r"organic strawberries"),
         exclude_patterns=(r"^blueberr", r"^raspberr", r"^blackberr", r"2 lb"),
-        prefer_patterns=(r"^strawberries$", r"1-lb"),
+        prefer_patterns=(r"^strawberries$", r"1-lb", r"fresh strawberries"),
     ),
     ProductMatcher(
         "avocados",
@@ -111,26 +147,106 @@ MATCHERS: tuple[ProductMatcher, ...] = (
     ),
     ProductMatcher(
         "nature_valley_bars",
-        patterns=(r"nature valley bars",),
+        patterns=(r"nature valley", r"nature valley bars"),
         exclude_patterns=(r"pop-tarts",),
-        prefer_patterns=(r"nature valley bars",),
+        prefer_patterns=(
+            r"nature valley bars",
+            r"nature valley crunchy",
+            r"nature valley protein",
+        ),
+    ),
+    ProductMatcher(
+        "fage_greek_yogurt",
+        patterns=(r"fage", r"fage greek", r"fage total"),
+        exclude_patterns=(r"chobani",),
+        prefer_patterns=(
+            r"fage total",
+            r"fage greek yogurt",
+            r"fage 0%",
+            r"fage 2%",
+        ),
+    ),
+    ProductMatcher(
+        "frito_lay_multipack_chips",
+        patterns=(
+            r"frito.?lay",
+            r"variety pack",
+            r"chip multipack",
+            r"42 count",
+            r"30 count",
+            r"snack pack chips",
+        ),
+        prefer_patterns=(
+            r"frito.?lay variety",
+            r"42 count",
+            r"30 count",
+            r"variety pack chips",
+        ),
+    ),
+    ProductMatcher(
+        "haagen_dazs_ice_cream",
+        patterns=(r"haagen.?dazs", r"häagen.?dazs", r"ice cream bars"),
+        exclude_patterns=(r"tillamook",),
+        prefer_patterns=(r"haagen.?dazs ice cream", r"haagen.?dazs bars"),
+    ),
+    ProductMatcher(
+        "grapes",
+        patterns=(r"grapes", r"green grapes", r"red grapes", r"seedless grapes"),
+        exclude_patterns=(r"grape juice", r"grape tomato"),
+        prefer_patterns=(r"seedless grapes", r"green grapes", r"red grapes"),
+    ),
+    ProductMatcher(
+        "eggs_18_count",
+        patterns=(r"eggs", r"18 count eggs", r"18-count eggs"),
+        exclude_patterns=(r"egg nog", r"egg roll", r"egg beaters", r"egg bite"),
+        prefer_patterns=(r"18 count", r"18-count", r"large eggs"),
+    ),
+    ProductMatcher(
+        "oreos_sandwich_cookies",
+        patterns=(r"oreo", r"sandwich cookies"),
+        exclude_patterns=(r"oreo ice cream", r"oreo thins"),
+        prefer_patterns=(r"oreo cookies", r"family size oreo", r"^oreos?$"),
+    ),
+    ProductMatcher(
+        "protein_bars",
+        patterns=(
+            r"protein bars",
+            r"rxbar",
+            r"rx bars",
+            r"kai'?s protein",
+            r"kize protein",
+        ),
+        exclude_patterns=(r"nature valley protein",),
+        prefer_patterns=(r"protein bars", r"rxbar"),
+    ),
+    ProductMatcher(
+        "kettle_brand_chips",
+        patterns=(r"kettle brand", r"kettle chips", r"kettle cooked"),
+        exclude_patterns=(r"lay's.*kettle cooked", r"lays.*kettle cooked"),
+        prefer_patterns=(r"kettle brand", r"kettle brand potato chips"),
     ),
 )
 
 
-def load_manifest() -> list[dict[str, str]]:
-    with MANIFEST_PATH.open(newline="", encoding="utf-8") as handle:
+def load_manifest(path: Path) -> list[dict[str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
 
 
-def load_split_items() -> list[dict[str, str]]:
-    if not SPLIT_ITEMS_PATH.is_file():
-        raise FileNotFoundError(
-            f"Missing split offer items at {SPLIT_ITEMS_PATH}. "
-            "Set SCROLLING_THE_AISLE_ROOT to the scrolling-the-aisle repo."
-        )
-    with SPLIT_ITEMS_PATH.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+def load_split_items(path: Path, banner_filter: str | None) -> list[dict[str, str]]:
+    if not path.is_file():
+        print(f"Warning: missing split offer items at {path} — skipping feed output")
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle))
+    if banner_filter:
+        banner_norm = banner_filter.strip().lower()
+        rows = [
+            row
+            for row in rows
+            if (row.get("banner") or "").strip().lower() == banner_norm
+        ]
+    return rows
 
 
 def split_text(row: dict[str, str]) -> str:
@@ -179,7 +295,6 @@ def normalize_unit_price(row: dict[str, str]) -> float | None:
     if basis != "multi_buy":
         return round(price, 2)
 
-    # "When you buy 3" / "buy 3" — advertised price is already per unit.
     if re.search(r"(when you )?buy\s+\d+", promo):
         return round(price, 2)
 
@@ -259,14 +374,16 @@ def pick_best_row(
     return max(candidates, key=lambda row: preference_score(row, matcher))
 
 
-def format_week_label(week_start: str, week_end: str) -> str:
+def format_week_label(feed_label: str, week_start: str, week_end: str) -> str:
     start = week_start[5:].replace("-", "/")
     end = week_end[5:].replace("-", "/")
-    return f"Safeway weekly ad {start}–{end}"
+    return f"{feed_label} weekly ad {start}–{end}"
 
 
 def build_prices(
-    manifest: list[dict[str, str]], split_items: list[dict[str, str]]
+    feed_label: str,
+    manifest: list[dict[str, str]],
+    split_items: list[dict[str, str]],
 ) -> tuple[list[dict[str, str]], dict[str, dict[str, dict[str, object | None]]]]:
     weeks: list[dict[str, str]] = []
     prices: dict[str, dict[str, dict[str, object | None]]] = {
@@ -284,7 +401,7 @@ def build_prices(
                 "weekStart": week_start,
                 "weekEnd": week_end,
                 "sourceFile": source_file,
-                "sourceLabel": format_week_label(week_start, week_end),
+                "sourceLabel": format_week_label(feed_label, week_start, week_end),
             }
         )
 
@@ -309,14 +426,23 @@ def build_prices(
 
 
 def render_ts(
+    feed_label: str,
+    manifest_path: Path,
+    split_items_path: Path,
     weeks: list[dict[str, str]],
     prices: dict[str, dict[str, dict[str, object | None]]],
 ) -> str:
     weeks_json = json.dumps(weeks, indent=2)
     prices_json = json.dumps(prices, indent=2)
+    export_weeks = "WEEKLY_AD_WEEKS" if feed_label == "Safeway" else "VONS_WEEKLY_AD_WEEKS"
+    export_prices = "WEEKLY_AD_PRICES" if feed_label == "Safeway" else "VONS_WEEKLY_AD_PRICES"
+    try:
+        rel_split = split_items_path.relative_to(DATA_ROOT)
+    except ValueError:
+        rel_split = split_items_path
     return f"""// AUTO-GENERATED by scripts/generate_weekly_ad_prices.py — do not edit by hand.
-// Source manifest: data/weekly_ads/flyer_manifest_safeway.csv
-// Source offers: scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv
+// Source manifest: {manifest_path.relative_to(ROOT)}
+// Source offers: scrolling-the-aisle/{rel_split}
 
 export type WeeklyAdWeek = {{
   weekStart: string;
@@ -331,21 +457,38 @@ export type GeneratedWeeklyAdPrice = {{
   confidence: "high" | "medium" | "low" | null;
 }};
 
-export const WEEKLY_AD_WEEKS: WeeklyAdWeek[] = {weeks_json};
+export const {export_weeks}: WeeklyAdWeek[] = {weeks_json};
 
-export const WEEKLY_AD_PRICES: Record<
+export const {export_prices}: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {prices_json};
 """
 
 
+def generate_feed(config: FeedConfig) -> None:
+    manifest = load_manifest(config.manifest_path)
+    split_items = load_split_items(config.split_items_path, config.banner_filter)
+    weeks, prices = build_prices(config.feed_label, manifest, split_items)
+    config.output_path.write_text(
+        render_ts(
+            config.feed_label,
+            config.manifest_path,
+            config.split_items_path,
+            weeks,
+            prices,
+        ),
+        encoding="utf-8",
+    )
+    print(
+        f"Wrote {config.output_path.relative_to(ROOT)} "
+        f"({len(weeks)} weeks, {len(TRACKER_CANONICAL_IDS)} products)"
+    )
+
+
 def main() -> None:
-    manifest = load_manifest()
-    split_items = load_split_items()
-    weeks, prices = build_prices(manifest, split_items)
-    OUTPUT_PATH.write_text(render_ts(weeks, prices), encoding="utf-8")
-    print(f"Wrote {OUTPUT_PATH.relative_to(ROOT)} ({len(weeks)} weeks, {len(TRACKER_CANONICAL_IDS)} products)")
+    for config in FEEDS:
+        generate_feed(config)
 
 
 if __name__ == "__main__":

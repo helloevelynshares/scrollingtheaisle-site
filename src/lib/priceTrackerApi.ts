@@ -1,0 +1,225 @@
+import { CANONICAL_PRODUCTS } from "../data/canonicalProducts";
+import { getPriceFeed } from "../data/priceFeeds";
+import {
+  buildEmptyFeedProducts,
+  buildSafewayFallbackProducts,
+  buildVonsFallbackProducts,
+} from "../data/priceTrackerFallback";
+import type {
+  FeedProductMatch,
+  FeedProductView,
+  WeeklyPrice,
+  WeeklyPriceObservation,
+} from "../data/priceTrackerTypes";
+import { getSupabase } from "./supabase";
+
+const SAFEWAY_FEED_ID = "safeway_bay_area";
+const VONS_FEED_ID = "vons_albertsons_socal";
+const COSTCO_FEED_IDS = new Set(["costco_sf", "costco_oc"]);
+
+type DbCanonicalProduct = {
+  id: string;
+  display_name: string;
+  product_family: string;
+  size_label: string | null;
+  costco_comparable: boolean;
+  confidence: string;
+  sort_order: number;
+};
+
+type DbFeedProductMatch = {
+  canonical_product_id: string;
+  feed_id: string;
+  retailer_product_id: string | null;
+  upc: string | null;
+  retailer_product_name: string | null;
+  size: string | null;
+  baseline_price: number;
+  baseline_source: string | null;
+};
+
+type DbWeeklyObservation = {
+  canonical_product_id: string;
+  feed_id: string;
+  week_start: string;
+  week_end: string | null;
+  ad_price: number | null;
+  effective_price: number;
+  match_confidence: string | null;
+  price_type: string;
+  is_baseline_fallback: boolean;
+  source_label: string | null;
+  offer_text: string | null;
+};
+
+/**
+ * Fetch canonical_products (shared across feeds) and weekly_price_observations
+ * for the active feed_id, then merge client-side by canonical_product_id.
+ *
+ * feed_product_matches maps each canonical item to retailer-specific SKUs per feed.
+ */
+export async function fetchFeedProducts(
+  feedId: string,
+): Promise<FeedProductView[]> {
+  const feed = getPriceFeed(feedId);
+  if (!feed) {
+    return [];
+  }
+
+  try {
+    const supabase = getSupabase();
+
+    const [canonicalResult, matchResult, observationResult] = await Promise.all([
+      supabase
+        .from("canonical_products")
+        .select(
+          "id, display_name, product_family, size_label, costco_comparable, confidence, sort_order",
+        )
+        .eq("is_active", true)
+        .order("sort_order"),
+      supabase
+        .from("feed_product_matches")
+        .select(
+          "canonical_product_id, feed_id, retailer_product_id, upc, retailer_product_name, size, baseline_price, baseline_source",
+        )
+        .eq("feed_id", feedId),
+      supabase
+        .from("weekly_price_observations")
+        .select(
+          "canonical_product_id, feed_id, week_start, week_end, ad_price, effective_price, match_confidence, price_type, is_baseline_fallback, source_label, offer_text",
+        )
+        .eq("feed_id", feedId)
+        .order("week_start"),
+    ]);
+
+    if (
+      canonicalResult.error ||
+      matchResult.error ||
+      observationResult.error
+    ) {
+      return fallbackForFeed(feedId);
+    }
+
+    const canonicalRows = canonicalResult.data as DbCanonicalProduct[] | null;
+    if (!canonicalRows?.length) {
+      return fallbackForFeed(feedId);
+    }
+
+    const matches = (matchResult.data ?? []) as DbFeedProductMatch[];
+    const observations = (observationResult.data ?? []) as DbWeeklyObservation[];
+
+    const matchByCanonical = new Map(
+      matches.map((row) => [row.canonical_product_id, row]),
+    );
+    const observationsByCanonical = groupObservations(observations);
+
+    const merged = canonicalRows.map((row) =>
+      mergeCanonicalWithFeed(
+        row,
+        feed,
+        matchByCanonical.get(row.id),
+        observationsByCanonical.get(row.id) ?? [],
+      ),
+    );
+
+    if (feedId === SAFEWAY_FEED_ID && merged.every((p) => !p.hasFeedData)) {
+      return buildSafewayFallbackProducts();
+    }
+
+    if (feedId === "vons_albertsons_socal" && merged.every((p) => !p.hasFeedData)) {
+      return buildVonsFallbackProducts();
+    }
+
+    if (COSTCO_FEED_IDS.has(feedId) && merged.every((p) => !p.hasFeedData)) {
+      return buildEmptyFeedProducts(feedId);
+    }
+
+    return merged;
+  } catch {
+    return fallbackForFeed(feedId);
+  }
+}
+
+function fallbackForFeed(feedId: string): FeedProductView[] {
+  if (feedId === SAFEWAY_FEED_ID) {
+    return buildSafewayFallbackProducts();
+  }
+  if (feedId === "vons_albertsons_socal") {
+    return buildVonsFallbackProducts();
+  }
+  if (COSTCO_FEED_IDS.has(feedId)) {
+    return buildEmptyFeedProducts(feedId);
+  }
+  return buildEmptyFeedProducts(feedId);
+}
+
+function groupObservations(
+  rows: DbWeeklyObservation[],
+): Map<string, WeeklyPriceObservation[]> {
+  const map = new Map<string, WeeklyPriceObservation[]>();
+  for (const row of rows) {
+    const list = map.get(row.canonical_product_id) ?? [];
+    list.push({
+      canonicalProductId: row.canonical_product_id,
+      feedId: row.feed_id,
+      weekStart: row.week_start,
+      weekEnd: row.week_end,
+      adPrice: row.ad_price,
+      effectivePrice: row.effective_price,
+      matchConfidence: row.match_confidence as WeeklyPriceObservation["matchConfidence"],
+      priceType: row.price_type as WeeklyPriceObservation["priceType"],
+      isBaselineFallback: row.is_baseline_fallback,
+      sourceLabel: row.source_label,
+      offerText: row.offer_text,
+    });
+    map.set(row.canonical_product_id, list);
+  }
+  return map;
+}
+
+function mergeCanonicalWithFeed(
+  canonical: DbCanonicalProduct,
+  feed: { id: string; label: string; regionLabel: string },
+  match: DbFeedProductMatch | undefined,
+  observations: WeeklyPriceObservation[],
+): FeedProductView {
+  const hasMatch = Boolean(match);
+  const weeklyPrices: WeeklyPrice[] = observations.map((obs) => ({
+    weekStart: obs.weekStart,
+    price: obs.effectivePrice,
+    adPrice: obs.adPrice,
+    matchConfidence: obs.matchConfidence,
+    priceType: obs.priceType,
+    isBaselineFallback: obs.isBaselineFallback,
+    sourceLabel: obs.sourceLabel ?? undefined,
+    offerText: obs.offerText ?? undefined,
+  }));
+
+  const hasAdMatches = weeklyPrices.some(
+    (week) => week.adPrice != null && week.matchConfidence !== "low",
+  );
+
+  return {
+    canonicalId: canonical.id,
+    displayName: canonical.display_name,
+    productFamily: canonical.product_family,
+    sizeLabel: canonical.size_label ?? undefined,
+    costcoComparable: canonical.costco_comparable,
+    confidence: canonical.confidence as FeedProductView["confidence"],
+    feedId: feed.id,
+    feedLabel: feed.label,
+    regionLabel: feed.regionLabel,
+    hasFeedData:
+      (hasMatch && match!.baseline_price != null) || hasAdMatches,
+    baselinePrice: match?.baseline_price ?? null,
+    baselineSource: match?.baseline_source ?? null,
+    weeklyPrices,
+  };
+}
+
+/** Local canonical list when Supabase canonical_products is unavailable. */
+export function getLocalCanonicalProducts() {
+  return CANONICAL_PRODUCTS;
+}
+
+export type { FeedProductMatch, FeedProductView };

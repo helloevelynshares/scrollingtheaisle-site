@@ -5,15 +5,32 @@ import {
   getCurrentPrice,
   getDiscountPercent,
   getLowestObservedPrice,
-  type TrackedProduct,
-} from "../data/priceTrackerV1";
+} from "../data/priceTrackerUtils";
+import type { FeedProductView } from "../data/priceTrackerTypes";
 import { PriceTrendChart } from "./PriceTrendChart";
 
 type Props = {
-  product: TrackedProduct;
+  product: FeedProductView;
 };
 
 export function ProductCard({ product }: Props) {
+  if (!product.hasFeedData || product.baselinePrice == null) {
+    return (
+      <article className="price-tracker-card price-tracker-card--empty">
+        <header className="price-tracker-card-header">
+          <h2>{product.displayName}</h2>
+          {product.sizeLabel ? (
+            <p className="price-tracker-product-meta">{product.sizeLabel}</p>
+          ) : null}
+        </header>
+        <p className="price-tracker-empty-state">
+          Tracking soon — no {product.feedLabel} prices for{" "}
+          {product.regionLabel} yet.
+        </p>
+      </article>
+    );
+  }
+
   const current = getCurrentPrice(product);
   const lowest = getLowestObservedPrice(product);
   const discount = getDiscountPercent(product);
@@ -43,6 +60,9 @@ export function ProductCard({ product }: Props) {
 
       <header className="price-tracker-card-header price-tracker-desktop-only">
         <h2>{product.displayName}</h2>
+        {product.sizeLabel ? (
+          <p className="price-tracker-product-meta">{product.sizeLabel}</p>
+        ) : null}
       </header>
 
       <dl className="price-tracker-stats price-tracker-desktop-only">

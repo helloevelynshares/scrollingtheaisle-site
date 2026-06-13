@@ -377,5 +377,261 @@ export const WEEKLY_AD_PRICES: Record<
       "offerText": "Nature Valley Bars 5-6 ct.",
       "confidence": "high"
     }
+  },
+  "fage_greek_yogurt": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 5.0,
+      "offerText": "Fage Greek Yogurt",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 5.99,
+      "offerText": "Fage Yogurt",
+      "confidence": "medium"
+    }
+  },
+  "frito_lay_multipack_chips": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 11.99,
+      "offerText": "Hint Water Variety Pack",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": 8.99,
+      "offerText": "Frito-Lay Variety Pack",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 9.99,
+      "offerText": "Frito-Lay Variety Pack 18 ct. Selected varieties.",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 14.0,
+      "offerText": "Frito-Lay Flavor Mix 35 to 42-ct. Selected varieties.",
+      "confidence": "medium"
+    }
+  },
+  "haagen_dazs_ice_cream": {
+    "2026-03-25": {
+      "price": 1.25,
+      "offerText": "Klondike Ice Cream Bars 6 ct, Jell-O Gelatin",
+      "confidence": "medium"
+    },
+    "2026-04-01": {
+      "price": 3.5,
+      "offerText": "H\u00e4agen-Dazs Ice Cream Novelties",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 2.99,
+      "offerText": "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct.",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "grapes": {
+    "2026-03-25": {
+      "price": 2.49,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 4.99,
+      "offerText": "Pristine Green and Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 2.49,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 5.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 1.99,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    }
+  },
+  "eggs_18_count": {
+    "2026-03-25": {
+      "price": 0.58,
+      "offerText": "Eggland's Best Large Eggs",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 4.49,
+      "offerText": "Hershey\u2019s Eggs, Mini Eggs",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 7.49,
+      "offerText": "Happy Egg Free Range Eggs",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 6.99,
+      "offerText": "Pete & Gerry\u2019s Free Range Organic Eggs 12 ct. Large, Grade A.",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": 2.99,
+      "offerText": "Lucerne Cage Free Eggs Grade AA, 18-ct.",
+      "confidence": "medium"
+    }
+  },
+  "oreos_sandwich_cookies": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": "OREO minis Snak-Saks Barnum's Animals Crackers",
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 3.49,
+      "offerText": "Nabisco Family Size Oreo Cookies or Chips Ahoy! Cookies 13.1 to 20-oz.",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": "Nabisco Family Size Oreo Cookies 13.1-20 oz.",
+      "confidence": null
+    }
+  },
+  "protein_bars": {
+    "2026-03-25": {
+      "price": 8.99,
+      "offerText": "Built Protein Bars",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 11.99,
+      "offerText": "CLIF BUILDERS Protein Bars 12 ct.",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 7.99,
+      "offerText": "Perfect Bar Refrigerated Protein Bars 4-8 ct. Selected varieties.",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "kettle_brand_chips": {
+    "2026-03-25": {
+      "price": 5.0,
+      "offerText": "Kettle Chips",
+      "confidence": "medium"
+    },
+    "2026-04-01": {
+      "price": 5.0,
+      "offerText": "Kettle Brand Potato Chips 6-8.5 oz",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 1.99,
+      "offerText": "Kettle Brand Potato Chips",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
   }
 };

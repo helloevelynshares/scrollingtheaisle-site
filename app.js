@@ -24,6 +24,8 @@ let selectedPhotoFile = null;
 let previewObjectUrl = null;
 let aiExtractionState = null;
 let isAnalyzingPhoto = false;
+let photoAnalyzeGeneration = 0;
+let loadFindsGeneration = 0;
 const fieldTouched = {
   item_name: false,
   price: false,
@@ -165,6 +167,8 @@ async function submitFind(event) {
 
   if (isAnalyzingPhoto) return;
 
+  photoAnalyzeGeneration += 1;
+
   const itemName = form.item_name.value.trim();
   const priceDisplay = form.price.value.trim();
   const storeName = form.store_name.value.trim();
@@ -199,12 +203,24 @@ async function submitFind(event) {
       submitted_by: getVisitorId(),
       status: "approved",
       ai_extracted: Boolean(aiExtractionState?.used),
-      ai_confidence: aiExtractionState?.confidence || null,
-      raw_ai_extraction: aiExtractionState?.raw || null,
+      ai_confidence: aiExtractionState?.confidence
+        ? JSON.parse(JSON.stringify(aiExtractionState.confidence))
+        : null,
+      raw_ai_extraction: aiExtractionState?.raw
+        ? JSON.parse(JSON.stringify(aiExtractionState.raw))
+        : null,
     };
 
     const supabase = getSupabase();
-    const { error } = await supabase.from("finds").insert(insertRow);
+    const { data: inserted, error } = await supabase
+      .from("finds")
+      .insert(insertRow)
+      .select("id, item_name")
+      .single();
+
+    if (!error && inserted?.item_name !== itemName) {
+      console.warn("Insert item_name mismatch", { expected: itemName, got: inserted?.item_name });
+    }
 
     if (error) throw error;
 
@@ -231,16 +247,17 @@ function renderEmptyState() {
 }
 
 function renderFindCard(find) {
+  const row = { ...find };
   const card = document.createElement("article");
   card.className = "find-card";
-  card.dataset.findId = find.id;
+  card.dataset.findId = row.id;
 
-  if (find.photo_url) {
+  if (row.photo_url) {
     const photoWrap = document.createElement("div");
     photoWrap.className = "find-card-photo";
     const img = document.createElement("img");
-    img.src = find.photo_url;
-    img.alt = find.item_name || "Grocery find photo";
+    img.src = row.photo_url;
+    img.alt = row.item_name || "Grocery find photo";
     img.loading = "lazy";
     photoWrap.appendChild(img);
     card.appendChild(photoWrap);
@@ -251,27 +268,27 @@ function renderFindCard(find) {
 
   const title = document.createElement("h2");
   title.className = "find-card-title";
-  title.textContent = find.item_name;
+  title.textContent = String(row.item_name ?? "");
 
   const priceEl = document.createElement("p");
   priceEl.className = "find-card-price";
-  priceEl.textContent = displayFindPrice(find);
+  priceEl.textContent = displayFindPrice(row);
 
   const meta = document.createElement("p");
   meta.className = "find-card-meta";
-  const metaParts = [find.store_name];
-  if (find.location_label) metaParts.push(find.location_label);
-  metaParts.push(timeAgo(find.created_at));
+  const metaParts = [row.store_name];
+  if (row.location_label) metaParts.push(row.location_label);
+  metaParts.push(timeAgo(row.created_at));
   meta.textContent = metaParts.join(" · ");
 
   body.appendChild(title);
   body.appendChild(priceEl);
   body.appendChild(meta);
 
-  if (find.notes) {
+  if (row.notes) {
     const notesEl = document.createElement("p");
     notesEl.className = "find-card-notes";
-    notesEl.textContent = find.notes;
+    notesEl.textContent = row.notes;
     body.appendChild(notesEl);
   }
 
@@ -282,13 +299,13 @@ function renderFindCard(find) {
   stillBtn.type = "button";
   stillBtn.className = "btn btn-secondary btn-sm still-there-btn";
   stillBtn.textContent = "Still there";
-  stillBtn.addEventListener("click", () => voteStillThere(find.id));
+  stillBtn.addEventListener("click", () => voteStillThere(row.id));
 
   const reportBtn = document.createElement("button");
   reportBtn.type = "button";
   reportBtn.className = "btn btn-ghost btn-sm report-btn";
   reportBtn.textContent = "Report";
-  reportBtn.addEventListener("click", () => reportFind(find.id));
+  reportBtn.addEventListener("click", () => reportFind(row.id));
 
   actions.appendChild(stillBtn);
   actions.appendChild(reportBtn);
@@ -302,6 +319,8 @@ async function loadFinds() {
   const feed = document.getElementById("finds-feed");
   if (!feed) return;
 
+  const requestGeneration = ++loadFindsGeneration;
+
   feed.innerHTML = "";
   const loading = document.createElement("p");
   loading.className = "feed-status";
@@ -312,13 +331,16 @@ async function loadFinds() {
     const supabase = getSupabase();
     const { data, error } = await supabase
       .from("finds")
-      .select("*")
+      .select(
+        "id, item_name, price, price_display, store_name, location_label, photo_url, notes, created_at, expires_at"
+      )
       .eq("status", "approved")
       .gt("expires_at", new Date().toISOString())
       .order("created_at", { ascending: false })
       .limit(50);
 
     if (error) throw error;
+    if (requestGeneration !== loadFindsGeneration) return;
 
     feed.innerHTML = "";
     feed.className = "finds-feed";
@@ -332,6 +354,7 @@ async function loadFinds() {
       feed.appendChild(renderFindCard(find));
     });
   } catch (err) {
+    if (requestGeneration !== loadFindsGeneration) return;
     console.error(err);
     feed.innerHTML = "";
     const errEl = document.createElement("p");
@@ -478,7 +501,9 @@ function fillFieldIfAllowed(fieldName, value) {
   if (fieldTouched[fieldName]) return;
   const el = document.getElementById(fieldName);
   if (!el) return;
-  el.value = String(value || "").trim();
+  const next = String(value || "").trim();
+  if (!next) return;
+  el.value = next;
 }
 
 function applyAiExtraction(data) {
@@ -513,6 +538,7 @@ async function analyzePhotoFile(file) {
     return;
   }
 
+  const generation = ++photoAnalyzeGeneration;
   setAnalyzingPhoto(true);
   setPhotoAnalyzeStatus("Analyzing photo…");
 
@@ -530,6 +556,8 @@ async function analyzePhotoFile(file) {
     });
 
     const data = await response.json();
+    if (generation !== photoAnalyzeGeneration) return;
+
     if (!response.ok) {
       throw new Error(data?.error || "Could not analyze photo");
     }
@@ -545,14 +573,44 @@ async function analyzePhotoFile(file) {
     applyAiExtraction(data);
     setPhotoAnalyzeStatus("Analysis complete — please review the fields below.");
   } catch (err) {
+    if (generation !== photoAnalyzeGeneration) return;
     console.error(err);
     setPhotoAnalyzeStatus(
       "Could not extract details from your photo. You can still fill in the form manually.",
       true
     );
   } finally {
-    setAnalyzingPhoto(false);
+    if (generation === photoAnalyzeGeneration) {
+      setAnalyzingPhoto(false);
+    }
   }
+}
+
+function resetSubmitFormState() {
+  photoAnalyzeGeneration += 1;
+  isAnalyzingPhoto = false;
+  selectedPhotoFile = null;
+  aiExtractionState = null;
+  Object.keys(fieldTouched).forEach((key) => {
+    fieldTouched[key] = false;
+  });
+  setFieldWarning("item_name", false);
+  setFieldWarning("price", false);
+  setFieldWarning("store_name", false);
+  setPhotoAnalyzeStatus("");
+  const banner = document.getElementById("ai-fill-banner");
+  if (banner) banner.hidden = true;
+  const preview = document.getElementById("photo-preview");
+  if (preview) {
+    preview.innerHTML = "";
+    preview.hidden = true;
+  }
+  if (previewObjectUrl) {
+    URL.revokeObjectURL(previewObjectUrl);
+    previewObjectUrl = null;
+  }
+  const photoInput = document.getElementById("photo");
+  if (photoInput) photoInput.value = "";
 }
 
 async function handlePhotoSelected(file) {
@@ -562,12 +620,17 @@ async function handlePhotoSelected(file) {
     return;
   }
 
+  photoAnalyzeGeneration += 1;
   Object.keys(fieldTouched).forEach((key) => {
     fieldTouched[key] = false;
   });
   setFieldWarning("item_name", false);
   setFieldWarning("price", false);
   setFieldWarning("store_name", false);
+
+  document.querySelectorAll("[data-ai-field]").forEach((el) => {
+    el.value = "";
+  });
 
   selectedPhotoFile = file;
   aiExtractionState = null;
@@ -587,6 +650,8 @@ function initPhotoUploadFlow() {
   const photoInput = document.getElementById("photo");
   const dropzone = document.getElementById("photo-dropzone");
   if (!photoInput || !dropzone) return;
+  if (dropzone.dataset.staPhotoInit === "1") return;
+  dropzone.dataset.staPhotoInit = "1";
 
   document.querySelectorAll("[data-ai-field]").forEach((el) => {
     const name = el.name || el.id;
@@ -634,16 +699,32 @@ function initSuccessBanner() {
   }
 }
 
+function initSubmitPage() {
+  const form = document.getElementById("submit-form");
+  if (!form) return;
+  if (form.dataset.staSubmitInit !== "1") {
+    form.addEventListener("submit", submitFind);
+    initPhotoUploadFlow();
+    form.dataset.staSubmitInit = "1";
+  }
+  form.reset();
+  resetSubmitFormState();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initSuccessBanner();
-
-  const submitForm = document.getElementById("submit-form");
-  if (submitForm) {
-    submitForm.addEventListener("submit", submitFind);
-    initPhotoUploadFlow();
-  }
+  initSubmitPage();
 
   if (document.getElementById("finds-feed")) {
     loadFinds();
+  }
+});
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    initSubmitPage();
+    if (document.getElementById("finds-feed")) {
+      loadFinds();
+    }
   }
 });

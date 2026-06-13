@@ -1,0 +1,51 @@
+canonical_id,display_name,search_query,content_theme,candidate_rank,product_name,price,pid,upc,size
+strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,1,Strawberries Prepacked - 1 Lb,3.99,184070124,0078035378403,LB
+strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,2,Organic Strawberries Prepacked - 1 Lb,3.99,184700156,0067170400000,LB
+strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,3,Strawberries Prepacked - 2 Lb,6.99,960012546,0003338320030,LB
+strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,4,Fresh Cut Strawberry & Blueberry Bowl - 24 Oz,12.99,960131250,0024201700000,EACH
+strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,5,Signature SELECT Frozen Unsweetened Whole Strawberries - 16 Oz,2.79,144010004,0002113009305,OUNCE
+avocados,Hass Avocados,hass avocado,price_tracker_baseline,1,Medium Hass Avocado,1.5,184040105,0048404010501,EACH
+avocados,Hass Avocados,hass avocado,price_tracker_baseline,2,Signature FARMS Hass Avocados Bagged - Each,5.99,960497390,0002113034396,EACH
+avocados,Hass Avocados,hass avocado,price_tracker_baseline,3,Extra Large Hass Avocado,2.99,184040071,0048404007201,EACH
+avocados,Hass Avocados,hass avocado,price_tracker_baseline,4,Organic Hass Avocado,2.5,184700157,0048470008301,EACH
+avocados,Hass Avocados,hass avocado,price_tracker_baseline,5,Yo Quiero! Avocado Mashed 4 count - 2 Oz Each,4.99,970108098,0081004159023,OUNCE
+doritos_nacho_cheese,Doritos Nacho Cheese,doritos nacho cheese,price_tracker_baseline,1,Takis Pickle Punch 9.9oz - 9.9 OZ,4.99,971373148,0075752805414,OUNCE
+doritos_nacho_cheese,Doritos Nacho Cheese,doritos nacho cheese,price_tracker_baseline,2,On the Border Café Style Tortilla Chips - 11 Oz,3.99,970094606,0078113871011,OUNCE
+doritos_nacho_cheese,Doritos Nacho Cheese,doritos nacho cheese,price_tracker_baseline,3,Takis Waves Fuego Hot Chili Pepper & Lime Potato Chips - 8 Oz,3.0,970067862,0075752804538,OUNCE
+doritos_nacho_cheese,Doritos Nacho Cheese,doritos nacho cheese,price_tracker_baseline,4,On The Border Tortilla Chips Rounds - 10.5 OZ,3.99,970094662,0078113871310,OUNCE
+doritos_nacho_cheese,Doritos Nacho Cheese,doritos nacho cheese,price_tracker_baseline,5,DORITOS Tortilla Chips Nacho Party Size - 14.5 OZ,5.99,970031792,0002840051779,OUNCE
+cheetos_crunchy,Cheetos Crunchy,cheetos crunchy,price_tracker_baseline,1,Cheetos Cheese Flavored Crunchy Snacks - 8.5 Oz,5.49,960156582,0002840058986,OUNCE
+cheetos_crunchy,Cheetos Crunchy,cheetos crunchy,price_tracker_baseline,2,CHEETOS Snacks Cheese Flavored Crunchy Party Size - 15 Oz,5.99,960543041,0002840031409,OUNCE
+cheetos_crunchy,Cheetos Crunchy,cheetos crunchy,price_tracker_baseline,3,CHEETOS Snacks Cheese Flavored Crunchy XXTRA Flamin Hot - 8.5 Oz,5.49,960156583,0002840058987,OUNCE
+cheetos_crunchy,Cheetos Crunchy,cheetos crunchy,price_tracker_baseline,4,CHEETOS Snacks Cheese Flavored Crunchy Cheddar Jalapeno - 8.5 Oz,5.49,960156584,0002840058988,OUNCE
+cheetos_crunchy,Cheetos Crunchy,cheetos crunchy,price_tracker_baseline,5,Cheetos Crunchy Flamin' Hot Cheese Flavored Snacks - 8.5 Oz,5.49,960156585,0002840058989,OUNCE
+coke_zero,Coke Zero,coke zero 12 pack,price_tracker_baseline,1,Coca-Cola Zero Sugar Soda Soft Drinks Fridge Cans Pack - 12-12 Fl. Oz.,11.99,108010505,0004900004255,FL.OZ
+coke_zero,Coke Zero,coke zero 12 pack,price_tracker_baseline,2,Coca-Cola Zero Cherry Diet Soda Soft Drinks Pack - 12-12 Fl. Oz.,11.99,108010408,0004900004751,FL.OZ
+coke_zero,Coke Zero,coke zero 12 pack,price_tracker_baseline,3,Coca-Cola Soda Pop Classic - 12-12 Fl. Oz.,11.99,108010222,0004900002890,FL.OZ
+coke_zero,Coke Zero,coke zero 12 pack,price_tracker_baseline,4,Coca-Cola Zero Caffeine-Free Soda Soft Drinks Pack - 12-12 Fl. Oz.,11.99,960089929,0004900006090,FL.OZ
+coke_zero,Coke Zero,coke zero 12 pack,price_tracker_baseline,5,Coca-Cola Soda Pop Vanilla Zero Sugar - 12-12 Fl. Oz.,11.99,108010712,0004900004825,FL.OZ
+chobani_greek_yogurt,Chobani Greek Yogurt,chobani greek yogurt 32 oz,price_tracker_baseline,1,Chobani Non-Fat Vanilla Blended Greek Yogurt - 32 Oz,6.99,960055227,0089470001014,OUNCE
+chobani_greek_yogurt,Chobani Greek Yogurt,chobani greek yogurt 32 oz,price_tracker_baseline,2,Chobani Non-Fat Plain Greek Yogurt - 32 Oz,6.99,960038589,0089470001013,OUNCE
+chobani_greek_yogurt,Chobani Greek Yogurt,chobani greek yogurt 32 oz,price_tracker_baseline,3,Chobani Whole Milk Plain Greek Yogurt - 32 Oz,6.99,960443136,0089470001043,OUNCE
+chobani_greek_yogurt,Chobani Greek Yogurt,chobani greek yogurt 32 oz,price_tracker_baseline,4,Chobani 20g Protein Lowfat Greek Yogurt Vanilla 32oz - 32 OZ,7.49,971303072,0081829001519,OUNCE
+chobani_greek_yogurt,Chobani Greek Yogurt,chobani greek yogurt 32 oz,price_tracker_baseline,5,Chobani Non-Fat Strawberry Blended Greek Yogurt - 32 Oz,6.99,960055230,0089470001026,OUNCE
+cheerios,Cheerios,cheerios cereal,price_tracker_baseline,1,Malt-O-Meal Cereal Cinnamon Toasters Super Size! - 33 Oz,6.49,960141527,0004240093978,OUNCE
+cheerios,Cheerios,cheerios cereal,price_tracker_baseline,2,Malt O Meal Fruity Dyno Bites - 25 Oz,6.99,960496310,0004240031864,OUNCE
+cheerios,Cheerios,cheerios cereal,price_tracker_baseline,3,Malt-O-Meal Cereal Berry Colossal Crunch Super Size! - 34.5 Oz,6.49,960141525,0004240092478,OUNCE
+cheerios,Cheerios,cheerios cereal,price_tracker_baseline,4,Malt-O-Meal Fruity Dyno Bites Cereal - 32 Oz,6.49,970480177,0004240038887,OUNCE
+cheerios,Cheerios,cheerios cereal,price_tracker_baseline,5,Cheerios Toasted Whole Grain Oat Cereal - 8.9 Oz,2.5,111011146,0001600027526,OUNCE
+tillamook_ice_cream,Tillamook Ice Cream,tillamook ice cream,price_tracker_baseline,1,Ben & Jerry's Ice Cream Cookie Dough 10.1 Fz - 10.1 FZ,6.49,971322701,0007684000454,FL.OZ
+tillamook_ice_cream,Tillamook Ice Cream,tillamook ice cream,price_tracker_baseline,2,Ben & Jerry's Half Baked Ice Cream Pint - 16 Oz,6.49,142010024,0007684010132,QUART
+tillamook_ice_cream,Tillamook Ice Cream,tillamook ice cream,price_tracker_baseline,3,Ben & Jerry's Colin Kaepernick's Change The Whirled Non-Dairy Frozen Dessert - 16 Oz,6.49,970064358,0007684000297,QUART
+tillamook_ice_cream,Tillamook Ice Cream,tillamook ice cream,price_tracker_baseline,4,Ben & Jerry's Ice Cream Caramel Blondie 10.1 Fo - 10.1 FZ,6.49,971322700,0007684000458,FL.OZ
+tillamook_ice_cream,Tillamook Ice Cream,tillamook ice cream,price_tracker_baseline,5,Tillamook Mudslide Ice Cream - 48 Oz,5.99,970026851,0007283008119,QUART
+mission_tortilla_chips,Mission Tortilla Chips,mission tortilla chips,price_tracker_baseline,1,DORITOS Tortilla Chips Nacho Party Size - 14.5 OZ,5.99,970031792,0002840051779,OUNCE
+mission_tortilla_chips,Mission Tortilla Chips,mission tortilla chips,price_tracker_baseline,2,DORITOS Tortilla Chips Cool Ranch Party Size - 14.5 OZ,5.99,970031804,0002840051777,OUNCE
+mission_tortilla_chips,Mission Tortilla Chips,mission tortilla chips,price_tracker_baseline,3,Doritos Sweet & Tangy BBQ Protein Tortilla Chips - 7 Oz,4.89,971377536,0002840079839,OUNCE
+mission_tortilla_chips,Mission Tortilla Chips,mission tortilla chips,price_tracker_baseline,4,On the Border Café Style Tortilla Chips - 11 Oz,3.99,970094606,0078113871011,OUNCE
+mission_tortilla_chips,Mission Tortilla Chips,mission tortilla chips,price_tracker_baseline,5,Mission Round Yellow Corn Tortilla Chips - 18 Oz,2.5,960108900,0007373108309,OUNCE
+nature_valley_bars,Nature Valley Bars,nature valley granola bars,price_tracker_baseline,1,Kelloggs Special K Pastry Crisps Strawberry 100 Calorie Snacks 12 Count - 5.28 Oz,4.99,960265185,0003800016778,COUNT
+nature_valley_bars,Nature Valley Bars,nature valley granola bars,price_tracker_baseline,2,Kodiak Chewy S'mores Granola Bars Box - 6.17 Oz,4.99,970125903,0070559901641,COUNT
+nature_valley_bars,Nature Valley Bars,nature valley granola bars,price_tracker_baseline,3,Zbar Iced Oatmeal Cookie Organic Soft-Baked Energy Snack Granola Bars - 12 Count,11.99,970009564,0072225219222,COUNT
+nature_valley_bars,Nature Valley Bars,nature valley granola bars,price_tracker_baseline,4,Kelloggs Special K Pastry Crisps Brown Sugar Cinnamon 100 Calorie Snacks 12 Count - 5.28 Oz,4.99,960265182,0003800016771,COUNT
+nature_valley_bars,Nature Valley Bars,nature valley granola bars,price_tracker_baseline,5,Nature Valley Oats n Honey Crunchy Granola Bars - 6-1.49 Oz,2.5,111200054,0001600026460,COUNT
