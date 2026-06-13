@@ -20,6 +20,36 @@ https://wurmdtqysegytsjcudve.functions.supabase.co/analyze-find-photo
 
 ---
 
+## validate-admin / admin-suggestion-actions
+
+Password-gated admin API for reviewing tracker vote suggestions at `/admin/suggestions/`.
+
+**Secrets:**
+
+```bash
+supabase secrets set ADMIN_PASSWORD=your-secret-here
+```
+
+`SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are injected automatically in deployed Edge Functions.
+
+**Deploy:**
+
+```bash
+supabase functions deploy validate-admin
+supabase functions deploy admin-suggestion-actions
+```
+
+**Flow:**
+
+1. `POST validate-admin` with JSON `{ "password": "..." }` → `{ "token": "..." }` (8h HMAC token)
+2. `POST admin-suggestion-actions` with `Authorization: Bearer <token>` and JSON body:
+   - `{ "action": "list" }` → pending + approved items
+   - `{ "action": "approve", "itemId", "publicName"? }`
+   - `{ "action": "reject", "itemId", "adminNotes"? }`
+   - `{ "action": "merge", "itemId", "mergeIntoId", "addVoteOnMerge"? }`
+
+---
+
 ## 1. Set the OpenAI secret
 
 ```bash

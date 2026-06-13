@@ -1,5 +1,5 @@
 -- Expand canonical product list with recurring cross-store items + Costco feeds.
--- Safe to run after 20260609_price_tracker_seed.sql (upserts only).
+-- Safe to run after 20260610_price_tracker_seed.sql (upserts only).
 
 insert into canonical_products (id, display_name, product_family, size_label, sort_order) values
   ('fage_greek_yogurt', 'Fage Greek Yogurt', 'fage_greek_yogurt', '32 oz', 11),

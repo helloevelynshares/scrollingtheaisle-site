@@ -1450,3 +1450,124 @@ img {
     margin-left: auto;
   }
 }
+
+/* Admin tracker suggestions */
+.admin-suggestions-main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.admin-suggestions-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 24px;
+}
+
+.admin-suggestions-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-suggestions-panel h1 {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 4vw, 32px);
+  letter-spacing: -0.4px;
+}
+
+.admin-suggestions-lead {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.admin-suggestions-signin {
+  display: grid;
+  gap: 12px;
+  max-width: 360px;
+  margin-top: 20px;
+}
+
+.admin-suggestions-signin input,
+.admin-suggestions-field input,
+.admin-suggestions-field select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.admin-suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.admin-suggestions-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.admin-suggestions-item-meta {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.admin-suggestions-item-meta strong {
+  color: var(--text);
+  font-size: 16px;
+}
+
+.admin-suggestions-field {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.admin-suggestions-actions,
+.admin-suggestions-merge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.admin-suggestions-merge {
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.admin-suggestions-empty,
+.admin-suggestions-loading,
+.admin-suggestions-message,
+.admin-suggestions-error {
+  margin: 0;
+  font-size: 15px;
+}
+
+.admin-suggestions-message {
+  color: #1a7f4b;
+  margin-bottom: 12px;
+}
+
+.admin-suggestions-error {
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+
+.admin-suggestions-empty,
+.admin-suggestions-loading {
+  color: var(--muted);
+}

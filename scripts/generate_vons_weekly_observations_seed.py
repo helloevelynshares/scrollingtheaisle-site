@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = ROOT / "src" / "data" / "vonsWeeklyAdPrices.generated.ts"
 BASELINE_TS = ROOT / "src" / "data" / "vonsBaseline.generated.ts"
-OUTPUT = ROOT / "supabase" / "migrations" / "20260612_vons_weekly_observations_seed.sql"
+OUTPUT = ROOT / "supabase" / "migrations" / "20260615_vons_weekly_observations_seed.sql"
 
 VONS_FEED_ID = "vons_albertsons_socal"
 

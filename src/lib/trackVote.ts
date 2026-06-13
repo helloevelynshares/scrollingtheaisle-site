@@ -1,4 +1,5 @@
 export const TRACK_VOTE_STORAGE_KEY = "sta_track_votes";
+export const MAX_SUGGESTION_LENGTH = 60;
 
 export const SEED_TRACK_ITEMS = [
   "Berries",

@@ -3,3 +3,9 @@
 
 [functions.analyze-find-photo]
 verify_jwt = false
+
+[functions.validate-admin]
+verify_jwt = false
+
+[functions.admin-suggestion-actions]
+verify_jwt = false

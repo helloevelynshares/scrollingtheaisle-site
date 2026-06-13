@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = ROOT / "src" / "data" / "weeklyAdPrices.generated.ts"
-OUTPUT = ROOT / "supabase" / "migrations" / "20260609_price_tracker_seed.sql"
+OUTPUT = ROOT / "supabase" / "migrations" / "20260610_price_tracker_seed.sql"
 
 SAFEWAY_FEED_ID = "safeway_bay_area"
 

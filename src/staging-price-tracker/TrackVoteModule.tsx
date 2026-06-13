@@ -1,15 +1,25 @@
 import { useEffect, useId, useState, type FormEvent } from "react";
-import { getSupabase, getVisitorId } from "../lib/supabase";
+import { getSupabase } from "../lib/supabase";
 import {
   defaultTrackItems,
   formatVoteLabel,
   markItemVoted,
+  MAX_SUGGESTION_LENGTH,
   normalizeItemName,
   readVotedItems,
   type TrackItem,
 } from "../lib/trackVote";
 
 type StatusTone = "success" | "error" | "idle";
+
+type SubmitSuggestionResult = {
+  action: "voted" | "submitted" | "already_pending";
+  item_id: string;
+  normalized_name: string;
+};
+
+const MODERATION_SUCCESS_MESSAGE =
+  "Thanks — we'll review this before adding it to the voting list.";
 
 function formatError(error: unknown): string {
   const message =
@@ -20,51 +30,54 @@ function formatError(error: unknown): string {
         : "";
 
   if (
-    message.includes("product_track_suggestions") ||
-    message.includes("product_track_votes") ||
-    message.includes("product_track_suggestion_totals")
+    message.includes("tracker_vote_items") ||
+    message.includes("vote_on_item") ||
+    message.includes("submit_suggestion")
   ) {
-    return "Voting isn’t set up yet. Run supabase/migrations/20260608_product_track_voting.sql.";
+    return "Voting isn’t set up yet. Run supabase/migrations/20260614_tracker_vote_items.sql.";
   }
-  if (message.includes("duplicate key") || message.includes("unique")) {
-    return "You already voted for this item.";
+  if (message.includes("60 characters")) {
+    return "Suggestions must be 60 characters or fewer.";
   }
   return message || "Something went wrong. Please try again.";
+}
+
+function mapRowToTrackItem(row: {
+  id: string;
+  public_name: string | null;
+  raw_text: string;
+  normalized_name: string;
+  vote_count: number | null;
+}): TrackItem {
+  return {
+    id: row.id,
+    itemName: row.public_name?.trim() || row.raw_text,
+    normalizedItemName: row.normalized_name,
+    voteCount: row.vote_count ?? 0,
+  };
 }
 
 async function fetchTrackItems(): Promise<TrackItem[]> {
   const supabase = getSupabase();
   const { data, error } = await supabase
-    .from("product_track_suggestion_totals")
-    .select("id, item_name, normalized_item_name, vote_count")
+    .from("tracker_vote_items")
+    .select("id, public_name, raw_text, normalized_name, vote_count")
+    .eq("status", "approved")
     .order("vote_count", { ascending: false })
-    .order("item_name", { ascending: true });
+    .order("public_name", { ascending: true })
+    .order("raw_text", { ascending: true });
 
   if (error) {
     throw error;
   }
 
-  return (data ?? []).map((row) => ({
-    id: row.id,
-    itemName: row.item_name,
-    normalizedItemName: row.normalized_item_name,
-    voteCount: row.vote_count ?? 0,
-  }));
+  return (data ?? []).map(mapRowToTrackItem);
 }
 
-async function insertVote(item: TrackItem): Promise<void> {
-  if (!item.id) {
-    throw new Error("Suggestion is not available yet.");
-  }
-
+async function voteOnItem(itemId: string): Promise<void> {
   const supabase = getSupabase();
-  const normalized = item.normalizedItemName;
-  const { error } = await supabase.from("product_track_votes").insert({
-    suggestion_id: item.id,
-    item_name: item.itemName,
-    normalized_item_name: normalized,
-    vote_source: "tracker_module",
-    anonymous_user_key: getVisitorId(),
+  const { error } = await supabase.rpc("vote_on_item", {
+    p_item_id: itemId,
   });
 
   if (error) {
@@ -72,53 +85,17 @@ async function insertVote(item: TrackItem): Promise<void> {
   }
 }
 
-async function findSuggestionByNormalized(
-  normalizedItemName: string,
-): Promise<TrackItem | null> {
+async function submitSuggestion(rawText: string): Promise<SubmitSuggestionResult> {
   const supabase = getSupabase();
-  const { data, error } = await supabase
-    .from("product_track_suggestions")
-    .select("id, item_name, normalized_item_name")
-    .eq("normalized_item_name", normalizedItemName)
-    .maybeSingle();
-
-  if (error) {
-    throw error;
-  }
-  if (!data) {
-    return null;
-  }
-
-  return {
-    id: data.id,
-    itemName: data.item_name,
-    normalizedItemName: data.normalized_item_name,
-    voteCount: 0,
-  };
-}
-
-async function createSuggestion(itemName: string, normalizedItemName: string): Promise<TrackItem> {
-  const supabase = getSupabase();
-  const { data, error } = await supabase
-    .from("product_track_suggestions")
-    .insert({
-      item_name: itemName,
-      normalized_item_name: normalizedItemName,
-      source: "tracker_module",
-    })
-    .select("id, item_name, normalized_item_name")
-    .single();
+  const { data, error } = await supabase.rpc("submit_suggestion", {
+    p_raw_text: rawText,
+  });
 
   if (error) {
     throw error;
   }
 
-  return {
-    id: data.id,
-    itemName: data.item_name,
-    normalizedItemName: data.normalized_item_name,
-    voteCount: 0,
-  };
+  return data as SubmitSuggestionResult;
 }
 
 function sortTrackItems(items: TrackItem[]): TrackItem[] {
@@ -184,7 +161,7 @@ export function TrackVoteModule() {
   }, []);
 
   async function handleVote(item: TrackItem) {
-    if (votedItems.has(item.normalizedItemName) || pendingVote) {
+    if (votedItems.has(item.normalizedItemName) || pendingVote || !item.id) {
       return;
     }
 
@@ -203,7 +180,7 @@ export function TrackVoteModule() {
     );
 
     try {
-      await insertVote(item);
+      await voteOnItem(item.id);
       markItemVoted(item.normalizedItemName);
       setVotedItems((current) => new Set([...current, item.normalizedItemName]));
     } catch (error) {
@@ -215,38 +192,17 @@ export function TrackVoteModule() {
     }
   }
 
-  async function resolveSuggestion(
-    trimmed: string,
-    normalized: string,
-  ): Promise<TrackItem> {
-    const existing =
-      items.find((item) => item.normalizedItemName === normalized) ??
-      (await findSuggestionByNormalized(normalized));
-
-    if (existing) {
-      return existing;
-    }
-
-    const displayName = trimmed.replace(/\s+/g, " ");
-    try {
-      return await createSuggestion(displayName, normalized);
-    } catch (error) {
-      const message = formatError(error);
-      if (message.includes("duplicate") || message.includes("unique")) {
-        const fallback = await findSuggestionByNormalized(normalized);
-        if (fallback) {
-          return fallback;
-        }
-      }
-      throw error;
-    }
-  }
-
   async function handleCustomSuggest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const trimmed = customItem.trim();
     if (!trimmed || pendingSuggest) {
+      return;
+    }
+
+    if (trimmed.length > MAX_SUGGESTION_LENGTH) {
+      setStatusTone("error");
+      setStatusMessage("Suggestions must be 60 characters or fewer.");
       return;
     }
 
@@ -263,29 +219,45 @@ export function TrackVoteModule() {
       if (votedItems.has(normalized)) {
         setCustomItem("");
         setStatusTone("success");
-        setStatusMessage("Added — thanks!");
+        setStatusMessage("You already voted for this item.");
         return;
       }
 
-      const previousItems = items;
-      const target = await resolveSuggestion(trimmed, normalized);
-      const optimisticTarget = {
-        ...target,
-        voteCount: target.voteCount + 1,
-      };
+      const result = await submitSuggestion(trimmed);
 
-      setItems((current) => upsertTrackItem(current, optimisticTarget));
-      try {
-        await insertVote(target);
-      } catch (error) {
-        setItems(previousItems);
-        throw error;
+      if (result.action === "voted") {
+        const previousItems = items;
+        const existing =
+          items.find((item) => item.normalizedItemName === normalized) ??
+          ({
+            id: result.item_id,
+            itemName: trimmed.replace(/\s+/g, " "),
+            normalizedItemName: normalized,
+            voteCount: 0,
+          } satisfies TrackItem);
+
+        const optimisticTarget = {
+          ...existing,
+          voteCount: existing.voteCount + 1,
+        };
+
+        setItems((current) => upsertTrackItem(current, optimisticTarget));
+        try {
+          markItemVoted(normalized);
+          setVotedItems((current) => new Set([...current, normalized]));
+          setCustomItem("");
+          setStatusTone("success");
+          setStatusMessage("Vote counted — thanks!");
+        } catch (error) {
+          setItems(previousItems);
+          throw error;
+        }
+        return;
       }
-      markItemVoted(normalized);
-      setVotedItems((current) => new Set([...current, normalized]));
+
       setCustomItem("");
       setStatusTone("success");
-      setStatusMessage("Added — thanks!");
+      setStatusMessage(MODERATION_SUCCESS_MESSAGE);
     } catch (error) {
       setStatusTone("error");
       setStatusMessage(formatError(error));
@@ -342,6 +314,7 @@ export function TrackVoteModule() {
             onChange={(event) => setCustomItem(event.target.value)}
             placeholder="e.g. grapes, Ritz crackers, protein bars"
             autoComplete="off"
+            maxLength={MAX_SUGGESTION_LENGTH}
             disabled={pendingSuggest}
           />
           <button
@@ -349,7 +322,7 @@ export function TrackVoteModule() {
             className="btn btn-primary btn-sm"
             disabled={pendingSuggest || !customItem.trim()}
           >
-            {pendingSuggest ? "Adding…" : "Suggest item"}
+            {pendingSuggest ? "Submitting…" : "Suggest item"}
           </button>
         </div>
       </form>

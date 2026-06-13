@@ -115,6 +115,25 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
+### Tracker vote suggestions are moderated before appearing publicly
+
+Date discovered: 2026-06-13  
+Context: Price tracker voting module (`TrackVoteModule`) on `/staging-price-tracker/`.  
+What happened: User suggestions used to insert into `product_track_suggestions` and show immediately.  
+Fix / workaround: New table `tracker_vote_items` with `status` (`pending|approved|rejected|merged`). Public UI reads `status='approved'` only; new suggestions go to `pending` via RPC `submit_suggestion`. Admin review at `/admin/suggestions/` (password via Edge Functions `validate-admin` + `admin-suggestion-actions`).  
+How to verify: Submit a custom item on the tracker → success message about review, item not in list. Approve in admin → item appears and accepts votes via RPC `vote_on_item`.  
+Related files: `supabase/migrations/20260614_tracker_vote_items.sql`, `src/staging-price-tracker/TrackVoteModule.tsx`, `src/admin/suggestions/`, `supabase/functions/validate-admin/`, `supabase/functions/admin-suggestion-actions/`
+
+Deploy admin Edge Functions and set secret:
+
+```bash
+supabase secrets set ADMIN_PASSWORD=your-secret
+supabase functions deploy validate-admin
+supabase functions deploy admin-suggestion-actions
+```
+
+Apply migration: `supabase db push` or run SQL in Supabase dashboard.
+
 ### Price tracker Vite entry must be `src/staging-price-tracker/index.html`, not `staging-price-tracker/index.html`
 
 Date discovered: 2026-06-07  
