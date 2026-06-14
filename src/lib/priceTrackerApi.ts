@@ -11,6 +11,8 @@ import type {
   WeeklyPrice,
   WeeklyPriceObservation,
 } from "../data/priceTrackerTypes";
+import type { PriceComparisonView } from "../data/priceComparisonTypes";
+import { getFallbackComparison } from "../data/priceComparisonUtils";
 import { getSupabase } from "./supabase";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
@@ -36,6 +38,25 @@ type DbFeedProductMatch = {
   size: string | null;
   baseline_price: number;
   baseline_source: string | null;
+};
+
+type DbPriceComparison = {
+  canonical_product_id: string;
+  grocery_feed_id: string;
+  grocery_store_label: string;
+  grocery_price: number | null;
+  grocery_unit_type: string | null;
+  grocery_unit_price: number | null;
+  costco_region_id: string | null;
+  costco_store_label: string | null;
+  costco_price: number | null;
+  costco_unit_type: string | null;
+  costco_unit_price: number | null;
+  winner: string;
+  savings_amount: number | null;
+  savings_percent: number | null;
+  comparison_status: string;
+  comparison_note: string | null;
 };
 
 type DbWeeklyObservation = {
@@ -69,7 +90,8 @@ export async function fetchFeedProducts(
   try {
     const supabase = getSupabase();
 
-    const [canonicalResult, matchResult, observationResult] = await Promise.all([
+    const [canonicalResult, matchResult, observationResult, comparisonResult] =
+      await Promise.all([
       supabase
         .from("canonical_products")
         .select(
@@ -90,6 +112,12 @@ export async function fetchFeedProducts(
         )
         .eq("feed_id", feedId)
         .order("week_start"),
+      supabase
+        .from("price_comparisons")
+        .select(
+          "canonical_product_id, grocery_feed_id, grocery_store_label, grocery_price, grocery_unit_type, grocery_unit_price, costco_region_id, costco_store_label, costco_price, costco_unit_type, costco_unit_price, winner, savings_amount, savings_percent, comparison_status, comparison_note",
+        )
+        .eq("grocery_feed_id", feedId),
     ]);
 
     if (
@@ -99,6 +127,8 @@ export async function fetchFeedProducts(
     ) {
       return fallbackForFeed(feedId);
     }
+
+    const comparisonLoadFailed = Boolean(comparisonResult.error);
 
     const canonicalRows = canonicalResult.data as DbCanonicalProduct[] | null;
     if (!canonicalRows?.length) {
@@ -112,6 +142,11 @@ export async function fetchFeedProducts(
       matches.map((row) => [row.canonical_product_id, row]),
     );
     const observationsByCanonical = groupObservations(observations);
+    const comparisonsByCanonical = groupComparisons(
+      (comparisonResult.data ?? []) as DbPriceComparison[],
+      comparisonLoadFailed,
+      feedId,
+    );
 
     const merged = canonicalRows.map((row) =>
       mergeCanonicalWithFeed(
@@ -119,6 +154,7 @@ export async function fetchFeedProducts(
         feed,
         matchByCanonical.get(row.id),
         observationsByCanonical.get(row.id) ?? [],
+        comparisonsByCanonical.get(row.id) ?? null,
       ),
     );
 
@@ -177,11 +213,48 @@ function groupObservations(
   return map;
 }
 
+function groupComparisons(
+  rows: DbPriceComparison[],
+  loadFailed: boolean,
+  feedId: string,
+): Map<string, PriceComparisonView | null> {
+  const map = new Map<string, PriceComparisonView | null>();
+  if (loadFailed) {
+    return map;
+  }
+  for (const row of rows) {
+    map.set(row.canonical_product_id, mapComparisonRow(row));
+  }
+  return map;
+}
+
+function mapComparisonRow(row: DbPriceComparison): PriceComparisonView {
+  return {
+    canonicalProductId: row.canonical_product_id,
+    groceryFeedId: row.grocery_feed_id,
+    groceryStoreLabel: row.grocery_store_label,
+    groceryPrice: row.grocery_price,
+    groceryUnitType: row.grocery_unit_type,
+    groceryUnitPrice: row.grocery_unit_price,
+    costcoRegionId: row.costco_region_id,
+    costcoStoreLabel: row.costco_store_label,
+    costcoPrice: row.costco_price,
+    costcoUnitType: row.costco_unit_type,
+    costcoUnitPrice: row.costco_unit_price,
+    winner: row.winner as PriceComparisonView["winner"],
+    savingsAmount: row.savings_amount,
+    savingsPercent: row.savings_percent,
+    comparisonStatus: row.comparison_status as PriceComparisonView["comparisonStatus"],
+    comparisonNote: row.comparison_note,
+  };
+}
+
 function mergeCanonicalWithFeed(
   canonical: DbCanonicalProduct,
   feed: { id: string; label: string; regionLabel: string },
   match: DbFeedProductMatch | undefined,
   observations: WeeklyPriceObservation[],
+  comparison: PriceComparisonView | null | undefined,
 ): FeedProductView {
   const hasMatch = Boolean(match);
   const weeklyPrices: WeeklyPrice[] = observations.map((obs) => ({
@@ -214,6 +287,10 @@ function mergeCanonicalWithFeed(
     baselinePrice: match?.baseline_price ?? null,
     baselineSource: match?.baseline_source ?? null,
     weeklyPrices,
+    priceComparison:
+      feed.storeGroup !== "costco"
+        ? (comparison ?? getFallbackComparison(canonical.id, feed.id))
+        : null,
   };
 }
 

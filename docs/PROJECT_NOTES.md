@@ -88,6 +88,15 @@ Fix / workaround: `search_vons_product` shells out to `curl --compressed` with S
 How to verify: `search_vons_product('goldfish')` → 200 with ~40 `primaryProducts.response.docs`.  
 Related files: `scripts/vons_client.py`
 
+### Safeway/Vons timeout env vars and error messages
+
+Date discovered: 2026-06-13  
+Context: HTTP/curl and Playwright pgmsearch runs when cookies expire or Imperva stalls.  
+What happened: Requests hung with generic errors; users could not tell timeout vs auth vs stale cookie.  
+Fix / workaround: Set `SAFEWAY_TIMEOUT_SECONDS=30` (requests) or `VONS_TIMEOUT_SECONDS=45` (curl) in `scripts/.env`. Playwright seeds use `--api-timeout` (default 45s) and `--navigation-timeout` (default 60s). On timeout, logs include actionable text — e.g. refresh `SAFEWAY_COOKIE` / `VONS_COOKIE` from DevTools → Network → pgmsearch; Vons also notes store/zip (`VONS_STORE_ID=2053`, `VONS_ZIPCODE=92110`). Errors distinguish `timeout`, `auth` (401/403), and `empty_response`.  
+How to verify: Run with an expired cookie; expect a clear timeout/auth message within the configured seconds, not an indefinite hang.  
+Related files: `scripts/safeway_client.py`, `scripts/vons_client.py`, `scripts/safeway_config.py`, `scripts/vons_config.py`, `scripts/seed_safeway_search_playwright.py`, `scripts/seed_vons_baseline_playwright.py`
+
 ## Data Extraction Notes
 
 Weekly ad prices for the staging price tracker:
@@ -148,6 +157,15 @@ Add notes here for useful Cursor prompts, commands, migrations, local testing, a
 Living notes rule: `.cursor/rules/project-notes.mdc` — agents should read and update `docs/PROJECT_NOTES.md`.
 
 Playwright setup: `pip install -r scripts/requirements.txt && playwright install chromium`
+
+### Costco price data for grocery vs Costco comparisons
+
+Date discovered: 2026-06-14  
+Context: `price_comparisons` backfill and badge on `/staging-price-tracker/`.  
+What happened: Costco warehouse CSVs live outside this repo at `~/Documents/costco-mvp/costco_data` (flat `{date}_{location}_consolidated.csv` plus older per-category CSVs). Default consolidated searches are `cracker chip protein chicken` — produce/eggs/soda often have no Costco row until more terms are crawled.  
+Fix / workaround: Run `python3 scripts/backfill_price_comparisons.py` (override path with `COSTCO_DATA_ROOT`). Maps Safeway → `san-francisco` / `costco_sf`, Vons → `tustin` / `costco_oc`. Writes `supabase/migrations/20260616_price_comparisons_seed.sql` + `src/data/priceComparisons.generated.ts`. Apply schema migration `20260616_price_comparisons.sql` before seed.  
+How to verify: Backfill log shows item counts per location; cards show badges like "Via Safeway", "Via Costco", or "Not found at Costco" (scoped to the active grocery tab vs Costco — never cross-compares Safeway vs Vons). Re-run is idempotent (`on conflict` upsert).  
+Related files: `scripts/backfill_price_comparisons.py`, `scripts/price_comparison/`, `COSTCO_DATA_ROOT`, `src/staging-price-tracker/ComparisonBadge.tsx`
 
 ## Open Questions
 

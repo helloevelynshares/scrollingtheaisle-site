@@ -1,5 +1,6 @@
 import type { MatchConfidence } from "./weeklyAdPrices.generated";
 import type { CanonicalProduct } from "./canonicalProducts";
+import type { PriceComparisonView } from "./priceComparisonTypes";
 
 export type { MatchConfidence, CanonicalProduct };
 
@@ -34,6 +35,8 @@ export type FeedProductView = {
   baselinePrice: number | null;
   baselineSource: string | null;
   weeklyPrices: WeeklyPrice[];
+  /** Grocery vs Costco per-unit comparison for this feed, when available. */
+  priceComparison?: PriceComparisonView | null;
 };
 
 /** feed_product_matches row — maps canonical item to a retailer SKU for price fetching. */

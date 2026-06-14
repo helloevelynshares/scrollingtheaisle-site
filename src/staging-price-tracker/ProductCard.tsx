@@ -7,6 +7,7 @@ import {
   getLowestObservedPrice,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
+import { ComparisonBadge } from "./ComparisonBadge";
 import { PriceTrendChart } from "./PriceTrendChart";
 
 type Props = {
@@ -56,6 +57,11 @@ export function ProductCard({ product }: Props) {
             {formatDiscountVsBaseline(discount)}
           </span>
         </div>
+        <ComparisonBadge
+          activeFeedId={product.feedId}
+          activeGroceryLabel={product.feedLabel}
+          comparison={product.priceComparison}
+        />
       </div>
 
       <header className="price-tracker-card-header price-tracker-desktop-only">
@@ -83,6 +89,12 @@ export function ProductCard({ product }: Props) {
           <dd>{formatDiscount(discount)}</dd>
         </div>
       </dl>
+
+      <ComparisonBadge
+        activeFeedId={product.feedId}
+        activeGroceryLabel={product.feedLabel}
+        comparison={product.priceComparison}
+      />
 
       <PriceTrendChart product={product} />
     </article>

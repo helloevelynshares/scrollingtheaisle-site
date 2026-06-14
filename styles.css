@@ -1000,6 +1000,59 @@ img {
   color: var(--muted);
 }
 
+.price-tracker-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.3;
+  border: 1px solid transparent;
+}
+
+.price-tracker-comparison-title {
+  font-weight: 600;
+}
+
+.price-tracker-comparison-detail {
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.price-tracker-comparison--grocery {
+  background: #eef8f1;
+  border-color: #c8e6d0;
+  color: #1a6b3a;
+}
+
+.price-tracker-comparison--costco {
+  background: #eef3fb;
+  border-color: #c5d4ef;
+  color: #1e4a8a;
+}
+
+.price-tracker-comparison--neutral {
+  background: #f7f7f7;
+  border-color: #e4e4e4;
+  color: #555;
+}
+
+.price-tracker-comparison--muted {
+  background: #fafafa;
+  border-color: #ececec;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .price-tracker-comparison {
+    margin-top: 4px;
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+}
+
 .price-tracker-product-meta {
   font-size: 14px;
   color: var(--muted);

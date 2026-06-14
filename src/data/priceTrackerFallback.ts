@@ -12,6 +12,7 @@ import {
 } from "./vonsWeeklyAdPrices.generated";
 
 import { VONS_BASELINE_BY_CANONICAL } from "./vonsBaseline.generated";
+import { getFallbackComparison } from "./priceComparisonUtils";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
 const VONS_FEED_ID = "vons_albertsons_socal";
@@ -115,6 +116,10 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
       return { ...slot, weekStart: week.weekStart };
     });
 
+    const hasAdMatches = weeklyPrices.some(
+      (w) => w.adPrice != null && w.matchConfidence !== "low",
+    );
+
     return {
       canonicalId: canonical.id,
       displayName: canonical.displayName,
@@ -125,10 +130,11 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
       feedId: feed.id,
       feedLabel: feed.label,
       regionLabel: feed.regionLabel,
-      hasFeedData: Boolean(baseline),
+      hasFeedData: Boolean(baseline) || hasAdMatches,
       baselinePrice: baseline?.price ?? null,
       baselineSource: baseline?.source ?? null,
       weeklyPrices,
+      priceComparison: getFallbackComparison(canonical.id, feed.id),
     };
   });
 }
@@ -177,6 +183,7 @@ export function buildVonsFallbackProducts(): FeedProductView[] {
       baselinePrice,
       baselineSource: match?.baselineSource ?? null,
       weeklyPrices,
+      priceComparison: getFallbackComparison(canonical.id, feed.id),
     };
   });
 }
