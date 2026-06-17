@@ -57,11 +57,6 @@ export function ProductCard({ product }: Props) {
             {formatDiscountVsBaseline(discount)}
           </span>
         </div>
-        <ComparisonBadge
-          activeFeedId={product.feedId}
-          activeGroceryLabel={product.feedLabel}
-          comparison={product.priceComparison}
-        />
       </div>
 
       <header className="price-tracker-card-header price-tracker-desktop-only">
