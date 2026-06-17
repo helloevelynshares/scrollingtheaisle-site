@@ -45,6 +45,12 @@ export const VONS_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-06-16",
     "sourceFile": "vons 6-10 - 6-16.pdf",
     "sourceLabel": "Vons weekly ad 06/10\u201306/16"
+  },
+  {
+    "weekStart": "2026-06-17",
+    "weekEnd": "2026-06-23",
+    "sourceFile": "vons 6-17 - 6-23.pdf",
+    "sourceLabel": "Vons weekly ad 06/17\u201306/23"
   }
 ];
 
@@ -77,6 +83,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 1.99,
       "offerText": "Strawberries 1 lb",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 2.5,
+      "offerText": "Fresh Strawberries",
+      "confidence": "high"
     }
   },
   "avocados": {
@@ -104,6 +115,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": 1.67,
+      "offerText": "Large Hass Avocados",
+      "confidence": "high"
     }
   },
   "doritos_nacho_cheese": {
@@ -131,6 +147,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 3.99,
       "offerText": "Doritos, Ruffles",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "cheetos_crunchy": {
@@ -158,6 +179,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 2.49,
       "offerText": "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "coke_zero": {
@@ -182,6 +208,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -212,6 +243,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "cheerios": {
@@ -239,6 +275,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 1.99,
       "offerText": "Cheerios Cereal 8.9-12 oz",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "tillamook_ice_cream": {
@@ -263,6 +304,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -293,6 +339,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "nature_valley_bars": {
@@ -320,6 +371,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 2.99,
       "offerText": "General Mills Nature Valley Bars 5-6 ct",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "fage_greek_yogurt": {
@@ -344,6 +400,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -374,6 +435,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "haagen_dazs_ice_cream": {
@@ -398,6 +464,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -428,6 +499,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 1.97,
       "offerText": "Green Seedless Grapes",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 2.5,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
     }
   },
   "eggs_18_count": {
@@ -455,6 +531,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 2.99,
       "offerText": "Lucerne Large Eggs 18 ct",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.99,
+      "offerText": "Lucerne Large Eggs 12 ct",
+      "confidence": "high"
     }
   },
   "oreos_sandwich_cookies": {
@@ -479,6 +560,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -509,6 +595,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "kettle_brand_chips": {
@@ -536,6 +627,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 2.49,
       "offerText": "Cheez-Its, Club, Town House 9-13.8 oz. Kellogg\u2019s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   }
 };

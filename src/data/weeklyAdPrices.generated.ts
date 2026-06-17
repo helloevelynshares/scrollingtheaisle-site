@@ -51,6 +51,12 @@ export const WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-06-16",
     "sourceFile": "safeway 6-10 - 6-16.pdf",
     "sourceLabel": "Safeway weekly ad 06/10\u201306/16"
+  },
+  {
+    "weekStart": "2026-06-17",
+    "weekEnd": "2026-06-23",
+    "sourceFile": "safeway 6-17 - 6-23.pdf",
+    "sourceLabel": "Safeway weekly ad 06/17\u201306/23"
   }
 ];
 
@@ -88,6 +94,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 5.0,
       "offerText": "Strawberries LARGE PACK",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 5.0,
+      "offerText": "Strawberries",
+      "confidence": "high"
     }
   },
   "avocados": {
@@ -120,6 +131,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 0.99,
       "offerText": "Hass Avocado, Large Mango, Cucumber, Roma Tomato",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 2.0,
+      "offerText": "Hass Avocados",
+      "confidence": "high"
     }
   },
   "doritos_nacho_cheese": {
@@ -152,6 +168,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
     }
   },
   "cheetos_crunchy": {
@@ -184,6 +205,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": "Cheetos, Lay's, Simply",
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "coke_zero": {
@@ -213,6 +239,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -248,6 +279,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 2.99,
       "offerText": "Chobani Greek Yogurt 4-5.3 oz. Selected varieties.",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "cheerios": {
@@ -277,6 +313,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -312,6 +353,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "mission_tortilla_chips": {
@@ -341,6 +387,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -376,6 +427,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 1.79,
       "offerText": "Nature Valley Bars 5-6 ct.",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "Betty Crocker Fruit Snacks 5 to 10 ct, Nature Valley Bars 5 to 12 ct",
+      "confidence": "medium"
     }
   },
   "fage_greek_yogurt": {
@@ -408,6 +464,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 5.99,
       "offerText": "Fage Yogurt",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 0.5,
+      "offerText": "Fage Greek Yogurt",
+      "confidence": "high"
     }
   },
   "frito_lay_multipack_chips": {
@@ -440,6 +501,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 14.0,
       "offerText": "Frito-Lay Flavor Mix 35 to 42-ct. Selected varieties.",
       "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 8.99,
+      "offerText": "Frito-Lay Variety Pack",
+      "confidence": "high"
     }
   },
   "haagen_dazs_ice_cream": {
@@ -469,6 +535,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -504,6 +575,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": 1.99,
       "offerText": "Red Seedless Grapes",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 4.99,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
     }
   },
   "eggs_18_count": {
@@ -535,6 +611,11 @@ export const WEEKLY_AD_PRICES: Record<
     "2026-06-10": {
       "price": 2.99,
       "offerText": "Lucerne Cage Free Eggs Grade AA, 18-ct.",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 7.49,
+      "offerText": "Happy Egg Free Range Eggs 12 ct",
       "confidence": "medium"
     }
   },
@@ -568,6 +649,11 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": "Nabisco Family Size Oreo Cookies 13.1-20 oz.",
       "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
   "protein_bars": {
@@ -597,6 +683,11 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": "high"
     },
     "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
@@ -631,6 +722,11 @@ export const WEEKLY_AD_PRICES: Record<
     "2026-06-10": {
       "price": null,
       "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": "Kettle Cooked Chips",
       "confidence": null
     }
   }
