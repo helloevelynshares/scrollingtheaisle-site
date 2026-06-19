@@ -1349,25 +1349,17 @@ img {
 
 .about-story {
   margin: 48px 0;
+  max-width: 38rem;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .about-story p {
-  margin: 0 0 1.1em;
+  margin: 0 0 1.35em;
 }
 
-.about-pull-quote {
-  margin: 28px 0;
-  padding: 20px 24px;
-  border-left: 4px solid var(--accent);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: linear-gradient(90deg, rgba(255, 56, 92, 0.06), transparent);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.45;
-  letter-spacing: -0.2px;
-  color: var(--text);
+.about-story p:last-child {
+  margin-bottom: 0;
 }
 
 .about-tiktok,
