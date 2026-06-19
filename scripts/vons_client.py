@@ -13,7 +13,7 @@ import requests
 from requests.exceptions import RequestException, Timeout
 
 from safeway_client import SearchOutcome
-from vons_config import VonsSearchConfig, load_config
+from vons_config import VonsSearchConfig, load_config, load_timeout_seconds
 
 VONS_BASE_QUERY_PARAMS: dict[str, str] = {
     "url": "https://www.vons.com",
@@ -38,6 +38,94 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 ENV_PATH = SCRIPT_DIR / ".env"
 
 VONS_SEARCH_URL = "https://www.vons.com/abs/pub/xapi/pgmsearch/v1/search/products"
+
+DEFAULT_TIMEOUT_SEC = 45.0
+
+PGMSEARCH_COOKIE_HINT = (
+    "refresh VONS_COOKIE in scripts/.env from Chrome/Safari DevTools → Network → "
+    "pgmsearch on vons.com (must include ACI_S_ECommBanner=vons)"
+)
+STORE_CONTEXT_HINT = (
+    "Confirm VONS_STORE_ID/VONS_ZIPCODE/VONS_CHANNEL match the pgmsearch request "
+    "(defaults: store 2053, zip 92110, channel instore)"
+)
+
+
+def timeout_message(timeout_sec: float, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Vons pgmsearch timed out after {timeout_sec:g}s{q} — {PGMSEARCH_COOKIE_HINT}; "
+        f"{STORE_CONTEXT_HINT}"
+    )
+
+
+def auth_message(status_code: int, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Vons pgmsearch returned HTTP {status_code}{q} (session/auth) — "
+        f"{PGMSEARCH_COOKIE_HINT}; {STORE_CONTEXT_HINT}"
+    )
+
+
+def empty_response_message(*, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return f"Vons pgmsearch returned HTTP 200 with an empty body{q}"
+
+
+def stuck_loading_message(api_timeout_sec: float, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Vons search stuck loading — no pgmsearch response after {api_timeout_sec:g}s{q} — "
+        f"{PGMSEARCH_COOKIE_HINT}; {STORE_CONTEXT_HINT}"
+    )
+
+
+def _outcome_from_http_status(
+    query: str,
+    *,
+    status_code: int | None,
+    url: str,
+    body: bytes,
+) -> SearchOutcome | None:
+    """Map non-200 HTTP to SearchOutcome, or None when caller should parse JSON."""
+    if status_code in (401, 403):
+        msg = auth_message(status_code, query=query)
+        logger.warning("%s — body preview: %s", msg, body[:200].decode("utf-8", errors="replace"))
+        return SearchOutcome(
+            query=query,
+            status_code=status_code,
+            ok=False,
+            payload=None,
+            error="auth",
+            request_url=url,
+            message=msg,
+        )
+    if status_code != 200:
+        preview = body[:200].decode("utf-8", errors="replace")
+        msg = f"Vons pgmsearch returned HTTP {status_code} for q={query!r}"
+        logger.warning("%s — body preview: %s", msg, preview)
+        return SearchOutcome(
+            query=query,
+            status_code=status_code,
+            ok=False,
+            payload=None,
+            error=f"http_{status_code}" if status_code else "http_error",
+            request_url=url,
+            message=msg,
+        )
+    if not body.strip():
+        msg = empty_response_message(query=query)
+        logger.warning("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=200,
+            ok=False,
+            payload=None,
+            error="empty_response",
+            request_url=url,
+            message=msg,
+        )
+    return None
 
 
 def generate_vons_request_id() -> str:
@@ -125,7 +213,9 @@ def _search_via_curl(
             capture_output=True,
             check=False,
         )
-    except OSError:
+    except OSError as exc:
+        msg = f"Vons pgmsearch curl unavailable for q={query!r}: {exc}"
+        logger.error("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
@@ -133,9 +223,12 @@ def _search_via_curl(
             payload=None,
             error="curl_unavailable",
             request_url=url,
+            message=msg,
         )
 
     if completed.returncode == 28:
+        msg = timeout_message(timeout_sec, query=query)
+        logger.error("%s (curl exit 28)", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
@@ -143,8 +236,15 @@ def _search_via_curl(
             payload=None,
             error="timeout",
             request_url=url,
+            message=msg,
         )
     if completed.returncode != 0:
+        stderr = (completed.stderr or b"").decode("utf-8", errors="replace").strip()
+        msg = (
+            f"Vons pgmsearch curl failed for q={query!r} (exit {completed.returncode})"
+            + (f": {stderr[:200]}" if stderr else "")
+        )
+        logger.error("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
@@ -152,6 +252,7 @@ def _search_via_curl(
             payload=None,
             error=f"curl_{completed.returncode}",
             request_url=url,
+            message=msg,
         )
 
     raw = completed.stdout
@@ -166,19 +267,36 @@ def _search_via_curl(
         body = raw
         status_code = None
 
-    if status_code != 200:
+    if status_code is not None:
+        outcome = _outcome_from_http_status(
+            query,
+            status_code=status_code,
+            url=url,
+            body=body,
+        )
+        if outcome is not None:
+            return outcome
+    elif not body.strip():
+        msg = empty_response_message(query=query)
+        logger.warning("%s (curl returned no HTTP status)", msg)
         return SearchOutcome(
             query=query,
-            status_code=status_code,
+            status_code=None,
             ok=False,
             payload=None,
-            error=f"http_{status_code}" if status_code else "http_error",
+            error="empty_response",
             request_url=url,
+            message=msg,
         )
 
     try:
         payload = json.loads(body)
     except json.JSONDecodeError:
+        msg = (
+            f"Vons pgmsearch returned HTTP 200 but invalid JSON for q={query!r} "
+            f"({len(body)} bytes)"
+        )
+        logger.warning("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=200,
@@ -186,8 +304,10 @@ def _search_via_curl(
             payload=None,
             error="invalid_json",
             request_url=url,
+            message=msg,
         )
 
+    logger.info("200 success for q=%r via curl", query)
     return SearchOutcome(
         query=query,
         status_code=200,
@@ -214,37 +334,48 @@ def _search_via_requests(
             timeout=timeout_sec,
         )
     except Timeout:
+        msg = timeout_message(timeout_sec, query=query)
+        logger.error("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
             ok=False,
             payload=None,
             error="timeout",
-            request_url=VONS_SEARCH_URL,
+            request_url=url,
+            message=msg,
         )
     except RequestException as exc:
+        msg = f"Vons pgmsearch network error for q={query!r}: {exc}"
+        logger.error("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
             ok=False,
             payload=None,
             error="network",
-            request_url=str(exc),
+            request_url=url,
+            message=msg,
         )
 
     if response.status_code != 200:
-        return SearchOutcome(
-            query=query,
+        outcome = _outcome_from_http_status(
+            query,
             status_code=response.status_code,
-            ok=False,
-            payload=None,
-            error=f"http_{response.status_code}",
-            request_url=response.url,
+            url=response.url,
+            body=response.content,
         )
+        if outcome is not None:
+            return outcome
 
     try:
         payload = response.json()
     except json.JSONDecodeError:
+        msg = (
+            f"Vons pgmsearch returned HTTP 200 but invalid JSON for q={query!r} "
+            f"({len(response.content)} bytes)"
+        )
+        logger.warning("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=200,
@@ -252,8 +383,10 @@ def _search_via_requests(
             payload=None,
             error="invalid_json",
             request_url=response.url,
+            message=msg,
         )
 
+    logger.info("200 success for q=%r via requests fallback", query)
     return SearchOutcome(
         query=query,
         status_code=200,
@@ -266,19 +399,24 @@ def _search_via_requests(
 def search_vons_product(
     query: str,
     *,
-    timeout_sec: float = 30.0,
+    timeout_sec: float | None = None,
     config: VonsSearchConfig | None = None,
 ) -> SearchOutcome:
     """Direct HTTP pgmsearch for Vons (curl transport; requests fallback if curl missing)."""
+    effective_timeout = timeout_sec if timeout_sec is not None else load_timeout_seconds()
     cfg = config or VonsSearchConfig.from_env()
-    outcome = _search_via_curl(query, timeout_sec=timeout_sec, config=cfg)
+    outcome = _search_via_curl(query, timeout_sec=effective_timeout, config=cfg)
     if outcome.ok or outcome.error != "curl_unavailable":
         return outcome
-    return _search_via_requests(query, timeout_sec=min(timeout_sec, 10.0), config=cfg)
+    return _search_via_requests(
+        query,
+        timeout_sec=min(effective_timeout, 10.0),
+        config=cfg,
+    )
 
 
 def outcome_to_record(outcome: SearchOutcome, *, source: str) -> dict[str, Any]:
-    return {
+    record = {
         "query": outcome.query,
         "ok": outcome.ok,
         "status_code": outcome.status_code,
@@ -287,6 +425,9 @@ def outcome_to_record(outcome: SearchOutcome, *, source: str) -> dict[str, Any]:
         "response": outcome.payload,
         "capture_source": source,
     }
+    if outcome.message:
+        record["message"] = outcome.message
+    return record
 
 
 def build_pgmsearch_url(query: str, config: VonsSearchConfig | None = None) -> str:

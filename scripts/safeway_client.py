@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import json
 import logging
+import subprocess
 import time
 from dataclasses import dataclass
 from typing import Any
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, quote, urlencode, urlsplit, urlunsplit
 
 import requests
 from requests import PreparedRequest
@@ -24,15 +25,12 @@ BASE_QUERY_PARAMS: dict[str, str] = {
     "rows": "30",
     "start": "0",
     "search-type": "keyword",
-    "storeid": "2843",
     "featured": "true",
     "sort": "",
     "timezone": "America/Los_Angeles",
     "dvid": "web-4.1search",
-    "channel": "pickup",
     "pp": "true",
     "wineshopstoreid": "5799",
-    "zipcode": "94044",
     "pgm": "wineshop,merch-banner",
     "includeOffer": "true",
     "banner": "safeway",
@@ -47,6 +45,42 @@ SENSITIVE_QUERY_KEYS = frozenset({"visitorid", "uuid"})
 logger = logging.getLogger(__name__)
 
 
+DEFAULT_TIMEOUT_SEC = 30.0
+
+PGMSEARCH_COOKIE_HINT = (
+    "refresh SAFEWAY_COOKIE in scripts/.env from Chrome DevTools → Network → "
+    "pgmsearch on safeway.com"
+)
+
+
+def timeout_message(timeout_sec: float, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Safeway pgmsearch timed out after {timeout_sec:g}s{q} — {PGMSEARCH_COOKIE_HINT}"
+    )
+
+
+def auth_message(status_code: int, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Safeway pgmsearch returned HTTP {status_code}{q} (session/auth) — "
+        f"{PGMSEARCH_COOKIE_HINT}"
+    )
+
+
+def empty_response_message(*, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return f"Safeway pgmsearch returned HTTP 200 with an empty body{q}"
+
+
+def stuck_loading_message(api_timeout_sec: float, *, query: str | None = None) -> str:
+    q = f" for q={query!r}" if query else ""
+    return (
+        f"Safeway search stuck loading — no pgmsearch response after {api_timeout_sec:g}s{q} — "
+        f"{PGMSEARCH_COOKIE_HINT}, or run --headful to sign in and set store"
+    )
+
+
 @dataclass(frozen=True)
 class SearchOutcome:
     query: str
@@ -55,12 +89,30 @@ class SearchOutcome:
     payload: dict[str, Any] | list[Any] | None
     error: str | None = None
     request_url: str | None = None
+    message: str | None = None
 
 
 def generate_request_id() -> str:
-    """Browser-style long numeric request-id (not a UUID)."""
-    # time_ns() is typically 19 digits, matching captures like 1621779662930545269
-    return str(time.time_ns())
+    """Browser-style request-id: 628 + epoch-ms + 3-digit suffix (19 digits total)."""
+    ms = str(int(time.time() * 1000))
+    suffix = str(time.time_ns() % 1000).zfill(3)
+    return f"628{ms}{suffix}"
+
+
+def _build_pgmsearch_query_string(params: dict[str, str]) -> str:
+    """Build query string keeping commas in pgm= unencoded (matches Chrome DevTools)."""
+    parts: list[str] = []
+    for key, value in params.items():
+        if key == "pgm":
+            parts.append(f"{quote(key, safe='')}={value}")
+        else:
+            parts.append(f"{quote(key, safe='')}={quote(value, safe='')}")
+    return "&".join(parts)
+
+
+def build_pgmsearch_url(query: str, config: SafewaySearchConfig) -> str:
+    params = build_search_params(query, config)
+    return f"{SEARCH_URL}?{_build_pgmsearch_query_string(params)}"
 
 
 def build_search_params(query: str, config: SafewaySearchConfig) -> dict[str, str]:
@@ -69,6 +121,9 @@ def build_search_params(query: str, config: SafewaySearchConfig) -> dict[str, st
     params["q"] = query
     params["visitorId"] = config.visitor_id
     params["uuid"] = config.uuid
+    params["storeid"] = config.store_id
+    params["zipcode"] = config.zipcode
+    params["channel"] = config.channel
     return params
 
 
@@ -191,7 +246,182 @@ def search_product(
     debug: bool = False,
     browser_like: bool = False,
 ) -> SearchOutcome:
-    """Search Safeway products using the web pgmsearch endpoint."""
+    """Search Safeway products using the web pgmsearch endpoint (curl transport)."""
+    outcome = _search_via_curl(
+        query,
+        config=config,
+        timeout_sec=timeout_sec,
+        browser_like=browser_like,
+    )
+    if outcome.ok or outcome.error != "curl_unavailable":
+        if debug and outcome.request_url:
+            print(f"URL: {redact_url(outcome.request_url)}", flush=True)
+        return outcome
+    return _search_via_requests(
+        session,
+        query,
+        config,
+        timeout_sec=min(timeout_sec, 10.0),
+        debug=debug,
+        browser_like=browser_like,
+    )
+
+
+def _search_via_curl(
+    query: str,
+    *,
+    config: SafewaySearchConfig,
+    timeout_sec: float,
+    browser_like: bool,
+) -> SearchOutcome:
+    """Use system curl — matches working Chrome DevTools captures; requests often times out."""
+    url = build_pgmsearch_url(query, config)
+    headers = build_headers(query, config, browser_like=browser_like)
+    cmd = [
+        "curl",
+        "-sS",
+        "--compressed",
+        "-w",
+        "\n__HTTP_CODE__:%{http_code}",
+        "--max-time",
+        str(max(1, int(timeout_sec))),
+        url,
+    ]
+    for name, value in headers.items():
+        cmd.extend(["-H", f"{name}: {value}"])
+
+    try:
+        completed = subprocess.run(cmd, capture_output=True, check=False)
+    except OSError as exc:
+        msg = f"Safeway pgmsearch curl unavailable for q={query!r}: {exc}"
+        logger.error("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=None,
+            ok=False,
+            payload=None,
+            error="curl_unavailable",
+            request_url=url,
+            message=msg,
+        )
+
+    if completed.returncode == 28:
+        msg = timeout_message(timeout_sec, query=query)
+        logger.error("%s (curl exit 28)", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=None,
+            ok=False,
+            payload=None,
+            error="timeout",
+            request_url=url,
+            message=msg,
+        )
+    if completed.returncode != 0:
+        stderr = (completed.stderr or b"").decode("utf-8", errors="replace").strip()
+        msg = (
+            f"Safeway pgmsearch curl failed for q={query!r} (exit {completed.returncode})"
+            + (f": {stderr[:200]}" if stderr else "")
+        )
+        logger.error("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=None,
+            ok=False,
+            payload=None,
+            error=f"curl_{completed.returncode}",
+            request_url=url,
+            message=msg,
+        )
+
+    raw = completed.stdout
+    marker = b"\n__HTTP_CODE__:"
+    if marker in raw:
+        body, _, code_bytes = raw.rpartition(marker)
+        try:
+            status_code = int(code_bytes.decode("ascii", errors="ignore").strip())
+        except ValueError:
+            status_code = None
+    else:
+        body = raw
+        status_code = None
+
+    if status_code in (401, 403):
+        msg = auth_message(status_code, query=query)
+        logger.warning("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=status_code,
+            ok=False,
+            payload=None,
+            error="auth",
+            request_url=url,
+            message=msg,
+        )
+    if status_code is not None and status_code != 200:
+        preview = body[:200].decode("utf-8", errors="replace")
+        msg = f"Safeway pgmsearch returned HTTP {status_code} for q={query!r}"
+        logger.warning("%s — body preview: %s", msg, preview)
+        return SearchOutcome(
+            query=query,
+            status_code=status_code,
+            ok=False,
+            payload=None,
+            error=f"http_{status_code}",
+            request_url=url,
+            message=msg,
+        )
+    if not body.strip():
+        msg = empty_response_message(query=query)
+        logger.warning("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=status_code or 200,
+            ok=False,
+            payload=None,
+            error="empty_response",
+            request_url=url,
+            message=msg,
+        )
+
+    try:
+        payload = json.loads(body)
+    except json.JSONDecodeError:
+        msg = (
+            f"Safeway pgmsearch returned HTTP 200 but invalid JSON for q={query!r} "
+            f"({len(body)} bytes)"
+        )
+        logger.warning("%s", msg)
+        return SearchOutcome(
+            query=query,
+            status_code=200,
+            ok=False,
+            payload=None,
+            error="invalid_json",
+            request_url=url,
+            message=msg,
+        )
+
+    logger.info("200 success for q=%r via curl — %s", query, _summarize_payload(payload))
+    return SearchOutcome(
+        query=query,
+        status_code=200,
+        ok=True,
+        payload=payload,
+        request_url=url,
+    )
+
+
+def _search_via_requests(
+    session: requests.Session,
+    query: str,
+    config: SafewaySearchConfig,
+    *,
+    timeout_sec: float,
+    debug: bool = False,
+    browser_like: bool = False,
+) -> SearchOutcome:
+    """Fallback when curl is unavailable."""
     prepared = prepare_request(
         session,
         query,
@@ -204,12 +434,8 @@ def search_product(
     try:
         response = session.send(prepared, timeout=timeout_sec)
     except Timeout as exc:
-        logger.error(
-            "timeout for q=%r after %.1fs: %s",
-            query,
-            timeout_sec,
-            exc,
-        )
+        msg = timeout_message(timeout_sec, query=query)
+        logger.error("%s (%s)", msg, exc)
         return SearchOutcome(
             query=query,
             status_code=None,
@@ -217,9 +443,11 @@ def search_product(
             payload=None,
             error="timeout",
             request_url=prepared.url,
+            message=msg,
         )
     except RequestException as exc:
-        logger.error("network failure for q=%r: %s", query, exc)
+        msg = f"Safeway pgmsearch network error for q={query!r}: {exc}"
+        logger.error("%s", msg)
         return SearchOutcome(
             query=query,
             status_code=None,
@@ -227,6 +455,7 @@ def search_product(
             payload=None,
             error="network",
             request_url=prepared.url,
+            message=msg,
         )
 
     status = response.status_code
@@ -235,18 +464,25 @@ def search_product(
         try:
             payload = response.json()
         except json.JSONDecodeError:
-            logger.warning(
-                "200 for q=%r but response is not JSON (%d bytes)",
-                query,
-                len(response.content),
-            )
+            body_len = len(response.content)
+            if body_len == 0:
+                msg = empty_response_message(query=query)
+                err = "empty_response"
+            else:
+                msg = (
+                    f"Safeway pgmsearch returned HTTP 200 but invalid JSON for q={query!r} "
+                    f"({body_len} bytes)"
+                )
+                err = "invalid_json"
+            logger.warning("%s", msg)
             return SearchOutcome(
                 query=query,
                 status_code=status,
                 ok=False,
                 payload=None,
-                error="invalid_json",
+                error=err,
                 request_url=prepared.url,
+                message=msg,
             )
         logger.info("200 success for q=%r — %s", query, _summarize_payload(payload))
         return SearchOutcome(
@@ -258,10 +494,10 @@ def search_product(
         )
 
     if status in (401, 403):
+        msg = auth_message(status, query=query)
         logger.warning(
-            "%d auth/bot/session failure for q=%r — body preview: %s",
-            status,
-            query,
+            "%s — body preview: %s",
+            msg,
             (response.text or "")[:200],
         )
         return SearchOutcome(
@@ -271,6 +507,7 @@ def search_product(
             payload=None,
             error="auth",
             request_url=prepared.url,
+            message=msg,
         )
 
     if status == 429:

@@ -1,3 +1,6 @@
+import {
+  appendFamiliesToFeedProducts,
+} from "../data/trackerFamilyUtils";
 import { CANONICAL_PRODUCTS } from "../data/canonicalProducts";
 import { getPriceFeed } from "../data/priceFeeds";
 import {
@@ -12,7 +15,7 @@ import type {
   WeeklyPriceObservation,
 } from "../data/priceTrackerTypes";
 import type { PriceComparisonView } from "../data/priceComparisonTypes";
-import { getFallbackComparison } from "../data/priceComparisonUtils";
+import { getFallbackComparison, getCostcoPriceHistory } from "../data/priceComparisonUtils";
 import {
   hasChartableData,
   INFERRED_BASELINE_SOURCE,
@@ -175,23 +178,27 @@ export async function fetchFeedProducts(
       return buildEmptyFeedProducts(feedId);
     }
 
-    return enrichSparseProductsFromFallback(merged, feedId);
+    return appendFamiliesToFeedProducts(
+      enrichSparseProductsFromFallback(merged, feedId),
+      feedId,
+    );
   } catch {
     return fallbackForFeed(feedId);
   }
 }
 
 function fallbackForFeed(feedId: string): FeedProductView[] {
+  let products: FeedProductView[];
   if (feedId === SAFEWAY_FEED_ID) {
-    return buildSafewayFallbackProducts();
+    products = buildSafewayFallbackProducts();
+  } else if (feedId === "vons_albertsons_socal") {
+    products = buildVonsFallbackProducts();
+  } else if (COSTCO_FEED_IDS.has(feedId)) {
+    products = buildEmptyFeedProducts(feedId);
+  } else {
+    products = buildEmptyFeedProducts(feedId);
   }
-  if (feedId === "vons_albertsons_socal") {
-    return buildVonsFallbackProducts();
-  }
-  if (COSTCO_FEED_IDS.has(feedId)) {
-    return buildEmptyFeedProducts(feedId);
-  }
-  return buildEmptyFeedProducts(feedId);
+  return appendFamiliesToFeedProducts(products, feedId);
 }
 
 function enrichSparseProductsFromFallback(
@@ -324,6 +331,10 @@ function mergeCanonicalWithFeed(
       feed.storeGroup !== "costco"
         ? (comparison ?? getFallbackComparison(canonical.id, feed.id))
         : null,
+    costcoPriceHistory:
+      feed.storeGroup !== "costco"
+        ? getCostcoPriceHistory(canonical.id, feed.id)
+        : undefined,
   };
 }
 

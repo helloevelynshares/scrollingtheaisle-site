@@ -11,6 +11,7 @@ DEFAULT_VISITOR_ID = "7ca2d6cc-5fb9-4151-afe8-5d370681bca5"
 DEFAULT_STORE_ID = "2053"
 DEFAULT_ZIPCODE = "92110"
 DEFAULT_CHANNEL = "instore"
+DEFAULT_TIMEOUT_SEC = 45.0
 DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
     "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.3.1 Safari/605.1.15"
@@ -76,11 +77,15 @@ def _optional_env(name: str) -> str | None:
 
 
 def load_timeout_seconds() -> float:
-    for key in ("VONS_TIMEOUT_SECONDS", "SAFEWAY_TIMEOUT_SECONDS", "SAFEWAY_TIMEOUT_SEC"):
+    """VONS_TIMEOUT_SECONDS (preferred), else Safeway timeout env vars, else 45s."""
+    raw = os.getenv("VONS_TIMEOUT_SECONDS")
+    if raw and raw.strip():
+        return float(raw.strip())
+    for key in ("SAFEWAY_TIMEOUT_SECONDS", "SAFEWAY_TIMEOUT_SEC"):
         raw = os.getenv(key)
         if raw and raw.strip():
             return float(raw.strip())
-    return 30.0
+    return DEFAULT_TIMEOUT_SEC
 
 
 def _cookie_value(cookie_header: str, name: str) -> str | None:

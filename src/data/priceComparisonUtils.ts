@@ -1,5 +1,11 @@
 import type { PriceComparisonView } from "../data/priceComparisons.generated";
 import { PRICE_COMPARISONS_BY_KEY } from "../data/priceComparisons.generated";
+import {
+  getCostcoComparisonLocationNote,
+  getCostcoRegionForFeed,
+} from "./costcoRegions";
+import type { CostcoPricePoint } from "./costcoPriceHistory.generated";
+import { COSTCO_PRICE_HISTORY } from "./costcoPriceHistory.generated";
 
 export const GROCERY_FEED_IDS = new Set([
   "safeway_bay_area",
@@ -18,6 +24,18 @@ export function getFallbackComparison(
     return null;
   }
   return PRICE_COMPARISONS_BY_KEY[comparisonKey(canonicalId, feedId)] ?? null;
+}
+
+/** Region-scoped Costco price history for one canonical product on the active feed. */
+export function getCostcoPriceHistory(
+  canonicalId: string,
+  feedId: string,
+): CostcoPricePoint[] {
+  const region = getCostcoRegionForFeed(feedId);
+  if (!region) {
+    return [];
+  }
+  return COSTCO_PRICE_HISTORY[canonicalId]?.[region] ?? [];
 }
 
 export function formatComparisonUnit(unit: string | null): string {
@@ -43,6 +61,7 @@ function formatUnitPrice(price: number | null, unit: string): string | null {
 export type ComparisonBadgeContent = {
   title: string;
   detail: string | null;
+  locationNote: string | null;
   tone: "grocery" | "costco" | "neutral" | "muted";
 };
 
@@ -104,6 +123,7 @@ export function getComparisonBadgeContent(
     return {
       title: "Comparison unavailable",
       detail: null,
+      locationNote: getCostcoComparisonLocationNote(activeFeedId),
       tone: "muted",
     };
   }
@@ -115,6 +135,7 @@ export function getComparisonBadgeContent(
     return {
       title: "Not found at Costco",
       detail: `Best tracked price is via ${activeGroceryLabel}`,
+      locationNote: getCostcoComparisonLocationNote(activeFeedId),
       tone: "grocery",
     };
   }
@@ -123,6 +144,7 @@ export function getComparisonBadgeContent(
     return {
       title: "Too close to call",
       detail: `Within 3% per ${unit}`,
+      locationNote: getCostcoComparisonLocationNote(activeFeedId),
       tone: "neutral",
     };
   }
@@ -131,6 +153,7 @@ export function getComparisonBadgeContent(
     return {
       title: `Via ${activeGroceryLabel}`,
       detail: buildWinnerDetail(comparison, activeGroceryLabel, "grocery"),
+      locationNote: getCostcoComparisonLocationNote(activeFeedId),
       tone: "grocery",
     };
   }
@@ -139,6 +162,7 @@ export function getComparisonBadgeContent(
     return {
       title: "Via Costco",
       detail: buildWinnerDetail(comparison, activeGroceryLabel, "costco"),
+      locationNote: getCostcoComparisonLocationNote(activeFeedId),
       tone: "costco",
     };
   }

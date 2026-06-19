@@ -36,6 +36,8 @@ PROFILE_DIR = SCRIPT_DIR / ".playwright-profile"
 DEFAULT_OUTPUT = SCRIPT_DIR / "output" / "safeway_search_seed.jsonl"
 SEARCH_API_PATH = "/abs/pub/xapi/pgmsearch/v1/search/products"
 
+from safeway_client import auth_message, stuck_loading_message
+
 QUERY_CSV_COLUMNS = ("search_query", "query", "canonical_item", "item", "name", "canonical")
 
 logger = logging.getLogger("seed_safeway_playwright")
@@ -115,6 +117,8 @@ def _capture_search_once(
     status_code: int | None = None
     api_url: str | None = None
     payload: Any = None
+    message: str | None = None
+    api_timeout_sec = api_timeout_ms / 1000.0
 
     try:
         if reload_page:
@@ -143,33 +147,33 @@ def _capture_search_once(
             error = "invalid_json"
         if status_code != 200:
             error = error or f"http_{status_code}"
+            if status_code in (401, 403):
+                message = auth_message(status_code, query=query)
+                logger.warning("%s", message)
+            elif status_code == 429:
+                message = f"Safeway pgmsearch rate limited (429) for q={query!r}"
+                logger.warning("%s", message)
         elif payload is None:
             error = error or "empty_response"
+            message = f"Safeway pgmsearch returned HTTP 200 with empty JSON for q={query!r}"
+            logger.warning("%s", message)
     except Exception as exc:
         exc_name = type(exc).__name__
         hint = _page_debug_hint(page)
         if "Timeout" in exc_name:
             error = "api_timeout"
-            logger.error(
-                "Timed out for q=%r — no pgmsearch response (%s). "
-                "Search UI may be stuck loading: refresh SAFEWAY_COOKIE in scripts/.env "
-                "or sign in via --headful.",
-                query,
-                hint,
-            )
+            message = stuck_loading_message(api_timeout_sec, query=query)
+            logger.error("%s (%s)", message, hint)
         else:
             error = "navigation"
-            logger.error("Failed for q=%r: %s (%s)", query, exc, hint)
+            message = f"Safeway search navigation failed for q={query!r}: {exc}"
+            logger.error("%s (%s)", message, hint)
 
     ok = status_code == 200 and payload is not None and error is None
     if ok:
         logger.info("200 success for q=%r — %s", query, api_url or page_url)
-    elif status_code in (401, 403):
-        logger.warning("%s auth/session for q=%r", status_code, query)
-    elif status_code == 429:
-        logger.warning("429 rate limited for q=%r", query)
 
-    return {
+    record: dict[str, Any] = {
         "query": query,
         "ok": ok,
         "status_code": status_code,
@@ -177,6 +181,9 @@ def _capture_search_once(
         "error": error,
         "response": payload,
     }
+    if message:
+        record["message"] = message
+    return record
 
 
 def capture_search(
@@ -247,14 +254,14 @@ def main() -> int:
     parser.add_argument(
         "--navigation-timeout",
         type=int,
-        default=90,
-        help="Page load timeout in seconds (default: 90)",
+        default=60,
+        help="Page load timeout in seconds (default: 60)",
     )
     parser.add_argument(
         "--api-timeout",
         type=int,
-        default=90,
-        help="Wait for pgmsearch response in seconds (default: 90)",
+        default=45,
+        help="Wait for pgmsearch response in seconds (default: 45)",
     )
     parser.add_argument(
         "--no-env-cookies",
@@ -344,6 +351,8 @@ def main() -> int:
                     successes += 1
                 else:
                     failures += 1
+                    if record.get("message"):
+                        logger.error("%s", record["message"])
 
         context.close()
 

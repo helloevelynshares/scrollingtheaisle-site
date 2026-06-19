@@ -1,19 +1,33 @@
 import type { MatchConfidence } from "./weeklyAdPrices.generated";
 import type { CanonicalProduct } from "./canonicalProducts";
 import type { PriceComparisonView } from "./priceComparisonTypes";
+import type { CostcoPricePoint } from "./costcoPriceHistory.generated";
+import type { TrackerType } from "./trackerFamilies";
+import type { FamilyComparisonBadge } from "./trackerFamilyUtils";
 
-export type { MatchConfidence, CanonicalProduct };
+export type { MatchConfidence, CanonicalProduct, TrackerType };
 
 /** Weekly slot for a single feed + canonical product. */
 export type WeeklyPrice = {
   weekStart: string;
   price: number;
   adPrice: number | null;
+  /** Upper bound when a deal family spans multiple formats in one week. */
+  priceMax?: number | null;
   matchConfidence: MatchConfidence | null;
   priceType: "baseline" | "weekly_ad";
   sourceLabel?: string;
   offerText?: string;
   isBaselineFallback: boolean;
+};
+
+export type FamilyMemberPriceView = {
+  memberId: string;
+  label: string;
+  sizeLabel: string;
+  baselinePrice: number;
+  currentPrice: number | null;
+  weeklyPrices: WeeklyPrice[];
 };
 
 /**
@@ -37,6 +51,18 @@ export type FeedProductView = {
   weeklyPrices: WeeklyPrice[];
   /** Grocery vs Costco per-unit comparison for this feed, when available. */
   priceComparison?: PriceComparisonView | null;
+  /** Regional Costco warehouse price history for chart overlays (never mixed across regions). */
+  costcoPriceHistory?: CostcoPricePoint[];
+  /** Defaults to single_sku for the original 18 canonical products. */
+  trackerType?: TrackerType;
+  subtitle?: string;
+  category?: string;
+  familyMembers?: FamilyMemberPriceView[];
+  priceRange?: { min: number; max: number } | null;
+  salePriceRange?: { min: number; max: number } | null;
+  chartMode?: "single" | "range";
+  /** Curated family comparison copy (e.g. Ritz vs Costco). */
+  familyComparisonBadge?: FamilyComparisonBadge | null;
 };
 
 /** feed_product_matches row — maps canonical item to a retailer SKU for price fetching. */

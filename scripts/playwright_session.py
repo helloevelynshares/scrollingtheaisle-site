@@ -150,7 +150,7 @@ def apply_store_cookies_to_context(
     cookie_header, source_env = resolve_store_cookie_header(store)
     if not cookie_header:
         logger.warning(
-            "No %s in scripts/.env — search may hang on infinite loading. "
+            "No %s in scripts/.env — search may hang until Playwright/api timeout. "
             "Paste Cookie from Chrome DevTools → Network → pgmsearch on %s.",
             store.cookie_env,
             store.host,

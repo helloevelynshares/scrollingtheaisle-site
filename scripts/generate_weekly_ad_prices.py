@@ -44,6 +44,11 @@ TRACKER_CANONICAL_IDS = [
     "kettle_brand_chips",
 ]
 
+TRACKER_FAMILY_IDS = [
+    "ben_jerrys_ice_cream",
+    "ritz_crackers_snacks",
+]
+
 
 @dataclass(frozen=True)
 class FeedConfig:
@@ -84,6 +89,92 @@ class ProductMatcher:
     patterns: tuple[str, ...]
     exclude_patterns: tuple[str, ...] = ()
     prefer_patterns: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class FamilyMemberMatcher:
+    family_id: str
+    member_id: str
+    patterns: tuple[str, ...]
+    exclude_patterns: tuple[str, ...] = ()
+    prefer_patterns: tuple[str, ...] = ()
+
+
+FAMILY_MATCHERS: tuple[ProductMatcher, ...] = (
+    ProductMatcher(
+        "ben_jerrys_ice_cream",
+        patterns=(r"ben\s*&\s*jerry", r"ben and jerry"),
+        exclude_patterns=(
+            r"popsicle",
+            r"cookie dough chunks?",
+            r"haagen.?dazs",
+            r"häagen.?dazs",
+            r"klondike",
+            r"dreyer",
+        ),
+        prefer_patterns=(
+            r"ben\s*&\s*jerry.*ice cream",
+            r"ben and jerry.*ice cream",
+            r"ben\s*&\s*jerry.*bars",
+        ),
+    ),
+    ProductMatcher(
+        "ritz_crackers_snacks",
+        patterns=(r"ritz crackers?", r"ritz snack crackers?"),
+        exclude_patterns=(
+            r"lay'?s",
+            r"fritos?",
+            r"ruffles?",
+            r"toasted chips",
+            r"cheese crackers",
+        ),
+        prefer_patterns=(r"^ritz crackers?", r"ritz crackers? \d", r"ritz crackers? 5"),
+    ),
+)
+
+FAMILY_MEMBER_MATCHERS: tuple[FamilyMemberMatcher, ...] = (
+    FamilyMemberMatcher(
+        "ben_jerrys_ice_cream",
+        "pint",
+        patterns=(r"ben\s*&\s*jerry", r"ben and jerry"),
+        exclude_patterns=(
+            r"popsicle",
+            r"cookie dough chunks?",
+            r"non.?dairy",
+            r"bars?",
+            r"haagen.?dazs",
+            r"häagen.?dazs",
+        ),
+        prefer_patterns=(r"ben\s*&\s*jerry.*pint", r"ben\s*&\s*jerry.*16", r"ice cream pint"),
+    ),
+    FamilyMemberMatcher(
+        "ben_jerrys_ice_cream",
+        "non_dairy_pint",
+        patterns=(r"ben\s*&\s*jerry", r"ben and jerry"),
+        exclude_patterns=(r"popsicle", r"cookie dough chunks?", r"bars?"),
+        prefer_patterns=(r"non.?dairy", r"frozen dessert"),
+    ),
+    FamilyMemberMatcher(
+        "ben_jerrys_ice_cream",
+        "bars_4ct",
+        patterns=(r"ben\s*&\s*jerry", r"ben and jerry"),
+        exclude_patterns=(r"popsicle", r"cookie dough chunks?", r"pint", r"16 oz"),
+        prefer_patterns=(r"bars?", r"4.?ct", r"4 count"),
+    ),
+    FamilyMemberMatcher(
+        "ritz_crackers_snacks",
+        "classic_box",
+        patterns=(r"ritz crackers?",),
+        exclude_patterns=(
+            r"lay'?s",
+            r"fritos?",
+            r"ruffles?",
+            r"toasted chips",
+            r"cheese crackers",
+        ),
+        prefer_patterns=(r"^ritz crackers?", r"ritz crackers? \d", r"7\.1-13\.7"),
+    ),
+)
 
 
 MATCHERS: tuple[ProductMatcher, ...] = (
@@ -374,6 +465,145 @@ def pick_best_row(
     return max(candidates, key=lambda row: preference_score(row, matcher))
 
 
+def pick_best_member_row(
+    rows: list[dict[str, str]], matcher: FamilyMemberMatcher
+) -> dict[str, str] | None:
+    pseudo = ProductMatcher(
+        matcher.family_id,
+        matcher.patterns,
+        matcher.exclude_patterns,
+        matcher.prefer_patterns,
+    )
+    return pick_best_row(rows, pseudo)
+
+
+def build_family_prices(
+    feed_label: str,
+    manifest: list[dict[str, str]],
+    split_items: list[dict[str, str]],
+) -> tuple[
+    list[dict[str, str]],
+    dict[str, dict[str, dict[str, object | None]]],
+    dict[str, dict[str, dict[str, dict[str, object | None]]]],
+]:
+    weeks: list[dict[str, str]] = []
+    family_prices: dict[str, dict[str, dict[str, object | None]]] = {
+        family_id: {} for family_id in TRACKER_FAMILY_IDS
+    }
+    member_prices: dict[str, dict[str, dict[str, dict[str, object | None]]]] = {
+        family_id: {} for family_id in TRACKER_FAMILY_IDS
+    }
+    for family_id in TRACKER_FAMILY_IDS:
+        member_prices[family_id] = {}
+
+    for entry in sorted(manifest, key=lambda row: row["week_start"]):
+        week_start = entry["week_start"]
+        week_end = entry["week_end"]
+        source_file = entry["source_file"]
+        week_rows = [row for row in split_items if row["week_start"] == week_start]
+
+        weeks.append(
+            {
+                "weekStart": week_start,
+                "weekEnd": week_end,
+                "sourceFile": source_file,
+                "sourceLabel": format_week_label(feed_label, week_start, week_end),
+            }
+        )
+
+        for matcher in FAMILY_MATCHERS:
+            best = pick_best_row(week_rows, matcher)
+            if best is None:
+                family_prices[matcher.canonical_id][week_start] = {
+                    "price": None,
+                    "offerText": None,
+                    "confidence": None,
+                }
+                continue
+
+            family_prices[matcher.canonical_id][week_start] = {
+                "price": normalize_unit_price(best),
+                "offerText": best.get("split_product_text")
+                or best.get("raw_offer_text"),
+                "confidence": match_confidence(best, matcher),
+            }
+
+        for matcher in FAMILY_MEMBER_MATCHERS:
+            member_bucket = member_prices.setdefault(matcher.family_id, {})
+            member_weeks = member_bucket.setdefault(matcher.member_id, {})
+            best = pick_best_member_row(week_rows, matcher)
+            if best is None:
+                member_weeks[week_start] = {
+                    "price": None,
+                    "offerText": None,
+                    "confidence": None,
+                }
+                continue
+
+            pseudo = ProductMatcher(
+                matcher.family_id,
+                matcher.patterns,
+                matcher.exclude_patterns,
+                matcher.prefer_patterns,
+            )
+            member_weeks[week_start] = {
+                "price": normalize_unit_price(best),
+                "offerText": best.get("split_product_text")
+                or best.get("raw_offer_text"),
+                "confidence": match_confidence(best, pseudo),
+            }
+
+    return weeks, family_prices, member_prices
+
+
+def render_combined_family_ts(
+    safeway_manifest_path: Path,
+    safeway_split_path: Path,
+    safeway_weeks: list[dict[str, str]],
+    safeway_family: dict[str, dict[str, dict[str, object | None]]],
+    safeway_members: dict[str, dict[str, dict[str, dict[str, object | None]]]],
+    vons_weeks: list[dict[str, str]],
+    vons_family: dict[str, dict[str, dict[str, object | None]]],
+    vons_members: dict[str, dict[str, dict[str, dict[str, object | None]]]],
+) -> str:
+    try:
+        rel_split = safeway_split_path.relative_to(DATA_ROOT)
+    except ValueError:
+        rel_split = safeway_split_path
+    return f"""// AUTO-GENERATED by scripts/generate_weekly_ad_prices.py — do not edit by hand.
+// Source manifest: {safeway_manifest_path.relative_to(ROOT)}
+// Source offers: scrolling-the-aisle/{rel_split}
+
+import type {{ GeneratedWeeklyAdPrice, WeeklyAdWeek }} from "./weeklyAdPrices.generated";
+
+export type {{ GeneratedWeeklyAdPrice, WeeklyAdWeek }};
+
+export const FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = {json.dumps(safeway_weeks, indent=2)};
+
+export const FAMILY_WEEKLY_AD_PRICES: Record<
+  string,
+  Record<string, GeneratedWeeklyAdPrice>
+> = {json.dumps(safeway_family, indent=2)};
+
+export const FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
+  string,
+  Record<string, Record<string, GeneratedWeeklyAdPrice>>
+> = {json.dumps(safeway_members, indent=2)};
+
+export const VONS_FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = {json.dumps(vons_weeks, indent=2)};
+
+export const VONS_FAMILY_WEEKLY_AD_PRICES: Record<
+  string,
+  Record<string, GeneratedWeeklyAdPrice>
+> = {json.dumps(vons_family, indent=2)};
+
+export const VONS_FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
+  string,
+  Record<string, Record<string, GeneratedWeeklyAdPrice>>
+> = {json.dumps(vons_members, indent=2)};
+"""
+
+
 def format_week_label(feed_label: str, week_start: str, week_end: str) -> str:
     start = week_start[5:].replace("-", "/")
     end = week_end[5:].replace("-", "/")
@@ -466,6 +696,9 @@ export const {export_prices}: Record<
 """
 
 
+FAMILY_OUTPUT = ROOT / "src" / "data" / "familyWeeklyAdPrices.generated.ts"
+
+
 def generate_feed(config: FeedConfig) -> None:
     manifest = load_manifest(config.manifest_path)
     split_items = load_split_items(config.split_items_path, config.banner_filter)
@@ -486,9 +719,44 @@ def generate_feed(config: FeedConfig) -> None:
     )
 
 
+def generate_family_prices() -> None:
+    safeway = FEEDS[0]
+    vons = FEEDS[1]
+    safeway_manifest = load_manifest(safeway.manifest_path)
+    vons_manifest = load_manifest(vons.manifest_path)
+    safeway_items = load_split_items(safeway.split_items_path, safeway.banner_filter)
+    vons_items = load_split_items(vons.split_items_path, vons.banner_filter)
+
+    safeway_weeks, safeway_family, safeway_members = build_family_prices(
+        safeway.feed_label, safeway_manifest, safeway_items
+    )
+    vons_weeks, vons_family, vons_members = build_family_prices(
+        vons.feed_label, vons_manifest, vons_items
+    )
+
+    FAMILY_OUTPUT.write_text(
+        render_combined_family_ts(
+            safeway.manifest_path,
+            safeway.split_items_path,
+            safeway_weeks,
+            safeway_family,
+            safeway_members,
+            vons_weeks,
+            vons_family,
+            vons_members,
+        ),
+        encoding="utf-8",
+    )
+    print(
+        f"Wrote {FAMILY_OUTPUT.relative_to(ROOT)} "
+        f"({len(TRACKER_FAMILY_IDS)} families)"
+    )
+
+
 def main() -> None:
     for config in FEEDS:
         generate_feed(config)
+    generate_family_prices()
 
 
 if __name__ == "__main__":

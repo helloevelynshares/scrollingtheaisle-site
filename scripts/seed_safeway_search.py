@@ -177,6 +177,8 @@ def main() -> int:
             "error": outcome.error,
             "response": outcome.payload,
         }
+        if outcome.message:
+            record["message"] = outcome.message
         records.append(record)
 
         if outcome.ok:
@@ -185,10 +187,16 @@ def main() -> int:
                 print(json.dumps(outcome.payload, indent=2, ensure_ascii=False)[:4000])
         else:
             failures += 1
-            if outcome.error == "timeout":
-                log.warning(
-                    "Request timed out — try --browser-like, SAFEWAY_COOKIE, or Playwright "
-                    "if Chrome returns 200 for the same search"
+            if outcome.message:
+                log.error("%s", outcome.message)
+            elif outcome.error == "timeout":
+                from safeway_client import timeout_message
+
+                log.error("%s", timeout_message(timeout_sec, query=outcome.query))
+            elif outcome.error == "auth":
+                log.error(
+                    "Safeway auth/session failure for q=%r — refresh SAFEWAY_COOKIE in scripts/.env",
+                    outcome.query,
                 )
 
     if output_path:

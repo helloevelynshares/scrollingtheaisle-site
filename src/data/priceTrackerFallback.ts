@@ -12,7 +12,8 @@ import {
 } from "./vonsWeeklyAdPrices.generated";
 
 import { VONS_BASELINE_BY_CANONICAL } from "./vonsBaseline.generated";
-import { getFallbackComparison } from "./priceComparisonUtils";
+import { getFallbackComparison, getCostcoPriceHistory } from "./priceComparisonUtils";
+import { appendFamiliesToFeedProducts } from "./trackerFamilyUtils";
 import {
   INFERRED_BASELINE_SOURCE,
   inferBaselineFromWeeklyPrices,
@@ -106,7 +107,7 @@ function effectiveWeeklyPrice(
 export function buildSafewayFallbackProducts(): FeedProductView[] {
   const feed = getPriceFeed(SAFEWAY_FEED_ID)!;
 
-  return CANONICAL_PRODUCTS.map((canonical) => {
+  const products = CANONICAL_PRODUCTS.map((canonical) => {
     const baseline = SAFEWAY_BASELINES[canonical.id];
     const byWeek = WEEKLY_AD_PRICES[canonical.id] ?? {};
 
@@ -151,8 +152,11 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
         (inferredBaseline != null ? INFERRED_BASELINE_SOURCE : null),
       weeklyPrices,
       priceComparison: getFallbackComparison(canonical.id, feed.id),
+      costcoPriceHistory: getCostcoPriceHistory(canonical.id, feed.id),
     };
   });
+
+  return appendFamiliesToFeedProducts(products, SAFEWAY_FEED_ID);
 }
 
 export function buildVonsFallbackProducts(): FeedProductView[] {
@@ -161,10 +165,13 @@ export function buildVonsFallbackProducts(): FeedProductView[] {
   const hasWeeklyAds = VONS_WEEKLY_AD_WEEKS.length > 0;
 
   if (!hasBaselines && !hasWeeklyAds) {
-    return buildEmptyFeedProducts(VONS_FEED_ID);
+    return appendFamiliesToFeedProducts(
+      buildEmptyFeedProducts(VONS_FEED_ID),
+      VONS_FEED_ID,
+    );
   }
 
-  return CANONICAL_PRODUCTS.map((canonical) => {
+  const products = CANONICAL_PRODUCTS.map((canonical) => {
     const match = VONS_BASELINE_BY_CANONICAL[canonical.id];
     const baselinePrice = match?.baselinePrice ?? null;
     const byWeek = VONS_WEEKLY_AD_PRICES[canonical.id] ?? {};
@@ -200,8 +207,11 @@ export function buildVonsFallbackProducts(): FeedProductView[] {
       baselineSource: match?.baselineSource ?? null,
       weeklyPrices,
       priceComparison: getFallbackComparison(canonical.id, feed.id),
+      costcoPriceHistory: getCostcoPriceHistory(canonical.id, feed.id),
     };
   });
+
+  return appendFamiliesToFeedProducts(products, VONS_FEED_ID);
 }
 
 export function buildEmptyFeedProducts(feedId: string): FeedProductView[] {

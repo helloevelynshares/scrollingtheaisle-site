@@ -176,6 +176,14 @@ Fix / workaround: Run `python3 scripts/backfill_price_comparisons.py` (override 
 How to verify: Backfill log shows item counts per location; cards show badges like "Via Safeway", "Via Costco", or "Not found at Costco" (scoped to the active grocery tab vs Costco — never cross-compares Safeway vs Vons). Re-run is idempotent (`on conflict` upsert).  
 Related files: `scripts/backfill_price_comparisons.py`, `scripts/price_comparison/`, `COSTCO_DATA_ROOT`, `src/staging-price-tracker/ComparisonBadge.tsx`
 
-## Open Questions
+### Tracker families are additive client-side layers
+
+Date discovered: 2026-06-19  
+Context: Handpicked deal families (Ben & Jerry's, Ritz) on `/staging-price-tracker/`.  
+What happened: Families are separate from the 18 `canonical_products` rows — `haagen_dazs_ice_cream` stays as single-SKU; families use new IDs (`ben_jerrys_ice_cream`, `ritz_crackers_snacks`).  
+Fix / workaround: Definitions in `src/data/trackerFamilies.ts`; weekly ad matchers in `scripts/generate_weekly_ad_prices.py` write `src/data/familyWeeklyAdPrices.generated.ts` (family + per-member prices). UI merges via `appendFamiliesToFeedProducts()` in `trackerFamilyUtils.ts` — not yet in Supabase `canonical_products`. Ritz Costco copy uses static warehouse reference ($10.79 / 61.6 oz) with 10%/25% thresholds in `getFamilyComparisonBadge()`.  
+How to verify: `npm run build:price-tracker`; Safeway tab → "Handpicked deal families" section with B&J range chart and Ritz "Best value: Costco" / "More variety" badge.  
+Related files: `src/data/trackerFamilies.ts`, `src/data/trackerFamilyUtils.ts`, `src/data/familyWeeklyAdPrices.generated.ts`, `src/staging-price-tracker/ProductCard.tsx`
+
 
 Track unresolved questions here.

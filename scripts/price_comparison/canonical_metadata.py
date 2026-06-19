@@ -145,7 +145,7 @@ GROCERY_FEEDS = {
         "label": "Vons / Albertsons",
         "costco_region_id": "costco_oc",
         "costco_location_slug": "tustin",
-        "costco_store_label": "Costco Orange County",
+        "costco_store_label": "Costco Tustin",
     },
 }
 

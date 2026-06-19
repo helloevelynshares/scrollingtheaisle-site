@@ -42,12 +42,15 @@ from safeway_candidates import (
 )
 from vons_client import (
     IN_BROWSER_FETCH_JS,
+    auth_message,
     build_pgmsearch_url,
     build_vons_headers,
     outcome_to_record,
     search_vons_product,
+    stuck_loading_message,
+    timeout_message,
 )
-from vons_config import VonsSearchConfig
+from vons_config import VonsSearchConfig, load_timeout_seconds
 
 DEFAULT_QUERIES = REPO_ROOT / "data/canonical/price_tracker_baseline_queries.csv"
 DEFAULT_JSONL = SCRIPT_DIR / "output/vons_baseline_candidates.jsonl"
@@ -96,11 +99,11 @@ def _page_debug_hint(page: Any) -> str:
 
 
 STUCK_LOADING_HINT = (
-    "Search UI stuck loading (pgmsearch never fired). Try: "
-    "(1) refresh VONS_COOKIE from vons.com DevTools → Network → pgmsearch; "
-    "(2) confirm VONS_VISITOR_ID/VONS_UUID/VONS_STORE_ID/VONS_ZIPCODE match that request; "
-    "(3) run --headful --channel chrome --manual-session --fresh-profile to log in and set store; "
-    "(4) remove stale scripts/.playwright-profile-vons or use --fresh-profile."
+    "Search UI stuck loading (pgmsearch never fired). "
+    "Refresh VONS_COOKIE from vons.com DevTools → Network → pgmsearch; "
+    "confirm VONS_STORE_ID/VONS_ZIPCODE/VONS_CHANNEL match that request "
+    "(defaults: store 2053, zip 92110, channel instore). "
+    "Or run --headful --channel chrome --manual-session --fresh-profile."
 )
 
 STUCK_LOADING_JS = """
@@ -151,13 +154,14 @@ def _record_from_payload(
     api_url: str,
     source: str,
     error: str | None = None,
+    message: str | None = None,
 ) -> dict[str, Any]:
     if error is None and status_code == 200 and payload is not None:
         ok = True
     else:
         ok = False
         error = error or (None if ok else "empty_response")
-    return {
+    record: dict[str, Any] = {
         "query": query,
         "ok": ok,
         "status_code": status_code,
@@ -166,6 +170,9 @@ def _record_from_payload(
         "response": payload,
         "capture_source": source,
     }
+    if message:
+        record["message"] = message
+    return record
 
 
 def _capture_via_xhr(
@@ -181,6 +188,8 @@ def _capture_via_xhr(
     status_code: int | None = None
     api_url: str | None = None
     payload: Any = None
+    message: str | None = None
+    api_timeout_sec = api_timeout_ms / 1000.0
 
     try:
         if reload_page:
@@ -206,23 +215,28 @@ def _capture_via_xhr(
             logger.warning("Could not parse JSON for q=%r: %s", query, exc)
         if status_code != 200:
             error = error or f"http_{status_code}"
+            if status_code in (401, 403):
+                message = auth_message(status_code, query=query)
+                logger.warning("%s", message)
+            else:
+                message = f"Vons pgmsearch returned HTTP {status_code} for q={query!r}"
+                logger.warning("%s", message)
         elif payload is None:
             error = error or "empty_response"
+            message = f"Vons pgmsearch returned HTTP 200 with empty JSON for q={query!r}"
+            logger.warning("%s", message)
     except Exception as exc:
         exc_name = type(exc).__name__
         hint = _page_debug_hint(page)
         if "Timeout" in exc_name:
-            error = "search_stuck_loading"
+            error = "api_timeout"
+            message = stuck_loading_message(api_timeout_sec, query=query)
             stuck_hint = _stuck_loading_message(page)
-            logger.error(
-                "Timed out for q=%r — no pgmsearch response (%s). %s",
-                query,
-                hint,
-                stuck_hint or STUCK_LOADING_HINT,
-            )
+            logger.error("%s (%s). %s", message, hint, stuck_hint or STUCK_LOADING_HINT)
         else:
             error = "navigation"
-            logger.error("XHR failed for q=%r: %s (%s)", query, exc, hint)
+            message = f"Vons search navigation failed for q={query!r}: {exc}"
+            logger.error("%s (%s)", message, hint)
 
     return _record_from_payload(
         query,
@@ -231,6 +245,7 @@ def _capture_via_xhr(
         api_url=api_url or page_url,
         source="playwright_xhr",
         error=error,
+        message=message,
     )
 
 
@@ -372,13 +387,11 @@ def capture_vons_search(
         logger.info("Captured pgmsearch via HTTP for %r", query)
     else:
         logger.error(
-            "All capture methods failed for q=%r (last error=%s). "
-            "Vons often blocks headless/automation (Imperva xDTags: non_human). "
-            "Try locally: python3 scripts/seed_vons_baseline_playwright.py --headful --channel chrome --delay 3. "
-            "From vons.com DevTools → Network → pgmsearch, copy Cookie to VONS_COOKIE and "
-            "visitorId/uuid/subscription-key query params to VONS_VISITOR_ID, VONS_UUID, VONS_SUBSCRIPTION_KEY.",
+            "All capture methods failed for q=%r (last error=%s). %s",
             query,
             record.get("error"),
+            record.get("message")
+            or timeout_message(http_timeout_sec, query=query),
         )
     return record
 
@@ -445,6 +458,10 @@ def run_http_first_with_playwright_fallback(
             http_ok += 1
         else:
             playwright_needed.append((index, item))
+            if record.get("message"):
+                logger.error("%s", record["message"])
+            elif record.get("error") == "timeout":
+                logger.error("%s", timeout_message(http_timeout_sec, query=query))
 
     if playwright_needed:
         with sync_playwright() as playwright:
@@ -559,6 +576,10 @@ def run_http_only(
                 all_csv_rows.extend(flatten_candidates(record, item, top_n=top_n))
             else:
                 failures += 1
+                if record.get("message"):
+                    logger.error("%s", record["message"])
+                elif record.get("error") == "timeout":
+                    logger.error("%s", timeout_message(timeout_sec, query=query))
 
     with csv_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=CANDIDATE_CSV_FIELDS)
@@ -639,9 +660,14 @@ def main() -> int:
     parser.add_argument("--top", type=int, default=5, help="Candidates per item in CSV")
     parser.add_argument("--output", type=Path, default=DEFAULT_JSONL)
     parser.add_argument("--csv", type=Path, default=DEFAULT_CSV)
-    parser.add_argument("--navigation-timeout", type=int, default=90)
-    parser.add_argument("--api-timeout", type=int, default=90)
-    parser.add_argument("--http-timeout", type=int, default=45)
+    parser.add_argument("--navigation-timeout", type=int, default=60)
+    parser.add_argument("--api-timeout", type=int, default=45)
+    parser.add_argument(
+        "--http-timeout",
+        type=int,
+        default=None,
+        help="HTTP/curl timeout seconds (default: VONS_TIMEOUT_SECONDS or 45)",
+    )
     parser.add_argument(
         "--channel",
         default="chromium",
@@ -703,6 +729,15 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.csv.parent.mkdir(parents=True, exist_ok=True)
 
+    from dotenv import load_dotenv
+
+    load_dotenv(SCRIPT_DIR / ".env")
+    http_timeout = (
+        float(args.http_timeout)
+        if args.http_timeout is not None
+        else load_timeout_seconds()
+    )
+
     try:
         config = VonsSearchConfig.from_env()
     except ValueError as exc:
@@ -716,14 +751,15 @@ def main() -> int:
             csv_path=args.csv,
             top_n=args.top,
             delay=args.delay,
-            timeout_sec=float(args.http_timeout),
+            timeout_sec=http_timeout,
         )
         logger.info(
-            "Done — %d success, %d failure — wrote %s and %s",
+            "Done — %d success, %d failure — wrote %s and %s (http_timeout=%.0fs)",
             successes,
             failures,
             args.output,
             args.csv,
+            http_timeout,
         )
         return 0 if failures == 0 else 2
 
@@ -736,7 +772,7 @@ def main() -> int:
                 csv_path=args.csv,
                 top_n=args.top,
                 delay=args.delay,
-                http_timeout_sec=float(args.http_timeout),
+                http_timeout_sec=http_timeout,
                 headful=args.headful,
                 nav_ms=args.navigation_timeout * 1000,
                 api_ms=args.api_timeout * 1000,
@@ -770,14 +806,15 @@ def main() -> int:
                 csv_path=args.csv,
                 top_n=args.top,
                 delay=args.delay,
-                timeout_sec=float(args.http_timeout),
+                timeout_sec=http_timeout,
             )
             logger.info(
-                "Done — %d success, %d failure — wrote %s and %s",
+                "Done — %d success, %d failure — wrote %s and %s (http_timeout=%.0fs)",
                 successes,
                 failures,
                 args.output,
                 args.csv,
+                http_timeout,
             )
             return 0 if failures == 0 else 2
 
@@ -832,7 +869,7 @@ def main() -> int:
                     config,
                     navigation_timeout_ms=nav_ms,
                     api_timeout_ms=api_ms,
-                    http_timeout_sec=float(args.http_timeout),
+                    http_timeout_sec=http_timeout,
                 )
                 if not record["ok"] and record.get("error") in ("api_timeout", "search_stuck_loading"):
                     logger.info("Retrying %r after reload …", query)
@@ -843,7 +880,7 @@ def main() -> int:
                         config,
                         navigation_timeout_ms=nav_ms,
                         api_timeout_ms=api_ms,
-                        http_timeout_sec=float(args.http_timeout),
+                        http_timeout_sec=http_timeout,
                         reload_page=True,
                     )
 
@@ -860,6 +897,8 @@ def main() -> int:
                     )
                 else:
                     failures += 1
+                    if record.get("message"):
+                        logger.error("%s", record["message"])
 
         context.close()
 

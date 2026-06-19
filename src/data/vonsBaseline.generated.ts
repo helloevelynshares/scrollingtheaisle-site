@@ -90,5 +90,69 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "upc": "0003800016778",
     "retailerProductName": "Kelloggs Special K Pastry Crisps Strawberry 100 Calorie Snacks 12 Count - 5.28 Oz",
     "size": "COUNT"
+  },
+  "fage_greek_yogurt": {
+    "baselinePrice": 5.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960050143",
+    "upc": "0068954408301",
+    "retailerProductName": "FAGE Total 0% Milkfat Plain Greek Yogurt - 32 Oz",
+    "size": "OUNCE"
+  },
+  "frito_lay_multipack_chips": {
+    "baselinePrice": 18.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970125552",
+    "upc": "0002840073738",
+    "retailerProductName": "Frito Lay Variety Pack Flavor Mix - 42 Count",
+    "size": "COUNT"
+  },
+  "haagen_dazs_ice_cream": {
+    "baselinePrice": 6.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970064358",
+    "upc": "0007684000297",
+    "retailerProductName": "Ben & Jerry's Colin Kaepernick's Change The Whirled Non-Dairy Frozen Dessert - 16 Oz",
+    "size": "QUART"
+  },
+  "grapes": {
+    "baselinePrice": 7.98,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184100014",
+    "upc": "0048410001401",
+    "retailerProductName": "Green Seedless Grapes Prepacked Bag - 2 Lb",
+    "size": "LB"
+  },
+  "eggs_18_count": {
+    "baselinePrice": 1.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960304348",
+    "upc": "0002113003154",
+    "retailerProductName": "Lucerne Farms Eggs Cage Free Large - 18 Count",
+    "size": "DOZEN"
+  },
+  "oreos_sandwich_cookies": {
+    "baselinePrice": 4.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970485813",
+    "upc": "0004400006023",
+    "retailerProductName": "OREO Chocolate Sandwich Cookies Family Size - 18.12 Oz",
+    "size": "OUNCE"
+  },
+  "protein_bars": {
+    "baselinePrice": 14.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960057545",
+    "upc": "0072225216850",
+    "retailerProductName": "CLIF BUILDERS Chocolatey Peanut Butter 20g Protein Bars - 6 Count",
+    "size": "OUNCE"
+  },
+  "kettle_brand_chips": {
+    "baselinePrice": 4.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971360376",
+    "upc": "0002840080061",
+    "retailerProductName": "Miss Vickie's Kettle Cooked Potato Chips Jalapeno - 7.5 OZ",
+    "size": "OUNCE"
   }
 };
