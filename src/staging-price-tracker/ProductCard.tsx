@@ -4,7 +4,9 @@ import {
   formatPrice,
   getCurrentPrice,
   getDiscountPercent,
+  getEffectiveBaseline,
   getLowestObservedPrice,
+  hasChartableData,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { ComparisonBadge } from "./ComparisonBadge";
@@ -15,7 +17,7 @@ type Props = {
 };
 
 export function ProductCard({ product }: Props) {
-  if (!product.hasFeedData || product.baselinePrice == null) {
+  if (!hasChartableData(product)) {
     return (
       <article className="price-tracker-card price-tracker-card--empty">
         <header className="price-tracker-card-header">
@@ -35,6 +37,7 @@ export function ProductCard({ product }: Props) {
   const current = getCurrentPrice(product);
   const lowest = getLowestObservedPrice(product);
   const discount = getDiscountPercent(product);
+  const baseline = getEffectiveBaseline(product);
 
   return (
     <article className="price-tracker-card">
@@ -73,7 +76,7 @@ export function ProductCard({ product }: Props) {
         </div>
         <div>
           <dt>Baseline</dt>
-          <dd>{formatPrice(product.baselinePrice)}</dd>
+          <dd>{formatPrice(baseline)}</dd>
         </div>
         <div>
           <dt>Lowest</dt>

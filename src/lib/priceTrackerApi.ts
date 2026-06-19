@@ -13,6 +13,11 @@ import type {
 } from "../data/priceTrackerTypes";
 import type { PriceComparisonView } from "../data/priceComparisonTypes";
 import { getFallbackComparison } from "../data/priceComparisonUtils";
+import {
+  hasChartableData,
+  INFERRED_BASELINE_SOURCE,
+  inferBaselineFromWeeklyPrices,
+} from "../data/priceTrackerUtils";
 import { getSupabase } from "./supabase";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
@@ -170,7 +175,7 @@ export async function fetchFeedProducts(
       return buildEmptyFeedProducts(feedId);
     }
 
-    return merged;
+    return enrichSparseProductsFromFallback(merged, feedId);
   } catch {
     return fallbackForFeed(feedId);
   }
@@ -187,6 +192,30 @@ function fallbackForFeed(feedId: string): FeedProductView[] {
     return buildEmptyFeedProducts(feedId);
   }
   return buildEmptyFeedProducts(feedId);
+}
+
+function enrichSparseProductsFromFallback(
+  products: FeedProductView[],
+  feedId: string,
+): FeedProductView[] {
+  if (feedId !== SAFEWAY_FEED_ID && feedId !== VONS_FEED_ID) {
+    return products;
+  }
+
+  const fallbackById = new Map(
+    (feedId === SAFEWAY_FEED_ID
+      ? buildSafewayFallbackProducts()
+      : buildVonsFallbackProducts()
+    ).map((product) => [product.canonicalId, product]),
+  );
+
+  return products.map((product) => {
+    if (hasChartableData(product)) {
+      return product;
+    }
+    const fallback = fallbackById.get(product.canonicalId);
+    return fallback && hasChartableData(fallback) ? fallback : product;
+  });
 }
 
 function groupObservations(
@@ -271,6 +300,8 @@ function mergeCanonicalWithFeed(
   const hasAdMatches = weeklyPrices.some(
     (week) => week.adPrice != null && week.matchConfidence !== "low",
   );
+  const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
+  const effectiveBaseline = match?.baseline_price ?? inferredBaseline;
 
   return {
     canonicalId: canonical.id,
@@ -284,8 +315,10 @@ function mergeCanonicalWithFeed(
     regionLabel: feed.regionLabel,
     hasFeedData:
       (hasMatch && match!.baseline_price != null) || hasAdMatches,
-    baselinePrice: match?.baseline_price ?? null,
-    baselineSource: match?.baseline_source ?? null,
+    baselinePrice: effectiveBaseline,
+    baselineSource:
+      match?.baseline_source ??
+      (inferredBaseline != null ? INFERRED_BASELINE_SOURCE : null),
     weeklyPrices,
     priceComparison:
       feed.storeGroup !== "costco"

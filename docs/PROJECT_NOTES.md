@@ -113,6 +113,15 @@ TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_tr
 
 ## Price Tracking Logic
 
+### Safeway recurring items need baseline OR inferred ad anchor to chart
+
+Date discovered: 2026-06-18  
+Context: 8 recurring cross-store products on Safeway tab (`fage_greek_yogurt`, `frito_lay_multipack_chips`, etc.) showed “Tracking soon” despite weekly ad data in Supabase and `weeklyAdPrices.generated.ts`.  
+What happened: New recurring items have **no** `feed_product_matches` / `SAFEWAY_BASELINES` crawl yet (only original 10 staples do). `hasFeedData` was true from weekly ad observations, but `ProductCard` and `priceTrackerUtils` also required `baselinePrice != null`, so charts never rendered. Vons worked because `vonsBaseline.generated.ts` has all 18 products.  
+Fix / workaround: `inferBaselineFromWeeklyPrices()` uses max non-low-confidence ad price as chart anchor when no store baseline exists. `hasChartableData()` gates the UI. `priceTrackerApi` enriches sparse Supabase rows from offline fallback. To add true Safeway baselines: crawl with `scripts/seed_safeway_baseline_playwright.py` then `python scripts/generate_safeway_feed_matches.py`.  
+How to verify: Safeway tab → recurring section → all 8 cards show charts with weekly ad trend lines. `npm run build:price-tracker` then reload `/staging-price-tracker/`.  
+Related files: `src/staging-price-tracker/ProductCard.tsx`, `src/data/priceTrackerUtils.ts`, `src/data/priceTrackerFallback.ts`, `src/lib/priceTrackerApi.ts`, `src/data/weeklyAdPrices.generated.ts`
+
 ### Friday-only deals should dip on one day, not the whole week
 
 Date discovered: 2026-06-07  

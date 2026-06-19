@@ -12,6 +12,7 @@ import {
 import {
   formatPrice,
   getAllPricePoints,
+  getEffectiveBaseline,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { useCompactLayout } from "./useCompactLayout";
@@ -70,6 +71,7 @@ function PriceChartTooltip({
 export function PriceTrendChart({ product }: Props) {
   const compact = useCompactLayout();
   const points = getAllPricePoints(product);
+  const baseline = getEffectiveBaseline(product);
 
   const chartData: ChartRow[] = points.map((point) => ({
     weekStart: point.weekStart,
@@ -120,22 +122,24 @@ export function PriceTrendChart({ product }: Props) {
             />
           )}
           <Tooltip content={<PriceChartTooltip compact={compact} />} />
-          <ReferenceLine
-            y={product.baselinePrice}
-            stroke="#ff385c"
-            strokeDasharray="4 4"
-            strokeWidth={compact ? 1 : 1.5}
-            label={
-              compact
-                ? undefined
-                : {
-                    value: "Baseline",
-                    position: "insideTopRight",
-                    fill: "#ff385c",
-                    fontSize: 11,
-                  }
-            }
-          />
+          {baseline != null ? (
+            <ReferenceLine
+              y={baseline}
+              stroke="#ff385c"
+              strokeDasharray="4 4"
+              strokeWidth={compact ? 1 : 1.5}
+              label={
+                compact
+                  ? undefined
+                  : {
+                      value: "Baseline",
+                      position: "insideTopRight",
+                      fill: "#ff385c",
+                      fontSize: 11,
+                    }
+              }
+            />
+          ) : null}
           <Line
             type="monotone"
             dataKey="price"

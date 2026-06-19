@@ -13,6 +13,10 @@ import {
 
 import { VONS_BASELINE_BY_CANONICAL } from "./vonsBaseline.generated";
 import { getFallbackComparison } from "./priceComparisonUtils";
+import {
+  INFERRED_BASELINE_SOURCE,
+  inferBaselineFromWeeklyPrices,
+} from "./priceTrackerUtils";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
 const VONS_FEED_ID = "vons_albertsons_socal";
@@ -119,6 +123,16 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
     const hasAdMatches = weeklyPrices.some(
       (w) => w.adPrice != null && w.matchConfidence !== "low",
     );
+    const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
+    const effectiveBaseline = baseline?.price ?? inferredBaseline;
+
+    if (effectiveBaseline != null && baseline == null) {
+      for (const week of weeklyPrices) {
+        if (week.isBaselineFallback) {
+          week.price = effectiveBaseline;
+        }
+      }
+    }
 
     return {
       canonicalId: canonical.id,
@@ -131,8 +145,10 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
       feedLabel: feed.label,
       regionLabel: feed.regionLabel,
       hasFeedData: Boolean(baseline) || hasAdMatches,
-      baselinePrice: baseline?.price ?? null,
-      baselineSource: baseline?.source ?? null,
+      baselinePrice: effectiveBaseline,
+      baselineSource:
+        baseline?.source ??
+        (inferredBaseline != null ? INFERRED_BASELINE_SOURCE : null),
       weeklyPrices,
       priceComparison: getFallbackComparison(canonical.id, feed.id),
     };
