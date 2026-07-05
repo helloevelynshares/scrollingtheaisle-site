@@ -1,0 +1,19 @@
+canonical_id,warehouse,item_number,notes
+strawberries,,27003,2 lb pack — per-lb comparison needs review
+avocados,,647465,6 count Hass variety
+doritos_nacho_cheese,san_francisco,2014409,legacy NKD 30 oz (2026-03 chips crawl)
+doritos_nacho_cheese,san_francisco,933402,current SF consolidated 30 oz
+doritos_nacho_cheese,tustin,933402,1.875 lb Tustin warehouse — different SKU than SF
+cheetos_crunchy,,316780,28 oz
+chobani_greek_yogurt,san_francisco,2059712,40 oz plain Greek SF
+chobani_greek_yogurt,tustin,1920008,16-pack 6.7 oz Tustin — different format than SF
+cheerios,,522107,2-pack ~40 oz
+fage_greek_yogurt,,824383,48 oz nonfat
+frito_lay_multipack_chips,,188140,30 count classic mix
+grapes,,1059995,3 lb organic green seedless
+eggs_18_count,,1025795,5 dozen cage free — grocery tracks 18 ct
+kettle_brand_chips,,1841371,28 oz jalapeno
+nature_valley_bars,san_francisco,846156,49 bar SF only
+oreos_sandwich_cookies,tustin,1664082,3.92 lb Tustin only
+protein_bars,san_francisco,1014809,Kirkland 20 bar variety SF
+protein_bars,tustin,124502,Nature Valley 30 ct Tustin — different product than SF

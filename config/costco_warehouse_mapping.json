@@ -1,0 +1,24 @@
+{
+  "warehouses": ["san_francisco", "tustin", "seattle"],
+  "filename_slug_to_warehouse": {
+    "san-francisco": "san_francisco",
+    "san_francisco": "san_francisco",
+    "tustin": "tustin",
+    "seattle": "seattle"
+  },
+  "grocery_tracker_to_warehouse": {
+    "safeway": "san_francisco",
+    "vons-albertsons": "tustin"
+  },
+  "feed_id_to_warehouse": {
+    "safeway_bay_area": "san_francisco",
+    "vons_albertsons_socal": "tustin",
+    "costco_sf": "san_francisco",
+    "costco_oc": "tustin"
+  },
+  "warehouse_labels": {
+    "san_francisco": "San Francisco",
+    "tustin": "Tustin",
+    "seattle": "Seattle"
+  }
+}

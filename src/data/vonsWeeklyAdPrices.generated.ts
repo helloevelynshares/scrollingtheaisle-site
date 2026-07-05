@@ -70,10 +70,52 @@ export const VONS_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {
-  "doritos_nacho_cheese": {
+  "tillamook_ice_cream": {
     "2026-05-06": {
-      "price": 2.99,
-      "offerText": "Doritos",
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "avocados": {
+    "2026-05-06": {
+      "price": 1.5,
+      "offerText": "Large Hass Avocados",
       "confidence": "high"
     },
     "2026-05-13": {
@@ -82,9 +124,9 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-20": {
-      "price": 3.67,
-      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
-      "confidence": "medium"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-03": {
       "price": null,
@@ -92,24 +134,24 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
-      "price": 3.99,
-      "offerText": "Doritos, Ruffles",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null
     },
+    "2026-06-17": {
+      "price": 1.67,
+      "offerText": "Large Hass Avocados",
+      "confidence": "high"
+    },
     "2026-06-24": {
-      "price": 1.99,
-      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
-      "confidence": "medium"
+      "price": 0.99,
+      "offerText": "Medium Ripe Hass Avocados",
+      "confidence": "high"
     },
     "2026-07-01": {
-      "price": 2.5,
-      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
-      "confidence": "medium"
+      "price": 5.0,
+      "offerText": "Medium Ripe Hass Avocados",
+      "confidence": "high"
     }
   },
   "frito_lay_multipack_chips": {
@@ -154,7 +196,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "chobani_greek_yogurt": {
+  "protein_bars": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -194,6 +236,132 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    }
+  },
+  "coke_zero": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "oreos_sandwich_cookies": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "cheerios": {
+    "2026-05-06": {
+      "price": 3.49,
+      "offerText": "Cheerios Cereal",
+      "confidence": "medium"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.99,
+      "offerText": "Cheerios Cereal 8.9-12 oz",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 2.0,
+      "offerText": "Cheerios",
+      "confidence": "high"
     }
   },
   "nature_valley_bars": {
@@ -280,132 +448,6 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "avocados": {
-    "2026-05-06": {
-      "price": 1.5,
-      "offerText": "Large Hass Avocados",
-      "confidence": "high"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": 1.67,
-      "offerText": "Large Hass Avocados",
-      "confidence": "high"
-    },
-    "2026-06-24": {
-      "price": 0.99,
-      "offerText": "Medium Ripe Hass Avocados",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": 5.0,
-      "offerText": "Medium Ripe Hass Avocados",
-      "confidence": "high"
-    }
-  },
-  "kettle_brand_chips": {
-    "2026-05-06": {
-      "price": 2.99,
-      "offerText": "Lay\u2019s Kettle Cooked",
-      "confidence": "medium"
-    },
-    "2026-05-13": {
-      "price": 1.88,
-      "offerText": "Kettle Brand Potato Chips 6.5 to 8.5 oz",
-      "confidence": "high"
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": 2.49,
-      "offerText": "Cheez-Its, Club, Town House 9-13.8 oz. Kellogg\u2019s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 1.88,
-      "offerText": "Kettle Brand Potato Chips 4.5-8.5 oz. bag",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": 11.99,
-      "offerText": "Kettle Brand Chips Party Size 11.25-13 oz.",
-      "confidence": "high"
-    }
-  },
-  "cheerios": {
-    "2026-05-06": {
-      "price": 3.49,
-      "offerText": "Cheerios Cereal",
-      "confidence": "medium"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": 1.99,
-      "offerText": "Cheerios Cereal 8.9-12 oz",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-07-01": {
-      "price": 2.0,
-      "offerText": "Cheerios",
-      "confidence": "high"
-    }
-  },
   "strawberries": {
     "2026-05-06": {
       "price": 1.99,
@@ -441,174 +483,6 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": 2.99,
       "offerText": "Strawberries",
       "confidence": "medium"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "tillamook_ice_cream": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "oreos_sandwich_cookies": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 4.99,
-      "offerText": "Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties",
-      "confidence": "medium"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "cheetos_crunchy": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": 3.67,
-      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
-      "confidence": "medium"
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": 2.49,
-      "offerText": "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 1.99,
-      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
-      "confidence": "medium"
-    },
-    "2026-07-01": {
-      "price": 2.5,
-      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
-      "confidence": "medium"
-    }
-  },
-  "protein_bars": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
     },
     "2026-07-01": {
       "price": null,
@@ -658,6 +532,48 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": "high"
     }
   },
+  "cheetos_crunchy": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": 3.67,
+      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 2.49,
+      "offerText": "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 1.99,
+      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 2.5,
+      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
+      "confidence": "medium"
+    }
+  },
   "eggs_18_count": {
     "2026-05-06": {
       "price": 0.99,
@@ -700,58 +616,16 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "haagen_dazs_ice_cream": {
+  "kettle_brand_chips": {
     "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": 4.5,
-      "offerText": "H\u00e4agen-Dazs Ice Cream, Bars",
+      "price": 2.99,
+      "offerText": "Lay\u2019s Kettle Cooked",
       "confidence": "medium"
     },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-07-01": {
-      "price": 2.77,
-      "offerText": "Haagen-Dazs Ice Cream or Bars 14 oz. or 3 ct. Selected varieties",
-      "confidence": "medium"
-    }
-  },
-  "coke_zero": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
     "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 1.88,
+      "offerText": "Kettle Brand Potato Chips 6.5 to 8.5 oz",
+      "confidence": "high"
     },
     "2026-05-20": {
       "price": null,
@@ -764,9 +638,9 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 2.49,
+      "offerText": "Cheez-Its, Club, Town House 9-13.8 oz. Kellogg\u2019s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties",
+      "confidence": "medium"
     },
     "2026-06-17": {
       "price": null,
@@ -774,14 +648,14 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 1.88,
+      "offerText": "Kettle Brand Potato Chips 4.5-8.5 oz. bag",
+      "confidence": "high"
     },
     "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 11.99,
+      "offerText": "Kettle Brand Chips Party Size 11.25-13 oz.",
+      "confidence": "high"
     }
   },
   "mission_tortilla_chips": {
@@ -824,6 +698,132 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    }
+  },
+  "chobani_greek_yogurt": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "doritos_nacho_cheese": {
+    "2026-05-06": {
+      "price": 2.99,
+      "offerText": "Doritos",
+      "confidence": "high"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": 3.67,
+      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Doritos, Ruffles",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 1.99,
+      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 2.5,
+      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
+      "confidence": "medium"
+    }
+  },
+  "haagen_dazs_ice_cream": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": 4.5,
+      "offerText": "H\u00e4agen-Dazs Ice Cream, Bars",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 2.77,
+      "offerText": "Haagen-Dazs Ice Cream or Bars 14 oz. or 3 ct. Selected varieties",
+      "confidence": "medium"
     }
   }
 };
