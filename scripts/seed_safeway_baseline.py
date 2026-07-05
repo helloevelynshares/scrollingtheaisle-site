@@ -32,6 +32,7 @@ from safeway_candidates import (
 )
 from safeway_client import search_product
 from safeway_config import load_config, load_timeout_seconds
+from price_tracker.artifacts import merge_candidate_csv
 
 DEFAULT_QUERIES = REPO_ROOT / "data/canonical/price_tracker_baseline_queries.csv"
 DEFAULT_JSONL = SCRIPT_DIR / "output/safeway_baseline_candidates.jsonl"
@@ -157,7 +158,7 @@ def run_http(
         writer.writeheader()
         writer.writerows(all_csv_rows)
 
-    return successes, failures
+    return successes, failures, all_csv_rows
 
 
 def main() -> int:
@@ -165,6 +166,10 @@ def main() -> int:
 
     parser = argparse.ArgumentParser(description="Seed Safeway baseline prices via HTTP.")
     parser.add_argument("--query", help="Single search term (e.g. goldfish)")
+    parser.add_argument(
+        "--product-id",
+        help="Run only this canonical_id from --input CSV",
+    )
     parser.add_argument(
         "--input",
         type=Path,
@@ -177,6 +182,12 @@ def main() -> int:
     parser.add_argument("--top", type=int, default=5, help="Candidates per item in CSV")
     parser.add_argument("--output", type=Path, default=DEFAULT_JSONL)
     parser.add_argument("--csv", type=Path, default=DEFAULT_CSV)
+    parser.add_argument(
+        "--merge-csv",
+        type=Path,
+        default=None,
+        help="Upsert results into this CSV (preserves other canonical_ids)",
+    )
     parser.add_argument("--timeout", type=float, default=None)
     parser.add_argument("-v", "--verbose", action="store_true")
     args = parser.parse_args()
@@ -202,6 +213,12 @@ def main() -> int:
             return 1
         items = load_baseline_queries(input_path)
 
+    if args.product_id:
+        items = [i for i in items if i["canonical_id"] == args.product_id.strip()]
+        if not items:
+            logger.error("No row for canonical_id=%r in input CSV", args.product_id)
+            return 1
+
     if args.max_items > 0:
         items = items[: args.max_items]
 
@@ -215,7 +232,7 @@ def main() -> int:
     timeout_sec = args.timeout if args.timeout is not None else load_timeout_seconds()
 
     try:
-        successes, failures = run_http(
+        successes, failures, csv_rows = run_http(
             items,
             output=args.output,
             csv_path=args.csv,
@@ -227,6 +244,15 @@ def main() -> int:
     except ValueError as exc:
         logger.error("%s", exc)
         return 1
+
+    if args.merge_csv:
+        merge_target = (
+            args.merge_csv if args.merge_csv.is_absolute() else REPO_ROOT / args.merge_csv
+        )
+        inserted, _ = merge_candidate_csv(
+            merge_target, csv_rows, fieldnames=CANDIDATE_CSV_FIELDS
+        )
+        logger.info("Merged %d canonical_id(s) into %s", inserted, merge_target)
 
     logger.info(
         "Done — %d success, %d failure — wrote %s and %s",

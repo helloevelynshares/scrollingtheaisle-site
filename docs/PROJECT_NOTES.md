@@ -152,6 +152,15 @@ supabase functions deploy admin-suggestion-actions
 
 Apply migration: `supabase db push` or run SQL in Supabase dashboard.
 
+### Recharts Line must be direct children of LineChart (no Fragment wrappers)
+
+Date discovered: 2026-07-05  
+Context: Price tracker graphs on `/staging-price-tracker/` after unified Costco/grocery chart refactor (commit 7795b89).  
+What happened: Axes, grid, and baseline reference line rendered but **zero** price lines/dots/tooltips. Recharts `findAllByType(children, Line)` returned empty when `<Line />` components were wrapped in `<>...</>` fragments inside the range/unified ternary.  
+Fix / workaround: Keep each `<Line />` as a **direct** child of `<LineChart>` (same pattern as pre-refactor). Conditional lines use `{cond ? <Line /> : null}`, not fragment groups.  
+How to verify: Playwright — `.recharts-line` count > 0 and hover on a dot shows `.price-tracker-chart-tooltip` with a price. `npm run build:price-tracker`.  
+Related files: `src/staging-price-tracker/PriceTrendChart.tsx`
+
 ### Price tracker Vite entry must be `src/staging-price-tracker/index.html`, not `staging-price-tracker/index.html`
 
 Date discovered: 2026-06-07  
@@ -172,7 +181,7 @@ Playwright setup: `pip install -r scripts/requirements.txt && playwright install
 Date discovered: 2026-06-14  
 Context: `price_comparisons` backfill and badge on `/staging-price-tracker/`.  
 What happened: Costco warehouse CSVs live outside this repo at `~/Documents/costco-mvp/costco_data` (flat `{date}_{location}_consolidated.csv` plus older per-category CSVs). Default consolidated searches are `cracker chip protein chicken` — produce/eggs/soda often have no Costco row until more terms are crawled.  
-Fix / workaround: Run `python3 scripts/backfill_price_comparisons.py` (override path with `COSTCO_DATA_ROOT`). Maps Safeway → `san-francisco` / `costco_sf`, Vons → `tustin` / `costco_oc`. Writes `supabase/migrations/20260616_price_comparisons_seed.sql` + `src/data/priceComparisons.generated.ts`. Apply schema migration `20260616_price_comparisons.sql` before seed.  
+Fix / workaround: Run `python3 scripts/backfill_price_comparisons.py` (override path with `COSTCO_DATA_ROOT`). Maps Safeway → `san-francisco` / `costco_sf`, Vons → `tustin` / `costco_oc`. Writes `supabase/migrations/20260617_price_comparisons_seed.sql` + `src/data/priceComparisons.generated.ts`. Apply schema migration `20260616_price_comparisons.sql` before seed.  
 How to verify: Backfill log shows item counts per location; cards show badges like "Via Safeway", "Via Costco", or "Not found at Costco" (scoped to the active grocery tab vs Costco — never cross-compares Safeway vs Vons). Re-run is idempotent (`on conflict` upsert).  
 Related files: `scripts/backfill_price_comparisons.py`, `scripts/price_comparison/`, `COSTCO_DATA_ROOT`, `src/staging-price-tracker/ComparisonBadge.tsx`
 
@@ -277,4 +286,14 @@ What happened: Need Vons-only historical labels (all-time low, near low, etc.) s
 Fix / workaround: Run `npm run vons-historical-low-check` (or `python3 scripts/analysis/vons_historical_low_check.py`). Uses `config/vons_historical_low_category_mappings.csv` (additive — does not modify canonicalProducts.ts). Historical rows from `scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`. Current week needs vision-extracted split_offer CSV (PDF alone is not enough). July 2026 week input: `data/weekly_ads/2026-07-01/socal_oc/split_offer_items.csv`.  
 How to verify: `python3 -m unittest tests.test_vons_historical_low_check -v` then inspect `outputs/vons_2026-07-01_historical_low_candidates.csv`.  
 Related files: `scripts/analysis/vons_historical_low_check.py`, `config/vons_historical_low_category_mappings.csv`, `tests/test_vons_historical_low_check.py`
+
+
+### Supabase migration version must be unique per file
+
+Date discovered: 2026-07-05  
+Context: `supabase db push` after adding Costco price comparison seed.  
+What happened: Two files shared prefix `20260616` (`20260616_price_comparisons.sql` + `20260616_price_comparisons_seed.sql`). Remote `schema_migrations` already had version `20260616` for the schema migration; push failed with duplicate version.  
+Fix / workaround: Give seed its own version (`20260617_price_comparisons_seed.sql`). Schema stays `20260616`. Seed data can also be applied manually: `supabase db query --linked -f supabase/migrations/20260617_price_comparisons_seed.sql` (idempotent upserts). `backfill_price_comparisons.py` writes the `20260617_…` path.  
+How to verify: `supabase db push --dry-run` lists only `20260617_price_comparisons_seed.sql` pending; no duplicate-version error.  
+Related files: `supabase/migrations/20260616_price_comparisons.sql`, `supabase/migrations/20260617_price_comparisons_seed.sql`, `scripts/backfill_price_comparisons.py`
 

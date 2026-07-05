@@ -38,7 +38,7 @@ from price_comparison.costco_loader import (  # noqa: E402
     match_costco_item,
 )
 
-SQL_OUTPUT = ROOT / "supabase" / "migrations" / "20260616_price_comparisons_seed.sql"
+SQL_OUTPUT = ROOT / "supabase" / "migrations" / "20260617_price_comparisons_seed.sql"
 TS_OUTPUT = ROOT / "src" / "data" / "priceComparisons.generated.ts"
 HISTORY_OUTPUT = ROOT / "src" / "data" / "costcoPriceHistory.generated.ts"
 

@@ -241,129 +241,127 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
               />
             ) : null}
             {rangeMode ? (
-              <>
-                <Line
-                  type="monotone"
-                  dataKey="priceMax"
-                  stroke={sparkline ? "#d8d8d8" : "#bbb"}
-                  strokeWidth={sparkline ? 0.75 : compact ? 1 : 1.5}
-                  strokeDasharray="4 3"
-                  strokeOpacity={sparkline ? 0.55 : 1}
-                  dot={false}
-                  connectNulls
-                  activeDot={false}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="price"
-                  stroke={sparkline ? "#b0b0b0" : "#222"}
-                  strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
-                  strokeOpacity={sparkline ? 0.7 : 1}
-                  dot={(props) => {
-                    const { cx, cy, payload } = props;
-                    const row = payload as RangeChartRow;
-                    const fill = sparkline
-                      ? row.isBaselineFallback
-                        ? "#d0d0d0"
-                        : "#b8b8b8"
+              <Line
+                type="monotone"
+                dataKey="priceMax"
+                stroke={sparkline ? "#d8d8d8" : "#bbb"}
+                strokeWidth={sparkline ? 0.75 : compact ? 1 : 1.5}
+                strokeDasharray="4 3"
+                strokeOpacity={sparkline ? 0.55 : 1}
+                dot={false}
+                connectNulls
+                activeDot={false}
+              />
+            ) : null}
+            {rangeMode ? (
+              <Line
+                type="monotone"
+                dataKey="price"
+                stroke={sparkline ? "#b0b0b0" : "#222"}
+                strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
+                strokeOpacity={sparkline ? 0.7 : 1}
+                dot={(props) => {
+                  const { cx, cy, payload } = props;
+                  const row = payload as RangeChartRow;
+                  const fill = sparkline
+                    ? row.isBaselineFallback
+                      ? "#d0d0d0"
+                      : "#b8b8b8"
+                    : row.weekStart === "baseline"
+                      ? "#ff385c"
+                      : row.isBaselineFallback
+                        ? "#bbb"
+                        : "#222";
+                  const radius = sparkline
+                    ? 1.5
+                    : compact
+                      ? row.weekStart === "baseline"
+                        ? 3.5
+                        : 2.5
                       : row.weekStart === "baseline"
-                        ? "#ff385c"
-                        : row.isBaselineFallback
-                          ? "#bbb"
-                          : "#222";
-                    const radius = sparkline
-                      ? 1.5
-                      : compact
-                        ? row.weekStart === "baseline"
-                          ? 3.5
-                          : 2.5
-                        : row.weekStart === "baseline"
-                          ? 5
-                          : 4;
-                    if (sparkline && cx == null) {
-                      return <circle r={0} />;
-                    }
-                    return (
-                      <circle
-                        cx={cx}
-                        cy={cy}
-                        r={radius}
-                        fill={fill}
-                        stroke={sparkline ? "none" : "#fff"}
-                        strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
-                        opacity={sparkline ? 0.75 : 1}
-                      />
-                    );
-                  }}
-                  activeDot={
-                    sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                        ? 5
+                        : 4;
+                  if (sparkline && cx == null) {
+                    return <circle r={0} />;
                   }
-                  connectNulls
-                />
-              </>
+                  return (
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={radius}
+                      fill={fill}
+                      stroke={sparkline ? "none" : "#fff"}
+                      strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
+                      opacity={sparkline ? 0.75 : 1}
+                    />
+                  );
+                }}
+                activeDot={
+                  sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                }
+                connectNulls
+              />
             ) : (
-              <>
-                <Line
-                  type="monotone"
-                  dataKey="groceryPrice"
-                  stroke={sparkline ? "#b0b0b0" : "#222"}
-                  strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
-                  strokeOpacity={sparkline ? 0.7 : 1}
-                  dot={(props) => {
-                    const { cx, cy, payload } = props;
-                    const row = payload as UnifiedChartRow;
-                    const fill = sparkline
-                      ? row.isBaselineFallback
-                        ? "#d0d0d0"
-                        : "#b8b8b8"
+              <Line
+                type="monotone"
+                dataKey="groceryPrice"
+                stroke={sparkline ? "#b0b0b0" : "#222"}
+                strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
+                strokeOpacity={sparkline ? 0.7 : 1}
+                dot={(props) => {
+                  const { cx, cy, payload } = props;
+                  const row = payload as UnifiedChartRow;
+                  const fill = sparkline
+                    ? row.isBaselineFallback
+                      ? "#d0d0d0"
+                      : "#b8b8b8"
+                    : row.weekStart === "baseline"
+                      ? "#ff385c"
+                      : row.isBaselineFallback
+                        ? "#bbb"
+                        : "#222";
+                  const radius = sparkline
+                    ? 1.5
+                    : compact
+                      ? row.weekStart === "baseline"
+                        ? 3.5
+                        : 2.5
                       : row.weekStart === "baseline"
-                        ? "#ff385c"
-                        : row.isBaselineFallback
-                          ? "#bbb"
-                          : "#222";
-                    const radius = sparkline
-                      ? 1.5
-                      : compact
-                        ? row.weekStart === "baseline"
-                          ? 3.5
-                          : 2.5
-                        : row.weekStart === "baseline"
-                          ? 5
-                          : 4;
-                    if (sparkline && cx == null) {
-                      return <circle r={0} />;
-                    }
-                    return (
-                      <circle
-                        cx={cx}
-                        cy={cy}
-                        r={radius}
-                        fill={fill}
-                        stroke={sparkline ? "none" : "#fff"}
-                        strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
-                        opacity={sparkline ? 0.75 : 1}
-                      />
-                    );
-                  }}
-                  activeDot={
-                    sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                        ? 5
+                        : 4;
+                  if (sparkline && cx == null) {
+                    return <circle r={0} />;
                   }
-                  connectNulls
-                />
-                {hasCostcoLine ? (
-                  <Line
-                    type="monotone"
-                    dataKey="costcoPrice"
-                    stroke="#0071ce"
-                    strokeWidth={compact ? 1.5 : 2}
-                    strokeDasharray="6 4"
-                    dot={{ r: compact ? 2.5 : 3.5, fill: "#0071ce", stroke: "#fff" }}
-                    connectNulls
-                    isAnimationActive={false}
-                  />
-                ) : null}
-              </>
+                  return (
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r={radius}
+                      fill={fill}
+                      stroke={sparkline ? "none" : "#fff"}
+                      strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
+                      opacity={sparkline ? 0.75 : 1}
+                    />
+                  );
+                }}
+                activeDot={
+                  sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                }
+                connectNulls
+              />
             )}
+            {!rangeMode && hasCostcoLine ? (
+              <Line
+                type="monotone"
+                dataKey="costcoPrice"
+                stroke="#0071ce"
+                strokeWidth={compact ? 1.5 : 2}
+                strokeDasharray="6 4"
+                dot={{ r: compact ? 2.5 : 3.5, fill: "#0071ce", stroke: "#fff" }}
+                connectNulls
+                isAnimationActive={false}
+              />
+            ) : null}
           </LineChart>
         </ResponsiveContainer>
       </div>
