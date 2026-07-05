@@ -2,44 +2,180 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scrolling the Aisle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrolling the Aisle — Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+<body class="hub-page">
+  <header class="page-header">
+    <a href="index.html" class="brand">SCROLLING THE AISLE</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="about.html" class="site-nav-link">About</a>
+      <a href="finds.html" class="site-nav-link">Finds</a>
+      <a href="staging-price-tracker/" class="site-nav-link">Price tracker</a>
+    </nav>
+  </header>
 
-<body class="landing">
-  <nav class="site-nav site-nav--landing" aria-label="Main">
-    <a href="about.html" class="site-nav-link">About</a>
-    <a href="finds.html" class="site-nav-link">Finds</a>
-    <a href="staging-price-tracker/" class="site-nav-link">Price tracker</a>
-  </nav>
-  <div class="container">
-    <div class="logo">SCROLLING THE AISLE</div>
+  <main class="hub-main">
+    <!-- 1. Hero -->
+    <section class="hub-hero" aria-labelledby="hub-hero-title">
+      <p class="hub-eyebrow">Weekly grocery briefing</p>
+      <h1 id="hub-hero-title">Know what to stock up on this week.</h1>
+      <p class="hub-hero-lead">
+        Every week, Scrolling the Aisle compares grocery sales against Costco, past prices, and real unit prices so you know what's actually worth buying — and what can wait.
+      </p>
 
-    <h1>Find the best grocery deals, fast</h1>
+      <div id="hero-signup" class="hub-signup beehiiv-form-wrapper" tabindex="-1">
+        <script
+          async
+          src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+          data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
+        </script>
+      </div>
 
-    <p class="subtitle">
-      We track the best weekly deals across stores so you don’t have to.
-      Be the first to know when new deals drop.
-    </p>
+      <p class="hub-hero-actions">
+        <a href="#stock-up-list" class="hub-text-link">Browse this week's picks ↓</a>
+      </p>
+    </section>
 
-    <div class="beehiiv-form-wrapper">
-      <script
-        async
-        src="https://subscribe-forms.beehiiv.com/v3/loader.js"
-        data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
-      </script>
-    </div>
+    <!-- 2. Stock-up list -->
+    <section id="stock-up-list" class="hub-section" aria-labelledby="stock-up-title">
+      <div class="hub-section-header">
+        <h2 id="stock-up-title">This week's best buys</h2>
+        <p class="hub-section-lead">The few deals worth checking before you shop.</p>
+        <p id="stock-up-week" class="hub-section-meta" aria-live="polite"></p>
+      </div>
+      <div id="stock-up-grid" class="hub-deal-grid" aria-live="polite"></div>
+    </section>
 
-    <p class="landing-link">
-      <a href="staging-price-tracker/">View the Safeway price tracker →</a>
-    </p>
+    <!-- 3. Price tracker preview -->
+    <section class="hub-section hub-section--tracker" aria-labelledby="tracker-preview-title">
+      <div class="hub-section-header">
+        <h2 id="tracker-preview-title">Check if your regular groceries are a good buy</h2>
+        <p class="hub-section-lead">Search or browse popular items we're watching this week.</p>
+      </div>
 
-    <footer>
-      Built for deal hunters 🛒
-    </footer>
-  </div>
+      <label class="hub-search" for="tracker-search">
+        <span class="visually-hidden">Search tracked items</span>
+        <input
+          type="search"
+          id="tracker-search"
+          placeholder="Search items — strawberries, Doritos, yogurt…"
+          autocomplete="off"
+        />
+      </label>
+
+      <div class="hub-tracker-table-wrap hub-desktop-only">
+        <table class="hub-tracker-table" aria-describedby="tracker-preview-title">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Price</th>
+              <th scope="col">Store</th>
+              <th scope="col">Unit price</th>
+              <th scope="col">Comparison</th>
+              <th scope="col">Signal</th>
+            </tr>
+          </thead>
+          <tbody id="tracker-preview-body"></tbody>
+        </table>
+      </div>
+
+      <div id="tracker-preview-cards" class="hub-tracker-cards hub-mobile-only" aria-live="polite"></div>
+
+      <p class="hub-section-footer">
+        <a href="staging-price-tracker/" class="hub-text-link">Open the full price tracker →</a>
+      </p>
+    </section>
+
+    <!-- 4. TikTok tie-in -->
+    <section class="hub-section" aria-labelledby="tiktok-title">
+      <div class="hub-section-header">
+        <h2 id="tiktok-title">Seen in the latest aisle walk</h2>
+        <p class="hub-section-lead">Quick hits from recent store runs — what stood out and why it mattered.</p>
+      </div>
+      <div id="tiktok-grid" class="hub-tiktok-grid"></div>
+    </section>
+
+    <!-- 5. Suggestions / voting -->
+    <section id="track-vote-preview" class="hub-section hub-section--vote" aria-labelledby="vote-title">
+      <div class="hub-section-header">
+        <h2 id="vote-title">What should we track next?</h2>
+        <p class="hub-section-lead">Vote for staples you buy every week — we'll add the winners to the tracker.</p>
+      </div>
+
+      <div id="vote-grid" class="hub-vote-grid" role="list" aria-live="polite"></div>
+
+      <form id="vote-suggest-form" class="hub-vote-suggest">
+        <label for="vote-suggest-input">Suggest another item</label>
+        <div class="hub-vote-suggest-row">
+          <input
+            id="vote-suggest-input"
+            type="text"
+            placeholder="e.g. protein bars, sparkling water"
+            maxlength="60"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-primary btn-sm">Suggest item</button>
+        </div>
+      </form>
+      <p id="vote-status" class="hub-vote-status" role="status" aria-live="polite"></p>
+      <p class="hub-section-footer">
+        <a href="staging-price-tracker/#track-vote" class="hub-text-link">Vote on the full tracker page →</a>
+      </p>
+    </section>
+
+    <!-- 6. Live finds preview -->
+    <section class="hub-section" aria-labelledby="finds-preview-title">
+      <div class="hub-section-header">
+        <h2 id="finds-preview-title">Fresh finds from the aisles</h2>
+        <p class="hub-section-lead">In-store deals spotted by shoppers — refreshed every few days.</p>
+      </div>
+      <div id="finds-preview" aria-live="polite"></div>
+    </section>
+
+    <!-- 7. Trust / explanation -->
+    <section class="hub-section hub-section--trust" aria-labelledby="trust-title">
+      <div class="hub-section-header">
+        <h2 id="trust-title">How we decide what's worth it</h2>
+      </div>
+      <div class="hub-trust-grid">
+        <article class="hub-trust-card">
+          <h3>Compare the unit price</h3>
+          <p>Package sizes lie. We normalize to per-ounce, per-pound, or per-item so a “sale” is actually cheaper.</p>
+        </article>
+        <article class="hub-trust-card">
+          <h3>Check against Costco</h3>
+          <p>When there's a warehouse match, we line up grocery promos against regional Costco pricing — not random cross-store guesses.</p>
+        </article>
+        <article class="hub-trust-card">
+          <h3>Watch what people actually buy every week</h3>
+          <p>We track recurring staples — berries, chips, yogurt, eggs — and flag when prices dip vs. their own history.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Bottom signup -->
+    <section class="hub-cta-band" aria-labelledby="hub-cta-title">
+      <h2 id="hub-cta-title">Get the weekly stock-up list in your inbox</h2>
+      <p>One email when the new ad week drops — the few items worth a trip, plus what can wait.</p>
+      <div class="hub-signup beehiiv-form-wrapper">
+        <script
+          async
+          src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+          data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
+        </script>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hub-footer">
+    <p>Built for people who love the aisles 🛒</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="homepage.js"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>

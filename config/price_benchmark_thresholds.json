@@ -1,0 +1,9 @@
+{
+  "minObservations": 2,
+  "allTimeLowTolerance": 1.001,
+  "nearAllTimeLowMultiplier": 1.05,
+  "strongSaleVsNinetyDayLow": 0.999,
+  "strongSaleVsMedian": 0.97,
+  "normalSaleVsMedian": 1.03,
+  "ninetyDayWeekFallback": 13
+}
