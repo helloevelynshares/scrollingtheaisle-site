@@ -138,7 +138,7 @@ GROCERY_FEEDS = {
     "safeway_bay_area": {
         "label": "Safeway",
         "costco_region_id": "costco_sf",
-        "costco_location_slug": "san-francisco",
+        "costco_location_slug": "san_francisco",
         "costco_store_label": "Costco San Francisco",
     },
     "vons_albertsons_socal": {

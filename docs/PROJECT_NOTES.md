@@ -176,6 +176,23 @@ Fix / workaround: Run `python3 scripts/backfill_price_comparisons.py` (override 
 How to verify: Backfill log shows item counts per location; cards show badges like "Via Safeway", "Via Costco", or "Not found at Costco" (scoped to the active grocery tab vs Costco — never cross-compares Safeway vs Vons). Re-run is idempotent (`on conflict` upsert).  
 Related files: `scripts/backfill_price_comparisons.py`, `scripts/price_comparison/`, `COSTCO_DATA_ROOT`, `src/staging-price-tracker/ComparisonBadge.tsx`
 
+### Costco warehouse pricing import cache (read-only from costco-mvp)
+
+Date discovered: 2026-07-05  
+Context: Price tracker graph Costco comparison lines; data lives in sibling repo `costco-mvp/costco_data`.  
+What happened: Pipeline read CSVs directly at build time; warehouse slugs mixed filename hyphens (`san-francisco`) with no local cache; product matching was text-only.  
+Fix / workaround: `scripts/price_comparison/import_costco_data.py` imports read-only CSVs → `data/processed/costco/observations.json` + `manifest.json`. Central mapping: `config/costco_warehouse_mapping.json` (Safeway→`san_francisco`, Vons→`tustin`, Seattle imported but not wired to grocery tabs). Item numbers: `config/costco_item_mappings.csv` (warehouse-specific when SKUs differ). `backfill_price_comparisons.py` auto-imports then generates `costcoPriceHistory.generated.ts` / `priceComparisons.generated.ts`. No cross-warehouse fallback.  
+How to verify: `npm run import:costco-data` then `npm run generate:price-comparisons`; `PYTHONPATH=scripts python3 -m unittest scripts.price_comparison.test_costco_loader`; Safeway Doritos chart → SF item #2014409; Vons → Tustin #933402; `npm run build:price-tracker`.  
+Related files: `scripts/price_comparison/`, `config/costco_warehouse_mapping.json`, `config/costco_item_mappings.csv`, `src/data/costcoRegions.ts`, `data/processed/costco/`
+
+
+Date discovered: 2026-06-19  
+Context: Location-aware Costco tracker on `/staging-price-tracker/`.  
+What happened: Costco CSVs are per warehouse (`2026-06-18_san-francisco_consolidated.csv`, `_tustin_`, `_seattle_`). Safeway compares only SF Costco; Vons/Albertsons compares only Tustin; Seattle is parsed into history but not wired to grocery tabs until a Seattle tracker exists.  
+Fix / workaround: Region slugs/types in `src/data/costcoRegions.ts`; loader in `scripts/price_comparison/costco_loader.py` (`CostcoObservation`, filename date/region parse, date mismatch warnings). Backfill writes `src/data/costcoPriceHistory.generated.ts` for regional chart overlays. UI badges/charts show "Costco comparison uses San Francisco/Tustin Costco pricing."  
+How to verify: `npm run generate:price-comparisons`; Safeway tab → Doritos chart has blue Costco line + SF note; Vons tab → separate Tustin history; `PYTHONPATH=scripts python3 -m unittest scripts.price_comparison.test_costco_loader`.  
+Related files: `src/data/costcoRegions.ts`, `src/data/costcoPriceHistory.generated.ts`, `scripts/price_comparison/costco_loader.py`, `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/priceComparisonUtils.ts`
+
 ### Tracker families are additive client-side layers
 
 Date discovered: 2026-06-19  
@@ -185,5 +202,79 @@ Fix / workaround: Definitions in `src/data/trackerFamilies.ts`; weekly ad matche
 How to verify: `npm run build:price-tracker`; Safeway tab → "Handpicked deal families" section with B&J range chart and Ritz "Best value: Costco" / "More variety" badge.  
 Related files: `src/data/trackerFamilies.ts`, `src/data/trackerFamilyUtils.ts`, `src/data/familyWeeklyAdPrices.generated.ts`, `src/staging-price-tracker/ProductCard.tsx`
 
+### Weekly ad video brief workflow (watchlist-first)
 
-Track unresolved questions here.
+Date discovered: 2026-06-24  
+Context: Repeatable creator workflow for Bay Area Safeway + SoCal Vons/Albertsons short-form scripts.  
+What happened: Price tracker already had canonical products, weekly ad matchers, and Costco comparison modules — but no market-scoped brief generator. Legacy `safeway_tracked_items_v1.csv` (50 TikTok SKUs) is separate from the live 18+2 tracker.  
+Fix / workaround: **Option B** — `config/content_watchlist_overrides.csv` references existing `canonical_product_id` / `canonical_category_id` (families) for video metadata only. Markets in `config/markets.json` (`bay_area`, `socal_oc`). Run:
+
+```bash
+npm run analyze-weekly-ad -- --week=YYYY-MM-DD --market=bay_area
+npm run analyze-weekly-ad -- --week=YYYY-MM-DD --market=socal_oc
+```
+
+Inputs: `data/weekly_ads/{week}/{market}/` with grocer PDF **or** `split_offer_items.csv` (preferred), plus `costco_consolidated.csv`. Outputs: `output/weekly_deals/{week}/{market}/` (`matched_watchlist_deals.csv`, `ranked_video_candidates.csv`, `video_brief.md`, etc.). Reuses matchers from `scripts/generate_weekly_ad_prices.py`, Costco logic from `scripts/price_comparison/`, historical benchmarks from `weeklyAdPrices.generated.ts` / `vonsWeeklyAdPrices.generated.ts`. PDF fallback uses `pypdf` (`pip install pypdf`).  
+How to verify: Drop Jun 17 `split_offer_items.csv` + Costco consolidated CSV into input folder; run both markets; open `video_brief.md`.  
+Related files: `scripts/analyze_weekly_ad.py`, `scripts/weekly_ad_analysis/`, `config/markets.json`, `config/content_watchlist_overrides.csv`
+
+### Safeway image-only PDFs need split_offer_items.csv (not pypdf)
+
+Date discovered: 2026-06-24  
+Context: `analyze-weekly-ad` for week `2026-06-24` bay_area with `safeway 6-24 - 6-30.pdf`.  
+What happened: `pypdf` extracted 0 text chars from all 12 pages (image-based flyer). Pipeline ran but produced empty `matched_watchlist_deals.csv` and `debug_unmatched_items.csv`.  
+Fix / workaround: Prefer `split_offer_items.csv` from the scrolling-the-aisle vision pipeline (`discover_product_candidates.py`) in the input folder. PDF fallback only works when the PDF has a text layer.  
+How to verify: `python3 -c "from pypdf import PdfReader; print(len(PdfReader('safeway_ad.pdf').pages[0].extract_text() or ''))"` — expect >0 for text PDFs.  
+Related files: `scripts/weekly_ad_analysis/ad_loader.py`, `data/weekly_ads/{week}/bay_area/`
+
+### Shared price benchmark buckets (pipeline + UI)
+
+Date discovered: 2026-06-24  
+Context: Weekly ad scoring and future UI deal badges need explicit historical buckets, not just `getLowestObservedPrice`.  
+What happened: `priceTrackerUtils.ts` inferred baseline from max ad price; pipeline had bucket logic only in Python.  
+Fix / workaround: Shared thresholds in `config/price_benchmark_thresholds.json`. TypeScript: `src/data/priceBenchmarks.ts` (`computeFeedProductBenchmark`, `computePriceBenchmarkFromWeeklyPrices`). Python: `scripts/weekly_ad_analysis/benchmarks.py` (`compute_benchmark`, `bucket_for_price`). Buckets: all-time low, near all-time low, strong sale, normal sale, weak sale, insufficient history.  
+How to verify: `PYTHONPATH=scripts python3 -c "from weekly_ad_analysis.benchmarks import compute_benchmark; print(compute_benchmark('strawberries','canonical','safeway_bay_area',2.5))"`  
+Related files: `config/price_benchmark_thresholds.json`, `src/data/priceBenchmarks.ts`, `scripts/weekly_ad_analysis/benchmarks.py`
+
+
+### Incremental price tracker product add (cached weekly ads)
+
+Date discovered: 2026-07-05  
+Context: Adding canonical/tracked items without re-scanning all products or re-extracting historical PDFs.  
+What happened: Full `generate_weekly_ad_prices.py` rematched all products × all weeks every build; baseline crawls could overwrite CSVs. Historical offers already live in sibling-repo `split_offer_items.csv`.  
+Fix / workaround: Incremental flags on `scripts/generate_weekly_ad_prices.py` (`--product-id`, `--new-only`, `--dry-run`, merge into existing TS). Orchestrator: `scripts/add_tracker_product.py --product-id ID --all`. Baseline seeds support `--product-id` + `--merge-csv`. Costco: `backfill_price_comparisons.py --product-id`. Runbook: `docs/PRICE_TRACKER_ADD_RUNBOOK.md`. Full rematch: `--full-rematch` (default when no incremental flags).  
+How to verify: `python3 scripts/generate_weekly_ad_prices.py --product-id grapes --dry-run` shows `extraction=0 (cache only)`; `python3 -m unittest tests.test_generate_weekly_ad_prices_incremental`.  
+Related files: `scripts/generate_weekly_ad_prices.py`, `scripts/price_tracker/artifacts.py`, `scripts/add_tracker_product.py`, `docs/PRICE_TRACKER_ADD_RUNBOOK.md`
+
+### Weekly ad weeks 2026-06-24 and 2026-07-01 added to price tracker
+
+Date discovered: 2026-07-05  
+Context: Price tracker was missing the last two ad weeks (Jun 24–30 and Jul 1–7) for Safeway and Vons.  
+What happened: **2026-07-01** vision extraction already existed in sibling repo (`product_discovery_safeway_7-1/`, `product_discovery_vons_7-1/`) but was not merged into the consolidated `split_offer_items.csv` caches. **2026-06-24** PDFs exist (`safeway 6-24 - 6-30.pdf`, `vons 6-24 - 6-30.pdf`) but had no vision extraction anywhere (image-only PDFs; pypdf returns 0 chars).  
+Fix / workaround:
+1. Append week rows from `product_discovery_*_7-1/split_offer_items.csv` into sibling-repo `outputs/product_discovery_{safeway,vons}/split_offer_items.csv` (dedupe by `split_item_id`).
+2. Add manifest rows in `data/weekly_ads/flyer_manifest_{safeway,vons}.csv` using PDF filenames from `~/Documents/scrolling-the-aisle/inputs/weekly_ads/`.
+3. Regenerate: `npm run generate:weekly-ad-prices` (or `--full-rematch`) then `npm run generate:price-tracker-seed`.
+4. **6-24 extraction** runs in sibling repo (image-only PDFs; not in scrollingtheaisle-site). Completed 2026-07-05 via cached vision pipeline:
+   ```bash
+   cd ~/Documents/scrolling-the-aisle
+   python3 src/discover_product_candidates.py --input-dir inputs/weekly_ads \
+     --manifest inputs/weekly_ads/flyer_manifest_safeway.csv \
+     --output-dir outputs/product_discovery_safeway_6-24 --only-file "safeway 6-24"
+   python3 src/discover_product_candidates.py --input-dir inputs/weekly_ads \
+     --manifest inputs/weekly_ads/flyer_manifest_vons.csv \
+     --output-dir outputs/product_discovery_vons_6-24 --only-file "vons 6-24"
+   # Merge split_offer_items.csv into outputs/product_discovery_{safeway,vons}/ then rerun generate.
+   ```
+   Requires `OPENAI_API_KEY` in sibling-repo `.env`. Pipeline may exit 1 on `summary_report.py` bug after writing `split_offer_items.csv` — merge output anyway. Row counts: Safeway 208, Vons 163 for `2026-06-24`.
+How to verify: Audit — expect 208 Safeway + 163 Vons rows for `2026-06-24`, 223 + 115 for `2026-07-01`. `grep 2026-07-01 src/data/weeklyAdPrices.generated.ts`. `npm run build:price-tracker` then check chart x-axis on `/staging-price-tracker/`.  
+Related files: `data/weekly_ads/flyer_manifest_*.csv`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_*/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`, `src/data/familyWeeklyAdPrices.generated.ts`, `supabase/migrations/20260610_price_tracker_seed.sql`, `supabase/migrations/20260615_vons_weekly_observations_seed.sql`
+
+
+Date discovered: 2026-07-02  
+Context: SoCal Vons weekly ad historical benchmarking for existing STA food watchlist + additive category mappings.  
+What happened: Need Vons-only historical labels (all-time low, near low, etc.) separate from Costco-first weekly brief workflow.  
+Fix / workaround: Run `npm run vons-historical-low-check` (or `python3 scripts/analysis/vons_historical_low_check.py`). Uses `config/vons_historical_low_category_mappings.csv` (additive — does not modify canonicalProducts.ts). Historical rows from `scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`. Current week needs vision-extracted split_offer CSV (PDF alone is not enough). July 2026 week input: `data/weekly_ads/2026-07-01/socal_oc/split_offer_items.csv`.  
+How to verify: `python3 -m unittest tests.test_vons_historical_low_check -v` then inspect `outputs/vons_2026-07-01_historical_low_candidates.csv`.  
+Related files: `scripts/analysis/vons_historical_low_check.py`, `config/vons_historical_low_category_mappings.csv`, `tests/test_vons_historical_low_check.py`
+

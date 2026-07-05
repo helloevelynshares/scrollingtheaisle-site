@@ -1,21 +1,21 @@
-/** Costco warehouse region slugs derived from CSV filenames. */
-export type CostcoRegion = "san-francisco" | "tustin" | "seattle";
+/** Costco warehouse keys — normalized from CSV filename slugs (san-francisco → san_francisco). */
+export type CostcoRegion = "san_francisco" | "tustin" | "seattle";
 
 /** Grocery tracker tabs that compare against a regional Costco warehouse. */
 export type GroceryTrackerRegion = "safeway" | "vons-albertsons";
 
 export const COSTCO_REGIONS: readonly CostcoRegion[] = [
-  "san-francisco",
+  "san_francisco",
   "tustin",
   "seattle",
 ] as const;
 
-/** Maps an active grocery tracker to its paired Costco warehouse region. */
+/** Maps an active grocery tracker to its paired Costco warehouse. No cross-warehouse fallback. */
 export const groceryTrackerToCostcoRegion: Record<
   GroceryTrackerRegion,
   CostcoRegion
 > = {
-  safeway: "san-francisco",
+  safeway: "san_francisco",
   "vons-albertsons": "tustin",
 };
 
@@ -27,9 +27,9 @@ export const feedIdToGroceryTrackerRegion: Partial<
   vons_albertsons_socal: "vons-albertsons",
 };
 
-/** Maps Costco price-feed ids to warehouse region slugs. */
+/** Maps Costco price-feed ids to warehouse region keys. */
 export const costcoFeedIdToRegion: Record<string, CostcoRegion> = {
-  costco_sf: "san-francisco",
+  costco_sf: "san_francisco",
   costco_oc: "tustin",
 };
 
@@ -44,7 +44,7 @@ export function getCostcoRegionForFeed(feedId: string): CostcoRegion | null {
 /** Shopper-facing note for comparison badges and expanded details. */
 export function getCostcoComparisonLocationNote(feedId: string): string | null {
   const region = getCostcoRegionForFeed(feedId);
-  if (region === "san-francisco") {
+  if (region === "san_francisco") {
     return "Costco comparison uses San Francisco Costco pricing.";
   }
   if (region === "tustin") {
@@ -53,10 +53,10 @@ export function getCostcoComparisonLocationNote(feedId: string): string | null {
   return null;
 }
 
-/** Display label for a Costco warehouse region slug. */
+/** Display label for a Costco warehouse region key. */
 export function formatCostcoRegionLabel(region: CostcoRegion): string {
   switch (region) {
-    case "san-francisco":
+    case "san_francisco":
       return "San Francisco";
     case "tustin":
       return "Tustin";

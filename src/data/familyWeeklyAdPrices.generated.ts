@@ -48,6 +48,18 @@ export const FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-06-23",
     "sourceFile": "safeway 6-17 - 6-23.pdf",
     "sourceLabel": "Safeway weekly ad 06/17\u201306/23"
+  },
+  {
+    "weekStart": "2026-06-24",
+    "weekEnd": "2026-06-30",
+    "sourceFile": "safeway 6-24 - 6-30.pdf",
+    "sourceLabel": "Safeway weekly ad 06/24\u201306/30"
+  },
+  {
+    "weekStart": "2026-07-01",
+    "weekEnd": "2026-07-07",
+    "sourceFile": "safeway 7-1 - 7-7.pdf",
+    "sourceLabel": "Safeway weekly ad 07/01\u201307/07"
   }
 ];
 
@@ -55,43 +67,6 @@ export const FAMILY_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {
-  "ben_jerrys_ice_cream": {
-    "2026-03-25": {
-      "price": 3.49,
-      "offerText": "Ben & Jerry\u2019s Ice Cream 16 oz",
-      "confidence": "high"
-    },
-    "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
   "ritz_crackers_snacks": {
     "2026-03-25": {
       "price": 2.49,
@@ -127,6 +102,63 @@ export const FAMILY_WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "ben_jerrys_ice_cream": {
+    "2026-03-25": {
+      "price": 3.49,
+      "offerText": "Ben & Jerry\u2019s Ice Cream 16 oz",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   }
 };
@@ -135,6 +167,55 @@ export const FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, Record<string, GeneratedWeeklyAdPrice>>
 > = {
+  "ritz_crackers_snacks": {
+    "classic_box": {
+      "2026-03-25": {
+        "price": 2.49,
+        "offerText": "Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz",
+        "confidence": "medium"
+      },
+      "2026-04-01": {
+        "price": 2.49,
+        "offerText": "Ritz Crackers",
+        "confidence": "high"
+      },
+      "2026-05-06": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-05-12": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-03": {
+        "price": 2.49,
+        "offerText": "Ritz Crackers",
+        "confidence": "high"
+      },
+      "2026-06-10": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-17": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-24": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-07-01": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      }
+    }
+  },
   "ben_jerrys_ice_cream": {
     "pint": {
       "2026-03-25": {
@@ -168,6 +249,16 @@ export const FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "confidence": null
       },
       "2026-06-17": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-24": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-07-01": {
         "price": null,
         "offerText": null,
         "confidence": null
@@ -208,6 +299,16 @@ export const FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "price": null,
         "offerText": null,
         "confidence": null
+      },
+      "2026-06-24": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-07-01": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
       }
     },
     "bars_4ct": {
@@ -245,42 +346,13 @@ export const FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "price": null,
         "offerText": null,
         "confidence": null
-      }
-    }
-  },
-  "ritz_crackers_snacks": {
-    "classic_box": {
-      "2026-03-25": {
-        "price": 2.49,
-        "offerText": "Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz",
-        "confidence": "medium"
       },
-      "2026-04-01": {
-        "price": 2.49,
-        "offerText": "Ritz Crackers",
-        "confidence": "high"
-      },
-      "2026-05-06": {
+      "2026-06-24": {
         "price": null,
         "offerText": null,
         "confidence": null
       },
-      "2026-05-12": {
-        "price": null,
-        "offerText": null,
-        "confidence": null
-      },
-      "2026-06-03": {
-        "price": 2.49,
-        "offerText": "Ritz Crackers",
-        "confidence": "high"
-      },
-      "2026-06-10": {
-        "price": null,
-        "offerText": null,
-        "confidence": null
-      },
-      "2026-06-17": {
+      "2026-07-01": {
         "price": null,
         "offerText": null,
         "confidence": null
@@ -325,6 +397,18 @@ export const VONS_FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-06-23",
     "sourceFile": "vons 6-17 - 6-23.pdf",
     "sourceLabel": "Vons weekly ad 06/17\u201306/23"
+  },
+  {
+    "weekStart": "2026-06-24",
+    "weekEnd": "2026-06-30",
+    "sourceFile": "vons 6-24 - 6-30.pdf",
+    "sourceLabel": "Vons weekly ad 06/24\u201306/30"
+  },
+  {
+    "weekStart": "2026-07-01",
+    "weekEnd": "2026-07-07",
+    "sourceFile": "vons 7-1 - 7-7.pdf",
+    "sourceLabel": "Vons weekly ad 07/01\u201307/07"
   }
 ];
 
@@ -332,38 +416,6 @@ export const VONS_FAMILY_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {
-  "ben_jerrys_ice_cream": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
   "ritz_crackers_snacks": {
     "2026-05-06": {
       "price": null,
@@ -394,6 +446,58 @@ export const VONS_FAMILY_WEEKLY_AD_PRICES: Record<
       "price": 2.49,
       "offerText": "Ritz Crackers 5 to 13 oz",
       "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 2.99,
+      "offerText": "Nabisco Ritz Crackers",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "ben_jerrys_ice_cream": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   }
 };
@@ -402,6 +506,50 @@ export const VONS_FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, Record<string, GeneratedWeeklyAdPrice>>
 > = {
+  "ritz_crackers_snacks": {
+    "classic_box": {
+      "2026-05-06": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-05-13": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-05-20": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-03": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-10": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-17": {
+        "price": 2.49,
+        "offerText": "Ritz Crackers 5 to 13 oz",
+        "confidence": "high"
+      },
+      "2026-06-24": {
+        "price": 2.99,
+        "offerText": "Nabisco Ritz Crackers",
+        "confidence": "medium"
+      },
+      "2026-07-01": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      }
+    }
+  },
   "ben_jerrys_ice_cream": {
     "pint": {
       "2026-05-06": {
@@ -430,6 +578,16 @@ export const VONS_FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "confidence": null
       },
       "2026-06-17": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-06-24": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
+      },
+      "2026-07-01": {
         "price": null,
         "offerText": null,
         "confidence": null
@@ -465,6 +623,16 @@ export const VONS_FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "price": null,
         "offerText": null,
         "confidence": null
+      },
+      "2026-06-24": {
+        "price": 4.99,
+        "offerText": "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties",
+        "confidence": "medium"
+      },
+      "2026-07-01": {
+        "price": null,
+        "offerText": null,
+        "confidence": null
       }
     },
     "bars_4ct": {
@@ -497,40 +665,16 @@ export const VONS_FAMILY_MEMBER_WEEKLY_AD_PRICES: Record<
         "price": null,
         "offerText": null,
         "confidence": null
-      }
-    }
-  },
-  "ritz_crackers_snacks": {
-    "classic_box": {
-      "2026-05-06": {
+      },
+      "2026-06-24": {
         "price": null,
         "offerText": null,
         "confidence": null
       },
-      "2026-05-13": {
+      "2026-07-01": {
         "price": null,
         "offerText": null,
         "confidence": null
-      },
-      "2026-05-20": {
-        "price": null,
-        "offerText": null,
-        "confidence": null
-      },
-      "2026-06-03": {
-        "price": null,
-        "offerText": null,
-        "confidence": null
-      },
-      "2026-06-10": {
-        "price": null,
-        "offerText": null,
-        "confidence": null
-      },
-      "2026-06-17": {
-        "price": 2.49,
-        "offerText": "Ritz Crackers 5 to 13 oz",
-        "confidence": "high"
       }
     }
   }

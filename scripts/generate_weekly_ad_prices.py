@@ -5,19 +5,41 @@ Reads Safeway and Vons flyer manifests from data/weekly_ads/ and offer rows from
 scrolling-the-aisle repo (split_offer_items.csv). Writes
 src/data/weeklyAdPrices.generated.ts and src/data/vonsWeeklyAdPrices.generated.ts.
 
+Historical weekly ad extraction is cached in split_offer_items.csv (sibling repo).
+This script only reads that cache — it never re-OCRs or re-extracts PDFs.
+
 Usage:
-  python3 scripts/generate_weekly_ad_prices.py
+  python3 scripts/generate_weekly_ad_prices.py                    # full rematch (default)
+  python3 scripts/generate_weekly_ad_prices.py --product-id grapes
+  python3 scripts/generate_weekly_ad_prices.py --product-ids grapes,eggs_18_count
+  python3 scripts/generate_weekly_ad_prices.py --new-only         # products missing from output
+  python3 scripts/generate_weekly_ad_prices.py --family-id ben_jerrys_ice_cream
+  python3 scripts/generate_weekly_ad_prices.py --dry-run
   SCROLLING_THE_AISLE_ROOT=/path/to/scrolling-the-aisle python3 scripts/generate_weekly_ad_prices.py
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import os
 import re
+import sys
 from dataclasses import dataclass
 from pathlib import Path
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPT_DIR))
+
+from price_tracker.artifacts import (  # noqa: E402
+    MergeSummary,
+    merge_week_prices,
+    merge_weeks_list,
+    parse_family_ts,
+    parse_ts_export,
+    product_ids_missing_from_prices,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_ROOT = Path.home() / "Documents" / "scrolling-the-aisle"
@@ -481,20 +503,24 @@ def build_family_prices(
     feed_label: str,
     manifest: list[dict[str, str]],
     split_items: list[dict[str, str]],
+    *,
+    family_ids: set[str] | None = None,
 ) -> tuple[
     list[dict[str, str]],
     dict[str, dict[str, dict[str, object | None]]],
     dict[str, dict[str, dict[str, dict[str, object | None]]]],
 ]:
+    target_families = family_ids if family_ids is not None else set(TRACKER_FAMILY_IDS)
+    family_matchers = [m for m in FAMILY_MATCHERS if m.canonical_id in target_families]
+    member_matchers = [m for m in FAMILY_MEMBER_MATCHERS if m.family_id in target_families]
+
     weeks: list[dict[str, str]] = []
     family_prices: dict[str, dict[str, dict[str, object | None]]] = {
-        family_id: {} for family_id in TRACKER_FAMILY_IDS
+        family_id: {} for family_id in target_families
     }
     member_prices: dict[str, dict[str, dict[str, dict[str, object | None]]]] = {
-        family_id: {} for family_id in TRACKER_FAMILY_IDS
+        family_id: {} for family_id in target_families
     }
-    for family_id in TRACKER_FAMILY_IDS:
-        member_prices[family_id] = {}
 
     for entry in sorted(manifest, key=lambda row: row["week_start"]):
         week_start = entry["week_start"]
@@ -511,7 +537,7 @@ def build_family_prices(
             }
         )
 
-        for matcher in FAMILY_MATCHERS:
+        for matcher in family_matchers:
             best = pick_best_row(week_rows, matcher)
             if best is None:
                 family_prices[matcher.canonical_id][week_start] = {
@@ -528,7 +554,7 @@ def build_family_prices(
                 "confidence": match_confidence(best, matcher),
             }
 
-        for matcher in FAMILY_MEMBER_MATCHERS:
+        for matcher in member_matchers:
             member_bucket = member_prices.setdefault(matcher.family_id, {})
             member_weeks = member_bucket.setdefault(matcher.member_id, {})
             best = pick_best_member_row(week_rows, matcher)
@@ -614,10 +640,15 @@ def build_prices(
     feed_label: str,
     manifest: list[dict[str, str]],
     split_items: list[dict[str, str]],
+    *,
+    product_ids: set[str] | None = None,
 ) -> tuple[list[dict[str, str]], dict[str, dict[str, dict[str, object | None]]]]:
+    target_ids = product_ids if product_ids is not None else set(TRACKER_CANONICAL_IDS)
+    matchers = [m for m in MATCHERS if m.canonical_id in target_ids]
+
     weeks: list[dict[str, str]] = []
     prices: dict[str, dict[str, dict[str, object | None]]] = {
-        canonical_id: {} for canonical_id in TRACKER_CANONICAL_IDS
+        canonical_id: {} for canonical_id in target_ids
     }
 
     for entry in sorted(manifest, key=lambda row: row["week_start"]):
@@ -635,7 +666,7 @@ def build_prices(
             }
         )
 
-        for matcher in MATCHERS:
+        for matcher in matchers:
             best = pick_best_row(week_rows, matcher)
             if best is None:
                 prices[matcher.canonical_id][week_start] = {
@@ -698,11 +729,158 @@ export const {export_prices}: Record<
 
 FAMILY_OUTPUT = ROOT / "src" / "data" / "familyWeeklyAdPrices.generated.ts"
 
+FEED_TS_KEYS = {
+    "Safeway": ("WEEKLY_AD_WEEKS", "WEEKLY_AD_PRICES"),
+    "Vons": ("VONS_WEEKLY_AD_WEEKS", "VONS_WEEKLY_AD_PRICES"),
+}
 
-def generate_feed(config: FeedConfig) -> None:
+
+@dataclass
+class RunOptions:
+    product_ids: set[str] | None = None
+    family_ids: set[str] | None = None
+    full_rematch: bool = True
+    new_only: bool = False
+    dry_run: bool = False
+    feeds: set[str] | None = None  # {"Safeway", "Vons"}
+
+
+def feed_weeks_key(feed_label: str) -> str:
+    return FEED_TS_KEYS[feed_label][0]
+
+
+def feed_prices_key(feed_label: str) -> str:
+    return FEED_TS_KEYS[feed_label][1]
+
+
+def resolve_run_options(args: argparse.Namespace) -> RunOptions:
+    product_ids: set[str] | None = None
+    family_ids: set[str] | None = None
+
+    if args.product_id:
+        product_ids = {args.product_id.strip()}
+    if args.product_ids:
+        product_ids = {p.strip() for p in args.product_ids.split(",") if p.strip()}
+    if args.family_id:
+        family_ids = {args.family_id.strip()}
+
+    incremental = bool(product_ids or family_ids or args.new_only)
+    full_rematch = args.full_rematch or not incremental
+
+    if args.new_only and not product_ids:
+        product_ids = set(TRACKER_CANONICAL_IDS)
+
+    feeds: set[str] | None = None
+    if args.feed and args.feed != "all":
+        feeds = {args.feed.capitalize()}
+
+    return RunOptions(
+        product_ids=product_ids,
+        family_ids=family_ids,
+        full_rematch=full_rematch,
+        new_only=args.new_only,
+        dry_run=args.dry_run,
+        feeds=feeds,
+    )
+
+
+def validate_product_ids(product_ids: set[str]) -> None:
+    known = {m.canonical_id for m in MATCHERS}
+    unknown = product_ids - known
+    if unknown:
+        raise SystemExit(
+            f"Unknown product id(s): {', '.join(sorted(unknown))}. "
+            "Add a ProductMatcher in generate_weekly_ad_prices.py first."
+        )
+
+
+def validate_family_ids(family_ids: set[str]) -> None:
+    known = set(TRACKER_FAMILY_IDS)
+    unknown = family_ids - known
+    if unknown:
+        raise SystemExit(
+            f"Unknown family id(s): {', '.join(sorted(unknown))}. "
+            "Add matchers in generate_weekly_ad_prices.py and trackerFamilies.ts."
+        )
+
+
+def print_run_header(options: RunOptions, split_path: Path) -> None:
+    mode = "full rematch" if options.full_rematch else "incremental (cache search only)"
+    print(f"Mode: {mode}")
+    print(f"Extraction: none — reading cached offers from {split_path}")
+    if options.product_ids:
+        print(f"Products: {', '.join(sorted(options.product_ids))}")
+    if options.family_ids:
+        print(f"Families: {', '.join(sorted(options.family_ids))}")
+
+
+def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
+    summary = MergeSummary()
     manifest = load_manifest(config.manifest_path)
     split_items = load_split_items(config.split_items_path, config.banner_filter)
-    weeks, prices = build_prices(config.feed_label, manifest, split_items)
+    print_run_header(options, config.split_items_path)
+
+    weeks_key, prices_key = FEED_TS_KEYS[config.feed_label]
+    product_ids = (
+        set(TRACKER_CANONICAL_IDS)
+        if options.full_rematch
+        else (options.product_ids or set())
+    )
+
+    if not options.full_rematch and not product_ids:
+        print(f"Skipping {config.feed_label} — no product ids to match")
+        return summary
+
+    if not options.full_rematch:
+        validate_product_ids(product_ids)
+        parsed = parse_ts_export(config.output_path, weeks_key, prices_key)
+        if parsed is None:
+            print(
+                f"No existing {config.output_path.name} — falling back to full write "
+                f"for {len(product_ids)} product(s)"
+            )
+            weeks, new_prices = build_prices(
+                config.feed_label, manifest, split_items, product_ids=product_ids
+            )
+            prices = {cid: {} for cid in TRACKER_CANONICAL_IDS}
+            prices.update(new_prices)
+            weeks = merge_weeks_list([], weeks)
+        else:
+            existing_weeks, existing_prices = parsed
+            if options.new_only:
+                product_ids = product_ids_missing_from_prices(
+                    product_ids, existing_prices
+                )
+                if not product_ids:
+                    print(f"No new products missing from {config.output_path.name}")
+                    return summary
+            weeks, new_prices = build_prices(
+                config.feed_label, manifest, split_items, product_ids=product_ids
+            )
+            prices = dict(existing_prices)
+            for cid in TRACKER_CANONICAL_IDS:
+                prices.setdefault(cid, {})
+            merge_summary = merge_week_prices(prices, new_prices, product_ids)
+            summary = merge_summary
+            weeks = merge_weeks_list(existing_weeks, weeks)
+    else:
+        weeks, prices = build_prices(config.feed_label, manifest, split_items)
+        summary.products_scanned = len(TRACKER_CANONICAL_IDS)
+        summary.matched_weeks = sum(
+            1
+            for pid in prices
+            for entry in prices[pid].values()
+            if entry.get("price") is not None
+        )
+
+    if options.dry_run:
+        print(
+            f"[dry-run] {config.feed_label}: would write {len(weeks)} weeks, "
+            f"inserted={summary.inserted} updated={summary.updated} "
+            f"skipped={summary.skipped} matched_weeks={summary.matched_weeks}"
+        )
+        return summary
+
     config.output_path.write_text(
         render_ts(
             config.feed_label,
@@ -715,11 +893,15 @@ def generate_feed(config: FeedConfig) -> None:
     )
     print(
         f"Wrote {config.output_path.relative_to(ROOT)} "
-        f"({len(weeks)} weeks, {len(TRACKER_CANONICAL_IDS)} products)"
+        f"({len(weeks)} weeks, {len(prices)} products) — "
+        f"inserted={summary.inserted} updated={summary.updated} "
+        f"skipped={summary.skipped} matched_weeks={summary.matched_weeks}"
     )
+    return summary
 
 
-def generate_family_prices() -> None:
+def generate_family_prices(options: RunOptions) -> MergeSummary:
+    summary = MergeSummary()
     safeway = FEEDS[0]
     vons = FEEDS[1]
     safeway_manifest = load_manifest(safeway.manifest_path)
@@ -727,36 +909,155 @@ def generate_family_prices() -> None:
     safeway_items = load_split_items(safeway.split_items_path, safeway.banner_filter)
     vons_items = load_split_items(vons.split_items_path, vons.banner_filter)
 
-    safeway_weeks, safeway_family, safeway_members = build_family_prices(
-        safeway.feed_label, safeway_manifest, safeway_items
+    if options.full_rematch and not options.family_ids:
+        target_families: set[str] | None = None
+    else:
+        target_families = options.family_ids or set()
+        if not target_families:
+            return summary
+        validate_family_ids(target_families)
+
+    sw_weeks, sw_family, sw_members = build_family_prices(
+        safeway.feed_label,
+        safeway_manifest,
+        safeway_items,
+        family_ids=target_families,
     )
-    vons_weeks, vons_family, vons_members = build_family_prices(
-        vons.feed_label, vons_manifest, vons_items
+    vn_weeks, vn_family, vn_members = build_family_prices(
+        vons.feed_label,
+        vons_manifest,
+        vons_items,
+        family_ids=target_families,
     )
+
+    if not options.full_rematch and FAMILY_OUTPUT.is_file():
+        parsed = parse_family_ts(FAMILY_OUTPUT)
+        if parsed:
+            sw_existing = parsed["safeway"]
+            vn_existing = parsed["vons"]
+            sw_weeks = merge_weeks_list(sw_existing[0], sw_weeks)
+            vn_weeks = merge_weeks_list(vn_existing[0], vn_weeks)
+            merged_sw_family = dict(sw_existing[1])
+            merged_vn_family = dict(vn_existing[1])
+            merged_sw_members = dict(sw_existing[2])
+            merged_vn_members = dict(vn_existing[2])
+            assert target_families is not None
+            summary.add(merge_week_prices(merged_sw_family, sw_family, target_families))
+            summary.add(merge_week_prices(merged_vn_family, vn_family, target_families))
+            sw_family = merged_sw_family
+            vn_family = merged_vn_family
+            for fid in target_families:
+                if fid in sw_members:
+                    bucket = merged_sw_members.setdefault(fid, {})
+                    for member_id, weeks_map in sw_members[fid].items():
+                        member_weeks = bucket.setdefault(member_id, {})
+                        member_weeks.update(weeks_map)
+                if fid in vn_members:
+                    bucket = merged_vn_members.setdefault(fid, {})
+                    for member_id, weeks_map in vn_members[fid].items():
+                        member_weeks = bucket.setdefault(member_id, {})
+                        member_weeks.update(weeks_map)
+            sw_members = merged_sw_members
+            vn_members = merged_vn_members
+
+    if options.dry_run:
+        count = len(target_families or TRACKER_FAMILY_IDS)
+        print(f"[dry-run] families: would write {count} family id(s)")
+        return summary
 
     FAMILY_OUTPUT.write_text(
         render_combined_family_ts(
             safeway.manifest_path,
             safeway.split_items_path,
-            safeway_weeks,
-            safeway_family,
-            safeway_members,
-            vons_weeks,
-            vons_family,
-            vons_members,
+            sw_weeks,
+            sw_family,
+            sw_members,
+            vn_weeks,
+            vn_family,
+            vn_members,
         ),
         encoding="utf-8",
     )
     print(
         f"Wrote {FAMILY_OUTPUT.relative_to(ROOT)} "
-        f"({len(TRACKER_FAMILY_IDS)} families)"
+        f"({len(target_families or TRACKER_FAMILY_IDS)} families)"
     )
+    return summary
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Match canonical products against cached weekly ad offers."
+    )
+    parser.add_argument("--product-id", help="Single canonical product id to match")
+    parser.add_argument(
+        "--product-ids",
+        help="Comma-separated canonical product ids",
+    )
+    parser.add_argument(
+        "--new-only",
+        action="store_true",
+        help="Products in MATCHERS but missing from existing generated output",
+    )
+    parser.add_argument("--family-id", help="Single tracker family id to match")
+    parser.add_argument(
+        "--full-rematch",
+        action="store_true",
+        help="Recompute all products (default when no incremental flags)",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Print summary without writing TS files",
+    )
+    parser.add_argument(
+        "--feed",
+        choices=("all", "safeway", "vons"),
+        default="all",
+        help="Limit to one feed (default: all)",
+    )
+    return parser.parse_args()
 
 
 def main() -> None:
-    for config in FEEDS:
-        generate_feed(config)
-    generate_family_prices()
+    args = parse_args()
+    options = resolve_run_options(args)
+
+    if options.new_only:
+        parsed = parse_ts_export(
+            FEEDS[0].output_path,
+            feed_weeks_key("Safeway"),
+            feed_prices_key("Safeway"),
+        )
+        existing = parsed[1] if parsed else None
+        options.product_ids = product_ids_missing_from_prices(
+            set(TRACKER_CANONICAL_IDS), existing
+        )
+        options.full_rematch = False
+        if not options.product_ids:
+            print("No new products missing from generated weekly ad prices.")
+            return
+        print(f"New-only products: {', '.join(sorted(options.product_ids))}")
+
+    total = MergeSummary()
+    feed_configs = FEEDS
+    if options.feeds:
+        feed_configs = tuple(c for c in FEEDS if c.feed_label in options.feeds)
+
+    run_families = options.full_rematch or options.family_ids is not None
+
+    for config in feed_configs:
+        total.add(generate_feed(config, options))
+
+    if run_families:
+        total.add(generate_family_prices(options))
+
+    print(
+        f"\nSummary: extraction=0 (cache only) | "
+        f"products_scanned={total.products_scanned} | "
+        f"matched_weeks={total.matched_weeks} | "
+        f"inserted={total.inserted} updated={total.updated} skipped={total.skipped}"
+    )
 
 
 if __name__ == "__main__":

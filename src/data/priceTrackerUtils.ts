@@ -1,5 +1,17 @@
+import {
+  formatCostcoRegionLabel,
+  getCostcoComparisonLocationNote,
+  getCostcoRegionForFeed,
+} from "./costcoRegions";
+import {
+  computeFeedProductBenchmark,
+  type BenchmarkBucket,
+  type PriceBenchmarkResult,
+} from "./priceBenchmarks";
 import type { FeedProductView, WeeklyPrice } from "./priceTrackerTypes";
-import type { CostcoPricePoint } from "./costcoPriceHistory.generated";
+
+export type { BenchmarkBucket, PriceBenchmarkResult };
+export { computeFeedProductBenchmark };
 
 export type PricePoint = WeeklyPrice & {
   isBaseline?: boolean;
@@ -68,12 +80,24 @@ export function getChartPricePoints(product: FeedProductView): PricePoint[] {
     .sort((a, b) => a.weekStart.localeCompare(b.weekStart));
 }
 
+function isCostcoExcludedFromChart(product: FeedProductView): boolean {
+  const comparison = product.priceComparison;
+  return (
+    comparison?.comparisonStatus === "not_sold_at_costco" ||
+    comparison?.winner === "grocery_only"
+  );
+}
+
 /** Costco warehouse prices for the feed's paired region — never mixed across locations. */
 export function getCostcoChartPricePoints(
   product: FeedProductView,
 ): PricePoint[] {
   const history = product.costcoPriceHistory ?? [];
-  if (!product.costcoComparable || history.length === 0) {
+  if (
+    !product.costcoComparable ||
+    history.length === 0 ||
+    isCostcoExcludedFromChart(product)
+  ) {
     return [];
   }
 
@@ -88,6 +112,91 @@ export function getCostcoChartPricePoints(
     isCostco: true,
     sourceLabel: point.sourceFile,
   }));
+}
+
+export function hasCostcoChartData(product: FeedProductView): boolean {
+  return getCostcoChartPricePoints(product).length > 0;
+}
+
+/** True when the product is Costco-comparable but has no chartable warehouse data. */
+export function isCostcoUnavailableOnChart(product: FeedProductView): boolean {
+  return product.costcoComparable && !hasCostcoChartData(product);
+}
+
+export type UnifiedChartRow = {
+  weekStart: string;
+  label: string;
+  groceryPrice: number;
+  groceryPriceMax?: number;
+  priceType: string;
+  isBaselineFallback: boolean;
+  costcoPrice: number | null;
+};
+
+function addDays(isoDate: string, days: number): string {
+  const date = new Date(`${isoDate}T12:00:00`);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+/** Map a Costco observation date onto the grocery weekly bucket it falls in. */
+function findGroceryWeekForCostcoDate(
+  costcoDate: string,
+  weekStarts: string[],
+): string | null {
+  const sorted = weekStarts.filter((week) => week !== "baseline").sort();
+  if (sorted.length === 0) {
+    return null;
+  }
+
+  for (let index = 0; index < sorted.length; index += 1) {
+    const start = sorted[index];
+    const nextStart = sorted[index + 1];
+    const endExclusive = nextStart ?? addDays(start, 7);
+    if (costcoDate >= start && costcoDate < endExclusive) {
+      return start;
+    }
+  }
+
+  const lastWeek = sorted[sorted.length - 1];
+  if (costcoDate >= lastWeek && costcoDate < addDays(lastWeek, 7)) {
+    return lastWeek;
+  }
+
+  return null;
+}
+
+/** Grocery + Costco rows sharing one x-axis so warehouse points align to ad weeks. */
+export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow[] {
+  const groceryPoints = getAllPricePoints(product);
+  const costcoPoints = getCostcoChartPricePoints(product);
+  const weekStarts = groceryPoints.map((point) => point.weekStart);
+  const costcoByWeek = new Map<string, number>();
+
+  for (const point of costcoPoints) {
+    const week = findGroceryWeekForCostcoDate(point.weekStart, weekStarts);
+    if (week != null) {
+      costcoByWeek.set(week, point.price);
+    }
+  }
+
+  return groceryPoints.map((point) => ({
+    weekStart: point.weekStart,
+    label: point.label ?? formatWeekLabel(point.weekStart),
+    groceryPrice: point.price,
+    groceryPriceMax: point.priceMax ?? point.price,
+    priceType: point.priceType,
+    isBaselineFallback: point.isBaselineFallback,
+    costcoPrice:
+      point.weekStart === "baseline"
+        ? null
+        : costcoByWeek.get(point.weekStart) ?? null,
+  }));
+}
+
+export function getCostcoChartRegionLabel(product: FeedProductView): string | null {
+  const region = getCostcoRegionForFeed(product.feedId);
+  return region ? formatCostcoRegionLabel(region) : null;
 }
 
 export function getCurrentPrice(product: FeedProductView): number | null {
@@ -216,6 +325,22 @@ const MEANINGFUL_SALE_PCT = 15;
 const GOOD_DEAL_SALE_PCT = 5;
 const COSTCO_WINS_PCT = 25;
 
+export function isProductOnSale(product: FeedProductView): boolean {
+  if (product.salePriceRange) {
+    return true;
+  }
+  const discount = getDiscountPercent(product);
+  return discount != null && discount >= GOOD_DEAL_SALE_PCT;
+}
+
+function getProductSaleDiscountPercent(product: FeedProductView): number | null {
+  const familyDiscount = getFamilySaleDiscountPercent(product);
+  if (familyDiscount != null) {
+    return familyDiscount;
+  }
+  return getDiscountPercent(product);
+}
+
 function getFamilySaleDiscountPercent(product: FeedProductView): number | null {
   if (!product.salePriceRange) {
     return null;
@@ -259,8 +384,8 @@ function closeEnoughLabel(feedLabel: string): string {
 export function getFamilyBuyWaitTakeaway(
   product: FeedProductView,
 ): FamilyBuyWaitTakeaway {
-  const onSale = product.salePriceRange != null;
-  const discount = getFamilySaleDiscountPercent(product);
+  const onSale = isProductOnSale(product);
+  const discount = getProductSaleDiscountPercent(product);
   const vsCostco = getGroceryVsCostcoPercent(product);
 
   if (onSale && discount != null) {
@@ -302,24 +427,37 @@ export function getFamilyUsuallyLabel(product: FeedProductView): string {
     const sale = formatPriceRange(product.salePriceRange);
     return sale ? `${sale} this week` : formatPrice(min);
   }
+
+  const current = getCurrentPrice(product);
+  const discount = getDiscountPercent(product);
+  if (current != null && discount != null && discount >= GOOD_DEAL_SALE_PCT) {
+    return `${formatPrice(current)} this week`;
+  }
+
   if (product.priceRange) {
     const regular = formatPriceRange(product.priceRange);
     if (regular) {
       return `Usually ${regular}`;
     }
   }
-  return `Usually ${formatPrice(getCurrentPrice(product))}`;
+  return `Usually ${formatPrice(current)}`;
 }
 
 /** "Usually $X–$Y" shown below quick take when a family is on sale. */
 export function getFamilyUsuallyRangeLabel(
   product: FeedProductView,
 ): string | null {
-  if (!product.salePriceRange || !product.priceRange) {
-    return null;
+  if (product.salePriceRange && product.priceRange) {
+    const regular = formatPriceRange(product.priceRange);
+    return regular ? `Usually ${regular}` : null;
   }
-  const regular = formatPriceRange(product.priceRange);
-  return regular ? `Usually ${regular}` : null;
+
+  if (!product.salePriceRange && isProductOnSale(product)) {
+    const baseline = getEffectiveBaseline(product);
+    return baseline != null ? `Usually ${formatPrice(baseline)}` : null;
+  }
+
+  return null;
 }
 
 /** One short reason line under the price on collapsed family cards. */
@@ -350,7 +488,7 @@ export function getFamilyBuyWaitReason(product: FeedProductView): string | null 
 
 /** Short shopper-facing lines on collapsed family cards. */
 export function getFamilyShopperNoteLines(product: FeedProductView): string[] {
-  const onSale = product.salePriceRange != null;
+  const onSale = isProductOnSale(product);
 
   if (product.canonicalId === "ben_jerrys_ice_cream") {
     if (onSale) {
@@ -448,6 +586,7 @@ export function getFamilyExpandedRows(
 }
 
 export type FamilyCostcoComparisonDetails = {
+  locationNote: string | null;
   intro: string;
   costcoLabel: string;
   costcoDetail: string;
@@ -491,6 +630,7 @@ export function getFamilyCostcoComparisonDetails(
   const groceryDetail = [groceryPrice, groceryUnit].filter(Boolean).join(" · ");
 
   return {
+    locationNote: getCostcoComparisonLocationNote(product.feedId),
     intro:
       "We compare Costco against the classic Ritz box because that's closest to Costco's big Original Ritz pack.",
     costcoLabel: `Original Ritz, ${packageDesc} (${comparison.costcoStoreLabel ?? "regional warehouse"})`,
@@ -509,6 +649,149 @@ export function getFamilyExpandedFootnote(
     return "These can have different regular prices, even when the sale price is the same.";
   }
   return null;
+}
+
+export type FamilyStockUpRating = "Great" | "Good" | "Great if buying full promo quantity";
+
+export type FamilyStatus = "On sale this week" | "Promo deal this week";
+
+const MULTI_BUY_OFFER_RE =
+  /\b\d+\s+for\s+\$|\bwhen you buy\s+\d+|\bbuy\s+\d+.*get/i;
+
+function latestFamilyOfferText(product: FeedProductView): string | null {
+  const sorted = [...product.weeklyPrices].sort((a, b) =>
+    a.weekStart.localeCompare(b.weekStart),
+  );
+  for (let i = sorted.length - 1; i >= 0; i -= 1) {
+    const text = sorted[i]?.offerText?.trim();
+    if (text) {
+      return text;
+    }
+  }
+  return null;
+}
+
+/** Sale/promo status pill for Family Deal Card headers. */
+export function getFamilyStatus(product: FeedProductView): FamilyStatus | null {
+  if (!isProductOnSale(product)) {
+    return null;
+  }
+
+  const offerText = latestFamilyOfferText(product);
+  if (offerText && MULTI_BUY_OFFER_RE.test(offerText)) {
+    return "Promo deal this week";
+  }
+  return "On sale this week";
+}
+
+/** Stock-up rating for Family Deal Card (Option 9 pattern). */
+export function getFamilyStockUpRating(
+  product: FeedProductView,
+): FamilyStockUpRating {
+  const offerText = latestFamilyOfferText(product);
+  if (offerText && MULTI_BUY_OFFER_RE.test(offerText)) {
+    return "Great if buying full promo quantity";
+  }
+
+  const discount = getProductSaleDiscountPercent(product);
+  const benchmark = computeFeedProductBenchmark(product);
+
+  if (
+    (discount != null && discount >= MEANINGFUL_SALE_PCT) ||
+    benchmark.benchmarkBucket === "all-time low" ||
+    benchmark.benchmarkBucket === "near all-time low" ||
+    benchmark.benchmarkBucket === "strong sale"
+  ) {
+    return "Great";
+  }
+
+  if (discount != null && discount >= GOOD_DEAL_SALE_PCT) {
+    return "Good";
+  }
+
+  const takeaway = getFamilyBuyWaitTakeaway(product);
+  if (takeaway.tone === "buy") {
+    return "Good";
+  }
+
+  return "Good";
+}
+
+/** One-line family summary above the price chart. */
+export function getFamilySummary(product: FeedProductView): string {
+  const onSale = isProductOnSale(product);
+  const name = product.displayName;
+
+  if (product.canonicalId === "ben_jerrys_ice_cream") {
+    return onSale
+      ? `${name} is at a strong stock-up price this week.`
+      : `${name} is at regular pricing — worth waiting for a sale.`;
+  }
+
+  if (product.canonicalId === "ritz_crackers_snacks") {
+    return onSale
+      ? "Ritz products are included in a solid sale this week."
+      : "Ritz products are at regular pricing this week.";
+  }
+
+  if (onSale) {
+    return `${name} is at a sale price this week.`;
+  }
+
+  return `${name} is at regular pricing this week.`;
+}
+
+/** Multi-buy effective price line (e.g. "2 for $5 → $2.50 each"). */
+export function getFamilyEffectivePriceLabel(
+  product: FeedProductView,
+): string | null {
+  const offerText = latestFamilyOfferText(product);
+  if (offerText && MULTI_BUY_OFFER_RE.test(offerText)) {
+    if (product.salePriceRange) {
+      const { min, max } = product.salePriceRange;
+      if (Math.abs(min - max) < 0.01) {
+        return `Effective ${formatPrice(min)} each`;
+      }
+
+      const range = formatPriceRange(product.salePriceRange);
+      return range ? `Effective ${range} each` : null;
+    }
+
+    const current = getCurrentPrice(product);
+    return current != null ? `Effective ${formatPrice(current)} each` : null;
+  }
+
+  return null;
+}
+
+/** Short note above the varieties drawer list. */
+export function getFamilyVariantNote(product: FeedProductView): string {
+  if (product.canonicalId === "ben_jerrys_ice_cream") {
+    return "Pints, non-dairy pints, and 4-count bars may share the same weekly promo.";
+  }
+  if (product.canonicalId === "ritz_crackers_snacks") {
+    return "Classic boxes, Fresh Stacks, Crisp & Thins, Bits, and Drizzled Minis may all appear under this family.";
+  }
+  if (product.subtitle) {
+    return product.subtitle;
+  }
+  return "Participating varieties may share the same weekly promo.";
+}
+
+/** Grouping logic footnote in the varieties drawer. */
+export function getFamilyPricingBehavior(product: FeedProductView): string {
+  if (product.chartMode === "range") {
+    return "This week grouped (same sale price). Tracked separately when normal prices differ.";
+  }
+  return "Tracked as one family when the weekly ad treats them as a single deal.";
+}
+
+/** Whether the card should show the varieties drawer hint. */
+export function hasFamilyVarieties(product: FeedProductView): boolean {
+  return (
+    (product.familyMembers?.length ?? 0) > 1 ||
+    getFamilyExpandedRows(product).length > 1
+  );
 }
 
 export { INFERRED_BASELINE_SOURCE };

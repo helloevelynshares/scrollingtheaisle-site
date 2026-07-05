@@ -33,7 +33,7 @@ export const PRICE_FEEDS: PriceFeed[] = [
   {
     id: "costco_oc",
     label: "Costco",
-    regionLabel: "Orange County",
+    regionLabel: "Tustin",
     storeGroup: "costco",
     stores: ["Costco"],
   },

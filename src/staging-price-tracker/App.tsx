@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   isRecurringCrossStoreProduct,
 } from "../data/canonicalProducts";
-import { isTrackerFamilyId } from "../data/trackerFamilies";
 import { DEFAULT_FEED_ID } from "../data/priceFeeds";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
@@ -13,19 +12,16 @@ import { TrackVoteModule } from "./TrackVoteModule";
 function splitProducts(products: FeedProductView[]) {
   const original: FeedProductView[] = [];
   const recurring: FeedProductView[] = [];
-  const families: FeedProductView[] = [];
 
   for (const product of products) {
-    if (isTrackerFamilyId(product.canonicalId)) {
-      families.push(product);
-    } else if (isRecurringCrossStoreProduct(product.canonicalId)) {
+    if (isRecurringCrossStoreProduct(product.canonicalId)) {
       recurring.push(product);
     } else {
       original.push(product);
     }
   }
 
-  return { original, recurring, families };
+  return { original, recurring };
 }
 
 type ProductGridProps = {
@@ -58,7 +54,7 @@ export function App() {
     void loadFeed(activeFeedId);
   }, [activeFeedId, loadFeed]);
 
-  const { original, recurring, families } = useMemo(
+  const { original, recurring } = useMemo(
     () => splitProducts(products),
     [products],
   );
@@ -136,23 +132,6 @@ export function App() {
                   </p>
                 </header>
                 <ProductGrid products={recurring} />
-              </section>
-            ) : null}
-            {families.length > 0 ? (
-              <section
-                className="price-tracker-section price-tracker-section--families"
-                aria-label="Curated deal families"
-              >
-                <header className="price-tracker-section-header">
-                  <h2 className="price-tracker-section-title">
-                    Deals grouped the way shoppers think
-                  </h2>
-                  <p className="price-tracker-section-subtitle">
-                    When a sale covers a bunch of flavors or sizes, I group them
-                    together and call out where the better deal is.
-                  </p>
-                </header>
-                <ProductGrid products={families} />
               </section>
             ) : null}
           </>

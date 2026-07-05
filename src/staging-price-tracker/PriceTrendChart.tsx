@@ -10,15 +10,18 @@ import {
   type TooltipProps,
 } from "recharts";
 import {
+  buildUnifiedChartRows,
   formatPrice,
   formatPriceRange,
   getAllPricePoints,
   getChartPricePoints,
-  getCostcoChartPricePoints,
+  getCostcoChartRegionLabel,
   getEffectiveBaseline,
+  hasCostcoChartData,
+  isCostcoUnavailableOnChart,
   isDealFamily,
+  type UnifiedChartRow,
 } from "../data/priceTrackerUtils";
-import { getCostcoComparisonLocationNote } from "../data/costcoRegions";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { useCompactLayout } from "./useCompactLayout";
 
@@ -27,7 +30,7 @@ type Props = {
   variant?: "default" | "sparkline";
 };
 
-type ChartRow = {
+type RangeChartRow = {
   weekStart: string;
   label: string;
   price: number;
@@ -36,15 +39,22 @@ type ChartRow = {
   isBaselineFallback: boolean;
 };
 
-function getTooltipStatus(row: ChartRow): "Weekly deal" | "Regular price" {
+function getGroceryTooltipLabel(
+  product: FeedProductView,
+  row: UnifiedChartRow | RangeChartRow,
+): string {
   if (
     row.weekStart === "baseline" ||
     row.isBaselineFallback ||
     row.priceType === "baseline"
   ) {
-    return "Regular price";
+    return `${product.feedLabel} baseline`;
   }
-  return "Weekly deal";
+  return `${product.feedLabel} weekly ad`;
+}
+
+function getRangeTooltipLabel(): string {
+  return "Sale price range";
 }
 
 function PriceChartTooltip({
@@ -52,18 +62,54 @@ function PriceChartTooltip({
   payload,
   compact,
   rangeMode,
-}: TooltipProps<number, string> & { compact: boolean; rangeMode: boolean }) {
+  product,
+  costcoRegionLabel,
+}: TooltipProps<number, string> & {
+  compact: boolean;
+  rangeMode: boolean;
+  product: FeedProductView;
+  costcoRegionLabel: string | null;
+}) {
   if (!active || !payload?.length) {
     return null;
   }
 
-  const row = payload[0].payload as ChartRow;
-  const priceLabel =
-    rangeMode &&
-    row.priceMax != null &&
-    Math.abs(row.priceMax - row.price) >= 0.01
-      ? formatPriceRange({ min: row.price, max: row.priceMax })
-      : formatPrice(row.price);
+  const entry =
+    payload.find(
+      (item) =>
+        item.value != null &&
+        item.dataKey !== "priceMax" &&
+        item.dataKey !== "groceryPriceMax",
+    ) ?? payload[0];
+  const row = entry.payload as UnifiedChartRow | RangeChartRow;
+  const dataKey = String(entry.dataKey ?? "price");
+
+  let seriesLabel: string;
+  let priceLabel: string;
+
+  if (dataKey === "costcoPrice") {
+    const costcoRow = row as UnifiedChartRow;
+    seriesLabel = costcoRegionLabel
+      ? `Costco (${costcoRegionLabel})`
+      : "Costco warehouse";
+    priceLabel = formatPrice(costcoRow.costcoPrice);
+  } else if (rangeMode && dataKey === "priceMax") {
+    seriesLabel = getRangeTooltipLabel();
+    const rangeRow = row as RangeChartRow;
+    priceLabel =
+      rangeRow.priceMax != null &&
+      Math.abs(rangeRow.priceMax - rangeRow.price) >= 0.01
+        ? formatPriceRange({ min: rangeRow.price, max: rangeRow.priceMax })
+        : formatPrice(rangeRow.price);
+  } else if (rangeMode) {
+    seriesLabel = getRangeTooltipLabel();
+    const rangeRow = row as RangeChartRow;
+    priceLabel = formatPrice(rangeRow.price);
+  } else {
+    const groceryRow = row as UnifiedChartRow;
+    seriesLabel = getGroceryTooltipLabel(product, groceryRow);
+    priceLabel = formatPrice(groceryRow.groceryPrice);
+  }
 
   return (
     <div
@@ -72,10 +118,8 @@ function PriceChartTooltip({
       }`}
     >
       <div className="price-tracker-chart-tooltip-date">{row.label}</div>
+      <div className="price-tracker-chart-tooltip-series">{seriesLabel}</div>
       <div className="price-tracker-chart-tooltip-price">{priceLabel}</div>
-      <div className="price-tracker-chart-tooltip-status">
-        {getTooltipStatus(row)}
-      </div>
     </div>
   );
 }
@@ -86,16 +130,14 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
   const minimal = compact || sparkline;
   const rangeMode =
     product.chartMode === "range" || isDealFamily(product);
-  const points =
-    sparkline && rangeMode
-      ? getChartPricePoints(product)
-      : getAllPricePoints(product);
-  const costcoPoints =
-    sparkline || rangeMode ? [] : getCostcoChartPricePoints(product);
-  const costcoLocationNote = getCostcoComparisonLocationNote(product.feedId);
+  const showCostcoOverlay = !sparkline && !rangeMode && hasCostcoChartData(product);
+  const costcoRegionLabel = getCostcoChartRegionLabel(product);
+  const costcoUnavailable = isCostcoUnavailableOnChart(product);
   const baseline = getEffectiveBaseline(product);
 
-  const chartData: ChartRow[] = points.map((point) => ({
+  const rangeChartData: RangeChartRow[] = (
+    sparkline && rangeMode ? getChartPricePoints(product) : getAllPricePoints(product)
+  ).map((point) => ({
     weekStart: point.weekStart,
     label: point.label ?? point.weekStart,
     price: point.price,
@@ -104,16 +146,29 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
     isBaselineFallback: point.isBaselineFallback,
   }));
 
-  const allValues = chartData.flatMap((row) =>
-    row.priceMax != null && row.priceMax !== row.price
-      ? [row.price, row.priceMax]
-      : [row.price],
-  );
-  const costcoValues = costcoPoints.map((point) => point.price);
-  const combinedValues =
-    costcoValues.length > 0 ? [...allValues, ...costcoValues] : allValues;
-  const yMin = combinedValues.length > 0 ? Math.min(...combinedValues) : 0;
-  const yMax = combinedValues.length > 0 ? Math.max(...combinedValues) : 0;
+  const unifiedChartData = rangeMode ? [] : buildUnifiedChartRows(product);
+
+  const chartData = rangeMode ? rangeChartData : unifiedChartData;
+  const hasCostcoLine =
+    showCostcoOverlay && unifiedChartData.some((row) => row.costcoPrice != null);
+
+  const allValues = rangeMode
+    ? chartData.flatMap((row) => {
+        const rangeRow = row as RangeChartRow;
+        return rangeRow.priceMax != null && rangeRow.priceMax !== rangeRow.price
+          ? [rangeRow.price, rangeRow.priceMax]
+          : [rangeRow.price];
+      })
+    : (chartData as UnifiedChartRow[]).flatMap((row) => {
+        const values = [row.groceryPrice];
+        if (row.costcoPrice != null) {
+          values.push(row.costcoPrice);
+        }
+        return values;
+      });
+
+  const yMin = allValues.length > 0 ? Math.min(...allValues) : 0;
+  const yMax = allValues.length > 0 ? Math.max(...allValues) : 0;
   const padding = Math.max(0.5, (yMax - yMin) * 0.12 || 0.5);
 
   return (
@@ -157,8 +212,14 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
               />
             )}
             <Tooltip
+              shared={false}
               content={
-                <PriceChartTooltip compact={minimal} rangeMode={rangeMode} />
+                <PriceChartTooltip
+                  compact={minimal}
+                  rangeMode={rangeMode}
+                  product={product}
+                  costcoRegionLabel={costcoRegionLabel}
+                />
               }
             />
             {baseline != null && !rangeMode && !sparkline ? (
@@ -180,118 +241,137 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
               />
             ) : null}
             {rangeMode ? (
-              <Line
-                type="monotone"
-                dataKey="priceMax"
-                stroke={sparkline ? "#d8d8d8" : "#bbb"}
-                strokeWidth={sparkline ? 0.75 : compact ? 1 : 1.5}
-                strokeDasharray="4 3"
-                strokeOpacity={sparkline ? 0.55 : 1}
-                dot={false}
-                connectNulls
-                activeDot={false}
-              />
-            ) : null}
-            <Line
-              type="monotone"
-              dataKey="price"
-              stroke={sparkline ? "#b0b0b0" : "#222"}
-              strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
-              strokeOpacity={sparkline ? 0.7 : 1}
-              dot={(props) => {
-                const { cx, cy, payload } = props;
-                const row = payload as ChartRow;
-                const fill = sparkline
-                  ? row.isBaselineFallback
-                    ? "#d0d0d0"
-                    : "#b8b8b8"
-                  : row.weekStart === "baseline"
-                    ? "#ff385c"
-                    : row.isBaselineFallback
-                      ? "#bbb"
-                      : "#222";
-                const radius = sparkline
-                  ? 1.5
-                  : compact
-                    ? row.weekStart === "baseline"
-                      ? 3.5
-                      : 2.5
-                    : row.weekStart === "baseline"
-                      ? 5
-                      : 4;
-                if (sparkline && cx == null) {
-                  return <circle r={0} />;
-                }
-                return (
-                  <circle
-                    cx={cx}
-                    cy={cy}
-                    r={radius}
-                    fill={fill}
-                    stroke={sparkline ? "none" : "#fff"}
-                    strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
-                    opacity={sparkline ? 0.75 : 1}
-                  />
-                );
-              }}
-              activeDot={
-                sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
-              }
-              connectNulls
-            />
-            {costcoPoints.length > 0 ? (
-              <Line
-                type="monotone"
-                data={costcoPoints.map((point) => ({
-                  weekStart: point.weekStart,
-                  label: point.label ?? point.weekStart,
-                  price: point.price,
-                  priceType: point.priceType,
-                  isBaselineFallback: point.isBaselineFallback,
-                }))}
-                dataKey="price"
-                stroke="#0071ce"
-                strokeWidth={compact ? 1.5 : 2}
-                strokeDasharray="6 4"
-                dot={{ r: compact ? 2.5 : 3.5, fill: "#0071ce", stroke: "#fff" }}
-                connectNulls
-                name="Costco"
-              />
-            ) : null}
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-      {!sparkline ? (
-        <>
-          <p className="price-tracker-chart-legend price-tracker-desktop-only">
-            {rangeMode ? (
-              <span className="price-tracker-chart-legend-item">
-                <span className="price-tracker-chart-dot price-tracker-chart-dot--range" />
-                Sale price range across formats
-              </span>
+              <>
+                <Line
+                  type="monotone"
+                  dataKey="priceMax"
+                  stroke={sparkline ? "#d8d8d8" : "#bbb"}
+                  strokeWidth={sparkline ? 0.75 : compact ? 1 : 1.5}
+                  strokeDasharray="4 3"
+                  strokeOpacity={sparkline ? 0.55 : 1}
+                  dot={false}
+                  connectNulls
+                  activeDot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="price"
+                  stroke={sparkline ? "#b0b0b0" : "#222"}
+                  strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
+                  strokeOpacity={sparkline ? 0.7 : 1}
+                  dot={(props) => {
+                    const { cx, cy, payload } = props;
+                    const row = payload as RangeChartRow;
+                    const fill = sparkline
+                      ? row.isBaselineFallback
+                        ? "#d0d0d0"
+                        : "#b8b8b8"
+                      : row.weekStart === "baseline"
+                        ? "#ff385c"
+                        : row.isBaselineFallback
+                          ? "#bbb"
+                          : "#222";
+                    const radius = sparkline
+                      ? 1.5
+                      : compact
+                        ? row.weekStart === "baseline"
+                          ? 3.5
+                          : 2.5
+                        : row.weekStart === "baseline"
+                          ? 5
+                          : 4;
+                    if (sparkline && cx == null) {
+                      return <circle r={0} />;
+                    }
+                    return (
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={radius}
+                        fill={fill}
+                        stroke={sparkline ? "none" : "#fff"}
+                        strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
+                        opacity={sparkline ? 0.75 : 1}
+                      />
+                    );
+                  }}
+                  activeDot={
+                    sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                  }
+                  connectNulls
+                />
+              </>
             ) : (
               <>
-                <span className="price-tracker-chart-legend-item">
-                  <span className="price-tracker-chart-dot price-tracker-chart-dot--ad" />
-                  Weekly ad match
-                </span>
-                <span className="price-tracker-chart-legend-item">
-                  <span className="price-tracker-chart-dot price-tracker-chart-dot--baseline" />
-                  Baseline / no ad match
-                </span>
-                {costcoPoints.length > 0 ? (
-                  <span className="price-tracker-chart-legend-item">
-                    <span className="price-tracker-chart-dot price-tracker-chart-dot--costco" />
-                    Costco warehouse
-                  </span>
+                <Line
+                  type="monotone"
+                  dataKey="groceryPrice"
+                  stroke={sparkline ? "#b0b0b0" : "#222"}
+                  strokeWidth={sparkline ? 1 : compact ? 1.5 : 2}
+                  strokeOpacity={sparkline ? 0.7 : 1}
+                  dot={(props) => {
+                    const { cx, cy, payload } = props;
+                    const row = payload as UnifiedChartRow;
+                    const fill = sparkline
+                      ? row.isBaselineFallback
+                        ? "#d0d0d0"
+                        : "#b8b8b8"
+                      : row.weekStart === "baseline"
+                        ? "#ff385c"
+                        : row.isBaselineFallback
+                          ? "#bbb"
+                          : "#222";
+                    const radius = sparkline
+                      ? 1.5
+                      : compact
+                        ? row.weekStart === "baseline"
+                          ? 3.5
+                          : 2.5
+                        : row.weekStart === "baseline"
+                          ? 5
+                          : 4;
+                    if (sparkline && cx == null) {
+                      return <circle r={0} />;
+                    }
+                    return (
+                      <circle
+                        cx={cx}
+                        cy={cy}
+                        r={radius}
+                        fill={fill}
+                        stroke={sparkline ? "none" : "#fff"}
+                        strokeWidth={sparkline ? 0 : compact ? 1 : 1.5}
+                        opacity={sparkline ? 0.75 : 1}
+                      />
+                    );
+                  }}
+                  activeDot={
+                    sparkline ? { r: 3, fill: "#999" } : { r: compact ? 4 : 6 }
+                  }
+                  connectNulls
+                />
+                {hasCostcoLine ? (
+                  <Line
+                    type="monotone"
+                    dataKey="costcoPrice"
+                    stroke="#0071ce"
+                    strokeWidth={compact ? 1.5 : 2}
+                    strokeDasharray="6 4"
+                    dot={{ r: compact ? 2.5 : 3.5, fill: "#0071ce", stroke: "#fff" }}
+                    connectNulls
+                    isAnimationActive={false}
+                  />
                 ) : null}
               </>
             )}
-          </p>
-          {costcoPoints.length > 0 && costcoLocationNote ? (
-            <p className="price-tracker-chart-costco-note">{costcoLocationNote}</p>
-          ) : null}
-        </>
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+      {!sparkline && costcoUnavailable ? (
+        <p className="price-tracker-chart-costco-unavailable">
+          Not available at Costco
+          {costcoRegionLabel ? ` (${costcoRegionLabel} warehouse)` : ""}
+        </p>
       ) : null}
     </div>
   );
