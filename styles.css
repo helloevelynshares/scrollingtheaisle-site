@@ -2492,3 +2492,147 @@ img {
 .admin-suggestions-loading {
   color: var(--muted);
 }
+
+/* YAML migration: sectioned tracker + popular this week */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sectioned-tracker__controls {
+  margin: 20px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectioned-tracker__search {
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+}
+
+.sectioned-tracker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sectioned-tracker__chip {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sectioned-tracker__chip--active {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  background: #fff5f7;
+}
+
+.price-tracker-section--grouped {
+  margin-top: 32px;
+}
+
+.sectioned-tracker__show-all {
+  margin-top: 12px;
+  border: none;
+  background: transparent;
+  color: var(--accent-dark);
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.tracker-card-wrap--highlight .price-tracker-card,
+.tracker-card-wrap--highlight .family-deal-card {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.popular-this-week {
+  margin: 24px 0 8px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+}
+
+.popular-this-week__header {
+  margin-bottom: 12px;
+}
+
+.popular-this-week__title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.popular-this-week__week {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.popular-this-week__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 768px) {
+  .popular-this-week__grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+.popular-this-week__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.popular-this-week__card:hover {
+  border-color: var(--accent);
+}
+
+.popular-this-week__card-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.popular-this-week__card-reason {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.popular-this-week__deal-badge {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1a7f4b;
+  background: #e8f7ee;
+  padding: 2px 8px;
+  border-radius: 999px;
+}

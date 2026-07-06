@@ -31,8 +31,6 @@ class SafewaySearchConfig:
         required = {
             "SAFEWAY_SUBSCRIPTION_KEY": self.subscription_key,
             "SAFEWAY_USER_AGENT": self.user_agent,
-            "SAFEWAY_VISITOR_ID": self.visitor_id,
-            "SAFEWAY_UUID": self.uuid,
         }
         return [name for name, value in required.items() if not value.strip()]
 

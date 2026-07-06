@@ -56,7 +56,8 @@ class TestWeeklyAdIncremental(unittest.TestCase):
         self.assertIsNotNone(parsed)
         weeks, prices = parsed
         self.assertTrue(len(weeks) >= 1)
-        self.assertIn("strawberries", prices)
+        self.assertIn("strawberries_1_2lb", prices)
+        self.assertGreaterEqual(len(prices), 60)
 
 
 if __name__ == "__main__":

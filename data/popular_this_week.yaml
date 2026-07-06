@@ -1,0 +1,84 @@
+week: "2026-07-01"
+stores:
+  safeway:
+    - title: Coca-Cola 12-packs
+      tracker_family_ids:
+        - coca_cola_12packs
+      reason: Buy 2 Get 3 free with 5 soda 12-packs — biggest win; don't mix cheaper snacks
+      display_order: 1
+    - title: Ribeye steak
+      tracker_family_ids:
+        - ribeye_steak
+      reason: USDA Choice ~$10/lb — strong meat counter deal this week
+      display_order: 2
+    - title: Red cherries
+      tracker_family_ids:
+        - cherries_per_lb
+      reason: Seasonal ~$2/lb — Costco-comparable with smaller commitment
+      display_order: 3
+    - title: Peaches / plums
+      tracker_family_ids:
+        - peaches_per_lb
+        - plums_per_lb
+      reason: Stone fruit season — peaches match Costco, plums slightly better; less bulk
+      display_order: 4
+    - title: Chips & salty snacks
+      tracker_family_ids:
+        - lays_potato_chips_regular
+        - ruffles_regular_bags
+        - doritos_5_13oz
+        - sun_chips_7oz
+        - ritz_crackers
+        - nabisco_snack_crackers
+        - chips_ahoy
+      reason: Canonical brands ~$1.99 — near Costco shelf pricing, more variety than soda mix-in
+      display_order: 5
+    - title: Avocados / mangoes
+      tracker_family_ids:
+        - hass_avocados_each
+        - mangoes_each
+      reason: Good produce value at smaller qty — Hass ~$1.25 each this week
+      display_order: 6
+  vons:
+    - title: Salmon
+      tracker_family_ids:
+        - salmon
+      reason: Fresh fillets ~$7.97/lb — seafood counter highlight; strong weekly value
+      display_order: 1
+    - title: Ribeye steak
+      tracker_family_ids:
+        - ribeye_steak
+      reason: Bone-in ribeye ~$7.99/lb — top meat deal near Costco-beating territory
+      display_order: 2
+    - title: Tri-tip roast
+      tracker_family_ids:
+        - tri_tip_roast
+      reason: USDA Choice ~$4.99/lb — major Costco-beating BBQ staple
+      display_order: 3
+    - title: Avocados / mangoes
+      tracker_family_ids:
+        - hass_avocados_each
+        - mangoes_each
+      reason: Hass avocados ~$1 each — slightly under Costco per-piece pricing
+      display_order: 4
+    - title: Eggs
+      tracker_family_ids:
+        - eggs_dozen_normalized
+      reason: 60 eggs ~$5 when you buy 2 packs — qty required for best price
+      display_order: 5
+    - title: Chips & snack bags
+      tracker_family_ids:
+        - lays_potato_chips_regular
+        - ruffles_regular_bags
+        - doritos_5_13oz
+        - sun_chips_7oz
+        - ritz_crackers
+        - nabisco_snack_crackers
+        - chips_ahoy
+      reason: Buy 2 Get 3 free on 5 similarly priced bags — cheapest 3 free only; prefer 20% more bags
+      display_order: 6
+    - title: Cheez-It crackers
+      tracker_family_ids:
+        - cheez_it_crackers
+      reason: Pantry-size Cheez-It ~$1.99 — strong snack-cracker value
+      display_order: 7

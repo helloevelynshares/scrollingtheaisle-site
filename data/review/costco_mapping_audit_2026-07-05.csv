@@ -1,0 +1,105 @@
+family_id,legacy_canonical_id,grocery_feed,costco_warehouse,status,costco_item_number,costco_product_name,costco_price,confidence,notes
+cheetos_party_size,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+cheetos_party_size,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lays_potato_chips_regular,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lays_potato_chips_regular,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lays_kettle_cooked,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lays_kettle_cooked,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ruffles_regular_bags,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ruffles_regular_bags,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sun_chips_7oz,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sun_chips_7oz,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+tostitos_tortilla_chips,mission_tortilla_chips,safeway_bay_area,san_francisco,no_results,,,,low,No confident Costco match in warehouse catalog
+tostitos_tortilla_chips,mission_tortilla_chips,vons_albertsons_socal,tustin,no_results,,,,low,No confident Costco match in warehouse catalog
+simply_snacks,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+simply_snacks,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+simply_party_size,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+simply_party_size,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ritz_crackers,ritz_crackers_snacks,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ritz_crackers,ritz_crackers_snacks,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ritz_toasted_chips,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ritz_toasted_chips,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+nabisco_snack_crackers,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+nabisco_snack_crackers,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+cheez_it_crackers,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+cheez_it_crackers,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chips_ahoy,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chips_ahoy,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+goldfish_bags,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+goldfish_bags,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+keebler_sandwich_crackers,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+keebler_sandwich_crackers,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+coca_cola_12packs,coke_zero,safeway_bay_area,san_francisco,no_results,,,,low,No confident Costco match in warehouse catalog
+coca_cola_12packs,coke_zero,vons_albertsons_socal,tustin,no_results,,,,low,No confident Costco match in warehouse catalog
+pepsi_12packs,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+pepsi_12packs,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dr_pepper_12packs,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dr_pepper_12packs,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lacroix_8pack,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lacroix_8pack,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+simply_refrigerated_juice_lemonade,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+simply_refrigerated_juice_lemonade,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+haagen_dazs_pints,haagen_dazs_ice_cream,safeway_bay_area,san_francisco,no_results,,,,low,No confident Costco match in warehouse catalog
+haagen_dazs_pints,haagen_dazs_ice_cream,vons_albertsons_socal,tustin,no_results,,,,low,No confident Costco match in warehouse catalog
+ben_jerrys_ice_cream,ben_jerrys_ice_cream,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ben_jerrys_ice_cream,ben_jerrys_ice_cream,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dreyers_tubs,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dreyers_tubs,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+breyers_ice_cream,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+breyers_ice_cream,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+tillamook_ice_cream,tillamook_ice_cream,safeway_bay_area,san_francisco,no_results,,,,low,No confident Costco match in warehouse catalog
+tillamook_ice_cream,tillamook_ice_cream,vons_albertsons_socal,tustin,no_results,,,,low,No confident Costco match in warehouse catalog
+haagen_dazs_bars_novelties,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+haagen_dazs_bars_novelties,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dreyers_novelties,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+dreyers_novelties,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+cherries_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+cherries_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+berries_6oz,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+berries_6oz,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+mangoes_each,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+mangoes_each,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+peaches_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+peaches_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+nectarines_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+nectarines_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+plums_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+plums_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sweet_corn,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sweet_corn,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+butter_16oz,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+butter_16oz,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sliced_or_shredded_cheese_6_8oz,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+sliced_or_shredded_cheese_6_8oz,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+philadelphia_cream_cheese,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+philadelphia_cream_cheese,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lucerne_cream_cheese,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lucerne_cream_cheese,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+fage_cups,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+fage_cups,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lucerne_yogurt_tubs,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+lucerne_yogurt_tubs,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+general_mills_cereal_family_size,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+general_mills_cereal_family_size,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+post_cereal_regular,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+post_cereal_regular,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+post_cereal_giant_size,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+post_cereal_giant_size,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+thomas_bagels_muffins_bread,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+thomas_bagels_muffins_bread,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+kings_hawaiian_rolls,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+kings_hawaiian_rolls,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+pillsbury_refrigerated_dough,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+pillsbury_refrigerated_dough,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+clif_bars,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+clif_bars,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chicken_breast_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chicken_breast_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chicken_thigh_per_lb,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+chicken_thigh_per_lb,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ribeye_steak,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+ribeye_steak,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+tri_tip_roast,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+tri_tip_roast,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+salmon,,safeway_bay_area,san_francisco,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry
+salmon,,vons_albertsons_socal,tustin,no_metadata,,,,low,No CanonicalPackageMeta — needs scripts/price_comparison/canonical_metadata.py entry

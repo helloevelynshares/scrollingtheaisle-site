@@ -1,0 +1,36 @@
+{
+  "markets": [
+    {
+      "id": "bay_area",
+      "display_name": "Bay Area",
+      "primary_grocer": "safeway",
+      "grocer_ad_label": "Safeway",
+      "retailer_label": "Safeway",
+      "costco_comparison_label": "Bay Area Costco",
+      "output_content_label": "Bay Area Safeway",
+      "grocery_feed_id": "safeway_bay_area",
+      "costco_region_id": "costco_sf",
+      "costco_region_slug": "san_francisco",
+      "ad_pdf_filename": "safeway_ad.pdf",
+      "banner_filter": "Safeway",
+      "default_input_folder_pattern": "data/weekly_ads/{week}/bay_area",
+      "default_output_folder_pattern": "output/weekly_deals/{week}/bay_area"
+    },
+    {
+      "id": "socal_oc",
+      "display_name": "SoCal / Orange County",
+      "primary_grocer": "vons_albertsons",
+      "grocer_ad_label": "Vons / Albertsons",
+      "retailer_label": "Vons / Albertsons",
+      "costco_comparison_label": "SoCal Costco",
+      "output_content_label": "SoCal Vons / Albertsons",
+      "grocery_feed_id": "vons_albertsons_socal",
+      "costco_region_id": "costco_oc",
+      "costco_region_slug": "tustin",
+      "ad_pdf_filename": "vons_albertsons_ad.pdf",
+      "banner_filter": "Vons",
+      "default_input_folder_pattern": "data/weekly_ads/{week}/socal_oc",
+      "default_output_folder_pattern": "output/weekly_deals/{week}/socal_oc"
+    }
+  ]
+}

@@ -63,6 +63,10 @@ export type FeedProductView = {
   chartMode?: "single" | "range";
   /** Curated family comparison copy (e.g. Ritz vs Costco). */
   familyComparisonBadge?: FamilyComparisonBadge | null;
+  /** YAML homepage section (migration). */
+  homepageSection?: string;
+  /** YAML display order within section. */
+  displayOrder?: number;
 };
 
 /** feed_product_matches row — maps canonical item to a retailer SKU for price fetching. */

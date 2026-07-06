@@ -1,0 +1,1347 @@
+schema_version: 2
+last_updated: '2026-07-05'
+purpose: Human-editable canonical tracker-family reference for Scrolling the Aisle price graphs. Families mirror weekly-ad
+  sale groupings, while keeping user-facing headlines simple and putting size/format details in subtitles.
+usage_notes:
+- Use canonical_tracker_family as the user-facing headline.
+- Use size_format_subtitle as the user-facing subtitle.
+- Use include and keep_separate_from only as matching guidance for weekly-ad extraction and graph assignment.
+- Normalize pack/count differences when notes say to do so, such as strawberries 1–2 lb, eggs per dozen, Chobani per cup,
+  butter per 16 oz, and cheese 6–8 oz.
+- 'Promo groups are separate from tracker families: multiple tracker families can share the same weekly promo mechanic but
+  still feed separate price graphs.'
+- Do not show internal phrases like regular bags to end users; use family name + size subtitle instead.
+- display_order is the recommended homepage order, roughly prioritized by stock-up popularity, weekly-ad recurrence, and TikTok/video
+  relevance.
+families:
+- id: doritos_5_13oz
+  canonical_tracker_family: Doritos
+  size_format_subtitle: 5–13 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Doritos Nacho Cheese
+  - Doritos Cool Ranch
+  - Doritos Spicy Nacho
+  - Doritos Flamin Hot
+  - Doritos Dinamita
+  - Doritos limited edition flavors
+  - regular Doritos bags in size range
+  keep_separate_from:
+  - Doritos Party Size
+  - Simply Doritos
+  - Doritos multipacks
+  notes: User-facing headline should be Doritos; use size subtitle rather than displaying “regular bags.”
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 1
+  homepage_group: snacks_and_crackers
+- id: cheetos_regular_bags
+  canonical_tracker_family: Cheetos
+  size_format_subtitle: 6.5–10 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Cheetos Crunchy
+  - Cheetos Puffs
+  - Cheetos Popcorn
+  - Cheetos Flamin Hot
+  - Cheetos Extra Flamin Hot
+  - Cheetos Crunchy Flamin Hot Dill Pickle
+  - Cheetos Cheddar Jalapeño
+  - regular Cheetos bags in size range
+  keep_separate_from:
+  - Simply Cheetos
+  - Cheetos Party Size
+  notes: User-facing headline should be Cheetos; id can remain cheetos_regular_bags for matching logic.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 2
+  homepage_group: snacks_and_crackers
+- id: cheetos_party_size
+  canonical_tracker_family: Cheetos Party Size
+  size_format_subtitle: roughly 15 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Cheetos Party Size
+  keep_separate_from:
+  - Cheetos 6.5–10 oz
+  - Simply Cheetos
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 3
+  homepage_group: snacks_and_crackers
+- id: lays_potato_chips_regular
+  canonical_tracker_family: Lay's potato chips
+  size_format_subtitle: regular non-kettle bags, roughly 5–13 oz
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Lay's Classic
+  - Lay's Barbecue
+  - Lay's Sour Cream & Onion
+  - Lay's Limón
+  - Lay's Salt & Vinegar
+  - Lay's Dill Pickle
+  - Lay's Cheddar & Sour Cream
+  keep_separate_from:
+  - Lay's Kettle Cooked
+  - Lay's Stax
+  - Lay's Party Size
+  - Simply Lay's
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 4
+  homepage_group: snacks_and_crackers
+- id: lays_kettle_cooked
+  canonical_tracker_family: Lay's Kettle Cooked chips
+  size_format_subtitle: 7.75 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Lay's Kettle Cooked Original
+  - Lay's Kettle Cooked Jalapeño
+  - Lay's Kettle Cooked BBQ
+  - Lay's Kettle Cooked Sea Salt & Vinegar
+  - Lay's Kettle Cooked Cajun Spiced
+  keep_separate_from:
+  - regular Lay's potato chips
+  - Kettle Brand chips
+  - Simply Lay's
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 5
+  homepage_group: snacks_and_crackers
+- id: lays_party_size
+  canonical_tracker_family: Lay's Party Size
+  size_format_subtitle: roughly 12.5–13 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Lay's Party Size
+  keep_separate_from:
+  - regular Lay's potato chips
+  - Lay's Kettle Cooked
+  - Lay's Stax
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 6
+  homepage_group: snacks_and_crackers
+- id: kettle_brand_chips
+  canonical_tracker_family: Kettle Brand potato chips
+  size_format_subtitle: 6.5–8.5 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Kettle Brand Sea Salt
+  - Kettle Brand Jalapeño
+  - Kettle Brand Backyard Barbeque
+  - Kettle Brand Salt & Vinegar
+  - Kettle Brand Honey Dijon
+  keep_separate_from:
+  - Lay's Kettle Cooked
+  - store-brand kettle chips
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 7
+  homepage_group: snacks_and_crackers
+- id: ruffles_regular_bags
+  canonical_tracker_family: Ruffles
+  size_format_subtitle: regular bags, roughly 5–13 oz
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Ruffles Original
+  - Ruffles Cheddar & Sour Cream
+  - Ruffles Sour Cream & Onion
+  - Ruffles Flamin' Hot
+  keep_separate_from:
+  - Simply Ruffles
+  - Ruffles Party Size
+  - Frito-Lay multipack chips
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 8
+  homepage_group: snacks_and_crackers
+- id: sun_chips_7oz
+  canonical_tracker_family: Sun Chips
+  size_format_subtitle: 7 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Sun Chips Original
+  - Sun Chips Harvest Cheddar
+  - Sun Chips Garden Salsa
+  - Sun Chips French Onion
+  - Sun Chips 7 oz bags
+  keep_separate_from:
+  - Frito-Lay variety packs
+  - party-size snack bags
+  notes: 'Use two words for user-facing display: Sun Chips.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 9
+  homepage_group: snacks_and_crackers
+- id: tostitos_tortilla_chips
+  canonical_tracker_family: Tostitos tortilla chips
+  size_format_subtitle: roughly 9–13 oz bags
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Tostitos Scoops
+  - Tostitos Restaurant Style
+  - Tostitos Cantina
+  - Tostitos tortilla chips
+  keep_separate_from:
+  - Tostitos salsa
+  - Tostitos queso
+  - party-size if separately promoted
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 10
+  homepage_group: snacks_and_crackers
+- id: simply_snacks
+  canonical_tracker_family: Simply snacks
+  size_format_subtitle: Simply-branded bags, roughly 4.5–13 oz
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Simply Cheetos
+  - Simply Cheetos Puffs
+  - Simply Doritos
+  - Simply Lay's
+  - Simply Ruffles
+  - Simply Popables
+  keep_separate_from:
+  - regular Cheetos
+  - regular Doritos
+  - regular Lay's
+  - Party Size
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 11
+  homepage_group: snacks_and_crackers
+- id: simply_party_size
+  canonical_tracker_family: Simply Party Size
+  size_format_subtitle: larger Simply bags, roughly 10–11 oz
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Simply Party Size
+  - Simply large bags
+  keep_separate_from:
+  - regular Simply snacks
+  - regular Cheetos/Doritos/Lay's
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 12
+  homepage_group: snacks_and_crackers
+- id: ritz_crackers
+  canonical_tracker_family: Ritz crackers
+  size_format_subtitle: 8.8–13.7 oz boxes
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Ritz Original
+  - Ritz Fresh Stacks
+  - Ritz Crisp & Thins
+  - Ritz Bits
+  - Ritz Drizzled Minis
+  keep_separate_from:
+  - Ritz Toasted Chips
+  - Nabisco snack crackers
+  - Oreo
+  - Chips Ahoy
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 13
+  homepage_group: snacks_and_crackers
+- id: ritz_toasted_chips
+  canonical_tracker_family: Nabisco Ritz Toasted Chips
+  size_format_subtitle: 7–8.1 oz bags
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Ritz Toasted Chips
+  keep_separate_from:
+  - Ritz crackers 8.8–13.7 oz
+  - Nabisco snack crackers
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 14
+  homepage_group: snacks_and_crackers
+- id: nabisco_snack_crackers
+  canonical_tracker_family: Nabisco snack crackers
+  size_format_subtitle: 3.5–9.1 oz boxes/bags
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Wheat Thins
+  - Triscuit
+  - Good Thins
+  - Chicken in a Biskit
+  - Premium minis
+  - Nabisco snack crackers
+  keep_separate_from:
+  - Ritz crackers
+  - Ritz Toasted Chips
+  - Chips Ahoy
+  - Oreo
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 15
+  homepage_group: snacks_and_crackers
+- id: cheez_it_crackers
+  canonical_tracker_family: Cheez-It crackers
+  size_format_subtitle: 6.5–12.4 oz boxes/bags
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Cheez-It Original
+  - Cheez-It White Cheddar
+  - Cheez-It Extra Toasty
+  - Cheez-It Snap'd
+  - Cheez-It Puff'd
+  keep_separate_from:
+  - Goldfish
+  - Nabisco snack crackers
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 16
+  homepage_group: snacks_and_crackers
+- id: chips_ahoy
+  canonical_tracker_family: Chips Ahoy cookies
+  size_format_subtitle: 9.5–13 oz packages
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Chips Ahoy Original
+  - Chips Ahoy Chewy
+  - Chips Ahoy Chunky
+  - Chips Ahoy Mini
+  - Chips Ahoy limited edition flavors
+  keep_separate_from:
+  - Oreo
+  - Nabisco snack crackers
+  - Ritz
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 17
+  homepage_group: snacks_and_crackers
+- id: oreo_family_size
+  canonical_tracker_family: Oreo cookies
+  size_format_subtitle: family size, roughly 10.68–18.71 oz
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Oreo Original
+  - Oreo Double Stuf
+  - Oreo Golden
+  - Oreo Thins
+  - Oreo limited edition flavors
+  - family size Oreo
+  keep_separate_from:
+  - Chips Ahoy
+  - Nabisco snack crackers
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 18
+  homepage_group: snacks_and_crackers
+- id: goldfish_bags
+  canonical_tracker_family: Goldfish
+  size_format_subtitle: 6–8 oz bags
+  category: crackers_snacks
+  organic_status: not_applicable
+  include:
+  - Goldfish crackers
+  - Goldfish crisps
+  - Goldfish flavor blasted
+  - Goldfish bags in size range
+  keep_separate_from:
+  - Milano cookies
+  - Pepperidge Farm cookies
+  - Pepperidge Farm snack packs
+  - Chessmen
+  - Farmhouse cookies
+  notes: Track Goldfish bags only. Do not group with Milano or other Pepperidge Farm cookies/snacks.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 19
+  homepage_group: snacks_and_crackers
+- id: keebler_sandwich_crackers
+  canonical_tracker_family: Keebler sandwich crackers
+  size_format_subtitle: 8-pack boxes
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Keebler sandwich crackers
+  - Keebler cheese crackers
+  - Keebler peanut butter crackers
+  keep_separate_from:
+  - Nabisco snack crackers
+  - Ritz
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 20
+  homepage_group: snacks_and_crackers
+- id: coca_cola_12packs
+  canonical_tracker_family: Coca-Cola
+  size_format_subtitle: 12-pack, 12 fl oz cans
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - Coca-Cola 12-pack
+  - Coke 12-pack
+  - Coke Zero 12-pack
+  - Diet Coke 12-pack
+  - Sprite only if ad groups under Coca-Cola family and user approves
+  keep_separate_from:
+  - 2-liter bottles
+  - mini cans
+  - glass bottles
+  - Pepsi 12-packs
+  - Dr Pepper 12-packs
+  notes: Keep only 12-pack can tracking for soda. This file currently keeps Coca-Cola, Pepsi, and Dr Pepper as the three soda
+    families.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 21
+  homepage_group: drinks
+- id: pepsi_12packs
+  canonical_tracker_family: Pepsi
+  size_format_subtitle: 12-pack, 12 fl oz cans
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - Pepsi 12-pack
+  - Diet Pepsi 12-pack
+  - Pepsi Zero 12-pack
+  keep_separate_from:
+  - 2-liter bottles
+  - mini cans
+  - Coca-Cola 12-packs
+  - Dr Pepper 12-packs
+  notes: Keep only 12-pack can tracking for soda.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 22
+  homepage_group: drinks
+- id: dr_pepper_12packs
+  canonical_tracker_family: Dr Pepper
+  size_format_subtitle: 12-pack, 12 fl oz cans
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - Dr Pepper 12-pack
+  - Diet Dr Pepper 12-pack
+  - Dr Pepper Zero Sugar 12-pack
+  keep_separate_from:
+  - 2-liter bottles
+  - mini cans
+  - Coca-Cola 12-packs
+  - Pepsi 12-packs
+  notes: Keep only 12-pack can tracking for soda.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 23
+  homepage_group: drinks
+- id: lacroix_8pack
+  canonical_tracker_family: LaCroix sparkling water
+  size_format_subtitle: 8-pack, 12 fl oz cans
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - LaCroix
+  - La Croix
+  - LaCroix sparkling water
+  - LaCroix 8-pack
+  keep_separate_from:
+  - soda 12-packs
+  - water bottles
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 24
+  homepage_group: drinks
+- id: simply_refrigerated_juice_lemonade
+  canonical_tracker_family: Simply refrigerated juice & lemonade
+  size_format_subtitle: 46–52 fl oz bottles
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - Simply Lemonade
+  - Simply Juice Drink
+  - Simply Orange
+  - Simply Light Orange
+  - Simply Limeade
+  keep_separate_from:
+  - shelf-stable juice
+  - Starbucks Refreshers
+  - Safeway juice
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 25
+  homepage_group: drinks
+- id: haagen_dazs_pints
+  canonical_tracker_family: Häagen-Dazs ice cream pints
+  size_format_subtitle: 14 oz pints
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Häagen-Dazs pint
+  - Haagen Dazs pint
+  - Häagen-Dazs 14 oz
+  - coffee
+  - vanilla
+  - salted brown butter cookie
+  keep_separate_from:
+  - Häagen-Dazs bars
+  - Dreyer's
+  - Ben & Jerry's
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 26
+  homepage_group: ice_cream
+- id: ben_jerrys_ice_cream
+  canonical_tracker_family: Ben & Jerry's ice cream
+  size_format_subtitle: pints, non-dairy pints, or 4 ct bars
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Ben & Jerry's pint
+  - Ben and Jerry's
+  - B&J
+  - non-dairy pints
+  - Ben & Jerry's bars
+  keep_separate_from:
+  - Häagen-Dazs
+  - Dreyer's
+  - Tillamook
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 27
+  homepage_group: ice_cream
+- id: dreyers_tubs
+  canonical_tracker_family: Dreyer's ice cream
+  size_format_subtitle: 1.5 qt tubs
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Dreyer's ice cream
+  - Dreyers ice cream
+  - Dreyer's 1.5 qt
+  keep_separate_from:
+  - Dreyer's novelties
+  - Häagen-Dazs
+  - Tillamook
+  - Breyers
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 28
+  homepage_group: ice_cream
+- id: breyers_ice_cream
+  canonical_tracker_family: Breyers ice cream
+  size_format_subtitle: tubs, including Carb Smart and Sunday Swirls
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Breyers
+  - Breyers Carb Smart
+  - Breyers Sunday Swirls
+  - Breyers Natural Vanilla
+  keep_separate_from:
+  - Dreyer's
+  - Häagen-Dazs
+  - Tillamook
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 29
+  homepage_group: ice_cream
+- id: tillamook_ice_cream
+  canonical_tracker_family: Tillamook ice cream
+  size_format_subtitle: 1.5 qt tubs or 4 ct bars when grouped
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Tillamook ice cream
+  - Tillamook 1.5 qt
+  - Tillamook bars
+  keep_separate_from:
+  - Häagen-Dazs
+  - Dreyer's
+  - Ben & Jerry's
+  - Breyers
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 30
+  homepage_group: ice_cream
+- id: haagen_dazs_bars_novelties
+  canonical_tracker_family: Häagen-Dazs bars / novelties
+  size_format_subtitle: 3–4 ct boxes
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Häagen-Dazs bars
+  - Häagen-Dazs cones
+  - Haagen Dazs novelties
+  keep_separate_from:
+  - Häagen-Dazs pints
+  - Dreyer's novelties
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 31
+  homepage_group: ice_cream
+- id: dreyers_novelties
+  canonical_tracker_family: Dreyer's novelties
+  size_format_subtitle: 4 ct boxes
+  category: ice_cream
+  organic_status: not_applicable
+  include:
+  - Dreyer's bars
+  - Dreyer's cones
+  - Dreyer's novelties 4 ct
+  keep_separate_from:
+  - Dreyer's tubs
+  - Häagen-Dazs bars
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 32
+  homepage_group: ice_cream
+- id: strawberries_1_2lb
+  canonical_tracker_family: Strawberries
+  size_format_subtitle: 1 lb or 2 lb packs; normalize per lb
+  category: produce
+  organic_status: conventional
+  include:
+  - conventional strawberries 1 lb
+  - conventional strawberries 2 lb
+  - fresh strawberries
+  - strawberry clamshells
+  keep_separate_from:
+  - organic strawberries
+  - mixed berries 6 oz
+  - blueberries / raspberries / blackberries
+  notes: Merge 1 lb and 2 lb conventional strawberry packs into one graph. Normalize by lb; if both appear in the same weekly
+    ad, use the lower unit price for the weekly price calculation and keep the actual pack size in offer details.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 33
+  homepage_group: produce
+- id: seedless_grapes_per_lb
+  canonical_tracker_family: Seedless grapes
+  size_format_subtitle: per lb; normalize bags to per lb
+  category: produce
+  organic_status: conventional
+  include:
+  - red seedless grapes
+  - green seedless grapes
+  - seedless grapes per lb
+  - 3 lb seedless grape bags when advertised
+  keep_separate_from:
+  - organic grapes
+  - cotton candy grapes if separately promoted
+  notes: Keep one grape tracker. Normalize all pack formats to per-lb pricing and preserve actual pack size in offer details.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 34
+  homepage_group: produce
+- id: cherries_per_lb
+  canonical_tracker_family: Cherries
+  size_format_subtitle: per lb
+  category: produce
+  organic_status: conventional
+  include:
+  - red cherries
+  - cherries per lb
+  - fresh cherries
+  keep_separate_from:
+  - berries
+  - grapes
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 35
+  homepage_group: produce
+- id: berries_6oz
+  canonical_tracker_family: Blueberries / raspberries / blackberries
+  size_format_subtitle: 6 oz clamshells
+  category: produce
+  organic_status: conventional
+  include:
+  - blueberries 6 oz
+  - raspberries 6 oz
+  - blackberries 6 oz
+  - berries 6 oz
+  keep_separate_from:
+  - strawberries
+  - organic berries
+  - large blueberry packs
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 36
+  homepage_group: produce
+- id: hass_avocados_each
+  canonical_tracker_family: Hass avocados
+  size_format_subtitle: each or multi-buy
+  category: produce
+  organic_status: conventional
+  include:
+  - Hass avocado
+  - Hass avocados
+  - avocado each
+  - avocados 4 for
+  keep_separate_from:
+  - organic avocados
+  - mangoes
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 37
+  homepage_group: produce
+- id: mangoes_each
+  canonical_tracker_family: Mangoes
+  size_format_subtitle: each or multi-buy
+  category: produce
+  organic_status: conventional
+  include:
+  - mango
+  - mangoes
+  - large mangoes
+  - mango each
+  keep_separate_from:
+  - Hass avocados
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 38
+  homepage_group: produce
+- category: produce
+  organic_status: conventional
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: peaches_per_lb
+  canonical_tracker_family: Peaches
+  size_format_subtitle: per lb
+  include:
+  - yellow peaches
+  - white peaches
+  - fresh peaches
+  - peaches per lb
+  keep_separate_from:
+  - nectarines
+  - plums
+  - apricots
+  - organic peaches
+  notes: Split out from generic stone fruit because peaches, nectarines, and plums can be promoted at different prices.
+  display_order: 39
+  homepage_group: produce
+- category: produce
+  organic_status: conventional
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: nectarines_per_lb
+  canonical_tracker_family: Nectarines
+  size_format_subtitle: per lb
+  include:
+  - yellow nectarines
+  - white nectarines
+  - fresh nectarines
+  - nectarines per lb
+  keep_separate_from:
+  - peaches
+  - plums
+  - apricots
+  - organic nectarines
+  notes: Split out from generic stone fruit because peaches, nectarines, and plums can be promoted at different prices.
+  display_order: 40
+  homepage_group: produce
+- category: produce
+  organic_status: conventional
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: plums_per_lb
+  canonical_tracker_family: Plums
+  size_format_subtitle: per lb
+  include:
+  - red plums
+  - black plums
+  - fresh plums
+  - plums per lb
+  keep_separate_from:
+  - peaches
+  - nectarines
+  - apricots
+  - organic plums
+  notes: Split out from generic stone fruit because peaches, nectarines, and plums can be promoted at different prices.
+  display_order: 41
+  homepage_group: produce
+- id: sweet_corn
+  canonical_tracker_family: Sweet corn
+  size_format_subtitle: each or multi-buy
+  category: produce
+  organic_status: conventional
+  include:
+  - sweet corn
+  - corn on the cob
+  - corn 8 for
+  - corn 3 for
+  keep_separate_from:
+  - canned corn
+  - frozen corn
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 42
+  homepage_group: produce
+- id: eggs_dozen_normalized
+  canonical_tracker_family: Eggs
+  size_format_subtitle: large eggs; normalized to 12-count/dozen
+  category: dairy
+  organic_status: conventional
+  include:
+  - large eggs 12 ct
+  - large eggs 18 ct
+  - large eggs 24 ct
+  - dozen eggs
+  - egg multipacks
+  keep_separate_from:
+  - egg whites
+  - liquid eggs
+  - organic eggs unless intentionally grouped
+  - pasture-raised specialty eggs if not comparable
+  notes: Use one egg tracker. Normalize all pack counts to price per dozen; show actual count in offer details.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 43
+  homepage_group: dairy_breakfast_bakery
+- id: butter_16oz
+  canonical_tracker_family: Butter
+  size_format_subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  category: dairy
+  organic_status: not_applicable
+  include:
+  - Lucerne butter 16 oz
+  - Challenge butter 16 oz
+  - Land O Lakes butter 16 oz
+  - Kerrygold butter when comparable size or normalized
+  - store-brand butter 16 oz
+  - name-brand butter 16 oz
+  keep_separate_from:
+  - margarine
+  - spreadable tubs
+  - 8 oz specialty butter unless normalized separately
+  - plant-based butter
+  notes: Treat 16 oz butter brands as interchangeable for the tracker. Each week, graph the best normalized 16 oz price and
+    show the winning brand in details.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 44
+  homepage_group: dairy_breakfast_bakery
+- id: sliced_or_shredded_cheese_6_8oz
+  canonical_tracker_family: Sliced or shredded cheese
+  size_format_subtitle: 6–8 oz packages
+  category: dairy
+  organic_status: not_applicable
+  include:
+  - Lucerne shredded cheese 6–8 oz
+  - Lucerne sliced cheese 6–8 oz
+  - Sargento shredded cheese 6–8 oz
+  - Sargento sliced cheese 6–8 oz
+  - Kraft sliced or shredded cheese 6–8 oz
+  - Tillamook sliced or shredded cheese 6–8 oz
+  - store-brand sliced or shredded cheese
+  keep_separate_from:
+  - cream cheese
+  - block cheese over 8 oz
+  - cheese snack sticks
+  - string cheese
+  - fancy cheese wedges
+  notes: Group sliced and shredded cheese brands together. Compare on normalized package/unit price and call out the best
+    brand each week.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 45
+  homepage_group: dairy_breakfast_bakery
+- id: philadelphia_cream_cheese
+  canonical_tracker_family: Philadelphia cream cheese
+  size_format_subtitle: 7.5–8 oz tubs or bricks
+  category: dairy
+  organic_status: not_applicable
+  include:
+  - Philadelphia cream cheese
+  - Philadelphia 1/3 less fat
+  - Philadelphia spread
+  keep_separate_from:
+  - Lucerne cream cheese
+  - store-brand cream cheese
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 46
+  homepage_group: dairy_breakfast_bakery
+- id: lucerne_cream_cheese
+  canonical_tracker_family: Lucerne cream cheese
+  size_format_subtitle: 8 oz
+  category: dairy
+  organic_status: not_applicable
+  include:
+  - Lucerne cream cheese
+  - Lucerne cream cheese brick
+  - Lucerne cream cheese tub
+  keep_separate_from:
+  - Philadelphia cream cheese
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 47
+  homepage_group: dairy_breakfast_bakery
+- id: chobani_yogurt_per_cup
+  canonical_tracker_family: Chobani yogurt
+  size_format_subtitle: single cups or 4-packs; normalize per cup
+  category: yogurt
+  organic_status: not_applicable
+  include:
+  - Chobani 5.3 oz cups
+  - Chobani Greek yogurt cups
+  - Chobani Less Sugar cups
+  - Chobani Zero Sugar cups
+  - Chobani 4-packs
+  keep_separate_from:
+  - Chobani 32 oz tubs
+  - Fage cups
+  - Fage tubs
+  - Oikos
+  - Yoplait
+  - Go-Gurt
+  notes: Merge Chobani single cups and 4-packs. Normalize price per cup and retain actual count/size in details.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 48
+  homepage_group: dairy_breakfast_bakery
+- id: fage_cups
+  canonical_tracker_family: Fage Greek yogurt cups
+  size_format_subtitle: 5.3 oz cups
+  category: yogurt
+  organic_status: not_applicable
+  include:
+  - Fage cup
+  - Fage Greek yogurt 5.3 oz
+  - Fage Total cup
+  keep_separate_from:
+  - Fage 32 oz tub
+  - Chobani
+  - Oikos
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 49
+  homepage_group: dairy_breakfast_bakery
+- id: fage_tub
+  canonical_tracker_family: Fage Greek yogurt tub
+  size_format_subtitle: 32 oz tub
+  category: yogurt
+  organic_status: not_applicable
+  include:
+  - Fage 32 oz
+  - Fage Total 32 oz
+  - Fage Greek yogurt tub
+  keep_separate_from:
+  - Fage cups
+  - Chobani tubs
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 50
+  homepage_group: dairy_breakfast_bakery
+- id: lucerne_yogurt_tubs
+  canonical_tracker_family: Lucerne yogurt tubs
+  size_format_subtitle: 32 oz tubs
+  category: dairy
+  organic_status: not_applicable
+  include:
+  - Lucerne yogurt 32 oz
+  - Lucerne Greek yogurt tub
+  keep_separate_from:
+  - Chobani
+  - Fage
+  - single yogurt cups
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 51
+  homepage_group: dairy_breakfast_bakery
+- id: nature_valley_bars
+  canonical_tracker_family: Nature Valley bars
+  size_format_subtitle: roughly 5–12 ct boxes
+  category: bars_snacks
+  organic_status: not_applicable
+  include:
+  - Nature Valley Crunchy
+  - Nature Valley Sweet & Salty
+  - Nature Valley biscuits
+  - Nature Valley oatmeal squares
+  - Nature Valley bars
+  keep_separate_from:
+  - protein bars
+  - Kellogg's breakfast bars
+  - Betty Crocker fruit snacks
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 52
+  homepage_group: dairy_breakfast_bakery
+- id: general_mills_cereal_regular
+  canonical_tracker_family: General Mills cereal
+  size_format_subtitle: regular boxes, roughly 8.9–15 oz
+  category: cereal_breakfast
+  organic_status: not_applicable
+  include:
+  - Cheerios
+  - Cinnamon Toast Crunch
+  - Lucky Charms
+  - Chex
+  - Reese's Puffs
+  - General Mills cereal
+  keep_separate_from:
+  - General Mills family size
+  - Post cereal
+  - Kellogg's cereal
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 53
+  homepage_group: dairy_breakfast_bakery
+- id: general_mills_cereal_family_size
+  canonical_tracker_family: General Mills cereal
+  size_format_subtitle: family-size boxes, roughly 15–18 oz
+  category: cereal_breakfast
+  organic_status: not_applicable
+  include:
+  - family size Cheerios
+  - family size Cinnamon Toast Crunch
+  - family size Lucky Charms
+  - family size Chex
+  keep_separate_from:
+  - regular-size General Mills cereal
+  - Post cereal
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 54
+  homepage_group: dairy_breakfast_bakery
+- id: post_cereal_regular
+  canonical_tracker_family: Post cereal
+  size_format_subtitle: regular boxes, roughly 10–16 oz
+  category: cereal_breakfast
+  organic_status: not_applicable
+  include:
+  - Honey Bunches of Oats
+  - Pebbles
+  - Honeycomb
+  - Oreo O's
+  - Post cereal
+  keep_separate_from:
+  - Post giant size
+  - General Mills cereal
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 55
+  homepage_group: dairy_breakfast_bakery
+- id: post_cereal_giant_size
+  canonical_tracker_family: Post cereal
+  size_format_subtitle: giant-size boxes, roughly 21–24.7 oz
+  category: cereal_breakfast
+  organic_status: not_applicable
+  include:
+  - giant-size Post cereal
+  - giant-size Honey Bunches of Oats
+  - giant-size Pebbles
+  keep_separate_from:
+  - regular-size Post cereal
+  - General Mills cereal
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 56
+  homepage_group: dairy_breakfast_bakery
+- id: thomas_bagels_muffins_bread
+  canonical_tracker_family: Thomas bagels / English muffins / swirl bread
+  size_format_subtitle: 6 ct or roughly 12–18 oz
+  category: bakery
+  organic_status: not_applicable
+  include:
+  - Thomas bagels
+  - Thomas English muffins
+  - Thomas swirl bread
+  - Thomas breakfast bread
+  keep_separate_from:
+  - store-brand bagels
+  - Oroweat bread
+  - King's Hawaiian
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 57
+  homepage_group: dairy_breakfast_bakery
+- id: kings_hawaiian_rolls
+  canonical_tracker_family: King's Hawaiian rolls
+  size_format_subtitle: 12 ct / 12 oz
+  category: bakery
+  organic_status: not_applicable
+  include:
+  - King's Hawaiian Original rolls
+  - King's Hawaiian Savory Butter rolls
+  - King's Hawaiian slider rolls
+  keep_separate_from:
+  - hamburger buns
+  - hot dog buns
+  - Hawaiian sliced bread
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 58
+  homepage_group: dairy_breakfast_bakery
+- id: pillsbury_refrigerated_dough
+  canonical_tracker_family: Pillsbury refrigerated dough
+  size_format_subtitle: 8–16.3 oz cans/tubes
+  category: refrigerated_bakery
+  organic_status: not_applicable
+  include:
+  - Pillsbury Grands
+  - Pillsbury biscuits
+  - Pillsbury crescent rolls
+  - Pillsbury cinnamon rolls
+  - Pillsbury cookie dough
+  keep_separate_from:
+  - frozen breakfast
+  - bakery rolls
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 59
+  homepage_group: dairy_breakfast_bakery
+- category: snacks
+  organic_status: not_applicable
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: quest_bars
+  canonical_tracker_family: Quest bars
+  size_format_subtitle: single bars or multipacks; normalize per bar
+  include:
+  - Quest bars
+  - Quest protein bars
+  - Quest Hero bars
+  - Quest snack bars
+  keep_separate_from:
+  - Clif bars
+  - RXBAR
+  - KIND bars
+  - generic protein bars
+  notes: Track Quest separately rather than using a broad protein-bar bucket.
+  display_order: 60
+  homepage_group: dairy_breakfast_bakery
+- category: snacks
+  organic_status: not_applicable
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: clif_bars
+  canonical_tracker_family: Clif bars
+  size_format_subtitle: single bars or multipacks; normalize per bar
+  include:
+  - Clif bars
+  - Clif Kid Zbar
+  - Clif Nut Butter bars
+  - Clif Builders if intentionally included
+  keep_separate_from:
+  - Quest bars
+  - RXBAR
+  - KIND bars
+  - generic protein bars
+  notes: Track Clif separately rather than using a broad protein-bar bucket.
+  display_order: 61
+  homepage_group: dairy_breakfast_bakery
+- category: meat
+  organic_status: not_applicable
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: chicken_breast_per_lb
+  canonical_tracker_family: Chicken breast
+  size_format_subtitle: per lb
+  include:
+  - boneless skinless chicken breast
+  - chicken breast value pack
+  - fresh chicken breast
+  keep_separate_from:
+  - chicken thighs
+  - chicken wings
+  - cooked chicken
+  - organic chicken unless intentionally grouped
+  notes: Separate from thighs because breast and thigh prices commonly differ.
+  display_order: 62
+  homepage_group: meat_and_seafood
+- category: meat
+  organic_status: not_applicable
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  id: chicken_thigh_per_lb
+  canonical_tracker_family: Chicken thighs
+  size_format_subtitle: per lb
+  include:
+  - boneless skinless chicken thighs
+  - bone-in chicken thighs
+  - chicken thigh value pack
+  - fresh chicken thighs
+  keep_separate_from:
+  - chicken breast
+  - chicken wings
+  - cooked chicken
+  - organic chicken unless intentionally grouped
+  notes: Separate from breast because breast and thigh prices commonly differ. Preserve bone-in/boneless detail in offer metadata.
+  display_order: 63
+  homepage_group: meat_and_seafood
+- id: ribeye_steak
+  canonical_tracker_family: Ribeye steak
+  size_format_subtitle: per lb
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - ribeye steak
+  - bone-in ribeye
+  - USDA Choice ribeye
+  keep_separate_from:
+  - tri-tip roast
+  - short ribs
+  - New York steak
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 64
+  homepage_group: meat_and_seafood
+- id: tri_tip_roast
+  canonical_tracker_family: Tri-tip roast
+  size_format_subtitle: per lb
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - tri-tip roast
+  - tri tip roast
+  - trimmed tri-tip
+  keep_separate_from:
+  - ribeye steak
+  - short ribs
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 65
+  homepage_group: meat_and_seafood
+- id: salmon
+  canonical_tracker_family: Salmon
+  size_format_subtitle: fillets or smoked salmon, format varies
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - Atlantic salmon
+  - salmon fillets
+  - smoked salmon
+  - Norwegian smoked salmon
+  keep_separate_from:
+  - shrimp
+  - other fish
+  notes: ''
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 66
+  homepage_group: meat_and_seafood

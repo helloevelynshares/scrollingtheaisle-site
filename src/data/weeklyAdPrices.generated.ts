@@ -76,6 +76,664 @@ export const WEEKLY_AD_PRICES: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {
+  "fage_cups": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "dreyers_novelties": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "post_cereal_giant_size": {
+    "2026-03-25": {
+      "price": 1.99,
+      "offerText": "Post Cereal 10 to 14.75 oz",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.99,
+      "offerText": "Post Cereal 11-14.75 oz. Pebbles, Honeycomb",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 1.99,
+      "offerText": "Post Cereal 10.5 to 15.5 oz Selected varieties",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 2.49,
+      "offerText": "Post Cereal",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "Post Cereal",
+      "confidence": "high"
+    }
+  },
+  "chips_ahoy": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "peaches_per_lb": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 1.0,
+      "offerText": "Yellow Peaches",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "Yellow Peaches",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "Yellow Peaches",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 1.0,
+      "offerText": "Yellow Peaches",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "lacroix_8pack": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 3.49,
+      "offerText": "La Croix Sparkling Water 8 pack, 12 oz. cans.",
+      "confidence": "medium"
+    }
+  },
+  "pillsbury_refrigerated_dough": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 2.49,
+      "offerText": "Pillsbury Cinnamon Rolls, Grands! Biscuits or Crescent Rolls 8-13.9 oz. Selected varieties.",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "tri_tip_roast": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "Chef\u2019s Counter Tri Tip Roast Value Pack",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 1.0,
+      "offerText": "Chef's Counter Marinated Tri Tip Roast selected varieties",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 1.0,
+      "offerText": "USDA Choice Boneless Beef Tri Tip Roast Value Pack",
+      "confidence": "medium"
+    }
+  },
+  "haagen_dazs_bars_novelties": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "philadelphia_cream_cheese": {
+    "2026-03-25": {
+      "price": 2.49,
+      "offerText": "Philadelphia Cream Cheese",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.99,
+      "offerText": "Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 2.49,
+      "offerText": "Philadelphia Cream Cheese",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Philadelphia Cream Cheese Selected varieties.",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 2.49,
+      "offerText": "Philadelphia Cream Cheese",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 2.49,
+      "offerText": "Philadelphia Cream Cheese 8 oz.",
+      "confidence": "high"
+    }
+  },
+  "salmon": {
+    "2026-03-25": {
+      "price": 9.99,
+      "offerText": "Waterfront Bistro Wild Alaskan Pink Salmon",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 4.99,
+      "offerText": "Fresh Atlantic Salmon Portion",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": 8.99,
+      "offerText": "Fresh Atlantic Salmon Whole Fillet",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": 6.99,
+      "offerText": "Waterfront Bistro Wild Alaskan Sockeye Salmon",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 6.99,
+      "offerText": "Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 16.99,
+      "offerText": "Fresh Sockeye Salmon Fillets",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 5.99,
+      "offerText": "Fresh Atlantic Salmon Portion",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 14.99,
+      "offerText": "Echo Falls Smoked Salmon",
+      "confidence": "high"
+    }
+  },
+  "doritos_5_13oz": {
+    "2026-03-25": {
+      "price": 1.99,
+      "offerText": "Doritos Tortilla Chips",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.99,
+      "offerText": "Lay\u2019s, Fritos, Doritos",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": "Lay\u2019s, Doritos, Tostitos",
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 2.49,
+      "offerText": "Doritos, Ruffles, Smartfood",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 2.49,
+      "offerText": "Fritos, Ruffles, Doritos",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "general_mills_cereal_family_size": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.79,
+      "offerText": "General Mills Cereal Bars 6.84-8.9 oz.",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "General Mills Cereal 8.9 to 12 oz.",
+      "confidence": "high"
+    }
+  },
+  "lucerne_cream_cheese": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
   "tillamook_ice_cream": {
     "2026-03-25": {
       "price": null,
@@ -113,7 +771,7 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-24": {
-      "price": 7.0,
+      "price": 3.5,
       "offerText": "Tillamook Ice Cream",
       "confidence": "high"
     },
@@ -123,148 +781,7 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "avocados": {
-    "2026-03-25": {
-      "price": 1.67,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    },
-    "2026-04-01": {
-      "price": 0.97,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    },
-    "2026-05-06": {
-      "price": 1.67,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    },
-    "2026-05-12": {
-      "price": 1.25,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    },
-    "2026-06-03": {
-      "price": 1.67,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    },
-    "2026-06-10": {
-      "price": 0.99,
-      "offerText": "Hass Avocado, Large Mango, Cucumber, Roma Tomato",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": 2.0,
-      "offerText": "Hass Avocados",
-      "confidence": "high"
-    },
-    "2026-06-24": {
-      "price": 4.0,
-      "offerText": "Hass Avocado each",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": 1.25,
-      "offerText": "Hass Avocado",
-      "confidence": "high"
-    }
-  },
-  "frito_lay_multipack_chips": {
-    "2026-03-25": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-06": {
-      "price": 11.99,
-      "offerText": "Hint Water Variety Pack",
-      "confidence": "medium"
-    },
-    "2026-05-12": {
-      "price": 8.99,
-      "offerText": "Frito-Lay Variety Pack",
-      "confidence": "high"
-    },
-    "2026-06-03": {
-      "price": 9.99,
-      "offerText": "Frito-Lay Variety Pack 18 ct. Selected varieties.",
-      "confidence": "high"
-    },
-    "2026-06-10": {
-      "price": 14.0,
-      "offerText": "Frito-Lay Flavor Mix 35 to 42-ct. Selected varieties.",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": 8.99,
-      "offerText": "Frito-Lay Variety Pack",
-      "confidence": "high"
-    },
-    "2026-06-24": {
-      "price": 4.99,
-      "offerText": "Lay's, Doritos or Frito Lay Snack Pack",
-      "confidence": "medium"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": "more on participating Frito-Lay AND Quaker products",
-      "confidence": null
-    }
-  },
-  "protein_bars": {
-    "2026-03-25": {
-      "price": 8.99,
-      "offerText": "Built Protein Bars",
-      "confidence": "high"
-    },
-    "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-12": {
-      "price": 11.99,
-      "offerText": "CLIF BUILDERS Protein Bars 12 ct.",
-      "confidence": "high"
-    },
-    "2026-06-03": {
-      "price": 7.99,
-      "offerText": "Perfect Bar Refrigerated Protein Bars 4-8 ct. Selected varieties.",
-      "confidence": "high"
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 9.99,
-      "offerText": "think! Protein Bars",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": 9.99,
-      "offerText": "think! Protein Bars",
-      "confidence": "high"
-    }
-  },
-  "coke_zero": {
+  "oreo_family_size": {
     "2026-03-25": {
       "price": null,
       "offerText": null,
@@ -279,53 +796,6 @@ export const WEEKLY_AD_PRICES: Record<
       "price": null,
       "offerText": null,
       "confidence": null
-    },
-    "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "oreos_sandwich_cookies": {
-    "2026-03-25": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-04-01": {
-      "price": null,
-      "offerText": "OREO minis Snak-Saks Barnum's Animals Crackers",
-      "confidence": null
-    },
-    "2026-05-06": {
-      "price": 3.49,
-      "offerText": "Nabisco Family Size Oreo Cookies or Chips Ahoy! Cookies 13.1 to 20-oz.",
-      "confidence": "medium"
     },
     "2026-05-12": {
       "price": null,
@@ -358,7 +828,7 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "cheerios": {
+  "dreyers_tubs": {
     "2026-03-25": {
       "price": null,
       "offerText": null,
@@ -375,9 +845,1372 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-12": {
+      "price": 2.99,
+      "offerText": "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct.",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 2.99,
+      "offerText": "Dreyer's Ice Cream",
+      "confidence": "high"
+    }
+  },
+  "cherries_per_lb": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 1.0,
+      "offerText": "Red Cherries",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "Red Cherries",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "Red Cherries",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 1.0,
+      "offerText": "Red Cherries",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 1.0,
+      "offerText": "Red Cherries",
+      "confidence": "high"
+    }
+  },
+  "ribeye_steak": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 7.99,
+      "offerText": "USDA Choice Beef Ribeye Steak",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 1.0,
+      "offerText": "USDA Choice Beef Ribeye Steak, Bone-In",
+      "confidence": "medium"
+    }
+  },
+  "sweet_corn": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 0.79,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": 0.5,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": 0.5,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 0.33,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 0.5,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 0.5,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 0.5,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 0.12,
+      "offerText": "Sweet Corn",
+      "confidence": "high"
+    }
+  },
+  "general_mills_cereal_regular": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": "Cheerios Family Size, Honey Nut Cheerios Family Size, Cinnamon Cheerios Protein Family Size",
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
       "price": 1.99,
       "offerText": "General Mills Cheerios",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.79,
+      "offerText": "General Mills Cereal Bars 6.84-8.9 oz.",
       "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Cheez-It Crackers, Chex Mix, Bugles, Gardetto's, Nature Valley Crunchy Granola Bars, Fiber One Bars, Betty Crocker Fruit Snacks, Fruit by the Foot, Fruit Gushers, Fruit Roll-Ups, Mott's Fruit Flavored Snacks",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "General Mills Cereal 8.9 to 12 oz.",
+      "confidence": "high"
+    }
+  },
+  "quest_bars": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 0.69,
+      "offerText": "Quest Bars 4-12 ct",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "chicken_breast_per_lb": {
+    "2026-03-25": {
+      "price": 1.0,
+      "offerText": "Signature SELECT\u00ae Chicken Breasts 24 oz",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.0,
+      "offerText": "O Organics Boneless Skinless Chicken Breasts",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": 6.99,
+      "offerText": "Open Nature Boneless Skinless Chicken Breasts",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 1.0,
+      "offerText": "Rosie Organic Boneless Skinless Chicken Breasts Fresh Value Pack",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "O Organics Boneless Skinless Chicken Breasts",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "cheetos_regular_bags": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": "Doritos or Cheetos 6-10.25 oz. Selected varieties.",
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 5.0,
+      "offerText": "Cheetos Mac'n Cheese",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": 4.99,
+      "offerText": "Cheetos, Tostitos, Fritos",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 2.59,
+      "offerText": "Lay\u2019s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": "Cheetos, Lay's, Simply",
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Cheetos Mac'n Cheese",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "lucerne_yogurt_tubs": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "keebler_sandwich_crackers": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Keebler Sandwich Crackers 8-pack, 13.8-oz. Kellogg's Nutri Grain Bars 8 to 10-ct. Protein Pop Tarts 8-ct. Rice Krispies Treats 8-ct. Special K Bars 6-ct. Selected varieties.",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "berries_6oz": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "plums_per_lb": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 2.5,
+      "offerText": "Black Plums",
+      "confidence": "high"
+    }
+  },
+  "nectarines_per_lb": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 1.0,
+      "offerText": "Nectarines",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "Nectarines",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "Nectarines",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 1.0,
+      "offerText": "Nectarines",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "nabisco_snack_crackers": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 1.67,
+      "offerText": "Nabisco Snack Crackers Triscuit, Wheat Thins",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Wheat Thins",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 2.49,
+      "offerText": "Nabisco Snack Crackers",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "chicken_thigh_per_lb": {
+    "2026-03-25": {
+      "price": 20.0,
+      "offerText": "Signature SELECT Boneless Skinless Chicken Thighs",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 1.0,
+      "offerText": "Open Nature Boneless Skinless Chicken Thighs",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "post_cereal_regular": {
+    "2026-03-25": {
+      "price": 1.99,
+      "offerText": "Post Cereal 10 to 14.75 oz",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.99,
+      "offerText": "Post Cereal 11-14.75 oz. Pebbles, Honeycomb",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 1.99,
+      "offerText": "Post Cereal 10.5 to 15.5 oz Selected varieties",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 2.49,
+      "offerText": "Post Cereal",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "Post Cereal",
+      "confidence": "high"
+    }
+  },
+  "lays_kettle_cooked": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "seedless_grapes_per_lb": {
+    "2026-03-25": {
+      "price": 1.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 1.0,
+      "offerText": "Pristine Green and Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 1.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 1.67,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 1.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 1.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 1.67,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 1.0,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high"
+    }
+  },
+  "sliced_or_shredded_cheese_6_8oz": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 5.99,
+      "offerText": "Lucerne Sliced Cheese 6-8 oz, Lucerne Shredded Cheese 5-8 oz",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "eggs_dozen_normalized": {
+    "2026-03-25": {
+      "price": 1.5,
+      "offerText": "Russell Stover Chocolate Eggs",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 4.49,
+      "offerText": "Hershey\u2019s Eggs, Mini Eggs",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 7.49,
+      "offerText": "Happy Egg Free Range Eggs",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 6.99,
+      "offerText": "Pete & Gerry\u2019s Free Range Organic Eggs 12 ct. Large, Grade A.",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": 2.99,
+      "offerText": "Lucerne Cage Free Eggs Grade AA, 18-ct.",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 7.49,
+      "offerText": "Happy Egg Free Range Eggs 12 ct",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 12.99,
+      "offerText": "Vital Farms Pasture Raised Large Eggs",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "dr_pepper_12packs": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": "Dr Pepper Products 12-pack 12-oz cans",
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": "Dr Pepper",
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": "Dr Pepper",
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "sun_chips_7oz": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "kettle_brand_chips": {
+    "2026-03-25": {
+      "price": 5.0,
+      "offerText": "Kettle Chips",
+      "confidence": "medium"
+    },
+    "2026-04-01": {
+      "price": 5.0,
+      "offerText": "Kettle Brand Potato Chips 6-8.5 oz",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 1.99,
+      "offerText": "Kettle Brand Potato Chips",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 2.5,
+      "offerText": "Kettle Brand Potato Chips",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "pepsi_12packs": {
+    "2026-03-25": {
+      "price": 1.19,
+      "offerText": "Pepsi 2 liter",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 2.79,
+      "offerText": "Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 5.0,
+      "offerText": "Coca-Cola, Pepsi, 7UP",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": 1.85,
+      "offerText": "Pepsi, Diet Pepsi, Starry",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": "Pepsi",
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": 1.29,
+      "offerText": "Pepsi",
+      "confidence": "high"
+    },
+    "2026-06-17": {
+      "price": 5.99,
+      "offerText": "Pepsi 12 Pack, 12 oz cans, 6 Pack, 16.9 oz bottles, Pepsi 100oz bottle, Lipton Tea 64 oz, Pure Leaf Tea 59 oz, Gatorade 8 pack, 20 oz",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 2.5,
+      "offerText": "Pepsi, Dr. Pepper, 7UP, A&W, Sunkist, Canada Dry, Squirt, Mug",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": "Pepsi Zero Sugar",
+      "confidence": null
+    }
+  },
+  "fage_tub": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "thomas_bagels_muffins_bread": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "cheez_it_crackers": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 2.49,
+      "offerText": "Cheez-It Crackers",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": "Cheez-It Crackers",
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Cheez-It Crackers, Chex Mix, Bugles, Gardetto's, Nature Valley Crunchy Granola Bars, Fiber One Bars, Betty Crocker Fruit Snacks, Fruit by the Foot, Fruit Gushers, Fruit Roll-Ups, Mott's Fruit Flavored Snacks",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": 4.99,
+      "offerText": "Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats",
+      "confidence": "high"
+    }
+  },
+  "ruffles_regular_bags": {
+    "2026-03-25": {
+      "price": 5.99,
+      "offerText": "Spring Lindt Truffles select varieties",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 11.99,
+      "offerText": "Lindt Gourmet Truffles Select varieties.",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": 2.49,
+      "offerText": "Doritos, Ruffles, Smartfood",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 2.49,
+      "offerText": "Fritos, Ruffles, Doritos",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "coca_cola_12packs": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": "Coca-Cola",
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 2.79,
+      "offerText": "Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 5.0,
+      "offerText": "Coca-Cola, Pepsi, 7UP",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 8.99,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 5.99,
+      "offerText": "Coca-Cola 6-pk. 16.9-oz. btls. Selected varieties.",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "ben_jerrys_ice_cream": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-03": {
       "price": null,
@@ -452,7 +2285,54 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": "high"
     }
   },
-  "fage_greek_yogurt": {
+  "simply_refrigerated_juice_lemonade": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 2.99,
+      "offerText": "Simply Orange Juice",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 8.99,
+      "offerText": "Simply Orange Juice",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": 8.99,
+      "offerText": "Simply Orange Juice 52-oz. Selected varieties.",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 5.99,
+      "offerText": "Simply Light Orange Juice",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 5.99,
+      "offerText": "Simply Light Orange Juice",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 2.99,
+      "offerText": "Simply Orange Juice, Coffee mate Creamer",
+      "confidence": "medium"
+    }
+  },
+  "tostitos_tortilla_chips": {
     "2026-03-25": {
       "price": null,
       "offerText": null,
@@ -469,9 +2349,9 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-12": {
-      "price": 5.0,
-      "offerText": "Fage Greek Yogurt",
-      "confidence": "high"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-03": {
       "price": null,
@@ -479,14 +2359,14 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
-      "price": 5.99,
-      "offerText": "Fage Yogurt",
-      "confidence": "medium"
+      "price": null,
+      "offerText": "Tostitos Tortilla Chips Selected varieties",
+      "confidence": null
     },
     "2026-06-17": {
-      "price": 0.5,
-      "offerText": "Fage Greek Yogurt",
-      "confidence": "high"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-24": {
       "price": null,
@@ -494,21 +2374,115 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-07-01": {
-      "price": 5.99,
-      "offerText": "Fage Yogurt",
-      "confidence": "medium"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     }
   },
-  "strawberries": {
+  "lays_party_size": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "lays_potato_chips_regular": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": 1.99,
+      "offerText": "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": "Lay's Potato Chips 4.75-8 oz.",
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": "Lay's Potato Chips",
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 2.99,
+      "offerText": "Lay's Potato Chips",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "strawberries_1_2lb": {
     "2026-03-25": {
       "price": 2.5,
       "offerText": "Strawberries",
       "confidence": "high"
     },
     "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 2.0,
+      "offerText": "Strawberries 2 lb. Raspberries",
+      "confidence": "medium"
     },
     "2026-05-06": {
       "price": null,
@@ -521,7 +2495,7 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": "medium"
     },
     "2026-06-03": {
-      "price": 4.99,
+      "price": 2.5,
       "offerText": "Strawberries",
       "confidence": "medium"
     },
@@ -541,21 +2515,21 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": "medium"
     },
     "2026-07-01": {
-      "price": 4.99,
-      "offerText": "USDA Organic Strawberries",
+      "price": 5.0,
+      "offerText": "Strawberries Large Pack",
       "confidence": "medium"
     }
   },
-  "grapes": {
+  "ritz_toasted_chips": {
     "2026-03-25": {
       "price": 2.49,
-      "offerText": "Red Seedless Grapes",
-      "confidence": "high"
+      "offerText": "Ritz Toasted Chips",
+      "confidence": "medium"
     },
     "2026-04-01": {
-      "price": 4.99,
-      "offerText": "Pristine Green and Red Seedless Grapes",
-      "confidence": "high"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-05-06": {
       "price": null,
@@ -563,40 +2537,134 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-12": {
-      "price": 2.49,
-      "offerText": "Red Seedless Grapes",
-      "confidence": "high"
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-03": {
-      "price": 5.0,
-      "offerText": "Red Seedless Grapes",
+      "price": 2.49,
+      "offerText": "Ritz Toasted Chips",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "mangoes_each": {
+    "2026-03-25": {
+      "price": 1.5,
+      "offerText": "Large Mango",
+      "confidence": "medium"
+    },
+    "2026-04-01": {
+      "price": 0.97,
+      "offerText": "Mango",
+      "confidence": "medium"
+    },
+    "2026-05-06": {
+      "price": 1.0,
+      "offerText": "Large Mango",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": 1.25,
+      "offerText": "Mango",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 1.25,
+      "offerText": "Large Mangoes",
       "confidence": "high"
     },
     "2026-06-10": {
-      "price": 1.99,
-      "offerText": "Red Seedless Grapes",
+      "price": 0.99,
+      "offerText": "Hass Avocado, Large Mango, Cucumber, Roma Tomato",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 1.25,
+      "offerText": "Large Mango, Cucumber, Red, Orange, Yellow",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 1.25,
+      "offerText": "Mango",
+      "confidence": "medium"
+    }
+  },
+  "butter_16oz": {
+    "2026-03-25": {
+      "price": 3.49,
+      "offerText": "Lucerne Butter",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": 3.49,
+      "offerText": "Danish Creamery Butter 15-16 oz.",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": 3.49,
+      "offerText": "Land O'Lakes Butter",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": 4.99,
+      "offerText": "Butterball 93% Lean Ground Turkey",
+      "confidence": "high"
+    },
+    "2026-06-03": {
+      "price": 4.99,
+      "offerText": "Butterball 93% Lean Ground Turkey",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Danish Creamery Butter 15-16 oz.",
       "confidence": "high"
     },
     "2026-06-17": {
-      "price": 4.99,
-      "offerText": "Red Seedless Grapes",
+      "price": 0.97,
+      "offerText": "Skippy Peanut Butter",
       "confidence": "high"
     },
     "2026-06-24": {
-      "price": 5.0,
-      "offerText": "Red Seedless Grapes",
+      "price": 3.99,
+      "offerText": "Lucerne Quarters Butter",
       "confidence": "high"
     },
     "2026-07-01": {
-      "price": 4.99,
-      "offerText": "Red Seedless Grapes",
+      "price": 2.99,
+      "offerText": "Challenge Butter",
       "confidence": "high"
     }
   },
-  "cheetos_crunchy": {
+  "chobani_yogurt_per_cup": {
     "2026-03-25": {
       "price": null,
-      "offerText": "Cheetos",
+      "offerText": null,
       "confidence": null
     },
     "2026-04-01": {
@@ -610,9 +2678,385 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-05-12": {
-      "price": 4.99,
-      "offerText": "Cheetos, Tostitos, Fritos",
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "clif_bars": {
+    "2026-03-25": {
+      "price": 1.17,
+      "offerText": "CLIF Bars",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 1.25,
+      "offerText": "CLIF Bars",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": 1.25,
+      "offerText": "CLIF Bars",
+      "confidence": "high"
+    }
+  },
+  "cheetos_party_size": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "breyers_ice_cream": {
+    "2026-03-25": {
+      "price": 3.49,
+      "offerText": "Breyers Ice Cream 48 oz",
+      "confidence": "high"
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": 2.5,
+      "offerText": "Breyers Ice Cream 48 fl oz",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "simply_party_size": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "hass_avocados_each": {
+    "2026-03-25": {
+      "price": 1.67,
+      "offerText": "Hass Avocado",
       "confidence": "medium"
+    },
+    "2026-04-01": {
+      "price": 5.0,
+      "offerText": "Signature SELECT Hass Avocados",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": 1.67,
+      "offerText": "Hass Avocado",
+      "confidence": "medium"
+    },
+    "2026-05-12": {
+      "price": 1.25,
+      "offerText": "Hass Avocado",
+      "confidence": "medium"
+    },
+    "2026-06-03": {
+      "price": 1.67,
+      "offerText": "Hass Avocado",
+      "confidence": "medium"
+    },
+    "2026-06-10": {
+      "price": 0.99,
+      "offerText": "Hass Avocado, Large Mango, Cucumber, Roma Tomato",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 2.0,
+      "offerText": "Hass Avocados",
+      "confidence": "high"
+    },
+    "2026-06-24": {
+      "price": 2.0,
+      "offerText": "Hass Avocado each",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 1.25,
+      "offerText": "Hass Avocado",
+      "confidence": "medium"
+    }
+  },
+  "kings_hawaiian_rolls": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 3.99,
+      "offerText": "King's Hawaiian Rolls",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "King's Hawaiian Rolls",
+      "confidence": "high"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "ritz_crackers": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 2.49,
+      "offerText": "Ritz Crackers",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 2.49,
+      "offerText": "Ritz Crackers",
+      "confidence": "high"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    }
+  },
+  "simply_snacks": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": 1.99,
+      "offerText": "Simply Snacks 4.75-10.25 oz.",
+      "confidence": "high"
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
     },
     "2026-06-03": {
       "price": 4.99,
@@ -621,7 +3065,7 @@ export const WEEKLY_AD_PRICES: Record<
     },
     "2026-06-10": {
       "price": null,
-      "offerText": "Cheetos, Lay's, Simply",
+      "offerText": null,
       "confidence": null
     },
     "2026-06-17": {
@@ -640,260 +3084,25 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     }
   },
-  "eggs_18_count": {
-    "2026-03-25": {
-      "price": 0.58,
-      "offerText": "Eggland's Best Large Eggs",
-      "confidence": "high"
-    },
-    "2026-04-01": {
-      "price": 4.49,
-      "offerText": "Hershey\u2019s Eggs, Mini Eggs",
-      "confidence": "medium"
-    },
-    "2026-05-06": {
-      "price": 7.49,
-      "offerText": "Happy Egg Free Range Eggs",
-      "confidence": "medium"
-    },
-    "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": 6.99,
-      "offerText": "Pete & Gerry\u2019s Free Range Organic Eggs 12 ct. Large, Grade A.",
-      "confidence": "medium"
-    },
-    "2026-06-10": {
-      "price": 2.99,
-      "offerText": "Lucerne Cage Free Eggs Grade AA, 18-ct.",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": 7.49,
-      "offerText": "Happy Egg Free Range Eggs 12 ct",
-      "confidence": "medium"
-    },
-    "2026-06-24": {
-      "price": 12.99,
-      "offerText": "Vital Farms Pasture Raised Large Eggs",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "kettle_brand_chips": {
-    "2026-03-25": {
-      "price": 5.0,
-      "offerText": "Kettle Chips",
-      "confidence": "medium"
-    },
-    "2026-04-01": {
-      "price": 5.0,
-      "offerText": "Kettle Brand Potato Chips 6-8.5 oz",
-      "confidence": "high"
-    },
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": 1.99,
-      "offerText": "Kettle Brand Potato Chips",
-      "confidence": "high"
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": "Kettle Cooked Chips",
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 5.0,
-      "offerText": "Kettle Brand Potato Chips",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "mission_tortilla_chips": {
+  "haagen_dazs_pints": {
     "2026-03-25": {
       "price": null,
-      "offerText": null,
+      "offerText": "Peet's Coffee",
       "confidence": null
     },
     "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-06": {
-      "price": 4.99,
-      "offerText": "Mission Tortilla Chips",
-      "confidence": "high"
-    },
-    "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-07-01": {
-      "price": 2.49,
-      "offerText": "Mission Tortilla Chips 13 oz.",
-      "confidence": "high"
-    }
-  },
-  "chobani_greek_yogurt": {
-    "2026-03-25": {
-      "price": 0.99,
-      "offerText": "Chobani Greek, Less Sugar",
-      "confidence": "medium"
-    },
-    "2026-04-01": {
-      "price": 0.99,
-      "offerText": "Chobani Greek Yogurt. Selected varieties.",
+      "price": 8.99,
+      "offerText": "Peet\u2019s Coffee 10-12 oz. bag",
       "confidence": "medium"
     },
     "2026-05-06": {
-      "price": 0.89,
-      "offerText": "Chobani Greek, Less Sugar Yogurt 5.3-oz. 89\u00a2 MEMBER PRICE clip",
+      "price": 8.99,
+      "offerText": "Peet\u2019s Coffee 10.5-12-oz. bag, K-Cups 10-ct.",
       "confidence": "medium"
     },
     "2026-05-12": {
-      "price": 0.99,
-      "offerText": "Chobani Greek Yogurt",
-      "confidence": "medium"
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-10": {
-      "price": 2.99,
-      "offerText": "Chobani Greek Yogurt 4-5.3 oz. Selected varieties.",
-      "confidence": "medium"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-24": {
-      "price": 0.89,
-      "offerText": "Chobani Greek, Less Sugar Yogurt 5.3 oz",
-      "confidence": "medium"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "doritos_nacho_cheese": {
-    "2026-03-25": {
-      "price": 1.99,
-      "offerText": "Doritos Tortilla Chips",
-      "confidence": "high"
-    },
-    "2026-04-01": {
-      "price": 1.99,
-      "offerText": "Lay\u2019s, Fritos, Doritos",
-      "confidence": "medium"
-    },
-    "2026-05-06": {
-      "price": null,
-      "offerText": "Lay\u2019s, Doritos, Tostitos",
-      "confidence": null
-    },
-    "2026-05-12": {
-      "price": 4.99,
-      "offerText": "Doritos",
-      "confidence": "high"
-    },
-    "2026-06-03": {
-      "price": 2.49,
-      "offerText": "Ruffles, Doritos, SunChips",
-      "confidence": "medium"
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-06-17": {
-      "price": 2.49,
-      "offerText": "Ruffles, Doritos, SunChips",
-      "confidence": "medium"
-    },
-    "2026-06-24": {
-      "price": 4.99,
-      "offerText": "Doritos",
-      "confidence": "high"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    }
-  },
-  "haagen_dazs_ice_cream": {
-    "2026-03-25": {
       "price": 1.25,
-      "offerText": "Klondike Ice Cream Bars 6 ct, Jell-O Gelatin",
-      "confidence": "medium"
-    },
-    "2026-04-01": {
-      "price": 3.5,
-      "offerText": "H\u00e4agen-Dazs Ice Cream Novelties",
-      "confidence": "medium"
-    },
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
-    },
-    "2026-05-12": {
-      "price": 2.99,
-      "offerText": "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct.",
+      "offerText": "SToK Cold Brew Coffee 13.7 oz.",
       "confidence": "medium"
     },
     "2026-06-03": {
@@ -902,18 +3111,65 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null
     },
     "2026-06-10": {
+      "price": 1.99,
+      "offerText": "International Delight or Dunkin\u2019 Too Good Gourmet Coffee Creamer 32 oz. Selected varieties.",
+      "confidence": "medium"
+    },
+    "2026-06-17": {
+      "price": 5.99,
+      "offerText": "Nescaf\u00e9 Coffee Beverage",
+      "confidence": "medium"
+    },
+    "2026-06-24": {
+      "price": 7.99,
+      "offerText": "Starbucks Coffee 10-12 oz bag or 10 ct K-Cups",
+      "confidence": "medium"
+    },
+    "2026-07-01": {
+      "price": 2.99,
+      "offerText": "Simply Orange Juice, Coffee mate Creamer",
+      "confidence": "medium"
+    }
+  },
+  "goldfish_bags": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-05-06": {
+      "price": 7.99,
+      "offerText": "Goldfish Crackers",
+      "confidence": "high"
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null
+    },
+    "2026-06-03": {
+      "price": 5.0,
+      "offerText": "Goldfish Crackers",
+      "confidence": "high"
+    },
+    "2026-06-10": {
       "price": null,
       "offerText": null,
       "confidence": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null
+      "price": 3.49,
+      "offerText": "Pepperidge Farm Goldfish Crackers",
+      "confidence": "high"
     },
     "2026-06-24": {
       "price": null,
-      "offerText": null,
+      "offerText": "Goldfish Crackers or Crisps 4 to 8-oz.",
       "confidence": null
     },
     "2026-07-01": {

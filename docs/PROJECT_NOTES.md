@@ -152,6 +152,27 @@ supabase functions deploy admin-suggestion-actions
 
 Apply migration: `supabase db push` or run SQL in Supabase dashboard.
 
+### All 66 YAML families need chartMode-based rangeMode (not isDealFamily)
+
+Date discovered: 2026-07-05
+Context: Price tracker graphs after YAML migration to 66 tracker families.
+What happened: `yamlFamilyProducts.ts` sets `trackerType: "brand_family"` for all 66 families. `isDealFamily()` returns `true` for `brand_family`. `PriceTrendChart.tsx` had `rangeMode = product.chartMode === "range" || isDealFamily(product)`. Because `isDealFamily` was `true` for all YAML families, `rangeMode` was always `true` → `showCostcoOverlay = false` → the Costco line never rendered for any of the 66 new families. Only old `deal_family` products (Ben & Jerry's, Ritz) legitimately need `rangeMode`.
+Fix / workaround: Change `PriceTrendChart.tsx` to `rangeMode = product.chartMode === "range"` only. YAML families all have `chartMode: "single"` → rangeMode stays false → three-line chart shows correctly. `deal_family` products explicitly set `chartMode: "range"` via `trackerFamilyUtils.ts` (`members.length > 1 ? "range" : "single"`), so they still get range mode.
+How to verify: Open `/staging-price-tracker/` → Doritos/strawberries/etc. charts show baseline reference line + grocery trend line + Costco comparison line. `npm run build:price-tracker`.
+Related files: `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/priceTrackerUtils.ts`, `src/data/yamlFamilyProducts.ts`, `src/data/trackerFamilyUtils.ts`
+
+### Costco chart line: flat fill + unit normalization for produce
+
+Date discovered: 2026-07-05
+Context: Costco line in price tracker charts after YAML migration.
+What happened: (1) Costco warehouse data only covers Jun–Jul 2026; earlier grocery weeks had `costcoPrice: null`, making the line appear as a short right-side stub. (2) For produce items (strawberries, grapes, avocados), Costco sells multi-lb packages but grocery tracks per-lb; using raw `price` made the comparison off. (3) 49 new YAML families without Costco data got `costcoComparable: true` (from YAML) but no history → `isCostcoUnavailableOnChart()` incorrectly showed "Not available at Costco" for all of them.
+Fix / workaround:
+1. `buildUnifiedChartRows`: after mapping observations to weeks, find `flatCostcoPrice` (last known Costco price) and fill any week without an observation with it → continuous flat line.
+2. `getCostcoChartPricePoints`: use `point.unitPrice` instead of `point.price` when `groceryUnitType` is "lb" or "each" (produce items) and `unitPrice < price` — keeps y-axis in the right per-unit scale.
+3. `isCostcoUnavailableOnChart`: only return `true` when `comparison.comparisonStatus === "not_sold_at_costco"` or `comparison.winner === "grocery_only"`. Returns `false` when no comparison data (new families without metadata).
+How to verify: Strawberries chart shows Costco line flat at ~$2/lb (per-lb normalized) across all 9 weeks. Doritos chart shows Costco $6.99 package line flat. No "Not available at Costco" message for families like `lays_potato_chips_regular`. `npm run build:price-tracker`.
+Related files: `src/data/priceTrackerUtils.ts`
+
 ### Recharts Line must be direct children of LineChart (no Fragment wrappers)
 
 Date discovered: 2026-07-05  
@@ -288,7 +309,16 @@ How to verify: `python3 -m unittest tests.test_vons_historical_low_check -v` the
 Related files: `scripts/analysis/vons_historical_low_check.py`, `config/vons_historical_low_category_mappings.csv`, `tests/test_vons_historical_low_check.py`
 
 
-### Supabase migration version must be unique per file
+### YAML tracker families migration (66 families)
+
+Date discovered: 2026-07-05  
+Context: Migrate from ~20 hardcoded `canonical_products` to `data/canonical_tracker_families.yaml`.  
+What happened: Tracker cards, weekly-ad matchers, homepage sections, and Popular this week now read from YAML via `scripts/generate_canonical_families.py` → `src/data/canonicalTrackerFamilies.generated.ts`. Weekly ad prices keyed by family id (`doritos_5_13oz`, etc.); legacy canonical rows merged via `LEGACY_CANONICAL_TO_FAMILY` in `scripts/price_tracker/canonical_families.py`.  
+Fix / workaround: Edit YAML → `npm run generate:canonical-families` → `npm run generate:weekly-ad-prices` → `npm run build:price-tracker`. Runbook: `docs/YAML_TRACKER_MIGRATION_RUNBOOK.md`. Safeway/Vons UI uses static `yamlFamilyProducts.ts` (no Supabase required). Costco/backfill still maps via legacy canonical ids until extended.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_families tests.test_normalization tests.test_ui_copy -v`; open `/staging-price-tracker/` — five section chips, search, Popular this week.  
+Related files: `data/canonical_tracker_families.yaml`, `data/popular_this_week.yaml`, `scripts/price_tracker/`, `src/data/yamlFamilyProducts.ts`, `src/staging-price-tracker/SectionedTrackerList.tsx`
+
+
 
 Date discovered: 2026-07-05  
 Context: `supabase db push` after adding Costco price comparison seed.  
@@ -296,4 +326,23 @@ What happened: Two files shared prefix `20260616` (`20260616_price_comparisons.s
 Fix / workaround: Give seed its own version (`20260617_price_comparisons_seed.sql`). Schema stays `20260616`. Seed data can also be applied manually: `supabase db query --linked -f supabase/migrations/20260617_price_comparisons_seed.sql` (idempotent upserts). `backfill_price_comparisons.py` writes the `20260617_…` path.  
 How to verify: `supabase db push --dry-run` lists only `20260617_price_comparisons_seed.sql` pending; no duplicate-version error.  
 Related files: `supabase/migrations/20260616_price_comparisons.sql`, `supabase/migrations/20260617_price_comparisons_seed.sql`, `scripts/backfill_price_comparisons.py`
+
+
+### Safeway baseline store: Oakland 3132 / 94611 / instore (Safari guest)
+
+Date discovered: 2026-07-05  
+Context: HTTP/curl pgmsearch via `seed_safeway_baseline.py`; prior `.env` used SF Jackson St store **4601 / 94111 / pickup** with Chrome UA + logged-in cookie — requests failed or mismatched session.  
+What happened: Working DevTools capture used **storeid=3132**, **zipcode=94611**, **channel=instore**, empty **visitorId**, Safari UA, guest cookie (`userType` **G**), no `sec-ch-ua` headers.  
+Fix / workaround: Refresh `SAFEWAY_COOKIE` from that capture; set `SAFEWAY_STORE_ID=3132`, `SAFEWAY_ZIPCODE=94611`, `SAFEWAY_CHANNEL=instore`, Safari `SAFEWAY_USER_AGENT`, clear `SAFEWAY_VISITOR_ID` / `SAFEWAY_UUID`, comment out `SAFEWAY_SEC_CH_UA*`. Code defaults in `safeway_config.py` remain SF 4601/94111/pickup if env vars unset.  
+How to verify: `.venv/bin/python scripts/seed_safeway_baseline.py --query "goldfish cheddar cracker" --timeout 30 -v` → `200 success`, candidates CSV populated (e.g. Goldfish Cheddar 10 Oz **$4.99**).  
+Related files: `scripts/.env`, `scripts/safeway_config.py`, `scripts/safeway_client.py`, `scripts/seed_safeway_baseline.py`
+
+### Price tracker dev server: bind 127.0.0.1 (not IPv6-only localhost)
+
+Date discovered: 2026-07-05
+Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/staging-price-tracker/
+What happened: Default Vite 6 listened only on `[::1]:5173`. Browsers and tools using IPv4 `127.0.0.1` could not connect. Agent-background Vite processes also stop when the agent session ends.
+Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`, `strictPort: true`. Run dev server in the user's own terminal: `cd <repo> && npm run dev:price-tracker`. Open http://127.0.0.1:5173/staging-price-tracker/ (base path `/staging-price-tracker/`).
+How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; `curl -I http://127.0.0.1:5173/staging-price-tracker/` returns HTTP 200.
+Related files: `vite.config.ts`, `package.json` (`dev:price-tracker`)
 

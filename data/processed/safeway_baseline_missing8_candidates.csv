@@ -1,0 +1,41 @@
+canonical_id,display_name,search_query,content_theme,candidate_rank,product_name,price,pid,upc,size
+fage_greek_yogurt,Fage Greek Yogurt,fage greek yogurt 32 oz,price_tracker_baseline,1,FAGE Total 0% Milkfat Plain Greek Yogurt - 32 Oz,6.99,960050143,0068954408301,OUNCE
+fage_greek_yogurt,Fage Greek Yogurt,fage greek yogurt 32 oz,price_tracker_baseline,2,Fage Bestself Plain Yogurt - 32 Oz,6.99,960566124,0068954407210,OUNCE
+fage_greek_yogurt,Fage Greek Yogurt,fage greek yogurt 32 oz,price_tracker_baseline,3,FAGE Total 5% Milkfat Plain Greek Yogurt - 32 Oz,6.99,960082464,0068954408300,OUNCE
+fage_greek_yogurt,Fage Greek Yogurt,fage greek yogurt 32 oz,price_tracker_baseline,4,FAGE Total 2% Milkfat Plain Greek Yogurt - 32 Oz,6.99,960050144,0068954408302,OUNCE
+fage_greek_yogurt,Fage Greek Yogurt,fage greek yogurt 32 oz,price_tracker_baseline,5,Chobani Non-Fat Plain Greek Yogurt - 32 Oz,7.99,960038589,0089470001013,OUNCE
+frito_lay_multipack_chips,Frito-Lay Multipack Chips,frito lay variety pack chips,price_tracker_baseline,1,Frito Lay Classic Mix Variety Pack - 18 Count,11.99,970782396,0002840073740,COUNT
+frito_lay_multipack_chips,Frito-Lay Multipack Chips,frito lay variety pack chips,price_tracker_baseline,2,Frito-Lay Doritos & Cheetos Variety Pack - 18 Count,11.99,970125580,0002840067947,COUNT
+frito_lay_multipack_chips,Frito-Lay Multipack Chips,frito lay variety pack chips,price_tracker_baseline,3,Frito Lay Flavor Mix Variety Pack - 18 Count,11.99,970569814,0002840073742,COUNT
+frito_lay_multipack_chips,Frito-Lay Multipack Chips,frito lay variety pack chips,price_tracker_baseline,4,Frito Lay Variety Pack Classic Mix - 42 Count,19.99,970123424,0002840069435,COUNT
+frito_lay_multipack_chips,Frito-Lay Multipack Chips,frito lay variety pack chips,price_tracker_baseline,5,Frito Lay Variety Pack Flavor Mix - 42 Count,19.99,970125552,0002840073738,COUNT
+haagen_dazs_ice_cream,Häagen-Dazs Ice Cream,haagen dazs ice cream,price_tracker_baseline,1,Protein Pints High Protein Salted Caramel Ice Cream - 16 Oz,7.99,971322828,0085006736612,OUNCE
+haagen_dazs_ice_cream,Häagen-Dazs Ice Cream,haagen dazs ice cream,price_tracker_baseline,2,Baskin Robbins Ice Cream Pralines N Cream - 14 Fl. Oz.,5.99,960137318,0085245500503,FL.OZ
+haagen_dazs_ice_cream,Häagen-Dazs Ice Cream,haagen dazs ice cream,price_tracker_baseline,3,Baskin Robbins Ice Cream Mint Chocolate Chip - 14 Fl. Oz.,5.99,960136792,0085245500501,FL.OZ
+haagen_dazs_ice_cream,Häagen-Dazs Ice Cream,haagen dazs ice cream,price_tracker_baseline,4,Protein Pints Ice Cream 30g Protein Mint Chip - 16 OZ,7.99,971286811,0085006736600,OUNCE
+haagen_dazs_ice_cream,Häagen-Dazs Ice Cream,haagen dazs ice cream,price_tracker_baseline,5,Haagen-Dazs Strawberry Ice Cream - 14 Fl. Oz.,5.99,142010353,0007457002400,FL.OZ
+grapes,Grapes,seedless grapes,price_tracker_baseline,1,Green Seedless Grapes Prepacked Bag - 2 Lb,9.98,184100014,0048410001405,LB
+grapes,Grapes,seedless grapes,price_tracker_baseline,2,Red Seedless Grapes Prepacked Bag - 2 Lb,9.98,184100012,0048410001201,LB
+grapes,Grapes,seedless grapes,price_tracker_baseline,3,Grapes Red Seedless Prepacked - 2 Lb,8.99,184100053,0002113014144,LB
+grapes,Grapes,seedless grapes,price_tracker_baseline,4,Signature SELECT/FARMS Green Seedless Grapes - 2 Lb,8.99,960564035,0089973400214,LB
+grapes,Grapes,seedless grapes,price_tracker_baseline,5,Signature SELECT/FARMS Seedless Raisins - 20 Oz,4.99,960259920,0002113028697,OUNCE
+eggs_18_count,"Eggs, 18-count",eggs 18 count,price_tracker_baseline,1,Nellies Eggs Free Range Large Brown - 18 Count,10.99,960307212,0081565200421,DOZEN
+eggs_18_count,"Eggs, 18-count",eggs 18 count,price_tracker_baseline,2,Lucerne Farms Eggs Cage Free Large - 18 Count,5.99,960304348,0002113003154,DOZEN
+eggs_18_count,"Eggs, 18-count",eggs 18 count,price_tracker_baseline,3,Nellies Eggs Free Range Large Brown - 18 Count,10.99,960307212,0081565200421,DOZEN
+eggs_18_count,"Eggs, 18-count",eggs 18 count,price_tracker_baseline,4,Open Nature Eggs Brown Free Range Large - 18 Count,9.99,960455228,0007989310835,DOZEN
+eggs_18_count,"Eggs, 18-count",eggs 18 count,price_tracker_baseline,5,Lucerne Farms Eggs Large Cage Free - 12 Count,3.99,960273951,0002113003234,COUNT
+oreos_sandwich_cookies,Oreos / Sandwich Cookies,oreo cookies family size,price_tracker_baseline,1,Nabisco Chips Ahoy/Nutter Butter/OREO Variety Pack - 10 Count,6.99,971100345,0004400008010,COUNT
+oreos_sandwich_cookies,Oreos / Sandwich Cookies,oreo cookies family size,price_tracker_baseline,2,Chips Ahoy/Nutter Butter/Oreo Variety Pack - 10 CT,6.99,971386465,0004400007836,COUNT
+oreos_sandwich_cookies,Oreos / Sandwich Cookies,oreo cookies family size,price_tracker_baseline,3,OREO Chocolate Sandwich Cookies Family Size - 18.12 Oz,6.99,970485813,0004400006023,OUNCE
+oreos_sandwich_cookies,Oreos / Sandwich Cookies,oreo cookies family size,price_tracker_baseline,4,OREO Double Stuf Chocolate Sandwich Cookies Family Size - 18.71 Oz,6.99,970485484,0004400006025,OUNCE
+oreos_sandwich_cookies,Oreos / Sandwich Cookies,oreo cookies family size,price_tracker_baseline,5,Oreo Chocolate Party Size Sandwich Cookies- 24.16 Oz,6.99,970582336,0004400006064,OUNCE
+protein_bars,Protein Bars,protein bars,price_tracker_baseline,1,Signature SELECT Chewy Bars Protein Peanut Butter Dark Chocolate Flavored - 5-1.4 Oz,3.99,960269909,0002113015273,COUNT
+protein_bars,Protein Bars,protein bars,price_tracker_baseline,2,Nature Valley Protein Bars Chewy Peanut Butter Dark Chocolate - 10-1.42 Oz,10.99,960081060,0001600045891,COUNT
+protein_bars,Protein Bars,protein bars,price_tracker_baseline,3,Quaker Peanut Butter And Chocolate Protein Granola Bars 5 Count 1.41 Ounce - 5 CT,5.99,971248020,0003000057832,COUNT
+protein_bars,Protein Bars,protein bars,price_tracker_baseline,4,Nature Valley Protein Bars Chewy Peanut Butter Dark Chocolate - 5-1.42 Oz,6.99,960063486,0001600045723,COUNT
+protein_bars,Protein Bars,protein bars,price_tracker_baseline,5,Quaker Cookies & Cream Protein Granola Bars 5 Count 1.41 Ounce - 5 CT,5.99,971248015,0003000057833,COUNT
+kettle_brand_chips,Kettle Brand Chips,kettle brand potato chips,price_tracker_baseline,1,Kettle Brand Sea Salt Kettle Potato Chip - 7.5 Oz,3.99,970469687,0008411490215,OUNCE
+kettle_brand_chips,Kettle Brand Chips,kettle brand potato chips,price_tracker_baseline,2,Kettle Brand Jalapeno Kettle Potato Chips - 7.5 Oz,3.99,970384836,0008411490204,OUNCE
+kettle_brand_chips,Kettle Brand Chips,kettle brand potato chips,price_tracker_baseline,3,Kettle Brand Sea Salt and Vinegar Kettle Potato Chips - 7.5 Oz,3.99,970384838,0008411490216,OUNCE
+kettle_brand_chips,Kettle Brand Chips,kettle brand potato chips,price_tracker_baseline,4,Kettle Brand Barbeque Kettle Potato Chips - 7.5 Oz,3.99,970383739,0008411490200,OUNCE
+kettle_brand_chips,Kettle Brand Chips,kettle brand potato chips,price_tracker_baseline,5,Kettle Brand Honey Dijon Kettle Potato Chips - 7.5 Oz,3.99,960220204,0008411490203,OUNCE

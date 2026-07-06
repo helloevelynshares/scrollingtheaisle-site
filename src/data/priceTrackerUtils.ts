@@ -101,10 +101,20 @@ export function getCostcoChartPricePoints(
     return [];
   }
 
+  // Normalize Costco price to the same unit the grocery graph tracks.
+  // For produce tracked per-lb or per-each, use unitPrice (already per-lb/each).
+  // For packaged goods (oz, bar, can, etc.) use the raw package price so the
+  // y-axis stays in familiar "price per purchase" territory.
+  const groceryUnitType = product.priceComparison?.groceryUnitType;
+  const useUnitPrice =
+    (groceryUnitType === "lb" || groceryUnitType === "each") &&
+    history.some((p) => p.unitPrice != null && p.unitPrice < p.price);
+
   return history.map((point) => ({
     weekStart: point.date,
     label: formatWeekLabel(point.date),
-    price: point.price,
+    price:
+      useUnitPrice && point.unitPrice != null ? point.unitPrice : point.price,
     adPrice: null,
     matchConfidence: null,
     priceType: "baseline" as const,
@@ -118,9 +128,20 @@ export function hasCostcoChartData(product: FeedProductView): boolean {
   return getCostcoChartPricePoints(product).length > 0;
 }
 
-/** True when the product is Costco-comparable but has no chartable warehouse data. */
+/**
+ * True only when comparison data explicitly says the item is not sold at Costco.
+ * When we simply lack warehouse data (no legacy mapping yet), we stay silent
+ * rather than incorrectly claiming the item is unavailable at Costco.
+ */
 export function isCostcoUnavailableOnChart(product: FeedProductView): boolean {
-  return product.costcoComparable && !hasCostcoChartData(product);
+  const comparison = product.priceComparison;
+  if (!comparison) {
+    return false;
+  }
+  return (
+    comparison.comparisonStatus === "not_sold_at_costco" ||
+    comparison.winner === "grocery_only"
+  );
 }
 
 export type UnifiedChartRow = {
@@ -180,6 +201,17 @@ export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow
     }
   }
 
+  // When Costco data exists but doesn't cover every historical week, fill all
+  // weeks with the most-recent known Costco price so the line is continuous
+  // ("flat line" from last observed price extended backward and forward).
+  let flatCostcoPrice: number | null = null;
+  if (costcoPoints.length > 0) {
+    const sorted = [...costcoPoints].sort((a, b) =>
+      a.weekStart.localeCompare(b.weekStart),
+    );
+    flatCostcoPrice = sorted[sorted.length - 1].price;
+  }
+
   return groceryPoints.map((point) => ({
     weekStart: point.weekStart,
     label: point.label ?? formatWeekLabel(point.weekStart),
@@ -190,7 +222,7 @@ export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow
     costcoPrice:
       point.weekStart === "baseline"
         ? null
-        : costcoByWeek.get(point.weekStart) ?? null,
+        : (costcoByWeek.get(point.weekStart) ?? flatCostcoPrice),
   }));
 }
 

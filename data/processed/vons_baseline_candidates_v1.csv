@@ -1,4 +1,241 @@
 canonical_id,display_name,search_query,content_theme,candidate_rank,product_name,price,pid,upc,size
+ben_jerrys_ice_cream,Ben & Jerry's ice cream,Ben & Jerry's pint,price_tracker_baseline,1,HERSHEY'S Sliced Strawberries Covered in Milk Chocolate - 8 Oz,7.99,970692247,0081006772751,OUNCE
+ben_jerrys_ice_cream,Ben & Jerry's ice cream,Ben & Jerry's pint,price_tracker_baseline,2,REESE'S Banana Slices in Milk Chocolate and REESE'S Peanut Butter Chips - 8 Oz,7.99,970692250,0081006772798,OUNCE
+ben_jerrys_ice_cream,Ben & Jerry's ice cream,Ben & Jerry's pint,price_tracker_baseline,3,HERSHEY'S Strawberries in Cookies ‘N’ Crème - 8 Oz,7.99,970692241,0081006772749,OUNCE
+ben_jerrys_ice_cream,Ben & Jerry's ice cream,Ben & Jerry's pint,price_tracker_baseline,4,Haagen-Dazs Vanilla Bean Ice Cream - 14 Fl. Oz.,6.49,142010463,0007457065057,FL.OZ
+ben_jerrys_ice_cream,Ben & Jerry's ice cream,Ben & Jerry's pint,price_tracker_baseline,5,Ben & Jerry's Half Baked Ice Cream Pint - 16 Oz,4.99,142010024,0007684010132,QUART
+berries_6oz,Blueberries / raspberries / blackberries,blueberries 6 oz 6 oz clamshells,price_tracker_baseline,1,Blueberries Prepacked - 6 Oz,3.99,184070083,0085308500301,OUNCE
+berries_6oz,Blueberries / raspberries / blackberries,blueberries 6 oz 6 oz clamshells,price_tracker_baseline,2,O Organics Blueberries Prepacked - 6 Oz,4.99,184700295,0085308500308,OUNCE
+berries_6oz,Blueberries / raspberries / blackberries,blueberries 6 oz 6 oz clamshells,price_tracker_baseline,3,Jumbo Blueberries Prepacked - 9.8 Oz,7.99,960314742,0085308500347,OUNCE
+berries_6oz,Blueberries / raspberries / blackberries,blueberries 6 oz 6 oz clamshells,price_tracker_baseline,4,Signature SELECT Blueberries Whole Unsweetened - 12 Oz,3.49,960312805,0002113009950,OUNCE
+berries_6oz,Blueberries / raspberries / blackberries,blueberries 6 oz 6 oz clamshells,price_tracker_baseline,5,Signature SELECT Blueberries Wild Whole Family Size - 40 Oz,13.99,960524076,0002113019919,OUNCE
+breyers_ice_cream,Breyers ice cream,Breyers,price_tracker_baseline,1,Protein Pints High Protein Salted Caramel Ice Cream - 16 Oz,8.99,971322828,0085006736612,OUNCE
+breyers_ice_cream,Breyers ice cream,Breyers,price_tracker_baseline,2,Protein Pints Ice Cream 30g Protein Cookie Dough - 16 OZ,8.99,971286806,0085006736601,OUNCE
+breyers_ice_cream,Breyers ice cream,Breyers,price_tracker_baseline,3,Protein Pints High Protein Cookies & Cream Ice Cream - 16 Oz,8.99,971311849,0085006736602,OUNCE
+breyers_ice_cream,Breyers ice cream,Breyers,price_tracker_baseline,4,Protein Pints High Protein Coffee Ice Cream - 16 Oz,8.99,971311837,0085006736603,OUNCE
+breyers_ice_cream,Breyers ice cream,Breyers,price_tracker_baseline,5,Breyers Classics Natural Vanilla Ice Cream - 48 Oz,5.99,142100392,0007756725423,QUART
+butter_16oz,Butter,Lucerne butter 16 oz 16 oz sticks / quarters; normalize to 16 oz,price_tracker_baseline,1,Lucerne Unsalted Sweet Cream Butter Quarters - 16 Oz,3.99,138250170,0002113008278,OUNCE
+butter_16oz,Butter,Lucerne butter 16 oz 16 oz sticks / quarters; normalize to 16 oz,price_tracker_baseline,2,Lucerne Butter Salted Sweet Cream 4 Quarters - 16 Oz,3.99,138250149,0002113008277,OUNCE
+butter_16oz,Butter,Lucerne butter 16 oz 16 oz sticks / quarters; normalize to 16 oz,price_tracker_baseline,3,Lucerne Unsalted Butter Quarters 2 Pack 2 Pound - 2 LB,7.99,971134898,0002113034514,POUND
+butter_16oz,Butter,Lucerne butter 16 oz 16 oz sticks / quarters; normalize to 16 oz,price_tracker_baseline,4,Lucerne Butter Sweet Cream Quarters 2 Pack 2 Pound - 2 LB,7.99,970960637,0002113034513,POUND
+butter_16oz,Butter,Lucerne butter 16 oz 16 oz sticks / quarters; normalize to 16 oz,price_tracker_baseline,5,Lucerne Butter - 8 OZ,2.99,970094000,0002113008284,OUNCE
+cheetos_party_size,Cheetos Party Size,Cheetos Party Size 15 oz bags,price_tracker_baseline,1,CHEETOS Snacks Cheese Flavored Crunchy Party Size - 15 Oz,5.99,960543041,0002840031409,OUNCE
+cheetos_party_size,Cheetos Party Size,Cheetos Party Size 15 oz bags,price_tracker_baseline,2,CHEETOS Snacks Cheese Flavored Crunchy Flamin Hot Party Size - 15 Oz,5.99,960543040,0002840031407,OUNCE
+cheetos_party_size,Cheetos Party Size,Cheetos Party Size 15 oz bags,price_tracker_baseline,3,CHEETOS Snacks Cheese Flavored Puffs Party Size - 13.5 Oz,5.99,960543039,0002840031404,OUNCE
+cheetos_party_size,Cheetos Party Size,Cheetos Party Size 15 oz bags,price_tracker_baseline,4,Frito Lay Variety Pack Classic Mix - 42 Count,21.99,970123424,0002840069435,COUNT
+cheetos_party_size,Cheetos Party Size,Cheetos Party Size 15 oz bags,price_tracker_baseline,5,Signature SELECT/FARMS Russet Potatoes In Bag - 5 Lb,3.99,184500035,0002113053056,LB
+cheez_it_crackers,Cheez-It crackers,Cheez-It Original 6.5-12.4 oz boxes/bags,price_tracker_baseline,1,Cheez-It Original Snack Mix Family Size - 17.8 Oz,6.99,971203262,0002410012516,OUNCE
+cheez_it_crackers,Cheez-It crackers,Cheez-It Original 6.5-12.4 oz boxes/bags,price_tracker_baseline,2,Cheez-It DUOZ Baked Snack Crackers Sharp Cheddar and Parmesan Lunch Snacks - 12.4 Oz,4.49,960083085,0002410078895,OUNCE
+cheez_it_crackers,Cheez-It crackers,Cheez-It Original 6.5-12.4 oz boxes/bags,price_tracker_baseline,3,Cheez-It Snack Mix Classic Lunch Snacks - 10.5 Oz,4.49,960040880,0002410051445,OUNCE
+cheez_it_crackers,Cheez-It crackers,Cheez-It Original 6.5-12.4 oz boxes/bags,price_tracker_baseline,4,Cheez-It DUOZ Baked Snack Crackers Bacon and Cheddar Lunch Snacks - 12.4 Oz,4.49,960266771,0002410011062,OUNCE
+cheez_it_crackers,Cheez-It crackers,Cheez-It Original 6.5-12.4 oz boxes/bags,price_tracker_baseline,5,Kellogg's Cheez It Loaded Nacho 9oz - 9 OZ,4.49,971377191,0002410012764,OUNCE
+cherries_per_lb,Cherries,red cherries,price_tracker_baseline,1,Red Cherries - 1.75 Lb,10.48,184140091,0048414009101,LB
+cherries_per_lb,Cherries,red cherries,price_tracker_baseline,2,Rainier Cherries Prepacked Bag - 2 Lb,17.98,960234531,0048414015901,LB
+cherries_per_lb,Cherries,red cherries,price_tracker_baseline,3,Signature SELECT Cherries Dark Unsweetened - 12 Oz,3.49,960312804,0002113009949,OUNCE
+cherries_per_lb,Cherries,red cherries,price_tracker_baseline,4,Cherries Red - 2.25 LB,5.99,971191667,0004500999857,LB
+cherries_per_lb,Cherries,red cherries,price_tracker_baseline,5,Signature SELECT Cherries Maraschino with Stems - 10 Oz,3.49,960123348,0002113000899,OUNCE
+chicken_breast_per_lb,Chicken breast,boneless skinless chicken breast,price_tracker_baseline,1,Boneless Skinless Chicken Breast Value Pack - 3.5 Lb,10.47,971290124,0020059200000,LB
+chicken_breast_per_lb,Chicken breast,boneless skinless chicken breast,price_tracker_baseline,2,Signature Select Chicken Breast Boneless Skinless With Rib Meat - 3.5 Lb,10.47,971285562,0020786500000,LB
+chicken_breast_per_lb,Chicken breast,boneless skinless chicken breast,price_tracker_baseline,3,Service Case Boneless Skinless Chicken Breasts - 1.75 lb,5.23,970777968,0028171800000,LB
+chicken_breast_per_lb,Chicken breast,boneless skinless chicken breast,price_tracker_baseline,4,Foster Farms Free Range Boneless Skinless Chicken Breast Fillets - 1.5 Lb,13.49,960259890,0020060100000,LB
+chicken_breast_per_lb,Chicken breast,boneless skinless chicken breast,price_tracker_baseline,5,Foster Farms Free Range Thin Sliced Boneless Skinless Chicken Breast Fillets - Lb,14.99,960259891,0020078500000,LB
+chicken_thigh_per_lb,Chicken thighs,boneless skinless chicken thighs,price_tracker_baseline,1,Signature Select Chicken Thigh Boneless Skinless Value Pack - 3 lb,8.97,960139991,0020786700000,LB
+chicken_thigh_per_lb,Chicken thighs,boneless skinless chicken thighs,price_tracker_baseline,2,Open Nature Boneless Skinless All Natural Chicken Thighs - 1 Lb,8.99,970020999,0020523400000,LB
+chicken_thigh_per_lb,Chicken thighs,boneless skinless chicken thighs,price_tracker_baseline,3,O Organics Boneless Skinless Chicken Thighs - 1.5 Lb,16.49,188300172,0020523500000,LB
+chicken_thigh_per_lb,Chicken thighs,boneless skinless chicken thighs,price_tracker_baseline,4,Chicken Thighs Boneless Skinless Hand Trimmed - 2 Lb,13.98,960286857,0027669700000,LB
+chicken_thigh_per_lb,Chicken thighs,boneless skinless chicken thighs,price_tracker_baseline,5,Boneless Skinless Chicken Thighs MMD - 1.50 Lb,8.99,960262878,0020963100000,LB
+chips_ahoy,Chips Ahoy cookies,Chips Ahoy Original 9.5-13 oz packages,price_tracker_baseline,1,Chips Ahoy! Original Chocolate Chip Cookies - 13 Oz,4.99,960071578,0004400003219,OUNCE
+chips_ahoy,Chips Ahoy cookies,Chips Ahoy Original 9.5-13 oz packages,price_tracker_baseline,2,"CHIPS AHOY! Crunchy Red, White & Blue Chocolate Chip Cookies - 9.5 Oz",6.49,971364495,0004400008738,OUNCE
+chips_ahoy,Chips Ahoy cookies,Chips Ahoy Original 9.5-13 oz packages,price_tracker_baseline,3,CHIPS AHOY! Original Crunchy Gluten Free Chocolate Chip Cookies - 9.31 Oz,6.49,970762195,0004400007765,OUNCE
+chips_ahoy,Chips Ahoy cookies,Chips Ahoy Original 9.5-13 oz packages,price_tracker_baseline,4,CHIPS AHOY! Original Chocolate Chip Cookies - 18.2 Oz,6.49,960083568,0004400003338,OUNCE
+chips_ahoy,Chips Ahoy cookies,Chips Ahoy Original 9.5-13 oz packages,price_tracker_baseline,5,CHIPS AHOY! Original Chocolate Chip Cookies Party Size - 25.3 Oz,8.49,960309574,0004400005481,OUNCE
+clif_bars,Clif bars,Clif bars,price_tracker_baseline,1,GoMacro Oatmeal Chocolate Chip - 2.3 Oz,4.0,970078975,0085355500654,OUNCE
+clif_bars,Clif bars,Clif bars,price_tracker_baseline,2,CLIF BAR Chocolate Chip Energy Protein Bars - 5 Count,8.99,970839033,0072225206874,OUNCE
+clif_bars,Clif bars,Clif bars,price_tracker_baseline,3,CLIF BAR Chocolate Chip Energy Protein Bars - 15 Count,18.99,970839035,0072225206848,OUNCE
+clif_bars,Clif bars,Clif bars,price_tracker_baseline,4,CLIF BAR Crunchy Peanut Butter Energy Protein Bars - 10 Count,15.99,970839034,0072225206869,OUNCE
+clif_bars,Clif bars,Clif bars,price_tracker_baseline,5,CLIF BAR White Chocolate Macadamia Nut Energy Protein Bars - 10 Count,15.99,970839038,0072225206878,OUNCE
+dr_pepper_12packs,Dr Pepper,Dr Pepper 12-pack,price_tracker_baseline,1,Dr Pepper Soda Fridge Pack - 12-12 Fl. Oz.,11.99,108051305,0007800008216,FL.OZ
+dr_pepper_12packs,Dr Pepper,Dr Pepper 12-pack,price_tracker_baseline,2,Dr Pepper Diet Soda Fridge Pack - 12-12 Oz,11.99,108051306,0007800008316,FL.OZ
+dr_pepper_12packs,Dr Pepper,Dr Pepper 12-pack,price_tracker_baseline,3,Dr Pepper Soda Pack In Cans - 24-12 Fl. Oz.,16.99,108050377,0007800008210,FL.OZ
+dr_pepper_12packs,Dr Pepper,Dr Pepper 12-pack,price_tracker_baseline,4,Dr Pepper Zero Sugar Soda  - 12-12 Fl. Oz.,11.99,970064755,0007800003526,FL.OZ
+dr_pepper_12packs,Dr Pepper,Dr Pepper 12-pack,price_tracker_baseline,5,Dr Pepper Cherry Soda  - 12-12 Fl. Oz.,11.99,960022623,0007800009816,FL.OZ
+dreyers_novelties,Dreyer's novelties,Dreyer's bars,price_tracker_baseline,1,Bomb Pop Original Ice Pop - 12 Count,2.5,960100621,0007064000663,FL.OZ
+dreyers_novelties,Dreyer's novelties,Dreyer's bars,price_tracker_baseline,2,Dreyers Edys Ice Cream Grand Chocolate Chip - 1.5 Quart,3.99,142010888,0004154801485,QUART
+dreyers_novelties,Dreyer's novelties,Dreyer's bars,price_tracker_baseline,3,Dreyers Edys Ice Cream Grand Coffee - 1.5 Quart,3.99,142010390,0004154801685,QUART
+dreyers_novelties,Dreyer's novelties,Dreyer's bars,price_tracker_baseline,4,Nestle Drumstick Crunch Dipped Vanilla Caramel And Vanilla Fudge Cones - 8 Count,8.49,960080315,0007255487026,FL.OZ
+dreyers_novelties,Dreyer's novelties,Dreyer's bars,price_tracker_baseline,5,Nestle Drumstick Chocolate Vanilla Caramel Cones Variety Pack - 8 Count,8.49,142200421,0007255400153,FL.OZ
+dreyers_tubs,Dreyer's ice cream,Dreyer's ice cream,price_tracker_baseline,1,Breyers Classics Natural Vanilla Ice Cream - 48 Oz,5.99,142100392,0007756725423,QUART
+dreyers_tubs,Dreyer's ice cream,Dreyer's ice cream,price_tracker_baseline,2,Breyers Original Vanilla Chocolate Strawberry Ice Cream - 48 Oz,5.99,142100394,0007756725426,QUART
+dreyers_tubs,Dreyer's ice cream,Dreyer's ice cream,price_tracker_baseline,3,Breyers Ic Crm Salted Caramel Truffle    1.5 Qt - 1.5 QT,5.99,971322656,0084047340025,QUART
+dreyers_tubs,Dreyer's ice cream,Dreyer's ice cream,price_tracker_baseline,4,Edy's And Dreyer's The Original Rocky Road Ice Cream - 1.5 Quart,3.99,142010902,0004154802685,QUART
+dreyers_tubs,Dreyer's ice cream,Dreyer's ice cream,price_tracker_baseline,5,Edy's And Dreyer's Grand Vanilla Bean Ice Cream - 1.5 Quart,3.99,142010893,0004154800385,QUART
+fage_cups,Fage Greek yogurt cups,Fage cup 5.3 oz cups,price_tracker_baseline,1,Fage Total 2% Yogurt Greek Lowfat Strained with Strawberry - 5.3 Oz,2.0,960026370,0068954408146,OUNCE
+fage_cups,Fage Greek yogurt cups,Fage cup 5.3 oz cups,price_tracker_baseline,2,Fage Grk Strained Ygrt W/Blubry Total 2% - 5.3 Oz,2.0,960312692,0068954408166,OUNCE
+fage_cups,Fage Greek yogurt cups,Fage cup 5.3 oz cups,price_tracker_baseline,3,FAGE Total 5% Milkfat Plain Greek Yogurt - 5.3 Oz,2.0,960157515,0068954408060,OUNCE
+fage_cups,Fage Greek yogurt cups,Fage cup 5.3 oz cups,price_tracker_baseline,4,FAGE Total 0% Milkfat Plain Greek Yogurt - 5.3 Oz,2.0,960028015,0068954408000,OUNCE
+fage_cups,Fage Greek yogurt cups,Fage cup 5.3 oz cups,price_tracker_baseline,5,FAGE Total 2% Milkfat Plain Greek Yogurt - 5.3 Oz,2.0,960028016,0068954408020,OUNCE
+general_mills_cereal_family_size,General Mills cereal,family size Cheerios 15-18 oz,price_tracker_baseline,1,Cheerios Whole Grain Oats Cereal Family Size - 18 Oz,6.99,970098256,0001600017003,OUNCE
+general_mills_cereal_family_size,General Mills cereal,family size Cheerios 15-18 oz,price_tracker_baseline,2,Cheerios Protein Cinnamon Family Size Breakfast Cereal - 15 Oz,6.99,971098672,0001600022637,OUNCE
+general_mills_cereal_family_size,General Mills cereal,family size Cheerios 15-18 oz,price_tracker_baseline,3,Chex Cereal Rice Gluten Free Oven Toasted Family Size - 18 Oz,6.99,960144080,0001600017102,OUNCE
+general_mills_cereal_family_size,General Mills cereal,family size Cheerios 15-18 oz,price_tracker_baseline,4,Post Fruity Pebbles Cereal Large Size - 15 Oz,6.29,960029462,0088491212974,OUNCE
+general_mills_cereal_family_size,General Mills cereal,family size Cheerios 15-18 oz,price_tracker_baseline,5,Post Honey Bunches of Oats Honey Roasted Cereal Large Size - 15Oz,6.29,971305520,0088491244386,OUNCE
+goldfish_bags,Goldfish,Goldfish crackers 6-8 oz bags,price_tracker_baseline,1,Goldfish Original Baked Snack Crackers - 6.6 Oz,2.99,102020089,0001410008550,OUNCE
+goldfish_bags,Goldfish,Goldfish crackers 6-8 oz bags,price_tracker_baseline,2,Goldfish Cheddar Baked Snack Crackers - 6.6 Oz,2.99,102020409,0001410008547,OUNCE
+goldfish_bags,Goldfish,Goldfish crackers 6-8 oz bags,price_tracker_baseline,3,Goldfish Colors Cheddar Baked Snack Crackers - 6.6 Oz,2.99,102020548,0001410008539,OUNCE
+goldfish_bags,Goldfish,Goldfish crackers 6-8 oz bags,price_tracker_baseline,4,Goldfish Family Faves Crackers Variety Pack - 20 Count,8.99,970031416,0001410005219,COUNT
+goldfish_bags,Goldfish,Goldfish crackers 6-8 oz bags,price_tracker_baseline,5,ReadyMeals Fruit Cheese & Goldfish Crackers - Each,4.99,970118128,0024551000000,EACH
+haagen_dazs_bars_novelties,Häagen-Dazs bars / novelties,Häagen-Dazs bars,price_tracker_baseline,1,Haagen-Dazs Ice Cream Bars Coffee Almond Crunch Snack Size - 6-1.85 Oz,7.49,960020584,0007457065148,FL.OZ
+haagen_dazs_bars_novelties,Häagen-Dazs bars / novelties,Häagen-Dazs bars,price_tracker_baseline,2,Haagen Dark Chocolate Cherry Bar - 9 FZ,5.99,971322650,0007457011198,FL.OZ
+haagen_dazs_bars_novelties,Häagen-Dazs bars / novelties,Häagen-Dazs bars,price_tracker_baseline,3,Haagen-Dazs Dark Chocolate Ice Cream Snack Bars Ice Cream - 3 Count,5.99,142200067,0007457002310,FL.OZ
+haagen_dazs_bars_novelties,Häagen-Dazs bars / novelties,Häagen-Dazs bars,price_tracker_baseline,4,Haagen-Dazs Ice Cream Bars Coffee Toffee Almond Crunch Ice Cream - 3-3 Fl. Oz.,5.99,960161599,0007457042854,FL.OZ
+haagen_dazs_bars_novelties,Häagen-Dazs bars / novelties,Häagen-Dazs bars,price_tracker_baseline,5,Haagen-Dazs Vanilla Milk Chocolate Almond Ice Cream Snack Bars Ice Cream - 3 Count,5.99,142200243,0007457003310,FL.OZ
+keebler_sandwich_crackers,Keebler sandwich crackers,Keebler sandwich crackers 8-pack boxes,price_tracker_baseline,1,Keebler Sandwich Crackers Club and Cheddar Single Serve Snack Crackers 8 Count - 11 Oz,4.49,102020687,0003010047241,COUNT
+keebler_sandwich_crackers,Keebler sandwich crackers,Keebler sandwich crackers 8-pack boxes,price_tracker_baseline,2,Keebler Sandwich Crackers Cheese and Peanut Butter Single Serve Snack Crackers 8 Count - 11 Oz,4.49,102020688,0003010047324,COUNT
+keebler_sandwich_crackers,Keebler sandwich crackers,Keebler sandwich crackers 8-pack boxes,price_tracker_baseline,3,Keebler Sandwich Crackers Toast and Peanut Butter Single Serve Snack Crackers 8 Count - 11 Oz,4.49,102020689,0003010047357,COUNT
+keebler_sandwich_crackers,Keebler sandwich crackers,Keebler sandwich crackers 8-pack boxes,price_tracker_baseline,4,Keebler Sandwich Crackers Cheese and Cheddar Single Serve Snack Crackers 8 Count - 11 Oz,4.49,960110305,0003010048718,COUNT
+keebler_sandwich_crackers,Keebler sandwich crackers,Keebler sandwich crackers 8-pack boxes,price_tracker_baseline,5,RITZ Peanut Butter Sandwich Crackers Snack Packs - 8-1.38 Oz,4.49,960041478,0004400088210,COUNT
+kings_hawaiian_rolls,King's Hawaiian rolls,King's Hawaiian Original rolls 12 ct / 12 oz,price_tracker_baseline,1,King's Hawaiian Original Sweet Rolls - 12 Oz,3.99,196010254,0007343500004,OUNCE
+kings_hawaiian_rolls,King's Hawaiian rolls,King's Hawaiian Original rolls 12 ct / 12 oz,price_tracker_baseline,2,King's Hawaiian Original Sweet Mini Sub Rolls - 12 Oz,5.99,960071662,0007343500304,OUNCE
+kings_hawaiian_rolls,King's Hawaiian rolls,King's Hawaiian Original rolls 12 ct / 12 oz,price_tracker_baseline,3,King's Hawaiian Original Sweet Rolls - 24 Oz,8.49,960055723,0007343500230,OUNCE
+kings_hawaiian_rolls,King's Hawaiian rolls,King's Hawaiian Original rolls 12 ct / 12 oz,price_tracker_baseline,4,King's Hawaiian Original Sweet Rolls 24 Count - 24 Oz,8.49,960315167,0007343500233,OUNCE
+lacroix_8pack,LaCroix sparkling water,LaCroix 8-pack,price_tracker_baseline,1,LaCroix Pure Sparkling Water - 8-12 Fl. Oz.,3.33,970309092,0001299322133,FL.OZ
+lacroix_8pack,LaCroix sparkling water,LaCroix 8-pack,price_tracker_baseline,2,LaCroix Lemon Sparkling Water - 8-12 Fl. Oz.,3.33,970066009,0001299322130,FL.OZ
+lacroix_8pack,LaCroix sparkling water,LaCroix 8-pack,price_tracker_baseline,3,Lacroix Strawberry Peach Sparkling Water - 8-12 Fl. Oz.,3.33,971082320,0001299322118,FL.OZ
+lacroix_8pack,LaCroix sparkling water,LaCroix 8-pack,price_tracker_baseline,4,LaCroix Razz-Cranberry Sparkling Water - 8-12 Fl. Oz.,3.33,960131232,0001299322132,FL.OZ
+lacroix_8pack,LaCroix sparkling water,LaCroix 8-pack,price_tracker_baseline,5,LaCroix Pamplemousse Grapefruit Sparkling Water - 8-12 Fl. Oz.,3.33,960072617,0001299322120,FL.OZ
+lays_kettle_cooked,Lay's Kettle Cooked chips,Lay's Kettle Cooked Original 7.75 oz bags,price_tracker_baseline,1,Lays Potato Chips Kettle Cooked Original - 8 Oz,4.29,960124191,0002840037219,OUNCE
+lays_kettle_cooked,Lay's Kettle Cooked chips,Lay's Kettle Cooked Original 7.75 oz bags,price_tracker_baseline,2,Lays Potato Chips Wavy Original Bag - 7.75 Oz,4.29,960312468,0002840004380,OUNCE
+lays_kettle_cooked,Lay's Kettle Cooked chips,Lay's Kettle Cooked Original 7.75 oz bags,price_tracker_baseline,3,Lays Potato Chips Classic - 8 Oz,4.29,960123883,0002840019914,OUNCE
+lays_kettle_cooked,Lay's Kettle Cooked chips,Lay's Kettle Cooked Original 7.75 oz bags,price_tracker_baseline,4,Lays Potato Chips Barbecue - 7.75 Oz,4.29,960123885,0002840019961,OUNCE
+lays_kettle_cooked,Lay's Kettle Cooked chips,Lay's Kettle Cooked Original 7.75 oz bags,price_tracker_baseline,5,Lays Potato Chips Sour Cream & Onion - 7.75 Oz,4.29,960123886,0002840019963,OUNCE
+lays_potato_chips_regular,Lay's potato chips,Lay's Classic 5-13 oz,price_tracker_baseline,1,Lays Potato Chips Classic - 8 Oz,4.29,960123883,0002840019914,OUNCE
+lays_potato_chips_regular,Lay's potato chips,Lay's Classic 5-13 oz,price_tracker_baseline,2,Lays Potato Chips Wavy Original Party Size - 13 Oz,5.99,960541415,0002840031046,OUNCE
+lays_potato_chips_regular,Lay's potato chips,Lay's Classic 5-13 oz,price_tracker_baseline,3,Lays Potato Chips Barbecue - 7.75 Oz,4.29,960123885,0002840019961,OUNCE
+lays_potato_chips_regular,Lay's potato chips,Lay's Classic 5-13 oz,price_tracker_baseline,4,Lays Potato Chips Wavy Original Bag - 7.75 Oz,4.29,960312468,0002840004380,OUNCE
+lays_potato_chips_regular,Lay's potato chips,Lay's Classic 5-13 oz,price_tracker_baseline,5,Frito Lay Snacks Flamin Hot Mix Variety - 17.375 Oz,11.99,970125594,0002840067960,COUNT
+lucerne_cream_cheese,Lucerne cream cheese,Lucerne cream cheese 8 oz,price_tracker_baseline,1,Lucerne Cream Cheese - 8 Oz,3.49,137100658,0002113004380,OUNCE
+lucerne_cream_cheese,Lucerne cream cheese,Lucerne cream cheese 8 oz,price_tracker_baseline,2,Lucerne Cream Cheese Spread Whipped - 8 Oz,2.99,137100755,0002113004354,OUNCE
+lucerne_cream_cheese,Lucerne cream cheese,Lucerne cream cheese 8 oz,price_tracker_baseline,3,Lucerne Cheese Cream Soft - 8 Oz,2.99,137100647,0002113004379,OUNCE
+lucerne_cream_cheese,Lucerne cream cheese,Lucerne cream cheese 8 oz,price_tracker_baseline,4,Lucerne Cream Cheese Family Size - 16 Oz,4.99,970122138,0002113017482,OUNCE
+lucerne_cream_cheese,Lucerne cream cheese,Lucerne cream cheese 8 oz,price_tracker_baseline,5,Lucerne Cream Cheese Spread with Chive & Onion - 8 Oz,2.99,137100672,0002113004368,OUNCE
+lucerne_yogurt_tubs,Lucerne yogurt tubs,Lucerne yogurt 32 oz 32 oz tubs,price_tracker_baseline,1,Lucerne Yogurt Lowfat Vanilla Flavored - 32 Oz,2.99,136300258,0002113007740,OUNCE
+lucerne_yogurt_tubs,Lucerne yogurt tubs,Lucerne yogurt 32 oz 32 oz tubs,price_tracker_baseline,2,Lucerne Yogurt Whole Milk - 32 Oz,2.99,960237982,0002113007964,OUNCE
+lucerne_yogurt_tubs,Lucerne yogurt tubs,Lucerne yogurt 32 oz 32 oz tubs,price_tracker_baseline,3,Lucerne Yogurt Fat Free Plain - 32 Oz,2.99,136300304,0002113007397,OUNCE
+lucerne_yogurt_tubs,Lucerne yogurt tubs,Lucerne yogurt 32 oz 32 oz tubs,price_tracker_baseline,4,Yoplait Original Yogurt Low Fat Smooth Style Strawberry Flavored - 2 Lb,4.49,960141091,0007047000430,OUNCE
+lucerne_yogurt_tubs,Lucerne yogurt tubs,Lucerne yogurt 32 oz 32 oz tubs,price_tracker_baseline,5,Oikos Triple Zero Vanilla High Protein Nonfat Greek Yogurt Tub - 32 Oz,6.99,960142682,0003663201944,OUNCE
+mangoes_each,Mangoes,mango,price_tracker_baseline,1,Popwell Tropical Mango - 12 Fl. Oz.,1.79,971196352,0001657195966,FL.OZ
+mangoes_each,Mangoes,mango,price_tracker_baseline,2,Large Mango,1.5,184150286,0048415028601,EACH
+mangoes_each,Mangoes,mango,price_tracker_baseline,3,Honey Mango,0.79,960005157,0048415028201,EACH
+mangoes_each,Mangoes,mango,price_tracker_baseline,4,Fresh Cut Mango Bowl - 20 Oz,12.99,960131344,0024200200000,EACH
+mangoes_each,Mangoes,mango,price_tracker_baseline,5,Small Mango,1.5,184150300,0048415030001,EACH
+nabisco_snack_crackers,Nabisco snack crackers,Wheat Thins 3.5-9.1 oz boxes/bags,price_tracker_baseline,1,Signature SELECT Cereal Shredded Wheat Bite-Sized - 16.4 Oz,3.49,960012561,0002113028086,OUNCE
+nabisco_snack_crackers,Nabisco snack crackers,Wheat Thins 3.5-9.1 oz boxes/bags,price_tracker_baseline,2,Wheat Thins Snacks Big 100% Whole Grain - 8 Oz,3.99,102020020,0004400000878,OUNCE
+nabisco_snack_crackers,Nabisco snack crackers,Wheat Thins 3.5-9.1 oz boxes/bags,price_tracker_baseline,3,Signature SELECT Cereal Frosted Shredded Wheat Bite-Size - 18 Oz,3.49,960013845,0002113028153,OUNCE
+nabisco_snack_crackers,Nabisco snack crackers,Wheat Thins 3.5-9.1 oz boxes/bags,price_tracker_baseline,4,Wheat Thins Original Whole Grain Wheat Crackers - 8.5 Oz,3.99,970065224,0004400006923,OUNCE
+nabisco_snack_crackers,Nabisco snack crackers,Wheat Thins 3.5-9.1 oz boxes/bags,price_tracker_baseline,5,Wheat Thins Reduced Fat Whole Grain Wheat Crackers - 8 Oz,3.99,970065140,0004400006925,OUNCE
+nectarines_per_lb,Nectarines,yellow nectarines,price_tracker_baseline,1,Yellow Nectarine,1.2,184140162,0048414024702,LB
+nectarines_per_lb,Nectarines,yellow nectarines,price_tracker_baseline,2,Organic Yellow Nectarine,1.6,184700086,0048470020101,LB
+nectarines_per_lb,Nectarines,yellow nectarines,price_tracker_baseline,3,Signature SELECT/FARMS Nectarines - 2 Lb,5.99,970313354,0002113017132,LB
+nectarines_per_lb,Nectarines,yellow nectarines,price_tracker_baseline,4,Organic Yellow Peach,2.0,184700391,0048470110201,LB
+nectarines_per_lb,Nectarines,yellow nectarines,price_tracker_baseline,5,Yellow Peach,1.5,184140090,0048414025103,LB
+peaches_per_lb,Peaches,yellow peaches,price_tracker_baseline,1,Yellow Peach,1.5,184140090,0048414025103,LB
+peaches_per_lb,Peaches,yellow peaches,price_tracker_baseline,2,Organic Yellow Peach,2.0,184700391,0048470110201,LB
+peaches_per_lb,Peaches,yellow peaches,price_tracker_baseline,3,Signature SELECT/FARMS Peaches - 2 Lb,5.99,970313318,0002113017131,LB
+peaches_per_lb,Peaches,yellow peaches,price_tracker_baseline,4,Signature SELECT Peaches Sliced - 16 Oz,3.49,144900002,0002113009320,OUNCE
+peaches_per_lb,Peaches,yellow peaches,price_tracker_baseline,5,Signature SELECT Peaches Sliced in 100% Juice - 15 Oz,2.99,122150051,0002113032528,OUNCE
+pepsi_12packs,Pepsi,Pepsi 12-pack,price_tracker_baseline,1,Pepsi Soda Pop Cola - 12-12 Oz,11.99,108010302,0001200080994,FL.OZ
+pepsi_12packs,Pepsi,Pepsi 12-pack,price_tracker_baseline,2,Pepsi Soda Pop Wild Cherry Cola - 12-12 Oz,11.99,108010300,0001200080999,FL.OZ
+pepsi_12packs,Pepsi,Pepsi 12-pack,price_tracker_baseline,3,Pepsi Zero Sugar Soda Pop Cola - 12-12 Oz,11.99,108010676,0001200001879,FL.OZ
+pepsi_12packs,Pepsi,Pepsi 12-pack,price_tracker_baseline,4,Diet Pepsi Soda Pop Cola - 12-12 Oz,11.99,108010304,0001200017186,FL.OZ
+pepsi_12packs,Pepsi,Pepsi 12-pack,price_tracker_baseline,5,Diet Pepsi Caffeine Free Soda Pop Cola - 12-12 Oz,11.99,108010308,0001200017209,FL.OZ
+philadelphia_cream_cheese,Philadelphia cream cheese,Philadelphia cream cheese 7.5-8 oz tubs or bricks,price_tracker_baseline,1,Philadelphia Original Cream Cheese - 8 Oz,3.99,137100654,0002100061223,OUNCE
+philadelphia_cream_cheese,Philadelphia cream cheese,Philadelphia cream cheese 7.5-8 oz tubs or bricks,price_tracker_baseline,2,Philadelphia Original Cream Cheese Spread - 8 Oz,5.19,137100631,0002100000014,OUNCE
+philadelphia_cream_cheese,Philadelphia cream cheese,Philadelphia cream cheese 7.5-8 oz tubs or bricks,price_tracker_baseline,3,Philadelphia Plant-Based Dairy Free Original Cream Cheese Spread - 8 Oz,5.99,970543954,0002100008143,OUNCE
+philadelphia_cream_cheese,Philadelphia cream cheese,Philadelphia cream cheese 7.5-8 oz tubs or bricks,price_tracker_baseline,4,Philadelphia Reduced Fat Cream Cheese - 8 Oz,3.99,137100651,0002100061247,OUNCE
+philadelphia_cream_cheese,Philadelphia cream cheese,Philadelphia cream cheese 7.5-8 oz tubs or bricks,price_tracker_baseline,5,Philadelphia Reduced Fat Cream Cheese Spread - 8 Oz,5.19,137100632,0002100000028,OUNCE
+pillsbury_refrigerated_dough,Pillsbury refrigerated dough,Pillsbury Grands 8-16.3 oz cans/tubes,price_tracker_baseline,1,Pillsbury Grands! Biscuits Flaky Layers Butter Tasting Butter Flavor 8 Count - 16.3 Oz,2.5,138010257,0001800000211,OUNCE
+pillsbury_refrigerated_dough,Pillsbury refrigerated dough,Pillsbury Grands 8-16.3 oz cans/tubes,price_tracker_baseline,2,Pillsbury Grands! Biscuits Flaky Layers Honey Butter 8 Count - 16.3 Oz,2.5,960027759,0001800000918,OUNCE
+pillsbury_refrigerated_dough,Pillsbury refrigerated dough,Pillsbury Grands 8-16.3 oz cans/tubes,price_tracker_baseline,3,Pillsbury Grands! Biscuits Flaky Layers Buttermilk 8 Count - 16.3 Oz,2.5,138010256,0001800000210,OUNCE
+pillsbury_refrigerated_dough,Pillsbury refrigerated dough,Pillsbury Grands 8-16.3 oz cans/tubes,price_tracker_baseline,4,Pillsbury Grands! Cinnamon Rolls Big With Icing 5 Count - 17.5 Oz,7.49,138010025,0001800000159,OUNCE
+pillsbury_refrigerated_dough,Pillsbury refrigerated dough,Pillsbury Grands 8-16.3 oz cans/tubes,price_tracker_baseline,5,Pillsbury Grands! Cinnamon Rolls Big Flaky Supreme With Icing 5 Count - 17.5 Oz,7.49,138010200,0001800000254,OUNCE
+plums_per_lb,Plums,red plums,price_tracker_baseline,1,Red Plum,0.51,184140160,0048414016001,LB
+plums_per_lb,Plums,red plums,price_tracker_baseline,2,Pluot / Plumcot,1.25,184140231,0048414014701,LB
+plums_per_lb,Plums,red plums,price_tracker_baseline,3,Black Plum,0.51,184140122,0048414012201,LB
+plums_per_lb,Plums,red plums,price_tracker_baseline,4,Organic Black Plum,0.68,184700081,0048470024601,LB
+plums_per_lb,Plums,red plums,price_tracker_baseline,5,Red Cherries - 1.75 Lb,10.48,184140091,0048414009101,LB
+post_cereal_giant_size,Post cereal,giant-size Post cereal 21-24.7 oz,price_tracker_baseline,1,Signature SELECT Cereal Frosted Shredded Wheat Bite-Size - 18 Oz,3.49,960013845,0002113028153,OUNCE
+post_cereal_giant_size,Post cereal,giant-size Post cereal 21-24.7 oz,price_tracker_baseline,2,Post Cocoa Pebbles Cereal Giant Size - 23 Oz,6.99,971309711,0088491224929,OUNCE
+post_cereal_giant_size,Post cereal,giant-size Post cereal 21-24.7 oz,price_tracker_baseline,3,Post Fruity Pebbles with Marshmallow Cereal Large Size - 13.5 Oz,6.29,971305519,0088491244365,OUNCE
+post_cereal_giant_size,Post cereal,giant-size Post cereal 21-24.7 oz,price_tracker_baseline,4,Post Great Grains Crunchy Pecan Cereal Large Size - 16 Oz,3.99,960038559,0088491212601,OUNCE
+post_cereal_giant_size,Post cereal,giant-size Post cereal 21-24.7 oz,price_tracker_baseline,5,"Post Great Grains Raisins, Dates & Pecans Cereal Large Size - 16 Oz",3.99,960038560,0088491212611,OUNCE
+post_cereal_regular,Post cereal,Honey Bunches of Oats 10-16 oz,price_tracker_baseline,1,Post Honey Bunches of Oats with Strawberries Cereal - 11 Oz,4.79,970125107,0088491235948,OUNCE
+post_cereal_regular,Post cereal,Honey Bunches of Oats 10-16 oz,price_tracker_baseline,2,Post Honey Bunches of Oats Honey Roasted Cereal Large Size - 15Oz,6.29,971305520,0088491244386,OUNCE
+post_cereal_regular,Post cereal,Honey Bunches of Oats 10-16 oz,price_tracker_baseline,3,Post Honey Bunches of Oats Honey Roasted Cereal - 12 Oz,4.79,970125084,0088491235915,OUNCE
+post_cereal_regular,Post cereal,Honey Bunches of Oats 10-16 oz,price_tracker_baseline,4,Post Honey Bunches of Oats with Almonds Cereal Large Size - 15 Oz,6.29,971305521,0088491244385,OUNCE
+post_cereal_regular,Post cereal,Honey Bunches of Oats 10-16 oz,price_tracker_baseline,5,Post Honey Bunches of Oats with Almonds Cereal - 12 Oz,4.79,970125079,0088491235916,OUNCE
+ribeye_steak,Ribeye steak,ribeye steak,price_tracker_baseline,1,USDA Choice Beef Ribeye Steak Bone-In Value Pack - 3 Lb,23.97,960109089,0020204500000,LB
+ribeye_steak,Ribeye steak,ribeye steak,price_tracker_baseline,2,USDA Choice Beef Ribeye Steak Boneless Value Pack - 3.25 Lb,35.72,960109087,0020203800000,LB
+ribeye_steak,Ribeye steak,ribeye steak,price_tracker_baseline,3,USDA Choice Beef Rib Steak Bone In - 2.00 Lb,21.98,960109088,0020206400000,LB
+ribeye_steak,Ribeye steak,ribeye steak,price_tracker_baseline,4,USDA Choice Beef Ribeye Steak Boneless - 1.5 Lb,20.99,188020052,0020203600000,LB
+ribeye_steak,Ribeye steak,ribeye steak,price_tracker_baseline,5,USDA Choice Beef Ribeye Steak Boneless Thin Value Pack - 2.5 Lb,34.98,960130150,0020206100000,LB
+ritz_crackers,Ritz crackers,Ritz Original 8.8-13.7 oz boxes,price_tracker_baseline,1,RITZ Original Crackers - 13.7 Oz,4.99,960087287,0004400003111,OUNCE
+ritz_crackers,Ritz crackers,Ritz Original 8.8-13.7 oz boxes,price_tracker_baseline,2,RITZ Fresh Stacks Original Crackers - 8-11.8 Oz,4.99,960087288,0004400003113,OUNCE
+ritz_crackers,Ritz crackers,Ritz Original 8.8-13.7 oz boxes,price_tracker_baseline,3,RITZ Fresh Stacks Original Crackers Family Size - 17.8 Oz,5.99,960162712,0004400004575,OUNCE
+ritz_crackers,Ritz crackers,Ritz Original 8.8-13.7 oz boxes,price_tracker_baseline,4,RITZ Original Crackers Family Size - 20.5 Oz,5.99,960514417,0004400005824,OUNCE
+ritz_crackers,Ritz crackers,Ritz Original 8.8-13.7 oz boxes,price_tracker_baseline,5,RITZ Toasted Chips Original Crackers - 8.1 Oz,4.99,960272520,0004400005104,OUNCE
+ritz_toasted_chips,Nabisco Ritz Toasted Chips,Ritz Toasted Chips 7-8.1 oz bags,price_tracker_baseline,1,RITZ Toasted Chips Original Crackers - 8.1 Oz,4.99,960272520,0004400005104,OUNCE
+ritz_toasted_chips,Nabisco Ritz Toasted Chips,Ritz Toasted Chips 7-8.1 oz bags,price_tracker_baseline,2,RITZ Toasted Chips Cheddar Crackers - 8.1 Oz,4.99,960272522,0004400005106,OUNCE
+ritz_toasted_chips,Nabisco Ritz Toasted Chips,Ritz Toasted Chips 7-8.1 oz bags,price_tracker_baseline,3,RITZ Toasted Chips Ranch Crackers - 8.1 Oz,4.99,970116963,0004400007249,OUNCE
+ritz_toasted_chips,Nabisco Ritz Toasted Chips,Ritz Toasted Chips 7-8.1 oz bags,price_tracker_baseline,4,RITZ Toasted Chips Sour Cream and Onion Crackers - 8.1 Oz,4.99,960272521,0004400005105,OUNCE
+ritz_toasted_chips,Nabisco Ritz Toasted Chips,Ritz Toasted Chips 7-8.1 oz bags,price_tracker_baseline,5,RITZ Toasted Chips Sweet Habanero Crackers - 8.1 Oz,4.99,970587619,0004400007771,OUNCE
+ruffles_regular_bags,Ruffles,Ruffles Original 5-13 oz,price_tracker_baseline,1,Ruffles Potato Chips Original - 8.5 OZ,5.49,970031832,0002840051668,OUNCE
+ruffles_regular_bags,Ruffles,Ruffles Original 5-13 oz,price_tracker_baseline,2,Ruffles Potato Chips Cheddar & Sour Cream - 8 OZ,5.49,970031803,0002840051691,OUNCE
+ruffles_regular_bags,Ruffles,Ruffles Original 5-13 oz,price_tracker_baseline,3,Lays Potato Chips Wavy Original Party Size - 13 Oz,5.99,960541415,0002840031046,OUNCE
+salmon,Salmon,Atlantic salmon,price_tracker_baseline,1,Fresh Farmed Atlantic Salmon Fillet Color Added  - 1.5 lb,17.99,186190041,0023011600000,LB
+salmon,Salmon,Atlantic salmon,price_tracker_baseline,2,Fresh Atlantic Salmon Skinless Center Cut Fillet - 1 lb,13.99,970502884,0023128100000,LB
+salmon,Salmon,Atlantic salmon,price_tracker_baseline,3,Fresh Farm Raised Atlantic Salmon Steak Color Added - 1 lb,11.99,960267460,0023011500000,LB
+salmon,Salmon,Atlantic salmon,price_tracker_baseline,4,Open Nature Salmon Fillets Norwgian Atlantic - 12 Oz,12.99,970508962,0007989316116,OUNCE
+salmon,Salmon,Atlantic salmon,price_tracker_baseline,5,C.wirthy Blackened Salmon Portions - 10 Oz,14.99,960461841,0066564962069,OUNCE
+simply_party_size,Simply Party Size,Simply Party Size 10-11 oz,price_tracker_baseline,1,Deli Fried Chicken Mixed 8 Piece Hot - Each,10.99,970028885,0021343700000,EACH
+simply_party_size,Simply Party Size,Simply Party Size 10-11 oz,price_tracker_baseline,2,Frito Lay Flavor Mix Variety Pack - 18 Count,11.99,970569814,0002840073742,COUNT
+simply_party_size,Simply Party Size,Simply Party Size 10-11 oz,price_tracker_baseline,3,Lays Potato Chips Wavy Original Bag - 7.75 Oz,4.29,960312468,0002840004380,OUNCE
+simply_party_size,Simply Party Size,Simply Party Size 10-11 oz,price_tracker_baseline,4,Lucerne Milk - Half Gallon (container may vary),3.19,136010013,0002113007010,FL.OZ
+simply_party_size,Simply Party Size,Simply Party Size 10-11 oz,price_tracker_baseline,5,Cheerios Honey Nut Sweetened Whole Grain Oat Cereal - 10.8 Oz,2.0,960451506,0001600012479,OUNCE
+simply_refrigerated_juice_lemonade,Simply refrigerated juice & lemonade,Simply Lemonade,price_tracker_baseline,1,Minute Maid Zero Sugar Lemonade Juice - 52 Fl. Oz. Bottle,2.0,970010654,0002500012052,FL.OZ
+simply_refrigerated_juice_lemonade,Simply refrigerated juice & lemonade,Simply Lemonade,price_tracker_baseline,2,Tropicana Strawberry Lemonade Made with Real Lemons - 46 Fl. Oz.,2.99,971033163,0004850020548,FL.OZ
+simply_refrigerated_juice_lemonade,Simply refrigerated juice & lemonade,Simply Lemonade,price_tracker_baseline,3,Tropicana Classic Lemonade Made with Real Lemons - 46 Fl. Oz.,2.99,971032571,0004850020547,FL.OZ
+simply_refrigerated_juice_lemonade,Simply refrigerated juice & lemonade,Simply Lemonade,price_tracker_baseline,4,Simply Lemonade All Natural Non-GMO - 52 Fl. Oz.,2.0,960326340,0002500004498,FL.OZ
+simply_refrigerated_juice_lemonade,Simply refrigerated juice & lemonade,Simply Lemonade,price_tracker_baseline,5,Simply Lemonade with Strawberry All Natural Non-GMO - 52 Fl. Oz.,2.0,960326567,0002500004086,FL.OZ
+simply_snacks,Simply snacks,Simply Cheetos 4.5-13 oz,price_tracker_baseline,1,Cheetos Simply Puffs Cheese Flavored Snacks White Cheddar - 12 OZ,5.99,970095812,0002840059888,OUNCE
+simply_snacks,Simply snacks,Simply Cheetos 4.5-13 oz,price_tracker_baseline,2,Cheetos Simply Spicy White Cheddar Cheese Puff Snacks - 6 Oz,3.99,971363100,0002840079997,OUNCE
+simply_snacks,Simply snacks,Simply Cheetos 4.5-13 oz,price_tracker_baseline,3,Cheetos Simply Naked Puffs 8oz - 8 OZ,5.49,971322182,0002840079470,OUNCE
+simply_snacks,Simply snacks,Simply Cheetos 4.5-13 oz,price_tracker_baseline,4,CHEETOS Snacks Cheese Flavored Puffs Party Size - 13.5 Oz,5.99,960543039,0002840031404,OUNCE
+simply_snacks,Simply snacks,Simply Cheetos 4.5-13 oz,price_tracker_baseline,5,Cheetos Simply Naked Crunchy Flamin Hot 8.5oz - 8.5 OZ,5.49,971322180,0002840079468,OUNCE
+sliced_or_shredded_cheese_6_8oz,Sliced or shredded cheese,Lucerne shredded cheese 6–8 oz 6-8 oz packages,price_tracker_baseline,1,Lucerne Cheese Finely Shredded Mexican Style 4 Cheese Blend - 8 Oz,2.99,137050358,0002113004726,OUNCE
+sliced_or_shredded_cheese_6_8oz,Sliced or shredded cheese,Lucerne shredded cheese 6–8 oz 6-8 oz packages,price_tracker_baseline,2,Lucerne Cheese Finely Shredded Triple Cheddar - 8 Oz,2.99,960109669,0002113004830,OUNCE
+sliced_or_shredded_cheese_6_8oz,Sliced or shredded cheese,Lucerne shredded cheese 6–8 oz 6-8 oz packages,price_tracker_baseline,3,Lucerne Cheese Mexican Blend Thick Cut Shredded- 8 Oz,2.99,960351132,0002113004945,OUNCE
+sliced_or_shredded_cheese_6_8oz,Sliced or shredded cheese,Lucerne shredded cheese 6–8 oz 6-8 oz packages,price_tracker_baseline,4,Lucerne Cheese Finely Shredded Italian Style 6 Cheese Blend - 8 Oz,2.99,137051203,0002113004251,OUNCE
+sliced_or_shredded_cheese_6_8oz,Sliced or shredded cheese,Lucerne shredded cheese 6–8 oz 6-8 oz packages,price_tracker_baseline,5,Lucerne Cheese Finely Shredded Queso Quesadilla - 8 Oz,2.99,960226621,0002113004933,OUNCE
+sun_chips_7oz,Sun Chips,Sun Chips Original 7 oz bags,price_tracker_baseline,1,SunChips Snacks Whole Grain Original - 7 Oz,4.49,960094692,0002840014741,OUNCE
+sun_chips_7oz,Sun Chips,Sun Chips Original 7 oz bags,price_tracker_baseline,2,SunChips Snacks Whole Grain Harvest Cheddar - 7 Oz,4.49,960094690,0002840014739,OUNCE
+sun_chips_7oz,Sun Chips,Sun Chips Original 7 oz bags,price_tracker_baseline,3,SunChips Snacks Multigrain French Onion - 7 Oz,4.49,960094693,0002840015224,OUNCE
+sun_chips_7oz,Sun Chips,Sun Chips Original 7 oz bags,price_tracker_baseline,4,Sunchips Honey Bbq - 7 Oz,4.49,971101969,0002840076237,OUNCE
+sun_chips_7oz,Sun Chips,Sun Chips Original 7 oz bags,price_tracker_baseline,5,Lays Potato Chips Wavy Original Bag - 7.75 Oz,4.29,960312468,0002840004380,OUNCE
+sweet_corn,Sweet corn,sweet corn,price_tracker_baseline,1,Sweet Corn,0.5,184350009,0048435002001,EACH
+sweet_corn,Sweet corn,sweet corn,price_tracker_baseline,2,Sweet Corn 4 Count - Each,5.99,184350040,0069706970133,COUNT
+sweet_corn,Sweet corn,sweet corn,price_tracker_baseline,3,Libbys Corn Whole Kernel Sweet - 15 Oz,1.67,960096944,0003710003662,OUNCE
+sweet_corn,Sweet corn,sweet corn,price_tracker_baseline,4,Signature SELECT Corn On The Cob Mini - 12 Count,5.99,147010663,0002113009117,COUNT
+sweet_corn,Sweet corn,sweet corn,price_tracker_baseline,5,Fresh Cut Corn Prepacked Tray 7 Count - 45 Oz,7.99,960222437,0024103100000,EACH
+thomas_bagels_muffins_bread,Thomas bagels / English muffins / swirl bread,Thomas bagels 6 ct or roughly 12-18 oz,price_tracker_baseline,1,Thomas Plain Bagels 6 Count - 18 OZ,5.89,971362803,0004812195951,OUNCE
+thomas_bagels_muffins_bread,Thomas bagels / English muffins / swirl bread,Thomas bagels 6 ct or roughly 12-18 oz,price_tracker_baseline,2,Thomas Everything Bagels 6 Count - 18 OZ,5.89,971362802,0004812195950,OUNCE
+thomas_bagels_muffins_bread,Thomas bagels / English muffins / swirl bread,Thomas bagels 6 ct or roughly 12-18 oz,price_tracker_baseline,3,Thomas Cinnamon Raisin Bagels 6 Count - 18 OZ,5.89,971362799,0004812195940,OUNCE
+thomas_bagels_muffins_bread,Thomas bagels / English muffins / swirl bread,Thomas bagels 6 ct or roughly 12-18 oz,price_tracker_baseline,4,Thomas' Plain Mini Bagels 10 Count - 15 Oz,6.59,196100353,0004812121657,OUNCE
+thomas_bagels_muffins_bread,Thomas bagels / English muffins / swirl bread,Thomas bagels 6 ct or roughly 12-18 oz,price_tracker_baseline,5,Signature SELECT Bagels Plain - 18 Oz,3.29,960457724,0002113018250,OUNCE
+tri_tip_roast,Tri-tip roast,tri-tip roast,price_tracker_baseline,1,Beef USDA Choice Roast Loin Tri Tip Whole Untrimmed - 3.5 Lb,17.47,960115330,0020213700000,LB
+tri_tip_roast,Tri-tip roast,tri-tip roast,price_tracker_baseline,2,USDA Choice Beef Loin Tri Tip Roast - 2.5 Lb,19.98,188020204,0020222000000,LB
+tri_tip_roast,Tri-tip roast,tri-tip roast,price_tracker_baseline,3,Meat Service Counter USDA Choice Beef Loin Tri Tip Untrimmed - 3.50 LB,17.47,960262393,0020841300000,LB
+tri_tip_roast,Tri-tip roast,tri-tip roast,price_tracker_baseline,4,USDA Choice Beef Loin Tri Tip Steak - 2 Lb,15.98,188020205,0020222100000,LB
+tri_tip_roast,Tri-tip roast,tri-tip roast,price_tracker_baseline,5,USDA Choice Loin Tri Tip Steak Boneless Extreme Value Pack - 3.5 Lb,27.97,960110089,0020222900000,LB
 strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,1,Strawberries Prepacked - 1 Lb,3.99,184070124,0078035378403,LB
 strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,2,Organic Strawberries Prepacked - 1 Lb,3.99,184700156,0067170400000,LB
 strawberries,Strawberries,strawberries 1 lb,price_tracker_baseline,3,Strawberries Prepacked - 2 Lb,6.99,960012546,0003338320030,LB

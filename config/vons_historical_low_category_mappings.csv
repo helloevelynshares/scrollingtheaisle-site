@@ -1,0 +1,49 @@
+tracker_key,tracker_kind,display_name,category_group,comparable_unit,patterns,exclude_patterns,prefer_patterns,costco_comparable,maps_to_canonical_id,notes
+strawberries,canonical,Strawberries,produce,lb,strawberries|fresh strawberries|organic strawberries,blueberr|raspberr|blackberr|2 lb,^strawberries$|1-lb|fresh strawberries,true,strawberries,Existing canonical
+avocados,canonical,Hass Avocados,produce,each,hass avocado|avocados,signature select.*5 ct,hass avocado|5 for|5/$5,true,avocados,Existing canonical
+grapes,canonical,Grapes,produce,lb,grapes|green grapes|red grapes|seedless grapes,grape juice|grape tomato,seedless grapes|green grapes|red grapes,true,grapes,Existing canonical
+eggs_18_count,canonical,"Eggs, 18-count",dairy,each,eggs|18 count eggs|18-count|cage free eggs,egg nog|egg roll|egg beaters|quail|6 ct|12 ct,18 count|18-count|5 dozen,false,eggs_18_count,Prefer 18 ct; flag other counts for review
+fage_greek_yogurt,canonical,Fage Greek Yogurt,dairy,oz,fage|fage greek|fage total,chobani|split cup,fage total|fage greek yogurt|48 oz,true,fage_greek_yogurt,Existing canonical
+chobani_greek_yogurt,canonical,Chobani Greek Yogurt,dairy,oz,chobani greek|oikos greek|oikos yogurt,zero sugar|complete|drink,chobani greek|oikos greek|32 oz,true,chobani_greek_yogurt,Includes Oikos tubs
+doritos_nacho_cheese,canonical,Doritos Nacho Cheese,snacks,oz,doritos,or cheetos|cheetos or|^doritos$ variety,^doritos$|doritos tortilla chips,true,doritos_nacho_cheese,Existing canonical
+cheetos_crunchy,canonical,Cheetos Crunchy,snacks,oz,cheetos,mac.?n.? cheese|doritos or cheetos,cheetos crunchy|cheetos cheese flavored,true,cheetos_crunchy,Existing canonical
+kettle_brand_chips,canonical,Kettle Brand Chips,snacks,oz,kettle brand|kettle chips|kettle cooked,lay's.*kettle|lays.*kettle,kettle brand potato chips,true,kettle_brand_chips,Existing canonical
+nature_valley_bars,canonical,Nature Valley Bars,snacks,bar,nature valley|nature valley bars,pop-tarts,nature valley bars|nature valley crunchy,true,nature_valley_bars,Existing canonical
+cheerios,canonical,Cheerios,breakfast,oz,cheerios,honey nut|cinnamon|protein|family size|multi grain,general mills cheerios|^cheerios$,true,cheerios,Existing canonical
+coke_zero,canonical,Coke Zero,drinks,can,coke zero|coca-cola zero|zero sugar soda,diet coke|sprite|pepsi,coke zero|coca-cola zero,true,coke_zero,Existing canonical
+haagen_dazs_ice_cream,canonical,Häagen-Dazs Ice Cream,frozen,oz,haagen.?dazs|häagen.?dazs,mini bar|tillamook,haagen.?dazs ice cream|14 oz,true,haagen_dazs_ice_cream,Existing canonical
+tillamook_ice_cream,canonical,Tillamook Ice Cream,frozen,oz,tillamook ice cream,cracker|cheddar|cheese snack,tillamook ice cream|half gallon,true,tillamook_ice_cream,Existing canonical
+oreos_sandwich_cookies,canonical,Oreos / Sandwich Cookies,snacks,oz,oreo|oreos,sandwich creme variety|oreo thins|oreo ice cream,oreo cookies|family size oreo,true,oreos_sandwich_cookies,Existing canonical
+mission_tortilla_chips,canonical,Mission Tortilla Chips,snacks,oz,mission tortilla chips,flour tortilla|soft taco,mission tortilla chips,true,mission_tortilla_chips,Existing canonical
+frito_lay_multipack_chips,canonical,Frito-Lay Multipack Chips,snacks,bag,frito.?lay variety|frito.?lay mix|variety pack chips|42 count|30 count,individual bag only,frito.?lay variety|42 count,true,frito_lay_multipack_chips,Existing canonical
+protein_bars,canonical,Protein Bars,snacks,bar,protein bars|rxbar|rx bars,nature valley protein,protein bars|rxbar,true,protein_bars,Existing canonical
+ben_jerrys_ice_cream,family,Ben & Jerry's Ice Cream,frozen,each,ben & jerry|ben and jerry,non-dairy pint only,ben & jerry.*pint|ben & jerry.*14,false,ben_jerrys_ice_cream,Existing family
+ritz_crackers_snacks,family,Ritz Crackers & Snacks,snacks,oz,ritz crackers|ritz toasted|ritz bits,cheez-it only,^ritz crackers|ritz crackers or,true,ritz_crackers_snacks,Existing family
+category_mangos,category,Mangos,produce,each,mango|mangos|ataulfo,juice|salsa,,false,,5 for $5 style promos
+category_cherries,category,Cherries,produce,lb,cherry|cherries,chocolate|tomato,,false,,Produce per lb
+category_peaches_stone_fruit,category,Peaches / Nectarines / Plums,produce,lb,peach|nectarine|plum|stone fruit,plum tomato|peach rings,,false,,Seasonal stone fruit
+category_sweet_corn,category,Sweet Corn,produce,ear,corn|bi-color corn|sweet corn,corn dog|corn chips|popcorn,,false,,Multi-buy ears
+category_cantaloupe,category,Cantaloupe / Melons,produce,each,cantaloupe|honeydew|melon bowl,watermelon personal,,false,,Melon category
+category_chicken_breast,category,Chicken Breast,meat,lb,chicken breast|boneless skinless chicken breast|chicken tenderloin,ground chicken|nugget|wing|thigh|drumstick,,false,,Service counter per lb
+category_salmon,category,Salmon Fillets,seafood,lb,salmon|sockeye|atlantic salmon,smoked|burger|patty,,false,,Fresh/frozen fillets per lb
+category_ribeye,category,Ribeye Steak,meat,lb,ribeye|rib eye,boneless country style,,false,,Beef per lb
+category_tri_tip,category,Tri-Tip,meat,lb,tri tip|tri-tip,,,false,,Bay Area / SoCal staple
+category_pork_ribs,category,Pork / Beef Ribs,meat,lb,ribs|baby back|st louis,ribeye,,false,,Ribs per lb
+category_flank_steak,category,Flank / Skirt Steak,meat,lb,flank steak|skirt steak|flap meat,,,false,,Grilling cuts per lb
+category_ground_beef,category,Ground Beef,meat,lb,ground beef|lean ground beef|beef patties,plant based|turkey,,false,,Value pack per lb
+category_tillamook_cheese,category,Tillamook Cheese,dairy,oz,tillamook cheese|tillamook shredded|tillamook sliced|tillamook farmstyle,ice cream,,false,,Cheese not ice cream
+category_cream_cheese,category,Cream Cheese,dairy,oz,cream cheese|philadelphia,cheesecake,,false,,Blocks/tubs per oz
+category_lays_chips,category,Lay's Potato Chips,snacks,oz,lay's potato chips|lays potato chips,kettle cooked only unless grouped,^lay's potato chips,false,,Single-serve bags
+category_tostitos,category,Tostitos,snacks,oz,tostitos,scoops only party size,tostitos tortilla,false,,Chip category
+category_goldfish,category,Goldfish Crackers,snacks,oz,goldfish crackers|pepperidge farm goldfish,mac and cheese,,false,,Kids snack crackers
+category_cheez_it,category,Cheez-It Crackers,snacks,oz,cheez-it|cheez it,mac.?n.?cheese,^cheez-it,false,,Cheez-It family
+category_club_crackers,category,Club / Town House Crackers,snacks,oz,club crackers|town house|keebler club,cheez-it,,false,,Butter crackers
+category_outshine_bars,category,Outshine / Ice Cream Bars,frozen,each,outshine|ice cream bars|klondike bars|drumstick,tillamook pint|ben & jerry pint,outshine|4 ct bars,false,,Frozen bars/pops
+category_general_mills_cereal,category,General Mills Cereal,breakfast,oz,general mills cereal|lucky charms|frosted flakes|trix|cinnamon toast,cheerios only if plain cheerios,general mills|false,,Exclude plain Cheerios (canonical)
+category_quaker_oats,category,Quaker Oats / Granola,breakfast,oz,quaker|instant oatmeal|oatmeal 6-14,cereal bar only,quaker oatmeal,false,,Oatmeal packs
+category_betty_crocker_baking,category,Betty Crocker Cake Mix / Frosting,pantry,each,betty crocker cake mix|betty crocker frosting|super moist,fruit snack|cookie mix,,false,,Baking aisle
+category_mayo,category,Mayonnaise,pantry,oz,mayonnaise|best foods|hellmann's,mayo chip,,false,,Mayo jars
+category_pasta_sauce,category,Pasta Sauce,pantry,oz,pasta sauce|ragu|prego|barilla sauce,pasta 12 oz only,,false,,Jar sauce not dry pasta
+category_peanut_butter,category,Peanut Butter,pantry,oz,peanut butter|skippy|jif|peter pan,jam|jelly,,false,,Pantry staple
+category_sprite,category,Sprite / Lemon-Lime Soda,drinks,can,sprite|7up|7-up|sierra mist,zero sugar mix,,false,,12-pack cans
+category_pepsi,category,Pepsi / Dr Pepper,drinks,can,pepsi|dr pepper|dr. pepper,mountain dew|gatorade,pepsi 12 pack|false,,12-pack soda

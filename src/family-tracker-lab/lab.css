@@ -1,0 +1,665 @@
+/* Family Tracker UI Lab — scoped styles, safe to delete with src/family-tracker-lab/ */
+
+.ftl-main {
+  max-width: 800px;
+}
+
+.ftl-hero h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  letter-spacing: -0.4px;
+}
+
+.ftl-lead {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0 0 8px;
+  line-height: 1.55;
+}
+
+.ftl-lead--secondary {
+  font-size: 14px;
+}
+
+.ftl-lead code {
+  font-size: 13px;
+  background: #f3f3f3;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.ftl-nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 250, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 28px;
+}
+
+.ftl-nav-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ftl-jump-btn {
+  min-width: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ftl-jump-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ftl-option-section {
+  scroll-margin-top: 80px;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ftl-option-section:last-child {
+  border-bottom: none;
+}
+
+.ftl-option-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ftl-option-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.ftl-option-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.ftl-pref-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.ftl-pref-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ftl-pref-btn--favorite {
+  background: #fff5f7;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ftl-pref-btn--maybe {
+  background: #fffbeb;
+  border-color: #d4a017;
+  color: #8a5a14;
+}
+
+.ftl-section-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.ftl-option {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ftl-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ftl-card--minimal {
+  gap: 8px;
+}
+
+.ftl-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ftl-card-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ftl-card-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ftl-price-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ftl-sale {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a7f4b;
+}
+
+.ftl-effective {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a6b3a;
+}
+
+.ftl-usual {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.ftl-summary {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.ftl-takeaway {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #333;
+}
+
+.ftl-caveat {
+  margin: 0;
+  padding: 10px 12px;
+  background: #fff8f0;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #d4a017;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ftl-caveat-label {
+  font-weight: 700;
+  color: #8a5a14;
+}
+
+.ftl-variant-note {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.ftl-pricing-behavior {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.ftl-pricing-behavior-label {
+  font-weight: 600;
+}
+
+.ftl-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  line-height: 1.3;
+  width: fit-content;
+}
+
+.ftl-badge--stock.ftl-badge--great {
+  background: #eef8f1;
+  color: #1a6b3a;
+}
+
+.ftl-badge--stock.ftl-badge--good {
+  background: #fffbeb;
+  color: #8a5a14;
+}
+
+.ftl-badge--status.ftl-badge--sale {
+  background: #eef8f1;
+  color: #1a6b3a;
+}
+
+.ftl-badge--status.ftl-badge--promo {
+  background: #eef3fb;
+  color: #1e4a8a;
+}
+
+.ftl-badge--grouped {
+  background: #eef3fb;
+  color: #1e4a8a;
+}
+
+.ftl-badge--ungrouped {
+  background: #f7f7f7;
+  color: #555;
+}
+
+.ftl-details-btn {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ftl-details-btn:hover {
+  border-color: var(--accent);
+  background: #fff5f7;
+}
+
+.ftl-included-hint {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.ftl-included-hint--static {
+  cursor: default;
+  text-decoration: none;
+}
+
+.ftl-drawer {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.ftl-variants-panel {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ftl-variant-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ftl-variant-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 8px 10px;
+  background: #fafafa;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+.ftl-variant-name {
+  font-weight: 600;
+}
+
+.ftl-variant-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.ftl-grouping-panel {
+  padding: 12px;
+  background: #f8f9fc;
+  border-radius: var(--radius-sm);
+  border: 1px solid #e8ecf4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ftl-grouping-copy {
+  margin: 0;
+  font-size: 13px;
+}
+
+.ftl-grouping-footnote {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.ftl-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ftl-compact-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 4px 12px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+}
+
+.ftl-compact-card--clickable {
+  cursor: pointer;
+}
+
+.ftl-compact-card--clickable:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.ftl-compact-name {
+  grid-column: 1;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.ftl-compact-deal {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  font-weight: 700;
+  color: #1a7f4b;
+  font-size: 14px;
+  text-align: right;
+}
+
+.ftl-compact-card .ftl-badge {
+  grid-column: 1;
+}
+
+.ftl-compact-summary {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.ftl-feed-detail {
+  margin-top: 4px;
+}
+
+.ftl-hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.ftl-family-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+}
+
+.ftl-family-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+}
+
+.ftl-family-pick strong {
+  font-size: 14px;
+}
+
+.ftl-family-pick span {
+  font-size: 13px;
+  color: #1a7f4b;
+  font-weight: 600;
+}
+
+.ftl-family-pick--active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.12);
+}
+
+.ftl-detail-page {
+  padding: 20px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hover);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.ftl-detail-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.ftl-detail-heading {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  padding-right: 72px;
+}
+
+.ftl-family-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.ftl-family-table th,
+.ftl-family-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.ftl-family-table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: #fafafa;
+}
+
+.ftl-family-row-name {
+  font-weight: 600;
+}
+
+.ftl-family-row:hover {
+  background: #fafafa;
+}
+
+.ftl-family-row-detail td {
+  background: #fafafa;
+  padding-top: 0;
+}
+
+.ftl-family-row-detail .ftl-variants-panel {
+  border-top: none;
+  padding-top: 0;
+}
+
+.ftl-expand-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.ftl-expand-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ftl-rec-card {
+  border-left: 4px solid var(--accent);
+}
+
+.ftl-rec-kicker {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.ftl-rec-headline {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.ftl-rec-family {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.ftl-rec-detail {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ftl-table-wrap {
+  overflow-x: auto;
+}
+
+.ftl-card--with-chart {
+  gap: 12px;
+}
+
+.ftl-chart-section {
+  margin-top: 2px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.ftl-chart-section .ftl-section-label {
+  margin-bottom: 6px;
+}
+
+.ftl-chart-section .price-tracker-chart {
+  margin-top: 0;
+}
+
+.ftl-option-9 .ftl-included-hint {
+  margin-top: 2px;
+}
+
+@media (max-width: 600px) {
+  .ftl-option-header {
+    flex-direction: column;
+  }
+
+  .ftl-nav-bar {
+    top: 0;
+  }
+
+  .ftl-family-table th:nth-child(3),
+  .ftl-family-table td:nth-child(3) {
+    display: none;
+  }
+
+  .ftl-compact-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ftl-compact-deal {
+    grid-column: 1;
+    grid-row: auto;
+    text-align: left;
+  }
+}

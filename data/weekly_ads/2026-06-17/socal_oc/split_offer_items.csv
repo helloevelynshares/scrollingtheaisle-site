@@ -1,0 +1,235 @@
+split_item_id,raw_offer_id,flyer_id,parent_company,banner,region,week_start,week_end,source_file,page_number,offer_index_on_page,raw_offer_text,raw_product_text,split_product_text,split_status,split_source,split_confidence,needs_human_grounding,group_offer_text,review_reasons,advertised_price,package_text,package_size_min,package_size_max,package_unit,price_basis,promo_text,promo_type_guess,availability_type_guess,price_role_guess,layout_type
+4627b38f2a3f,b261dbc9ef6b,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,1,Fresh Boneless Skinless Chicken Breasts Value Pack 2.49 lb,Fresh Boneless Skinless Chicken Breasts Value Pack,Fresh Boneless Skinless Chicken Breasts Value Pack,single_product,not_split,0.8,false,,missing_package_size,2.49,,,,,per_lb,,regular_sale,full_week,promo_price,front_page_hero
+a2e00d56b01e,fc1f4b05b5b6,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,2,Baby Back Pork Ribs Previously Frozen 3.99 lb,Baby Back Pork Ribs Previously Frozen,Baby Back Pork Ribs Previously Frozen,single_product,not_split,0.8,false,,missing_package_size,3.99,,,,,per_lb,,regular_sale,full_week,promo_price,front_page_hero
+14b753e77a48,948e4d6ab843,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,3,USDA Choice Beef Boneless Top Sirloin Steak Value Pack 4.99 lb,USDA Choice Beef Boneless Top Sirloin Steak Value Pack,USDA Choice Beef Boneless Top Sirloin Steak Value Pack,single_product,not_split,0.8,false,,missing_package_size,4.99,,,,,per_lb,,regular_sale,full_week,promo_price,front_page_hero
+76c70494ce70,e07b3511cee3,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,4,"Waterfront BISTRO Cooked Shrimp 31-40 ct, 2 lb bag 6.99 lb Sold in a 2 lb bag for $13.98","Waterfront BISTRO Cooked Shrimp 31-40 ct, 2 lb bag","Waterfront BISTRO Cooked Shrimp 31-40 ct, 2 lb bag",single_product,not_split,0.8,false,,,6.99,2 lb bag,2.0,2.0,lb,per_lb,,regular_sale,full_week,promo_price,front_page_hero
+7e5c253fe979,48ae7ff10a55,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,5,Fresh Sweet Corn 5 for $1,Fresh Sweet Corn,Fresh Sweet Corn,single_product,not_split,0.8,false,,,1.0,5 for $1,5.0,5.0,count,multi_buy,,multi_buy,full_week,promo_price,front_page_hero
+2f79863552b4,084cb371928b,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,6,Fresh Cut Fruit Bowls or Watermelon Chunks 2.5 lb 6.99 ea,Fresh Cut Fruit Bowls or Watermelon Chunks,Fresh Cut Fruit Bowls,text_explicit_split,text_explicit,0.85,false,,,6.99,2.5 lb,2.5,2.5,lb,each,,regular_sale,full_week,promo_price,front_page_hero
+8c5b5e0ec992,084cb371928b,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,6,Fresh Cut Fruit Bowls or Watermelon Chunks 2.5 lb 6.99 ea,Fresh Cut Fruit Bowls or Watermelon Chunks,Watermelon Chunks,text_explicit_split,text_explicit,0.85,false,,,6.99,2.5 lb,2.5,2.5,lb,each,,regular_sale,full_week,promo_price,front_page_hero
+d72325300cb3,49833866e272,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,7,"Fresh Pineapple, Cantaloupe or Mini Watermelon 2.55 ea","Fresh Pineapple, Cantaloupe or Mini Watermelon","Fresh Pineapple, Cantaloupe",text_explicit_split,text_explicit,0.85,false,,missing_package_size,2.55,,,,,each,,regular_sale,full_week,promo_price,front_page_hero
+f940c81809d1,49833866e272,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,7,"Fresh Pineapple, Cantaloupe or Mini Watermelon 2.55 ea","Fresh Pineapple, Cantaloupe or Mini Watermelon",Mini Watermelon,text_explicit_split,text_explicit,0.85,false,,missing_package_size,2.55,,,,,each,,regular_sale,full_week,promo_price,front_page_hero
+de48812db735,c59c3d647392,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,8,Fresh Express Salad Blends or Kits 5 to 11 oz Selected varieties BUY 1 GET 1 FREE,Fresh Express Salad Blends or Kits 5 to 11 oz Selected varieties,Fresh Express Salad Blends or Kits 5 to 11 oz Selected varieties,group_not_split,not_split,0.7,true,Fresh Express Salad Blends or Kits 5 to 11 oz Selected varieties BUY 1 GET 1 FREE,missing_or_unclear_price|broad_group_needs_human_grounding,,5 to 11 oz,5.0,11.0,oz,bogo,BUY 1 GET 1 FREE,buy_x_get_y,full_week,promo_price,front_page_hero
+6c8f5bb12287,490c9805980b,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,9,Fresh Express Garden Salad 12 oz 1.99 ea,Fresh Express Garden Salad 12 oz,Fresh Express Garden Salad 12 oz,single_product,not_split,0.8,false,,,1.99,12 oz,12.0,12.0,oz,each,,regular_sale,full_week,promo_price,front_page_hero
+548238e3d5ec,831dd3bfd493,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,10,Signature SELECT Ice Cream 1.5 qt 2.99 ea,Signature SELECT Ice Cream 1.5 qt,Signature SELECT Ice Cream 1.5 qt,single_product,not_split,0.8,false,,,2.99,1.5 qt,1.5,1.5,qt,each,,regular_sale,full_week,promo_price,front_page_hero
+31ac635ccf52,4080c2d87eac,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,11,Signature SELECT Chunk Cheese 6 to 8 oz 1.99 ea,Signature SELECT Chunk Cheese 6 to 8 oz,Signature SELECT Chunk Cheese 6 to 8 oz,single_product,not_split,0.8,false,,,1.99,6 to 8 oz,6.0,8.0,oz,each,,regular_sale,full_week,promo_price,front_page_hero
+6b2e9fe9845e,2b33b49c21d9,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,12,Lucerne Butter Quarters 16 oz 2.99 ea,Lucerne Butter Quarters 16 oz,Lucerne Butter Quarters 16 oz,single_product,not_split,0.8,false,,,2.99,16 oz,16.0,16.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+e7c8aef20517,a5f23a3aa1bf,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,13,Signature SELECT Sandwich Bread 20 oz 1.69 ea,Signature SELECT Sandwich Bread 20 oz,Signature SELECT Sandwich Bread 20 oz,single_product,not_split,0.8,false,,,1.69,20 oz,20.0,20.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+1daf9e16b45c,bc7a8e2bee41,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,14,Oroweat Bread 24 oz 2.49 ea,Oroweat Bread 24 oz,Oroweat Bread 24 oz,single_product,not_split,0.8,false,,,2.49,24 oz,24.0,24.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+b8daccf6e3c1,3c0844e3a0bc,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,15,"Lay's Potato Chips, Fritos, Ruffles or Ritz Crackers 5 to 13 oz 2.49 ea","Lay's Potato Chips, Fritos, Ruffles or Ritz Crackers 5 to 13 oz","Lay's Potato Chips, Fritos, Ruffles",text_explicit_split,text_explicit,0.85,false,,,2.49,5 to 13 oz,5.0,13.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+36e1b76129ec,3c0844e3a0bc,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,15,"Lay's Potato Chips, Fritos, Ruffles or Ritz Crackers 5 to 13 oz 2.49 ea","Lay's Potato Chips, Fritos, Ruffles or Ritz Crackers 5 to 13 oz",Ritz Crackers 5 to 13 oz,text_explicit_split,text_explicit,0.85,false,,,2.49,5 to 13 oz,5.0,13.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+8fda6897d315,1afe85635ad3,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,16,Lucerne Large Eggs 12 ct 1.99 ea,Lucerne Large Eggs 12 ct,Lucerne Large Eggs 12 ct,single_product,not_split,0.8,false,,,1.99,12 ct,12.0,12.0,count,each,,regular_sale,full_week,promo_price,standard_grid_offer
+e3ff81c458b5,98e0d1511bf6,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,17,"Pepsi, 7UP, Canada Dry, A&W, Sunkist or Squirt 12-pack, 12-oz cans 3 for $15.99","Pepsi, 7UP, Canada Dry, A&W, Sunkist or Squirt 12-pack, 12-oz cans","Pepsi, 7UP, Canada Dry, A&W, Sunkist",text_explicit_split,text_explicit,0.85,false,,,15.99,"12-pack, 12-oz cans",12.0,12.0,count,multi_buy,,multi_buy,full_week,promo_price,standard_grid_offer
+46b9bf4a94dd,98e0d1511bf6,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,17,"Pepsi, 7UP, Canada Dry, A&W, Sunkist or Squirt 12-pack, 12-oz cans 3 for $15.99","Pepsi, 7UP, Canada Dry, A&W, Sunkist or Squirt 12-pack, 12-oz cans","Squirt 12-pack, 12-oz cans",text_explicit_split,text_explicit,0.85,false,,,15.99,"12-pack, 12-oz cans",12.0,12.0,count,multi_buy,,multi_buy,full_week,promo_price,standard_grid_offer
+76be9b97449f,3538fcdb3057,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,18,"Signature SELECT Purified Water 24-pack, 16.9-oz bottles 2 for $5","Signature SELECT Purified Water 24-pack, 16.9-oz bottles","Signature SELECT Purified Water 24-pack, 16.9-oz bottles",single_product,not_split,0.8,false,,,5.0,"24-pack, 16.9-oz bottles",24.0,24.0,count,multi_buy,,multi_buy,full_week,promo_price,standard_grid_offer
+da3687a432f3,d293817b53ba,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,19,Signature SELECT Chunk Light Tuna 5 oz 0.99 ea,Signature SELECT Chunk Light Tuna 5 oz,Signature SELECT Chunk Light Tuna 5 oz,single_product,not_split,0.8,false,,,0.99,5 oz,5.0,5.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+9c22c951a387,5281539ba9af,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,20,Lucerne Shredded or Sliced Cheese 5 to 8 oz 1.99 ea,Lucerne Shredded or Sliced Cheese 5 to 8 oz,Lucerne Shredded,text_explicit_split,text_explicit,0.85,false,,,1.99,5 to 8 oz,5.0,8.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+7e2fc22d5c5c,5281539ba9af,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,20,Lucerne Shredded or Sliced Cheese 5 to 8 oz 1.99 ea,Lucerne Shredded or Sliced Cheese 5 to 8 oz,Sliced Cheese 5 to 8 oz,text_explicit_split,text_explicit,0.85,false,,,1.99,5 to 8 oz,5.0,8.0,oz,each,,regular_sale,full_week,promo_price,standard_grid_offer
+a929c778d270,2d4e2b477778,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,21,Lucerne Milk Gallon 2.99 ea,Lucerne Milk Gallon,Lucerne Milk Gallon,single_product,not_split,0.8,false,,missing_package_size,2.99,Gallon,,,gallon,each,,regular_sale,full_week,promo_price,standard_grid_offer
+2fdf6cb80d27,fccf9f036b5e,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,22,Red or Black Plums 1.99 lb,Red or Black Plums,Red,text_explicit_split,text_explicit,0.85,false,,missing_package_size,1.99,,,,,per_lb,,regular_sale,full_week,promo_price,points_promo_block
+fb124fa6cbbb,fccf9f036b5e,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,22,Red or Black Plums 1.99 lb,Red or Black Plums,Black Plums,text_explicit_split,text_explicit,0.85,false,,missing_package_size,1.99,,,,,per_lb,,regular_sale,full_week,promo_price,points_promo_block
+48f5f8d672f9,5fd3f4485efd,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,23,Oscar Mayer Bacon 12-16 oz 4.99 ea,Oscar Mayer Bacon 12-16 oz,Oscar Mayer Bacon 12-16 oz,single_product,not_split,0.8,false,,,4.99,12-16 oz,12.0,16.0,oz,each,,digital_coupon,full_week,promo_price,points_promo_block
+4bee73177584,a13c5351f1be,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,24,Kellogg's Cereal 10.1-18 oz 2 for $5,Kellogg's Cereal 10.1-18 oz,Kellogg's Cereal 10.1-18 oz,single_product,not_split,0.8,false,,,5.0,10.1-18 oz,10.1,18.0,oz,multi_buy,,multi_buy,full_week,promo_price,points_promo_block
+da5128645663,b15ba07bdf6e,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,25,Lucerne Chunk or Shredded Cheese 16 oz 4.99 ea,Lucerne Chunk or Shredded Cheese 16 oz,Lucerne Chunk,text_explicit_split,text_explicit,0.85,false,,,4.99,16 oz,16.0,16.0,oz,each,,digital_coupon,full_week,promo_price,points_promo_block
+6a8c1c7939c0,b15ba07bdf6e,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,25,Lucerne Chunk or Shredded Cheese 16 oz 4.99 ea,Lucerne Chunk or Shredded Cheese 16 oz,Shredded Cheese 16 oz,text_explicit_split,text_explicit,0.85,false,,,4.99,16 oz,16.0,16.0,oz,each,,digital_coupon,full_week,promo_price,points_promo_block
+a489ba3f15b7,d1831253dd1a,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,26,Signature SELECT Salsa 15.5-16 oz BUY 1 GET 1 FREE,Signature SELECT Salsa 15.5-16 oz,Signature SELECT Salsa 15.5-16 oz,single_product,not_split,0.8,false,,missing_or_unclear_price,,15.5-16 oz,15.5,16.0,oz,bogo,BUY 1 GET 1 FREE,buy_x_get_y,full_week,promo_price,points_promo_block
+51d332c0259c,df3b31f0bcc8,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,27,Signature SELECT Ice Cream 48 oz 2 for $5,Signature SELECT Ice Cream 48 oz,Signature SELECT Ice Cream 48 oz,single_product,not_split,0.8,false,,,5.0,48 oz,48.0,48.0,oz,multi_buy,,multi_buy,full_week,promo_price,points_promo_block
+0e9ad08efa9b,08b51bfbf658,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,28,Signature SELECT Chunk Cheese 6-8 oz 2 for $5,Signature SELECT Chunk Cheese 6-8 oz,Signature SELECT Chunk Cheese 6-8 oz,single_product,not_split,0.8,false,,,5.0,6-8 oz,6.0,8.0,oz,multi_buy,,multi_buy,full_week,promo_price,points_promo_block
+250e989981e0,34b793c368e9,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,29,Skippy Peanut Butter 15-16.3 oz 0.99 ea,Skippy Peanut Butter 15-16.3 oz,Skippy Peanut Butter 15-16.3 oz,single_product,not_split,0.8,false,,,0.99,15-16.3 oz,15.0,16.3,oz,each,,digital_coupon,full_week,promo_price,points_promo_block
+d9f9dadc7cab,fee2b0b31eb7,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,30,Viva Paper Towels 6 rolls 5.99 ea,Viva Paper Towels 6 rolls,Viva Paper Towels 6 rolls,single_product,not_split,0.8,false,,,5.99,6 rolls,6.0,6.0,count,each,,digital_coupon,full_week,promo_price,points_promo_block
+1adf09571472,91fdf40be1bb,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,31,O Organics Milk 64 oz 2 for $5,O Organics Milk 64 oz,O Organics Milk 64 oz,single_product,not_split,0.8,false,,,5.0,64 oz,64.0,64.0,oz,multi_buy,,multi_buy,full_week,promo_price,points_promo_block
+b48b57b0c550,f5e92982478f,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,1,32,"Coors, Miller, Budweiser or Michelob Ultra 18-pack, 12-oz cans or bottles 18.99 ea","Coors, Miller, Budweiser or Michelob Ultra 18-pack, 12-oz cans or bottles","Coors, Miller, Budweiser or Michelob Ultra 18-pack, 12-oz cans or bottles",excluded,not_split,0.9,false,"Coors, Miller, Budweiser or Michelob Ultra 18-pack, 12-oz cans or bottles 18.99 ea",excluded_category|excluded_category:excluded_category,18.99,"18-pack, 12-oz cans or bottles",18.0,18.0,count,each,,digital_coupon,full_week,promo_price,points_promo_block
+9bade9d4a5ba,709c9e9693e2,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,1,Double Discount 3 DAY Weekend save up to 20% off All 750 mL WINE or SPIRITS with Mix or Match 6 bottles or more,All 750 mL WINE or SPIRITS,All 750 mL WINE or SPIRITS,excluded,not_split,0.9,false,Double Discount 3 DAY Weekend save up to 20% off All 750 mL WINE or SPIRITS with Mix or Match 6 bottles or more,excluded_category|excluded_category:excluded_category,,750 mL,750.0,750.0,mL,unknown,save up to 20% off with Mix or Match 6 bottles or more,percent_off,weekend_only,short_term_dip,points_promo_block
+cf471d43012e,01cdfd5570e2,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,2,"Sunbeam Chardonnay, Cabernet Sauvignon, Pinot Noir or Sauvignon Blanc 1.5 L $32.99 ea","Sunbeam Chardonnay, Cabernet Sauvignon, Pinot Noir or Sauvignon Blanc","Sunbeam Chardonnay, Cabernet Sauvignon, Pinot Noir or Sauvignon Blanc",excluded,not_split,0.9,false,"Sunbeam Chardonnay, Cabernet Sauvignon, Pinot Noir or Sauvignon Blanc 1.5 L $32.99 ea",excluded_category|excluded_category:excluded_category,32.99,1.5 L,1.5,1.5,L,each,,regular_sale,full_week,promo_price,points_promo_block
+b9567f48409a,4de94c6a7935,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,3,Jack Daniel's Old No. 7 Tennessee Whiskey 750 mL $19.99 ea,Jack Daniel's Old No. 7 Tennessee Whiskey,Jack Daniel's Old No. 7 Tennessee Whiskey,excluded,not_split,0.9,false,Jack Daniel's Old No. 7 Tennessee Whiskey 750 mL $19.99 ea,excluded_category|excluded_category:excluded_category,19.99,750 mL,750.0,750.0,mL,each,,regular_sale,full_week,promo_price,points_promo_block
+6193fc14d6d6,4e0215641aed,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,4,Elijah Craig Small Batch Kentucky Straight Bourbon Whiskey 750 mL $15.99 ea,Elijah Craig Small Batch Kentucky Straight Bourbon Whiskey,Elijah Craig Small Batch Kentucky Straight Bourbon Whiskey,excluded,not_split,0.9,false,Elijah Craig Small Batch Kentucky Straight Bourbon Whiskey 750 mL $15.99 ea,excluded_category|excluded_category:excluded_category,15.99,750 mL,750.0,750.0,mL,each,,regular_sale,full_week,promo_price,points_promo_block
+103f23c32683,049fa3536dba,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,5,RumHaven Caribbean Rum with Coconut Liqueur 750 mL $13.99 ea,RumHaven Caribbean Rum with Coconut Liqueur,RumHaven Caribbean Rum with Coconut Liqueur,excluded,not_split,0.9,false,RumHaven Caribbean Rum with Coconut Liqueur 750 mL $13.99 ea,excluded_category|excluded_category:excluded_category,13.99,750 mL,750.0,750.0,mL,each,,regular_sale,full_week,promo_price,points_promo_block
+eed04d819041,a3a115aac642,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,6,"Sea Glass Wine Cabernet Sauvignon, Chardonnay, Pinot Grigio or Sauvignon Blanc 750 mL $8.99 ea","Sea Glass Wine Cabernet Sauvignon, Chardonnay, Pinot Grigio or Sauvignon Blanc","Sea Glass Wine Cabernet Sauvignon, Chardonnay, Pinot Grigio or Sauvignon Blanc",excluded,not_split,0.9,false,"Sea Glass Wine Cabernet Sauvignon, Chardonnay, Pinot Grigio or Sauvignon Blanc 750 mL $8.99 ea",excluded_category|excluded_category:excluded_category,8.99,750 mL,750.0,750.0,mL,each,,regular_sale,full_week,promo_price,points_promo_block
+8109a1696115,c4f6a0611563,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,2,7,Kendall-Jackson Vintner's Reserve Chardonnay or Cabernet Sauvignon 750 mL $8.99 ea,Kendall-Jackson Vintner's Reserve Chardonnay or Cabernet Sauvignon,Kendall-Jackson Vintner's Reserve Chardonnay or Cabernet Sauvignon,excluded,not_split,0.9,false,Kendall-Jackson Vintner's Reserve Chardonnay or Cabernet Sauvignon 750 mL $8.99 ea,excluded_category|excluded_category:excluded_category,8.99,750 mL,750.0,750.0,mL,each,,regular_sale,full_week,promo_price,points_promo_block
+a8c8d5209e08,84c83a60e1ac,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,1,Drink it in. Buy $25 of participating products SAVE $5,"Coca-Cola, Pepsi, or 7UP 2 liter","Coca-Cola, Pepsi",text_explicit_split,text_explicit,0.85,false,,,1.49,2 liter,2.0,2.0,liter,each,Buy $25 of participating products SAVE $5; Earn 4X Points,multi_buy,full_week,promo_price,points_promo_block
+0eb408ff0394,84c83a60e1ac,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,1,Drink it in. Buy $25 of participating products SAVE $5,"Coca-Cola, Pepsi, or 7UP 2 liter",7UP 2 liter,text_explicit_split,text_explicit,0.85,false,,,1.49,2 liter,2.0,2.0,liter,each,Buy $25 of participating products SAVE $5; Earn 4X Points,multi_buy,full_week,promo_price,points_promo_block
+daa8f44d6323,2c9a0f18e6b0,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,2,"Friday, June 19th Fresh Atlantic Salmon Fillets Farm Raised $5 lb",Fresh Atlantic Salmon Fillets Farm Raised,Fresh Atlantic Salmon Fillets Farm Raised,single_product,not_split,0.8,false,,missing_package_size,5.0,,,,,per_lb,"Friday, June 19th",regular_sale,friday_only,short_term_dip,friday_only_block
+372311dfd048,958976b1abd5,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,3,Red Seedless Grapes $2.50 lb,Red Seedless Grapes,Red Seedless Grapes,single_product,not_split,0.8,false,,missing_package_size,2.5,,,,,per_lb,,regular_sale,friday_only,short_term_dip,friday_only_block
+5e6a5de38e12,918e9b418411,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,4,Kellogg's Cereal select varieties 8.8 to 13.7 oz 2 for $5,Kellogg's Cereal select varieties,Kellogg's Cereal select varieties,single_product,not_split,0.8,false,,,2.5,8.8 to 13.7 oz,8.8,13.7,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+4190fbb7fdbd,7c1b1240a728,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,5,Signature SELECT Ice Cream 48 oz 2 for $5,Signature SELECT Ice Cream,Signature SELECT Ice Cream,single_product,not_split,0.8,false,,,2.5,48 oz,48.0,48.0,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+8e7aea12b437,87b1ea4a3022,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,6,Signature SELECT Snack Crackers 7.5 to 13.7 oz 2 for $5,Signature SELECT Snack Crackers,Signature SELECT Snack Crackers,single_product,not_split,0.8,false,,,2.5,7.5 to 13.7 oz,7.5,13.7,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+0f5b8cb45a11,af61838f5258,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,7,Signature SELECT Frozen Potatoes 16 to 32 oz 2 for $5,Signature SELECT Frozen Potatoes,Signature SELECT Frozen Potatoes,single_product,not_split,0.8,false,,,2.5,16 to 32 oz,16.0,32.0,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+19d8efce7c37,5c074a9dbf99,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,8,Signature SELECT Chicken Wings 22 oz 2 for $5,Signature SELECT Chicken Wings,Signature SELECT Chicken Wings,single_product,not_split,0.8,false,,,2.5,22 oz,22.0,22.0,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+74cc39702a5e,916614d9ca85,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,9,Signature SELECT Cheese 6 to 8 oz 2 for $5,Signature SELECT Cheese,Signature SELECT Cheese,single_product,not_split,0.8,false,,,2.5,6 to 8 oz,6.0,8.0,oz,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+fd0849f43424,7802316e046d,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,10,Signature SELECT Bagels 6 ct 2 for $5,Signature SELECT Bagels,Signature SELECT Bagels,single_product,not_split,0.8,false,,,2.5,6 ct,6.0,6.0,ct,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+a5b42e9fc2c4,26cb17c44c9d,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,11,Fresh Strawberries 1 lb 2 for $5,Fresh Strawberries,Fresh Strawberries,single_product,not_split,0.8,false,,,2.5,1 lb,1.0,1.0,lb,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+1213baf05214,9f782bd9bd23,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,12,"Coca-Cola, Pepsi or 7UP 6 pk, 16.9 oz btls. 3 for $5 +CRV","Coca-Cola, Pepsi or 7UP 6 pk, 16.9 oz btls.","Coca-Cola, Pepsi",text_explicit_split,text_explicit,0.85,false,,,1.67,"6 pk, 16.9 oz btls.",6.0,6.0,pk,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+8cae293eb167,9f782bd9bd23,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,12,"Coca-Cola, Pepsi or 7UP 6 pk, 16.9 oz btls. 3 for $5 +CRV","Coca-Cola, Pepsi or 7UP 6 pk, 16.9 oz btls.","7UP 6 pk, 16.9 oz btls.",text_explicit_split,text_explicit,0.85,false,,,1.67,"6 pk, 16.9 oz btls.",6.0,6.0,pk,multi_buy,,multi_buy,friday_only,short_term_dip,friday_only_block
+0aad6a54cec6,bb3b4f19c8b3,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,13,The Rocks Tequila 750 ml $19.99,The Rocks Tequila 750 ml,The Rocks Tequila 750 ml,excluded,not_split,0.9,false,The Rocks Tequila 750 ml $19.99,excluded_category|excluded_category:excluded_category,19.99,750 ml,750.0,750.0,ml,each,,regular_sale,friday_only,short_term_dip,friday_only_block
+675bc42ed72a,d35b4d5d4ada,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,14,Cucumbers 69¢ ea,Cucumbers,Cucumbers,single_product,not_split,0.8,false,,missing_package_size,0.69,,,,,each,,regular_sale,full_week,promo_price,standard_grid_offer
+8f5be6010e82,909cc96c2ee9,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,15,Large Hass Avocados 3 for $5,Large Hass Avocados,Large Hass Avocados,single_product,not_split,0.8,false,,missing_package_size,1.67,,,,,multi_buy,,multi_buy,full_week,promo_price,standard_grid_offer
+eeb441ece2a0,835a9a8fc9ba,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,16,Local Strawberries 2 lb $5.56,Local Strawberries,Local Strawberries,single_product,not_split,0.8,false,,,5.56,2 lb,2.0,2.0,lb,per_pack,,regular_sale,full_week,promo_price,standard_grid_offer
+e3e4f86bd351,488242867d6a,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,17,Local Blueberries 6 oz $2.56,Local Blueberries,Local Blueberries,single_product,not_split,0.8,false,,,2.56,6 oz,6.0,6.0,oz,per_pack,,regular_sale,full_week,promo_price,standard_grid_offer
+44cd77dc1090,efe5fb80d79a,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,18,Local Strawberries 2 for $7,Local Strawberries,Local Strawberries,single_product,not_split,0.8,false,,missing_package_size,3.5,,,,,multi_buy,,multi_buy,full_week,promo_price,standard_grid_offer
+4f850c6dda08,25f42b23e874,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,19,"Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi or 7UP 12 pk, 12 oz cans 3 for $15.98 +CRV","Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi or 7UP 12 pk, 12 oz cans","Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi",text_explicit_split,text_explicit,0.85,false,,,5.33,"12 pk, 12 oz cans",12.0,12.0,pk,multi_buy,Earn 4X Points,multi_buy,full_week,promo_price,points_promo_block
+a12ba8b60858,25f42b23e874,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,19,"Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi or 7UP 12 pk, 12 oz cans 3 for $15.98 +CRV","Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi or 7UP 12 pk, 12 oz cans","7UP 12 pk, 12 oz cans",text_explicit_split,text_explicit,0.85,false,,,5.33,"12 pk, 12 oz cans",12.0,12.0,pk,multi_buy,Earn 4X Points,multi_buy,full_week,promo_price,points_promo_block
+8cec1a7a0b92,5aca4a433b56,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,20,Core Power Protein Shake 14 oz 2 for $5,Core Power Protein Shake,Core Power Protein Shake,single_product,not_split,0.8,false,,,2.5,14 oz,14.0,14.0,oz,multi_buy,Earn 4X Points,multi_buy,full_week,promo_price,points_promo_block
+d1b69c9f4055,3912e0c72387,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,21,Fresh Beef Ribeye Steak Bone-In Value Pack $12.99 lb,Fresh Beef Ribeye Steak Bone-In Value Pack,Fresh Beef Ribeye Steak Bone-In Value Pack,single_product,not_split,0.8,false,,missing_package_size,12.99,,,,,per_lb,,regular_sale,full_week,promo_price,standard_grid_offer
+3b5d4801c4d5,b701c3c9e187,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,22,Fresh Beef Loin Top Loin Steak Boneless Value Pack $9.99 lb,Fresh Beef Loin Top Loin Steak Boneless Value Pack,Fresh Beef Loin Top Loin Steak Boneless Value Pack,single_product,not_split,0.8,false,,missing_package_size,9.99,,,,,per_lb,,regular_sale,full_week,promo_price,standard_grid_offer
+51af008ca894,edd1d9948d11,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,23,Pork Loin Center Cut Chops Bone-In Value Pack $3.99 lb,Pork Loin Center Cut Chops Bone-In Value Pack,Pork Loin Center Cut Chops Bone-In Value Pack,single_product,not_split,0.8,false,,missing_package_size,3.99,,,,,per_lb,,regular_sale,full_week,promo_price,standard_grid_offer
+4873a4890ced,5059a71d002e,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,24,Camellia Sausage 12 oz $4.99,Camellia Sausage,Camellia Sausage,single_product,not_split,0.8,false,,,4.99,12 oz,12.0,12.0,oz,per_pack,,regular_sale,full_week,promo_price,standard_grid_offer
+5af470862107,726de54f7328,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,4,25,"Sea Best Raw Shrimp 16-20 ct, 32 oz $14.99","Sea Best Raw Shrimp 16-20 ct, 32 oz","Sea Best Raw Shrimp 16-20 ct, 32 oz",single_product,not_split,0.8,false,,,14.99,"16-20 ct, 32 oz",32.0,32.0,oz,per_pack,,regular_sale,full_week,promo_price,standard_grid_offer
+4665ac9dd7d3,23de08021707,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"Member Price Selected varieties Menten Prive
+a
+Bubbies j “|
+Mochi 7.5 oz. i = a Horizon
+Selected varietics | gesses og | Organic Milk
+Seve $6990n2 f= = =) Plus DHA
+Buyi mya || 64 0z
+/ \ = } | Selected varieties",Member Price Selected varieties Menten Prive a Bubbies j “| Mochi 7.5 oz. i = a Horizon Selected varietics | gesses og |,Member Price Selected varieties Menten Prive a Bubbies j “| Mochi 7.5 oz. i = a Horizon Selected varietics | gesses og |,group_not_split,not_split,0.7,true,"Member Price Selected varieties Menten Prive
+a
+Bubbies j “|
+Mochi 7.5 oz. i = a Horizon
+Selected varietics | gesses og | Organic Milk
+Seve $6990n2 f= = =) Plus DHA
+Buyi mya || 64 0z
+/ \ = } | Selected varieties",broad_group_needs_human_grounding,6990.0,7.5 oz,7.5,7.5,oz,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+478e45d72dff,6052b61a9d95,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"750 mi
+
+Selected varieties
+
+wi
+Sele Member Price: $25.52
+
+“Digital coupons must be doweloaded to you U) account pris to purchase and are one time use only. See clip coupon details and di",750 mi Selected varieties wi Sele Member Price: $25.52 “Digital coupons must be doweloaded to you U) account pris to pur,750 mi Selected varieties wi Sele Member Price: $25.52 “Digital coupons must be doweloaded to you U) account pris to pur,group_not_split,not_split,0.7,true,"750 mi
+
+Selected varieties
+
+wi
+Sele Member Price: $25.52
+
+“Digital coupons must be doweloaded to you U) account pris to purchase and are one time use only. See clip coupon details and di",broad_group_needs_human_grounding,25.52,nan nan,,,,each,digital_coupon,digital_coupon,full_week,promo_price,standard_grid_offer
+91a5f47236a5,3f071627cdc9,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"or Ss
+English Muffins : meee "" chosen Foods
+i: ¥ Setected 1 Avocado Oil
+Selected varieties ; varieties 1 16.9 oz
+persia 1
+Price; $3,99
+2S7 1 @49
+Member Price 1 Expires 623226, !","or Ss English Muffins : meee "" chosen Foods i: ¥ Setected 1 Avocado Oil Selected varieties ; varieties 1 16.9 oz persia ","or Ss English Muffins : meee "" chosen Foods i: ¥ Setected 1 Avocado Oil Selected varieties ; varieties 1 16.9 oz persia ",group_not_split,not_split,0.7,true,"or Ss
+English Muffins : meee "" chosen Foods
+i: ¥ Setected 1 Avocado Oil
+Selected varieties ; varieties 1 16.9 oz
+persia 1
+Price; $3,99
+2S7 1 @49
+Member Price 1 Expires 623226, !",broad_group_needs_human_grounding,3.0,16.9 oz,16.9,16.9,oz,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+2ecae013fe97,60ffd1c11a94,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"Member Price +CRV —_ .
+
+2 Oe
+
+Segie Member Price $14.43
+
+Selected varieties",Member Price +CRV —_ . 2 Oe Segie Member Price $14.43 Selected varieties,Member Price +CRV —_ . 2 Oe Segie Member Price $14.43 Selected varieties,group_not_split,not_split,0.7,true,"Member Price +CRV —_ .
+
+2 Oe
+
+Segie Member Price $14.43
+
+Selected varieties",broad_group_needs_human_grounding,14.43,nan nan,,,,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+1a798a01eee1,ccf7cd6db785,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"retin G
+Topo Chico or Truly a 12 pack, 12 oz. cans
+' Hard Seltzer =f Blue Moon or Lagunitas '
+§ 12 pack, 12 oz. cans 812 pack, 12 oz. bottles or [at] 1
+‘ Selected okay of ao""s Selected _— 1
+Member ] $19. 4 Member ae $19.
+
+Prices effective June 17 - June 23, 2026","retin G Topo Chico or Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon or Lagunitas ' § 12 pack, 12 oz. cans 812",retin G Topo Chico,text_explicit_split,text_explicit,0.85,false,,,19.0,12.0 pack,12.0,12.0,pack,each,unknown,unknown,full_week,promo_price,standard_grid_offer
+ea855470e693,ccf7cd6db785,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"retin G
+Topo Chico or Truly a 12 pack, 12 oz. cans
+' Hard Seltzer =f Blue Moon or Lagunitas '
+§ 12 pack, 12 oz. cans 812 pack, 12 oz. bottles or [at] 1
+‘ Selected okay of ao""s Selected _— 1
+Member ] $19. 4 Member ae $19.
+
+Prices effective June 17 - June 23, 2026","retin G Topo Chico or Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon or Lagunitas ' § 12 pack, 12 oz. cans 812","Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon",text_explicit_split,text_explicit,0.85,false,,,19.0,12.0 pack,12.0,12.0,pack,each,unknown,unknown,full_week,promo_price,standard_grid_offer
+c57f50cc7f7b,ccf7cd6db785,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"retin G
+Topo Chico or Truly a 12 pack, 12 oz. cans
+' Hard Seltzer =f Blue Moon or Lagunitas '
+§ 12 pack, 12 oz. cans 812 pack, 12 oz. bottles or [at] 1
+‘ Selected okay of ao""s Selected _— 1
+Member ] $19. 4 Member ae $19.
+
+Prices effective June 17 - June 23, 2026","retin G Topo Chico or Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon or Lagunitas ' § 12 pack, 12 oz. cans 812","Lagunitas ' § 12 pack, 12 oz. cans 812",text_explicit_split,text_explicit,0.85,false,,,19.0,12.0 pack,12.0,12.0,pack,each,unknown,unknown,full_week,promo_price,standard_grid_offer
+fcf353ea2711,0175879adec2,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,": Large Yellow
+B Peaches, Nectarines
+
+§ or Plums
+Member Price: $2.99 Ib
+
+i",": Large Yellow B Peaches, Nectarines § or Plums Member Price: $2.99 Ib i",": Large Yellow B Peaches, Nectarines §",text_explicit_split,text_explicit,0.85,false,,,2.99,nan nan,,,,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+29f1f3bf87eb,0175879adec2,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,": Large Yellow
+B Peaches, Nectarines
+
+§ or Plums
+Member Price: $2.99 Ib
+
+i",": Large Yellow B Peaches, Nectarines § or Plums Member Price: $2.99 Ib i",Plums Member Price: $2.99 Ib i,text_explicit_split,text_explicit,0.85,false,,,2.99,nan nan,,,,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+066a9e4acf84,21ac3736d16c,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"B 9.43-12 oz
+
+B Selected varieties
+
+Member Price: $8.99
+
+Busrscaae 0 MRK",B 9.43-12 oz B Selected varieties Member Price: $8.99 Busrscaae 0 MRK,B 9.43-12 oz B Selected varieties Member Price: $8.99 Busrscaae 0 MRK,group_not_split,not_split,0.7,true,"B 9.43-12 oz
+
+B Selected varieties
+
+Member Price: $8.99
+
+Busrscaae 0 MRK",broad_group_needs_human_grounding,8.99,12.0 oz,12.0,12.0,oz,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+07d8d1a5a533,04067414f0a7,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"4 Bread 24-27 oz.
+; or Hamburger Buns
+
+Bet
+B Selected varieties
+5 Member Price: $6.99
+
+SI",4 Bread 24-27 oz. ; or Hamburger Buns Bet B Selected varieties 5 Member Price: $6.99,4 Bread 24-27 oz. ; or Hamburger Buns Bet B Selected varieties 5 Member Price: $6.99,group_not_split,not_split,0.7,true,"4 Bread 24-27 oz.
+; or Hamburger Buns
+
+Bet
+B Selected varieties
+5 Member Price: $6.99
+
+SI",broad_group_needs_human_grounding,6.99,27.0 oz,27.0,27.0,oz,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+5db318103ec5,ba5a3c8bd585,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"Skippy
+Peanut Butter
+
+# 15-16.3 oz
+y Selected varieties
+§ Member Price: $2.99 |
+
+a",Skippy Peanut Butter # 15-16.3 oz y Selected varieties § Member Price: $2.99 |,Skippy Peanut Butter # 15-16.3 oz y Selected varieties § Member Price: $2.99 |,group_not_split,not_split,0.7,true,"Skippy
+Peanut Butter
+
+# 15-16.3 oz
+y Selected varieties
+§ Member Price: $2.99 |
+
+a",broad_group_needs_human_grounding,2.99,16.3 oz,16.3,16.3,oz,each,member_price,member_price,full_week,promo_price,standard_grid_offer
+b5216d722f9e,f9aff08eef1c,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"or Viva
+
+B Signature Cloth
+
+& & double rolls
+eee Price: $10.99
+
+UD",or Viva B Signature Cloth & & double rolls eee Price: $10.99 UD,or Viva B Signature Cloth & & double rolls eee Price: $10.99 UD,single_product,not_split,0.8,false,,,10.99,nan nan,,,,each,unknown,unknown,full_week,promo_price,standard_grid_offer
+da2a27051d3a,085c61262d6d,Vons_2026-06-17_vons_6-17_-_6-23,Albertsons,Vons,southern_california,2026-06-17,2026-06-23,vons 6-17 - 6-23.pdf,3,0,"B bottles or cans
+
+Selected varieties
+
+5 Mesiibec Price: $24.99 .
+
+vit",B bottles or cans Selected varieties 5 Mesiibec Price: $24.99 . vit,B bottles or cans Selected varieties 5 Mesiibec Price: $24.99 . vit,group_not_split,not_split,0.7,true,"B bottles or cans
+
+Selected varieties
+
+5 Mesiibec Price: $24.99 .
+
+vit",broad_group_needs_human_grounding,24.99,nan nan,,,,each,unknown,unknown,full_week,promo_price,standard_grid_offer

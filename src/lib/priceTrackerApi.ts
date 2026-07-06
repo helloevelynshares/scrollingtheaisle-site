@@ -1,12 +1,11 @@
 import {
-  appendFamiliesToFeedProducts,
-} from "../data/trackerFamilyUtils";
-import { CANONICAL_PRODUCTS } from "../data/canonicalProducts";
+  buildSafewayYamlProducts,
+  buildVonsYamlProducts,
+} from "../data/yamlFamilyProducts";
+import { CANONICAL_TRACKER_FAMILIES } from "../data/canonicalTrackerFamilies";
 import { getPriceFeed } from "../data/priceFeeds";
 import {
   buildEmptyFeedProducts,
-  buildSafewayFallbackProducts,
-  buildVonsFallbackProducts,
 } from "../data/priceTrackerFallback";
 import type {
   FeedProductMatch,
@@ -95,6 +94,11 @@ export async function fetchFeedProducts(
     return [];
   }
 
+  // YAML tracker families: static generated prices (Safeway / Vons grocery tabs).
+  if (feedId === SAFEWAY_FEED_ID || feedId === VONS_FEED_ID) {
+    return fallbackForFeed(feedId);
+  }
+
   try {
     const supabase = getSupabase();
 
@@ -167,38 +171,34 @@ export async function fetchFeedProducts(
     );
 
     if (feedId === SAFEWAY_FEED_ID && merged.every((p) => !p.hasFeedData)) {
-      return buildSafewayFallbackProducts();
+      return buildSafewayYamlProducts();
     }
 
-    if (feedId === "vons_albertsons_socal" && merged.every((p) => !p.hasFeedData)) {
-      return buildVonsFallbackProducts();
+    if (feedId === VONS_FEED_ID && merged.every((p) => !p.hasFeedData)) {
+      return buildVonsYamlProducts();
     }
 
     if (COSTCO_FEED_IDS.has(feedId) && merged.every((p) => !p.hasFeedData)) {
       return buildEmptyFeedProducts(feedId);
     }
 
-    return appendFamiliesToFeedProducts(
-      enrichSparseProductsFromFallback(merged, feedId),
-      feedId,
-    );
+    return enrichSparseProductsFromFallback(merged, feedId);
   } catch {
     return fallbackForFeed(feedId);
   }
 }
 
 function fallbackForFeed(feedId: string): FeedProductView[] {
-  let products: FeedProductView[];
   if (feedId === SAFEWAY_FEED_ID) {
-    products = buildSafewayFallbackProducts();
-  } else if (feedId === "vons_albertsons_socal") {
-    products = buildVonsFallbackProducts();
-  } else if (COSTCO_FEED_IDS.has(feedId)) {
-    products = buildEmptyFeedProducts(feedId);
-  } else {
-    products = buildEmptyFeedProducts(feedId);
+    return buildSafewayYamlProducts();
   }
-  return appendFamiliesToFeedProducts(products, feedId);
+  if (feedId === VONS_FEED_ID) {
+    return buildVonsYamlProducts();
+  }
+  if (COSTCO_FEED_IDS.has(feedId)) {
+    return buildEmptyFeedProducts(feedId);
+  }
+  return buildEmptyFeedProducts(feedId);
 }
 
 function enrichSparseProductsFromFallback(
@@ -211,8 +211,8 @@ function enrichSparseProductsFromFallback(
 
   const fallbackById = new Map(
     (feedId === SAFEWAY_FEED_ID
-      ? buildSafewayFallbackProducts()
-      : buildVonsFallbackProducts()
+      ? buildSafewayYamlProducts()
+      : buildVonsYamlProducts()
     ).map((product) => [product.canonicalId, product]),
   );
 
@@ -338,9 +338,9 @@ function mergeCanonicalWithFeed(
   };
 }
 
-/** Local canonical list when Supabase canonical_products is unavailable. */
+/** Local tracker family list when Supabase canonical_products is unavailable. */
 export function getLocalCanonicalProducts() {
-  return CANONICAL_PRODUCTS;
+  return CANONICAL_TRACKER_FAMILIES;
 }
 
 export type { FeedProductMatch, FeedProductView };

@@ -120,7 +120,8 @@ def build_search_params(query: str, config: SafewaySearchConfig) -> dict[str, st
     params["request-id"] = generate_request_id()
     params["q"] = query
     params["visitorId"] = config.visitor_id
-    params["uuid"] = config.uuid
+    if config.uuid:
+        params["uuid"] = config.uuid
     params["storeid"] = config.store_id
     params["zipcode"] = config.zipcode
     params["channel"] = config.channel
@@ -161,8 +162,8 @@ def build_headers(
         headers["sec-fetch-site"] = "same-origin"
         if config.sec_ch_ua:
             headers["sec-ch-ua"] = config.sec_ch_ua
-        headers["sec-ch-ua-mobile"] = config.sec_ch_ua_mobile or "?0"
-        headers["sec-ch-ua-platform"] = config.sec_ch_ua_platform or '"macOS"'
+            headers["sec-ch-ua-mobile"] = config.sec_ch_ua_mobile or "?0"
+            headers["sec-ch-ua-platform"] = config.sec_ch_ua_platform or '"macOS"'
     else:
         headers["accept-language"] = DEFAULT_ACCEPT_LANGUAGE
         _apply_sec_ch_headers(headers, config)

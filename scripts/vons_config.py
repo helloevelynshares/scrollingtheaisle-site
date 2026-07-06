@@ -37,7 +37,6 @@ class VonsSearchConfig:
         required = {
             "SAFEWAY_SUBSCRIPTION_KEY or VONS_SUBSCRIPTION_KEY": self.subscription_key,
             "VONS_USER_AGENT or SAFEWAY_USER_AGENT": self.user_agent,
-            "VONS_VISITOR_ID": self.visitor_id,
         }
         return [name for name, value in required.items() if not value.strip()]
 
@@ -138,7 +137,7 @@ def load_config() -> VonsSearchConfig:
     return VonsSearchConfig(
         subscription_key=subscription_key,
         user_agent=user_agent,
-        visitor_id=visitor_id or DEFAULT_VISITOR_ID,
+        visitor_id=visitor_id,
         uuid=uuid,
         store_id=(os.getenv("VONS_STORE_ID") or DEFAULT_STORE_ID).strip(),
         zipcode=(os.getenv("VONS_ZIPCODE") or DEFAULT_ZIPCODE).strip(),

@@ -19,7 +19,6 @@ import {
   getEffectiveBaseline,
   hasCostcoChartData,
   isCostcoUnavailableOnChart,
-  isDealFamily,
   type UnifiedChartRow,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
@@ -128,8 +127,10 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
   const compact = useCompactLayout();
   const sparkline = variant === "sparkline";
   const minimal = compact || sparkline;
-  const rangeMode =
-    product.chartMode === "range" || isDealFamily(product);
+  // rangeMode is driven by chartMode only; brand_family YAML families use
+  // chartMode:"single" and should show the baseline + weekly-ad + Costco chart.
+  // Only deal_family products with multiple members set chartMode:"range".
+  const rangeMode = product.chartMode === "range";
   const showCostcoOverlay = !sparkline && !rangeMode && hasCostcoChartData(product);
   const costcoRegionLabel = getCostcoChartRegionLabel(product);
   const costcoUnavailable = isCostcoUnavailableOnChart(product);

@@ -1,42 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  isRecurringCrossStoreProduct,
-} from "../data/canonicalProducts";
 import { DEFAULT_FEED_ID } from "../data/priceFeeds";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
-import { ProductCard } from "./ProductCard";
+import { SectionedTrackerList } from "./SectionedTrackerList";
 import { TrackVoteModule } from "./TrackVoteModule";
-
-function splitProducts(products: FeedProductView[]) {
-  const original: FeedProductView[] = [];
-  const recurring: FeedProductView[] = [];
-
-  for (const product of products) {
-    if (isRecurringCrossStoreProduct(product.canonicalId)) {
-      recurring.push(product);
-    } else {
-      original.push(product);
-    }
-  }
-
-  return { original, recurring };
-}
-
-type ProductGridProps = {
-  products: FeedProductView[];
-};
-
-function ProductGrid({ products }: ProductGridProps) {
-  return (
-    <div className="price-tracker-grid">
-      {products.map((product) => (
-        <ProductCard key={product.canonicalId} product={product} />
-      ))}
-    </div>
-  );
-}
 
 export function App() {
   const [activeFeedId, setActiveFeedId] = useState(DEFAULT_FEED_ID);
@@ -54,12 +22,12 @@ export function App() {
     void loadFeed(activeFeedId);
   }, [activeFeedId, loadFeed]);
 
-  const { original, recurring } = useMemo(
-    () => splitProducts(products),
-    [products],
-  );
-
   const activeFeed = products[0];
+  const feedStore = useMemo<"safeway" | "vons">(
+    () =>
+      activeFeedId === "vons_albertsons_socal" ? "vons" : "safeway",
+    [activeFeedId],
+  );
 
   return (
     <>
@@ -88,8 +56,8 @@ export function App() {
         <section className="price-tracker-hero">
           <h1>Price Tracker</h1>
           <p className="price-tracker-subtitle">
-            Track weekly prices for the same grocery staples across local store
-            feeds. Switch tabs to see what&apos;s happening near you.
+            Track weekly prices for grocery staples across local store feeds.
+            Switch tabs to see what&apos;s happening near you.
           </p>
         </section>
 
@@ -106,35 +74,7 @@ export function App() {
         {loading ? (
           <p className="price-tracker-loading">Loading prices…</p>
         ) : (
-          <>
-            {original.length > 0 ? (
-              <section
-                className="price-tracker-section"
-                aria-label="Tracked grocery staples"
-              >
-                <ProductGrid products={original} />
-              </section>
-            ) : null}
-
-            {recurring.length > 0 ? (
-              <section
-                className="price-tracker-section price-tracker-section--recurring"
-                aria-label="Recurring cross-store items"
-              >
-                <header className="price-tracker-section-header">
-                  <h2 className="price-tracker-section-title">
-                    Recurring items we keep seeing across stores
-                  </h2>
-                  <p className="price-tracker-section-subtitle">
-                    These are the staples and snack deals that keep popping up
-                    week after week across Costco, Safeway, Vons, and
-                    Albertsons.
-                  </p>
-                </header>
-                <ProductGrid products={recurring} />
-              </section>
-            ) : null}
-          </>
+          <SectionedTrackerList products={products} feedStore={feedStore} />
         )}
       </main>
     </>

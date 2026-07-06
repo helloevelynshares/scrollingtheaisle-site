@@ -48,9 +48,10 @@ def ts_entry(row: dict[str, str], price: float) -> str:
 
 def merge_into_fallback(new_entries: dict[str, dict[str, str]]) -> None:
     text = FALLBACK_TS.read_text(encoding="utf-8")
-    marker = "const SAFEWAY_BASELINES"
+    marker = "SAFEWAY_BASELINES"
     start = text.index(marker)
-    brace_start = text.index("{", start)
+    value_marker = "= {"
+    brace_start = text.index(value_marker, start) + len(value_marker) - 1
     depth = 0
     end = brace_start
     for index, char in enumerate(text[brace_start:], start=brace_start):

@@ -11,6 +11,390 @@ export type VonsBaselineEntry = {
 };
 
 export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
+  "ben_jerrys_ice_cream": {
+    "baselinePrice": 7.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970692247",
+    "upc": "0081006772751",
+    "retailerProductName": "HERSHEY'S Sliced Strawberries Covered in Milk Chocolate - 8 Oz",
+    "size": "OUNCE"
+  },
+  "berries_6oz": {
+    "baselinePrice": 3.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184070083",
+    "upc": "0085308500301",
+    "retailerProductName": "Blueberries Prepacked - 6 Oz",
+    "size": "OUNCE"
+  },
+  "breyers_ice_cream": {
+    "baselinePrice": 8.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971322828",
+    "upc": "0085006736612",
+    "retailerProductName": "Protein Pints High Protein Salted Caramel Ice Cream - 16 Oz",
+    "size": "OUNCE"
+  },
+  "butter_16oz": {
+    "baselinePrice": 3.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "138250170",
+    "upc": "0002113008278",
+    "retailerProductName": "Lucerne Unsalted Sweet Cream Butter Quarters - 16 Oz",
+    "size": "OUNCE"
+  },
+  "cheetos_party_size": {
+    "baselinePrice": 5.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960543041",
+    "upc": "0002840031409",
+    "retailerProductName": "CHEETOS Snacks Cheese Flavored Crunchy Party Size - 15 Oz",
+    "size": "OUNCE"
+  },
+  "cheez_it_crackers": {
+    "baselinePrice": 6.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971203262",
+    "upc": "0002410012516",
+    "retailerProductName": "Cheez-It Original Snack Mix Family Size - 17.8 Oz",
+    "size": "OUNCE"
+  },
+  "cherries_per_lb": {
+    "baselinePrice": 10.48,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184140091",
+    "upc": "0048414009101",
+    "retailerProductName": "Red Cherries - 1.75 Lb",
+    "size": "LB"
+  },
+  "chicken_breast_per_lb": {
+    "baselinePrice": 10.47,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971290124",
+    "upc": "0020059200000",
+    "retailerProductName": "Boneless Skinless Chicken Breast Value Pack - 3.5 Lb",
+    "size": "LB"
+  },
+  "chicken_thigh_per_lb": {
+    "baselinePrice": 8.97,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960139991",
+    "upc": "0020786700000",
+    "retailerProductName": "Signature Select Chicken Thigh Boneless Skinless Value Pack - 3 lb",
+    "size": "LB"
+  },
+  "chips_ahoy": {
+    "baselinePrice": 4.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960071578",
+    "upc": "0004400003219",
+    "retailerProductName": "Chips Ahoy! Original Chocolate Chip Cookies - 13 Oz",
+    "size": "OUNCE"
+  },
+  "clif_bars": {
+    "baselinePrice": 4.0,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970078975",
+    "upc": "0085355500654",
+    "retailerProductName": "GoMacro Oatmeal Chocolate Chip - 2.3 Oz",
+    "size": "OUNCE"
+  },
+  "dr_pepper_12packs": {
+    "baselinePrice": 11.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "108051305",
+    "upc": "0007800008216",
+    "retailerProductName": "Dr Pepper Soda Fridge Pack - 12-12 Fl. Oz.",
+    "size": "FL.OZ"
+  },
+  "dreyers_novelties": {
+    "baselinePrice": 2.5,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960100621",
+    "upc": "0007064000663",
+    "retailerProductName": "Bomb Pop Original Ice Pop - 12 Count",
+    "size": "FL.OZ"
+  },
+  "dreyers_tubs": {
+    "baselinePrice": 5.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "142100392",
+    "upc": "0007756725423",
+    "retailerProductName": "Breyers Classics Natural Vanilla Ice Cream - 48 Oz",
+    "size": "QUART"
+  },
+  "fage_cups": {
+    "baselinePrice": 2.0,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960026370",
+    "upc": "0068954408146",
+    "retailerProductName": "Fage Total 2% Yogurt Greek Lowfat Strained with Strawberry - 5.3 Oz",
+    "size": "OUNCE"
+  },
+  "general_mills_cereal_family_size": {
+    "baselinePrice": 6.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970098256",
+    "upc": "0001600017003",
+    "retailerProductName": "Cheerios Whole Grain Oats Cereal Family Size - 18 Oz",
+    "size": "OUNCE"
+  },
+  "goldfish_bags": {
+    "baselinePrice": 2.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "102020089",
+    "upc": "0001410008550",
+    "retailerProductName": "Goldfish Original Baked Snack Crackers - 6.6 Oz",
+    "size": "OUNCE"
+  },
+  "haagen_dazs_bars_novelties": {
+    "baselinePrice": 7.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960020584",
+    "upc": "0007457065148",
+    "retailerProductName": "Haagen-Dazs Ice Cream Bars Coffee Almond Crunch Snack Size - 6-1.85 Oz",
+    "size": "FL.OZ"
+  },
+  "keebler_sandwich_crackers": {
+    "baselinePrice": 4.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "102020687",
+    "upc": "0003010047241",
+    "retailerProductName": "Keebler Sandwich Crackers Club and Cheddar Single Serve Snack Crackers 8 Count - 11 Oz",
+    "size": "COUNT"
+  },
+  "kings_hawaiian_rolls": {
+    "baselinePrice": 3.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "196010254",
+    "upc": "0007343500004",
+    "retailerProductName": "King's Hawaiian Original Sweet Rolls - 12 Oz",
+    "size": "OUNCE"
+  },
+  "lacroix_8pack": {
+    "baselinePrice": 3.33,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970309092",
+    "upc": "0001299322133",
+    "retailerProductName": "LaCroix Pure Sparkling Water - 8-12 Fl. Oz.",
+    "size": "FL.OZ"
+  },
+  "lays_kettle_cooked": {
+    "baselinePrice": 4.29,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960124191",
+    "upc": "0002840037219",
+    "retailerProductName": "Lays Potato Chips Kettle Cooked Original - 8 Oz",
+    "size": "OUNCE"
+  },
+  "lays_potato_chips_regular": {
+    "baselinePrice": 4.29,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960123883",
+    "upc": "0002840019914",
+    "retailerProductName": "Lays Potato Chips Classic - 8 Oz",
+    "size": "OUNCE"
+  },
+  "lucerne_cream_cheese": {
+    "baselinePrice": 3.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "137100658",
+    "upc": "0002113004380",
+    "retailerProductName": "Lucerne Cream Cheese - 8 Oz",
+    "size": "OUNCE"
+  },
+  "lucerne_yogurt_tubs": {
+    "baselinePrice": 2.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "136300258",
+    "upc": "0002113007740",
+    "retailerProductName": "Lucerne Yogurt Lowfat Vanilla Flavored - 32 Oz",
+    "size": "OUNCE"
+  },
+  "mangoes_each": {
+    "baselinePrice": 1.79,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971196352",
+    "upc": "0001657195966",
+    "retailerProductName": "Popwell Tropical Mango - 12 Fl. Oz.",
+    "size": "FL.OZ"
+  },
+  "nabisco_snack_crackers": {
+    "baselinePrice": 3.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960012561",
+    "upc": "0002113028086",
+    "retailerProductName": "Signature SELECT Cereal Shredded Wheat Bite-Sized - 16.4 Oz",
+    "size": "OUNCE"
+  },
+  "nectarines_per_lb": {
+    "baselinePrice": 1.2,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184140162",
+    "upc": "0048414024702",
+    "retailerProductName": "Yellow Nectarine",
+    "size": "LB"
+  },
+  "peaches_per_lb": {
+    "baselinePrice": 1.5,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184140090",
+    "upc": "0048414025103",
+    "retailerProductName": "Yellow Peach",
+    "size": "LB"
+  },
+  "pepsi_12packs": {
+    "baselinePrice": 11.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "108010302",
+    "upc": "0001200080994",
+    "retailerProductName": "Pepsi Soda Pop Cola - 12-12 Oz",
+    "size": "FL.OZ"
+  },
+  "philadelphia_cream_cheese": {
+    "baselinePrice": 3.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "137100654",
+    "upc": "0002100061223",
+    "retailerProductName": "Philadelphia Original Cream Cheese - 8 Oz",
+    "size": "OUNCE"
+  },
+  "pillsbury_refrigerated_dough": {
+    "baselinePrice": 2.5,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "138010257",
+    "upc": "0001800000211",
+    "retailerProductName": "Pillsbury Grands! Biscuits Flaky Layers Butter Tasting Butter Flavor 8 Count - 16.3 Oz",
+    "size": "OUNCE"
+  },
+  "plums_per_lb": {
+    "baselinePrice": 0.51,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184140160",
+    "upc": "0048414016001",
+    "retailerProductName": "Red Plum",
+    "size": "LB"
+  },
+  "post_cereal_giant_size": {
+    "baselinePrice": 3.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960013845",
+    "upc": "0002113028153",
+    "retailerProductName": "Signature SELECT Cereal Frosted Shredded Wheat Bite-Size - 18 Oz",
+    "size": "OUNCE"
+  },
+  "post_cereal_regular": {
+    "baselinePrice": 4.79,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970125107",
+    "upc": "0088491235948",
+    "retailerProductName": "Post Honey Bunches of Oats with Strawberries Cereal - 11 Oz",
+    "size": "OUNCE"
+  },
+  "ribeye_steak": {
+    "baselinePrice": 23.97,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960109089",
+    "upc": "0020204500000",
+    "retailerProductName": "USDA Choice Beef Ribeye Steak Bone-In Value Pack - 3 Lb",
+    "size": "LB"
+  },
+  "ritz_crackers": {
+    "baselinePrice": 4.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960087287",
+    "upc": "0004400003111",
+    "retailerProductName": "RITZ Original Crackers - 13.7 Oz",
+    "size": "OUNCE"
+  },
+  "ritz_toasted_chips": {
+    "baselinePrice": 4.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960272520",
+    "upc": "0004400005104",
+    "retailerProductName": "RITZ Toasted Chips Original Crackers - 8.1 Oz",
+    "size": "OUNCE"
+  },
+  "ruffles_regular_bags": {
+    "baselinePrice": 5.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970031832",
+    "upc": "0002840051668",
+    "retailerProductName": "Ruffles Potato Chips Original - 8.5 OZ",
+    "size": "OUNCE"
+  },
+  "salmon": {
+    "baselinePrice": 17.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "186190041",
+    "upc": "0023011600000",
+    "retailerProductName": "Fresh Farmed Atlantic Salmon Fillet Color Added  - 1.5 lb",
+    "size": "LB"
+  },
+  "simply_party_size": {
+    "baselinePrice": 10.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970028885",
+    "upc": "0021343700000",
+    "retailerProductName": "Deli Fried Chicken Mixed 8 Piece Hot - Each",
+    "size": "EACH"
+  },
+  "simply_refrigerated_juice_lemonade": {
+    "baselinePrice": 2.0,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970010654",
+    "upc": "0002500012052",
+    "retailerProductName": "Minute Maid Zero Sugar Lemonade Juice - 52 Fl. Oz. Bottle",
+    "size": "FL.OZ"
+  },
+  "simply_snacks": {
+    "baselinePrice": 5.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "970095812",
+    "upc": "0002840059888",
+    "retailerProductName": "Cheetos Simply Puffs Cheese Flavored Snacks White Cheddar - 12 OZ",
+    "size": "OUNCE"
+  },
+  "sliced_or_shredded_cheese_6_8oz": {
+    "baselinePrice": 2.99,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "137050358",
+    "upc": "0002113004726",
+    "retailerProductName": "Lucerne Cheese Finely Shredded Mexican Style 4 Cheese Blend - 8 Oz",
+    "size": "OUNCE"
+  },
+  "sun_chips_7oz": {
+    "baselinePrice": 4.49,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960094692",
+    "upc": "0002840014741",
+    "retailerProductName": "SunChips Snacks Whole Grain Original - 7 Oz",
+    "size": "OUNCE"
+  },
+  "sweet_corn": {
+    "baselinePrice": 0.5,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "184350009",
+    "upc": "0048435002001",
+    "retailerProductName": "Sweet Corn",
+    "size": "EACH"
+  },
+  "thomas_bagels_muffins_bread": {
+    "baselinePrice": 5.89,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "971362803",
+    "upc": "0004812195951",
+    "retailerProductName": "Thomas Plain Bagels 6 Count - 18 OZ",
+    "size": "OUNCE"
+  },
+  "tri_tip_roast": {
+    "baselinePrice": 17.47,
+    "baselineSource": "Vons search result CSV (rank 1)",
+    "retailerProductId": "960115330",
+    "upc": "0020213700000",
+    "retailerProductName": "Beef USDA Choice Roast Loin Tri Tip Whole Untrimmed - 3.5 Lb",
+    "size": "LB"
+  },
   "strawberries": {
     "baselinePrice": 3.99,
     "baselineSource": "Vons search result CSV (rank 1)",

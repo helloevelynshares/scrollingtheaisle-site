@@ -40,36 +40,49 @@ from price_tracker.artifacts import (  # noqa: E402
     parse_ts_export,
     product_ids_missing_from_prices,
 )
+from price_tracker.canonical_families import (  # noqa: E402
+    LEGACY_CANONICAL_TO_FAMILY,
+    load_families,
+)
+from price_tracker.normalization import normalize_price  # noqa: E402
+from price_tracker.yaml_matchers import build_yaml_matchers, tracker_family_ids  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_ROOT = Path.home() / "Documents" / "scrolling-the-aisle"
 DATA_ROOT = Path(os.environ.get("SCROLLING_THE_AISLE_ROOT", DEFAULT_DATA_ROOT))
 
-TRACKER_CANONICAL_IDS = [
-    "strawberries",
-    "avocados",
-    "doritos_nacho_cheese",
-    "cheetos_crunchy",
-    "coke_zero",
-    "chobani_greek_yogurt",
-    "cheerios",
-    "tillamook_ice_cream",
-    "mission_tortilla_chips",
-    "nature_valley_bars",
-    "fage_greek_yogurt",
-    "frito_lay_multipack_chips",
-    "haagen_dazs_ice_cream",
-    "grapes",
-    "eggs_18_count",
-    "oreos_sandwich_cookies",
-    "protein_bars",
-    "kettle_brand_chips",
-]
 
-TRACKER_FAMILY_IDS = [
-    "ben_jerrys_ice_cream",
-    "ritz_crackers_snacks",
-]
+@dataclass(frozen=True)
+class ProductMatcher:
+    canonical_id: str
+    patterns: tuple[str, ...]
+    exclude_patterns: tuple[str, ...] = ()
+    prefer_patterns: tuple[str, ...] = ()
+
+
+TRACKER_CANONICAL_IDS = tracker_family_ids()
+
+_YAML_MATCHERS = build_yaml_matchers()
+
+
+def _yaml_matchers_by_id() -> dict[str, ProductMatcher]:
+    return {
+        matcher.canonical_id: ProductMatcher(
+            matcher.canonical_id,
+            matcher.patterns,
+            matcher.exclude_patterns,
+            matcher.prefer_patterns,
+        )
+        for matcher in _YAML_MATCHERS
+    }
+
+
+MATCHERS: tuple[ProductMatcher, ...] = tuple(_yaml_matchers_by_id().values())
+
+_NORMALIZATION_BY_ID = {m.canonical_id: m.normalization for m in _YAML_MATCHERS}
+_PICK_LOWEST_BY_ID = {m.canonical_id: m.pick_lowest_in_week for m in _YAML_MATCHERS}
+
+TRACKER_FAMILY_IDS: list[str] = []
 
 
 @dataclass(frozen=True)
@@ -103,14 +116,6 @@ FEEDS: tuple[FeedConfig, ...] = (
         banner_filter="Vons",
     ),
 )
-
-
-@dataclass(frozen=True)
-class ProductMatcher:
-    canonical_id: str
-    patterns: tuple[str, ...]
-    exclude_patterns: tuple[str, ...] = ()
-    prefer_patterns: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -199,148 +204,6 @@ FAMILY_MEMBER_MATCHERS: tuple[FamilyMemberMatcher, ...] = (
 )
 
 
-MATCHERS: tuple[ProductMatcher, ...] = (
-    ProductMatcher(
-        "strawberries",
-        patterns=(r"strawberries", r"fresh strawberries", r"organic strawberries"),
-        exclude_patterns=(r"^blueberr", r"^raspberr", r"^blackberr", r"2 lb"),
-        prefer_patterns=(r"^strawberries$", r"1-lb", r"fresh strawberries"),
-    ),
-    ProductMatcher(
-        "avocados",
-        patterns=(r"hass avocado",),
-        exclude_patterns=(r"signature select.*5 ct",),
-        prefer_patterns=(r"hass avocado",),
-    ),
-    ProductMatcher(
-        "doritos_nacho_cheese",
-        patterns=(r"doritos",),
-        exclude_patterns=(r"or cheetos", r"cheetos or"),
-        prefer_patterns=(r"^doritos$", r"doritos tortilla chips"),
-    ),
-    ProductMatcher(
-        "cheetos_crunchy",
-        patterns=(r"cheetos",),
-        exclude_patterns=(r"mac.?n.? cheese", r"doritos or cheetos", r"buy 2 get 2"),
-        prefer_patterns=(r"cheetos, tostitos, fritos", r"cheetos cheese flavored crunchy"),
-    ),
-    ProductMatcher(
-        "coke_zero",
-        patterns=(r"coke zero", r"coca-cola zero", r"zero sugar soda"),
-        prefer_patterns=(r"coke zero", r"coca-cola zero"),
-    ),
-    ProductMatcher(
-        "chobani_greek_yogurt",
-        patterns=(r"chobani greek",),
-        exclude_patterns=(r"zero sugar yogurt", r"chobani complete"),
-        prefer_patterns=(r"chobani greek, less sugar", r"chobani greek yogurt"),
-    ),
-    ProductMatcher(
-        "cheerios",
-        patterns=(r"cheerios",),
-        exclude_patterns=(
-            r"honey nut",
-            r"cinnamon",
-            r"protein",
-            r"family size",
-            r"multi grain",
-            r"apple cinnamon",
-        ),
-        prefer_patterns=(r"general mills cheerios", r"^cheerios$"),
-    ),
-    ProductMatcher(
-        "tillamook_ice_cream",
-        patterns=(r"tillamook ice cream",),
-        prefer_patterns=(r"tillamook ice cream",),
-    ),
-    ProductMatcher(
-        "mission_tortilla_chips",
-        patterns=(r"mission tortilla chips",),
-        prefer_patterns=(r"mission tortilla chips",),
-    ),
-    ProductMatcher(
-        "nature_valley_bars",
-        patterns=(r"nature valley", r"nature valley bars"),
-        exclude_patterns=(r"pop-tarts",),
-        prefer_patterns=(
-            r"nature valley bars",
-            r"nature valley crunchy",
-            r"nature valley protein",
-        ),
-    ),
-    ProductMatcher(
-        "fage_greek_yogurt",
-        patterns=(r"fage", r"fage greek", r"fage total"),
-        exclude_patterns=(r"chobani",),
-        prefer_patterns=(
-            r"fage total",
-            r"fage greek yogurt",
-            r"fage 0%",
-            r"fage 2%",
-        ),
-    ),
-    ProductMatcher(
-        "frito_lay_multipack_chips",
-        patterns=(
-            r"frito.?lay",
-            r"variety pack",
-            r"chip multipack",
-            r"42 count",
-            r"30 count",
-            r"snack pack chips",
-        ),
-        prefer_patterns=(
-            r"frito.?lay variety",
-            r"42 count",
-            r"30 count",
-            r"variety pack chips",
-        ),
-    ),
-    ProductMatcher(
-        "haagen_dazs_ice_cream",
-        patterns=(r"haagen.?dazs", r"häagen.?dazs", r"ice cream bars"),
-        exclude_patterns=(r"tillamook",),
-        prefer_patterns=(r"haagen.?dazs ice cream", r"haagen.?dazs bars"),
-    ),
-    ProductMatcher(
-        "grapes",
-        patterns=(r"grapes", r"green grapes", r"red grapes", r"seedless grapes"),
-        exclude_patterns=(r"grape juice", r"grape tomato"),
-        prefer_patterns=(r"seedless grapes", r"green grapes", r"red grapes"),
-    ),
-    ProductMatcher(
-        "eggs_18_count",
-        patterns=(r"eggs", r"18 count eggs", r"18-count eggs"),
-        exclude_patterns=(r"egg nog", r"egg roll", r"egg beaters", r"egg bite"),
-        prefer_patterns=(r"18 count", r"18-count", r"large eggs"),
-    ),
-    ProductMatcher(
-        "oreos_sandwich_cookies",
-        patterns=(r"oreo", r"sandwich cookies"),
-        exclude_patterns=(r"oreo ice cream", r"oreo thins"),
-        prefer_patterns=(r"oreo cookies", r"family size oreo", r"^oreos?$"),
-    ),
-    ProductMatcher(
-        "protein_bars",
-        patterns=(
-            r"protein bars",
-            r"rxbar",
-            r"rx bars",
-            r"kai'?s protein",
-            r"kize protein",
-        ),
-        exclude_patterns=(r"nature valley protein",),
-        prefer_patterns=(r"protein bars", r"rxbar"),
-    ),
-    ProductMatcher(
-        "kettle_brand_chips",
-        patterns=(r"kettle brand", r"kettle chips", r"kettle cooked"),
-        exclude_patterns=(r"lay's.*kettle cooked", r"lays.*kettle cooked"),
-        prefer_patterns=(r"kettle brand", r"kettle brand potato chips"),
-    ),
-)
-
-
 def load_manifest(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
@@ -396,43 +259,11 @@ def parse_price(value: str | None) -> float | None:
         return None
 
 
-def normalize_unit_price(row: dict[str, str]) -> float | None:
-    price = parse_price(row.get("advertised_price"))
-    if price is None:
-        return None
-
-    basis = (row.get("price_basis") or "").lower()
-    promo = (row.get("promo_text") or row.get("raw_offer_text") or "").lower()
-    unit = (row.get("package_unit") or "").lower()
-
-    if basis != "multi_buy":
-        return round(price, 2)
-
-    if re.search(r"(when you )?buy\s+\d+", promo):
-        return round(price, 2)
-
-    count_match = re.search(r"(\d+)\s*(?:for|/)\s*\$?\s*(\d+(?:\.\d+)?)", promo)
-    if count_match:
-        count = float(count_match.group(1))
-        total = float(count_match.group(2))
-        if count > 0:
-            return round(total / count, 2)
-
-    size_min = row.get("package_size_min") or ""
-    size_max = row.get("package_size_max") or ""
-    size = size_min or size_max
-    if size and unit in {"", "count", "ct", "each"}:
-        try:
-            count = float(size)
-            if count > 1:
-                return round(price / count, 2)
-        except ValueError:
-            pass
-
-    if "2 for" in promo and price > 0:
-        return round(price / 2, 2)
-
-    return round(price, 2)
+def normalize_unit_price(
+    row: dict[str, str], matcher: ProductMatcher | None = None
+) -> float | None:
+    rule = _NORMALIZATION_BY_ID.get(matcher.canonical_id) if matcher else None
+    return normalize_price(row, rule)
 
 
 def preference_score(row: dict[str, str], matcher: ProductMatcher) -> int:
@@ -442,14 +273,14 @@ def preference_score(row: dict[str, str], matcher: ProductMatcher) -> int:
     for index, pattern in enumerate(matcher.prefer_patterns):
         if re.search(pattern, text) or re.search(pattern, full):
             score = max(score, (len(matcher.prefer_patterns) - index) * 10)
-    price = normalize_unit_price(row)
+    price = normalize_unit_price(row, matcher)
     if price is not None:
         score += 1
     return score
 
 
 def match_confidence(row: dict[str, str], matcher: ProductMatcher) -> str | None:
-    if normalize_unit_price(row) is None:
+    if normalize_unit_price(row, matcher) is None:
         return None
 
     text = split_text(row)
@@ -464,10 +295,10 @@ def match_confidence(row: dict[str, str], matcher: ProductMatcher) -> str | None
     else:
         confidence = "low"
 
-    if matcher.canonical_id == "strawberries" and re.search(r"large pack|2 lb", full):
+    if matcher.canonical_id == "strawberries_1_2lb" and re.search(r"large pack|2 lb", full):
         confidence = "medium"
-    if matcher.canonical_id == "chobani_greek_yogurt":
-        price = normalize_unit_price(row)
+    if matcher.canonical_id == "chobani_yogurt_per_cup":
+        price = normalize_unit_price(row, matcher)
         if price is not None and price < 3:
             confidence = "medium"
         elif re.search(r"5\.3|4-5\.3|cup", full):
@@ -484,6 +315,13 @@ def pick_best_row(
     candidates = [row for row in rows if matches(row, matcher)]
     if not candidates:
         return None
+    if _PICK_LOWEST_BY_ID.get(matcher.canonical_id):
+
+        def normalized_price(row: dict[str, str]) -> float:
+            value = normalize_unit_price(row, matcher)
+            return value if value is not None else float("inf")
+
+        return min(candidates, key=normalized_price)
     return max(candidates, key=lambda row: preference_score(row, matcher))
 
 
@@ -548,7 +386,7 @@ def build_family_prices(
                 continue
 
             family_prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(best),
+                "price": normalize_unit_price(best, matcher),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, matcher),
@@ -573,7 +411,7 @@ def build_family_prices(
                 matcher.prefer_patterns,
             )
             member_weeks[week_start] = {
-                "price": normalize_unit_price(best),
+                "price": normalize_unit_price(best, pseudo),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, pseudo),
@@ -677,13 +515,36 @@ def build_prices(
                 continue
 
             prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(best),
+                "price": normalize_unit_price(best, matcher),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, matcher),
             }
 
     return weeks, prices
+
+
+def merge_legacy_prices(
+    prices: dict[str, dict[str, dict[str, object | None]]],
+    legacy_prices: dict[str, dict[str, dict[str, object | None]]] | None,
+) -> int:
+    """Copy historical weekly rows from old canonical ids into mapped YAML families."""
+    if not legacy_prices:
+        return 0
+    copied = 0
+    for legacy_id, family_id in LEGACY_CANONICAL_TO_FAMILY.items():
+        legacy_weeks = legacy_prices.get(legacy_id)
+        if not legacy_weeks:
+            continue
+        target = prices.setdefault(family_id, {})
+        for week_start, entry in legacy_weeks.items():
+            if entry.get("price") is None:
+                continue
+            existing = target.get(week_start)
+            if existing is None or existing.get("price") is None:
+                target[week_start] = dict(entry)
+                copied += 1
+    return copied
 
 
 def render_ts(
@@ -864,7 +725,18 @@ def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
             summary = merge_summary
             weeks = merge_weeks_list(existing_weeks, weeks)
     else:
+        weeks_key, prices_key = FEED_TS_KEYS[config.feed_label]
+        legacy_prices = None
+        parsed = parse_ts_export(config.output_path, weeks_key, prices_key)
+        if parsed:
+            _, legacy_prices = parsed
         weeks, prices = build_prices(config.feed_label, manifest, split_items)
+        legacy_copied = merge_legacy_prices(prices, legacy_prices)
+        if legacy_copied:
+            print(
+                f"Merged {legacy_copied} legacy weekly rows into YAML families "
+                f"for {config.feed_label}"
+            )
         summary.products_scanned = len(TRACKER_CANONICAL_IDS)
         summary.matched_weeks = sum(
             1
