@@ -2932,6 +2932,7 @@ img {
 
 .hub-deal-card-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: 10px;
@@ -2943,6 +2944,8 @@ img {
   margin: 0;
   letter-spacing: -0.2px;
   line-height: 1.25;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .hub-deal-card-price {
