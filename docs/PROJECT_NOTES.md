@@ -200,9 +200,18 @@ Living notes rule: `.cursor/rules/project-notes.mdc` — agents should read and 
 Date discovered: 2026-07-07
 Context: Homepage hero store suggestion UI — was 4 layout variants saving to localStorage only.
 What happened: Needed a single compact chips layout wired to the same moderated vote pattern as tracker item voting (`tracker_vote_items`).
-Fix / workaround: New table `store_vote_items` + RPCs `vote_on_store(uuid)` and `submit_store_suggestion(text, text)` in `supabase/migrations/20260707_store_vote_items.sql`. Homepage (`index.html`, `homepage.js`) uses Supabase JS CDN; chips vote on approved seed stores (Trader Joe's, Whole Foods, Sprouts, Kroger, H-E-B); custom form requires store name, optional city → `pending` for review. Client dedupes via `localStorage` key `sta_store_votes`. **Admin UI** (`/admin/suggestions/`) still only moderates `tracker_vote_items` — approve store pending rows via Supabase SQL/dashboard until admin is extended.
+Fix / workaround: New table `store_vote_items` + RPCs `vote_on_store(uuid)` and `submit_store_suggestion(text, text)` in `supabase/migrations/20260707_store_vote_items.sql`. Homepage (`index.html`, `homepage.js`) uses Supabase JS CDN; chips vote on approved seed stores (Trader Joe's, Whole Foods, Sprouts, Kroger); custom form requires store name, optional city → `pending` for review. Client dedupes via `localStorage` key `sta_store_votes`. **Admin UI** (`/admin/suggestions/`) still only moderates `tracker_vote_items` — approve store pending rows via Supabase SQL/dashboard until admin is extended.
 How to verify: Apply migration (`supabase db push` or run SQL in dashboard). `npm run preview:homepage` → http://127.0.0.1:8000/ → click a chip → success toast; custom store → moderation message. Check `store_vote_items.vote_count` increments.
 Related files: `supabase/migrations/20260707_store_vote_items.sql`, `index.html`, `homepage.js`, `styles.css`
+
+### Homepage tracker link copy (variant 3 chosen)
+
+Date discovered: 2026-07-07
+Context: Homepage hero tracker CTAs felt too formal ("price trackers"); user explored 5 casual copy options via on-page switcher.
+What happened: Static "Price trackers" label + "Safeway price tracker" buttons did not explain live tracking in a playful tone. User chose **variant 3** with button text tweak ("Scroll through the … aisle").
+Fix / workaround: Final copy is static in `index.html` hero tracker card — intro: "Hop into the live aisles we've got going:"; buttons: "Scroll through the Safeway aisle" / "Scroll through the Vons aisle". Exploration switcher (`TRACKER_COPY_VARIANTS`, `?trackerCopyVariant=`, `sta_tracker_copy_variant`) removed for production. Store vote copy: "Where should we track prices next?" + lead about voting for where to add tracking.
+How to verify: `npm run preview:homepage` → http://127.0.0.1:8000/ → hero shows variant 3 copy; no Copy 1–5 switcher.
+Related files: `index.html`, `homepage.js`, `styles.css` (`.hub-hero-trackers-intro`)
 
 
 Date discovered: 2026-07-06  
