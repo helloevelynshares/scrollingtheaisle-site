@@ -1,12 +1,17 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { DEFAULT_FEED_ID } from "../data/priceFeeds";
+import { DEFAULT_FEED_ID, getPriceFeed } from "../data/priceFeeds";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
 import { SectionedTrackerList } from "./SectionedTrackerList";
 
+function feedIdFromUrl(): string {
+  const feed = new URLSearchParams(window.location.search).get("feed");
+  return feed && getPriceFeed(feed) ? feed : DEFAULT_FEED_ID;
+}
+
 export function App() {
-  const [activeFeedId, setActiveFeedId] = useState(DEFAULT_FEED_ID);
+  const [activeFeedId, setActiveFeedId] = useState(feedIdFromUrl);
   const [products, setProducts] = useState<FeedProductView[]>([]);
   const [loading, setLoading] = useState(true);
 

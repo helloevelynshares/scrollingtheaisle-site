@@ -2,44 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scrolling the Aisle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scrolling the Aisle — Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+<body class="hub-page">
+  <header class="page-header">
+    <a href="index.html" class="brand">SCROLLING THE AISLE</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="about.html" class="site-nav-link">About</a>
+      <a href="finds.html" class="site-nav-link">Finds</a>
+      <a href="staging-price-tracker/" class="site-nav-link">Price tracker</a>
+    </nav>
+  </header>
 
-<body class="landing">
-  <nav class="site-nav site-nav--landing" aria-label="Main">
-    <a href="about.html" class="site-nav-link">About</a>
-    <a href="finds.html" class="site-nav-link">Finds</a>
-    <a href="staging-price-tracker/" class="site-nav-link">Price tracker</a>
-  </nav>
-  <div class="container">
-    <div class="logo">SCROLLING THE AISLE</div>
+  <main class="hub-main">
+    <section class="hub-hero" aria-labelledby="hub-hero-title">
+      <p class="hub-eyebrow">Weekly grocery briefing</p>
+      <h1 id="hub-hero-title">Navigate the weekly grocery ads</h1>
+      <p class="hub-hero-lead">
+        Every week, Scrolling the Aisle (or Evelyn, the human behind it, really) helps you navigate the grocery ads — comparing sales against Costco, past prices, and unit prices.
+      </p>
 
-    <h1>Find the best grocery deals, fast</h1>
+      <div id="hero-signup" class="hub-signup beehiiv-form-wrapper" tabindex="-1">
+        <script
+          async
+          src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+          data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
+        </script>
+      </div>
 
-    <p class="subtitle">
-      We track the best weekly deals across stores so you don’t have to.
-      Be the first to know when new deals drop.
-    </p>
+      <div class="hub-hero-actions">
+        <a href="staging-price-tracker/?feed=safeway_bay_area" class="btn btn-secondary hub-hero-cta">Safeway price tracker</a>
+        <a href="staging-price-tracker/?feed=vons_albertsons_socal" class="btn btn-secondary hub-hero-cta">Vons price tracker</a>
+      </div>
+    </section>
 
-    <div class="beehiiv-form-wrapper">
-      <script
-        async
-        src="https://subscribe-forms.beehiiv.com/v3/loader.js"
-        data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
-      </script>
-    </div>
+    <section id="picks-section" class="hub-section" aria-labelledby="picks-title">
+      <div class="hub-section-header">
+        <h2 id="picks-title">Scrolling the Aisle's highlights of the week</h2>
+        <p id="picks-lead" class="hub-section-lead">Hand-picked deals I'm watching at Safeway this week.</p>
+        <p id="picks-meta" class="hub-section-meta" aria-live="polite"></p>
+      </div>
 
-    <p class="landing-link">
-      <a href="staging-price-tracker/">View the Safeway price tracker →</a>
-    </p>
+      <div class="hub-picks-toggle" role="tablist" aria-label="Store">
+        <button
+          type="button"
+          class="hub-picks-toggle-btn is-active"
+          role="tab"
+          id="tab-safeway"
+          aria-selected="true"
+          aria-controls="picks-grid"
+          data-view="safeway"
+        >
+          Safeway
+        </button>
+        <button
+          type="button"
+          class="hub-picks-toggle-btn"
+          role="tab"
+          id="tab-vons"
+          aria-selected="false"
+          aria-controls="picks-grid"
+          data-view="vons"
+        >
+          Vons
+        </button>
+      </div>
 
-    <footer>
-      Built for deal hunters 🛒
-    </footer>
-  </div>
+      <div id="picks-grid" class="hub-deal-grid" role="tabpanel" aria-labelledby="picks-title" aria-live="polite"></div>
+
+      <p class="hub-section-footer">
+        <a href="staging-price-tracker/" class="hub-text-link">Open the full price tracker →</a>
+      </p>
+    </section>
+
+    <section class="hub-section hub-section--trust" aria-labelledby="trust-title">
+      <div class="hub-section-header">
+        <h2 id="trust-title">How we decide what's worth it</h2>
+      </div>
+      <div class="hub-trust-grid">
+        <article class="hub-trust-card">
+          <h3>We check Costco</h3>
+          <p>When there's a warehouse match, we line up Safeway and Vons promos against Costco on unit price.</p>
+        </article>
+        <article class="hub-trust-card">
+          <h3>We track the trend</h3>
+          <p>We compare current Safeway and Vons prices to each item's recent lows and all-time lows.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hub-footer">
+    <p>Built for people who love the aisles 🛒</p>
+  </footer>
+
+  <script src="homepage.js"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>

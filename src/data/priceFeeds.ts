@@ -23,20 +23,6 @@ export const PRICE_FEEDS: PriceFeed[] = [
     storeGroup: "vons_albertsons",
     stores: ["Vons", "Albertsons"],
   },
-  {
-    id: "costco_sf",
-    label: "Costco",
-    regionLabel: "San Francisco",
-    storeGroup: "costco",
-    stores: ["Costco"],
-  },
-  {
-    id: "costco_oc",
-    label: "Costco",
-    regionLabel: "Tustin",
-    storeGroup: "costco",
-    stores: ["Costco"],
-  },
 ];
 
 export const DEFAULT_FEED_ID = PRICE_FEEDS[0].id;

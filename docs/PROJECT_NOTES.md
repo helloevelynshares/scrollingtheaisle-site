@@ -195,6 +195,44 @@ Add notes here for useful Cursor prompts, commands, migrations, local testing, a
 
 Living notes rule: `.cursor/rules/project-notes.mdc` — agents should read and update `docs/PROJECT_NOTES.md`.
 
+### Local homepage preview (static HTTP server)
+
+Date discovered: 2026-07-06  
+Context: Previewing repo root `index.html` in Safari at http://127.0.0.1:8000/.  
+What happened: Agent-started `python3 -m http.server 8000` in background shells dies when the agent/subagent session ends, so Safari shows "can't connect" even though it worked briefly.  
+Fix / workaround: Run **`npm run preview:homepage`** in your own terminal tab (repo root) and leave it open. Optional detached server: `nohup python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/scrolling-homepage-preview.log 2>&1 &` — PID in `/tmp/scrolling-homepage-preview.pid`. Stop: `kill $(cat /tmp/scrolling-homepage-preview.pid)` or Ctrl+C in the terminal running npm.  
+How to verify: `curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8000/` → `200`.  
+Related files: `package.json` (`preview:homepage`), root `index.html`, `npm run generate:homepage-preview`
+
+### Generate → Validate → Fix workflow for weekly ad prices
+
+Date discovered: 2026-07-06  
+Context: Weekly ad price generation pipeline after YAML tracker families migration.  
+What happened: The generator can produce false matches where an offer is matched to the wrong tracker family (e.g. "Lindt Gourmet Truffles" matching `ruffles_regular_bags`, "SToK Cold Brew Coffee" matching `haagen_dazs_pints`, "Skippy Peanut Butter" matching `butter_16oz`, "Mango Habanero Chicken" matching `mangoes_each`, "Chex Mix" matching `general_mills_cereal_regular`).  
+Fix / workaround: Run the standard workflow after any YAML change or new week's data:
+
+```bash
+# 1. Edit data/canonical_tracker_families.yaml (add/fix include or keep_separate_from)
+# 2. Regenerate (full or targeted)
+PYTHONPATH=scripts /usr/bin/python3 scripts/generate_weekly_ad_prices.py --product-id <id>
+# or full rematch:
+PYTHONPATH=scripts /usr/bin/python3 scripts/generate_weekly_ad_prices.py
+# 3. Validate — catches keyword false matches and price outliers
+PYTHONPATH=scripts /usr/bin/python3 scripts/validate_weekly_ad_prices.py
+# 4. Review data/review/weekly_price_sanity_{date}.csv
+#    - [keyword/FAIL] + high confidence = definite false match → fix YAML keep_separate_from, re-run step 2
+#    - [keyword/WARN] = medium confidence mismatch → investigate
+#    - [outlier] = price swing → inspect offerText; often legitimate seasonal/promotional variation
+# 5. Run tests
+PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_validate_weekly_ad_prices tests.test_canonical_families -v
+```
+
+Output columns: `family_id, store, week, price, offerText, confidence, check_failed, reason`  
+Checks: (1) keyword sanity (offerText must match at least one include token; must not match keep_separate_from), (2) price outlier (>2× median or >3× / <0.5× prior week), (3) per-lb plausibility ($0.25–$50/lb).  
+False matches fixed 2026-07-06: `haagen_dazs_pints` ("coffee"/"vanilla" → too generic; removed standalone flavor words from include), `butter_16oz` (peanut butter added to keep_separate_from), `general_mills_cereal_regular` ("Chex Mix", "Rold Gold" added to keep_separate_from; "Chex" → "Chex cereal" in include), `mangoes_each` ("habanero", "chicken" added to keep_separate_from), `nature_valley_bars` (already had "protein bars" in keep_separate_from; stale TS re-generated to apply exclusion), `ruffles_regular_bags` (Lindt/LINDOR/Gourmet Truffles/chocolate truffles added to keep_separate_from as preventive measure).  
+How to verify: 0 `[keyword/FAIL]` rows in sanity CSV. `PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_validate_weekly_ad_prices -v` → 32 tests OK.  
+Related files: `scripts/validate_weekly_ad_prices.py`, `data/canonical_tracker_families.yaml`, `data/review/weekly_price_sanity_{date}.csv`, `tests/test_validate_weekly_ad_prices.py`
+
 Playwright setup: `pip install -r scripts/requirements.txt && playwright install chromium`
 
 ### Costco price data for grocery vs Costco comparisons
@@ -425,6 +463,18 @@ Kettle Brand Safeway example tooltip for 2026-07-01:
 - Promo badge: "3 for $5 Friday July 3rd · Fri Jul 3 only"
 How to verify: `npm run build:price-tracker` → hover Kettle Brand Safeway chart → Jul 1 dot → tooltip shows week range + Friday annotation + amber promo badge.
 Related files: `src/data/yamlFamilyProducts.ts` (`effectiveWeeklyPrice`), `src/staging-price-tracker/PriceTrendChart.tsx` (`formatWeekRangeLabel`, `PriceChartTooltip`, `isLimitedDay`), `styles.css` (`.price-tracker-chart-tooltip--limited`, `.price-tracker-chart-tooltip-promo--limited`)
+
+### Ruffles/Truffles false match: phrase_to_pattern missing word boundaries (fixed 2026-07-06)
+
+Date discovered: 2026-07-06  
+Context: User reported May 6 pricing for Ruffles looked wrong on the price tracker chart (Safeway tab).  
+What happened: `phrase_to_pattern("Ruffles")` in `canonical_families.py` generated the pattern `ruffles` with no word boundaries. `re.search("ruffles", "lindt gourmet truffles select varieties")` matched because "ruffles" is a substring of "truffles". The matcher therefore returned Lindt Chocolate Truffles prices as Ruffles chip prices:
+- `2026-05-06` Safeway: `price: 11.99` ("Lindt Gourmet Truffles Select varieties") — wrong
+- `2026-03-25` Safeway: `price: 5.99` ("Spring Lindt Truffles select varieties") — wrong
+The real Ruffles deals in those weeks either had no price data (2026-03-25 BUY 2 GET 2 FREE with no reference price) or no deal at all (2026-05-06). Vons 2026-05-06 `$2.99` was legitimately correct (offerText literally says "Ruffles", Pick 4 Mix or Match).  
+Fix / workaround: Changed `phrase_to_pattern()` condition from `if len(text) <= 4 and text.isalpha()` to `if not re.search(r"\d", text)` — adds `\b...\b` word boundaries to ALL text-only patterns (no digits). Patterns with digits (size ranges like "5–13 oz") are unaffected. Regenerated `weeklyAdPrices.generated.ts` for `ruffles_regular_bags` — both bad weeks corrected to `null`.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_normalization tests.test_canonical_families -v` (22 tests pass). Check `grep '"2026-05-06"' src/data/weeklyAdPrices.generated.ts` near `ruffles_regular_bags` → `"price": null`. Vons same week shows `"price": 2.99` (untouched).  
+Related files: `scripts/price_tracker/canonical_families.py` (`phrase_to_pattern`), `src/data/weeklyAdPrices.generated.ts`
 
 ### Per-lb baseline stores package price not unit price (fixed 2026-07-06)
 
