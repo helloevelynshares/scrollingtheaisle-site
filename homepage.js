@@ -73,14 +73,14 @@ function picksForView(view) {
   return previewData[config.picksKey] ?? [];
 }
 
-function metaForView(view) {
-  if (!previewData) return "";
+function leadLineForView(view) {
   const config = VIEW_CONFIG[view];
   if (!config) return "";
-  const week = previewData.popularWeekLabel;
-  return week
+  const week = previewData?.popularWeekLabel;
+  const curated = week
     ? `Curated by Scrolling the Aisle · week of ${week}`
     : "Curated by Scrolling the Aisle";
+  return `${config.lead} · ${curated}`;
 }
 
 function renderDealCard(pick) {
@@ -110,15 +110,13 @@ function renderPicksGrid() {
   const grid = document.getElementById("picks-grid");
   const titleEl = document.getElementById("picks-title");
   const leadEl = document.getElementById("picks-lead");
-  const metaEl = document.getElementById("picks-meta");
   if (!grid) return;
 
   const config = VIEW_CONFIG[activeView] ?? VIEW_CONFIG.safeway;
   const picks = picksForView(activeView);
 
   if (titleEl) titleEl.textContent = config.title;
-  if (leadEl) leadEl.textContent = config.lead;
-  if (metaEl) metaEl.textContent = metaForView(activeView);
+  if (leadEl) leadEl.textContent = leadLineForView(activeView);
 
   if (picks.length === 0) {
     grid.innerHTML = `<p class="hub-empty">Weekly picks loading soon — check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;

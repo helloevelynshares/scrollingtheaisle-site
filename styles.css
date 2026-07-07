@@ -2718,15 +2718,11 @@ img {
   margin-bottom: 12px;
 }
 
-.popular-this-week__title {
+.popular-this-week__lead {
   margin: 0;
-  font-size: 20px;
-}
-
-.popular-this-week__week {
-  margin: 4px 0 0;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
+  line-height: 1.55;
 }
 
 .popular-this-week__grid {
@@ -3038,12 +3034,6 @@ img {
   color: var(--muted);
   line-height: 1.55;
   margin: 0;
-}
-
-.hub-section-meta {
-  font-size: 14px;
-  color: var(--muted);
-  margin: 10px 0 0;
 }
 
 .hub-picks-toggle {

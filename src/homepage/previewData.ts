@@ -1,9 +1,9 @@
 import {
   POPULAR_THIS_WEEK,
-  POPULAR_THIS_WEEK_WEEK,
   type PopularThisWeekEntry,
   type PopularThisWeekStore,
 } from "../data/canonicalTrackerFamilies";
+import { getPopularWeekLabel } from "../data/popularThisWeekCopy";
 import { computeFeedProductBenchmark } from "../data/priceBenchmarks";
 import {
   formatComparisonUnit,
@@ -21,8 +21,6 @@ import {
   buildSafewayYamlProducts,
   buildVonsYamlProducts,
 } from "../data/yamlFamilyProducts";
-import { WEEKLY_AD_WEEKS } from "../data/weeklyAdPrices.generated";
-
 export type HomepageBadge =
   | "Stock up"
   | "Good small-pack buy"
@@ -53,38 +51,6 @@ export type HomepagePreview = {
 };
 
 const TRACKER_BASE = "staging-price-tracker/";
-
-function latestWeekLabel(): string {
-  const latest = WEEKLY_AD_WEEKS[WEEKLY_AD_WEEKS.length - 1];
-  if (!latest) {
-    return "This week";
-  }
-  return formatWeekRange(latest.weekStart, latest.weekEnd);
-}
-
-function formatWeekRange(weekStart: string, weekEnd?: string): string {
-  const start = new Date(`${weekStart}T12:00:00`);
-  if (!weekEnd) {
-    return start.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  }
-  const end = new Date(`${weekEnd}T12:00:00`);
-  const fmt = (d: Date) =>
-    d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  return `${fmt(start)}–${fmt(end)}`;
-}
-
-function popularWeekLabel(): string {
-  if (!POPULAR_THIS_WEEK_WEEK) {
-    return latestWeekLabel();
-  }
-  const week = WEEKLY_AD_WEEKS.find(
-    (entry) => entry.weekStart === POPULAR_THIS_WEEK_WEEK,
-  );
-  if (week) {
-    return formatWeekRange(week.weekStart, week.weekEnd);
-  }
-  return formatWeekRange(POPULAR_THIS_WEEK_WEEK);
-}
 
 function unitPriceDisplay(product: FeedProductView): string {
   const dealUnit = getDealAdjustedUnitPrice(product);
@@ -204,7 +170,7 @@ export function buildHomepagePreview(): HomepagePreview {
 
   return {
     generatedAt: new Date().toISOString(),
-    popularWeekLabel: popularWeekLabel(),
+    popularWeekLabel: getPopularWeekLabel(),
     popularPicksSafeway: buildPopularPicksForStore(
       "safeway",
       safewayProducts,

@@ -1,14 +1,11 @@
 import { useMemo } from "react";
 import {
   POPULAR_THIS_WEEK,
-  POPULAR_THIS_WEEK_WEEK,
   type PopularThisWeekStore,
 } from "../data/canonicalTrackerFamilies";
+import { leadLineForStore } from "../data/popularThisWeekCopy";
 import { isProductOnSale, isProductInPreviewWeek } from "../data/priceTrackerUtils";
-import { getFeedAdPreviewState } from "../data/weeklyAdPreview";
 import type { FeedProductView } from "../data/priceTrackerTypes";
-import { WEEKLY_AD_WEEKS } from "../data/weeklyAdPrices.generated";
-import { VONS_WEEKLY_AD_WEEKS } from "../data/vonsWeeklyAdPrices.generated";
 
 type Props = {
   feedStore: PopularThisWeekStore;
@@ -30,26 +27,16 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
     [products],
   );
 
+  const leadLine = useMemo(() => leadLineForStore(feedStore), [feedStore]);
+
   if (entries.length === 0) {
     return null;
   }
 
-  const previewState = getFeedAdPreviewState(
-    feedStore === "vons" ? VONS_WEEKLY_AD_WEEKS : WEEKLY_AD_WEEKS,
-  );
-  const sectionLabel = previewState?.isPreview
-    ? "Popular in upcoming ad"
-    : "Popular this week";
-
   return (
-    <section className="popular-this-week" aria-label={sectionLabel}>
+    <section className="popular-this-week" aria-label="Popular picks this week">
       <header className="popular-this-week__header">
-        <h2 className="popular-this-week__title">{sectionLabel}</h2>
-        {POPULAR_THIS_WEEK_WEEK ? (
-          <p className="popular-this-week__week">
-            Week of {POPULAR_THIS_WEEK_WEEK}
-          </p>
-        ) : null}
+        <p className="popular-this-week__lead">{leadLine}</p>
       </header>
       <div className="popular-this-week__grid">
         {entries.map((entry) => {
