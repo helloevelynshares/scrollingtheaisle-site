@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrolling the Aisle — Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css?v=hub2" />
 </head>
 <body class="hub-page">
   <header class="page-header">
@@ -42,28 +42,34 @@
           </div>
         </div>
 
-        <div class="hub-store-suggest" id="store-suggest-module" aria-labelledby="store-suggest-heading">
-          <article class="hub-store-vote">
-            <h3 id="store-suggest-heading" class="hub-store-vote-title">Where should we track prices next?</h3>
-            <p class="hub-store-vote-lead">Vote for the store you shop — we add tracking where people ask.</p>
-            <div class="hub-store-chips" role="group" aria-label="Popular grocery stores">
-              <button type="button" class="hub-store-chip" data-store="Trader Joe's">Trader Joe's</button>
-              <button type="button" class="hub-store-chip" data-store="Whole Foods">Whole Foods</button>
-              <button type="button" class="hub-store-chip" data-store="Sprouts">Sprouts</button>
-              <button type="button" class="hub-store-chip" data-store="Kroger">Kroger</button>
+        <div class="hub-store-suggest" id="store-suggest-module">
+          <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
+            <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
+            <div class="price-tracker-vote-strip" role="list" aria-label="Popular grocery stores">
+              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Trader Joe's" aria-pressed="false">
+                <span class="price-tracker-vote-card-label">Trader Joe's</span>
+              </button>
+              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Whole Foods" aria-pressed="false">
+                <span class="price-tracker-vote-card-label">Whole Foods</span>
+              </button>
+              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Sprouts" aria-pressed="false">
+                <span class="price-tracker-vote-card-label">Sprouts</span>
+              </button>
+              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Kroger" aria-pressed="false">
+                <span class="price-tracker-vote-card-label">Kroger</span>
+              </button>
             </div>
-            <form class="hub-store-custom-form" id="store-custom-form">
-              <span class="hub-store-custom-label">Don't see yours? Suggest it</span>
-              <div class="hub-store-custom-row">
-                <label class="visually-hidden" for="store-input-custom">Store name</label>
-                <input id="store-input-custom" type="text" name="store" placeholder="Store name" autocomplete="organization" maxlength="80" required />
+            <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
+              <div class="price-tracker-vote-custom-row">
+                <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
+                <input id="store-input-custom" type="text" name="store" placeholder="Suggest another store…" autocomplete="organization" maxlength="80" required />
                 <label class="visually-hidden" for="store-city-custom">City (optional)</label>
                 <input id="store-city-custom" type="text" name="city" placeholder="City (optional)" autocomplete="address-level2" maxlength="80" />
-                <button type="submit" class="btn btn-secondary btn-sm hub-store-custom-submit">Send</button>
+                <button type="submit" class="btn btn-primary btn-sm price-tracker-vote-submit">Suggest</button>
               </div>
             </form>
-            <p id="store-suggest-status" class="hub-store-status" role="status" aria-live="polite" hidden></p>
-          </article>
+            <p id="store-suggest-status" class="price-tracker-vote-status" role="status" aria-live="polite" hidden></p>
+          </section>
         </div>
       </div>
     </section>
@@ -128,7 +134,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="homepage.js"></script>
+  <script src="/homepage.js?v=hub2"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>

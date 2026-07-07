@@ -3,7 +3,7 @@
  * Price data: data/homepage-preview.generated.json (npm run generate:homepage-preview)
  */
 
-const PREVIEW_JSON = "data/homepage-preview.generated.json";
+const PREVIEW_JSON = "/data/homepage-preview.generated.json";
 const TRACKER_URL = "staging-price-tracker/";
 const STORE_VOTE_STORAGE_KEY = "sta_store_votes";
 const SUPABASE_URL = "https://wurmdtqysegytsjcudve.supabase.co";
@@ -220,7 +220,8 @@ function showStoreStatus(message, isError = false) {
   if (!el) return;
   el.textContent = message;
   el.hidden = false;
-  el.classList.toggle("hub-store-status--error", isError);
+  el.classList.remove("price-tracker-vote-status--success", "price-tracker-vote-status--error");
+  el.classList.add(isError ? "price-tracker-vote-status--error" : "price-tracker-vote-status--success");
 }
 
 function hideStoreStatus() {
@@ -228,7 +229,21 @@ function hideStoreStatus() {
   if (!el) return;
   el.hidden = true;
   el.textContent = "";
-  el.classList.remove("hub-store-status--error");
+  el.classList.remove("price-tracker-vote-status--success", "price-tracker-vote-status--error");
+}
+
+function setChipVoteNote(chip, text) {
+  let note = chip.querySelector(".price-tracker-vote-card-note");
+  if (text) {
+    if (!note) {
+      note = document.createElement("span");
+      note.className = "price-tracker-vote-card-note";
+      chip.appendChild(note);
+    }
+    note.textContent = text;
+  } else if (note) {
+    note.remove();
+  }
 }
 
 function updateChipStates(votedStores) {
@@ -236,9 +251,15 @@ function updateChipStates(votedStores) {
     const store = chip.dataset.store;
     const normalized = store ? normalizeStoreName(store) : "";
     const voted = Boolean(normalized && votedStores.has(normalized));
-    chip.classList.toggle("is-voted", voted);
+    const isPending = storePendingVote === normalized;
+    chip.classList.toggle("price-tracker-vote-card--voted", voted);
     chip.setAttribute("aria-pressed", voted ? "true" : "false");
-    chip.disabled = voted || Boolean(storePendingVote) || storePendingSuggest;
+    chip.disabled =
+      voted ||
+      Boolean(storePendingVote) ||
+      storePendingSuggest ||
+      storeVoteLoading;
+    setChipVoteNote(chip, voted ? "Voted" : isPending ? "Saving…" : null);
   });
 }
 
@@ -260,7 +281,14 @@ function renderStoreChips() {
     const normalized = normalizeStoreName(store);
     const item = storeVoteItems.get(normalized);
     const count = item?.voteCount ?? 0;
-    chip.textContent = formatStoreVoteLabel(store, count);
+    let label = chip.querySelector(".price-tracker-vote-card-label");
+    if (!label) {
+      chip.textContent = "";
+      label = document.createElement("span");
+      label.className = "price-tracker-vote-card-label";
+      chip.appendChild(label);
+    }
+    label.textContent = formatStoreVoteLabel(store, count);
   });
   updateChipStates(readVotedStores());
 }

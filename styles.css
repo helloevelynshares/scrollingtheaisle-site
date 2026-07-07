@@ -2884,133 +2884,28 @@ img {
   justify-content: center;
 }
 
-/* Store vote module (homepage hero) */
+/* Store vote module (homepage hero) — mirrors .price-tracker-vote */
 .hub-store-suggest {
   min-width: 0;
 }
 
-.hub-store-vote {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hub-store-vote-title {
+.hub-store-vote.price-tracker-vote {
   margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.15px;
-  line-height: 1.2;
 }
 
-.hub-store-vote-lead {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.35;
-  color: var(--muted);
+.hub-store-vote .price-tracker-vote-custom-row input[name="city"] {
+  flex: 0.85 1 96px;
+  max-width: 132px;
 }
 
-.hub-store-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.hub-store-chip {
-  appearance: none;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  font: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 6px 11px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
-}
-
-.hub-store-chip:hover:not(:disabled) {
-  border-color: var(--accent);
-}
-
-.hub-store-chip.is-voted {
-  border-color: #c9e8d6;
-  background: #f4fbf7;
-  color: #1a7f4b;
-}
-
-.hub-store-chip:disabled {
-  cursor: default;
-  opacity: 0.85;
-}
-
-.hub-store-custom-form {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.hub-store-custom-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.hub-store-custom-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-}
-
-.hub-store-custom-row input[type="text"] {
-  flex: 1 1 120px;
-  min-width: 0;
-  padding: 8px 10px;
-  font: inherit;
-  font-size: 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--card);
-  color: var(--text);
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.hub-store-custom-row input[type="text"]:focus {
-  outline: none;
-  border-color: rgba(255, 56, 92, 0.45);
-  box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.12);
-}
-
-.hub-store-custom-submit {
-  flex: 0 0 auto;
-}
-
-.hub-store-status {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.4;
-  color: #1a7f4b;
-}
-
-.hub-store-status--error {
-  color: #b42318;
-}
-
-@media (min-width: 560px) {
-  .hub-store-custom-row input[name="store"] {
-    flex: 1.4 1 160px;
+@media (max-width: 479px) {
+  .hub-store-vote .price-tracker-vote-custom-row {
+    flex-wrap: wrap;
   }
 
-  .hub-store-custom-row input[name="city"] {
-    flex: 1 1 120px;
+  .hub-store-vote .price-tracker-vote-custom-row input[name="city"] {
+    flex: 1 1 96px;
+    max-width: none;
   }
 }
 
