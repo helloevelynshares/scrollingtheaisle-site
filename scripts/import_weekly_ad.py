@@ -133,8 +133,11 @@ def run_extraction(feed_key: str, pdf_name: str) -> None:
     if not discover.is_file():
         raise SystemExit(f"Missing vision pipeline: {discover}")
 
-    only_token = pdf_name.replace(".pdf", "").split()[0]
-    output_dir = cfg["discovery_dir"].parent / f"product_discovery_{feed_key}_{only_token.replace('-', '_')}"
+    # Use date-range token (e.g. "7-8") to avoid matching every historical flyer.
+    stem = pdf_name.replace(".pdf", "")
+    date_token = stem.split()[-1] if " " in stem else stem
+    output_slug = stem.replace(" ", "_").replace("/", "-")
+    output_dir = cfg["discovery_dir"].parent / f"product_discovery_{feed_key}_{output_slug}"
     cmd = [
         sys.executable,
         str(discover),
@@ -145,39 +148,57 @@ def run_extraction(feed_key: str, pdf_name: str) -> None:
         "--output-dir",
         str(output_dir),
         "--only-file",
-        only_token,
+        date_token,
     ]
     print(f"Running vision extraction: {' '.join(cmd)}")
-    subprocess.run(cmd, cwd=DATA_ROOT, check=True)
+    result = subprocess.run(cmd, cwd=DATA_ROOT)
+    split_csv = output_dir / "split_offer_items.csv"
+    if result.returncode != 0:
+        if split_csv.is_file():
+            print(
+                f"Warning: extraction exited {result.returncode} "
+                f"(often summary_report.py) but {split_csv.name} exists — continuing"
+            )
+        else:
+            raise subprocess.CalledProcessError(result.returncode, cmd)
 
 
 def merge_split_offer_items(
     feed_key: str,
     week_start: str,
     extracted_csv: Path | None = None,
+    pdf_name: str | None = None,
 ) -> int:
     cfg = FEED_CONFIG[feed_key]
     target = cfg["split_items"]
-    if extracted_csv is None:
-        only_token = None
-        for path in cfg["discovery_dir"].parent.glob(f"product_discovery_{feed_key}_*"):
-            candidate = path / "split_offer_items.csv"
+    if extracted_csv is None and pdf_name:
+        stem = pdf_name.replace(".pdf", "").replace(" ", "_").replace("/", "-")
+        candidates = [
+            cfg["discovery_dir"].parent
+            / f"product_discovery_{feed_key}_{stem}"
+            / "split_offer_items.csv",
+            cfg["discovery_dir"].parent
+            / f"product_discovery_safeway_{stem}"
+            / "split_offer_items.csv",
+        ]
+        for candidate in candidates:
             if candidate.is_file():
-                rows = load_manifest_rows_from_split(candidate)
-                if any(row.get("week_start") == week_start for row in rows):
-                    extracted_csv = candidate
-                    break
-        if extracted_csv is None:
-            sibling_dirs = sorted(
-                cfg["discovery_dir"].parent.glob(f"product_discovery_{feed_key}_*"),
-                key=lambda p: p.stat().st_mtime,
-                reverse=True,
-            )
-            for path in sibling_dirs:
-                candidate = path / "split_offer_items.csv"
-                if candidate.is_file():
-                    extracted_csv = candidate
-                    break
+                extracted_csv = candidate
+                break
+
+    if extracted_csv is None:
+        for path in sorted(
+            cfg["discovery_dir"].parent.glob(f"product_discovery_{feed_key}_*"),
+            key=lambda p: p.stat().st_mtime,
+            reverse=True,
+        ):
+            candidate = path / "split_offer_items.csv"
+            if not candidate.is_file():
+                continue
+            rows = load_manifest_rows_from_split(candidate)
+            if any(row.get("week_start") == week_start for row in rows):
+                extracted_csv = candidate
+                break
 
     if extracted_csv is None or not extracted_csv.is_file():
         raise SystemExit(
@@ -189,6 +210,7 @@ def merge_split_offer_items(
         row
         for row in load_manifest_rows_from_split(extracted_csv)
         if row.get("week_start") == week_start
+        and (row.get("banner") or "").strip().lower() == cfg["banner"].lower()
     ]
     if not new_rows:
         raise SystemExit(
@@ -289,8 +311,8 @@ def print_preview_report(as_of: date | None) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Import weekly ad into price tracker.")
-    parser.add_argument("--week-start", required=True, help="Ad week start (YYYY-MM-DD)")
-    parser.add_argument("--week-end", required=True, help="Ad week end (YYYY-MM-DD)")
+    parser.add_argument("--week-start", help="Ad week start (YYYY-MM-DD)")
+    parser.add_argument("--week-end", help="Ad week end (YYYY-MM-DD)")
     parser.add_argument("--safeway-pdf", help="Safeway PDF filename in inputs/weekly_ads/")
     parser.add_argument("--vons-pdf", help="Vons PDF filename in inputs/weekly_ads/")
     parser.add_argument(
@@ -324,6 +346,9 @@ def main() -> None:
         print_preview_report(as_of)
         return
 
+    if not args.week_start or not args.week_end:
+        raise SystemExit("--week-start and --week-end are required unless --verify-only")
+
     feeds: list[FeedImportSpec] = []
     if args.safeway_pdf:
         feeds.append(FeedImportSpec("safeway", args.safeway_pdf))
@@ -350,7 +375,7 @@ def main() -> None:
         if not args.skip_extraction:
             run_extraction(spec.key, spec.pdf_name)
 
-        merge_split_offer_items(spec.key, args.week_start)
+        merge_split_offer_items(spec.key, args.week_start, pdf_name=spec.pdf_name)
 
     if not args.skip_generate:
         run_generate_prices(as_of)

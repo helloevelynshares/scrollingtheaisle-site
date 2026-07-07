@@ -2,10 +2,8 @@ import {
   formatPreviewBannerMessage,
   getFeedAdPreviewState,
 } from "../data/weeklyAdPreview";
-import {
-  VONS_WEEKLY_AD_WEEKS,
-  WEEKLY_AD_WEEKS,
-} from "../data/weeklyAdPrices.generated";
+import { WEEKLY_AD_WEEKS } from "../data/weeklyAdPrices.generated";
+import { VONS_WEEKLY_AD_WEEKS } from "../data/vonsWeeklyAdPrices.generated";
 
 type Props = {
   feedStore: "safeway" | "vons";

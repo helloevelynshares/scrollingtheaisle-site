@@ -5,11 +5,13 @@ from __future__ import annotations
 import unittest
 
 from price_tracker.normalization import (
+    _buy_x_get_y_unit_price,
     normalize_per_bar,
     normalize_per_cup,
     normalize_per_dozen,
     normalize_per_lb,
     normalize_strawberries_per_lb,
+    base_normalize_unit_price,
 )
 
 
@@ -61,6 +63,20 @@ class TestNormalization(unittest.TestCase):
     def test_chicken_breast_per_lb(self) -> None:
         result = normalize_per_lb(row("$4.99", "boneless skinless chicken breast per lb"))
         self.assertEqual(result, 4.99)
+
+    def test_b2g3f_coca_cola_12pack(self) -> None:
+        promo = "BUY 2, GET 3 FREE WHEN YOU BUY 5 MEMBER PRICE"
+        deal_row = row(
+            "12.99",
+            promo,
+            basis="bogo",
+        )
+        self.assertEqual(base_normalize_unit_price(deal_row), 5.2)
+        self.assertAlmostEqual(
+            _buy_x_get_y_unit_price(deal_row, 12.99) or 0,
+            5.196,
+            places=2,
+        )
 
 
 class TestMatcherSeparation(unittest.TestCase):

@@ -12,6 +12,7 @@ import type { FeedProductView } from "../data/priceTrackerTypes";
 import {
   formatPrice,
   getCurrentPrice,
+  getDealAdjustedUnitPrice,
   getDiscountPercent,
   hasChartableData,
   isProductOnSale,
@@ -86,6 +87,12 @@ function popularWeekLabel(): string {
 }
 
 function unitPriceDisplay(product: FeedProductView): string {
+  const dealUnit = getDealAdjustedUnitPrice(product);
+  if (dealUnit) {
+    const unit = formatComparisonUnit(dealUnit.unit);
+    return `$${dealUnit.price.toFixed(2)}/${unit}`;
+  }
+
   const comparison = product.priceComparison;
   if (comparison?.groceryUnitPrice != null) {
     const unit = formatComparisonUnit(

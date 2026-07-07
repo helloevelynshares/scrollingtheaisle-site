@@ -4,6 +4,7 @@ import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
 import { SectionedTrackerList } from "./SectionedTrackerList";
+import { WeeklyAdPreviewBanner } from "./WeeklyAdPreviewBanner";
 
 function feedIdFromUrl(): string {
   const feed = new URLSearchParams(window.location.search).get("feed");
@@ -66,6 +67,8 @@ export function App() {
         </section>
 
         <FeedTabs activeFeedId={activeFeedId} onChange={setActiveFeedId} />
+
+        <WeeklyAdPreviewBanner feedStore={feedStore} />
 
         {activeFeed ? (
           <p className="price-tracker-feed-context">

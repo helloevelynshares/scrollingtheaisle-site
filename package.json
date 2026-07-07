@@ -10,6 +10,8 @@
     "vons-historical-low-check": "python3 scripts/analysis/vons_historical_low_check.py",
     "generate:canonical-families": "python3 scripts/generate_canonical_families.py",
     "generate:weekly-ad-prices": "python3 scripts/generate_canonical_families.py && python3 scripts/generate_weekly_ad_prices.py",
+    "import:weekly-ad": "python3 scripts/import_weekly_ad.py",
+    "verify:weekly-ad": "python3 scripts/import_weekly_ad.py --verify-only",
     "generate:price-tracker-seed": "python3 scripts/generate_price_tracker_seed.py && python3 scripts/generate_vons_weekly_observations_seed.py",
     "generate:vons-feed-matches": "python3 scripts/generate_vons_feed_matches.py",
     "import:costco-data": "python3 scripts/price_comparison/import_costco_data.py",

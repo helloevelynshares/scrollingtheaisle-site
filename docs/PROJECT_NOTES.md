@@ -195,7 +195,15 @@ Add notes here for useful Cursor prompts, commands, migrations, local testing, a
 
 Living notes rule: `.cursor/rules/project-notes.mdc` — agents should read and update `docs/PROJECT_NOTES.md`.
 
-### Local homepage preview (static HTTP server)
+### Homepage store vote module (compact chips + Supabase)
+
+Date discovered: 2026-07-07
+Context: Homepage hero store suggestion UI — was 4 layout variants saving to localStorage only.
+What happened: Needed a single compact chips layout wired to the same moderated vote pattern as tracker item voting (`tracker_vote_items`).
+Fix / workaround: New table `store_vote_items` + RPCs `vote_on_store(uuid)` and `submit_store_suggestion(text, text)` in `supabase/migrations/20260707_store_vote_items.sql`. Homepage (`index.html`, `homepage.js`) uses Supabase JS CDN; chips vote on approved seed stores (Trader Joe's, Whole Foods, Sprouts, Kroger, H-E-B); custom form requires store name, optional city → `pending` for review. Client dedupes via `localStorage` key `sta_store_votes`. **Admin UI** (`/admin/suggestions/`) still only moderates `tracker_vote_items` — approve store pending rows via Supabase SQL/dashboard until admin is extended.
+How to verify: Apply migration (`supabase db push` or run SQL in dashboard). `npm run preview:homepage` → http://127.0.0.1:8000/ → click a chip → success toast; custom store → moderation message. Check `store_vote_items.vote_count` increments.
+Related files: `supabase/migrations/20260707_store_vote_items.sql`, `index.html`, `homepage.js`, `styles.css`
+
 
 Date discovered: 2026-07-06  
 Context: Previewing repo root `index.html` in Safari at http://127.0.0.1:8000/.  
@@ -366,7 +374,28 @@ How to verify: `supabase db push --dry-run` lists only `20260617_price_compariso
 Related files: `supabase/migrations/20260616_price_comparisons.sql`, `supabase/migrations/20260617_price_comparisons_seed.sql`, `scripts/backfill_price_comparisons.py`
 
 
-### Safeway baseline store: Oakland 3132 / 94611 / instore (Safari guest)
+### Weekly ad preview workflow (upcoming ad before start date)
+
+Date discovered: 2026-07-07
+Context: First time loading a weekly ad before its effective start date (Jul 8–14 ad imported on Jul 7).
+What happened: Price tracker had no concept of preview vs active ad weeks; UI said "this week" for prices that were not yet in stores.
+Fix / workaround:
+1. **Import orchestrator:** `python3 scripts/import_weekly_ad.py --week-start YYYY-MM-DD --week-end YYYY-MM-DD --safeway-pdf "safeway …pdf" --vons-pdf "vons …pdf"` — updates manifests (site + sibling repo), runs vision extraction (`discover_product_candidates.py` with `--only-file` date token e.g. `7-8`), merges banner-filtered rows into sibling `split_offer_items.csv`, regenerates TS. Use `--skip-extraction` when CSV already exists; `--verify-only` to audit counts.
+2. **Preview detection:** `today < week_start` → preview (date-based, no manual flag). Python: `scripts/price_tracker/weekly_ad_preview.py`. TypeScript: `src/data/weeklyAdPreview.ts` + `isPreviewWeek` on each `WeeklyPrice` in `yamlFamilyProducts.ts`.
+3. **UI:** `WeeklyAdPreviewBanner` below feed tabs; card copy uses "Preview: $X starting tomorrow" instead of "this week"; status pills "Preview sale" / "Preview promo".
+4. **Safeguards:** `generate_weekly_ad_prices.py` validates canonical product IDs unchanged (66 families) before/after; logs matched/unmatched per feed.
+Weekly command (Jul 8–14 example):
+```bash
+python3 scripts/import_weekly_ad.py \
+  --week-start 2026-07-08 --week-end 2026-07-14 \
+  --safeway-pdf "safeway 7-8 - 7-14.pdf" \
+  --vons-pdf "vons 7-8 - 7-14.pdf"
+npm run verify:weekly-ad
+npm run build:price-tracker
+```
+Verify: `python3 scripts/import_weekly_ad.py --verify-only` → 66 tracked products, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`.
+Related files: `scripts/import_weekly_ad.py`, `scripts/price_tracker/weekly_ad_preview.py`, `src/data/weeklyAdPreview.ts`, `src/staging-price-tracker/WeeklyAdPreviewBanner.tsx`, `data/weekly_ads/flyer_manifest_*.csv`
+
 
 Date discovered: 2026-07-05  
 Context: HTTP/curl pgmsearch via `seed_safeway_baseline.py`; prior `.env` used SF Jackson St store **4601 / 94111 / pickup** with Chrome UA + logged-in cookie — requests failed or mismatched session.  
@@ -521,7 +550,21 @@ Before/After examples (price for 2026-07-01):
 How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_normalization -v`. Check `grep '"2026-07-01"' src/data/weeklyAdPrices.generated.ts` near `ribeye_steak` — should show `"price": 9.99`. Vons same → `"price": 7.99`.
 Related files: `scripts/price_tracker/normalization.py` (`normalize_per_lb`, `base_normalize_unit_price`), `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
 
-### Card height equalization: min-height + clamps (full fix)
+### Coca-Cola B2G3F Safeway 7/1: missing split row + stale per-can display (fixed 2026-07-07)
+
+Date discovered: 2026-07-07
+Context: Homepage Popular this week + price tracker for `coca_cola_12packs` Safeway week 2026-07-01.
+What happened: Safeway 7/1 ad has "BUY 2, GET 3 FREE WHEN YOU BUY 5" on soda 12-packs ($12.99 ref). Vision pipeline captured the multi-brand promo block in `raw_offer_cards.csv` (page 1 offer 14) but did not promote Coca-Cola to `split_offer_items.csv` (`ambiguous_multi_product_offer|missing_or_unclear_price`). `weeklyAdPrices` had `null` for 2026-07-01 → UI fell back to baseline $12.99. Homepage `unitPriceDisplay()` preferred stale `priceComparison.groceryUnitPrice` ($12.99÷12 = $1.08/can) over deal price. `getCurrentPrice()` also preferred the upcoming preview week (2026-07-08) over the calendar-active week when both existed.
+Fix / workaround:
+1. Manually added Coca-Cola 12-pack row to `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv` + sibling `outputs/product_discovery_safeway/split_offer_items.csv` with `advertised_price=12.99`, `price_basis=bogo`, `promo_text="BUY 2, GET 3 FREE WHEN YOU BUY 5 MEMBER PRICE"`.
+2. Regenerated: `PYTHONPATH=scripts python3 scripts/generate_weekly_ad_prices.py --product-id coca_cola_12packs --feed safeway` → `price: 5.2` per 12-pack (2/5 × $12.99).
+3. `getCurrentWeeklyPrice()` / `getDealAdjustedUnitPrice()` in `priceTrackerUtils.ts` — active week + per-can from deal price.
+4. `previewData.ts` prefers deal-adjusted unit price over stale comparison baseline.
+5. `backfill_price_comparisons.py` maps legacy canonical ids → YAML family ids (`coke_zero` → `coca_cola_12packs`) and prefers calendar-active ad week over preview.
+Before/after: homepage Coca-Cola showed `$12.99` / `$1.08/can` / `onSale: false` → now `$5.20` / `$0.43/can` / `onSale: true`.
+How to verify: `npm run generate:homepage-preview` → `data/homepage-preview.generated.json` Coca-Cola `unitPrice: "$0.43/can"`. `npx tsx -e` getCurrentPrice/getDealAdjustedUnitPrice on `coca_cola_12packs`. `PYTHONPATH=scripts python3 -m unittest tests.test_normalization -v`.
+Related files: `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv`, `scripts/price_tracker/normalization.py`, `src/data/priceTrackerUtils.ts`, `src/homepage/previewData.ts`, `scripts/backfill_price_comparisons.py`, `src/data/weeklyAdPrices.generated.ts`
+
 
 Date discovered: 2026-07-06
 Context: FamilyDealCard grid on `/staging-price-tracker/` — cards still had unequal heights after summary/stock-up were moved to the Details toggle.

@@ -12,6 +12,7 @@ import type { FeedProductView, WeeklyPrice } from "./priceTrackerTypes";
 import {
   formatPreviewPriceLabel,
   formatPreviewStartLabel,
+  isActiveAdWeek,
 } from "./weeklyAdPreview";
 
 export type { BenchmarkBucket, PriceBenchmarkResult };
@@ -251,6 +252,28 @@ export function getLatestWeeklyPrice(product: FeedProductView): WeeklyPrice | nu
   return sorted[sorted.length - 1] ?? null;
 }
 
+/** Prefer the calendar-active ad week; fall back to latest non-preview, then latest. */
+export function getCurrentWeeklyPrice(
+  product: FeedProductView,
+): WeeklyPrice | null {
+  if (product.weeklyPrices.length === 0) {
+    return null;
+  }
+  const sorted = [...product.weeklyPrices].sort((a, b) =>
+    a.weekStart.localeCompare(b.weekStart),
+  );
+  const active = [...sorted]
+    .reverse()
+    .find((week) => isActiveAdWeek(week.weekStart, week.weekEnd));
+  if (active) {
+    return active;
+  }
+  const latestNonPreview = [...sorted]
+    .reverse()
+    .find((week) => !week.isPreviewWeek);
+  return latestNonPreview ?? sorted[sorted.length - 1] ?? null;
+}
+
 export function isProductInPreviewWeek(product: FeedProductView): boolean {
   return getLatestWeeklyPrice(product)?.isPreviewWeek === true;
 }
@@ -260,10 +283,7 @@ export function getCurrentPrice(product: FeedProductView): number | null {
   if (!hasChartableData(product) || baseline == null) {
     return null;
   }
-  const sorted = [...product.weeklyPrices].sort((a, b) =>
-    a.weekStart.localeCompare(b.weekStart),
-  );
-  return sorted[sorted.length - 1]?.price ?? baseline;
+  return getCurrentWeeklyPrice(product)?.price ?? baseline;
 }
 
 export function getLowestObservedPrice(product: FeedProductView): number | null {
@@ -293,6 +313,42 @@ export function formatPrice(price: number | null | undefined): string {
     return "—";
   }
   return `$${price.toFixed(2)}`;
+}
+
+/** Pack count from labels like "12-pack, 12 fl oz cans". */
+export function parsePackUnitCount(
+  sizeLabel: string | undefined,
+): { count: number; unit: string } | null {
+  if (!sizeLabel) {
+    return null;
+  }
+  const packMatch = sizeLabel.match(/(\d+)-pack\b/i);
+  if (!packMatch) {
+    return null;
+  }
+  const count = Number(packMatch[1]);
+  if (!(count > 1)) {
+    return null;
+  }
+  const lower = sizeLabel.toLowerCase();
+  const unit = /\bcan/.test(lower)
+    ? "can"
+    : /\bbag/.test(lower)
+      ? "bag"
+      : "item";
+  return { count, unit };
+}
+
+/** Per-unit price from the current deal-adjusted price (weekly ad), not baseline. */
+export function getDealAdjustedUnitPrice(
+  product: FeedProductView,
+): { price: number; unit: string } | null {
+  const current = getCurrentPrice(product);
+  const pack = parsePackUnitCount(product.subtitle ?? product.sizeLabel);
+  if (current == null || pack == null) {
+    return null;
+  }
+  return { price: current / pack.count, unit: pack.unit };
 }
 
 export function formatDiscount(percent: number | null): string {
@@ -443,9 +499,19 @@ function closeEnoughLabel(feedLabel: string): string {
 export function getFamilyBuyWaitTakeaway(
   product: FeedProductView,
 ): FamilyBuyWaitTakeaway {
+  const preview = isProductInPreviewWeek(product);
   const onSale = isProductOnSale(product);
   const discount = getProductSaleDiscountPercent(product);
   const vsCostco = getGroceryVsCostcoPercent(product);
+
+  if (preview && onSale && discount != null) {
+    if (discount >= MEANINGFUL_SALE_PCT) {
+      return { label: "Strong preview deal when ad starts", tone: "buy" };
+    }
+    if (discount >= GOOD_DEAL_SALE_PCT) {
+      return { label: "Good preview deal when ad starts", tone: "buy" };
+    }
+  }
 
   if (onSale && discount != null) {
     if (discount >= MEANINGFUL_SALE_PCT) {
@@ -459,7 +525,9 @@ export function getFamilyBuyWaitTakeaway(
   if (product.costcoComparable && vsCostco != null) {
     if (vsCostco <= 0) {
       return {
-        label: `${product.feedLabel} wins this week`,
+        label: preview
+          ? `${product.feedLabel} may win when ad starts`
+          : `${product.feedLabel} wins this week`,
         tone: "grocery",
       };
     }
@@ -470,34 +538,59 @@ export function getFamilyBuyWaitTakeaway(
   }
 
   if (!onSale) {
-    return { label: "Wait for a sale", tone: "wait" };
+    return {
+      label: preview ? "Wait for ad to start" : "Wait for a sale",
+      tone: "wait",
+    };
   }
 
-  return { label: "Regular price this week", tone: "neutral" };
+  return {
+    label: preview ? "Preview regular price" : "Regular price this week",
+    tone: "neutral",
+  };
 }
 
 /** Price line for collapsed family cards — current sale or usual price. */
 export function getFamilyUsuallyLabel(product: FeedProductView): string {
+  const preview = isProductInPreviewWeek(product);
+  const latestWeek = getLatestWeeklyPrice(product);
+  const weekStart = latestWeek?.weekStart ?? "";
+
   if (product.salePriceRange) {
     const { min, max } = product.salePriceRange;
     if (Math.abs(min - max) < 0.01) {
-      return `${formatPrice(min)} each this week`;
+      const label = `${formatPrice(min)} each`;
+      return preview && weekStart
+        ? formatPreviewPriceLabel(label, weekStart)
+        : `${label} this week`;
     }
     const sale = formatPriceRange(product.salePriceRange);
-    return sale ? `${sale} this week` : formatPrice(min);
+    const label = sale ? `${sale} each` : formatPrice(min);
+    return preview && weekStart
+      ? formatPreviewPriceLabel(label, weekStart)
+      : `${label} this week`;
   }
 
   const current = getCurrentPrice(product);
   const discount = getDiscountPercent(product);
   if (current != null && discount != null && discount >= GOOD_DEAL_SALE_PCT) {
-    return `${formatPrice(current)} this week`;
+    const label = formatPrice(current);
+    return preview && weekStart
+      ? formatPreviewPriceLabel(label, weekStart)
+      : `${label} this week`;
   }
 
   if (product.priceRange) {
     const regular = formatPriceRange(product.priceRange);
     if (regular) {
-      return `Usually ${regular}`;
+      return preview && weekStart
+        ? `Preview usual ${regular}`
+        : `Usually ${regular}`;
     }
+  }
+
+  if (preview && weekStart && current != null) {
+    return formatPreviewPriceLabel(formatPrice(current), weekStart);
   }
   return `Usually ${formatPrice(current)}`;
 }
@@ -712,7 +805,11 @@ export function getFamilyExpandedFootnote(
 
 export type FamilyStockUpRating = "Great" | "Good" | "Great if buying full promo quantity";
 
-export type FamilyStatus = "On sale this week" | "Promo deal this week";
+export type FamilyStatus =
+  | "On sale this week"
+  | "Promo deal this week"
+  | "Preview sale"
+  | "Preview promo";
 
 const MULTI_BUY_OFFER_RE =
   /\b\d+\s+for\s+\$|\bwhen you buy\s+\d+|\bbuy\s+\d+.*get/i;
@@ -736,11 +833,12 @@ export function getFamilyStatus(product: FeedProductView): FamilyStatus | null {
     return null;
   }
 
+  const preview = isProductInPreviewWeek(product);
   const offerText = latestFamilyOfferText(product);
   if (offerText && MULTI_BUY_OFFER_RE.test(offerText)) {
-    return "Promo deal this week";
+    return preview ? "Preview promo" : "Promo deal this week";
   }
-  return "On sale this week";
+  return preview ? "Preview sale" : "On sale this week";
 }
 
 /** Stock-up rating for Family Deal Card (Option 9 pattern). */
@@ -779,7 +877,19 @@ export function getFamilyStockUpRating(
 /** One-line family summary above the price chart. */
 export function getFamilySummary(product: FeedProductView): string {
   const onSale = isProductOnSale(product);
+  const preview = isProductInPreviewWeek(product);
+  const latestWeek = getLatestWeeklyPrice(product);
+  const startLabel = latestWeek?.weekStart
+    ? formatPreviewStartLabel(latestWeek.weekStart)
+    : "soon";
   const name = product.displayName;
+
+  if (preview) {
+    if (onSale) {
+      return `${name} has a preview sale price starting ${startLabel}.`;
+    }
+    return `${name} preview pricing starts ${startLabel}.`;
+  }
 
   if (product.canonicalId === "ben_jerrys_ice_cream") {
     return onSale

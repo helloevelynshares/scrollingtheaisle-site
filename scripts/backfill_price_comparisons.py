@@ -18,6 +18,7 @@ import argparse
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,6 +38,7 @@ from price_comparison.costco_loader import (  # noqa: E402
     load_location_catalog,
     match_costco_item,
 )
+from price_tracker.canonical_families import LEGACY_CANONICAL_TO_FAMILY  # noqa: E402
 
 SQL_OUTPUT = ROOT / "supabase" / "migrations" / "20260617_price_comparisons_seed.sql"
 TS_OUTPUT = ROOT / "src" / "data" / "priceComparisons.generated.ts"
@@ -90,9 +92,26 @@ def latest_effective_price(
 ) -> float | None:
     if not weeks:
         return baseline
+    price_keys = [canonical_id]
+    family_id = LEGACY_CANONICAL_TO_FAMILY.get(canonical_id)
+    if family_id and family_id not in price_keys:
+        price_keys.append(family_id)
+    today = date.today().isoformat()
     sorted_weeks = sorted(weeks, key=lambda w: w["weekStart"])
-    for week in reversed(sorted_weeks):
-        entry = prices.get(canonical_id, {}).get(week["weekStart"])
+    active_weeks = [
+        w for w in sorted_weeks if w["weekStart"] <= today <= w["weekEnd"]
+    ]
+    search_weeks = active_weeks if active_weeks else [
+        w for w in sorted_weeks if w["weekStart"] <= today
+    ]
+    if not search_weeks:
+        search_weeks = sorted_weeks
+    for week in reversed(search_weeks):
+        entry = None
+        for key in price_keys:
+            entry = prices.get(key, {}).get(week["weekStart"])
+            if entry:
+                break
         if not entry:
             continue
         ad_price = entry.get("price")

@@ -27,6 +27,7 @@ import os
 import re
 import sys
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -45,6 +46,11 @@ from price_tracker.canonical_families import (  # noqa: E402
     load_families,
 )
 from price_tracker.normalization import normalize_price  # noqa: E402
+from price_tracker.weekly_ad_preview import (  # noqa: E402
+    build_feed_preview_summary,
+    format_preview_summary,
+    validate_tracker_product_ids_unchanged,
+)
 from price_tracker.yaml_matchers import build_yaml_matchers, tracker_family_ids  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -618,6 +624,7 @@ class RunOptions:
     new_only: bool = False
     dry_run: bool = False
     feeds: set[str] | None = None  # {"Safeway", "Vons"}
+    as_of: date | None = None
 
 
 def feed_weeks_key(feed_label: str) -> str:
@@ -656,6 +663,7 @@ def resolve_run_options(args: argparse.Namespace) -> RunOptions:
         new_only=args.new_only,
         dry_run=args.dry_run,
         feeds=feeds,
+        as_of=date.fromisoformat(args.as_of) if args.as_of else None,
     )
 
 
@@ -902,6 +910,10 @@ def parse_args() -> argparse.Namespace:
         default="all",
         help="Limit to one feed (default: all)",
     )
+    parser.add_argument(
+        "--as-of",
+        help="Override today's date for preview logging (YYYY-MM-DD)",
+    )
     return parser.parse_args()
 
 
@@ -937,6 +949,24 @@ def main() -> None:
 
     if run_families:
         total.add(generate_family_prices(options))
+
+    tracked_ids = set(TRACKER_CANONICAL_IDS)
+    for config in feed_configs:
+        manifest = load_manifest(config.manifest_path)
+        split_items = load_split_items(config.split_items_path, config.banner_filter)
+        _, prices = build_prices(config.feed_label, manifest, split_items)
+        validate_tracker_product_ids_unchanged(tracked_ids, prices.keys())
+        summary = build_feed_preview_summary(
+            config.feed_label,
+            manifest,
+            prices,
+            tracked_ids,
+            as_of=options.as_of,
+            products_before=len(tracked_ids),
+            products_after=len(prices),
+        )
+        if summary:
+            print(format_preview_summary(summary))
 
     print(
         f"\nSummary: extraction=0 (cache only) | "

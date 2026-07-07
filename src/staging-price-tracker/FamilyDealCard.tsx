@@ -34,7 +34,12 @@ type Props = {
 };
 
 function FamilyStatusBadge({ status }: { status: FamilyStatus }) {
-  const tone = status === "Promo deal this week" ? "promo" : "sale";
+  const tone =
+    status === "Promo deal this week" || status === "Preview promo"
+      ? "promo"
+      : status.startsWith("Preview")
+        ? "preview"
+        : "sale";
   return (
     <span className={`family-deal-card__status family-deal-card__status--${tone}`}>
       {status}
