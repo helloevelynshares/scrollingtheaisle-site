@@ -10,6 +10,9 @@ export type { MatchConfidence, CanonicalProduct, TrackerType };
 /** Weekly slot for a single feed + canonical product. */
 export type WeeklyPrice = {
   weekStart: string;
+  weekEnd?: string;
+  /** True when today is before weekStart (upcoming ad week). */
+  isPreviewWeek?: boolean;
   price: number;
   adPrice: number | null;
   /** Upper bound when a deal family spans multiple formats in one week. */

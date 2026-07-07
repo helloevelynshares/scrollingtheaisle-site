@@ -104,8 +104,9 @@ def phrase_to_pattern(phrase: str) -> str:
         else:
             escaped_parts.append(re.escape(part).replace(r"\ ", r"\s+"))
     pattern = "".join(escaped_parts)
-    # Word boundaries for short tokens
-    if len(text) <= 4 and text.isalpha():
+    # Word boundaries prevent substring matches (e.g. "ruffles" matching inside "truffles").
+    # Apply to all text-only patterns; skip patterns with digits (size ranges like "5-13 oz").
+    if not re.search(r"\d", text):
         return rf"\b{pattern}\b"
     return pattern
 

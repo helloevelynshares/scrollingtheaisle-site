@@ -11,6 +11,7 @@ import {
 } from "./priceTrackerUtils";
 import { SAFEWAY_BASELINES } from "./priceTrackerFallback";
 import { VONS_BASELINE_BY_CANONICAL } from "./vonsBaseline.generated";
+import { isPreviewWeek } from "./weeklyAdPreview";
 import {
   WEEKLY_AD_PRICES,
   WEEKLY_AD_WEEKS,
@@ -66,6 +67,7 @@ function effectiveWeeklyPrice(
   entry: GeneratedWeeklyAdPrice | undefined,
   sourceLabel: string,
   weekStart: string,
+  weekEnd: string,
 ): WeeklyPrice {
   const adPrice = entry?.price ?? null;
   const matchConfidence = entry?.confidence ?? null;
@@ -75,6 +77,8 @@ function effectiveWeeklyPrice(
 
   return {
     weekStart,
+    weekEnd,
+    isPreviewWeek: isPreviewWeek(weekStart),
     price: useAd ? adPrice : fallbackPrice,
     adPrice,
     matchConfidence,
@@ -118,6 +122,7 @@ export function buildYamlFamilyFeedProducts(feedId: string): FeedProductView[] {
         byWeek[week.weekStart],
         `${week.sourceLabel} · ${week.sourceFile}`,
         week.weekStart,
+        week.weekEnd,
       ),
     );
 

@@ -9,6 +9,10 @@ import {
   type PriceBenchmarkResult,
 } from "./priceBenchmarks";
 import type { FeedProductView, WeeklyPrice } from "./priceTrackerTypes";
+import {
+  formatPreviewPriceLabel,
+  formatPreviewStartLabel,
+} from "./weeklyAdPreview";
 
 export type { BenchmarkBucket, PriceBenchmarkResult };
 export { computeFeedProductBenchmark };
@@ -237,6 +241,20 @@ export function getCostcoChartRegionLabel(product: FeedProductView): string | nu
   return region ? formatCostcoRegionLabel(region) : null;
 }
 
+export function getLatestWeeklyPrice(product: FeedProductView): WeeklyPrice | null {
+  if (product.weeklyPrices.length === 0) {
+    return null;
+  }
+  const sorted = [...product.weeklyPrices].sort((a, b) =>
+    a.weekStart.localeCompare(b.weekStart),
+  );
+  return sorted[sorted.length - 1] ?? null;
+}
+
+export function isProductInPreviewWeek(product: FeedProductView): boolean {
+  return getLatestWeeklyPrice(product)?.isPreviewWeek === true;
+}
+
 export function getCurrentPrice(product: FeedProductView): number | null {
   const baseline = getEffectiveBaseline(product);
   if (!hasChartableData(product) || baseline == null) {
@@ -332,6 +350,9 @@ export function getFamilyDisplayPrice(product: FeedProductView): string {
 }
 
 export function getFamilyPriceCaption(product: FeedProductView): string {
+  if (isProductInPreviewWeek(product)) {
+    return "Preview";
+  }
   if (product.salePriceRange) {
     return "This week";
   }

@@ -172,10 +172,17 @@ families:
   - Ruffles Cheddar & Sour Cream
   - Ruffles Sour Cream & Onion
   - Ruffles Flamin' Hot
+  - Ruffles potato chips
   keep_separate_from:
   - Simply Ruffles
   - Ruffles Party Size
   - Frito-Lay multipack chips
+  - Lindt
+  - Gourmet Truffles
+  - Lindt Truffles
+  - LINDOR
+  - LINDOR Truffles
+  - chocolate truffles
   notes: ''
   confidence: working
   source_basis:
@@ -538,13 +545,18 @@ families:
   - Häagen-Dazs pint
   - Haagen Dazs pint
   - Häagen-Dazs 14 oz
-  - coffee
-  - vanilla
-  - salted brown butter cookie
+  - Häagen-Dazs ice cream
+  - Haagen Dazs ice cream
   keep_separate_from:
   - Häagen-Dazs bars
   - Dreyer's
   - Ben & Jerry's
+  - Cold Brew Coffee
+  - Nescafé
+  - SToK
+  - Coffee mate
+  - coffee beverage
+  - Simply Orange
   notes: ''
   confidence: working
   source_basis:
@@ -777,6 +789,13 @@ families:
   - mango each
   keep_separate_from:
   - Hass avocados
+  - habanero
+  - Habanero Chicken
+  - chicken
+  - sauce
+  - salsa
+  - mango habanero
+  - prepared meal
   notes: ''
   confidence: working
   source_basis:
@@ -904,6 +923,11 @@ families:
   - spreadable tubs
   - 8 oz specialty butter unless normalized separately
   - plant-based butter
+  - peanut butter
+  - almond butter
+  - nut butter
+  - Skippy
+  - Jif
   notes: Treat 16 oz butter brands as interchangeable for the tracker. Each week, graph the best normalized 16 oz price and
     show the winning brand in details.
   confidence: working
@@ -1081,13 +1105,16 @@ families:
   - Cheerios
   - Cinnamon Toast Crunch
   - Lucky Charms
-  - Chex
+  - Chex cereal
   - Reese's Puffs
   - General Mills cereal
   keep_separate_from:
   - General Mills family size
   - Post cereal
   - Kellogg's cereal
+  - Chex Mix
+  - Rold Gold
+  - Lay's Party Size
   notes: ''
   confidence: working
   source_basis:

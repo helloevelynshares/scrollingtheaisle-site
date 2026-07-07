@@ -222,6 +222,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Ruffles Cheddar & Sour Cream",
       "Ruffles Sour Cream & Onion",
       "Ruffles Flamin' Hot",
+      "Ruffles potato chips",
       "Ruffles"
     ],
     "legacyCanonicalIds": []
@@ -557,9 +558,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "H\u00e4agen-Dazs pint",
       "Haagen Dazs pint",
       "H\u00e4agen-Dazs 14 oz",
-      "coffee",
-      "vanilla",
-      "salted brown butter cookie",
+      "H\u00e4agen-Dazs ice cream",
+      "Haagen Dazs ice cream",
       "H\u00e4agen-Dazs ice cream pints"
     ],
     "legacyCanonicalIds": [
@@ -1063,7 +1063,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Cheerios",
       "Cinnamon Toast Crunch",
       "Lucky Charms",
-      "Chex",
+      "Chex cereal",
       "Reese's Puffs",
       "General Mills cereal",
       "General Mills cereal"
