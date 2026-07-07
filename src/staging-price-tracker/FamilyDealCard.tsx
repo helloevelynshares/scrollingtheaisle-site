@@ -4,6 +4,8 @@
  */
 import { useState } from "react";
 import {
+  computeFeedProductBenchmark,
+  formatPrice,
   getFamilyBuyWaitTakeaway,
   getFamilyCostcoComparisonDetails,
   getFamilyEffectivePriceLabel,
@@ -122,6 +124,7 @@ function FamilyVarietiesDrawer({ product }: { product: FeedProductView }) {
 
 export function FamilyDealCard({ product }: Props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
   const status = getFamilyStatus(product);
   const saleLabel = getFamilyUsuallyLabel(product);
   const effectivePrice = getFamilyEffectivePriceLabel(product);
@@ -132,6 +135,11 @@ export function FamilyDealCard({ product }: Props) {
   const showVarietiesHint = hasFamilyVarieties(product);
   const onSale = isProductOnSale(product);
   const productMeta = product.subtitle ?? product.sizeLabel;
+
+  const benchmark = computeFeedProductBenchmark(product);
+  const atlPrice = benchmark.allTimeLowUnitPrice;
+  const isAtl = benchmark.benchmarkBucket === "all-time low";
+  const showAtlHint = atlPrice != null && benchmark.observationCount >= 2;
 
   return (
     <article className="price-tracker-card price-tracker-card--family family-deal-card">
@@ -153,20 +161,24 @@ export function FamilyDealCard({ product }: Props) {
         >
           {saleLabel}
         </p>
-        {effectivePrice ? (
-          <p className="family-deal-card__effective">{effectivePrice}</p>
-        ) : null}
         {usualRange ? (
           <p className="family-deal-card__usual">{usualRange}</p>
         ) : null}
+        {showAtlHint ? (
+          <p
+            className={`family-deal-card__atl-hint${
+              isAtl ? " family-deal-card__atl-hint--match" : ""
+            }`}
+          >
+            {isAtl ? "All-time low" : "All-time low:"}{" "}
+            <span className="family-deal-card__atl-price">
+              {formatPrice(atlPrice)}
+            </span>
+          </p>
+        ) : null}
       </div>
 
-      <FamilyStockUpBadge rating={stockUp} />
-
-      <p className="family-deal-card__summary">{summary}</p>
-
       <div className="family-deal-card__chart">
-        <p className="family-deal-card__section-label">Price history</p>
         <PriceTrendChart product={product} />
       </div>
 
@@ -184,6 +196,27 @@ export function FamilyDealCard({ product }: Props) {
       >
         {takeaway.label}
       </p>
+
+      <button
+        type="button"
+        className={`family-deal-card__details-toggle${
+          detailsOpen ? " family-deal-card__details-toggle--open" : ""
+        }`}
+        aria-expanded={detailsOpen}
+        onClick={() => setDetailsOpen((o) => !o)}
+      >
+        {detailsOpen ? "Less" : "Details"}
+      </button>
+
+      {detailsOpen ? (
+        <div className="family-deal-card__details-panel">
+          <FamilyStockUpBadge rating={stockUp} />
+          {effectivePrice ? (
+            <p className="family-deal-card__effective">{effectivePrice}</p>
+          ) : null}
+          <p className="family-deal-card__summary">{summary}</p>
+        </div>
+      ) : null}
 
       {showVarietiesHint ? (
         <button

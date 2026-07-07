@@ -152,6 +152,10 @@ export type UnifiedChartRow = {
   priceType: string;
   isBaselineFallback: boolean;
   costcoPrice: number | null;
+  /** e.g. "friday_only" — forwarded from WeeklyPrice for tooltip Option A */
+  availabilityType?: string | null;
+  /** Promo copy e.g. "3 for $5 Friday July 3rd" — forwarded for tooltip Option A */
+  promoNote?: string | null;
 };
 
 function addDays(isoDate: string, days: number): string {
@@ -223,6 +227,8 @@ export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow
       point.weekStart === "baseline"
         ? null
         : (costcoByWeek.get(point.weekStart) ?? flatCostcoPrice),
+    availabilityType: point.availabilityType ?? null,
+    promoNote: point.promoNote ?? null,
   }));
 }
 

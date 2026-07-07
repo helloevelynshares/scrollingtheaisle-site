@@ -56,6 +56,42 @@ function getRangeTooltipLabel(): string {
   return "Sale price range";
 }
 
+/** Return "Fri Jul 3" label for the Friday that falls in the given ISO week start. */
+function getFridayOfWeek(weekStart: string): string | null {
+  if (!weekStart || weekStart === "baseline") {
+    return null;
+  }
+  const date = new Date(`${weekStart}T12:00:00`);
+  const dayOfWeek = date.getDay(); // 0=Sun…6=Sat
+  const daysToFriday = (5 - dayOfWeek + 7) % 7;
+  date.setDate(date.getDate() + daysToFriday);
+  const weekday = date.toLocaleDateString("en-US", { weekday: "short" });
+  const month = date.toLocaleDateString("en-US", { month: "short" });
+  const dayOfMonth = date.getDate();
+  return `${weekday} ${month} ${dayOfMonth}`;
+}
+
+/**
+ * Return "Jul 1–7" label for the 7-day window starting at weekStart.
+ * Handles month boundaries (e.g. "Jun 30–Jul 6").
+ */
+function formatWeekRangeLabel(weekStart: string): string {
+  if (!weekStart || weekStart === "baseline") {
+    return weekStart;
+  }
+  const start = new Date(`${weekStart}T12:00:00`);
+  const end = new Date(`${weekStart}T12:00:00`);
+  end.setDate(end.getDate() + 6);
+  const startMonth = start.toLocaleDateString("en-US", { month: "short" });
+  const endMonth = end.toLocaleDateString("en-US", { month: "short" });
+  const startDay = start.getDate();
+  const endDay = end.getDate();
+  if (startMonth === endMonth) {
+    return `${startMonth} ${startDay}–${endDay}`;
+  }
+  return `${startMonth} ${startDay}–${endMonth} ${endDay}`;
+}
+
 function PriceChartTooltip({
   active,
   payload,
@@ -83,8 +119,18 @@ function PriceChartTooltip({
   const row = entry.payload as UnifiedChartRow | RangeChartRow;
   const dataKey = String(entry.dataKey ?? "price");
 
+  // Look up per-week metadata (availabilityType, promoNote) for the hovered week.
+  const weeklyEntry =
+    row.weekStart !== "baseline"
+      ? product.weeklyPrices.find((w) => w.weekStart === row.weekStart)
+      : null;
+
   let seriesLabel: string;
   let priceLabel: string;
+  let promoLine: string | null = null;
+  // Overrides the date header for limited-day deals.
+  let displayDateLabel: string = row.label;
+  let isLimitedDay = false;
 
   if (dataKey === "costcoPrice") {
     const costcoRow = row as UnifiedChartRow;
@@ -106,19 +152,54 @@ function PriceChartTooltip({
     priceLabel = formatPrice(rangeRow.price);
   } else {
     const groceryRow = row as UnifiedChartRow;
-    seriesLabel = getGroceryTooltipLabel(product, groceryRow);
+    const baseGroceryLabel = getGroceryTooltipLabel(product, groceryRow);
     priceLabel = formatPrice(groceryRow.groceryPrice);
+
+    const avType = weeklyEntry?.availabilityType;
+
+    if (avType === "friday_only") {
+      // Show the week range (Jul 1–7) and the specific day (Fri Jul 3) so it's
+      // crystal-clear this deal is NOT available all week.
+      isLimitedDay = true;
+      const weekRange = formatWeekRangeLabel(row.weekStart);
+      const fridayLabel = getFridayOfWeek(row.weekStart);
+      displayDateLabel = weekRange;
+      seriesLabel = `${product.feedLabel} $5 Friday`;
+      if (weeklyEntry?.promoNote) {
+        promoLine = fridayLabel
+          ? `${weeklyEntry.promoNote} · ${fridayLabel} only`
+          : `${weeklyEntry.promoNote} · Fri only`;
+      } else {
+        promoLine = fridayLabel
+          ? `${fridayLabel} only · not valid all week`
+          : "Friday only · not valid all week";
+      }
+    } else if (weeklyEntry?.promoNote) {
+      seriesLabel = baseGroceryLabel;
+      promoLine = weeklyEntry.promoNote;
+    } else {
+      seriesLabel = baseGroceryLabel;
+    }
   }
 
   return (
     <div
       className={`price-tracker-chart-tooltip${
         compact ? " price-tracker-chart-tooltip--compact" : ""
-      }`}
+      }${isLimitedDay ? " price-tracker-chart-tooltip--limited" : ""}`}
     >
-      <div className="price-tracker-chart-tooltip-date">{row.label}</div>
+      <div className="price-tracker-chart-tooltip-date">{displayDateLabel}</div>
       <div className="price-tracker-chart-tooltip-series">{seriesLabel}</div>
       <div className="price-tracker-chart-tooltip-price">{priceLabel}</div>
+      {promoLine ? (
+        <div
+          className={`price-tracker-chart-tooltip-promo${
+            isLimitedDay ? " price-tracker-chart-tooltip-promo--limited" : ""
+          }`}
+        >
+          {promoLine}
+        </div>
+      ) : null}
     </div>
   );
 }

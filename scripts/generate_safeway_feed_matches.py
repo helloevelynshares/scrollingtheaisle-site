@@ -6,12 +6,16 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CANDIDATES = ROOT / "data" / "processed" / "safeway_baseline_candidates_v1.csv"
 FALLBACK_TS = ROOT / "src" / "data" / "priceTrackerFallback.ts"
 SOURCE_LABEL = "Safeway search result CSV"
+
+sys.path.insert(0, str(ROOT / "scripts"))
+from price_tracker.baseline_per_lb import normalize_baseline_price
 
 
 def parse_price(raw: str) -> float | None:
@@ -46,6 +50,14 @@ def ts_entry(row: dict[str, str], price: float) -> str:
     )
 
 
+def effective_price(cid: str, product_name: str, raw_price: float) -> float:
+    """Return the per-lb price for per-lb families; otherwise return raw_price."""
+    normalized, was_normalized = normalize_baseline_price(cid, product_name, raw_price)
+    if was_normalized:
+        print(f"  [per-lb] {cid}: ${raw_price} / product '{product_name}' → ${normalized}/lb")
+    return normalized
+
+
 def merge_into_fallback(new_entries: dict[str, dict[str, str]]) -> None:
     text = FALLBACK_TS.read_text(encoding="utf-8")
     marker = "SAFEWAY_BASELINES"
@@ -77,9 +89,10 @@ def merge_into_fallback(new_entries: dict[str, dict[str, str]]) -> None:
     for cid, row in sorted(new_entries.items()):
         if cid in existing_ids:
             continue
-        price = parse_price(row.get("price", ""))
-        if price is None:
+        raw_price = parse_price(row.get("price", ""))
+        if raw_price is None:
             continue
+        price = effective_price(cid, row.get("product_name", ""), raw_price)
         additions.append(ts_entry(row, price))
 
     if not additions:
@@ -108,7 +121,8 @@ def main() -> None:
         raise RuntimeError(f"No rank-1 rows in {path}")
 
     for cid, row in sorted(rank1.items()):
-        price = parse_price(row.get("price", ""))
+        raw_price = parse_price(row.get("price", ""))
+        price = effective_price(cid, row.get("product_name", ""), raw_price) if raw_price is not None else None
         print(f"{cid}: {price} — {row.get('product_name', '')[:60]}")
 
     if args.merge_fallback:

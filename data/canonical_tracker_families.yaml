@@ -149,10 +149,14 @@ families:
   - Kettle Brand Backyard Barbeque
   - Kettle Brand Salt & Vinegar
   - Kettle Brand Honey Dijon
+  - Kettle Brand Chips
+  - Kettle Brand potato chips
   keep_separate_from:
   - Lay's Kettle Cooked
   - store-brand kettle chips
-  notes: ''
+  - Kettle Brand Chips Party Size
+  - Party Size
+  notes: 'Party Size (11+ oz) is a different SKU; tracked bags are 6.5–8.5 oz. Exclude ceiling/Up-To prices.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

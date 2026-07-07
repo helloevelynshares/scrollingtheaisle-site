@@ -439,6 +439,18 @@ Fix / workaround:
 How to verify: Safeway tab → Ribeye chart baseline ~$12.99; Vons tab → Ribeye chart baseline ~$7.99. `npm run build:price-tracker`.
 Related files: `src/data/priceTrackerFallback.ts` (SAFEWAY_BASELINES), `src/data/vonsBaseline.generated.ts`, `scripts/price_tracker/baseline_per_lb.py`, `scripts/generate_safeway_feed_matches.py`, `scripts/generate_vons_feed_matches.py`
 
+### Safeway/Vons baselines for per-lb products were stored as total package price (not per-lb)
+
+Date discovered: 2026-07-06
+Context: Safeway and Vons baseline prices in `priceTrackerFallback.ts` and `vonsBaseline.generated.ts` for per-lb tracker families (ribeye, tri-tip, chicken, cherries, grapes).
+What happened: `generate_safeway_feed_matches.py` and `generate_vons_feed_matches.py` stored the raw pgmsearch package price as the baseline. For per-lb families (YAML: `size_format_subtitle: per lb`), this meant the total package price was used as the chart reference line. Example: "USDA Choice Bone In Beef Rib Steak Mega Pack - 3.5 Lb" → pgmsearch price $45.47 stored as baseline, but chart scale is per-lb; correct baseline is $45.47 / 3.5 = $12.99/lb. Weekly ad prices ($7.99, $9.99/lb) were already correct, so the chart reference line was 4-5x above the sale prices — visually broken.
+**Affected products (Safeway):** ribeye_steak (45.47→12.99), cherries_per_lb (10.48→5.99), chicken_breast_per_lb (20.23→8.99), chicken_thigh_per_lb (8.97→2.99), tri_tip_roast (47.47→18.99), grapes (9.98→4.99).
+**Affected products (Vons):** ribeye_steak (23.97→7.99).
+Fix / workaround: Added `scripts/price_tracker/baseline_per_lb.py` (`normalize_baseline_price()`): detects per-lb YAML families via `size_format_subtitle`, extracts package weight from product name (e.g. "- 3.5 Lb"), and divides. Both generator scripts now call this before writing the TS value. Manually corrected all existing per-lb baselines in `priceTrackerFallback.ts` and `vonsBaseline.generated.ts`.
+Web verification: Direct Safeway fetch blocked by Imperva (expired cookie). Instacart shows Safeway bone-in ribeye at $18.99/lb (promotional, sale ending 7/7/2026). Our $12.99/lb baseline comes from the pgmsearch crawl and may reflect a prior sale period; the regular everyday price is likely $18.99+/lb. To re-crawl at the current regular price: refresh `SAFEWAY_COOKIE`, run `python scripts/seed_safeway_baseline.py --query "ribeye steak"`, then `python scripts/generate_safeway_feed_matches.py --merge-fallback`.
+How to verify: `python -c "from price_tracker.baseline_per_lb import normalize_baseline_price; print(normalize_baseline_price('ribeye_steak','USDA Choice Bone In Beef Rib Steak Mega Pack - 3.5 Lb',45.47))"` → `(12.99, True)`.
+Related files: `scripts/price_tracker/baseline_per_lb.py`, `scripts/generate_safeway_feed_matches.py`, `scripts/generate_vons_feed_matches.py`, `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`
+
 ### normalize_per_lb divided price by itself for all "$X lb" offer texts (per_lb bug)
 
 Date discovered: 2026-07-06

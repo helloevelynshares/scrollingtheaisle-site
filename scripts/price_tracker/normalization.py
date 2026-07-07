@@ -48,13 +48,44 @@ def _multi_buy_unit_price(row: dict[str, str], price: float) -> float | None:
     return None
 
 
+def _buy_x_get_y_unit_price(row: dict[str, str], price: float) -> float | None:
+    """Compute effective per-unit price for buy-X-get-Y-free deals.
+
+    E.g. 'BUY 2 GET 3 FREE' with ref price $5.49 → pay for 2, receive 5 → $2.20/unit.
+    E.g. 'BUY 1 GET 1 FREE' (BOGO) → pay for 1, receive 2 → price/2.
+    """
+    promo = _promo_text(row)
+    # "buy N get M free" / "buy N, get M free" patterns
+    m = _re.search(r"buy\s+(\d+)[,\s]+get\s+(\d+)\s+free", promo)
+    if m:
+        buy_count = float(m.group(1))
+        free_count = float(m.group(2))
+        total = buy_count + free_count
+        if total > 0 and price > 0:
+            return round(price * buy_count / total, 2)
+    # BOGO: "buy 1 get 1 free" already covered above; catch bare "bogo" keyword
+    if _re.search(r"\bbogo\b", promo) and price > 0:
+        return round(price / 2, 2)
+    return None
+
+
 def base_normalize_unit_price(row: dict[str, str]) -> float | None:
     price = _parse_price(row.get("advertised_price"))
     if price is None:
         return None
     basis = (row.get("price_basis") or "").lower()
     promo = _promo_text(row)
-    if basis == "multi_buy" and not _re.search(r"(when you )?buy\s+\d+", promo):
+    # Handle B2G3F / BOGO: compute effective per-unit price from reference price
+    if basis in {"bogo", "buy_x_get_y"}:
+        unit = _buy_x_get_y_unit_price(row, price)
+        if unit is not None:
+            return unit
+    if basis == "multi_buy":
+        # Always try explicit "N for $X" normalization first (e.g. "PICK 4 FOR $20 WHEN YOU BUY 4").
+        # The old guard `not re.search(r"(when you )?buy N")` skipped this for bundle deals that
+        # restate the quantity condition — those still need the per-unit divide.
+        # Only skip if there is no "N for $X" pattern AND there is a "save $X when you buy N"
+        # style (discount trigger rather than total price), i.e. _multi_buy_unit_price returns None.
         unit = _multi_buy_unit_price(row, price)
         if unit is not None:
             return unit
@@ -85,11 +116,22 @@ def normalize_per_lb(row: dict[str, str]) -> float | None:
     price = base_normalize_unit_price(row)
     if price is None:
         return None
+    # If the CSV explicitly says the price is already per-lb, no weight conversion needed.
+    # Weekly ad extraction sets price_basis="per_lb" when the ad shows a per-lb rate
+    # (e.g. "Ribeye Steak $9.99 LB", "Grapes $2.49 lb"). Without this guard,
+    # _extract_lb_weight() would find "9.99" before "lb" in the offer text and divide
+    # the price by itself, yielding $1.00.
+    if (row.get("price_basis") or "").lower() == "per_lb":
+        return price
     text = _promo_text(row)
     if _re.search(r"per\s*lb|/lb|lb bag", text):
         return price
     lbs = _extract_lb_weight(text)
     if lbs and lbs > 0:
+        # Safety check: if the extracted weight equals the advertised price the offer text
+        # likely says "$X/lb" not "weighs X lbs" — skip division to avoid yielding $1.00.
+        if price > 0 and abs(lbs - price) / price < 0.02:
+            return price
         return round(price / lbs, 2)
     return price
 

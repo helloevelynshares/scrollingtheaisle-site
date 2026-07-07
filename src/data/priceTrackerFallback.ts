@@ -58,17 +58,17 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Cheez-It DUOZ Baked Snack Crackers Sharp Cheddar and Parmesan Lunch Snacks - 12.4 Oz",
   },
   "cherries_per_lb": {
-    price: 10.48,
+    price: 5.99,
     source: "Safeway search result CSV",
     retailerProductName: "Red Cherries - 1.75 Lb",
   },
   "chicken_breast_per_lb": {
-    price: 20.23,
+    price: 8.99,
     source: "Safeway search result CSV",
     retailerProductName: "Foster Farms Free Range Boneless Skinless Chicken Breast Fillets - 2.25 Lb",
   },
   "chicken_thigh_per_lb": {
-    price: 8.97,
+    price: 2.99,
     source: "Safeway search result CSV",
     retailerProductName: "Signature Select Chicken Thigh Boneless Skinless Value Pack - 3 lb",
   },
@@ -203,7 +203,7 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Nature Valley Protein Granola Oats N Honey - 11 Oz",
   },
   "ribeye_steak": {
-    price: 45.47,
+    price: 12.99,
     source: "Safeway search result CSV",
     retailerProductName: "USDA Choice Bone In Beef Rib Steak Mega Pack - 3.5 Lb",
   },
@@ -263,7 +263,7 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Thomas Plain Bagels 6 Count - 18 OZ",
   },
   "tri_tip_roast": {
-    price: 47.47,
+    price: 18.99,
     source: "Safeway search result CSV",
     retailerProductName: "USDA Choice Beef Loin Tri Tip Roast - 2.5 Lb",
   },
@@ -333,7 +333,7 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Frito Lay Classic Mix Variety Pack - 18 Count",
   },
   "grapes": {
-    price: 9.98,
+    price: 4.99,
     source: "Safeway search result CSV",
     retailerProductName: "Green Seedless Grapes Prepacked Bag - 2 Lb",
   },
@@ -380,6 +380,8 @@ function effectiveWeeklyPrice(
     offerText: entry?.offerText ?? undefined,
     isBaselineFallback: !useAd,
     sourceLabel,
+    availabilityType: entry?.availabilityType ?? undefined,
+    promoNote: entry?.promoNote ?? undefined,
   };
 }
 

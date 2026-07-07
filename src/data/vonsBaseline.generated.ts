@@ -60,7 +60,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "cherries_per_lb": {
-    "baselinePrice": 10.48,
+    "baselinePrice": 5.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "184140091",
     "upc": "0048414009101",
@@ -68,7 +68,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "LB"
   },
   "chicken_breast_per_lb": {
-    "baselinePrice": 10.47,
+    "baselinePrice": 2.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "971290124",
     "upc": "0020059200000",
@@ -76,7 +76,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "LB"
   },
   "chicken_thigh_per_lb": {
-    "baselinePrice": 8.97,
+    "baselinePrice": 2.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "960139991",
     "upc": "0020786700000",
@@ -292,7 +292,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "ribeye_steak": {
-    "baselinePrice": 23.97,
+    "baselinePrice": 7.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "960109089",
     "upc": "0020204500000",
@@ -388,7 +388,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "tri_tip_roast": {
-    "baselinePrice": 17.47,
+    "baselinePrice": 4.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "960115330",
     "upc": "0020213700000",
@@ -500,7 +500,7 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "QUART"
   },
   "grapes": {
-    "baselinePrice": 7.98,
+    "baselinePrice": 3.99,
     "baselineSource": "Vons search result CSV (rank 1)",
     "retailerProductId": "184100014",
     "upc": "0048410001401",

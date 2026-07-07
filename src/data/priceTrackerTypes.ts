@@ -19,6 +19,10 @@ export type WeeklyPrice = {
   sourceLabel?: string;
   offerText?: string;
   isBaselineFallback: boolean;
+  /** e.g. "friday_only", "short_term_dip" — from split_offer_items availability_type_guess */
+  availabilityType?: string | null;
+  /** Promotional copy from split_offer_items promo_text, e.g. "3 for $5 Friday July 3rd" */
+  promoNote?: string | null;
 };
 
 export type FamilyMemberPriceView = {

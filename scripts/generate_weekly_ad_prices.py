@@ -382,6 +382,8 @@ def build_family_prices(
                     "price": None,
                     "offerText": None,
                     "confidence": None,
+                    "availabilityType": None,
+                    "promoNote": None,
                 }
                 continue
 
@@ -390,6 +392,8 @@ def build_family_prices(
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, matcher),
+                "availabilityType": best.get("availability_type_guess") or None,
+                "promoNote": best.get("promo_text") or None,
             }
 
         for matcher in member_matchers:
@@ -401,6 +405,8 @@ def build_family_prices(
                     "price": None,
                     "offerText": None,
                     "confidence": None,
+                    "availabilityType": None,
+                    "promoNote": None,
                 }
                 continue
 
@@ -415,6 +421,8 @@ def build_family_prices(
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, pseudo),
+                "availabilityType": best.get("availability_type_guess") or None,
+                "promoNote": best.get("promo_text") or None,
             }
 
     return weeks, family_prices, member_prices
@@ -511,6 +519,8 @@ def build_prices(
                     "price": None,
                     "offerText": None,
                     "confidence": None,
+                    "availabilityType": None,
+                    "promoNote": None,
                 }
                 continue
 
@@ -519,6 +529,8 @@ def build_prices(
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
                 "confidence": match_confidence(best, matcher),
+                "availabilityType": best.get("availability_type_guess") or None,
+                "promoNote": best.get("promo_text") or None,
             }
 
     return weeks, prices
@@ -577,6 +589,8 @@ export type GeneratedWeeklyAdPrice = {{
   price: number | null;
   offerText: string | null;
   confidence: "high" | "medium" | "low" | null;
+  availabilityType?: string | null;
+  promoNote?: string | null;
 }};
 
 export const {export_weeks}: WeeklyAdWeek[] = {weeks_json};

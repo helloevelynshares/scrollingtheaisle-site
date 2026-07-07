@@ -200,6 +200,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Kettle Brand Backyard Barbeque",
       "Kettle Brand Salt & Vinegar",
       "Kettle Brand Honey Dijon",
+      "Kettle Brand Chips",
+      "Kettle Brand potato chips",
       "Kettle Brand potato chips"
     ],
     "legacyCanonicalIds": [

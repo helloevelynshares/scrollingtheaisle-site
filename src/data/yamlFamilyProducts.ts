@@ -82,6 +82,8 @@ function effectiveWeeklyPrice(
     offerText: entry?.offerText ?? undefined,
     isBaselineFallback: !useAd,
     sourceLabel,
+    availabilityType: entry?.availabilityType ?? undefined,
+    promoNote: entry?.promoNote ?? undefined,
   };
 }
 
