@@ -16,7 +16,7 @@
     "generate:vons-feed-matches": "python3 scripts/generate_vons_feed_matches.py",
     "import:costco-data": "python3 scripts/price_comparison/import_costco_data.py",
     "generate:price-comparisons": "python3 scripts/backfill_price_comparisons.py",
-    "build:price-tracker": "npm run generate:weekly-ad-prices && npm run generate:price-tracker-seed && npm run generate:price-comparisons && vite build && vite build --config vite.admin.config.ts && node scripts/sync-price-tracker-dist.mjs && node scripts/sync-admin-dist.mjs && node scripts/verify-price-tracker-build.mjs",
+    "build:price-tracker": "npm run generate:weekly-ad-prices && npm run generate:price-tracker-seed && npm run generate:price-comparisons && vite build && vite build --config vite.admin.config.ts && vite build --config vite.admin-stores.config.ts && node scripts/sync-price-tracker-dist.mjs && node scripts/sync-admin-dist.mjs && node scripts/sync-admin-stores-dist.mjs && node scripts/verify-price-tracker-build.mjs",
     "verify:price-tracker": "node scripts/verify-price-tracker-build.mjs",
     "generate:homepage-preview": "node scripts/generate_homepage_preview.mjs",
     "preview:homepage": "python3 -m http.server 8000 --bind 127.0.0.1"

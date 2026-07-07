@@ -9,3 +9,6 @@ verify_jwt = false
 
 [functions.admin-suggestion-actions]
 verify_jwt = false
+
+[functions.admin-store-actions]
+verify_jwt = false

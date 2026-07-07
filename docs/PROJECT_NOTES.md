@@ -148,7 +148,10 @@ Deploy admin Edge Functions and set secret:
 supabase secrets set ADMIN_PASSWORD=your-secret
 supabase functions deploy validate-admin
 supabase functions deploy admin-suggestion-actions
+supabase functions deploy admin-store-actions
 ```
+
+**Important:** `supabase/config.toml` must set `verify_jwt = false` for all three admin functions. If `admin-store-actions` is deployed without it, the Supabase gateway rejects the custom HMAC bearer token (`UNAUTHORIZED_INVALID_JWT_FORMAT`) and `/admin/stores/` sign-in appears to hang or immediately bounce back with a session error after password validation succeeds.
 
 Apply migration: `supabase db push` or run SQL in Supabase dashboard.
 
@@ -200,9 +203,9 @@ Living notes rule: `.cursor/rules/project-notes.mdc` — agents should read and 
 Date discovered: 2026-07-07
 Context: Homepage hero store suggestion UI — was 4 layout variants saving to localStorage only.
 What happened: Needed a single compact chips layout wired to the same moderated vote pattern as tracker item voting (`tracker_vote_items`).
-Fix / workaround: New table `store_vote_items` + RPCs `vote_on_store(uuid)` and `submit_store_suggestion(text, text)` in `supabase/migrations/20260707_store_vote_items.sql`. Homepage (`index.html`, `homepage.js`) uses Supabase JS CDN; chips vote on approved seed stores (Trader Joe's, Whole Foods, Sprouts, Kroger); custom form requires store name, optional city → `pending` for review. Client dedupes via `localStorage` key `sta_store_votes`. **Admin UI** (`/admin/suggestions/`) still only moderates `tracker_vote_items` — approve store pending rows via Supabase SQL/dashboard until admin is extended.
-How to verify: Apply migration (`supabase db push` or run SQL in dashboard). `npm run preview:homepage` → http://127.0.0.1:8000/ → click a chip → success toast; custom store → moderation message. Check `store_vote_items.vote_count` increments.
-Related files: `supabase/migrations/20260707_store_vote_items.sql`, `index.html`, `homepage.js`, `styles.css`
+Fix / workaround: New table `store_vote_items` + RPCs `vote_on_store(uuid)` and `submit_store_suggestion(text, text)` in `supabase/migrations/20260707_store_vote_items.sql`. Homepage (`index.html`, `homepage.js`) uses Supabase JS CDN; chips vote on approved seed stores (Trader Joe's, Whole Foods, Sprouts, Kroger); custom form requires store name, optional city → `pending` for review. Client dedupes via `localStorage` key `sta_store_votes`. **Admin UI** at `/admin/stores/` (password via `validate-admin` + `admin-store-actions` Edge Function) — approve/reject/merge pending rows before they appear on the homepage voting list.
+How to verify: Apply migration (`supabase db push` or run SQL in dashboard). Deploy `admin-store-actions` with `verify_jwt = false` (see `supabase/config.toml`). Commit `admin/stores/` build output and push for GitHub Pages. `npm run preview:homepage` → http://127.0.0.1:8000/ → click a chip → success toast; custom store → moderation message. Approve in `/admin/stores/` → store appears for public voting. Check `store_vote_items.vote_count` increments.
+Related files: `supabase/migrations/20260707_store_vote_items.sql`, `supabase/functions/admin-store-actions/`, `src/admin/stores/`, `index.html`, `homepage.js`, `styles.css`
 
 ### Homepage tracker link copy (variant 3 chosen)
 
@@ -212,6 +215,15 @@ What happened: Static "Price trackers" label + "Safeway price tracker" buttons d
 Fix / workaround: Final copy is static in `index.html` hero tracker card — intro: "Hop into the live aisles we've got going:"; buttons: "Scroll through the Safeway aisle" / "Scroll through the Vons aisle". Exploration switcher (`TRACKER_COPY_VARIANTS`, `?trackerCopyVariant=`, `sta_tracker_copy_variant`) removed for production. Store vote copy: "Where should we track prices next?" + lead about voting for where to add tracking.
 How to verify: `npm run preview:homepage` → http://127.0.0.1:8000/ → hero shows variant 3 copy; no Copy 1–5 switcher.
 Related files: `index.html`, `homepage.js`, `styles.css` (`.hub-hero-trackers-intro`)
+
+### Homepage unstyled + old hero copy (stale cache / dead preview server)
+
+Date discovered: 2026-07-07  
+Context: Safari preview at http://127.0.0.1:8000/ showed Times New Roman, plain blue links, old "Safeway price tracker" / "Vons price tracker" buttons, no store-vote module.  
+What happened: Two issues stacked: (1) **stale HTML** — browser cached `index.html` from commit `222a841` (before store-vote + variant-3 copy in `a6a8aa7`); (2) **CSS not applied** — preview server not running (`curl` → connection refused) and/or browser cached a failed `styles.css` request from an earlier deploy window. Commit `5e7a525` fixed this with `/styles.css?v=hub1` but `fab8fdd` reverted to relative paths. `styles.css` itself has no syntax errors (3565 lines, braces balanced). Production https://scrollingtheaisle.com/ serves current HTML + CSS 200.  
+Fix / workaround: Re-applied root-absolute cache-busted asset paths: `/styles.css?v=hub2`, `/homepage.js?v=hub2`, `/data/homepage-preview.generated.json`. Run **`npm run preview:homepage`** in your own terminal (repo root) and hard-refresh (Cmd+Shift+R). Do not open `index.html` via `file://`.  
+How to verify: `curl -s http://127.0.0.1:8000/ | grep hub2` shows cache-busted links; page shows styled hero, "Scroll through the … aisle" CTAs, store-vote chips.  
+Related files: `index.html`, `homepage.js`, `styles.css`, `package.json` (`preview:homepage`)
 
 
 Date discovered: 2026-07-06  
