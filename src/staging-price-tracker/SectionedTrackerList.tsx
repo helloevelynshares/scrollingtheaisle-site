@@ -3,6 +3,7 @@ import { HOMEPAGE_SECTIONS } from "../data/canonicalTrackerFamilies";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { ProductCard } from "./ProductCard";
 import { PopularThisWeek } from "./PopularThisWeek";
+import { TrackVotePanel } from "./vote/TrackVotePanel";
 
 const SNACKS_SECTION_ID = "stock_up_snacks_and_treats";
 const MOBILE_SNACKS_PREVIEW = 12;
@@ -63,118 +64,123 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
     window.setTimeout(() => setHighlightIds(new Set()), 2400);
   }, []);
 
+  const controls = (
+    <div className="sectioned-tracker__controls">
+      <label className="sectioned-tracker__search-label">
+        <span className="visually-hidden">Search trackers</span>
+        <input
+          type="search"
+          className="sectioned-tracker__search"
+          placeholder="Search items…"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+      </label>
+      <div className="sectioned-tracker__chips" role="toolbar" aria-label="Section filters">
+        <button
+          type="button"
+          className={`sectioned-tracker__chip${activeSection === null ? " sectioned-tracker__chip--active" : ""}`}
+          onClick={() => setActiveSection(null)}
+        >
+          All
+        </button>
+        {HOMEPAGE_SECTIONS.map((section) => (
+          <button
+            key={section.id}
+            type="button"
+            className={`sectioned-tracker__chip${activeSection === section.id ? " sectioned-tracker__chip--active" : ""}`}
+            onClick={() =>
+              setActiveSection((current) =>
+                current === section.id ? null : section.id,
+              )
+            }
+          >
+            {section.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const sections = HOMEPAGE_SECTIONS.map((section) => {
+    const sectionProducts = productsBySection.get(section.id) ?? [];
+    if (activeSection && activeSection !== section.id) {
+      return null;
+    }
+    if (sectionProducts.length === 0 && !normalizedSearch) {
+      return (
+        <section
+          key={section.id}
+          className="price-tracker-section price-tracker-section--grouped price-tracker-section--empty"
+          aria-label={section.label}
+        >
+          <header className="price-tracker-section-header">
+            <h2 className="price-tracker-section-title">{section.label}</h2>
+          </header>
+          <p className="price-tracker-empty-state">
+            No items in this section match your filters yet.
+          </p>
+        </section>
+      );
+    }
+    if (sectionProducts.length === 0) {
+      return null;
+    }
+
+    const isSnacks = section.id === SNACKS_SECTION_ID;
+    const visibleProducts =
+      isSnacks && !showAllSnacks
+        ? sectionProducts.slice(0, MOBILE_SNACKS_PREVIEW)
+        : sectionProducts;
+    const hiddenSnackCount = sectionProducts.length - MOBILE_SNACKS_PREVIEW;
+
+    return (
+      <section
+        key={section.id}
+        className="price-tracker-section price-tracker-section--grouped"
+        aria-label={section.label}
+      >
+        <header className="price-tracker-section-header">
+          <h2 className="price-tracker-section-title">{section.label}</h2>
+        </header>
+        <div className="price-tracker-grid">
+          {visibleProducts.map((product) => (
+            <div
+              key={product.canonicalId}
+              id={`tracker-${product.canonicalId}`}
+              className={
+                highlightIds.has(product.canonicalId)
+                  ? "tracker-card-wrap tracker-card-wrap--highlight"
+                  : "tracker-card-wrap"
+              }
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+        {isSnacks && !showAllSnacks && hiddenSnackCount > 0 ? (
+          <button
+            type="button"
+            className="sectioned-tracker__show-all price-tracker-mobile-only"
+            onClick={() => setShowAllSnacks(true)}
+          >
+            Show all snacks & treats ({sectionProducts.length})
+          </button>
+        ) : null}
+      </section>
+    );
+  });
+
   return (
     <div className="sectioned-tracker">
+      {controls}
       <PopularThisWeek
         feedStore={feedStore}
         products={products}
         onJumpToFamily={handleJumpToFamily}
       />
-
-      <div className="sectioned-tracker__controls">
-        <label className="sectioned-tracker__search-label">
-          <span className="visually-hidden">Search trackers</span>
-          <input
-            type="search"
-            className="sectioned-tracker__search"
-            placeholder="Search items…"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-          />
-        </label>
-        <div className="sectioned-tracker__chips" role="toolbar" aria-label="Section filters">
-          <button
-            type="button"
-            className={`sectioned-tracker__chip${activeSection === null ? " sectioned-tracker__chip--active" : ""}`}
-            onClick={() => setActiveSection(null)}
-          >
-            All
-          </button>
-          {HOMEPAGE_SECTIONS.map((section) => (
-            <button
-              key={section.id}
-              type="button"
-              className={`sectioned-tracker__chip${activeSection === section.id ? " sectioned-tracker__chip--active" : ""}`}
-              onClick={() =>
-                setActiveSection((current) =>
-                  current === section.id ? null : section.id,
-                )
-              }
-            >
-              {section.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {HOMEPAGE_SECTIONS.map((section) => {
-        const sectionProducts = productsBySection.get(section.id) ?? [];
-        if (activeSection && activeSection !== section.id) {
-          return null;
-        }
-        if (sectionProducts.length === 0 && !normalizedSearch) {
-          return (
-            <section
-              key={section.id}
-              className="price-tracker-section price-tracker-section--grouped price-tracker-section--empty"
-              aria-label={section.label}
-            >
-              <header className="price-tracker-section-header">
-                <h2 className="price-tracker-section-title">{section.label}</h2>
-              </header>
-              <p className="price-tracker-empty-state">
-                No items in this section match your filters yet.
-              </p>
-            </section>
-          );
-        }
-        if (sectionProducts.length === 0) {
-          return null;
-        }
-
-        const isSnacks = section.id === SNACKS_SECTION_ID;
-        const visibleProducts =
-          isSnacks && !showAllSnacks
-            ? sectionProducts.slice(0, MOBILE_SNACKS_PREVIEW)
-            : sectionProducts;
-        const hiddenSnackCount = sectionProducts.length - MOBILE_SNACKS_PREVIEW;
-
-        return (
-          <section
-            key={section.id}
-            className="price-tracker-section price-tracker-section--grouped"
-            aria-label={section.label}
-          >
-            <header className="price-tracker-section-header">
-              <h2 className="price-tracker-section-title">{section.label}</h2>
-            </header>
-            <div className="price-tracker-grid">
-              {visibleProducts.map((product) => (
-                <div
-                  key={product.canonicalId}
-                  id={`tracker-${product.canonicalId}`}
-                  className={
-                    highlightIds.has(product.canonicalId)
-                      ? "tracker-card-wrap tracker-card-wrap--highlight"
-                      : "tracker-card-wrap"
-                  }
-                >
-                  <ProductCard product={product} />
-                </div>
-              ))}
-            </div>
-            {isSnacks && !showAllSnacks && hiddenSnackCount > 0 ? (
-              <button
-                type="button"
-                className="sectioned-tracker__show-all price-tracker-mobile-only"
-                onClick={() => setShowAllSnacks(true)}
-              >
-                Show all snacks & treats ({sectionProducts.length})
-              </button>
-            ) : null}
-          </section>
-        );
-      })}
+      <TrackVotePanel id="track-vote" />
+      {sections}
     </div>
   );
 }

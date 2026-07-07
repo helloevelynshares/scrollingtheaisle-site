@@ -337,7 +337,167 @@ Fix / workaround: Refresh `SAFEWAY_COOKIE` from that capture; set `SAFEWAY_STORE
 How to verify: `.venv/bin/python scripts/seed_safeway_baseline.py --query "goldfish cheddar cracker" --timeout 30 -v` → `200 success`, candidates CSV populated (e.g. Goldfish Cheddar 10 Oz **$4.99**).  
 Related files: `scripts/.env`, `scripts/safeway_config.py`, `scripts/safeway_client.py`, `scripts/seed_safeway_baseline.py`
 
-### Price tracker dev server: bind 127.0.0.1 (not IPv6-only localhost)
+### Kettle Brand Safeway 2026-07-01: vision pipeline missed $5 Friday tile (fixed)
+
+Date discovered: 2026-07-06  
+Context: User reported "Kettle Brand potato chips 3 for $5" was on the $5 Friday page of the Safeway 7/1-7/7 ad, "under the strawberries and half pie." Previous investigation incorrectly concluded it was not there.  
+What happened: The vision extraction pipeline captured 31 of 32 offer tiles on page 4 of the Safeway ad. The Kettle Brand Potato Chips tile was in a distinct layout row (approx. y=0.87-0.93) between the "Half Pie row" (y=0.81-0.87) and the "AriZona Tea row" (y=0.89-0.95). The extraction bounding-box detection skipped this row entirely — no raw_offer_card was created for it. Visual inspection of the PDF (rendered with PyMuPDF) confirmed the tile clearly shows: Kettle Brand Potato Chips, 5–8.5 oz., Selected varieties., Member Price $1.67 ea., Limit 3 items., **3 for $5 Member Price** (Friday July 3rd, $5 Friday block).  
+Fix / workaround:
+1. Manually added the missing row to both `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv` (local) and `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv` (sibling repo consolidated) with `advertised_price=5.0`, `price_basis=multi_buy`, `promo_text="3 for $5 Friday July 3rd"`, `availability_type_guess=friday_only`.
+2. Ran `python3 scripts/generate_weekly_ad_prices.py --product-id kettle_brand_chips --feed safeway`.
+3. Result: `weeklyAdPrices.generated.ts` now shows `kettle_brand_chips["2026-07-01"]["price"] = 1.67` (correctly normalized: $5 ÷ 3 = $1.67 ea via `_multi_buy_unit_price`).  
+How to verify: `grep '"2026-07-01"' src/data/weeklyAdPrices.generated.ts` near `kettle_brand_chips` → should show `"price": 1.67`. Open `/staging-price-tracker/` Safeway tab → Kettle Brand chart → 2026-07-01 should dip to $1.67.  
+Related files: `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`
+
+### Kettle Brand Vons 2026-07-01 showed wrong $11.99 (stale pre-YAML match)
+
+Date discovered: 2026-07-06
+Context: Price tracker chart for `kettle_brand_chips` (Vons tab) showed $11.99 for the 2026-07-01 week.
+What happened: Three separate issues combined:
+1. **Stale match from pre-YAML migration**: The old `ProductMatcher` (before YAML families) matched "Kettle Brand Chips Party Size 11.25-13 oz." from a multi-item "Single Price Up To: $11.99" block on page 2 of the Vons 7-1 ad. After the YAML migration, the new patterns (requiring "Kettle Brand Sea Salt", "Kettle Brand Jalapeño", etc.) correctly produce 0 matches for that week — but the stale $11.99 remained because the incremental merge didn't overwrite it. The TS was regenerated from an old run.
+2. **Wrong product size**: `kettle_brand_chips` tracks 6.5–8.5 oz bags; the Party Size is 11.25–13 oz — a completely different SKU at a different price point.
+3. **Ceiling price, not a promotional price**: "Single Price Up To: $11.99" is the MSRP cap for a broad multi-product block (includes Tide, Totino's, sunscreen, etc.) — not a sale price.
+4. **No "$5 Friday July 3rd" deal for Kettle Brand in either chain**: The user clarified the $3.45 deal was **Safeway-specific**, not Vons. Exhaustive search of BOTH Safeway bay_area and Vons socal_oc 2026-07-01 split_offer_items.csv AND raw_offer_cards.csv (all pages, all offers) found: NO Kettle Brand at $3.45 anywhere. The $5 Friday blocks in Safeway 7-1 cover: Pork Spareribs, Sushi, Salmon, Bacon, Caspers Hot Dogs, Strawberries, Peaches/Nectarines/Plums, Red Potatoes, Kinder's BBQ Sauce, Entenmann's Donuts, Popsicles, Sparkling Water/Tea, On the Rocks Cocktails, flowers — NOT chips. "Frito-Lay Lay's, Kettle Cooked, Sun Chips, Ruffles 4.75-8 oz. $1.99 ea" appears on page 3 of the Safeway 7-1 ad — but this is "Lay's Kettle Cooked" (a Frito-Lay variety), not the "Kettle Brand" brand (Kettle Foods/Cape Cod). The $3.45 price appears NOWHERE in any Safeway 7-1 extracted data; the only "3.45" hit is "14.76-23.45 oz" (a size range for Red Baron Pizza). The deal either appeared in-store only (not in the printed/digital weekly ad), or was a digital coupon not captured in the vision pipeline.
+Fix / workaround:
+1. Added "Kettle Brand Chips" and "Kettle Brand potato chips" to `include` in the YAML (so deals that say just "Kettle Brand Chips" without a specific flavor are matched).
+2. Added "Kettle Brand Chips Party Size" and "Party Size" to `keep_separate_from` (excludes the large-format SKU and prevents ceiling/MSRP prices from contaminating the chart).
+3. Ran `python3 scripts/generate_weekly_ad_prices.py --product-id kettle_brand_chips --feed vons` — 2026-07-01 now correctly shows null; 2026-05-06 also fixed (was wrongly showing $2.99 from "Lay's Kettle Cooked").
+Design limitation: The chart plots one price per week. "Friday-only" intra-week dips (e.g., a $3.45 deal only on July 3rd) CANNOT be shown as a single-day dip — the chart would need daily granularity. Even if the $3.45 data existed, it would need `availability_type_guess: friday_only` in split_offer_items and a chart design change to show it as a Friday-only annotation instead of a full-week price.
+How to verify: `grep '"2026-07-01"' src/data/vonsWeeklyAdPrices.generated.ts | head -5` — kettle_brand_chips entry should have `"price": null`. Open chart on `/staging-price-tracker/` Vons tab → kettle_brand_chips — should show baseline line (not a spike to $11.99).
+Related files: `data/canonical_tracker_families.yaml` (`kettle_brand_chips`), `src/data/vonsWeeklyAdPrices.generated.ts`, `scripts/generate_weekly_ad_prices.py`, `data/weekly_ads/2026-07-01/socal_oc/split_offer_items.csv`
+
+### B2G3F/BOGO deals need reference price in split_offer_items to normalize
+
+Date discovered: 2026-07-06
+Context: Doritos on Safeway 7/1 week reported "showing usual price instead of promotional effective price."
+What happened: The Safeway 7/1 ad has a "BUY 2, GET 3 FREE Mix & MATCH" deal for "Lay's, Tostitos, Doritos or Simply 4.5–13 oz." with reference price $5.49 ea. The vision pipeline captured this deal in `raw_offer_cards.csv` (page 1, offer 3, `verified_*` fields) but it was NOT promoted to `split_offer_items.csv` because the crop-tile mismatch tagged it as an annotation on the adjacent Sweet Corn row. Two issues combined: (1) missing data row, and (2) `normalization.py` had no `buy_x_get_y` branch — `base_normalize_unit_price` only handled `multi_buy`, so any B2G3F/BOGO row with a price would have returned the raw reference price (e.g. $5.49) instead of the effective per-unit cost (2/5 × $5.49 = $2.20).
+Fix / workaround:
+1. Added `_buy_x_get_y_unit_price()` in `scripts/price_tracker/normalization.py` — parses "buy N get M free" from promo_text and computes `N/(N+M) × price`. Also handles bare "bogo" keyword.
+2. Updated `base_normalize_unit_price()` to apply this logic when `price_basis` is `bogo` or `buy_x_get_y`.
+3. Added the 3 missing split rows (Lay's, Tostitos, Doritos) with `advertised_price=5.49`, `price_basis=bogo`, `promo_text="BUY 2, GET 3 FREE Mix & MATCH"` to both `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv` (local copy) and `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv` (sibling repo consolidated, which is what `generate_weekly_ad_prices.py` reads).
+4. Regenerated `src/data/weeklyAdPrices.generated.ts` with `--product-ids doritos_5_13oz,lays_potato_chips_regular,tostitos_tortilla_chips`.
+Before/after for Safeway 7/1: `doritos_5_13oz` was `price: null` → now `price: 2.2` (confidence: high). Same for Lay's and Tostitos.
+Vons 7/1: Vons also has a B2G3F for Lay's/Kettle/Poppables but with NO reference price in the vision extraction → still null. Vons Doritos 7/1 shows $2.50 (from "2 for $5" deal) which is correct and unaffected. Other historical B2G/BOGO rows (6/17 Lay's BOGO, 6/10 Tostitos BOGO) also have no price — still null (pre-existing data limitation).
+How to verify: `python3 -c "import json; ..."` or check `src/data/weeklyAdPrices.generated.ts` — `doritos_5_13oz["2026-07-01"]["price"]` should be `2.2`. All tests pass: `PYTHONPATH=scripts python3 -m unittest tests.test_normalization -v`.
+Related files: `scripts/price_tracker/normalization.py`, `data/weekly_ads/2026-07-01/bay_area/split_offer_items.csv`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`
+
+### Card-level ATL hint + Option A tooltip (D1 revised)
+
+Date discovered: 2026-07-06  
+Context: Price tracker product cards after Option A + D1 UX revision.  
+What happened: Prior agent added D1 (benchmark bucket in tooltip) + Option A (promoNote/friday_only in tooltip). User revised D1: do NOT show benchmark bucket label in tooltip. Instead, surface all-time low on the card upfront as a subtle reference, and keep Option A (friday_only + promoNote) in tooltip.  
+Fix / workaround:
+1. **Card ATL hint** (`FamilyDealCard.tsx`): `computeFeedProductBenchmark(product)` runs per-card. If `observationCount >= 2` and `allTimeLowUnitPrice != null`, renders `.family-deal-card__atl-hint` below the price block: "All-time low: $X.XX" (gray, subtle). When current price IS the all-time low (`benchmarkBucket === "all-time low"`), the hint becomes "All-time low $X.XX" in green (`.family-deal-card__atl-hint--match`).
+2. **Tooltip Option A** (`PriceTrendChart.tsx`): On grocery row hover, if `weeklyEntry.availabilityType === "friday_only"`, tooltip shows `promoNote + " (Fri Jul 3 only)"` (computed via `getFridayOfWeek`). For non-friday promo rows, shows `promoNote` as italic amber sub-line (`.price-tracker-chart-tooltip-promo`).
+3. **Removed D1**: No benchmark bucket label appended to tooltip series label.
+4. **UnifiedChartRow** now carries `availabilityType` and `promoNote` (forwarded from `WeeklyPrice` via `buildUnifiedChartRows`).
+Kettle Brand Safeway example: Card shows "All-time low $1.67" in green (2026-07-01 is the lowest tracked at $1.67 = 3 for $5). Tooltip for that dot shows "3 for $5 Friday July 3rd (Fri Jul 3 only)".  
+How to verify: `npm run build:price-tracker` → open `/staging-price-tracker/` → Safeway tab → Kettle Brand card → price block shows "All-time low $1.67" in green. Hover the 7/1 dip → tooltip shows promo note with Friday annotation. All 66 families with ≥2 observations show the ATL hint.  
+Related files: `src/staging-price-tracker/FamilyDealCard.tsx`, `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/priceTrackerUtils.ts` (`UnifiedChartRow`, `buildUnifiedChartRows`), `styles.css` (`.family-deal-card__atl-hint`, `.price-tracker-chart-tooltip-promo`)
+
+### ATL chip on product card (not tooltip); Option A tooltip unchanged
+
+Date discovered: 2026-07-06  
+Context: Staging price tracker (`/staging-price-tracker/`) benchmark display after Option A + D1 work.  
+What happened: D1 benchmark bucket label was added to `PriceChartTooltip` in `PriceTrendChart.tsx` using `computeFeedProductBenchmark` without importing it (runtime ReferenceError on hover). User refinement: ATL should appear subtly on the **card**, not in the hover tooltip.  
+Fix / workaround: Removed D1 tooltip logic from `PriceTrendChart.tsx`. Card-level ATL display lives in `FamilyDealCard.tsx`: `computeFeedProductBenchmark(product)` → `allTimeLowUnitPrice` + `benchmarkBucket`. Shows `.family-deal-card__atl-hint` (grey, subtle) when `observationCount >= 2`; adds `--match` modifier (green bold) when `isAtl`. Option A tooltip (friday_only + promoNote on hover) is unaffected. Kettle Brand Safeway 2026-07-01 card shows "All-time low $1.67" (green).  
+How to verify: Open `/staging-price-tracker/` → Kettle Brand Safeway card → "All-time low $1.67" shown in green below sale label (no ATL text in tooltip). `npm run build:price-tracker` passes.  
+Related files: `src/staging-price-tracker/FamilyDealCard.tsx`, `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/priceBenchmarks.ts`, `styles.css` (`.family-deal-card__atl-hint`, `.family-deal-card__atl-hint--match`, `.family-deal-card__atl-price`)
+
+### friday_only tooltip: promoNote was silently dropped (yamlFamilyProducts.ts fix)
+
+Date discovered: 2026-07-06
+Context: Kettle Brand Chips hover tooltip on `/staging-price-tracker/` Safeway tab showed only "Jul 1" — no promo note, no Friday annotation, even after Option A was implemented in `PriceTrendChart.tsx`.
+What happened: `effectiveWeeklyPrice()` in `yamlFamilyProducts.ts` (the path for all 66 YAML families) did NOT forward `availabilityType` or `promoNote` from the generated entry. So `weeklyEntry?.promoNote` was always `undefined` in the tooltip — `promoLine` never rendered. The `priceTrackerFallback.ts` version already forwarded these fields; only the YAML path was missing them.
+Fix / workaround:
+1. Added `availabilityType: entry?.availabilityType ?? undefined` and `promoNote: entry?.promoNote ?? undefined` to the returned object in `effectiveWeeklyPrice()` in `yamlFamilyProducts.ts`.
+2. Improved tooltip UX for `friday_only` deals in `PriceTrendChart.tsx`:
+   - Date header: shows week range "Jul 1–7" (new `formatWeekRangeLabel()` helper) instead of just "Jul 1".
+   - Series label: shows "Safeway $5 Friday" instead of "Safeway weekly ad".
+   - Promo line: shows `"${promoNote} · Fri Jul 3 only"` (computed via existing `getFridayOfWeek`).
+   - Fallback (no promoNote): shows "Fri Jul 3 only · not valid all week".
+   - Generic non-friday promos: still show just `promoNote` in amber italic.
+3. CSS: added `.price-tracker-chart-tooltip--limited` (amber left border) and `.price-tracker-chart-tooltip-promo--limited` (amber pill badge, non-italic, bold) for `friday_only` rows.
+Kettle Brand Safeway example tooltip for 2026-07-01:
+- Date: "Jul 1–7"
+- Series: "Safeway $5 Friday"
+- Price: "$1.67"
+- Promo badge: "3 for $5 Friday July 3rd · Fri Jul 3 only"
+How to verify: `npm run build:price-tracker` → hover Kettle Brand Safeway chart → Jul 1 dot → tooltip shows week range + Friday annotation + amber promo badge.
+Related files: `src/data/yamlFamilyProducts.ts` (`effectiveWeeklyPrice`), `src/staging-price-tracker/PriceTrendChart.tsx` (`formatWeekRangeLabel`, `PriceChartTooltip`, `isLimitedDay`), `styles.css` (`.price-tracker-chart-tooltip--limited`, `.price-tracker-chart-tooltip-promo--limited`)
+
+### Per-lb baseline stores package price not unit price (fixed 2026-07-06)
+
+Date discovered: 2026-07-06
+Context: Safeway and Vons baselines for per-lb tracker families (ribeye, tri-tip, chicken breast, chicken thighs, cherries, grapes) showed absurdly high values on the chart baseline reference line.
+What happened: The seed pipeline (`seed_safeway_baseline.py`, `seed_vons_baseline_playwright.py`) stores the first-matched product's listed price. For per-lb families it retrieved a pre-packaged item (e.g. "USDA Choice Bone In Beef Rib Steak Mega Pack - 3.5 Lb" at $45.47) and stored the total package price instead of the per-lb rate ($12.99/lb). The chart baseline then showed $45.47 instead of $12.99, making every ad price look like a massive deal.
+Fix / workaround:
+1. **Option A** (immediate): Manually corrected the 6 affected Safeway entries in `src/data/priceTrackerFallback.ts` (SAFEWAY_BASELINES) and 6 Vons entries in `src/data/vonsBaseline.generated.ts` by dividing package price by package weight.
+   - Safeway: ribeye 45.47→12.99 (/3.5lb), tri_tip 47.47→18.99 (/2.5lb), chicken_breast 20.23→8.99 (/2.25lb), chicken_thigh 8.97→2.99 (/3lb), cherries 10.48→5.99 (/1.75lb), grapes 9.98→4.99 (/2lb)
+   - Vons: ribeye 23.97→7.99 (/3lb), tri_tip 17.47→4.99 (/3.5lb), chicken_breast 10.47→2.99 (/3.5lb), chicken_thigh 8.97→2.99 (/3lb), cherries 10.48→5.99 (/1.75lb), grapes 7.98→3.99 (/2lb)
+2. **Option B** (pipeline): Added `scripts/price_tracker/baseline_per_lb.py` with `normalize_baseline_price(canonical_id, product_name, price)` — checks if the YAML family has `size_format_subtitle: per lb`, extracts weight from product name (e.g. "3.5 Lb"), divides. Wired into `generate_safeway_feed_matches.py` and `generate_vons_feed_matches.py` so future re-crawls auto-normalize.
+How to verify: Safeway tab → Ribeye chart baseline ~$12.99; Vons tab → Ribeye chart baseline ~$7.99. `npm run build:price-tracker`.
+Related files: `src/data/priceTrackerFallback.ts` (SAFEWAY_BASELINES), `src/data/vonsBaseline.generated.ts`, `scripts/price_tracker/baseline_per_lb.py`, `scripts/generate_safeway_feed_matches.py`, `scripts/generate_vons_feed_matches.py`
+
+### normalize_per_lb divided price by itself for all "$X lb" offer texts (per_lb bug)
+
+Date discovered: 2026-07-06
+Context: Price tracker charts showed ribeye steak at $1 for multiple weeks on both Safeway and Vons tabs. Investigation found the same $1.0 bug on chicken breast, grapes, cherries, peaches, nectarines, and plums.
+What happened: `normalize_per_lb()` in `scripts/price_tracker/normalization.py` tries to extract a package weight from offer text (e.g. "Chicken 3 lb for $8.97" → $2.99/lb). But when the ad text printed the per-lb price next to the unit — e.g. "Ribeye Steak $9.99 LB" or "Grapes $2.49 lb Member Price" — `_extract_lb_weight()` matched the price itself as the weight (9.99 lb → 9.99/9.99 = $1.0). Every per-lb family where the raw_offer_text included "$X lb" or "X lb" (appended price from vision extraction) yielded exactly $1.0.
+A second bug: `base_normalize_unit_price()` had a guard `not re.search(r"(when you )?buy\s+\d+", promo)` that skipped multi-buy normalization for "PICK 4 FOR $20 WHEN YOU BUY 4" bundle deals. This caused Safeway chicken thighs (2026-03-25) to show $20/lb instead of $5/item.
+Fix / workaround:
+1. `normalize_per_lb`: Added early return `if price_basis == "per_lb": return price` — if the CSV already tags the price as per-lb, no weight extraction needed.
+2. `normalize_per_lb`: Added safety check `if abs(lbs - price) / price < 0.02: return price` (skip divide if extracted weight ≈ advertised price).
+3. `base_normalize_unit_price`: Removed the "when you buy" guard — always try `_multi_buy_unit_price` for `multi_buy` basis; the function itself returns None when no "N for $X" pattern is found, so no regression.
+4. Regenerated all affected products: `ribeye_steak`, `chicken_breast_per_lb`, `seedless_grapes_per_lb`, `chicken_thigh_per_lb`, `tri_tip_roast`, `cherries_per_lb`, `peaches_per_lb`, `nectarines_per_lb`, `plums_per_lb` for both Safeway and Vons.
+Before/After examples (price for 2026-07-01):
+- Safeway ribeye_steak: $1.0 → $9.99/lb
+- Vons ribeye_steak: $1.0 → $7.99/lb
+- Safeway cherries: $1.0 → $1.99/lb
+- Safeway grapes 2026-03-25: $1.0 → $2.49/lb
+- Safeway chicken thighs 2026-03-25: $20.0 → $5.0 (per-pack from "Pick 4 for $20")
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_normalization -v`. Check `grep '"2026-07-01"' src/data/weeklyAdPrices.generated.ts` near `ribeye_steak` — should show `"price": 9.99`. Vons same → `"price": 7.99`.
+Related files: `scripts/price_tracker/normalization.py` (`normalize_per_lb`, `base_normalize_unit_price`), `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
+
+### Card height equalization: min-height + clamps (full fix)
+
+Date discovered: 2026-07-06
+Context: FamilyDealCard grid on `/staging-price-tracker/` — cards still had unequal heights after summary/stock-up were moved to the Details toggle.
+What happened: Four remaining variance sources:
+1. **`h2` name** — no line-clamp on desktop (only mobile had it); long names could wrap to 3+ lines.
+2. **Price block** (`usualRange` + `atl-hint`) — both conditional; 0–2 extra lines (~32px swing).
+3. **`ComparisonBadge`** — biggest source; can be null (0px) or title+detail+locationNote (~60px swing).
+4. **`takeaway`** — no line-clamp; could wrap unboundedly.
+Fix / workaround:
+- `.family-deal-card { min-height: 100%; }` — fills the grid cell so all cards in a row match the tallest one (whitespace at bottom of shorter cards). Uses `min-height` not `height` so the expanded Details panel is not clipped.
+- `.family-deal-card__header h2` — added `-webkit-line-clamp: 2` to the **base rule** (not just mobile).
+- `.family-deal-card__price-block { min-height: 62px }` (base) / `46px` (mobile ≤767px) — pre-reserves space for sale + usualRange + ATL lines.
+- `.family-deal-card__takeaway` — added `-webkit-line-clamp: 2` to the base rule.
+How to verify: Open `/staging-price-tracker/` — compare cards with ATL hints, Costco badges, long names, and takeaways; all cards in each row should have identical height. `npm run build:price-tracker` passes.
+Related files: `styles.css` (`.family-deal-card`, `.family-deal-card__header h2`, `.family-deal-card__price-block`, `.family-deal-card__takeaway`)
+
+### Card height normalization: secondary info moved to Details toggle
+
+Date discovered: 2026-07-06  
+Context: Price tracker card grid on `/staging-price-tracker/` — cards with ATL hint, stock-up badge, promo notes were taller than simpler cards, causing uneven rows.  
+What happened: FamilyDealCard had 4 optional elements adding 1–3 lines each: `summary` (always, 1–2 lines), `FamilyStockUpBadge` (always, 1 line), `effectivePrice` (conditional, promo context), and the "Price history" section label.  
+Fix / workaround:
+1. **Moved to collapsible "Details" toggle**: `summary`, `FamilyStockUpBadge`, `effectivePrice` — revealed by clicking the new `.family-deal-card__details-toggle` button (styled like the varieties-hint link). Net: 2–4 fewer lines per card in the default view.
+2. **Removed "Price history" section label** from `.family-deal-card__chart` — saves 1 line per card uniformly.
+3. **Kept on card**: price (`saleLabel`), `usualRange` (compacted to 12px), `ATL hint`, chart, `ComparisonBadge`, takeaway.
+4. **CSS**: `.family-deal-card` gap reduced 12px→8px; `price-tracker-product-meta` truncated to 1 line (`-webkit-line-clamp: 1`) on all breakpoints; `usual`/`effective` font-size reduced 14px→12px.  
+How to verify: Open `/staging-price-tracker/` → cards across sections should be noticeably more uniform in height. Cards with and without ATL/Costco badges should differ by ≤2 lines. Click "Details" on any card to reveal summary + stock-up. `npm run build:price-tracker` passes.  
+Related files: `src/staging-price-tracker/FamilyDealCard.tsx`, `styles.css` (`.family-deal-card__details-toggle`, `.family-deal-card__details-panel`)
+
+### Price tracker vote layout: compact strip after Popular (variant 2 chosen)
+
+Date discovered: 2026-07-06  
+Context: `/staging-price-tracker/` voting module placement — too prominent between store tabs and Popular this week.  
+What happened: Four layouts were explored via `?voteVariant=1|2|3|4`; **variant 2** (compact horizontal strip below Popular this week) was chosen permanently. Exploration code (`VoteVariantSwitcher`, compare banner, `compare.html`, query-param switching) was removed.  
+Fix / workaround: Page order is **filters → Popular this week → vote strip → product sections**. `TrackVotePanel` is a full-width strip: subtle label "Help pick what we track next.", top 6 vote pills in a responsive wrap row, compact inline suggestion form. Supabase upvote + moderated submit unchanged (`useTrackVote`, RPCs `vote_on_item` / `submit_suggestion`).  
+How to verify: `npm run build:price-tracker` → open `/staging-price-tracker/` → search/chips, then Popular, then pink-accent vote strip, then sections. No variant switcher or `?voteVariant=` handling.  
+Related files: `src/staging-price-tracker/vote/TrackVotePanel.tsx`, `src/staging-price-tracker/SectionedTrackerList.tsx`, `src/staging-price-tracker/App.tsx`, `styles.css`
+
 
 Date discovered: 2026-07-05
 Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/staging-price-tracker/

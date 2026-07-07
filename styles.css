@@ -707,58 +707,59 @@ img {
 }
 
 .price-tracker-vote {
-  max-width: 720px;
-  margin: 0 auto 36px;
+  width: 100%;
+  max-width: none;
+  margin: 6px 0 20px;
+  padding: 10px 12px 12px;
+  border: 1px solid #f0c4cd;
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, #fff7f9 0%, #fafafa 100%);
 }
 
-.price-tracker-vote h2 {
-  font-size: 22px;
+.price-tracker-vote-label {
   margin: 0 0 8px;
-  letter-spacing: -0.3px;
-}
-
-.price-tracker-vote-lead {
-  margin: 0 0 16px;
+  font-size: 12px;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.price-tracker-vote-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-@media (min-width: 640px) {
-  .price-tracker-vote-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+.price-tracker-vote-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .price-tracker-vote-card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  width: 100%;
-  padding: 14px 16px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  width: auto;
+  max-width: 100%;
+  padding: 6px 10px;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--card);
   color: var(--text);
   font: inherit;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.price-tracker-vote-strip .price-tracker-vote-card {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .price-tracker-vote-card:hover:not(:disabled) {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
+  border-color: #d0d0d0;
+  background: #fff;
 }
 
 .price-tracker-vote-card:disabled {
@@ -772,11 +773,11 @@ img {
 }
 
 .price-tracker-vote-card-label {
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .price-tracker-vote-card-note {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--muted);
 }
@@ -785,34 +786,26 @@ img {
   color: #1a7f4b;
 }
 
-.price-tracker-vote-custom label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 600;
+.price-tracker-vote-custom--inline label {
+  margin-bottom: 0;
 }
 
 .price-tracker-vote-custom-row {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 560px) {
-  .price-tracker-vote-custom-row {
-    flex-direction: row;
-    align-items: center;
-  }
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
 }
 
 .price-tracker-vote-custom-row input {
   flex: 1;
   width: 100%;
-  padding: 12px 14px;
-  font-size: 16px;
+  min-width: 0;
+  padding: 6px 10px;
+  font-size: 14px;
   font-family: inherit;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   background: var(--card);
   color: var(--text);
 }
@@ -820,12 +813,17 @@ img {
 .price-tracker-vote-custom-row input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.12);
+  box-shadow: 0 0 0 2px rgba(255, 56, 92, 0.1);
+}
+
+.price-tracker-vote-submit {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .price-tracker-vote-status {
-  margin: 12px 0 0;
-  font-size: 14px;
+  margin: 6px 0 0;
+  font-size: 12px;
 }
 
 .price-tracker-vote-status--success {
@@ -911,7 +909,7 @@ img {
 
   .price-tracker-card--family,
   .family-deal-card {
-    gap: 10px;
+    gap: 8px;
   }
 
   .price-tracker-card-header h2,
@@ -954,8 +952,9 @@ img {
     padding: 3px 8px;
   }
 
-  .family-deal-card__varieties-hint {
-    font-size: 12px;
+  .family-deal-card__varieties-hint,
+  .family-deal-card__details-toggle {
+    font-size: 11px;
   }
 
   .family-deal-card__chart {
@@ -1058,7 +1057,7 @@ img {
 
   .price-tracker-card--family {
     padding: 8px;
-    gap: 6px;
+    gap: 5px;
   }
 
   .family-deal-card__header h2 {
@@ -1074,6 +1073,10 @@ img {
 
   .family-deal-card__sale {
     font-size: 15px;
+  }
+
+  .family-deal-card__price-block {
+    min-height: 46px;
   }
 
   .family-deal-card__effective,
@@ -1129,8 +1132,9 @@ img {
     padding: 3px 8px;
   }
 
-  .family-deal-card__varieties-hint {
-    font-size: 12px;
+  .family-deal-card__varieties-hint,
+  .family-deal-card__details-toggle {
+    font-size: 11px;
   }
 
   .family-deal-card__variant-item {
@@ -1218,7 +1222,9 @@ img {
 
 /* Family Deal Card — Option 9 pattern (family-level chart + varieties drawer) */
 .family-deal-card {
-  gap: 12px;
+  gap: 8px;
+  /* Fill the grid cell so all cards in a row have identical height */
+  min-height: 100%;
 }
 
 .family-deal-card__header {
@@ -1235,6 +1241,11 @@ img {
   margin: 0;
   letter-spacing: -0.3px;
   flex: 1 1 auto;
+  /* Clamp to 2 lines on all viewports — mobile overrides to 12px */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .family-deal-card__status {
@@ -1260,6 +1271,8 @@ img {
 .family-deal-card__price-block {
   display: grid;
   gap: 2px;
+  /* Reserve space for sale + usualRange + atl-hint so all price blocks are same height */
+  min-height: 62px;
 }
 
 .family-deal-card__sale {
@@ -1276,16 +1289,32 @@ img {
 
 .family-deal-card__effective {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--muted);
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 .family-deal-card__usual {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: var(--muted);
+  line-height: 1.3;
+}
+
+.family-deal-card__atl-hint {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #888;
   line-height: 1.35;
+}
+
+.family-deal-card__atl-hint--match {
+  color: #1a6b3a;
+  font-weight: 600;
+}
+
+.family-deal-card__atl-price {
+  font-variant-numeric: tabular-nums;
 }
 
 .family-deal-card__stock-up {
@@ -1335,6 +1364,11 @@ img {
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.2px;
+  /* Clamp to 2 lines so long takeaway text doesn't create height variance */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .family-deal-card__takeaway--buy {
@@ -1375,6 +1409,44 @@ img {
 
 .family-deal-card__varieties-hint:hover {
   color: var(--accent);
+}
+
+/* Details toggle — subtle disclosure link at card bottom */
+.family-deal-card__details-toggle {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  align-self: flex-start;
+  line-height: 1.4;
+}
+
+.family-deal-card__details-toggle::after {
+  content: " ▾";
+  font-size: 10px;
+}
+
+.family-deal-card__details-toggle--open::after {
+  content: " ▴";
+}
+
+.family-deal-card__details-toggle:hover {
+  color: var(--accent);
+}
+
+/* Details panel — summary + stock-up revealed on toggle */
+.family-deal-card__details-panel {
+  display: grid;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #f0f0f0;
 }
 
 .family-deal-card__drawer {
@@ -1900,10 +1972,14 @@ img {
 }
 
 .price-tracker-product-meta {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
   margin: 0;
-  line-height: 1.45;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 
 .price-tracker-stats {
@@ -2163,6 +2239,31 @@ img {
 
 .price-tracker-chart-tooltip--compact .price-tracker-chart-tooltip-status {
   font-size: 11px;
+}
+
+.price-tracker-chart-tooltip-promo {
+  color: #7a5c10;
+  font-size: 11px;
+  margin-top: 3px;
+  line-height: 1.3;
+  font-style: italic;
+}
+
+/* Limited-day deals (e.g. $5 Friday): amber left border + stronger promo text */
+.price-tracker-chart-tooltip--limited {
+  border-left: 3px solid #d97706;
+}
+
+.price-tracker-chart-tooltip-promo--limited {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 4px;
+  padding: 2px 5px;
+  margin-top: 5px;
+  display: inline-block;
 }
 
 .price-tracker-chart-costco-unavailable {

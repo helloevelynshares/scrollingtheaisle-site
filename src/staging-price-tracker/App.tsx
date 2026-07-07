@@ -4,7 +4,6 @@ import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
 import { SectionedTrackerList } from "./SectionedTrackerList";
-import { TrackVoteModule } from "./TrackVoteModule";
 
 export function App() {
   const [activeFeedId, setActiveFeedId] = useState(DEFAULT_FEED_ID);
@@ -68,8 +67,6 @@ export function App() {
             Showing {activeFeed.feedLabel} · {activeFeed.regionLabel}
           </p>
         ) : null}
-
-        <TrackVoteModule />
 
         {loading ? (
           <p className="price-tracker-loading">Loading prices…</p>
