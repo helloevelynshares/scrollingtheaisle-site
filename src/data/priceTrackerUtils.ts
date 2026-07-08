@@ -198,7 +198,11 @@ function findGroceryWeekForCostcoDate(
 
 /** Grocery + Costco rows sharing one x-axis so warehouse points align to ad weeks. */
 export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow[] {
-  const groceryPoints = getAllPricePoints(product);
+  // Single-mode charts use ReferenceLine for baseline; skip the synthetic
+  // "Baseline" x-axis anchor here (range-mode charts still use getAllPricePoints).
+  const groceryPoints = getAllPricePoints(product).filter(
+    (point) => point.weekStart !== "baseline",
+  );
   const costcoPoints = getCostcoChartPricePoints(product);
   const weekStarts = groceryPoints.map((point) => point.weekStart);
   const costcoByWeek = new Map<string, number>();
@@ -228,10 +232,7 @@ export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow
     groceryPriceMax: point.priceMax ?? point.price,
     priceType: point.priceType,
     isBaselineFallback: point.isBaselineFallback,
-    costcoPrice:
-      point.weekStart === "baseline"
-        ? null
-        : (costcoByWeek.get(point.weekStart) ?? flatCostcoPrice),
+    costcoPrice: costcoByWeek.get(point.weekStart) ?? flatCostcoPrice,
     availabilityType: point.availabilityType ?? null,
     promoNote: point.promoNote ?? null,
   }));
