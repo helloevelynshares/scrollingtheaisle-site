@@ -1,44 +1,85 @@
-week: "2026-07-01"
+week: "2026-07-08"
 stores:
+  # Editorial/content shortlist only — NOT canonical tracker graph data.
+  # Only link tracker_family_ids when a clean canonical family already exists;
+  # otherwise leave empty so the card renders as pure editorial copy.
   safeway:
-    - title: Coca-Cola 12-packs
-      tracker_family_ids:
-        - coca_cola_12packs
-      reason: Buy 2 Get 3 free with 5 soda 12-packs — biggest win; don't mix cheaper snacks
-      display_order: 1
-    - title: Ribeye steak
-      tracker_family_ids:
-        - ribeye_steak
-      reason: USDA Choice ~$10/lb — strong meat counter deal this week
-      display_order: 2
-    - title: Red cherries
-      tracker_family_ids:
-        - cherries_per_lb
-      reason: Seasonal ~$2/lb — Costco-comparable with smaller commitment
-      display_order: 3
-    - title: Peaches / plums
-      tracker_family_ids:
-        - peaches_per_lb
-        - plums_per_lb
-      reason: Stone fruit season — peaches match Costco, plums slightly better; less bulk
-      display_order: 4
-    - title: Chips & salty snacks
-      tracker_family_ids:
-        - lays_potato_chips_regular
-        - ruffles_regular_bags
-        - doritos_5_13oz
-        - sun_chips_7oz
-        - ritz_crackers
-        - nabisco_snack_crackers
-        - chips_ahoy
-      reason: Canonical brands ~$1.99 — near Costco shelf pricing, more variety than soda mix-in
-      display_order: 5
-    - title: Avocados / mangoes
+    - title: Hass avocados
       tracker_family_ids:
         - hass_avocados_each
-        - mangoes_each
-      reason: Good produce value at smaller qty — Hass ~$1.25 each this week
+      badge: DEAL
+      subtitle: "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
+      reason: "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
+      display_order: 1
+    - title: Berries
+      tracker_family_ids: []
+      badge: PRODUCE
+      subtitle: "Best on blackberries at about 30% cheaper than Costco; raspberries and blueberries also look 15–20% cheaper."
+      reason: "Best on blackberries at about 30% cheaper than Costco; raspberries and blueberries also look 15–20% cheaper."
+      display_order: 2
+    - title: Chobani yogurt
+      tracker_family_ids: []
+      badge: DEAL
+      subtitle: "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway."
+      reason: "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway."
+      display_order: 3
+    - title: $5 Friday raw shrimp
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday-only: raw shrimp is about 30% cheaper than Costco."
+      reason: "Friday-only: raw shrimp is about 30% cheaper than Costco."
+      display_order: 4
+    - title: $5 Friday bell peppers
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday-only: bell peppers are about 30% cheaper than Costco."
+      reason: "Friday-only: bell peppers are about 30% cheaper than Costco."
+      display_order: 5
+    - title: $5 Friday Nestlé Drumstick ice cream
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday-only: about 17% cheaper than Costco, plus a variety win."
+      reason: "Friday-only: about 17% cheaper than Costco, plus a variety win."
       display_order: 6
+    - title: Pork shoulder ribs
+      tracker_family_ids: []
+      badge: MEAT
+      subtitle: "About 21% cheaper than Costco — one of the stronger meat-counter comparisons."
+      reason: "About 21% cheaper than Costco — one of the stronger meat-counter comparisons."
+      display_order: 7
+    - title: Oreo / Nabisco snacks
+      tracker_family_ids:
+        - nabisco_snack_crackers
+        - chips_ahoy
+      badge: SNACKS
+      subtitle: "Good time to buy Oreos; the smaller Safeway buy is close enough to Costco that variety matters."
+      reason: "Good time to buy Oreos; the smaller Safeway buy is close enough to Costco that variety matters."
+      display_order: 8
+    - title: $5 Friday Doritos / snack bags
+      tracker_family_ids:
+        - doritos_5_13oz
+      badge: VARIETY
+      subtitle: "Friday-only: close to Costco pricing, but Safeway wins on smaller bags and flavor variety."
+      reason: "Friday-only: close to Costco pricing, but Safeway wins on smaller bags and flavor variety."
+      display_order: 9
+    - title: Beef chuck short ribs
+      tracker_family_ids: []
+      badge: MEAT
+      subtitle: "Not an exact same-grade match, but Safeway looks cheaper across the comparable Costco short rib options."
+      reason: "Not an exact same-grade match, but Safeway looks cheaper across the comparable Costco short rib options."
+      display_order: 10
+    - title: Sargento cheese
+      tracker_family_ids: []
+      badge: DEAL
+      subtitle: "Down to nearly a third of regular retail pricing."
+      reason: "Down to nearly a third of regular retail pricing."
+      display_order: 11
+    - title: Oreo variety angle
+      tracker_family_ids: []
+      badge: VARIETY
+      subtitle: "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety."
+      reason: "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety."
+      display_order: 12
   vons:
     - title: Salmon
       tracker_family_ids:

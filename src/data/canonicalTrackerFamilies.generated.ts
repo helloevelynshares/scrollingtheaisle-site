@@ -36,6 +36,12 @@ export type PopularThisWeekEntry = {
   subtitle: string;
   /** Optional editorial badge label override (e.g. FRIDAY, DEAL, MEAT). */
   badge: string;
+  /** Curated editorial display price (effective_price or ad_price); empty for YAML/Vons cards. */
+  price: string;
+  /** Curated availability label, e.g. "Friday-only" or "Full week"; empty for YAML/Vons cards. */
+  availability: string;
+  /** True when the deal is a Friday-only editorial highlight. */
+  fridayOnly: boolean;
   displayOrder: number;
 };
 
@@ -1345,12 +1351,13 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
   safeway: [
   {
     "title": "Hass avocados",
-    "trackerFamilyIds": [
-      "hass_avocados_each"
-    ],
+    "trackerFamilyIds": [],
     "reason": "99\u00a2 each \u2014 about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
     "subtitle": "99\u00a2 each \u2014 about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
     "badge": "DEAL",
+    "price": "$0.99 each",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 1
   },
   {
@@ -1359,6 +1366,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Best on blackberries at about 30% cheaper than Costco; raspberries and blueberries also look 15\u201320% cheaper.",
     "subtitle": "Best on blackberries at about 30% cheaper than Costco; raspberries and blueberries also look 15\u201320% cheaper.",
     "badge": "PRODUCE",
+    "price": "$2.99 each",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 2
   },
   {
@@ -1367,6 +1377,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway.",
     "subtitle": "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway.",
     "badge": "DEAL",
+    "price": "$0.99 each / $3.49 4-pack",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 3
   },
   {
@@ -1375,6 +1388,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Friday-only: raw shrimp is about 30% cheaper than Costco.",
     "subtitle": "Friday-only: raw shrimp is about 30% cheaper than Costco.",
     "badge": "FRIDAY",
+    "price": "$5/lb",
+    "availability": "Friday-only",
+    "fridayOnly": true,
     "displayOrder": 4
   },
   {
@@ -1383,6 +1399,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Friday-only: bell peppers are about 30% cheaper than Costco.",
     "subtitle": "Friday-only: bell peppers are about 30% cheaper than Costco.",
     "badge": "FRIDAY",
+    "price": "$1 each",
+    "availability": "Friday-only",
+    "fridayOnly": true,
     "displayOrder": 5
   },
   {
@@ -1391,6 +1410,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Friday-only: about 17% cheaper than Costco, plus a variety win.",
     "subtitle": "Friday-only: about 17% cheaper than Costco, plus a variety win.",
     "badge": "FRIDAY",
+    "price": "$5 each",
+    "availability": "Friday-only",
+    "fridayOnly": true,
     "displayOrder": 6
   },
   {
@@ -1399,27 +1421,31 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "About 21% cheaper than Costco \u2014 one of the stronger meat-counter comparisons.",
     "subtitle": "About 21% cheaper than Costco \u2014 one of the stronger meat-counter comparisons.",
     "badge": "MEAT",
+    "price": "$2.99/lb",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 7
   },
   {
     "title": "Oreo / Nabisco snacks",
-    "trackerFamilyIds": [
-      "nabisco_snack_crackers",
-      "chips_ahoy"
-    ],
+    "trackerFamilyIds": [],
     "reason": "Good time to buy Oreos; the smaller Safeway buy is close enough to Costco that variety matters.",
     "subtitle": "Good time to buy Oreos; the smaller Safeway buy is close enough to Costco that variety matters.",
     "badge": "SNACKS",
+    "price": "$3.49 each when you buy 2",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 8
   },
   {
     "title": "$5 Friday Doritos / snack bags",
-    "trackerFamilyIds": [
-      "doritos_5_13oz"
-    ],
+    "trackerFamilyIds": [],
     "reason": "Friday-only: close to Costco pricing, but Safeway wins on smaller bags and flavor variety.",
     "subtitle": "Friday-only: close to Costco pricing, but Safeway wins on smaller bags and flavor variety.",
     "badge": "VARIETY",
+    "price": "$2.50 each",
+    "availability": "Friday-only",
+    "fridayOnly": true,
     "displayOrder": 9
   },
   {
@@ -1428,6 +1454,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Not an exact same-grade match, but Safeway looks cheaper across the comparable Costco short rib options.",
     "subtitle": "Not an exact same-grade match, but Safeway looks cheaper across the comparable Costco short rib options.",
     "badge": "MEAT",
+    "price": "$7.99/lb",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 10
   },
   {
@@ -1436,6 +1465,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Down to nearly a third of regular retail pricing.",
     "subtitle": "Down to nearly a third of regular retail pricing.",
     "badge": "DEAL",
+    "price": "$4.99 each",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 11
   },
   {
@@ -1444,6 +1476,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety.",
     "subtitle": "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety.",
     "badge": "VARIETY",
+    "price": "$3.49 each when you buy 2",
+    "availability": "Full week",
+    "fridayOnly": false,
     "displayOrder": 12
   }
 ],
@@ -1456,6 +1491,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Fresh fillets ~$7.97/lb \u2014 seafood counter highlight; strong weekly value",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 1
   },
   {
@@ -1466,6 +1504,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Bone-in ribeye ~$7.99/lb \u2014 top meat deal near Costco-beating territory",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 2
   },
   {
@@ -1476,6 +1517,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "USDA Choice ~$4.99/lb \u2014 major Costco-beating BBQ staple",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 3
   },
   {
@@ -1487,6 +1531,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Hass avocados ~$1 each \u2014 slightly under Costco per-piece pricing",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 4
   },
   {
@@ -1497,6 +1544,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "60 eggs ~$5 when you buy 2 packs \u2014 qty required for best price",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 5
   },
   {
@@ -1513,6 +1563,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Buy 2 Get 3 free on 5 similarly priced bags \u2014 cheapest 3 free only; prefer 20% more bags",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 6
   },
   {
@@ -1523,6 +1576,9 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "reason": "Pantry-size Cheez-It ~$1.99 \u2014 strong snack-cracker value",
     "subtitle": "",
     "badge": "",
+    "price": "",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 7
   }
 ],

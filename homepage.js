@@ -40,8 +40,11 @@ const BADGE_CLASS = {
   "About normal": "hub-badge--normal",
 };
 
+const DEFAULT_VISIBLE_PICKS = 8;
+
 let previewData = null;
 let activeView = "safeway";
+const expandedByView = { safeway: false, vons: false };
 
 function escapeHtml(text) {
   if (text == null || text === "") return "";
@@ -66,6 +69,11 @@ function badgeHtml(badge) {
   return `<span class="hub-badge ${cls}">${escapeHtml(badge)}</span>`;
 }
 
+function customBadgeHtml(badge) {
+  const variant = String(badge).trim().toLowerCase();
+  return `<span class="hub-badge hub-badge--custom hub-badge--${variant}">${escapeHtml(badge)}</span>`;
+}
+
 function picksForView(view) {
   if (!previewData) return [];
   const config = VIEW_CONFIG[view];
@@ -84,22 +92,27 @@ function leadLineForView(view) {
 }
 
 function renderDealCard(pick) {
+  const hasCustomBadge =
+    typeof pick.customBadge === "string" && pick.customBadge.trim() !== "";
   const dealBadge =
     pick.onSale && !pick.isPlaceholder
       ? '<span class="hub-badge hub-badge--deal">Deal</span>'
       : "";
+  const badgeMarkup = hasCustomBadge
+    ? customBadgeHtml(pick.customBadge)
+    : dealBadge || badgeHtml(pick.badge);
 
   return `
     <article class="hub-deal-card${pick.isPlaceholder ? " hub-deal-card--placeholder" : ""}">
       <div class="hub-deal-card-top">
         <h3 class="hub-deal-card-title">${escapeHtml(pick.name)}</h3>
-        ${dealBadge || badgeHtml(pick.badge)}
+        ${badgeMarkup}
       </div>
       <p class="hub-deal-card-price">
         <span class="hub-deal-card-amount">${escapeHtml(pick.price)}</span>
         <span class="hub-deal-card-store">${escapeHtml(pick.store)}</span>
       </p>
-      <p class="hub-deal-card-unit">${escapeHtml(pick.unitPrice)}</p>
+      ${pick.unitPrice ? `<p class="hub-deal-card-unit">${escapeHtml(pick.unitPrice)}</p>` : ""}
       <p class="hub-deal-card-note">${escapeHtml(pick.explanation)}</p>
       <a href="${escapeHtml(pick.trackerUrl || TRACKER_URL)}" class="hub-deal-card-link">See price history →</a>
     </article>
@@ -120,10 +133,45 @@ function renderPicksGrid() {
 
   if (picks.length === 0) {
     grid.innerHTML = `<p class="hub-empty">Weekly picks loading soon — check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;
+    renderPicksMoreToggle(0);
     return;
   }
 
-  grid.innerHTML = picks.map(renderDealCard).join("");
+  const hiddenCount = Math.max(picks.length - DEFAULT_VISIBLE_PICKS, 0);
+  const expanded = expandedByView[activeView] === true;
+  const visiblePicks =
+    expanded || hiddenCount === 0
+      ? picks
+      : picks.slice(0, DEFAULT_VISIBLE_PICKS);
+
+  grid.innerHTML = visiblePicks.map(renderDealCard).join("");
+  renderPicksMoreToggle(hiddenCount);
+}
+
+function renderPicksMoreToggle(hiddenCount) {
+  const grid = document.getElementById("picks-grid");
+  if (!grid) return;
+
+  const existing = document.getElementById("picks-more");
+  if (existing) existing.remove();
+
+  if (hiddenCount <= 0) return;
+
+  const expanded = expandedByView[activeView] === true;
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.id = "picks-more";
+  btn.className = "hub-picks-more";
+  btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+  btn.textContent = expanded
+    ? "Show fewer deals"
+    : `More handpicked deals (${hiddenCount})`;
+  btn.addEventListener("click", () => {
+    expandedByView[activeView] = !expanded;
+    renderPicksGrid();
+  });
+
+  grid.insertAdjacentElement("afterend", btn);
 }
 
 function setActiveView(view) {

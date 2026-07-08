@@ -21,6 +21,29 @@ from price_tracker.canonical_families import (  # noqa: E402
 ROOT = SCRIPT_DIR.parent
 OUTPUT = ROOT / "src" / "data" / "canonicalTrackerFamilies.generated.ts"
 POPULAR_YAML = ROOT / "data" / "popular_this_week.yaml"
+EDITORIAL_DIR = ROOT / "data" / "editorial_handpicked_deals"
+
+# Card display order for the editorial Safeway shortlist. The first 8 are the
+# default-visible priority cards; the remaining 4 sit behind the expander.
+EDITORIAL_SAFEWAY_ORDER: list[str] = [
+    "Hass avocados",
+    "Berries",
+    "Chobani yogurt",
+    "$5 Friday raw shrimp",
+    "$5 Friday bell peppers",
+    "$5 Friday Nestlé Drumstick ice cream",
+    "Pork shoulder ribs",
+    "Oreo / Nabisco snacks",
+    "$5 Friday Doritos / snack bags",
+    "Beef chuck short ribs",
+    "Sargento cheese",
+    "Oreo variety angle",
+]
+
+
+def _empty_popular_extras() -> dict:
+    """Editorial-only fields; empty defaults keep YAML/Vons entries backward compatible."""
+    return {"subtitle": "", "badge": "", "price": "", "availability": "", "fridayOnly": False}
 
 
 def _normalize_popular_entries(entries: list | None) -> list[dict]:
@@ -33,12 +56,61 @@ def _normalize_popular_entries(entries: list | None) -> list[dict]:
                 or entry.get("trackerFamilyIds")
                 or [],
                 "reason": entry.get("reason", ""),
+                # Optional editorial overrides (curated shortlist cards only).
+                "subtitle": entry.get("subtitle") or "",
+                "badge": entry.get("badge") or "",
+                "price": entry.get("price") or "",
+                "availability": entry.get("availability") or "",
+                "fridayOnly": bool(
+                    entry.get("fridayOnly") or entry.get("friday_only") or False
+                ),
                 "displayOrder": entry.get("display_order")
                 or entry.get("displayOrder")
                 or 0,
             }
         )
     return normalized
+
+
+def load_editorial_safeway(week: str) -> list[dict] | None:
+    """Manual editorial handpicked deals (content only — NOT canonical tracker/price data).
+
+    Prices come straight from the owner-provided JSON (effective_price or ad_price);
+    nothing here feeds price graphs, history, comparisons, or Supabase seeds.
+    Returns None when no editorial file exists for the week (caller falls back to YAML).
+    """
+    if not week:
+        return None
+    path = EDITORIAL_DIR / f"{week}_safeway.json"
+    if not path.is_file():
+        return None
+    with path.open(encoding="utf-8") as handle:
+        raw = json.load(handle)
+
+    order_index = {title: idx for idx, title in enumerate(EDITORIAL_SAFEWAY_ORDER)}
+    entries: list[dict] = []
+    for deal in raw.get("deals") or []:
+        title = deal.get("title", "")
+        availability = deal.get("availability") or ""
+        friday_only = availability.strip().lower().startswith("friday")
+        subtitle = deal.get("subtitle") or ""
+        entries.append(
+            {
+                "title": title,
+                # Editorial cards do not link canonical families — they must never
+                # pull/alter tracker graph data. Price is the editorial string only.
+                "trackerFamilyIds": [],
+                "reason": subtitle,
+                "subtitle": subtitle,
+                "badge": deal.get("badge") or "",
+                "price": deal.get("effective_price") or deal.get("ad_price") or "",
+                "availability": availability,
+                "fridayOnly": friday_only,
+                "displayOrder": order_index.get(title, len(EDITORIAL_SAFEWAY_ORDER) + len(entries)) + 1,
+            }
+        )
+    entries.sort(key=lambda item: item["displayOrder"])
+    return entries
 
 
 def load_popular_yaml() -> dict:
@@ -49,10 +121,22 @@ def load_popular_yaml() -> dict:
     with POPULAR_YAML.open(encoding="utf-8") as handle:
         raw = yaml.safe_load(handle) or {}
     stores = raw.get("stores") or {}
+    week = raw.get("week") or ""
+
+    # Safeway shortlist prefers the owner-provided editorial JSON for the week
+    # (carries manual prices + availability). Falls back to YAML when absent.
+    # Vons is always YAML-driven and untouched.
+    editorial_safeway = load_editorial_safeway(week)
+    safeway_entries = (
+        editorial_safeway
+        if editorial_safeway is not None
+        else _normalize_popular_entries(stores.get("safeway"))
+    )
+
     return {
-        "week": raw.get("week") or "",
+        "week": week,
         "stores": {
-            "safeway": _normalize_popular_entries(stores.get("safeway")),
+            "safeway": safeway_entries,
             "vons": _normalize_popular_entries(stores.get("vons")),
         },
     }
@@ -126,6 +210,16 @@ export type PopularThisWeekEntry = {{
   title: string;
   trackerFamilyIds: string[];
   reason: string;
+  /** Optional editorial subtitle override (curated shortlist cards). */
+  subtitle: string;
+  /** Optional editorial badge label override (e.g. FRIDAY, DEAL, MEAT). */
+  badge: string;
+  /** Curated editorial display price (effective_price or ad_price); empty for YAML/Vons cards. */
+  price: string;
+  /** Curated availability label, e.g. "Friday-only" or "Full week"; empty for YAML/Vons cards. */
+  availability: string;
+  /** True when the deal is a Friday-only editorial highlight. */
+  fridayOnly: boolean;
   displayOrder: number;
 }};
 

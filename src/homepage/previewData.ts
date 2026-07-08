@@ -37,6 +37,8 @@ export type PopularPick = {
   price: string;
   unitPrice: string;
   badge: HomepageBadge;
+  /** Optional curated editorial badge label (e.g. FRIDAY, DEAL) that overrides `badge` for display. */
+  customBadge?: string;
   explanation: string;
   trackerUrl: string;
   isPlaceholder: boolean;
@@ -130,15 +132,19 @@ function toPopularPick(
   const primaryId = entry.trackerFamilyIds[0] ?? entry.title;
   const onSale = product ? isProductOnSale(product) : false;
   const current = product ? getCurrentPrice(product) : null;
+  // Curated editorial cards carry a manual price string (effective_price/ad_price).
+  // Prefer it so handpicked deals never render a blank "—".
+  const editorialPrice = (entry.price ?? "").trim();
 
   return {
     id: primaryId,
     name: entry.title,
     store: storeLabel,
-    price: current != null ? formatPrice(current) : "—",
-    unitPrice: product ? unitPriceDisplay(product) : "—",
+    price: editorialPrice || (current != null ? formatPrice(current) : "—"),
+    unitPrice: product ? unitPriceDisplay(product) : "",
     badge: product ? getBadge(product) : onSale ? "Stock up" : "About normal",
-    explanation: entry.reason,
+    customBadge: entry.badge || undefined,
+    explanation: entry.subtitle || entry.reason,
     trackerUrl: TRACKER_BASE,
     isPlaceholder: !product || !hasChartableData(product),
     onSale,

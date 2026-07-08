@@ -133,6 +133,18 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
+### "Hand-picked deals" section has TWO independent render paths (tracker React vs homepage briefing)
+
+Date discovered: 2026-07-08
+Context: The curated "Hand-picked deals I'm watching…this week" editorial section is rendered by two totally separate code paths that both read from `data/popular_this_week.yaml`, so a change in one does NOT automatically appear in the other:
+1. **Staging price tracker** (`/staging-price-tracker/`): React component `src/staging-price-tracker/PopularThisWeek.tsx`, fed by `POPULAR_THIS_WEEK` in `canonicalTrackerFamilies.generated.ts`. Requires `npm run build:price-tracker`.
+2. **Homepage briefing** ("Scrolling the Aisle's highlights of the week", Safeway/Vons toggle): plain `homepage.js` `renderDealCard()`, fed by `data/homepage-preview.generated.json` (built via `npm run generate:homepage-preview` → `src/homepage/previewData.ts`). Served statically — no bundle rebuild.
+Gotcha: When adding a field like the editorial `customBadge`, you must wire it into BOTH renderers. Initially only the tracker component read `entry.badge`; `homepage.js` kept showing the OLD derived badges ("Deal"/"About normal") because it only read `pick.badge`, never `pick.customBadge` (the JSON already had it). Fix: `homepage.js` now renders `pick.customBadge` (when non-empty) as a `hub-badge hub-badge--custom hub-badge--{variant}` pill instead of the derived/on-sale pill; empty customBadge (Vons) keeps old behavior.
+CSS collision gotcha: the editorial "DEAL" custom badge and the pre-existing on-sale "Deal" pill both use `.hub-badge--deal`. Custom colors MUST be scoped as `.hub-badge--custom.hub-badge--deal` (higher specificity, `border:none`) so the plain on-sale `.hub-badge--deal` pill (Vons) is not recolored. Custom palette mirrors the tracker's `.popular-this-week__tag--*` colors so both surfaces match.
+Top-8 expander parity: both surfaces show the first 8 cards and hide the rest behind a "More handpicked deals (N)" / "Show fewer deals" toggle. Tracker: `PopularThisWeek.tsx` `DEFAULT_VISIBLE = 8`. Homepage: `homepage.js` `DEFAULT_VISIBLE_PICKS = 8` with per-view `expandedByView` state and `renderPicksMoreToggle()` (button `#picks-more`, class `.hub-picks-more`) inserted after `#picks-grid`; toggle only appears when `hiddenCount > 0`, so Vons (7 picks) shows no toggle. Cards are ordered so the priority-8 come first, so the hidden 4 are Doritos/snack bags, Beef chuck short ribs, Sargento cheese, Oreo variety angle.
+How to verify: `python3 -c "import json;d=json.load(open('data/homepage-preview.generated.json'));[print(p['name'],p.get('customBadge')) for p in d['popularPicksSafeway']]"` shows DEAL/PRODUCE/DEAL/FRIDAY/FRIDAY/FRIDAY/MEAT/SNACKS/VARIETY/MEAT/DEAL/VARIETY; Vons picks have no customBadge. Open `index.html` → Safeway toggle shows 8 colored editorial pills + "More handpicked deals (4)"; Vons toggle shows all 7 with old derived badges and no expander.
+Related files: `homepage.js` (`renderDealCard`, `customBadgeHtml`, `renderPicksGrid`, `renderPicksMoreToggle`, `DEFAULT_VISIBLE_PICKS`, `expandedByView`), `styles.css` (`.hub-badge--custom`, `.hub-badge--{friday,deal,produce,meat,snacks,variety}`, `.hub-picks-more`), `src/homepage/previewData.ts`, `src/staging-price-tracker/PopularThisWeek.tsx`, `data/homepage-preview.generated.json`
+
 ### "Hand-picked deals this week" cards support editorial badge + subtitle overrides
 
 Date discovered: 2026-07-08
@@ -256,6 +268,15 @@ What happened: Two issues stacked: (1) **stale HTML** — browser cached `index.
 Fix / workaround: Re-applied root-absolute cache-busted asset paths: `/styles.css?v=hub2`, `/homepage.js?v=hub2`, `/data/homepage-preview.generated.json`. Run **`npm run preview:homepage`** in your own terminal (repo root) and hard-refresh (Cmd+Shift+R). Do not open `index.html` via `file://`.  
 How to verify: `curl -s http://127.0.0.1:8000/ | grep hub2` shows cache-busted links; page shows styled hero, "Scroll through the … aisle" CTAs, store-vote chips.  
 Related files: `index.html`, `homepage.js`, `styles.css`, `package.json` (`preview:homepage`)
+
+### Must bump `?v=` in index.html when editing homepage.js / styles.css
+
+Date discovered: 2026-07-08  
+Context: Updated `homepage.js` + `styles.css` (handpicked-deals custom badges + top-8 expander) but the local preview kept showing the OLD version even after reloads.  
+What happened: `index.html` references assets with version query strings (`/homepage.js?v=hub2`, `/styles.css?v=hub3`). Editing the files WITHOUT bumping the `?v=` means the browser keeps serving the cached asset for that exact URL — the server log showed no re-fetch of `homepage.js?v=hub2` on reload. This also affects the deployed site, not just local.  
+Fix / workaround: Whenever you change `homepage.js` or `styles.css`, bump their `?v=` tokens in `index.html` (e.g. `hub2`→`hub3`, `hub3`→`hub4`). Then a normal load fetches the new asset (new cache key).  
+How to verify: `rg "homepage\.js\?v=|styles\.css\?v=" index.html` shows the new tokens; reload the preview and confirm the change appears (server log shows a GET for the new `?v=` URL).  
+Related files: `index.html`, `homepage.js`, `styles.css`
 
 ### GitHub Pages sometimes doesn't build after a push (re-trigger with empty commit)
 

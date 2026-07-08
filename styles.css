@@ -2804,6 +2804,12 @@ img {
   font-size: 15px;
 }
 
+.popular-this-week__card-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
 .popular-this-week__card-reason {
   font-size: 13px;
   color: var(--muted);
@@ -2819,6 +2825,62 @@ img {
   background: #e8f7ee;
   padding: 2px 8px;
   border-radius: 999px;
+}
+
+/* Curated editorial badge labels (FRIDAY, DEAL, MEAT, etc.). */
+.popular-this-week__tag {
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #495057;
+  background: #eef1f4;
+}
+
+.popular-this-week__tag--friday {
+  color: #8a4b00;
+  background: #fff1dd;
+}
+
+.popular-this-week__tag--deal {
+  color: #1a7f4b;
+  background: #e8f7ee;
+}
+
+.popular-this-week__tag--produce {
+  color: #2f7d32;
+  background: #eaf5ea;
+}
+
+.popular-this-week__tag--meat {
+  color: #9c2a2a;
+  background: #fbeaea;
+}
+
+.popular-this-week__tag--snacks,
+.popular-this-week__tag--variety {
+  color: #5a3a91;
+  background: #f0eafb;
+}
+
+.popular-this-week__more {
+  margin-top: 12px;
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.popular-this-week__more:hover {
+  border-color: var(--accent);
 }
 
 /* Homepage hub (restored from 758546d for local preview) */
@@ -3021,6 +3083,28 @@ img {
   border: 1px solid #fcd9b0;
 }
 
+/* "More handpicked deals" expander — mirrors the tracker's .popular-this-week__more. */
+.hub-picks-more {
+  margin: 14px 0 0;
+  appearance: none;
+  display: inline-block;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.hub-picks-more:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
 .hub-section-footer {
   margin: 20px 0 0;
 }
@@ -3191,6 +3275,41 @@ img {
 .hub-signal--normal {
   background: #f3f3f3;
   color: #555;
+}
+
+/* Curated editorial badges — palette matches .popular-this-week__tag--* on the tracker.
+   Scoped under .hub-badge--custom so they never override the existing on-sale
+   .hub-badge--deal pill (Vons cards keep their derived badges). */
+.hub-badge--custom {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hub-badge--custom.hub-badge--friday {
+  background: #fff1dd;
+  color: #8a4b00;
+}
+
+.hub-badge--custom.hub-badge--deal {
+  background: #e8f7ee;
+  color: #1a7f4b;
+  border: none;
+}
+
+.hub-badge--custom.hub-badge--produce {
+  background: #eaf5ea;
+  color: #2f7d32;
+}
+
+.hub-badge--custom.hub-badge--meat {
+  background: #fbeaea;
+  color: #9c2a2a;
+}
+
+.hub-badge--custom.hub-badge--snacks,
+.hub-badge--custom.hub-badge--variety {
+  background: #f0eafb;
+  color: #5a3a91;
 }
 
 .hub-search {
