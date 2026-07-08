@@ -1,5 +1,5 @@
 export const SITE_DISCLAIMER_TEXT =
-  "I'm still manually reviewing content on this site, so you may spot incorrect prices or details. The Scrolling The Aisle videos are fully reviewed and accurate! Improving the site day by day, so check back often.";
+  "I'm still manually reviewing content on this site, so you may spot incorrect prices or details. The Scrolling The Aisle videos are fully reviewed and accurate! Improving the site day by day, so check back often. - Evelyn";
 
 export function SiteDisclaimerBanner() {
   return (
