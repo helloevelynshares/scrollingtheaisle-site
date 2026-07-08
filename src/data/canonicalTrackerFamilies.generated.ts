@@ -1290,7 +1290,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "salmon",
     "displayName": "Salmon",
-    "subtitle": "fillets or smoked salmon, format varies",
+    "subtitle": "fresh salmon fillet",
     "displayOrder": 66,
     "homepageSection": "meat_and_seafood",
     "category": "meat_seafood",
@@ -1299,8 +1299,11 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     "searchAliases": [
       "Atlantic salmon",
       "salmon fillets",
-      "smoked salmon",
-      "Norwegian smoked salmon",
+      "fresh salmon",
+      "Fresh Atlantic Salmon Fillets",
+      "salmon fillet",
+      "salmon portion",
+      "farm raised salmon",
       "Salmon"
     ],
     "legacyCanonicalIds": []

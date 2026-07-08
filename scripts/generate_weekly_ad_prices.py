@@ -45,6 +45,12 @@ from price_tracker.canonical_families import (  # noqa: E402
     LEGACY_CANONICAL_TO_FAMILY,
     load_families,
 )
+from price_tracker.canonical_match_audit import (  # noqa: E402
+    AuditRecord,
+    CanonicalMatchAuditCollector,
+    write_all_audits,
+)
+from price_tracker.canonical_match_eligibility import EligibilityIndex  # noqa: E402
 from price_tracker.normalization import normalize_price  # noqa: E402
 from price_tracker.weekly_ad_preview import (  # noqa: E402
     build_feed_preview_summary,
@@ -255,6 +261,18 @@ def matches(row: dict[str, str], matcher: ProductMatcher) -> bool:
     return not any(re.search(pattern, text) for pattern in matcher.exclude_patterns)
 
 
+def pattern_hit_rows(
+    rows: list[dict[str, str]], matcher: ProductMatcher
+) -> list[dict[str, str]]:
+    """Rows whose split text hits include patterns (ignoring exclude list)."""
+    hits: list[dict[str, str]] = []
+    for row in rows:
+        text = split_text(row)
+        if any(re.search(pattern, text) for pattern in matcher.patterns):
+            hits.append(row)
+    return hits
+
+
 def parse_price(value: str | None) -> float | None:
     if not value or value in {"$", ""}:
         return None
@@ -315,20 +333,175 @@ def match_confidence(row: dict[str, str], matcher: ProductMatcher) -> str | None
     return confidence
 
 
+def _historical_low(
+    prices: dict[str, dict[str, object | None]], family_id: str, before_week: str
+) -> float | None:
+    weeks = prices.get(family_id) or {}
+    values: list[float] = []
+    for week_start, entry in weeks.items():
+        if week_start >= before_week:
+            continue
+        price = entry.get("price") if isinstance(entry, dict) else None
+        if isinstance(price, (int, float)):
+            values.append(float(price))
+    return min(values) if values else None
+
+
+def _prior_week_price(
+    prices: dict[str, dict[str, object | None]], family_id: str, week_start: str
+) -> float | None:
+    weeks = prices.get(family_id) or {}
+    prior_weeks = sorted(ws for ws in weeks if ws < week_start)
+    if not prior_weeks:
+        return None
+    entry = weeks[prior_weeks[-1]]
+    price = entry.get("price") if isinstance(entry, dict) else None
+    return float(price) if isinstance(price, (int, float)) else None
+
+
 def pick_best_row(
-    rows: list[dict[str, str]], matcher: ProductMatcher
+    rows: list[dict[str, str]],
+    matcher: ProductMatcher,
+    *,
+    eligibility: EligibilityIndex | None = None,
+    feed_label: str | None = None,
+    week_start: str | None = None,
+    week_end: str | None = None,
+    prior_price: float | None = None,
+    historical_low: float | None = None,
+    audit_collector: CanonicalMatchAuditCollector | None = None,
 ) -> dict[str, str] | None:
     candidates = [row for row in rows if matches(row, matcher)]
     if not candidates:
+        # Audit near-matches blocked by exclude patterns or with no eligible candidate.
+        if eligibility is not None and audit_collector and feed_label and week_start and week_end:
+            for row in pattern_hit_rows(rows, matcher):
+                conf_label = match_confidence(row, matcher)
+                elig = eligibility.evaluate(
+                    row,
+                    matcher.canonical_id,
+                    keyword_confidence=conf_label,
+                    prior_price=prior_price,
+                    historical_low=historical_low,
+                )
+                if elig.match_decision != "accepted":
+                    unit_price = normalize_unit_price(row, matcher)
+                    audit_collector.add(
+                        AuditRecord(
+                            week_start=week_start,
+                            week_end=week_end,
+                            feed=feed_label,
+                            family_id=matcher.canonical_id,
+                            offer_text=row.get("split_product_text")
+                            or row.get("raw_offer_text")
+                            or "",
+                            price=unit_price,
+                            match_decision=elig.match_decision,
+                            match_confidence=elig.match_confidence,
+                            match_reason=elig.match_reason,
+                            reject_reason=elig.reject_reason,
+                            canonical_intent=elig.canonical_intent,
+                            ad_product_type=elig.ad_product_type,
+                            hard_negative_hits=list(elig.hard_negative_hits),
+                            output_class=elig.output_class,
+                            updated_tracker=False,
+                            graph_preview_change=(
+                                f"blocked ${unit_price} — {elig.reject_reason}"
+                                if unit_price is not None
+                                else elig.reject_reason
+                            ),
+                        )
+                    )
+                    break
         return None
+
     if _PICK_LOWEST_BY_ID.get(matcher.canonical_id):
 
         def normalized_price(row: dict[str, str]) -> float:
             value = normalize_unit_price(row, matcher)
             return value if value is not None else float("inf")
 
-        return min(candidates, key=normalized_price)
-    return max(candidates, key=lambda row: preference_score(row, matcher))
+        ranked = sorted(candidates, key=normalized_price)
+    else:
+        ranked = sorted(candidates, key=lambda row: preference_score(row, matcher), reverse=True)
+
+    best_row: dict[str, str] | None = None
+    best_eligibility = None
+    audit_row: dict[str, str] | None = None
+
+    for row in ranked:
+        conf_label = match_confidence(row, matcher)
+        if eligibility is not None:
+            elig = eligibility.evaluate(
+                row,
+                matcher.canonical_id,
+                keyword_confidence=conf_label,
+                prior_price=prior_price,
+                historical_low=historical_low,
+            )
+        else:
+            from price_tracker.canonical_match_eligibility import MatchEligibilityResult
+
+            elig = MatchEligibilityResult(
+                match_decision="accepted",
+                match_confidence=0.7,
+                match_reason="legacy pattern match",
+            )
+
+        if elig.match_decision == "accepted":
+            best_row = row
+            best_eligibility = elig
+            audit_row = row
+            break
+
+        if audit_row is None:
+            audit_row = row
+            best_eligibility = elig
+
+    if (
+        audit_collector
+        and feed_label
+        and week_start
+        and week_end
+        and audit_row is not None
+        and best_eligibility is not None
+    ):
+        unit_price = normalize_unit_price(audit_row, matcher)
+        audit_collector.add(
+            AuditRecord(
+                week_start=week_start,
+                week_end=week_end,
+                feed=feed_label,
+                family_id=matcher.canonical_id,
+                offer_text=audit_row.get("split_product_text")
+                or audit_row.get("raw_offer_text")
+                or "",
+                price=unit_price,
+                match_decision=best_eligibility.match_decision,
+                match_confidence=best_eligibility.match_confidence,
+                match_reason=best_eligibility.match_reason,
+                reject_reason=best_eligibility.reject_reason,
+                canonical_intent=best_eligibility.canonical_intent,
+                ad_product_type=best_eligibility.ad_product_type,
+                hard_negative_hits=list(best_eligibility.hard_negative_hits),
+                output_class=best_eligibility.output_class,
+                updated_tracker=best_eligibility.match_decision == "accepted",
+                all_time_low_change=(
+                    unit_price is not None
+                    and historical_low is not None
+                    and unit_price < historical_low
+                    and best_eligibility.match_decision == "accepted"
+                ),
+                graph_preview_change=(
+                    f"blocked ${unit_price} — {best_eligibility.reject_reason}"
+                    if best_eligibility.match_decision != "accepted"
+                    and unit_price is not None
+                    else None
+                ),
+            )
+        )
+
+    return best_row
 
 
 def pick_best_member_row(
@@ -494,6 +667,8 @@ def build_prices(
     split_items: list[dict[str, str]],
     *,
     product_ids: set[str] | None = None,
+    eligibility: EligibilityIndex | None = None,
+    audit_collector: CanonicalMatchAuditCollector | None = None,
 ) -> tuple[list[dict[str, str]], dict[str, dict[str, dict[str, object | None]]]]:
     target_ids = product_ids if product_ids is not None else set(TRACKER_CANONICAL_IDS)
     matchers = [m for m in MATCHERS if m.canonical_id in target_ids]
@@ -519,7 +694,19 @@ def build_prices(
         )
 
         for matcher in matchers:
-            best = pick_best_row(week_rows, matcher)
+            prior = _prior_week_price(prices, matcher.canonical_id, week_start)
+            hist_low = _historical_low(prices, matcher.canonical_id, week_start)
+            best = pick_best_row(
+                week_rows,
+                matcher,
+                eligibility=eligibility,
+                feed_label=feed_label,
+                week_start=week_start,
+                week_end=week_end,
+                prior_price=prior,
+                historical_low=hist_low,
+                audit_collector=audit_collector,
+            )
             if best is None:
                 prices[matcher.canonical_id][week_start] = {
                     "price": None,
@@ -625,6 +812,7 @@ class RunOptions:
     dry_run: bool = False
     feeds: set[str] | None = None  # {"Safeway", "Vons"}
     as_of: date | None = None
+    audit_collector: CanonicalMatchAuditCollector | None = None
 
 
 def feed_weeks_key(feed_label: str) -> str:
@@ -702,6 +890,8 @@ def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
     manifest = load_manifest(config.manifest_path)
     split_items = load_split_items(config.split_items_path, config.banner_filter)
     print_run_header(options, config.split_items_path)
+    eligibility = EligibilityIndex()
+    audit_collector = getattr(options, "audit_collector", None)
 
     weeks_key, prices_key = FEED_TS_KEYS[config.feed_label]
     product_ids = (
@@ -723,7 +913,12 @@ def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
                 f"for {len(product_ids)} product(s)"
             )
             weeks, new_prices = build_prices(
-                config.feed_label, manifest, split_items, product_ids=product_ids
+                config.feed_label,
+                manifest,
+                split_items,
+                product_ids=product_ids,
+                eligibility=eligibility,
+                audit_collector=audit_collector,
             )
             prices = {cid: {} for cid in TRACKER_CANONICAL_IDS}
             prices.update(new_prices)
@@ -738,7 +933,12 @@ def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
                     print(f"No new products missing from {config.output_path.name}")
                     return summary
             weeks, new_prices = build_prices(
-                config.feed_label, manifest, split_items, product_ids=product_ids
+                config.feed_label,
+                manifest,
+                split_items,
+                product_ids=product_ids,
+                eligibility=eligibility,
+                audit_collector=audit_collector,
             )
             prices = dict(existing_prices)
             for cid in TRACKER_CANONICAL_IDS:
@@ -752,7 +952,13 @@ def generate_feed(config: FeedConfig, options: RunOptions) -> MergeSummary:
         parsed = parse_ts_export(config.output_path, weeks_key, prices_key)
         if parsed:
             _, legacy_prices = parsed
-        weeks, prices = build_prices(config.feed_label, manifest, split_items)
+        weeks, prices = build_prices(
+            config.feed_label,
+            manifest,
+            split_items,
+            eligibility=eligibility,
+            audit_collector=audit_collector,
+        )
         legacy_copied = merge_legacy_prices(prices, legacy_prices)
         if legacy_copied:
             print(
@@ -937,6 +1143,9 @@ def main() -> None:
             return
         print(f"New-only products: {', '.join(sorted(options.product_ids))}")
 
+    audit_collector = CanonicalMatchAuditCollector()
+    options.audit_collector = audit_collector
+
     total = MergeSummary()
     feed_configs = FEEDS
     if options.feeds:
@@ -954,7 +1163,13 @@ def main() -> None:
     for config in feed_configs:
         manifest = load_manifest(config.manifest_path)
         split_items = load_split_items(config.split_items_path, config.banner_filter)
-        _, prices = build_prices(config.feed_label, manifest, split_items)
+        _, prices = build_prices(
+            config.feed_label,
+            manifest,
+            split_items,
+            eligibility=EligibilityIndex(),
+            audit_collector=audit_collector,
+        )
         validate_tracker_product_ids_unchanged(tracked_ids, prices.keys())
         summary = build_feed_preview_summary(
             config.feed_label,
@@ -967,6 +1182,11 @@ def main() -> None:
         )
         if summary:
             print(format_preview_summary(summary))
+
+    audit_paths = write_all_audits(audit_collector)
+    for json_path, md_path in audit_paths:
+        print(f"Wrote canonical match audit: {json_path.relative_to(ROOT)}")
+        print(f"Wrote canonical match audit: {md_path.relative_to(ROOT)}")
 
     print(
         f"\nSummary: extraction=0 (cache only) | "

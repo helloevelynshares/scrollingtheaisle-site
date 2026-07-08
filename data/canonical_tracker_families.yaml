@@ -1359,18 +1359,43 @@ families:
   homepage_group: meat_and_seafood
 - id: salmon
   canonical_tracker_family: Salmon
-  size_format_subtitle: fillets or smoked salmon, format varies
+  size_format_subtitle: fresh salmon fillet
   category: meat_seafood
   organic_status: not_applicable
   include:
   - Atlantic salmon
   - salmon fillets
-  - smoked salmon
-  - Norwegian smoked salmon
+  - fresh salmon
+  - Fresh Atlantic Salmon Fillets
+  - salmon fillet
+  - salmon portion
+  - farm raised salmon
   keep_separate_from:
+  - smoked salmon
+  - Nova
+  - lox
+  - Acme
+  - Echo Falls
+  - togarashi
+  - cured salmon
+  - gravlax
+  - salmon spread
+  - salmon dip
+  - canned salmon
+  - 3 oz
+  - 4 oz
   - shrimp
   - other fish
-  notes: ''
+  match_eligibility:
+    canonical_intent: fresh_salmon_fillets
+    allowed_product_types:
+    - fresh_salmon_fillets
+    disallowed_product_types:
+    - smoked_salmon
+    - canned_salmon
+    - salmon_spread_or_dip
+    - frozen_salmon
+  notes: Track fresh salmon fillets only — not smoked/nova/cured packs.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

@@ -640,3 +640,17 @@ Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`
 How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; `curl -I http://127.0.0.1:5173/staging-price-tracker/` returns HTTP 200.
 Related files: `vite.config.ts`, `package.json` (`dev:price-tracker`)
 
+### Canonical match eligibility gates weekly ad graph updates
+
+Date discovered: 2026-07-08
+Context: Safeway 7/8–7/14 ad matched "Acme Togarashi or Nova Smoked Salmon 3 oz $4.99" to canonical `salmon` (fresh fillet tracker), producing a false $4.99 all-time low on the chart.
+What happened: YAML `include` listed smoked salmon; pattern match (`\bsalmon\b`) accepted any salmon SKU. No product-type or unit guard before writing `weeklyAdPrices.generated.ts`.
+Fix / workaround:
+1. `salmon` family now tracks **fresh salmon fillet only** — smoked/nova/lox/cured/3–4 oz packs in `keep_separate_from` + `match_eligibility` + `config/canonical_match_rules.yaml`.
+2. `scripts/price_tracker/product_type_taxonomy.py` classifies ad text (`fresh_salmon_fillets`, `smoked_salmon`, `12_pack_cans`, `butter_sticks`, etc.).
+3. `scripts/price_tracker/canonical_match_eligibility.py` requires product-type + unit compatibility, no hard-negative hits, confidence ≥ threshold before tracker update. `rejected` / `manual_review` do **not** write to generated TS.
+4. Every `generate_weekly_ad_prices.py` run writes `output/weekly_deals/<week>/canonical_match_audit.json` + `.md` (section: Graph update safety check).
+5. Regression tests: `tests/test_canonical_match_eligibility.py` (5 cases).
+How to verify: `PYTHONPATH=scripts python3 scripts/generate_weekly_ad_prices.py --product-id salmon --feed safeway` → `salmon["2026-07-08"].price` is `null`; audit shows rejected Acme Smoked Nova with smoked vs fresh reason; `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility -v`.
+Related files: `config/canonical_match_rules.yaml`, `data/canonical_tracker_families.yaml`, `scripts/price_tracker/canonical_match_eligibility.py`, `scripts/generate_weekly_ad_prices.py`, `output/weekly_deals/2026-07-08/canonical_match_audit.md`
+

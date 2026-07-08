@@ -87,6 +87,7 @@ class TrackerFamily:
     exclude_patterns: tuple[str, ...] = ()
     prefer_patterns: tuple[str, ...] = ()
     normalization: str | None = None
+    match_eligibility: dict[str, Any] = field(default_factory=dict)
 
 
 def phrase_to_pattern(phrase: str) -> str:
@@ -177,6 +178,7 @@ def parse_family(raw: dict[str, Any]) -> TrackerFamily:
         exclude_patterns=excludes,
         prefer_patterns=prefers,
         normalization=infer_normalization(family_id, notes, subtitle),
+        match_eligibility=dict(raw.get("match_eligibility") or {}),
     )
 
 

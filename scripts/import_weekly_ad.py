@@ -382,6 +382,10 @@ def main() -> None:
 
     verify_tracker_counts()
     print_preview_report(as_of)
+    print(
+        "\nInspect canonical match audit after import:"
+    )
+    print(f"  output/weekly_deals/{args.week_start}/canonical_match_audit.md")
     print("\nImport complete. Run: npm run build:price-tracker")
 
 

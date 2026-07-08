@@ -22,6 +22,7 @@ from generate_weekly_ad_prices import (  # noqa: E402
     row_text,
     split_text,
 )
+from price_tracker.canonical_match_eligibility import EligibilityIndex  # noqa: E402
 from weekly_ad_analysis.ad_loader import AdOfferRow
 from weekly_ad_analysis.config_loader import ContentWatchlistEntry
 
@@ -37,6 +38,7 @@ class WatchlistMatch:
     ad_row: AdOfferRow
     match_confidence: str
     brand: str | None
+    match_output_class: str = "canonical_tracker_match"
 
 
 def _row_dict(ad_row: AdOfferRow) -> dict[str, str]:
@@ -93,6 +95,8 @@ def match_watchlist_rows(
         e.canonical_category_id: e for e in eligible if e.canonical_category_id
     }
 
+    eligibility = EligibilityIndex()
+
     for matcher in MATCHERS:
         if matcher.canonical_id not in canonical_ids:
             continue
@@ -104,6 +108,9 @@ def match_watchlist_rows(
         dept, category = canonical_display.get(matcher.canonical_id, ("Food", "general", "general"))[1:]
         display_name = canonical_display.get(matcher.canonical_id, (matcher.canonical_id, "Food", "general"))[0]
         conf = match_confidence(best, matcher) or "low"
+        elig = eligibility.evaluate(best, matcher.canonical_id, keyword_confidence=conf)
+        if elig.match_decision != "accepted":
+            continue
         ad_row = ad_rows[idx]
         matches_out.append(
             WatchlistMatch(
@@ -116,6 +123,7 @@ def match_watchlist_rows(
                 ad_row=ad_row,
                 match_confidence=conf,
                 brand=_guess_brand(ad_row.raw_ad_text),
+                match_output_class=elig.output_class,
             )
         )
 

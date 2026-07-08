@@ -63,6 +63,35 @@ python3 scripts/generate_weekly_ad_prices.py --product-id doritos_5_13oz
 
 Legacy canonical ids (e.g. `strawberries`) are merged into mapped YAML families automatically.
 
+### Canonical match eligibility (required for graph updates)
+
+Weekly ad rows must pass **eligibility** before writing `weeklyAdPrices.generated.ts` / `vonsWeeklyAdPrices.generated.ts`. Pattern match alone is not enough for families with rules in `config/canonical_match_rules.yaml` (or per-family `match_eligibility` in YAML).
+
+Checks: product-type compatibility, unit/package, hard-negative keywords, confidence threshold. Outcomes:
+
+| `match_decision` | Tracker graph updated? |
+|------------------|------------------------|
+| `accepted` | Yes |
+| `rejected` | No — ad deal only |
+| `manual_review` | No — needs human review |
+
+After every generate/import run, inspect:
+
+```bash
+open output/weekly_deals/YYYY-MM-DD/canonical_match_audit.md
+```
+
+Section **Graph update safety check** lists blocked all-time lows and tempting false matches (e.g. smoked salmon vs fresh salmon fillet tracker).
+
+Validate:
+
+```bash
+PYTHONPATH=scripts python3 scripts/validate_weekly_ad_prices.py
+PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility -v
+```
+
+Import workflow (`scripts/import_weekly_ad.py`) regenerates prices and writes the same audit files per week.
+
 ## Update Popular this week
 
 Edit `data/popular_this_week.yaml` manually (not auto-generated):

@@ -1,0 +1,271 @@
+# Canonical match eligibility rules for weekly ad → tracker family updates.
+# Families without an entry here still use pattern matching only (legacy behavior).
+# See scripts/price_tracker/canonical_match_eligibility.py
+
+families:
+  salmon:
+    canonical_intent: fresh_salmon_fillets
+    allowed_product_types:
+      - fresh_salmon_fillets
+    disallowed_product_types:
+      - smoked_salmon
+      - canned_salmon
+      - salmon_spread_or_dip
+      - frozen_salmon
+    positive_keywords:
+      - fresh
+      - fillet
+      - fillets
+      - atlantic salmon fillets
+      - farm raised
+      - seafood counter
+      - per lb
+      - value pack
+    negative_keywords:
+      - smoked
+      - nova
+      - lox
+      - cured
+      - gravlax
+      - togarashi
+      - jerky
+      - spread
+      - dip
+      - pouch
+      - canned
+      - packet
+      - 3 oz
+      - 4 oz
+      - acme
+      - echo falls
+    allowed_units:
+      - lb
+      - each
+    disallowed_package_patterns:
+      - \b[234]\s*oz\b
+      - smoked
+      - nova
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  coca_cola_12packs:
+    canonical_intent: 12_pack_cans
+    allowed_product_types:
+      - 12_pack_cans
+    disallowed_product_types:
+      - 2_liter_bottle
+      - single_bottle
+      - 8_pack_bottles
+    positive_keywords:
+      - 12-pack
+      - 12 pack
+      - 12pk
+      - 12 ct
+      - 12-ct
+      - 12 fl oz cans
+    negative_keywords:
+      - 2 liter
+      - 2-liter
+      - 2 l
+      - 20 oz
+      - single bottle
+      - 8-pack bottle
+      - 6-pack bottle
+    disallowed_package_patterns:
+      - 2\s*[- ]?liter
+      - 2\s*l\b
+      - 20\s*oz
+      - 1\s*liter
+    min_confidence: 0.7
+    atl_requires_confidence: 0.9
+    large_price_change_pct: 40
+
+  butter_16oz:
+    canonical_intent: butter_sticks
+    allowed_product_types:
+      - butter_sticks
+    disallowed_product_types:
+      - butter_spread
+      - plant_based_spread
+    positive_keywords:
+      - butter 16
+      - 16 oz butter
+      - quarters
+      - sticks
+      - 1 lb butter
+    negative_keywords:
+      - spread
+      - spreadable
+      - tub
+      - plant based
+      - plant-based
+      - margarine
+      - whipped
+    disallowed_package_patterns:
+      - spread
+      - tub
+      - 13\s*to\s*15
+      - 13-15
+    min_confidence: 0.7
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
+  haagen_dazs_pints:
+    canonical_intent: pint
+    allowed_product_types:
+      - pint
+    disallowed_product_types:
+      - bars_or_novelties
+      - tub
+      - multipack
+    positive_keywords:
+      - pint
+      - 14 oz
+      - ice cream
+    negative_keywords:
+      - bars
+      - cones
+      - novelties
+      - 48 oz
+      - tub
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  ben_jerrys_ice_cream:
+    canonical_intent: pint
+    allowed_product_types:
+      - pint
+      - bars_or_novelties
+    disallowed_product_types:
+      - tub
+    positive_keywords:
+      - ben & jerry
+      - ben and jerry
+      - pint
+      - bars
+    negative_keywords:
+      - cookie dough chunks
+      - popsicle
+    min_confidence: 0.6
+    atl_requires_confidence: 0.8
+    large_price_change_pct: 35
+
+  ritz_crackers:
+    canonical_intent: ritz_crackers
+    allowed_product_types:
+      - ritz_crackers
+      - generic_nabisco_block
+    disallowed_product_types:
+      - chips_ahoy
+      - oreo
+      - wheat_thins
+      - triscuits
+    positive_keywords:
+      - ritz
+    negative_keywords:
+      - oreo
+      - chips ahoy
+      - wheat thins
+      - triscuit
+      - toasted chips
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
+  chips_ahoy:
+    canonical_intent: chips_ahoy
+    allowed_product_types:
+      - chips_ahoy
+      - generic_nabisco_block
+    disallowed_product_types:
+      - ritz_crackers
+      - oreo
+      - wheat_thins
+      - triscuits
+    negative_keywords:
+      - ritz
+      - oreo
+      - wheat thins
+      - triscuit
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
+  oreo_family_size:
+    canonical_intent: oreo
+    allowed_product_types:
+      - oreo
+      - generic_nabisco_block
+    disallowed_product_types:
+      - ritz_crackers
+      - chips_ahoy
+      - wheat_thins
+      - triscuits
+    negative_keywords:
+      - ritz
+      - chips ahoy
+      - wheat thins
+      - triscuit
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
+  berries_6oz:
+    canonical_intent: berries_6oz_clamshell
+    allowed_product_types:
+      - berries_6oz_clamshell
+    disallowed_product_types:
+      - strawberries_clamshell
+      - berries_large_pack
+    positive_keywords:
+      - 6 oz
+      - blueberries
+      - raspberries
+      - blackberries
+    negative_keywords:
+      - strawberry
+      - strawberries
+      - 18 oz
+      - 1 lb
+      - pint
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 40
+
+  eggs_dozen_normalized:
+    canonical_intent: eggs_dozen
+    allowed_product_types:
+      - eggs_dozen
+    disallowed_product_types:
+      - egg_whites_liquid
+    positive_keywords:
+      - eggs
+      - dozen
+      - 12 ct
+      - 18 ct
+      - 24 ct
+    negative_keywords:
+      - egg whites
+      - liquid eggs
+      - egg beaters
+      - hard boiled
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  lays_potato_chips_regular:
+    canonical_intent: regular_chip_bag
+    allowed_product_types:
+      - regular_chip_bag
+    disallowed_product_types:
+      - party_size
+      - kettle_cooked
+    negative_keywords:
+      - party size
+      - kettle cooked
+      - stax
+    min_confidence: 0.6
+    atl_requires_confidence: 0.8
+    large_price_change_pct: 40
