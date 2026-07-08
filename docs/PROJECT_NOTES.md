@@ -133,6 +133,17 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
+### Section items ordered by deal quality (best deals first, row by row)
+
+Date discovered: 2026-07-08
+Context: `/staging-price-tracker/` sections previously ordered items by curated `displayOrder`; user wanted strongest current deals ranked first, filling the grid left-to-right/top-to-bottom, and the "Show more" toggle to hide the *worst* deals.
+What changed:
+1. New reusable helper in `src/data/priceTrackerUtils.ts`: `rankProductsByDealQuality()` / `compareByDealQuality()` / `getDealQualityRankKey()`. Ranking key (best → worst): (1) currently on sale (`isProductOnSale`) before non-deals; (2) benchmark bucket via `computeFeedProductBenchmark` — all-time low > near all-time low > strong sale > normal sale > weak sale > insufficient history; (3) larger % discount vs baseline (`getProductSaleDiscountPercent` ?? `getDiscountPercent`); (4) stable `displayName` then `canonicalId` tiebreak so order is deterministic. No new price logic — reuses existing benchmark/deal helpers. Preview-week deals rank by their preview price via `isProductOnSale`.
+2. `SectionedTrackerList.tsx` now sorts each section with `rankProductsByDealQuality(...)` instead of `displayOrder`. Grid fills row by row, so the ranked array = best-deal-first layout.
+3. `sectionShowMore.ts` `partitionSectionProducts` is now **count-based**: it hides the lowest-ranked tail (`products.slice(0, length - N)`), where N = number of ids in the curated `SECTION_COLLAPSED_PRODUCT_IDS` for that section (new `getCollapsedCount()` helper). The curated list still decides *how many* are hidden; deal ranking decides *which*. Products must be pre-sorted best-first before calling. Search still bypasses collapse.
+How to verify: `npm run build:price-tracker` (runs `verify-price-tracker-build.mjs`) — passes. `npm run dev:price-tracker` → http://127.0.0.1:5173/staging-price-tracker/ → within any section (e.g. "Stock up on snacks & treats"), the first/top-left cards show the strongest sale badges (all-time low / on sale), non-deal cards trail; click "Show more (N)" and the newly revealed cards are the weaker/baseline items. Toggling store tabs (Safeway/Vons) re-ranks per feed.
+Related files: `src/data/priceTrackerUtils.ts` (`rankProductsByDealQuality`, `compareByDealQuality`, `getDealQualityRankKey`, `BENCHMARK_BUCKET_RANK`), `src/staging-price-tracker/SectionedTrackerList.tsx`, `src/staging-price-tracker/sectionShowMore.ts`
+
 ### Tracker vote suggestions are moderated before appearing publicly
 
 Date discovered: 2026-06-13  

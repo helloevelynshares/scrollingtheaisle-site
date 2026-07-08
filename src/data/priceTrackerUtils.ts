@@ -447,6 +447,81 @@ function getFamilySaleDiscountPercent(product: FeedProductView): number | null {
   return Math.round(((usualMin - saleMin) / usualMin) * 100);
 }
 
+/**
+ * Deal-quality ordering for a section grid. Lower rank = stronger deal, so a
+ * plain ascending sort puts the best current deals first (top-left), filling
+ * the grid row by row.
+ *
+ * Priority (best → worst):
+ *   1. Currently on sale (deal-adjusted price below baseline) before non-deals.
+ *   2. Benchmark bucket: all-time low > near all-time low > strong sale >
+ *      normal sale > weak sale > insufficient history.
+ *   3. Larger percent discount vs baseline (higher wins).
+ *   4. Stable name / id tiebreak so ordering is fully deterministic.
+ */
+const BENCHMARK_BUCKET_RANK: Record<BenchmarkBucket, number> = {
+  "all-time low": 0,
+  "near all-time low": 1,
+  "strong sale": 2,
+  "normal sale": 3,
+  "weak sale": 4,
+  "insufficient history": 5,
+};
+
+export type DealQualityRankKey = {
+  onSaleRank: number;
+  bucketRank: number;
+  discountPercent: number;
+  name: string;
+  canonicalId: string;
+};
+
+/** Ordering key for a product, reusing existing benchmark/deal helpers. */
+export function getDealQualityRankKey(
+  product: FeedProductView,
+): DealQualityRankKey {
+  const benchmark = computeFeedProductBenchmark(product);
+  const discount =
+    getProductSaleDiscountPercent(product) ?? getDiscountPercent(product) ?? 0;
+  return {
+    onSaleRank: isProductOnSale(product) ? 0 : 1,
+    bucketRank: BENCHMARK_BUCKET_RANK[benchmark.benchmarkBucket] ?? 5,
+    discountPercent: discount,
+    name: product.displayName ?? "",
+    canonicalId: product.canonicalId,
+  };
+}
+
+/** Comparator ranking stronger deals first (ascending = best deal first). */
+export function compareByDealQuality(
+  a: FeedProductView,
+  b: FeedProductView,
+): number {
+  const ka = getDealQualityRankKey(a);
+  const kb = getDealQualityRankKey(b);
+  if (ka.onSaleRank !== kb.onSaleRank) {
+    return ka.onSaleRank - kb.onSaleRank;
+  }
+  if (ka.bucketRank !== kb.bucketRank) {
+    return ka.bucketRank - kb.bucketRank;
+  }
+  if (ka.discountPercent !== kb.discountPercent) {
+    return kb.discountPercent - ka.discountPercent;
+  }
+  const nameCmp = ka.name.localeCompare(kb.name);
+  if (nameCmp !== 0) {
+    return nameCmp;
+  }
+  return ka.canonicalId.localeCompare(kb.canonicalId);
+}
+
+/** Stable copy of `products` ordered best-deal-first for a section grid. */
+export function rankProductsByDealQuality(
+  products: FeedProductView[],
+): FeedProductView[] {
+  return [...products].sort(compareByDealQuality);
+}
+
 function getGroceryVsCostcoPercent(product: FeedProductView): number | null {
   const comparison = product.priceComparison;
   if (

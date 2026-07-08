@@ -38,18 +38,30 @@ export function getCollapsedProductIds(
   return SECTION_COLLAPSED_PRODUCT_IDS[sectionId] ?? [];
 }
 
+/**
+ * How many items a section keeps behind "Show more". The curated
+ * `SECTION_COLLAPSED_PRODUCT_IDS` list still decides *how many* items are
+ * hidden per section, but which specific items are hidden is now driven by
+ * deal-quality ranking (the lowest-ranked tail), so `products` MUST already be
+ * sorted best-deal-first before calling this.
+ */
+export function getCollapsedCount(sectionId: HomepageSectionId): number {
+  return getCollapsedProductIds(sectionId).length;
+}
+
 export function partitionSectionProducts(
   sectionId: HomepageSectionId,
   products: FeedProductView[],
   isExpanded: boolean,
   bypassCollapse: boolean,
 ): { visible: FeedProductView[]; hiddenCount: number } {
-  const collapsedIds = getCollapsedProductIds(sectionId);
-  if (!collapsedIds.length || isExpanded || bypassCollapse) {
+  const collapsedCount = getCollapsedCount(sectionId);
+  if (!collapsedCount || isExpanded || bypassCollapse) {
     return { visible: products, hiddenCount: 0 };
   }
 
-  const hidden = new Set(collapsedIds);
-  const visible = products.filter((product) => !hidden.has(product.canonicalId));
-  return { visible, hiddenCount: products.length - visible.length };
+  // Hide the lowest-ranked (worst-deal) tail; keep the top deals visible.
+  const hiddenCount = Math.min(collapsedCount, products.length);
+  const visible = products.slice(0, products.length - hiddenCount);
+  return { visible, hiddenCount };
 }

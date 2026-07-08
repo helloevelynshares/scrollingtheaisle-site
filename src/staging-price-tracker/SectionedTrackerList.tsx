@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 import { HOMEPAGE_SECTIONS } from "../data/canonicalTrackerFamilies";
+import { rankProductsByDealQuality } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { ProductCard } from "./ProductCard";
 import { PopularThisWeek } from "./PopularThisWeek";
@@ -46,9 +47,11 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
   const productsBySection = useMemo(() => {
     const map = new Map<string, FeedProductView[]>();
     for (const section of HOMEPAGE_SECTIONS) {
-      const sectionProducts = filteredProducts
-        .filter((product) => product.homepageSection === section.id)
-        .sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999));
+      const sectionProducts = rankProductsByDealQuality(
+        filteredProducts.filter(
+          (product) => product.homepageSection === section.id,
+        ),
+      );
       map.set(section.id, sectionProducts);
     }
     return map;
