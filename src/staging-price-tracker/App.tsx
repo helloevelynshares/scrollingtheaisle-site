@@ -4,6 +4,7 @@ import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
 import { SectionedTrackerList } from "./SectionedTrackerList";
+import { SiteDisclaimerBanner } from "./SiteDisclaimerBanner";
 import { WeeklyAdPreviewBanner } from "./WeeklyAdPreviewBanner";
 
 function feedIdFromUrl(): string {
@@ -56,6 +57,8 @@ export function App() {
           </a>
         </nav>
       </header>
+
+      <SiteDisclaimerBanner />
 
       <main className="page-main price-tracker-main">
         <section className="price-tracker-hero">
