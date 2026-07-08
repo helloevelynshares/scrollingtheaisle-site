@@ -40,7 +40,7 @@ export type PopularThisWeekStore = "safeway" | "vons";
 export const HOMEPAGE_SECTIONS: HomepageSection[] = [
   {
     "id": "stock_up_snacks_and_treats",
-    "label": "Stock-up snacks & treats",
+    "label": "Snacks and Treats",
     "order": 1
   },
   {
@@ -1074,7 +1074,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "general_mills_cereal_family_size",
-    "displayName": "General Mills cereal",
+    "displayName": "General Mills cereal (family size)",
     "subtitle": "family-size boxes, roughly 15\u201318 oz",
     "displayOrder": 54,
     "homepageSection": "dairy_breakfast_bakery",
@@ -1086,7 +1086,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "family size Cinnamon Toast Crunch",
       "family size Lucky Charms",
       "family size Chex",
-      "General Mills cereal"
+      "General Mills cereal (family size)"
     ],
     "legacyCanonicalIds": []
   },
@@ -1111,7 +1111,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "post_cereal_giant_size",
-    "displayName": "Post cereal",
+    "displayName": "Post cereal (giant size)",
     "subtitle": "giant-size boxes, roughly 21\u201324.7 oz",
     "displayOrder": 56,
     "homepageSection": "dairy_breakfast_bakery",
@@ -1122,7 +1122,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "giant-size Post cereal",
       "giant-size Honey Bunches of Oats",
       "giant-size Pebbles",
-      "Post cereal"
+      "Post cereal (giant size)"
     ],
     "legacyCanonicalIds": []
   },

@@ -78,72 +78,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
   string,
   Record<string, GeneratedWeeklyAdPrice>
 > = {
-  "pepsi_12packs": {
-    "2026-05-06": {
-      "price": 4.5,
-      "offerText": "Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": "Pepsi 12-pack, 12-oz cans",
-      "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "Buy 2, Get 2 FREE"
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 5.0,
-      "offerText": "Coke, Pepsi, 7UP, A&W, Sunkist, Canada Dry",
-      "confidence": "medium",
-      "availabilityType": "friday_only",
-      "promoNote": "Friday, June 5 Only"
-    },
-    "2026-06-10": {
-      "price": 0.67,
-      "offerText": "Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
-    },
-    "2026-06-17": {
-      "price": 5.33,
-      "offerText": "Pepsi, 7UP, Canada Dry, A&W, Sunkist",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 1.67,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "HOT SALE"
-    },
-    "2026-07-01": {
-      "price": 5.33,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "3 for $15.99 +CRV"
-    },
-    "2026-07-08": {
-      "price": 0.99,
-      "offerText": "Pepsi 2 liter",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match any 4 or more participating items"
-    }
-  },
-  "lucerne_cream_cheese": {
+  "nature_valley_bars": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -152,11 +87,11 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-13": {
-      "price": 2.29,
-      "offerText": "Lucerne Cream Cheese",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-20": {
       "price": null,
@@ -173,10 +108,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 2.99,
+      "offerText": "General Mills Nature Valley Bars 5-6 ct",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-17": {
@@ -187,10 +122,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": 2.57,
-      "offerText": "Lucerne Cream Cheese",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-07-01": {
@@ -208,1638 +143,13 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "ruffles_regular_bags": {
+  "simply_snacks": {
     "2026-05-06": {
       "price": 2.99,
-      "offerText": "Ruffles",
+      "offerText": "Lay\u2019s Simply Snacks",
       "confidence": "high",
       "availabilityType": "full_week",
       "promoNote": "Pick 4 Mix or Match any 4 or more to save!"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 3.67,
-      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 3.99,
-      "offerText": "Doritos, Ruffles",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
-    },
-    "2026-06-17": {
-      "price": 2.49,
-      "offerText": "Lay's Potato Chips, Fritos, Ruffles",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
-      "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "Buy $20 Save $5"
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "sweet_corn": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 5.99,
-      "offerText": "Packaged Sweet Corn 4 ct.",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 0.67,
-      "offerText": "Sweet Corn",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 0.67,
-      "offerText": "Sweet Corn",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 0.2,
-      "offerText": "Fresh Sweet Corn",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 5.99,
-      "offerText": "Steamed Corn on the Cob",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "thomas_bagels_muffins_bread": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "clif_bars": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.33,
-      "offerText": "Clif Bars 6 ct.",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "4X Points"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "oreo_family_size": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "lucerne_yogurt_tubs": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "strawberries_1_2lb": {
-    "2026-05-06": {
-      "price": 1.99,
-      "offerText": "Strawberries",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Earn 4X Points"
-    },
-    "2026-05-13": {
-      "price": 1.28,
-      "offerText": "Local Strawberries",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 1.99,
-      "offerText": "Strawberries 1 lb. package",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.99,
-      "offerText": "Strawberries 1 lb",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 2.5,
-      "offerText": "Fresh Strawberries",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 1.5,
-      "offerText": "Strawberries",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": 2.5,
-      "offerText": "Fresh Strawberries",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": null
-    }
-  },
-  "dr_pepper_12packs": {
-    "2026-05-06": {
-      "price": 4.5,
-      "offerText": "Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 5.0,
-      "offerText": "Dr Pepper",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": "Friday, June 5 Only"
-    },
-    "2026-06-10": {
-      "price": 0.67,
-      "offerText": "Dr Pepper 6 pack, 16.9-oz. bot.",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "breyers_ice_cream": {
-    "2026-05-06": {
-      "price": 3.99,
-      "offerText": "Ben & Jerry\u2019s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "friday_only",
-      "promoNote": "Mix or Match 3.99 ea Member Price WHEN YOU BUY 2"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "pillsbury_refrigerated_dough": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "chicken_breast_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 2.99,
-      "offerText": "Signature SELECT\u00ae Boneless Skinless Chicken Breast",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "kettle_brand_chips": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": 1.88,
-      "offerText": "Kettle Brand Potato Chips 6.5 to 8.5 oz",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Member Price WHEN YOU BUY 3"
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 3.99,
-      "offerText": "Kettle Brand Potato Chips 6.5-8.5 oz.",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 1.88,
-      "offerText": "Kettle Brand Potato Chips 4.5-8.5 oz. bag",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "berries_6oz": {
-    "2026-05-06": {
-      "price": 3.5,
-      "offerText": "Organic Blueberries 6 oz",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "simply_party_size": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "lays_potato_chips_regular": {
-    "2026-05-06": {
-      "price": 2.5,
-      "offerText": "Lay's Potato Chips",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 3.99,
-      "offerText": "Lay's Potato Chips 4.75-8 oz.",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
-    },
-    "2026-06-17": {
-      "price": 2.49,
-      "offerText": "Lay's Potato Chips, Fritos, Ruffles",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 2.5,
-      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "2 for $5"
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "sun_chips_7oz": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "chips_ahoy": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "ribeye_steak": {
-    "2026-05-06": {
-      "price": 8.77,
-      "offerText": "Ribeye Steak Bone-in Value pack",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 7.99,
-      "offerText": "Ribeye Steak",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 12.99,
-      "offerText": "Fresh Beef Ribeye Steak Bone-In Value Pack",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 7.99,
-      "offerText": "Ribeye Steak LIMIT 2 VALUE PACKS",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "fage_tub": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "cheetos_party_size": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "cheetos_regular_bags": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 3.67,
-      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 2.49,
-      "offerText": "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match 2.49 ea Member Price WHEN YOU BUY 3 Single Price Up To: $3.79"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 1.99,
-      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-01": {
-      "price": 2.5,
-      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "2 for $5"
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "cherries_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": 3.99,
-      "offerText": "Cherries Northwest Grown",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 3.99,
-      "offerText": "Large Cherries",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.49,
-      "offerText": "Red Cherries",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 2.99,
-      "offerText": "Large Cherries Northwest Grown",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-08": {
-      "price": 2.99,
-      "offerText": "Cherries",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "DIGITAL COUPON"
-    }
-  },
-  "ritz_crackers": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 2.49,
-      "offerText": "Ritz Crackers 5 to 13 oz",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 2.99,
-      "offerText": "Nabisco Ritz Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction."
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": 2.49,
-      "offerText": "Ritz Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match any 4 or more participating items"
-    }
-  },
-  "coca_cola_12packs": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": "Coca-Cola 12-pack, 12-oz cans",
-      "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "Buy 2, Get 2 FREE"
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "Buy 2 Get 2 FREE; Earn 4X Points"
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "Buy 2, Get 2 FREE"
-    },
-    "2026-06-17": {
-      "price": 1.49,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Buy $25 of participating products SAVE $5; Earn 4X Points"
-    },
-    "2026-06-24": {
-      "price": 1.67,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "HOT SALE"
-    },
-    "2026-07-01": {
-      "price": 5.33,
-      "offerText": "Coca-Cola, Pepsi",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "3 for $15.99 +CRV"
-    },
-    "2026-07-08": {
-      "price": 0.99,
-      "offerText": "Coca-Cola 2 liter",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match any 4 or more participating items"
-    }
-  },
-  "plums_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 1.99,
-      "offerText": "Black Plums",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "philadelphia_cream_cheese": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
     },
     "2026-05-13": {
       "price": null,
@@ -1963,12 +273,12 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "ritz_toasted_chips": {
+  "cheez_it_crackers": {
     "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 2.5,
+      "offerText": "Cheez-It Crackers",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-05-13": {
@@ -2021,33 +331,33 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 1.67,
+      "offerText": "Cheez-It Crackers, Keebler Fudge Shoppe Cookies",
+      "confidence": "medium",
+      "availabilityType": "friday_only",
       "promoNote": null
     }
   },
-  "nature_valley_bars": {
+  "strawberries_1_2lb": {
     "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 1.99,
+      "offerText": "Strawberries",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Earn 4X Points"
     },
     "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 1.28,
+      "offerText": "Local Strawberries",
+      "confidence": "medium",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 1.99,
+      "offerText": "Strawberries 1 lb. package",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-03": {
@@ -2058,13 +368,143 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-10": {
-      "price": 2.99,
-      "offerText": "General Mills Nature Valley Bars 5-6 ct",
+      "price": 1.99,
+      "offerText": "Strawberries 1 lb",
       "confidence": "high",
       "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-17": {
+      "price": 2.5,
+      "offerText": "Fresh Strawberries",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.5,
+      "offerText": "Strawberries",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": 2.5,
+      "offerText": "Fresh Strawberries",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": null
+    }
+  },
+  "lucerne_cream_cheese": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 2.29,
+      "offerText": "Lucerne Cream Cheese",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction"
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 2.57,
+      "offerText": "Lucerne Cream Cheese",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "clif_bars": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 1.33,
+      "offerText": "Clif Bars 6 ct.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "4X Points"
+    },
+    "2026-06-17": {
       "price": null,
       "offerText": null,
       "confidence": null,
@@ -2093,7 +533,397 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
+  "philadelphia_cream_cheese": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "simply_refrigerated_juice_lemonade": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "salmon": {
+    "2026-05-06": {
+      "price": 8.99,
+      "offerText": "Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 9.99,
+      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 7.97,
+      "offerText": "Fresh Atlantic Salmon Fillet",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 8.99,
+      "offerText": "Fresh Atlantic Salmon Fillets",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": 5.0,
+      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": "Friday, June 19th"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 7.97,
+      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "coca_cola_12packs": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": "Coca-Cola 12-pack, 12-oz cans",
+      "confidence": null,
+      "availabilityType": "full_week",
+      "promoNote": "Buy 2, Get 2 FREE"
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": null,
+      "availabilityType": "full_week",
+      "promoNote": "Buy 2 Get 2 FREE; Earn 4X Points"
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": null,
+      "availabilityType": "full_week",
+      "promoNote": "Buy 2, Get 2 FREE"
+    },
+    "2026-06-17": {
+      "price": 1.49,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Buy $25 of participating products SAVE $5; Earn 4X Points"
+    },
+    "2026-06-24": {
+      "price": 1.67,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "HOT SALE"
+    },
+    "2026-07-01": {
+      "price": 5.33,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "3 for $15.99 +CRV"
+    },
+    "2026-07-08": {
+      "price": 0.99,
+      "offerText": "Coca-Cola 2 liter",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Mix or Match any 4 or more participating items"
+    }
+  },
   "chobani_yogurt_per_cup": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "nectarines_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 2.99,
+      "offerText": "Nectarines",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.99,
+      "offerText": "Nectarines",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "Nectarines",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "dreyers_novelties": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -2223,72 +1053,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "keebler_sandwich_crackers": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 2.49,
-      "offerText": "Cheez-Its, Club, Town House 9-13.8 oz. Kellogg\u2019s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction"
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "sliced_or_shredded_cheese_6_8oz": {
+  "lays_kettle_cooked": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -2350,331 +1115,6 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "offerText": null,
       "confidence": null,
       "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "quest_bars": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "eggs_dozen_normalized": {
-    "2026-05-06": {
-      "price": 0.99,
-      "offerText": "Lucerne Cage Free Large Eggs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": 2.5,
-      "offerText": "Lucerne Large Eggs 12 ct",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 2.99,
-      "offerText": "Lucerne Large Eggs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 1.99,
-      "offerText": "Lucerne Large Eggs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.99,
-      "offerText": "Lucerne Large Eggs 18 ct",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 1.99,
-      "offerText": "Lucerne Large Eggs 12 ct",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 2.55,
-      "offerText": "Lucerne Large Eggs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": 2.49,
-      "offerText": "Lucerne Large Eggs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    }
-  },
-  "tri_tip_roast": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 4.99,
-      "offerText": "Tri-Tip Roast USDA Choice Beef",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 4.99,
-      "offerText": "Tri-Tip Roast LIMIT 2 ROASTS",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "nabisco_snack_crackers": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 2.99,
-      "offerText": "Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction."
-    },
-    "2026-07-01": {
-      "price": 3.99,
-      "offerText": "Select Nabisco Snack Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-08": {
-      "price": 2.49,
-      "offerText": "Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match any 4 or more participating items"
-    }
-  },
-  "cheez_it_crackers": {
-    "2026-05-06": {
-      "price": 2.5,
-      "offerText": "Cheez-It Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": 1.67,
-      "offerText": "Cheez-It Crackers, Keebler Fudge Shoppe Cookies",
-      "confidence": "medium",
-      "availabilityType": "friday_only",
       "promoNote": null
     }
   },
@@ -2743,13 +1183,13 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "general_mills_cereal_family_size": {
+  "dreyers_tubs": {
     "2026-05-06": {
-      "price": 1.99,
-      "offerText": "General Mills Cereal",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Earn 4X Points"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-13": {
       "price": null,
@@ -2759,25 +1199,90 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-20": {
-      "price": 2.5,
-      "offerText": "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "keebler_sandwich_crackers": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 2.49,
+      "offerText": "Cheez-Its, Club, Town House 9-13.8 oz. Kellogg\u2019s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties",
       "confidence": "medium",
       "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 2.0,
-      "offerText": "General Mills Cereal 8.9 to 12 oz",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
+      "promoNote": "when you buy 4 or more in a single transaction"
     },
     "2026-06-17": {
       "price": null,
@@ -2808,397 +1313,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "salmon": {
-    "2026-05-06": {
-      "price": 8.99,
-      "offerText": "Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": 9.99,
-      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 7.97,
-      "offerText": "Fresh Atlantic Salmon Fillet",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 8.99,
-      "offerText": "Fresh Atlantic Salmon Fillets",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": 5.0,
-      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": "Friday, June 19th"
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 7.97,
-      "offerText": "Fresh Atlantic Salmon Fillets Farm Raised",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "ben_jerrys_ice_cream": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 4.99,
-      "offerText": "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "post_cereal_regular": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "tostitos_tortilla_chips": {
-    "2026-05-06": {
-      "price": 2.99,
-      "offerText": "Tostitos Cantina Tortilla Chips 8-11 oz.",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Pick 4 Mix or Match any 4 or more to save!"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": 5.0,
-      "offerText": "Gold Pretzels 10-16 oz. Tostitos Tortilla Chips 9-13 oz. Salsa 15.5 oz.",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": "Selected varieties."
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.99,
-      "offerText": "Tostitos Tortilla Chips 9-13 oz",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "seedless_grapes_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": 3.99,
-      "offerText": "Green Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 1.97,
-      "offerText": "Black Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": 1.97,
-      "offerText": "Green Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Clip or CLICK! Coupon"
-    },
-    "2026-06-17": {
-      "price": 2.5,
-      "offerText": "Red Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 3.99,
-      "offerText": "Green Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": 2.53,
-      "offerText": "Large Red Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": 1.99,
-      "offerText": "Green Seedless Grapes",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": null
-    }
-  },
-  "nectarines_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 2.99,
-      "offerText": "Nectarines",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": 1.99,
-      "offerText": "Nectarines",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-01": {
-      "price": 1.99,
-      "offerText": "Nectarines",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "chicken_thigh_per_lb": {
+  "lays_party_size": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -3328,7 +1443,72 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "post_cereal_giant_size": {
+  "tri_tip_roast": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Tri-Tip Roast USDA Choice Beef",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 4.99,
+      "offerText": "Tri-Tip Roast LIMIT 2 ROASTS",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "cheetos_party_size": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -3393,156 +1573,26 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "dreyers_tubs": {
+  "ribeye_steak": {
     "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "dreyers_novelties": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "mangoes_each": {
-    "2026-05-06": {
-      "price": 0.99,
-      "offerText": "Large Mangoes",
+      "price": 8.77,
+      "offerText": "Ribeye Steak Bone-in Value pack",
       "confidence": "high",
       "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-05-13": {
-      "price": 0.5,
-      "offerText": "Extra Large Mangoes",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-05-20": {
       "price": null,
       "offerText": null,
       "confidence": null,
       "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 7.99,
+      "offerText": "Ribeye Steak",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-03": {
@@ -3560,10 +1610,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 12.99,
+      "offerText": "Fresh Beef Ribeye Steak Bone-In Value Pack",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-24": {
@@ -3574,10 +1624,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 7.99,
+      "offerText": "Ribeye Steak LIMIT 2 VALUE PACKS",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-07-08": {
@@ -3588,7 +1638,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "simply_refrigerated_juice_lemonade": {
+  "plums_per_lb": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -3625,140 +1675,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "peaches_per_lb": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": 2.99,
-      "offerText": "Scotttsdale Groves & Shippers Yellow Peaches",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
       "price": 1.99,
-      "offerText": "White Peaches",
+      "offerText": "Black Plums",
       "confidence": "high",
       "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
-    },
-    "2026-07-01": {
-      "price": 1.99,
-      "offerText": "Yellow Peaches, White Peaches",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "simply_snacks": {
-    "2026-05-06": {
-      "price": 2.99,
-      "offerText": "Lay\u2019s Simply Snacks",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Pick 4 Mix or Match any 4 or more to save!"
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
       "promoNote": null
     },
     "2026-06-24": {
@@ -3783,72 +1703,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "fage_cups": {
-    "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-13": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-05-20": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    },
-    "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
-    }
-  },
-  "lays_party_size": {
+  "pillsbury_refrigerated_dough": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -3978,7 +1833,7 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "kings_hawaiian_rolls": {
+  "chips_ahoy": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -4043,7 +1898,72 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
-  "lays_kettle_cooked": {
+  "breyers_ice_cream": {
+    "2026-05-06": {
+      "price": 3.99,
+      "offerText": "Ben & Jerry\u2019s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "friday_only",
+      "promoNote": "Mix or Match 3.99 ea Member Price WHEN YOU BUY 2"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "sliced_or_shredded_cheese_6_8oz": {
     "2026-05-06": {
       "price": null,
       "offerText": null,
@@ -4106,6 +2026,656 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "confidence": null,
       "availabilityType": null,
       "promoNote": null
+    }
+  },
+  "lucerne_yogurt_tubs": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "chicken_breast_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 2.99,
+      "offerText": "Signature SELECT\u00ae Boneless Skinless Chicken Breast",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "ritz_crackers": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Ritz Crackers 5 to 13 oz",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 2.99,
+      "offerText": "Nabisco Ritz Crackers",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction."
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": 2.49,
+      "offerText": "Ritz Crackers",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Mix or Match any 4 or more participating items"
+    }
+  },
+  "oreo_family_size": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "ritz_toasted_chips": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "cherries_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 3.99,
+      "offerText": "Cherries Northwest Grown",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 3.99,
+      "offerText": "Large Cherries",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 1.49,
+      "offerText": "Red Cherries",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 2.99,
+      "offerText": "Large Cherries Northwest Grown",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-08": {
+      "price": 2.99,
+      "offerText": "Cherries",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "DIGITAL COUPON"
+    }
+  },
+  "fage_tub": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "general_mills_cereal_regular": {
+    "2026-05-06": {
+      "price": 1.99,
+      "offerText": "General Mills Cereal",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Earn 4X Points"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 2.5,
+      "offerText": "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 2.0,
+      "offerText": "General Mills Cereal 8.9 to 12 oz",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 2.0,
+      "offerText": "Cheerios",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "2 for $4"
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "ruffles_regular_bags": {
+    "2026-05-06": {
+      "price": 2.99,
+      "offerText": "Ruffles",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Pick 4 Mix or Match any 4 or more to save!"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 3.67,
+      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Doritos, Ruffles",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction"
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Lay's Potato Chips, Fritos, Ruffles",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
+      "confidence": null,
+      "availabilityType": "full_week",
+      "promoNote": "Buy $20 Save $5"
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "pepsi_12packs": {
+    "2026-05-06": {
+      "price": 4.5,
+      "offerText": "Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": "Pepsi 12-pack, 12-oz cans",
+      "confidence": null,
+      "availabilityType": "full_week",
+      "promoNote": "Buy 2, Get 2 FREE"
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 5.0,
+      "offerText": "Coke, Pepsi, 7UP, A&W, Sunkist, Canada Dry",
+      "confidence": "medium",
+      "availabilityType": "friday_only",
+      "promoNote": "Friday, June 5 Only"
+    },
+    "2026-06-10": {
+      "price": 0.67,
+      "offerText": "Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction"
+    },
+    "2026-06-17": {
+      "price": 5.33,
+      "offerText": "Pepsi, 7UP, Canada Dry, A&W, Sunkist",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.67,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "HOT SALE"
+    },
+    "2026-07-01": {
+      "price": 5.33,
+      "offerText": "Coca-Cola, Pepsi",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "3 for $15.99 +CRV"
+    },
+    "2026-07-08": {
+      "price": 0.99,
+      "offerText": "Pepsi 2 liter",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Mix or Match any 4 or more participating items"
     }
   },
   "doritos_5_13oz": {
@@ -4173,6 +2743,916 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     }
   },
+  "lays_potato_chips_regular": {
+    "2026-05-06": {
+      "price": 2.5,
+      "offerText": "Lay's Potato Chips",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Lay's Potato Chips 4.75-8 oz.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction"
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "Lay's Potato Chips, Fritos, Ruffles",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 2.5,
+      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "2 for $5"
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "fage_cups": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "kings_hawaiian_rolls": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "general_mills_cereal_family_size": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "post_cereal_giant_size": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "cheetos_regular_bags": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 3.67,
+      "offerText": "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 2.49,
+      "offerText": "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Mix or Match 2.49 ea Member Price WHEN YOU BUY 3 Single Price Up To: $3.79"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.99,
+      "offerText": "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-01": {
+      "price": 2.5,
+      "offerText": "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "2 for $5"
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "seedless_grapes_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 3.99,
+      "offerText": "Green Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 1.97,
+      "offerText": "Black Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 1.97,
+      "offerText": "Green Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Clip or CLICK! Coupon"
+    },
+    "2026-06-17": {
+      "price": 2.5,
+      "offerText": "Red Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 3.99,
+      "offerText": "Green Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": 2.53,
+      "offerText": "Large Red Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": 1.99,
+      "offerText": "Green Seedless Grapes",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": null
+    }
+  },
+  "simply_party_size": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "ben_jerrys_ice_cream": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 4.99,
+      "offerText": "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "mangoes_each": {
+    "2026-05-06": {
+      "price": 0.99,
+      "offerText": "Large Mangoes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 0.5,
+      "offerText": "Extra Large Mangoes",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "nabisco_snack_crackers": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 2.99,
+      "offerText": "Wheat Thins",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction."
+    },
+    "2026-07-01": {
+      "price": 3.99,
+      "offerText": "Select Nabisco Snack Crackers",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-08": {
+      "price": 2.49,
+      "offerText": "Wheat Thins",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Mix or Match any 4 or more participating items"
+    }
+  },
+  "chicken_thigh_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "sun_chips_7oz": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "peaches_per_lb": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 2.99,
+      "offerText": "Scotttsdale Groves & Shippers Yellow Peaches",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.99,
+      "offerText": "White Peaches",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Club Price; Earn 4X Points"
+    },
+    "2026-07-01": {
+      "price": 1.99,
+      "offerText": "Yellow Peaches, White Peaches",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
   "haagen_dazs_bars_novelties": {
     "2026-05-06": {
       "price": null,
@@ -4207,6 +3687,71 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "offerText": null,
       "confidence": null,
       "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "tostitos_tortilla_chips": {
+    "2026-05-06": {
+      "price": 2.99,
+      "offerText": "Tostitos Cantina Tortilla Chips 8-11 oz.",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Pick 4 Mix or Match any 4 or more to save!"
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 5.0,
+      "offerText": "Gold Pretzels 10-16 oz. Tostitos Tortilla Chips 9-13 oz. Salsa 15.5 oz.",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": "Selected varieties."
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 1.99,
+      "offerText": "Tostitos Tortilla Chips 9-13 oz",
+      "confidence": "high",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-17": {
@@ -4303,13 +3848,13 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": "With Digital Coupon"
     }
   },
-  "general_mills_cereal_regular": {
+  "quest_bars": {
     "2026-05-06": {
-      "price": 1.99,
-      "offerText": "General Mills Cereal",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Earn 4X Points"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-13": {
       "price": null,
@@ -4319,10 +3864,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-20": {
-      "price": 2.5,
-      "offerText": "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs",
-      "confidence": "medium",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-06-03": {
@@ -4333,10 +3878,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-10": {
-      "price": 2.0,
-      "offerText": "General Mills Cereal 8.9 to 12 oz",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-06-17": {
@@ -4354,11 +3899,466 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-01": {
-      "price": 2.0,
-      "offerText": "Cheerios",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "post_cereal_regular": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "eggs_dozen_normalized": {
+    "2026-05-06": {
+      "price": 0.99,
+      "offerText": "Lucerne Cage Free Large Eggs",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 2.5,
+      "offerText": "Lucerne Large Eggs 12 ct",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 2.99,
+      "offerText": "Lucerne Large Eggs",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 1.99,
+      "offerText": "Lucerne Large Eggs",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 1.99,
+      "offerText": "Lucerne Large Eggs 18 ct",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": 1.99,
+      "offerText": "Lucerne Large Eggs 12 ct",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 2.55,
+      "offerText": "Lucerne Large Eggs",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": 2.49,
+      "offerText": "Lucerne Large Eggs",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    }
+  },
+  "berries_6oz": {
+    "2026-05-06": {
+      "price": 3.5,
+      "offerText": "Organic Blueberries 6 oz",
       "confidence": "medium",
       "availabilityType": "full_week",
-      "promoNote": "2 for $4"
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "thomas_bagels_muffins_bread": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "sweet_corn": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": 5.99,
+      "offerText": "Packaged Sweet Corn 4 ct.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 0.67,
+      "offerText": "Sweet Corn",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 0.67,
+      "offerText": "Sweet Corn",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": 0.2,
+      "offerText": "Fresh Sweet Corn",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 5.99,
+      "offerText": "Steamed Corn on the Cob",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "kettle_brand_chips": {
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": 1.88,
+      "offerText": "Kettle Brand Potato Chips 6.5 to 8.5 oz",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "Member Price WHEN YOU BUY 3"
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": 3.99,
+      "offerText": "Kettle Brand Potato Chips 6.5-8.5 oz.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": 1.88,
+      "offerText": "Kettle Brand Potato Chips 4.5-8.5 oz. bag",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "dr_pepper_12packs": {
+    "2026-05-06": {
+      "price": 4.5,
+      "offerText": "Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": null
+    },
+    "2026-05-13": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-20": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": 5.0,
+      "offerText": "Dr Pepper",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": "Friday, June 5 Only"
+    },
+    "2026-06-10": {
+      "price": 0.67,
+      "offerText": "Dr Pepper 6 pack, 16.9-oz. bot.",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "when you buy 4 or more in a single transaction"
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-07-08": {
       "price": null,

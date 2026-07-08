@@ -10,6 +10,14 @@ export const SECTION_COLLAPSED_PRODUCT_IDS: Partial<
     "lays_party_size",
     "simply_snacks",
     "simply_party_size",
+    "sun_chips_7oz",
+    "nabisco_snack_crackers",
+    "ritz_toasted_chips",
+    "keebler_sandwich_crackers",
+    "breyers_ice_cream",
+    "tillamook_ice_cream",
+    "haagen_dazs_bars_novelties",
+    "dreyers_novelties",
   ],
   fresh_produce: ["nectarines_per_lb", "plums_per_lb", "sweet_corn"],
   dairy_breakfast_bakery: [
@@ -18,7 +26,10 @@ export const SECTION_COLLAPSED_PRODUCT_IDS: Partial<
     "pillsbury_refrigerated_dough",
     "quest_bars",
     "clif_bars",
+    "general_mills_cereal_family_size",
+    "post_cereal_giant_size",
   ],
+  drinks: ["simply_refrigerated_juice_lemonade"],
 };
 
 export function getCollapsedProductIds(

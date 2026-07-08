@@ -30,7 +30,7 @@ HOMEPAGE_SECTION_ORDER: tuple[str, ...] = (
 )
 
 HOMEPAGE_SECTION_LABELS: dict[str, str] = {
-    "stock_up_snacks_and_treats": "Stock-up snacks & treats",
+    "stock_up_snacks_and_treats": "Snacks and Treats",
     "fresh_produce": "Fresh produce",
     "dairy_breakfast_bakery": "Dairy, breakfast & bakery",
     "meat_and_seafood": "Meat & seafood",

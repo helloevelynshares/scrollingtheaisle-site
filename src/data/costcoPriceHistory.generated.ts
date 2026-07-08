@@ -80,6 +80,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "27003"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 3.99,
+        "unitPrice": 1.995,
+        "packageDescription": "STRAWBERRIES 2 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "27003"
       }
     ],
     "tustin": [
@@ -132,6 +142,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "27003"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 3.99,
+        "unitPrice": 1.995,
+        "packageDescription": "STRAWBERRIES 2 LBS",
+        "availability": "low stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "27003"
       }
     ],
     "seattle": [
@@ -163,6 +183,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "STRAWBERRIES 2 LBS",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "27003"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 3.99,
+        "unitPrice": 1.995,
+        "packageDescription": "STRAWBERRIES 2 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "27003"
       }
     ]
@@ -218,6 +248,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "647465"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 7.99,
+        "unitPrice": 1.3317,
+        "packageDescription": "AVOCADOS HASS VARIETY 6 COUNT",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "647465"
       }
     ],
     "tustin": [
@@ -260,6 +300,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "647465"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 7.99,
+        "unitPrice": 1.3317,
+        "packageDescription": "AVOCADOS HASS VARIETY 6 COUNT",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "647465"
       }
     ],
     "seattle": [
@@ -281,6 +331,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "ORGANIC AVOCADOS HASS VARIETY 5 COUNT",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "987181"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 9.99,
+        "unitPrice": 1.998,
+        "packageDescription": "ORGANIC AVOCADOS HASS VARIETY 5 COUNT",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "987181"
       }
     ]
@@ -356,6 +416,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "933402"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 6.99,
+        "unitPrice": 0.233,
+        "packageDescription": "DORITOS NACHO CHEESE 30 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "933402"
       }
     ],
     "tustin": [
@@ -408,6 +478,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "933402"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 7.29,
+        "unitPrice": 3.888,
+        "packageDescription": "FRITO LAY DORITOS 1.875LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "933402"
       }
     ],
     "seattle": [
@@ -449,6 +529,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "DORITOS NACHO CHEESE 30 OZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "933402"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 7.29,
+        "unitPrice": 0.243,
+        "packageDescription": "DORITOS NACHO CHEESE 30 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "933402"
       }
     ]
@@ -514,6 +604,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "low stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "316780"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 7.39,
+        "unitPrice": 0.2639,
+        "packageDescription": "FRITO LAY CHEETOS CRUNCHY 28 OUNCES",
+        "availability": "low stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "316780"
       }
     ],
     "tustin": [
@@ -557,6 +657,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "CHEETOS CRUNCHY 28.8 OZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "316780"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 7.39,
+        "unitPrice": 0.2566,
+        "packageDescription": "CHEETOS CRUNCHY 28.8 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "316780"
       }
     ]
@@ -652,6 +762,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
         "itemNumber": "2059712"
       }
     ],
@@ -835,6 +955,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 18.99,
+        "unitPrice": 0.1771,
+        "packageDescription": "CHOBANI 20G PROTEIN YOGURT 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1920008"
       }
     ],
     "seattle": [
@@ -866,6 +996,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 17.89,
+        "unitPrice": 0.1688,
+        "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "1005641"
       }
     ]
@@ -941,6 +1081,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "522107"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 6.99,
+        "unitPrice": 0.1717,
+        "packageDescription": "GENERAL MILLS CHEERIOS 2 PACK 20.35 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "522107"
       }
     ],
     "tustin": [
@@ -1003,6 +1153,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "522107"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 6.99,
+        "unitPrice": 0.1717,
+        "packageDescription": "GENERAL MILLS CHEERIOS 40.7 OZ (2LB 8.7OZ)",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "522107"
       }
     ],
     "seattle": [
@@ -1044,6 +1204,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "GENERAL MILLS CHEERIOS 2/20.3 OZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "522107"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 6.99,
+        "unitPrice": 0.1722,
+        "packageDescription": "GENERAL MILLS CHEERIOS 2/20.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "522107"
       }
     ]
@@ -1283,6 +1453,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
         "itemNumber": "846156"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 14.99,
+        "unitPrice": 0.2053,
+        "packageDescription": "NATURE VALLEY CRUNCHY GRANOLA BAR 49/1.49 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
+        "itemNumber": "846156"
       }
     ]
   },
@@ -1347,6 +1527,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "824383"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 7.79,
+        "unitPrice": 0.1623,
+        "packageDescription": "FAGE TOTAL GREEK NONFAT YOGURT 48 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "824383"
       }
     ],
     "tustin": [
@@ -1398,6 +1588,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "FAGE TOTAL GREEK NONFAT YOGURT 48 OZ",
         "availability": "low stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
+        "itemNumber": "824383"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 7.69,
+        "unitPrice": 0.1602,
+        "packageDescription": "FAGE TOTAL GREEK NONFAT YOGURT 48 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
         "itemNumber": "824383"
       }
     ]
@@ -1463,6 +1663,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "low stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "188140"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 18.99,
+        "unitPrice": 0.633,
+        "packageDescription": "FRITO LAY CLASSIC MIX 30 COUNT",
+        "availability": "low stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "188140"
       }
     ],
     "tustin": [
@@ -1515,6 +1725,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "188140"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 18.99,
+        "unitPrice": 0.633,
+        "packageDescription": "FRITO LAY CLASSIC VARIETY 30CT 3.28LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "188140"
       }
     ],
     "seattle": [
@@ -1546,6 +1766,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "FRITO LAY VARIETY 30 CT",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "188140"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 19.49,
+        "unitPrice": 0.6497,
+        "packageDescription": "FRITO LAY VARIETY 30 CT",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "188140"
       }
     ]
@@ -1612,6 +1842,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "1059995"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 7.99,
+        "unitPrice": 2.6633,
+        "packageDescription": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+        "availability": "low stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "1059995"
       }
     ],
     "tustin": [
@@ -1664,6 +1904,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "1059995"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 7.99,
+        "unitPrice": 2.6633,
+        "packageDescription": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1059995"
       }
     ],
     "seattle": [
@@ -1695,6 +1945,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "ORGANIC COTTON CANDY GRAPES 3 LBS",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "992143"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 11.99,
+        "unitPrice": 3.9967,
+        "packageDescription": "ORGANIC COTTON CANDY GRAPES 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "992143"
       }
     ]
@@ -1760,6 +2020,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "1025795"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 11.99,
+        "unitPrice": 11.99,
+        "packageDescription": "KIRKLAND SIGNATURE CAGE FREE LARGE EGGS USDA GRADE AA 5 DOZEN",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "1025795"
       }
     ],
     "tustin": [
@@ -1812,6 +2082,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "1025795"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 8.59,
+        "unitPrice": 8.59,
+        "packageDescription": "KIRKLAND SIGNATURE CAGE FREE LARGE EGGS USDA GRADE AA 5 DZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1025795"
       }
     ],
     "seattle": [
@@ -1843,6 +2123,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "KIRKLAND SIGNATURE USDA GRADE AA CAGE FREE LRG EGGS 5DZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "1025795"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 8.69,
+        "unitPrice": 8.69,
+        "packageDescription": "KIRKLAND SIGNATURE USDA GRADE AA CAGE FREE LRG EGGS 5DZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "1025795"
       }
     ]
@@ -1898,6 +2188,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "1664082"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 12.39,
+        "unitPrice": 3.1607,
+        "packageDescription": "NABISCO OREO COOKIES 3.92LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1664082"
       }
     ],
     "seattle": [
@@ -1929,6 +2229,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "NABISCO OREO COOKIES 62.76 OZ",
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "1664082"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 10.99,
+        "unitPrice": 0.1751,
+        "packageDescription": "NABISCO OREO COOKIES 62.76 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
         "itemNumber": "1664082"
       }
     ]
@@ -2144,6 +2454,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
         "itemNumber": "1014809"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 23.69,
+        "unitPrice": 1.1845,
+        "packageDescription": "KIRKLAND SIGNATURE PROTEIN BAR VARIETY 20 BARS 2.12 OUNCE EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "1014809"
       }
     ],
     "tustin": [
@@ -2346,6 +2666,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_tustin_consolidated.csv",
         "itemNumber": "124502"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 14.99,
+        "unitPrice": 0.4997,
+        "packageDescription": "NATURE VALLEY CHEWY PROTEIN BAR 30CT 2.6LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "124502"
       }
     ],
     "seattle": [
@@ -2528,6 +2858,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-05_seattle_consolidated.csv",
         "itemNumber": "865513"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 20.49,
+        "unitPrice": 0.5395,
+        "packageDescription": "THINK! PROTEIN BAR VARIETY 18/2.11 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
+        "itemNumber": "865513"
       }
     ]
   },
@@ -2651,6 +2991,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "KETTLE POTATO CHIPS JALAPENO 28 OUNCES",
         "availability": "low stock",
         "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
+        "itemNumber": "1841371"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 6.69,
+        "unitPrice": 0.2389,
+        "packageDescription": "KETTLE POTATO CHIPS JALAPENO 28 OUNCES",
+        "availability": "low stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
         "itemNumber": "1841371"
       }
     ],

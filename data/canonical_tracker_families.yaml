@@ -1122,7 +1122,7 @@ families:
   display_order: 53
   homepage_group: dairy_breakfast_bakery
 - id: general_mills_cereal_family_size
-  canonical_tracker_family: General Mills cereal
+  canonical_tracker_family: General Mills cereal (family size)
   size_format_subtitle: family-size boxes, roughly 15–18 oz
   category: cereal_breakfast
   organic_status: not_applicable
@@ -1161,7 +1161,7 @@ families:
   display_order: 55
   homepage_group: dairy_breakfast_bakery
 - id: post_cereal_giant_size
-  canonical_tracker_family: Post cereal
+  canonical_tracker_family: Post cereal (giant size)
   size_format_subtitle: giant-size boxes, roughly 21–24.7 oz
   category: cereal_breakfast
   organic_status: not_applicable
