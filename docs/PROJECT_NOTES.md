@@ -164,7 +164,15 @@ Fix / workaround: Change `PriceTrendChart.tsx` to `rangeMode = product.chartMode
 How to verify: Open `/staging-price-tracker/` → Doritos/strawberries/etc. charts show baseline reference line + grocery trend line + Costco comparison line. `npm run build:price-tracker`.
 Related files: `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/priceTrackerUtils.ts`, `src/data/yamlFamilyProducts.ts`, `src/data/trackerFamilyUtils.ts`
 
-### Costco chart line: flat fill + unit normalization for produce
+### Costco-unavailable state: hide all Costco UI (no negative callouts)
+
+Date discovered: 2026-07-07
+Context: Price tracker cards/charts when Costco comparison data is missing, not sold, needs review, or unit-mismatched.
+What happened: Cards could show contradictory copy — e.g. "Comparison unavailable" or "Not found at Costco" alongside "Costco wins on price", plus "San Francisco Costco pricing" location notes and a chart footnote "Not available at Costco".
+Fix / workaround: Central gate `hasMeaningfulCostcoComparison()` in `priceComparisonUtils.ts` — returns true only when `comparisonStatus === "comparable"`, winner is grocery/costco/tie, and Costco price exists. All Costco UI (badge, chart line, takeaway win/loss, expanded Ritz details, location notes) is hidden when false. No explicit "not at Costco" / "comparison unavailable" messaging — absence of Costco UI is the signal.
+How to verify: Open `/staging-price-tracker/` → Coke Zero / Tillamook / Mission chips → no Costco badge, no blue chart line, no Costco takeaway. Doritos Safeway → still shows Via Costco badge + chart line. `npm run build:price-tracker`.
+Related files: `src/data/priceComparisonUtils.ts`, `src/data/priceTrackerUtils.ts`, `src/staging-price-tracker/PriceTrendChart.tsx`, `src/data/trackerFamilyUtils.ts`
+
 
 Date discovered: 2026-07-05
 Context: Costco line in price tracker charts after YAML migration.

@@ -3,6 +3,7 @@ import {
   getCostcoComparisonLocationNote,
   getCostcoRegionForFeed,
 } from "./costcoRegions";
+import { hasMeaningfulCostcoComparison } from "./priceComparisonUtils";
 import {
   computeFeedProductBenchmark,
   type BenchmarkBucket,
@@ -85,14 +86,6 @@ export function getChartPricePoints(product: FeedProductView): PricePoint[] {
     .sort((a, b) => a.weekStart.localeCompare(b.weekStart));
 }
 
-function isCostcoExcludedFromChart(product: FeedProductView): boolean {
-  const comparison = product.priceComparison;
-  return (
-    comparison?.comparisonStatus === "not_sold_at_costco" ||
-    comparison?.winner === "grocery_only"
-  );
-}
-
 /** Costco warehouse prices for the feed's paired region — never mixed across locations. */
 export function getCostcoChartPricePoints(
   product: FeedProductView,
@@ -101,7 +94,7 @@ export function getCostcoChartPricePoints(
   if (
     !product.costcoComparable ||
     history.length === 0 ||
-    isCostcoExcludedFromChart(product)
+    !hasMeaningfulCostcoComparison(product.priceComparison)
   ) {
     return [];
   }
@@ -131,22 +124,6 @@ export function getCostcoChartPricePoints(
 
 export function hasCostcoChartData(product: FeedProductView): boolean {
   return getCostcoChartPricePoints(product).length > 0;
-}
-
-/**
- * True only when comparison data explicitly says the item is not sold at Costco.
- * When we simply lack warehouse data (no legacy mapping yet), we stay silent
- * rather than incorrectly claiming the item is unavailable at Costco.
- */
-export function isCostcoUnavailableOnChart(product: FeedProductView): boolean {
-  const comparison = product.priceComparison;
-  if (!comparison) {
-    return false;
-  }
-  return (
-    comparison.comparisonStatus === "not_sold_at_costco" ||
-    comparison.winner === "grocery_only"
-  );
 }
 
 export type UnifiedChartRow = {
@@ -503,7 +480,9 @@ export function getFamilyBuyWaitTakeaway(
   const preview = isProductInPreviewWeek(product);
   const onSale = isProductOnSale(product);
   const discount = getProductSaleDiscountPercent(product);
-  const vsCostco = getGroceryVsCostcoPercent(product);
+  const vsCostco = hasMeaningfulCostcoComparison(product.priceComparison)
+    ? getGroceryVsCostcoPercent(product)
+    : null;
 
   if (preview && onSale && discount != null) {
     if (discount >= MEANINGFUL_SALE_PCT) {
@@ -523,7 +502,7 @@ export function getFamilyBuyWaitTakeaway(
     }
   }
 
-  if (product.costcoComparable && vsCostco != null) {
+  if (vsCostco != null) {
     if (vsCostco <= 0) {
       return {
         label: preview
@@ -624,7 +603,10 @@ export function getFamilyBuyWaitReason(product: FeedProductView): string | null 
     return "Worth waiting unless you want a specific flavor.";
   }
 
-  if (product.canonicalId === "ritz_crackers_snacks" && product.costcoComparable) {
+  if (
+    product.canonicalId === "ritz_crackers_snacks" &&
+    hasMeaningfulCostcoComparison(product.priceComparison)
+  ) {
     if (takeaway.tone === "costco") {
       return `Costco is cheaper for regular Ritz. ${product.feedLabel} has more Ritz styles.`;
     }
@@ -653,7 +635,10 @@ export function getFamilyShopperNoteLines(product: FeedProductView): string[] {
     return ["Wait for a sale unless you want a specific flavor."];
   }
 
-  if (product.canonicalId === "ritz_crackers_snacks" && product.costcoComparable) {
+  if (
+    product.canonicalId === "ritz_crackers_snacks" &&
+    hasMeaningfulCostcoComparison(product.priceComparison)
+  ) {
     return [
       "Costco is cheaper for regular Ritz.",
       `${product.feedLabel} has more Ritz styles.`,
@@ -670,7 +655,7 @@ export function getFamilyShopperNote(product: FeedProductView): string | null {
 
 /** "Best value" / "More variety" pills for comparable families (e.g. Ritz). */
 export function getFamilyValueBadges(product: FeedProductView): FamilyValueBadge[] {
-  if (!product.costcoComparable || !product.priceComparison) {
+  if (!hasMeaningfulCostcoComparison(product.priceComparison)) {
     return [];
   }
 
@@ -753,7 +738,7 @@ export function getFamilyCostcoComparisonDetails(
   product: FeedProductView,
 ): FamilyCostcoComparisonDetails | null {
   const comparison = product.priceComparison;
-  if (!comparison || !product.costcoComparable) {
+  if (!hasMeaningfulCostcoComparison(comparison)) {
     return null;
   }
 

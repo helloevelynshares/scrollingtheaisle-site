@@ -18,7 +18,6 @@ import {
   getCostcoChartRegionLabel,
   getEffectiveBaseline,
   hasCostcoChartData,
-  isCostcoUnavailableOnChart,
   type UnifiedChartRow,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
@@ -214,7 +213,6 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
   const rangeMode = product.chartMode === "range";
   const showCostcoOverlay = !sparkline && !rangeMode && hasCostcoChartData(product);
   const costcoRegionLabel = getCostcoChartRegionLabel(product);
-  const costcoUnavailable = isCostcoUnavailableOnChart(product);
   const baseline = getEffectiveBaseline(product);
 
   const rangeChartData: RangeChartRow[] = (
@@ -447,12 +445,6 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      {!sparkline && costcoUnavailable ? (
-        <p className="price-tracker-chart-costco-unavailable">
-          Not available at Costco
-          {costcoRegionLabel ? ` (${costcoRegionLabel} warehouse)` : ""}
-        </p>
-      ) : null}
     </div>
   );
 }

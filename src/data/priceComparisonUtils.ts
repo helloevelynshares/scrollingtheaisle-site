@@ -65,6 +65,28 @@ export type ComparisonBadgeContent = {
   tone: "grocery" | "costco" | "neutral" | "muted";
 };
 
+/** True when grocery-vs-Costco comparison data is complete enough to show in the UI. */
+export function hasMeaningfulCostcoComparison(
+  comparison: PriceComparisonView | null | undefined,
+): boolean {
+  if (!comparison) {
+    return false;
+  }
+  if (comparison.comparisonStatus !== "comparable") {
+    return false;
+  }
+  if (
+    comparison.winner === "grocery_only" ||
+    comparison.winner === "unknown"
+  ) {
+    return false;
+  }
+  if (comparison.costcoUnitPrice == null && comparison.costcoPrice == null) {
+    return false;
+  }
+  return true;
+}
+
 function buildWinnerDetail(
   comparison: PriceComparisonView,
   activeGroceryLabel: string,
@@ -106,39 +128,13 @@ export function getComparisonBadgeContent(
     return null;
   }
 
-  const unit = formatComparisonUnit(
-    comparison.groceryUnitType ?? comparison.costcoUnitType,
-  );
-
-  if (comparison.winner === "unknown") {
+  if (!hasMeaningfulCostcoComparison(comparison)) {
     return null;
   }
 
-  if (
-    comparison.comparisonStatus === "missing_grocery_price" ||
-    comparison.comparisonStatus === "missing_costco_price" ||
-    comparison.comparisonStatus === "unit_mismatch" ||
-    comparison.comparisonStatus === "needs_review"
-  ) {
-    return {
-      title: "Comparison unavailable",
-      detail: null,
-      locationNote: getCostcoComparisonLocationNote(activeFeedId),
-      tone: "muted",
-    };
-  }
-
-  if (
-    comparison.comparisonStatus === "not_sold_at_costco" ||
-    comparison.winner === "grocery_only"
-  ) {
-    return {
-      title: "Not found at Costco",
-      detail: `Best tracked price is via ${activeGroceryLabel}`,
-      locationNote: getCostcoComparisonLocationNote(activeFeedId),
-      tone: "grocery",
-    };
-  }
+  const unit = formatComparisonUnit(
+    comparison.groceryUnitType ?? comparison.costcoUnitType,
+  );
 
   if (comparison.winner === "tie") {
     return {

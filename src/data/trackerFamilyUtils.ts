@@ -238,11 +238,7 @@ export function getFamilyComparisonBadge(
 
   const groceryPrice = grocerySalePrice ?? groceryShelfPrice;
   if (groceryPrice == null) {
-    return {
-      title: "Comparison unavailable",
-      detail: null,
-      tone: "muted",
-    };
+    return null;
   }
 
   const groceryUnit = groceryUnitPriceForRitz(groceryPrice);
