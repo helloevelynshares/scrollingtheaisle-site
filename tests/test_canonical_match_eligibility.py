@@ -113,5 +113,93 @@ class TestCanonicalMatchEligibility(unittest.TestCase):
         self.assertEqual(sticks.ad_product_type, "butter_sticks")
 
 
+class TestNabiscoFamilySizeSnackCrackers(unittest.TestCase):
+    """Wheat Thins / Triscuit / Chicken in a Biskit family-size snack crackers."""
+
+    DISPLAY_NAME = "Wheat Thins, Triscuit & Chicken in a Biskit"
+    SUBTITLE = "Nabisco family-size snack crackers, 11.5–14 oz"
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.families = {f.id: f for f in load_families()}
+        cls.rules = load_match_rules()
+
+    def _evaluate(self, text: str, price: str, keyword_confidence: str = "medium"):
+        family = self.families["nabisco_snack_crackers"]
+        rules = merge_family_yaml_rules(family, self.rules)
+        return evaluate_canonical_match(
+            _row(text, price=price),
+            family,
+            rules=rules,
+            keyword_confidence=keyword_confidence,
+        )
+
+    def test_1_accept_family_size_snack_crackers(self) -> None:
+        result = self._evaluate(
+            "Nabisco Snack Crackers Family Size 11.5–14 oz",
+            price="3.49",
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.display_name, self.DISPLAY_NAME)
+        self.assertEqual(result.subtitle, self.SUBTITLE)
+        self.assertEqual(result.manufacturer_family, "Nabisco")
+        self.assertEqual(result.package_type, "family_size_box")
+        self.assertIn("Wheat Thins", result.allowed_product_lines)
+        self.assertIn("Triscuit", result.allowed_product_lines)
+        self.assertIn("Chicken in a Biskit", result.allowed_product_lines)
+        self.assertTrue(result.eligible_item_examples)
+
+    def test_1b_accept_real_safeway_offer(self) -> None:
+        # The live 2026-07-08 Safeway offer text must still ACCEPT.
+        result = self._evaluate(
+            "Nabisco Family Size Snack Crackers 10-14 oz",
+            price="3.49",
+            keyword_confidence="medium",
+        )
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.display_name, self.DISPLAY_NAME)
+
+    def test_2_reject_chips_ahoy(self) -> None:
+        result = self._evaluate(
+            "Nabisco Chips Ahoy! Cookies 9.5–13 oz", price="3.49", keyword_confidence="high"
+        )
+        self.assertNotEqual(result.match_decision, "accepted")
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "chips_ahoy")
+
+    def test_3_reject_oreo(self) -> None:
+        result = self._evaluate(
+            "Oreo Family Size Cookies 10–18 oz", price="3.99", keyword_confidence="high"
+        )
+        self.assertNotEqual(result.match_decision, "accepted")
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "oreo")
+
+    def test_4_reject_ritz(self) -> None:
+        result = self._evaluate(
+            "Ritz Crackers 8.8–13.7 oz", price="2.49", keyword_confidence="high"
+        )
+        self.assertNotEqual(result.match_decision, "accepted")
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "ritz_crackers")
+
+    def test_5_reject_single_serve_multipack(self) -> None:
+        result = self._evaluate(
+            "Nabisco Single Serve Snacks 10 pack", price="3.99", keyword_confidence="high"
+        )
+        self.assertNotEqual(result.match_decision, "accepted")
+        self.assertIn(result.match_decision, ("rejected", "manual_review"))
+        self.assertEqual(result.ad_product_type, "single_serve_snack_multipack")
+
+    def test_6_manual_review_bare_nabisco_snack_crackers(self) -> None:
+        # No size, no eligible items → manual review, no graph update.
+        result = self._evaluate(
+            "Nabisco Snack Crackers", price="2.49", keyword_confidence="high"
+        )
+        self.assertEqual(result.match_decision, "manual_review")
+        self.assertIn("confirmation", (result.reject_reason or "").lower())
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -7,9 +7,13 @@ from pathlib import Path
 
 import yaml
 
+import re
+
 from price_tracker.canonical_families import (
     HOMEPAGE_SECTION_ORDER,
+    family_by_id,
     load_families,
+    phrase_to_pattern,
     validate_families,
 )
 
@@ -45,6 +49,29 @@ class TestCanonicalFamiliesYaml(unittest.TestCase):
     def test_drinks_section_is_fifth(self) -> None:
         self.assertEqual(HOMEPAGE_SECTION_ORDER[4], "drinks")
 
+    def test_nabisco_family_size_snack_crackers_metadata(self) -> None:
+        family = {f.id: f for f in load_families()}["nabisco_snack_crackers"]
+        self.assertEqual(
+            family.display_name, "Wheat Thins, Triscuit & Chicken in a Biskit"
+        )
+        self.assertEqual(
+            family.canonical_tracker_family,
+            "Wheat Thins, Triscuit & Chicken in a Biskit",
+        )
+        self.assertEqual(
+            family.subtitle, "Nabisco family-size snack crackers, 11.5–14 oz"
+        )
+        self.assertEqual(family.manufacturer_family, "Nabisco")
+        self.assertEqual(family.package_type, "family_size_box")
+        self.assertEqual(
+            tuple(family.allowed_product_lines),
+            ("Wheat Thins", "Triscuit", "Chicken in a Biskit"),
+        )
+        # Cookie / Ritz / single-serve lines must stay separate.
+        joined = " ".join(family.keep_separate_from).lower()
+        for term in ("oreo", "chips ahoy", "ritz", "single serve", "cookies"):
+            self.assertIn(term, joined)
+
 
 class TestPopularThisWeek(unittest.TestCase):
     def test_popular_loads(self) -> None:
@@ -76,6 +103,58 @@ class TestPopularThisWeek(unittest.TestCase):
             doc = yaml.safe_load(handle)
         safeway_multi = doc["stores"]["safeway"][3]["tracker_family_ids"]
         self.assertGreaterEqual(len(safeway_multi), 2)
+
+
+class TestRobustPhraseMatching(unittest.TestCase):
+    """Include phrases tolerate inserted marketing/size qualifiers ("Family
+    Size", "Party Size", …) between words, WITHOUT bridging distinct products.
+    """
+
+    @staticmethod
+    def _matches(phrase: str, text: str) -> bool:
+        return bool(re.search(phrase_to_pattern(phrase), text.lower()))
+
+    def test_inserted_qualifier_matches(self) -> None:
+        # The exact regression that caused the Oreo/Nabisco 7/8 miss.
+        self.assertTrue(
+            self._matches("Nabisco snack crackers", "Nabisco Family Size Snack Crackers 10-14 oz")
+        )
+        self.assertTrue(
+            self._matches("Oreo cookies", "Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.")
+        )
+        self.assertTrue(self._matches("Wheat Thins", "Wheat Thins Family Size"))
+        self.assertTrue(self._matches("Kettle Brand Chips", "Kettle Brand Chips Party Size"))
+
+    def test_contiguous_still_matches(self) -> None:
+        self.assertTrue(self._matches("Nabisco snack crackers", "Nabisco Snack Crackers"))
+        self.assertTrue(self._matches("Oreo cookies", "Oreo Cookies"))
+
+    def test_non_qualifier_word_does_not_bridge(self) -> None:
+        # A non-qualifier word between brand and product must NOT match — this is
+        # what stops the gap from bridging two different products.
+        self.assertFalse(
+            self._matches("Nabisco snack crackers", "Nabisco Oreo Cookies and Snack Crackers")
+        )
+        self.assertFalse(self._matches("Oreo cookies", "Oreo or Chips Ahoy! Cookies"))
+
+    def test_substring_guard_preserved(self) -> None:
+        self.assertFalse(self._matches("Ruffles", "Lindt Gourmet Truffles"))
+        self.assertTrue(self._matches("Ruffles", "Ruffles Potato Chips"))
+
+    def test_keep_separate_still_excludes(self) -> None:
+        # Robust include matching must not defeat keep_separate_from protection.
+        oreo = family_by_id()["oreo_family_size"]
+        combined = "nabisco family size oreo cookies or chips ahoy! cookies"
+        include_hit = any(re.search(p, combined) for p in oreo.patterns)
+        exclude_hit = any(re.search(p, combined) for p in oreo.exclude_patterns)
+        self.assertTrue(include_hit, "oreo include should still fire on combined tile")
+        self.assertTrue(exclude_hit, "chips ahoy keep_separate_from should still exclude")
+
+    def test_family_level_nabisco_family_size(self) -> None:
+        crackers = family_by_id()["nabisco_snack_crackers"]
+        text = "nabisco family size snack crackers 10-14 oz"
+        self.assertTrue(any(re.search(p, text) for p in crackers.patterns))
+        self.assertFalse(any(re.search(p, text) for p in crackers.exclude_patterns))
 
 
 if __name__ == "__main__":

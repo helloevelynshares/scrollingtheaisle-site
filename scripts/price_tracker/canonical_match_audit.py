@@ -31,6 +31,18 @@ class AuditRecord:
     updated_tracker: bool = False
     all_time_low_change: bool = False
     graph_preview_change: str | None = None
+    # Canonical display / provenance metadata for this family.
+    display_name: str | None = None
+    subtitle: str | None = None
+    manufacturer_family: str | None = None
+    allowed_product_lines: list[str] = field(default_factory=list)
+    package_type: str | None = None
+    size_range: str | None = None
+    eligible_item_examples: list[str] = field(default_factory=list)
+
+    @property
+    def raw_offer_text(self) -> str:
+        return self.offer_text
 
 
 @dataclass
@@ -217,6 +229,25 @@ def render_audit_markdown(bundle: WeekAuditBundle) -> str:
                 f"- `{record.family_id}` ({record.feed}): {record.offer_text!r} "
                 f"@ ${record.price} (confidence {record.match_confidence:.2f})"
             )
+            if record.display_name:
+                lines.append(f"  - Display: {record.display_name}")
+            if record.subtitle:
+                lines.append(f"  - Subtitle: {record.subtitle}")
+            if record.manufacturer_family:
+                lines.append(f"  - Manufacturer family: {record.manufacturer_family}")
+            if record.allowed_product_lines:
+                lines.append(
+                    f"  - Allowed product lines: {', '.join(record.allowed_product_lines)}"
+                )
+            if record.package_type or record.size_range:
+                detail = ", ".join(
+                    filter(None, [record.package_type, record.size_range])
+                )
+                lines.append(f"  - Package: {detail}")
+            if record.eligible_item_examples:
+                lines.append(
+                    f"  - Eligible item examples: {', '.join(record.eligible_item_examples)}"
+                )
         lines.append("")
 
     return "\n".join(lines)

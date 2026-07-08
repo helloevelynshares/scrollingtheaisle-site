@@ -1389,11 +1389,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-04-01": {
-      "price": 1.67,
-      "offerText": "Nabisco Snack Crackers Triscuit, Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Must Buy 3. Limit 6 items."
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-06": {
       "price": null,
@@ -1410,11 +1410,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-03": {
-      "price": 2.49,
-      "offerText": "Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "MEMBER PRICE; Earn 4X Points"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-10": {
       "price": null,
@@ -1431,11 +1431,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": 2.49,
-      "offerText": "Nabisco Snack Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Member Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-07-01": {
       "price": null,
@@ -1445,11 +1445,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 3.49,
+      "offerText": "Nabisco Family Size Snack Crackers 10-14 oz",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE"
     }
   },
   "berries_6oz": {

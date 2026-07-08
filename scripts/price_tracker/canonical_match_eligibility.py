@@ -37,6 +37,11 @@ class FamilyMatchRules:
     disallowed_units: tuple[str, ...] = ()
     allowed_package_patterns: tuple[str, ...] = ()
     disallowed_package_patterns: tuple[str, ...] = ()
+    # When set, an accepted match must contain at least one of these
+    # confirmation keywords (e.g. "family size" or an in-range size). Matches
+    # that only hit a generic block type with no confirmation go to manual
+    # review instead of updating the tracker graph. Empty = no requirement.
+    require_confirmation_keywords: tuple[str, ...] = ()
     min_confidence: float = DEFAULT_MIN_CONFIDENCE
     atl_requires_confidence: float = DEFAULT_ATL_CONFIDENCE
     large_price_change_pct: float = DEFAULT_LARGE_CHANGE_PCT
@@ -56,6 +61,14 @@ class MatchEligibilityResult:
     unit_match: bool = True
   # For ranked/script output classification
     output_class: str = "canonical_tracker_match"  # ad_deal_only | manual_review_required
+    # Canonical display / provenance metadata (surfaced in audit + reports).
+    display_name: str | None = None
+    subtitle: str | None = None
+    manufacturer_family: str | None = None
+    package_type: str | None = None
+    size_range: str | None = None
+    allowed_product_lines: list[str] = field(default_factory=list)
+    eligible_item_examples: list[str] = field(default_factory=list)
 
 
 def _normalize_keyword_list(values: Any) -> tuple[str, ...]:
@@ -80,6 +93,9 @@ def _parse_rules_doc(doc: dict[str, Any]) -> dict[str, FamilyMatchRules]:
             disallowed_units=_normalize_keyword_list(raw.get("disallowed_units")),
             allowed_package_patterns=tuple(raw.get("allowed_package_patterns") or ()),
             disallowed_package_patterns=tuple(raw.get("disallowed_package_patterns") or ()),
+            require_confirmation_keywords=_normalize_keyword_list(
+                raw.get("require_confirmation_keywords")
+            ),
             min_confidence=float(raw.get("min_confidence", DEFAULT_MIN_CONFIDENCE)),
             atl_requires_confidence=float(
                 raw.get("atl_requires_confidence", DEFAULT_ATL_CONFIDENCE)
@@ -128,6 +144,9 @@ def merge_family_yaml_rules(
         disallowed_units=_normalize_keyword_list(pick("disallowed_units", ())),
         allowed_package_patterns=tuple(pick("allowed_package_patterns", ())),
         disallowed_package_patterns=tuple(pick("disallowed_package_patterns", ())),
+        require_confirmation_keywords=_normalize_keyword_list(
+            pick("require_confirmation_keywords", ())
+        ),
         min_confidence=float(pick("min_confidence", DEFAULT_MIN_CONFIDENCE)),
         atl_requires_confidence=float(
             pick("atl_requires_confidence", DEFAULT_ATL_CONFIDENCE)
@@ -201,6 +220,20 @@ def _offer_texts(row: dict[str, str]) -> tuple[str, str]:
     return primary, full or primary
 
 
+def _family_metadata(family: TrackerFamily) -> dict[str, Any]:
+    """Display / provenance metadata surfaced on every eligibility result."""
+    return {
+        "display_name": getattr(family, "display_name", "")
+        or family.canonical_tracker_family,
+        "subtitle": getattr(family, "subtitle", "") or family.size_format_subtitle,
+        "manufacturer_family": getattr(family, "manufacturer_family", "") or None,
+        "package_type": getattr(family, "package_type", "") or None,
+        "size_range": getattr(family, "size_range", "") or None,
+        "allowed_product_lines": list(getattr(family, "allowed_product_lines", ()) or ()),
+        "eligible_item_examples": list(getattr(family, "eligible_item_examples", ()) or ()),
+    }
+
+
 def evaluate_canonical_match(
     row: dict[str, str],
     family: TrackerFamily,
@@ -214,6 +247,7 @@ def evaluate_canonical_match(
     primary_text, full_text = _offer_texts(row)
     classification = classify_product_type(primary_text)
     unit_hint = extract_unit_hint(full_text, row)
+    meta = _family_metadata(family)
 
     if rules is None:
         # No eligibility rules — accept legacy pattern match (with basic price guard).
@@ -225,6 +259,7 @@ def evaluate_canonical_match(
             canonical_intent=None,
             ad_product_type=classification.primary_type,
             output_class="canonical_tracker_match",
+            **meta,
         )
 
     hard_negatives = list(
@@ -330,6 +365,19 @@ def evaluate_canonical_match(
                 f"large price change {change_pct:.0f}% vs prior week requires audit"
             )
 
+    # Confirmation gate: some families (e.g. Nabisco family-size snack crackers)
+    # require an explicit size / package signal before updating the graph. A bare
+    # generic promo ("Nabisco snack crackers", no size, no eligible items) is
+    # ambiguous → manual review instead of an auto graph update.
+    if rules.require_confirmation_keywords and not _keyword_hits(
+        full_text, rules.require_confirmation_keywords
+    ):
+        manual_review = True
+        reject_parts.append(
+            "no family-size / eligible-size confirmation "
+            f"(needs one of: {', '.join(rules.require_confirmation_keywords)})"
+        )
+
     if hard_negatives or not product_type_match or not package_type_match or not unit_match:
         reason = "; ".join(reject_parts) if reject_parts else "eligibility check failed"
         return MatchEligibilityResult(
@@ -344,6 +392,7 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="ad_deal_only",
+            **meta,
         )
 
     if confidence < rules.min_confidence:
@@ -361,6 +410,7 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="manual_review_required",
+            **meta,
         )
 
     if manual_review:
@@ -376,6 +426,7 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="manual_review_required",
+            **meta,
         )
 
     return MatchEligibilityResult(
@@ -392,6 +443,7 @@ def evaluate_canonical_match(
         package_type_match=package_type_match,
         unit_match=unit_match,
         output_class="canonical_tracker_match",
+        **meta,
     )
 
 

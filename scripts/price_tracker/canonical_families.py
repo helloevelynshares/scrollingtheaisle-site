@@ -88,10 +88,65 @@ class TrackerFamily:
     prefer_patterns: tuple[str, ...] = ()
     normalization: str | None = None
     match_eligibility: dict[str, Any] = field(default_factory=dict)
+    # Optional explicit display / provenance metadata. When absent they fall
+    # back to canonical_tracker_family / size_format_subtitle so the generator
+    # and reports keep working for every family unchanged.
+    display_name: str = ""
+    subtitle: str = ""
+    manufacturer_family: str = ""
+    package_type: str = ""
+    size_range: str = ""
+    allowed_product_lines: tuple[str, ...] = ()
+    eligible_item_examples: tuple[str, ...] = ()
+
+
+# Marketing / size qualifiers that ad copy commonly inserts *between* a brand
+# word and the product word, e.g. "Nabisco **Family Size** Snack Crackers" or
+# "Kettle **Brand** Chips". We allow a bounded run of these (and only these)
+# words to appear between adjacent words of a multi-word include/exclude phrase
+# so the phrase still matches, WITHOUT opening matching up to arbitrary words
+# (which would create cross-product false matches). The list is intentionally
+# limited to non-discriminating qualifiers — no brand names, product nouns,
+# connectors ("or"/"with"), or digits — so it cannot bridge two different
+# products. keep_separate_from patterns get the same treatment, so exclusions
+# stay at least as strong as before.
+QUALIFIER_WORDS: tuple[str, ...] = (
+    "family",
+    "size",
+    "party",
+    "value",
+    "mega",
+    "king",
+    "jumbo",
+    "share",
+    "sharing",
+    "fun",
+    "snack",
+    "big",
+    "grab",
+    "original",
+    "classic",
+    "selected",
+    "variety",
+    "varieties",
+    "brand",
+    "new",
+)
+
+# Optional, bounded run of qualifier words (each followed by whitespace).
+_QUALIFIER_GAP = r"(?:(?:" + "|".join(QUALIFIER_WORDS) + r")\s+){0,3}"
+# Flexible inter-word separator: required whitespace + optional qualifier run.
+_FLEX_SPACE = r"\s+" + _QUALIFIER_GAP
 
 
 def phrase_to_pattern(phrase: str) -> str:
-    """Turn a human include/exclude phrase into a case-insensitive regex."""
+    """Turn a human include/exclude phrase into a case-insensitive regex.
+
+    Multi-word phrases tolerate a bounded run of marketing/size qualifier words
+    (``QUALIFIER_WORDS``) inserted between adjacent words, so e.g.
+    ``"Nabisco snack crackers"`` still matches ``"Nabisco Family Size Snack
+    Crackers"``. See ``QUALIFIER_WORDS`` for the safety rationale.
+    """
     text = phrase.strip().lower()
     if not text:
         return r"$^"
@@ -103,7 +158,8 @@ def phrase_to_pattern(phrase: str) -> str:
         if re.match(r"\d", part):
             escaped_parts.append(part.replace(" ", r"\s*"))
         else:
-            escaped_parts.append(re.escape(part).replace(r"\ ", r"\s+"))
+            # Escape, then make each inter-word gap tolerant of inserted qualifiers.
+            escaped_parts.append(re.escape(part).replace(r"\ ", _FLEX_SPACE))
     pattern = "".join(escaped_parts)
     # Word boundaries prevent substring matches (e.g. "ruffles" matching inside "truffles").
     # Apply to all text-only patterns; skip patterns with digits (size ranges like "5-13 oz").
@@ -163,9 +219,10 @@ def parse_family(raw: dict[str, Any]) -> TrackerFamily:
     family_id = str(raw["id"])
     notes = str(raw.get("notes") or "")
     subtitle = str(raw.get("size_format_subtitle") or "")
+    canonical_name = str(raw["canonical_tracker_family"])
     return TrackerFamily(
         id=family_id,
-        canonical_tracker_family=str(raw["canonical_tracker_family"]),
+        canonical_tracker_family=canonical_name,
         size_format_subtitle=subtitle,
         display_order=int(raw["display_order"]),
         homepage_section=resolve_homepage_section(raw),
@@ -179,6 +236,13 @@ def parse_family(raw: dict[str, Any]) -> TrackerFamily:
         prefer_patterns=prefers,
         normalization=infer_normalization(family_id, notes, subtitle),
         match_eligibility=dict(raw.get("match_eligibility") or {}),
+        display_name=str(raw.get("display_name") or canonical_name),
+        subtitle=str(raw.get("subtitle") or subtitle),
+        manufacturer_family=str(raw.get("manufacturer_family") or ""),
+        package_type=str(raw.get("package_type") or ""),
+        size_range=str(raw.get("size_range") or ""),
+        allowed_product_lines=tuple(raw.get("allowed_product_lines") or ()),
+        eligible_item_examples=tuple(raw.get("eligible_item_examples") or ()),
     )
 
 

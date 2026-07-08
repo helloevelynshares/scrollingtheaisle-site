@@ -3437,25 +3437,25 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": 2.99,
-      "offerText": "Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "when you buy 4 or more in a single transaction."
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-07-01": {
-      "price": 3.99,
-      "offerText": "Select Nabisco Snack Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Club Price; Earn 4X Points"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-07-08": {
-      "price": 2.49,
-      "offerText": "Wheat Thins",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Mix or Match any 4 or more participating items"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     }
   },
   "chicken_thigh_per_lb": {

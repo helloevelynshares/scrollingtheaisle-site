@@ -80,7 +80,10 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "pint": (
         r"\bpint\b",
-        r"14\s*oz",
+        # "14 oz" is ambiguous (ice cream pint vs cracker box) — require an ice
+        # cream / pint context so it does not swallow snack-cracker sizes.
+        r"14\s*oz.{0,20}(?:ice\s+cream|pint)",
+        r"(?:ice\s+cream|pint).{0,20}14\s*oz",
         r"16\s*oz.{0,20}ice\s+cream",
     ),
     "multipack": (
@@ -115,6 +118,25 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     "oreo": (r"\boreo\b",),
     "wheat_thins": (r"wheat\s+thins",),
     "triscuits": (r"triscuit",),
+    "chicken_in_a_biskit": (r"chicken\s+in\s+a\s+biskit",),
+    # Nabisco single-serve / multipack snack packs — NOT family-size boxes.
+    "single_serve_snack_multipack": (
+        r"single\s+serve",
+        r"snack\s+pack",
+        r"snack\s+packs",
+        r"mini\s+pack",
+        r"\b\d{1,2}\s*[- ]?pack\b.{0,20}(?:snack|cracker|cookie)",
+        r"(?:snack|cracker|cookie).{0,20}\b\d{1,2}\s*[- ]?pack\b",
+        r"\b10\s*[- ]?(?:pack|count)\b.{0,20}(?:snack|cracker|cookie|nabisco)",
+        r"(?:snack|cracker|cookie|nabisco).{0,20}\b10\s*[- ]?(?:pack|count)\b",
+    ),
+    # Family-size Nabisco snack cracker boxes (Wheat Thins / Triscuit /
+    # Chicken in a Biskit). Requires both a "family size" signal and the
+    # "snack crackers" wording so bare "Nabisco snack crackers" stays generic.
+    "family_size_snack_crackers": (
+        r"family\s+size.{0,20}snack\s+crackers",
+        r"snack\s+crackers.{0,20}family\s+size",
+    ),
     "generic_nabisco_block": (
         r"nabisco",
         r"snack\s+crackers",

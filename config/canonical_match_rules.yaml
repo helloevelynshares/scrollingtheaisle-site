@@ -162,6 +162,8 @@ families:
       - oreo
       - wheat_thins
       - triscuits
+      - chicken_in_a_biskit
+      - family_size_snack_crackers
     positive_keywords:
       - ritz
     negative_keywords:
@@ -184,11 +186,70 @@ families:
       - oreo
       - wheat_thins
       - triscuits
+      - chicken_in_a_biskit
+      - family_size_snack_crackers
     negative_keywords:
       - ritz
       - oreo
       - wheat thins
       - triscuit
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
+  nabisco_snack_crackers:
+    # Nabisco family-size snack cracker boxes (11.5–14 oz): Wheat Thins,
+    # Triscuit, Chicken in a Biskit. The app title "Nabisco Snack Crackers
+    # Family Size" is a block-style promo, so generic_nabisco_block is allowed
+    # only when a family-size / in-range size confirmation is present.
+    canonical_intent: family_size_snack_crackers
+    allowed_product_types:
+      - family_size_snack_crackers
+      - wheat_thins
+      - triscuits
+      - chicken_in_a_biskit
+      - generic_nabisco_block
+    disallowed_product_types:
+      - oreo
+      - chips_ahoy
+      - ritz_crackers
+      - single_serve_snack_multipack
+    positive_keywords:
+      - wheat thins
+      - triscuit
+      - chicken in a biskit
+      - family size
+      - snack crackers
+      - "11.5"
+      - "12"
+      - "12.5"
+      - 14 oz
+    negative_keywords:
+      - oreo
+      - chips ahoy
+      - ritz
+      - teddy grahams
+      - nilla
+      - premium saltine
+      - single serve
+      - snack pack
+      - mini pack
+      - 10 pack
+      - cookies
+    # Accept only with an explicit family-size or in-range size signal; a bare
+    # "Nabisco snack crackers" with no size / eligible items → manual review.
+    require_confirmation_keywords:
+      - family size
+      - family-size
+      - "11.5"
+      - "12 oz"
+      - "12.5"
+      - "13 oz"
+      - 14 oz
+      - 11.5-14
+      - 11.5 to 14
+      - 10-14
+      - 10 to 14
     min_confidence: 0.65
     atl_requires_confidence: 0.85
     large_price_change_pct: 30
@@ -203,6 +264,8 @@ families:
       - chips_ahoy
       - wheat_thins
       - triscuits
+      - chicken_in_a_biskit
+      - family_size_snack_crackers
     negative_keywords:
       - ritz
       - chips ahoy

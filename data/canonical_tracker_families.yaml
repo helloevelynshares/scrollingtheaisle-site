@@ -308,23 +308,61 @@ families:
   display_order: 14
   homepage_group: snacks_and_crackers
 - id: nabisco_snack_crackers
-  canonical_tracker_family: Nabisco snack crackers
-  size_format_subtitle: 3.5–9.1 oz boxes/bags
+  canonical_tracker_family: Wheat Thins, Triscuit & Chicken in a Biskit
+  display_name: Wheat Thins, Triscuit & Chicken in a Biskit
+  size_format_subtitle: Nabisco family-size snack crackers, 11.5–14 oz
+  subtitle: Nabisco family-size snack crackers, 11.5–14 oz
+  manufacturer_family: Nabisco
+  package_type: family_size_box
+  size_range: 11.5–14 oz
+  allowed_product_lines:
+  - Wheat Thins
+  - Triscuit
+  - Chicken in a Biskit
+  eligible_item_examples:
+  - Wheat Thins Family Size Original 14 oz
+  - Wheat Thins Family Size Reduced Fat 12.5 oz
+  - Triscuit Family Size Original 12.5 oz
+  - Triscuit Family Size Reduced Fat 11.5 oz
+  - Triscuit Family Size Roasted Garlic 12.5 oz
+  - Triscuit Family Size Rosemary & Olive Oil 12.5 oz
+  - Chicken in a Biskit Family Size Original 12 oz
+  - Chicken in a Biskit Family Size Ranch 12 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
   - Wheat Thins
+  - Wheat Thins Family Size
   - Triscuit
-  - Good Thins
+  - Triscuit Family Size
   - Chicken in a Biskit
-  - Premium minis
+  - Chicken in a Biskit Family Size
+  - Nabisco Snack Crackers Family Size
   - Nabisco snack crackers
   keep_separate_from:
   - Ritz crackers
   - Ritz Toasted Chips
   - Chips Ahoy
   - Oreo
-  notes: ''
+  - Teddy Grahams
+  - Nilla Wafers
+  - Premium Saltines
+  - Premium minis
+  - Good Thins
+  - Nabisco Single Serve Snacks
+  - snack pack
+  - mini pack
+  - 10 pack
+  - cookies
+  - family size cookies
+  notes: >-
+    Family-size snack cracker boxes only (11.5–14 oz): Wheat Thins, Triscuit,
+    and Chicken in a Biskit. Matches the Vons/Safeway "Nabisco Snack Crackers
+    Family Size" $3.49 promo (eligible items are Wheat Thins/Triscuit/Chicken in
+    a Biskit family-size boxes). Do NOT group with Oreo, Chips Ahoy, Ritz,
+    Nabisco single-serve snack packs, or regular-size cracker boxes outside the
+    11.5–14 oz range. A bare "Nabisco snack crackers" offer with no size and no
+    eligible items is manual review, not an auto graph update.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

@@ -359,6 +359,21 @@ def _prior_week_price(
     return float(price) if isinstance(price, (int, float)) else None
 
 
+def _audit_metadata_kwargs(elig: object) -> dict[str, object]:
+    """Copy canonical display / provenance metadata from an eligibility result."""
+    return {
+        "display_name": getattr(elig, "display_name", None),
+        "subtitle": getattr(elig, "subtitle", None),
+        "manufacturer_family": getattr(elig, "manufacturer_family", None),
+        "allowed_product_lines": list(getattr(elig, "allowed_product_lines", []) or []),
+        "package_type": getattr(elig, "package_type", None),
+        "size_range": getattr(elig, "size_range", None),
+        "eligible_item_examples": list(
+            getattr(elig, "eligible_item_examples", []) or []
+        ),
+    }
+
+
 def pick_best_row(
     rows: list[dict[str, str]],
     matcher: ProductMatcher,
@@ -410,6 +425,7 @@ def pick_best_row(
                                 if unit_price is not None
                                 else elig.reject_reason
                             ),
+                            **_audit_metadata_kwargs(elig),
                         )
                     )
                     break
@@ -498,6 +514,7 @@ def pick_best_row(
                     and unit_price is not None
                     else None
                 ),
+                **_audit_metadata_kwargs(best_eligibility),
             )
         )
 
