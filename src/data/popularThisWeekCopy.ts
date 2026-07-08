@@ -2,6 +2,7 @@ import {
   POPULAR_THIS_WEEK_WEEK,
   type PopularThisWeekStore,
 } from "./canonicalTrackerFamilies";
+import { isPreviewWeek } from "./weeklyAdPreview";
 import { WEEKLY_AD_WEEKS } from "./weeklyAdPrices.generated";
 
 const STORE_LEAD: Record<PopularThisWeekStore, string> = {
@@ -40,6 +41,14 @@ export function getPopularWeekLabel(): string {
     return formatWeekRange(week.weekStart, week.weekEnd);
   }
   return formatWeekRange(POPULAR_THIS_WEEK_WEEK);
+}
+
+/** Whether the curated Popular this week ad week is still a preview (not yet started). */
+export function isPopularWeekPreview(asOf: Date = new Date()): boolean {
+  if (!POPULAR_THIS_WEEK_WEEK) {
+    return false;
+  }
+  return isPreviewWeek(POPULAR_THIS_WEEK_WEEK, asOf);
 }
 
 /** Combined subtitle — matches homepage `leadLineForView()` in homepage.js. */

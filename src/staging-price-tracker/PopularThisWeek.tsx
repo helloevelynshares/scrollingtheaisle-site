@@ -3,8 +3,11 @@ import {
   POPULAR_THIS_WEEK,
   type PopularThisWeekStore,
 } from "../data/canonicalTrackerFamilies";
-import { leadLineForStore } from "../data/popularThisWeekCopy";
-import { isProductOnSale, isProductInPreviewWeek } from "../data/priceTrackerUtils";
+import {
+  isPopularWeekPreview,
+  leadLineForStore,
+} from "../data/popularThisWeekCopy";
+import { isProductOnSale } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 
 type Props = {
@@ -28,6 +31,7 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
   );
 
   const leadLine = useMemo(() => leadLineForStore(feedStore), [feedStore]);
+  const curatedWeekIsPreview = isPopularWeekPreview();
 
   if (entries.length === 0) {
     return null;
@@ -55,12 +59,12 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
               {onSale ? (
                 <span
                   className={`popular-this-week__deal-badge${
-                    product && isProductInPreviewWeek(product)
+                    curatedWeekIsPreview
                       ? " popular-this-week__deal-badge--preview"
                       : ""
                   }`}
                 >
-                  {product && isProductInPreviewWeek(product) ? "Preview deal" : "Deal"}
+                  {curatedWeekIsPreview ? "Preview deal" : "Deal"}
                 </span>
               ) : null}
             </button>

@@ -3,10 +3,8 @@ import { HOMEPAGE_SECTIONS } from "../data/canonicalTrackerFamilies";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { ProductCard } from "./ProductCard";
 import { PopularThisWeek } from "./PopularThisWeek";
+import { partitionSectionProducts } from "./sectionShowMore";
 import { TrackVotePanel } from "./vote/TrackVotePanel";
-
-const SNACKS_SECTION_ID = "stock_up_snacks_and_treats";
-const MOBILE_SNACKS_PREVIEW = 12;
 
 type Props = {
   products: FeedProductView[];
@@ -16,10 +14,13 @@ type Props = {
 export function SectionedTrackerList({ products, feedStore }: Props) {
   const [search, setSearch] = useState("");
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [showAllSnacks, setShowAllSnacks] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(
+    () => new Set(),
+  );
   const [highlightIds, setHighlightIds] = useState<Set<string>>(new Set());
 
   const normalizedSearch = search.trim().toLowerCase();
+  const bypassCollapse = normalizedSearch.length > 0;
 
   const filteredProducts = useMemo(() => {
     let list = products;
@@ -62,6 +63,14 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
     setHighlightIds(new Set(familyIds));
     window.setTimeout(() => setHighlightIds(new Set()), 2400);
+  }, []);
+
+  const expandSection = useCallback((sectionId: string) => {
+    setExpandedSections((current) => {
+      const next = new Set(current);
+      next.add(sectionId);
+      return next;
+    });
   }, []);
 
   const controls = (
@@ -127,12 +136,13 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
       return null;
     }
 
-    const isSnacks = section.id === SNACKS_SECTION_ID;
-    const visibleProducts =
-      isSnacks && !showAllSnacks
-        ? sectionProducts.slice(0, MOBILE_SNACKS_PREVIEW)
-        : sectionProducts;
-    const hiddenSnackCount = sectionProducts.length - MOBILE_SNACKS_PREVIEW;
+    const isExpanded = expandedSections.has(section.id);
+    const { visible: visibleProducts, hiddenCount } = partitionSectionProducts(
+      section.id,
+      sectionProducts,
+      isExpanded,
+      bypassCollapse,
+    );
 
     return (
       <section
@@ -158,13 +168,13 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
             </div>
           ))}
         </div>
-        {isSnacks && !showAllSnacks && hiddenSnackCount > 0 ? (
+        {!isExpanded && hiddenCount > 0 ? (
           <button
             type="button"
-            className="sectioned-tracker__show-all price-tracker-mobile-only"
-            onClick={() => setShowAllSnacks(true)}
+            className="sectioned-tracker__show-more"
+            onClick={() => expandSection(section.id)}
           >
-            Show all snacks & treats ({sectionProducts.length})
+            Show more ({hiddenCount})
           </button>
         ) : null}
       </section>

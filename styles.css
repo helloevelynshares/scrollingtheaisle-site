@@ -2690,6 +2690,7 @@ img {
   margin-top: 32px;
 }
 
+.sectioned-tracker__show-more,
 .sectioned-tracker__show-all {
   margin-top: 12px;
   border: none;
