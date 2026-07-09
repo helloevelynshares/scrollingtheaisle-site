@@ -1,0 +1,236 @@
+# Canonical match audit — 2026-05-06 to 2026-05-12
+
+Generated: 2026-07-09T06:08:41.652157+00:00
+
+## Summary
+
+- **Accepted:** 68
+- **Rejected:** 0
+- **Manual review:** 2
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, berries_6oz, general_mills_cereal_regular, ribeye_steak
+
+## Graph update safety check
+
+### All-time low changes
+
+- `sweet_corn` (Safeway): $0.5 — Sweet Corn
+- `sweet_corn` (Safeway): $0.5 — Sweet Corn
+
+### Graph preview changes
+
+- `coca_cola_12packs` (Safeway): blocked $5.0 — confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Safeway): blocked $5.0 — confidence 0.40 < min 0.70
+
+### Blocked from tracker graph
+
+- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+  - Reason: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+  - Reason: confidence 0.40 < min 0.70
+
+## Accepted matches
+
+- `doritos_5_13oz` (Safeway): 'Lay’s, Doritos, Tostitos' @ $None (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: 5–13 oz bags
+- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $5.0 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: 6.5–10 oz bags
+- `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.49 (confidence 1.00)
+  - Display: Oreo cookies
+  - Subtitle: family size, roughly 10.68–18.71 oz
+- `goldfish_bags` (Safeway): 'Goldfish Crackers' @ $7.99 (confidence 0.90)
+  - Display: Goldfish
+  - Subtitle: 6–8 oz bags
+- `pepsi_12packs` (Safeway): 'Coca-Cola, Pepsi, 7UP' @ $5.0 (confidence 0.70)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $8.99 (confidence 0.70)
+  - Display: Simply refrigerated juice & lemonade
+  - Subtitle: 46–52 fl oz bottles
+- `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
+  - Display: Tillamook ice cream
+  - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
+- `cherries_per_lb` (Safeway): 'Red Cherries' @ $6.99 (confidence 0.90)
+  - Display: Cherries
+  - Subtitle: per lb
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: large eggs; normalized to 12-count/dozen
+- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.75)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: 5–13 oz bags
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips" @ $2.5 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular non-kettle bags, roughly 5–13 oz
+- `ruffles_regular_bags` (Vons): 'Ruffles' @ $2.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular bags, roughly 5–13 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Cantina Tortilla Chips 8-11 oz.' @ $2.99 (confidence 0.70)
+  - Display: Tostitos tortilla chips
+  - Subtitle: roughly 9–13 oz bags
+- `simply_snacks` (Vons): 'Lay’s Simply Snacks' @ $2.99 (confidence 0.90)
+  - Display: Simply snacks
+  - Subtitle: Simply-branded bags, roughly 4.5–13 oz
+- `cheez_it_crackers` (Vons): 'Cheez-It Crackers' @ $2.5 (confidence 0.90)
+  - Display: Cheez-It crackers
+  - Subtitle: 6.5–12.4 oz boxes/bags
+- `pepsi_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `dr_pepper_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
+  - Display: Dr Pepper
+  - Subtitle: 12-pack, 12 fl oz cans
+- `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Breyers ice cream
+  - Subtitle: tubs, including Carb Smart and Sunday Swirls
+- `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `berries_6oz` (Vons): 'Organic Blueberries 6 oz' @ $3.5 (confidence 0.86)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
+- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Vons): 'Large Mangoes' @ $0.99 (confidence 0.90)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: large eggs; normalized to 12-count/dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)
+  - Display: General Mills cereal
+  - Subtitle: regular boxes, roughly 8.9–15 oz
+- `ribeye_steak` (Vons): 'Ribeye Steak Bone-in Value pack' @ $8.77 (confidence 0.90)
+  - Display: Ribeye steak
+  - Subtitle: per lb
+- `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Safeway): 'Lay’s, Doritos, Tostitos' @ $None (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: 5–13 oz bags
+- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $5.0 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: 6.5–10 oz bags
+- `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.49 (confidence 1.00)
+  - Display: Oreo cookies
+  - Subtitle: family size, roughly 10.68–18.71 oz
+- `goldfish_bags` (Safeway): 'Goldfish Crackers' @ $7.99 (confidence 0.90)
+  - Display: Goldfish
+  - Subtitle: 6–8 oz bags
+- `pepsi_12packs` (Safeway): 'Coca-Cola, Pepsi, 7UP' @ $5.0 (confidence 0.70)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $8.99 (confidence 0.70)
+  - Display: Simply refrigerated juice & lemonade
+  - Subtitle: 46–52 fl oz bottles
+- `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
+  - Display: Tillamook ice cream
+  - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
+- `cherries_per_lb` (Safeway): 'Red Cherries' @ $6.99 (confidence 0.90)
+  - Display: Cherries
+  - Subtitle: per lb
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: large eggs; normalized to 12-count/dozen
+- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.75)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: 5–13 oz bags
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips" @ $2.5 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular non-kettle bags, roughly 5–13 oz
+- `ruffles_regular_bags` (Vons): 'Ruffles' @ $2.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular bags, roughly 5–13 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Cantina Tortilla Chips 8-11 oz.' @ $2.99 (confidence 0.70)
+  - Display: Tostitos tortilla chips
+  - Subtitle: roughly 9–13 oz bags
+- `simply_snacks` (Vons): 'Lay’s Simply Snacks' @ $2.99 (confidence 0.90)
+  - Display: Simply snacks
+  - Subtitle: Simply-branded bags, roughly 4.5–13 oz
+- `cheez_it_crackers` (Vons): 'Cheez-It Crackers' @ $2.5 (confidence 0.90)
+  - Display: Cheez-It crackers
+  - Subtitle: 6.5–12.4 oz boxes/bags
+- `pepsi_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `dr_pepper_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
+  - Display: Dr Pepper
+  - Subtitle: 12-pack, 12 fl oz cans
+- `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Breyers ice cream
+  - Subtitle: tubs, including Carb Smart and Sunday Swirls
+- `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `berries_6oz` (Vons): 'Organic Blueberries 6 oz' @ $3.5 (confidence 0.86)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
+- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Vons): 'Large Mangoes' @ $0.99 (confidence 0.90)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: large eggs; normalized to 12-count/dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)
+  - Display: General Mills cereal
+  - Subtitle: regular boxes, roughly 8.9–15 oz
+- `ribeye_steak` (Vons): 'Ribeye Steak Bone-in Value pack' @ $8.77 (confidence 0.90)
+  - Display: Ribeye steak
+  - Subtitle: per lb
+- `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet

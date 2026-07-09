@@ -7,6 +7,7 @@ import {
 import {
   isPopularWeekPreview,
   leadLineForStore,
+  strategyLineForStore,
 } from "../data/popularThisWeekCopy";
 import { isProductOnSale } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
@@ -40,6 +41,10 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
   );
 
   const leadLine = useMemo(() => leadLineForStore(feedStore), [feedStore]);
+  const strategyLine = useMemo(
+    () => strategyLineForStore(feedStore),
+    [feedStore],
+  );
   const curatedWeekIsPreview = isPopularWeekPreview();
 
   if (entries.length === 0) {
@@ -90,6 +95,9 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
     <section className="popular-this-week" aria-label="Popular picks this week">
       <header className="popular-this-week__header">
         <p className="popular-this-week__lead">{leadLine}</p>
+        {strategyLine ? (
+          <p className="popular-this-week__strategy">{strategyLine}</p>
+        ) : null}
       </header>
       <div className="popular-this-week__grid">
         {visibleEntries.map(renderCard)}

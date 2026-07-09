@@ -1,0 +1,1573 @@
+{
+  "week_start": "2026-07-08",
+  "week_end": "2026-07-14",
+  "generated_at": "2026-07-07",
+  "safeway": {
+    "matched_count": 15,
+    "miss_count": 51,
+    "misses": [
+      "cheetos_regular_bags",
+      "cheetos_party_size",
+      "lays_potato_chips_regular",
+      "lays_kettle_cooked",
+      "lays_party_size",
+      "kettle_brand_chips",
+      "sun_chips_7oz",
+      "tostitos_tortilla_chips",
+      "simply_snacks",
+      "simply_party_size",
+      "ritz_crackers",
+      "ritz_toasted_chips",
+      "nabisco_snack_crackers",
+      "cheez_it_crackers",
+      "chips_ahoy",
+      "oreo_family_size",
+      "goldfish_bags",
+      "keebler_sandwich_crackers",
+      "dr_pepper_12packs",
+      "lacroix_8pack",
+      "simply_refrigerated_juice_lemonade",
+      "haagen_dazs_pints",
+      "ben_jerrys_ice_cream",
+      "dreyers_tubs",
+      "breyers_ice_cream",
+      "tillamook_ice_cream",
+      "haagen_dazs_bars_novelties",
+      "dreyers_novelties",
+      "strawberries_1_2lb",
+      "peaches_per_lb",
+      "nectarines_per_lb",
+      "eggs_dozen_normalized",
+      "sliced_or_shredded_cheese_6_8oz",
+      "philadelphia_cream_cheese",
+      "lucerne_cream_cheese",
+      "chobani_yogurt_per_cup",
+      "fage_cups",
+      "fage_tub",
+      "lucerne_yogurt_tubs",
+      "nature_valley_bars",
+      "general_mills_cereal_regular",
+      "general_mills_cereal_family_size",
+      "post_cereal_regular",
+      "post_cereal_giant_size",
+      "thomas_bagels_muffins_bread",
+      "kings_hawaiian_rolls",
+      "quest_bars",
+      "clif_bars",
+      "chicken_thigh_per_lb",
+      "ribeye_steak",
+      "tri_tip_roast"
+    ],
+    "deals": [
+      {
+        "rank": 1,
+        "family_id": "salmon",
+        "name": "Salmon",
+        "size_label": "fillets or smoked salmon, format varies",
+        "store": "Safeway",
+        "ad_price": 4.99,
+        "unit_size": "fillets or smoked salmon, format varies",
+        "effective_unit_price": "$4.99",
+        "offer_text": "Acme Smoked Nova Salmon 4 oz",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": 9.29,
+        "baseline_discount_pct": 46.3,
+        "historical_label": "Historical low",
+        "hist_bucket": "all-time low",
+        "hist_all_time_low": 4.99,
+        "hist_median": 7.99,
+        "hist_obs_count": 8,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 6.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 16.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 5.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 14.99
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "46% below baseline $9.29; Historical low in tracked ad history",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": 75.0,
+        "bucket": "best_stock_up"
+      },
+      {
+        "rank": 2,
+        "family_id": "ruffles_regular_bags",
+        "name": "Ruffles",
+        "size_label": "regular bags, roughly 5\u201313 oz",
+        "store": "Safeway",
+        "ad_price": 2.5,
+        "unit_size": "regular bags, roughly 5\u201313 oz",
+        "effective_unit_price": "$0.270/oz ($2.50 pkg)",
+        "offer_text": "Ruffles Potato Chips",
+        "match_confidence": "high",
+        "availability_type": "friday_only",
+        "promo_note": "Member Price",
+        "baseline": 5.49,
+        "baseline_discount_pct": 54.5,
+        "historical_label": "Near historical low",
+        "hist_bucket": "near all-time low",
+        "hist_all_time_low": 2.49,
+        "hist_median": 2.49,
+        "hist_obs_count": 4,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-12",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-03",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.49
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "doritos_nacho_cheese",
+          "costco_item": "DORITOS NACHO CHEESE 30 OUNCES",
+          "costco_price": 6.99,
+          "costco_unit_price": 0.233,
+          "grocery_unit_price": 0.2703,
+          "pct_vs_costco": -16.0,
+          "winner": "costco",
+          "status": "comparable",
+          "note": null,
+          "confidence": "High"
+        },
+        "why_standout": "54% below baseline $5.49; Near historical low in tracked ad history; Costco still cheaper by 16% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week",
+          "Costco compared via proxy canonical 'doritos_nacho_cheese'"
+        ],
+        "score": 61.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 3,
+        "family_id": "hass_avocados_each",
+        "name": "Hass avocados",
+        "size_label": "each or multi-buy",
+        "store": "Safeway",
+        "ad_price": 0.99,
+        "unit_size": "each or multi-buy",
+        "effective_unit_price": "$0.99 each",
+        "offer_text": "Hass Avocado",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "MEMBER PRICE",
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Historical low",
+        "hist_bucket": "all-time low",
+        "hist_all_time_low": 0.99,
+        "hist_median": 1.67,
+        "hist_obs_count": 9,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 0.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.0
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.0
+          },
+          {
+            "week": "2026-07-01",
+            "price": 1.25
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "avocados",
+          "costco_item": "AVOCADOS HASS VARIETY 6 COUNT",
+          "costco_price": 7.99,
+          "costco_unit_price": 1.3317,
+          "grocery_unit_price": 0.99,
+          "pct_vs_costco": 25.7,
+          "winner": "grocery",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Historical low in tracked ad history; Beats Costco SF/Tustin unit price by 26%",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": 60.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 4,
+        "family_id": "butter_16oz",
+        "name": "Butter",
+        "size_label": "16 oz sticks / quarters; normalize to 16 oz",
+        "store": "Safeway",
+        "ad_price": 3.49,
+        "unit_size": "16 oz sticks / quarters; normalize to 16 oz",
+        "effective_unit_price": "$3.49",
+        "offer_text": "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties.",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": 5.99,
+        "baseline_discount_pct": 41.7,
+        "historical_label": "Typical sale",
+        "hist_bucket": "normal sale",
+        "hist_all_time_low": 2.99,
+        "hist_median": 3.49,
+        "hist_obs_count": 8,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 3.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 3.49
+          },
+          {
+            "week": "2026-06-24",
+            "price": 3.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 2.99
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "42% below baseline $5.99",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": 56.0,
+        "bucket": "good_deal"
+      },
+      {
+        "rank": 5,
+        "family_id": "pillsbury_refrigerated_dough",
+        "name": "Pillsbury refrigerated dough",
+        "size_label": "8\u201316.3 oz cans/tubes",
+        "store": "Safeway",
+        "ad_price": 2.5,
+        "unit_size": "8\u201316.3 oz cans/tubes",
+        "effective_unit_price": "$2.50",
+        "offer_text": "Pillsbury Grands! Biscuits, Cinnamon Rolls",
+        "match_confidence": "medium",
+        "availability_type": "friday_only",
+        "promo_note": "Member Price",
+        "baseline": 4.99,
+        "baseline_discount_pct": 49.9,
+        "historical_label": "Unknown",
+        "hist_bucket": "insufficient history",
+        "hist_all_time_low": 2.49,
+        "hist_median": 2.49,
+        "hist_obs_count": 1,
+        "prior_week_prices": [
+          {
+            "week": "2026-04-01",
+            "price": 2.49
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "50% below baseline $4.99",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week",
+          "Medium-confidence ad match \u2014 verify brand/size on flyer"
+        ],
+        "score": 43.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 6,
+        "family_id": "pepsi_12packs",
+        "name": "Pepsi",
+        "size_label": "12-pack, 12 fl oz cans",
+        "store": "Safeway",
+        "ad_price": 3.99,
+        "unit_size": "12-pack, 12 fl oz cans",
+        "effective_unit_price": "$3.99",
+        "offer_text": "Coca-Cola, Pepsi",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "MEMBER PRICE MIX & MATCH",
+        "baseline": 14.43,
+        "baseline_discount_pct": 72.3,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 1.19,
+        "hist_median": 2.5,
+        "hist_obs_count": 7,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-12",
+            "price": 1.85
+          },
+          {
+            "week": "2026-06-10",
+            "price": 1.29
+          },
+          {
+            "week": "2026-06-17",
+            "price": 5.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.5
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": "coke_zero",
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "grocery_only",
+          "status": "not_sold_at_costco",
+          "note": "Not expected at Costco",
+          "confidence": "Low"
+        },
+        "why_standout": "72% below baseline $14.43",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Costco compared via proxy canonical 'coke_zero'"
+        ],
+        "score": 38.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 7,
+        "family_id": "berries_6oz",
+        "name": "Blueberries / raspberries / blackberries",
+        "size_label": "6 oz clamshells",
+        "store": "Safeway",
+        "ad_price": 2.99,
+        "unit_size": "6 oz clamshells",
+        "effective_unit_price": "$2.99",
+        "offer_text": "Blackberries 6 oz",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "MEMBER PRICE MIX & MATCH",
+        "baseline": 4.99,
+        "baseline_discount_pct": 40.1,
+        "historical_label": "Unknown",
+        "hist_bucket": "insufficient history",
+        "hist_all_time_low": null,
+        "hist_median": null,
+        "hist_obs_count": 0,
+        "prior_week_prices": [],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "40% below baseline $4.99",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Blackberries matched to generic 6oz berries family \u2014 verify"
+        ],
+        "score": 35.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 8,
+        "family_id": "chicken_breast_per_lb",
+        "name": "Chicken breast",
+        "size_label": "per lb",
+        "store": "Safeway",
+        "ad_price": 5.99,
+        "unit_size": "per lb",
+        "effective_unit_price": "$5.99/lb",
+        "offer_text": "O Organics Organic Fresh Boneless Skinless Chicken Breast Value Pack.",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": 8.99,
+        "baseline_discount_pct": 33.4,
+        "historical_label": "Unknown",
+        "hist_bucket": "insufficient history",
+        "hist_all_time_low": null,
+        "hist_median": null,
+        "hist_obs_count": 0,
+        "prior_week_prices": [],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "33% below baseline $8.99",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": 30.0,
+        "bucket": "good_deal"
+      },
+      {
+        "rank": 9,
+        "family_id": "cherries_per_lb",
+        "name": "Cherries",
+        "size_label": "per lb",
+        "store": "Safeway",
+        "ad_price": 4.99,
+        "unit_size": "per lb",
+        "effective_unit_price": "$4.99/lb",
+        "offer_text": "Red Cherries",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": 5.99,
+        "baseline_discount_pct": 16.7,
+        "historical_label": "Typical sale",
+        "hist_bucket": "strong sale",
+        "hist_all_time_low": 1.99,
+        "hist_median": 5.99,
+        "hist_obs_count": 5,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 5.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 5.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 1.99
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "grapes",
+          "costco_item": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+          "costco_price": 7.99,
+          "costco_unit_price": 2.6633,
+          "grocery_unit_price": 4.99,
+          "pct_vs_costco": -87.4,
+          "winner": "costco",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "17% below baseline $5.99; Strong vs historical ad median; Costco still cheaper by 87% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch",
+          "Costco compared via proxy canonical 'grapes'"
+        ],
+        "score": 23.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 10,
+        "family_id": "coca_cola_12packs",
+        "name": "Coca-Cola",
+        "size_label": "12-pack, 12 fl oz cans",
+        "store": "Safeway",
+        "ad_price": 3.99,
+        "unit_size": "12-pack, 12 fl oz cans",
+        "effective_unit_price": "$3.99",
+        "offer_text": "Coca-Cola, Pepsi",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "MEMBER PRICE MIX & MATCH",
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Typical sale",
+        "hist_bucket": "strong sale",
+        "hist_all_time_low": 2.79,
+        "hist_median": 5.2,
+        "hist_obs_count": 5,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-06",
+            "price": 5.0
+          },
+          {
+            "week": "2026-06-17",
+            "price": 8.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 5.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 5.2
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": "coke_zero",
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "grocery_only",
+          "status": "not_sold_at_costco",
+          "note": "Not expected at Costco",
+          "confidence": "Low"
+        },
+        "why_standout": "Strong vs historical ad median",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Multi-brand soda block (Coca-Cola, Pepsi) \u2014 verify exact 12-pack SKU/price"
+        ],
+        "score": 21.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 11,
+        "family_id": "mangoes_each",
+        "name": "Mangoes",
+        "size_label": "each or multi-buy",
+        "store": "Safeway",
+        "ad_price": 1.25,
+        "unit_size": "each or multi-buy",
+        "effective_unit_price": "$1.25",
+        "offer_text": "Large Mango",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": 1.25,
+        "baseline_discount_pct": 0.0,
+        "historical_label": "Typical sale",
+        "hist_bucket": "normal sale",
+        "hist_all_time_low": 0.97,
+        "hist_median": 1.25,
+        "hist_obs_count": 8,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-03",
+            "price": 1.25
+          },
+          {
+            "week": "2026-06-10",
+            "price": 0.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 1.25
+          },
+          {
+            "week": "2026-07-01",
+            "price": 1.25
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "Modest weekly promo",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer"
+        ],
+        "score": 3.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 12,
+        "family_id": "doritos_5_13oz",
+        "name": "Doritos",
+        "size_label": "5\u201313 oz bags",
+        "store": "Safeway",
+        "ad_price": 2.5,
+        "unit_size": "5\u201313 oz bags",
+        "effective_unit_price": "$0.270/oz ($2.50 pkg)",
+        "offer_text": "Doritos Tortilla Chips",
+        "match_confidence": "high",
+        "availability_type": "friday_only",
+        "promo_note": "Member Price",
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Typical sale",
+        "hist_bucket": "normal sale",
+        "hist_all_time_low": 1.99,
+        "hist_median": 2.49,
+        "hist_obs_count": 7,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-03",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.49
+          },
+          {
+            "week": "2026-07-01",
+            "price": 2.2
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "doritos_nacho_cheese",
+          "costco_item": "DORITOS NACHO CHEESE 30 OUNCES",
+          "costco_price": 6.99,
+          "costco_unit_price": 0.233,
+          "grocery_unit_price": 0.2703,
+          "pct_vs_costco": -16.0,
+          "winner": "costco",
+          "status": "comparable",
+          "note": null,
+          "confidence": "High"
+        },
+        "why_standout": "Costco still cheaper by 16% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week"
+        ],
+        "score": 1.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 13,
+        "family_id": "seedless_grapes_per_lb",
+        "name": "Seedless grapes",
+        "size_label": "per lb; normalize bags to per lb",
+        "store": "Safeway",
+        "ad_price": 2.99,
+        "unit_size": "per lb; normalize bags to per lb",
+        "effective_unit_price": "$2.99/lb",
+        "offer_text": "Red Seedless Grapes",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Member Price",
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 1.67,
+        "hist_median": 2.49,
+        "hist_obs_count": 8,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 4.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 1.67
+          },
+          {
+            "week": "2026-07-01",
+            "price": 4.99
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "grapes",
+          "costco_item": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+          "costco_price": 7.99,
+          "costco_unit_price": 2.6633,
+          "grocery_unit_price": 2.99,
+          "pct_vs_costco": -12.3,
+          "winner": "costco",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Costco still cheaper by 12% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": -1.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 14,
+        "family_id": "sweet_corn",
+        "name": "Sweet corn",
+        "size_label": "each or multi-buy",
+        "store": "Safeway",
+        "ad_price": 0.5,
+        "unit_size": "each or multi-buy",
+        "effective_unit_price": "$0.50",
+        "offer_text": "Sweet Corn",
+        "match_confidence": "high",
+        "availability_type": "friday_only",
+        "promo_note": "Member Price",
+        "baseline": 0.13,
+        "baseline_discount_pct": -284.6,
+        "historical_label": "Typical sale",
+        "hist_bucket": "normal sale",
+        "hist_all_time_low": 0.12,
+        "hist_median": 0.5,
+        "hist_obs_count": 8,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 0.5
+          },
+          {
+            "week": "2026-06-17",
+            "price": 0.5
+          },
+          {
+            "week": "2026-06-24",
+            "price": 0.5
+          },
+          {
+            "week": "2026-07-01",
+            "price": 0.12
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "Modest weekly promo",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week"
+        ],
+        "score": -2.0,
+        "bucket": "good_deal"
+      },
+      {
+        "rank": 15,
+        "family_id": "plums_per_lb",
+        "name": "Plums",
+        "size_label": "per lb",
+        "store": "Safeway",
+        "ad_price": 2.99,
+        "unit_size": "per lb",
+        "effective_unit_price": "$2.99/lb",
+        "offer_text": "Black Plums",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "LOCAL",
+        "baseline": 0.85,
+        "baseline_discount_pct": -251.8,
+        "historical_label": "Unknown",
+        "hist_bucket": "insufficient history",
+        "hist_all_time_low": 2.5,
+        "hist_median": 2.5,
+        "hist_obs_count": 1,
+        "prior_week_prices": [
+          {
+            "week": "2026-07-01",
+            "price": 2.5
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "Modest weekly promo",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": -10.0,
+        "bucket": "good_deal"
+      }
+    ]
+  },
+  "vons": {
+    "matched_count": 11,
+    "miss_count": 55,
+    "misses": [
+      "doritos_5_13oz",
+      "cheetos_regular_bags",
+      "cheetos_party_size",
+      "lays_potato_chips_regular",
+      "lays_kettle_cooked",
+      "lays_party_size",
+      "kettle_brand_chips",
+      "ruffles_regular_bags",
+      "sun_chips_7oz",
+      "tostitos_tortilla_chips",
+      "simply_snacks",
+      "simply_party_size",
+      "ritz_toasted_chips",
+      "chips_ahoy",
+      "oreo_family_size",
+      "goldfish_bags",
+      "keebler_sandwich_crackers",
+      "dr_pepper_12packs",
+      "lacroix_8pack",
+      "simply_refrigerated_juice_lemonade",
+      "haagen_dazs_pints",
+      "ben_jerrys_ice_cream",
+      "dreyers_tubs",
+      "breyers_ice_cream",
+      "tillamook_ice_cream",
+      "haagen_dazs_bars_novelties",
+      "dreyers_novelties",
+      "berries_6oz",
+      "mangoes_each",
+      "peaches_per_lb",
+      "nectarines_per_lb",
+      "plums_per_lb",
+      "sweet_corn",
+      "sliced_or_shredded_cheese_6_8oz",
+      "philadelphia_cream_cheese",
+      "lucerne_cream_cheese",
+      "chobani_yogurt_per_cup",
+      "fage_cups",
+      "fage_tub",
+      "lucerne_yogurt_tubs",
+      "nature_valley_bars",
+      "general_mills_cereal_regular",
+      "general_mills_cereal_family_size",
+      "post_cereal_regular",
+      "post_cereal_giant_size",
+      "thomas_bagels_muffins_bread",
+      "kings_hawaiian_rolls",
+      "pillsbury_refrigerated_dough",
+      "quest_bars",
+      "clif_bars",
+      "chicken_breast_per_lb",
+      "chicken_thigh_per_lb",
+      "ribeye_steak",
+      "tri_tip_roast",
+      "salmon"
+    ],
+    "deals": [
+      {
+        "rank": 1,
+        "family_id": "ritz_crackers",
+        "name": "Ritz crackers",
+        "size_label": "8.8\u201313.7 oz boxes",
+        "store": "Vons",
+        "ad_price": 2.49,
+        "unit_size": "8.8\u201313.7 oz boxes",
+        "effective_unit_price": "$2.49",
+        "offer_text": "Ritz Crackers",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Mix or Match any 4 or more participating items",
+        "baseline": 4.99,
+        "baseline_discount_pct": 50.1,
+        "historical_label": "Historical low",
+        "hist_bucket": "all-time low",
+        "hist_all_time_low": 2.49,
+        "hist_median": 2.74,
+        "hist_obs_count": 2,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-17",
+            "price": 2.49
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.99
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": "ritz_crackers_snacks",
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "50% below baseline $4.99; Historical low in tracked ad history",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": 83.0,
+        "bucket": "best_stock_up"
+      },
+      {
+        "rank": 2,
+        "family_id": "nabisco_snack_crackers",
+        "name": "Nabisco snack crackers",
+        "size_label": "3.5\u20139.1 oz boxes/bags",
+        "store": "Vons",
+        "ad_price": 2.49,
+        "unit_size": "3.5\u20139.1 oz boxes/bags",
+        "effective_unit_price": "$2.49",
+        "offer_text": "Wheat Thins",
+        "match_confidence": "medium",
+        "availability_type": "full_week",
+        "promo_note": "Mix or Match any 4 or more participating items",
+        "baseline": 3.49,
+        "baseline_discount_pct": 28.7,
+        "historical_label": "Historical low",
+        "hist_bucket": "all-time low",
+        "hist_all_time_low": 2.99,
+        "hist_median": 3.49,
+        "hist_obs_count": 2,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-24",
+            "price": 2.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 3.99
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "29% below baseline $3.49; Historical low in tracked ad history",
+        "confidence": "Medium",
+        "caveats": [
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Matched Wheat Thins only \u2014 verify against intended Nabisco SKU"
+        ],
+        "score": 68.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 3,
+        "family_id": "pepsi_12packs",
+        "name": "Pepsi",
+        "size_label": "12-pack, 12 fl oz cans",
+        "store": "Vons",
+        "ad_price": 0.99,
+        "unit_size": "12-pack, 12 fl oz cans",
+        "effective_unit_price": "$0.99",
+        "offer_text": "Pepsi 2 liter",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Mix or Match any 4 or more participating items",
+        "baseline": 11.99,
+        "baseline_discount_pct": 91.7,
+        "historical_label": "Typical sale",
+        "hist_bucket": "strong sale",
+        "hist_all_time_low": 0.67,
+        "hist_median": 4.75,
+        "hist_obs_count": 6,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 0.67
+          },
+          {
+            "week": "2026-06-17",
+            "price": 5.33
+          },
+          {
+            "week": "2026-06-24",
+            "price": 1.67
+          },
+          {
+            "week": "2026-07-01",
+            "price": 5.33
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": "coke_zero",
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "grocery_only",
+          "status": "not_sold_at_costco",
+          "note": "Not expected at Costco",
+          "confidence": "Low"
+        },
+        "why_standout": "92% below baseline $11.99; Strong vs historical ad median",
+        "confidence": "Low",
+        "caveats": [
+          "WRONG MATCH: offer text is 2-liter bottle, not 12-pack \u2014 exclude from soda rankings",
+          "Costco compared via proxy canonical 'coke_zero'"
+        ],
+        "score": 66.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 4,
+        "family_id": "cherries_per_lb",
+        "name": "Cherries",
+        "size_label": "per lb",
+        "store": "Vons",
+        "ad_price": 2.99,
+        "unit_size": "per lb",
+        "effective_unit_price": "$2.99/lb",
+        "offer_text": "Cherries",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "DIGITAL COUPON",
+        "baseline": 5.99,
+        "baseline_discount_pct": 50.1,
+        "historical_label": "Typical sale",
+        "hist_bucket": "strong sale",
+        "hist_all_time_low": 1.49,
+        "hist_median": 3.49,
+        "hist_obs_count": 4,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-13",
+            "price": 3.99
+          },
+          {
+            "week": "2026-05-20",
+            "price": 3.99
+          },
+          {
+            "week": "2026-06-10",
+            "price": 1.49
+          },
+          {
+            "week": "2026-07-01",
+            "price": 2.99
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "grapes",
+          "costco_item": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+          "costco_price": 7.99,
+          "costco_unit_price": 2.6633,
+          "grocery_unit_price": 2.99,
+          "pct_vs_costco": -12.3,
+          "winner": "costco",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "50% below baseline $5.99; Strong vs historical ad median; Costco still cheaper by 12% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch",
+          "Costco compared via proxy canonical 'grapes'"
+        ],
+        "score": 62.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 5,
+        "family_id": "seedless_grapes_per_lb",
+        "name": "Seedless grapes",
+        "size_label": "per lb; normalize bags to per lb",
+        "store": "Vons",
+        "ad_price": 1.99,
+        "unit_size": "per lb; normalize bags to per lb",
+        "effective_unit_price": "$1.99/lb",
+        "offer_text": "Green Seedless Grapes",
+        "match_confidence": "high",
+        "availability_type": "friday_only",
+        "promo_note": null,
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Near historical low",
+        "hist_bucket": "near all-time low",
+        "hist_all_time_low": 1.97,
+        "hist_median": 2.515,
+        "hist_obs_count": 6,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-10",
+            "price": 1.97
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.5
+          },
+          {
+            "week": "2026-06-24",
+            "price": 3.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 2.53
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "grapes",
+          "costco_item": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+          "costco_price": 7.99,
+          "costco_unit_price": 2.6633,
+          "grocery_unit_price": 1.99,
+          "pct_vs_costco": 25.3,
+          "winner": "grocery",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Near historical low in tracked ad history; Beats Costco SF/Tustin unit price by 25%",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week",
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": 58.0,
+        "bucket": "best_stock_up"
+      },
+      {
+        "rank": 6,
+        "family_id": "cheez_it_crackers",
+        "name": "Cheez-It crackers",
+        "size_label": "6.5\u201312.4 oz boxes/bags",
+        "store": "Vons",
+        "ad_price": 1.67,
+        "unit_size": "6.5\u201312.4 oz boxes/bags",
+        "effective_unit_price": "$1.67",
+        "offer_text": "Cheez-It Crackers, Keebler Fudge Shoppe Cookies",
+        "match_confidence": "medium",
+        "availability_type": "friday_only",
+        "promo_note": null,
+        "baseline": 6.99,
+        "baseline_discount_pct": 76.1,
+        "historical_label": "Unknown",
+        "hist_bucket": "insufficient history",
+        "hist_all_time_low": 2.5,
+        "hist_median": 2.5,
+        "hist_obs_count": 1,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-06",
+            "price": 2.5
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "76% below baseline $6.99",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week",
+          "Medium-confidence ad match \u2014 verify brand/size on flyer",
+          "Multi-product promo block \u2014 price may not apply to all Cheez-It SKUs"
+        ],
+        "score": 43.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 7,
+        "family_id": "coca_cola_12packs",
+        "name": "Coca-Cola",
+        "size_label": "12-pack, 12 fl oz cans",
+        "store": "Vons",
+        "ad_price": 0.99,
+        "unit_size": "12-pack, 12 fl oz cans",
+        "effective_unit_price": "$0.99",
+        "offer_text": "Coca-Cola 2 liter",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "Mix or Match any 4 or more participating items",
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Historical low",
+        "hist_bucket": "all-time low",
+        "hist_all_time_low": 1.49,
+        "hist_median": 1.67,
+        "hist_obs_count": 3,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-17",
+            "price": 1.49
+          },
+          {
+            "week": "2026-06-24",
+            "price": 1.67
+          },
+          {
+            "week": "2026-07-01",
+            "price": 5.33
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": "coke_zero",
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "grocery_only",
+          "status": "not_sold_at_costco",
+          "note": "Not expected at Costco",
+          "confidence": "Low"
+        },
+        "why_standout": "Historical low in tracked ad history",
+        "confidence": "Low",
+        "caveats": [
+          "WRONG MATCH: offer text is 2-liter bottle, not 12-pack \u2014 exclude from soda rankings"
+        ],
+        "score": 43.0,
+        "bucket": "needs_manual_review"
+      },
+      {
+        "rank": 8,
+        "family_id": "eggs_dozen_normalized",
+        "name": "Eggs",
+        "size_label": "large eggs; normalized to 12-count/dozen",
+        "store": "Vons",
+        "ad_price": 2.49,
+        "unit_size": "large eggs; normalized to 12-count/dozen",
+        "effective_unit_price": "$2.49",
+        "offer_text": "Lucerne Large Eggs",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": null,
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 0.99,
+        "hist_median": 1.99,
+        "hist_obs_count": 7,
+        "prior_week_prices": [
+          {
+            "week": "2026-06-03",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-10",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 2.55
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "eggs_18_count",
+          "costco_item": "KIRKLAND SIGNATURE CAGE FREE LARGE EGGS USDA GRADE AA 5 DZ",
+          "costco_price": 8.59,
+          "costco_unit_price": 8.59,
+          "grocery_unit_price": 0.1383,
+          "pct_vs_costco": 98.4,
+          "winner": "grocery",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Beats Costco SF/Tustin unit price by 98%",
+        "confidence": "Medium",
+        "caveats": [
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": 33.0,
+        "bucket": "best_stock_up"
+      },
+      {
+        "rank": 9,
+        "family_id": "butter_16oz",
+        "name": "Butter",
+        "size_label": "16 oz sticks / quarters; normalize to 16 oz",
+        "store": "Vons",
+        "ad_price": 3.99,
+        "unit_size": "16 oz sticks / quarters; normalize to 16 oz",
+        "effective_unit_price": "$3.99",
+        "offer_text": "Lucerne Butter",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": "With Digital Coupon",
+        "baseline": 3.99,
+        "baseline_discount_pct": 0.0,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 2.99,
+        "hist_median": 3.49,
+        "hist_obs_count": 4,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-06",
+            "price": 3.99
+          },
+          {
+            "week": "2026-06-03",
+            "price": 2.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.99
+          },
+          {
+            "week": "2026-06-24",
+            "price": 3.99
+          }
+        ],
+        "costco": {
+          "comparable": false,
+          "canonical_id": null,
+          "costco_item": null,
+          "costco_price": null,
+          "costco_unit_price": null,
+          "grocery_unit_price": null,
+          "pct_vs_costco": null,
+          "winner": "unknown",
+          "status": "no_metadata",
+          "note": "No Costco canonical mapping for this family",
+          "confidence": "Low"
+        },
+        "why_standout": "Modest weekly promo",
+        "confidence": "Medium",
+        "caveats": [],
+        "score": 3.0,
+        "bucket": "likely_miss"
+      },
+      {
+        "rank": 10,
+        "family_id": "hass_avocados_each",
+        "name": "Hass avocados",
+        "size_label": "each or multi-buy",
+        "store": "Vons",
+        "ad_price": 1.5,
+        "unit_size": "each or multi-buy",
+        "effective_unit_price": "$1.50 each",
+        "offer_text": "Large Hass Avocados",
+        "match_confidence": "high",
+        "availability_type": "full_week",
+        "promo_note": null,
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 0.99,
+        "hist_median": 1.25,
+        "hist_obs_count": 4,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-06",
+            "price": 1.5
+          },
+          {
+            "week": "2026-06-17",
+            "price": 1.67
+          },
+          {
+            "week": "2026-06-24",
+            "price": 0.99
+          },
+          {
+            "week": "2026-07-01",
+            "price": 1.0
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "avocados",
+          "costco_item": "AVOCADOS HASS VARIETY 6 COUNT",
+          "costco_price": 7.99,
+          "costco_unit_price": 1.3317,
+          "grocery_unit_price": 1.5,
+          "pct_vs_costco": -12.6,
+          "winner": "costco",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Costco still cheaper by 13% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": -1.0,
+        "bucket": "costco_wins"
+      },
+      {
+        "rank": 11,
+        "family_id": "strawberries_1_2lb",
+        "name": "Strawberries",
+        "size_label": "1 lb or 2 lb packs; normalize per lb",
+        "store": "Vons",
+        "ad_price": 2.5,
+        "unit_size": "1 lb or 2 lb packs; normalize per lb",
+        "effective_unit_price": "$2.50/lb",
+        "offer_text": "Fresh Strawberries",
+        "match_confidence": "high",
+        "availability_type": "friday_only",
+        "promo_note": null,
+        "baseline": null,
+        "baseline_discount_pct": null,
+        "historical_label": "Worse than previous",
+        "hist_bucket": "weak sale",
+        "hist_all_time_low": 1.28,
+        "hist_median": 1.99,
+        "hist_obs_count": 6,
+        "prior_week_prices": [
+          {
+            "week": "2026-05-20",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-10",
+            "price": 1.99
+          },
+          {
+            "week": "2026-06-17",
+            "price": 2.5
+          },
+          {
+            "week": "2026-06-24",
+            "price": 1.5
+          }
+        ],
+        "costco": {
+          "comparable": true,
+          "canonical_id": "strawberries",
+          "costco_item": "STRAWBERRIES 2 LBS",
+          "costco_price": 3.99,
+          "costco_unit_price": 1.995,
+          "grocery_unit_price": 2.5,
+          "pct_vs_costco": -25.3,
+          "winner": "costco",
+          "status": "needs_review",
+          "note": "Fairness review suggested (proxy match or limited Costco coverage)",
+          "confidence": "Medium"
+        },
+        "why_standout": "Costco still cheaper by 25% per unit",
+        "confidence": "Medium",
+        "caveats": [
+          "Friday-only promo \u2014 not valid all week",
+          "Costco comparison flagged needs_review \u2014 proxy or size mismatch"
+        ],
+        "score": -20.0,
+        "bucket": "costco_wins"
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T20:01:17.946Z",
+  "generatedAt": "2026-07-09T06:08:36.299Z",
   "popularWeekLabel": "Jul 8–Jul 14",
   "popularPicksSafeway": [
     {
@@ -42,8 +42,8 @@
       "onSale": false
     },
     {
-      "id": "$5 Friday raw shrimp",
-      "name": "$5 Friday raw shrimp",
+      "id": "raw shrimp",
+      "name": "raw shrimp",
       "store": "Safeway",
       "price": "$5/lb",
       "unitPrice": "",
@@ -55,8 +55,8 @@
       "onSale": false
     },
     {
-      "id": "$5 Friday bell peppers",
-      "name": "$5 Friday bell peppers",
+      "id": "bell peppers",
+      "name": "bell peppers",
       "store": "Safeway",
       "price": "$1 each",
       "unitPrice": "",
@@ -68,8 +68,8 @@
       "onSale": false
     },
     {
-      "id": "$5 Friday Nestlé Drumstick ice cream",
-      "name": "$5 Friday Nestlé Drumstick ice cream",
+      "id": "Nestlé Drumstick ice cream",
+      "name": "Nestlé Drumstick ice cream",
       "store": "Safeway",
       "price": "$5 each",
       "unitPrice": "",
@@ -107,8 +107,8 @@
       "onSale": false
     },
     {
-      "id": "$5 Friday Doritos / snack bags",
-      "name": "$5 Friday Doritos / snack bags",
+      "id": "Doritos / snack bags",
+      "name": "Doritos / snack bags",
       "store": "Safeway",
       "price": "$2.50 each",
       "unitPrice": "",
@@ -161,88 +161,147 @@
   ],
   "popularPicksVons": [
     {
-      "id": "salmon",
-      "name": "Salmon",
-      "store": "Vons",
-      "price": "$17.99",
-      "unitPrice": "$17.99 · fresh salmon fillet",
-      "badge": "About normal",
-      "explanation": "Fresh fillets ~$7.97/lb — seafood counter highlight; strong weekly value",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
-      "id": "ribeye_steak",
-      "name": "Ribeye steak",
-      "store": "Vons",
-      "price": "$7.99",
-      "unitPrice": "$7.99 · per lb",
-      "badge": "Lowest seen recently",
-      "explanation": "Bone-in ribeye ~$7.99/lb — top meat deal near Costco-beating territory",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
-      "id": "tri_tip_roast",
-      "name": "Tri-tip roast",
-      "store": "Vons",
-      "price": "$4.99",
-      "unitPrice": "$4.99 · per lb",
-      "badge": "Lowest seen recently",
-      "explanation": "USDA Choice ~$4.99/lb — major Costco-beating BBQ staple",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
-      "id": "hass_avocados_each",
-      "name": "Avocados / mangoes",
-      "store": "Vons",
-      "price": "$1.50",
-      "unitPrice": "$1.00/item",
-      "badge": "Good small-pack buy",
-      "explanation": "Hass avocados ~$1 each — slightly under Costco per-piece pricing",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
-      "id": "eggs_dozen_normalized",
-      "name": "Eggs",
-      "store": "Vons",
-      "price": "$2.49",
-      "unitPrice": "$0.33/egg",
-      "badge": "About normal",
-      "explanation": "60 eggs ~$5 when you buy 2 packs — qty required for best price",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
-      "id": "lays_potato_chips_regular",
-      "name": "Chips & snack bags",
-      "store": "Vons",
-      "price": "$4.29",
-      "unitPrice": "$4.29 · regular non-kettle bags, roughly 5–13 oz",
-      "badge": "About normal",
-      "explanation": "Buy 2 Get 3 free on 5 similarly priced bags — cheapest 3 free only; prefer 20% more bags",
-      "trackerUrl": "staging-price-tracker/",
-      "isPlaceholder": false,
-      "onSale": false
-    },
-    {
       "id": "cheez_it_crackers",
       "name": "Cheez-It crackers",
       "store": "Vons",
-      "price": "$1.67",
+      "price": "3 for $5",
       "unitPrice": "$1.67 · 6.5–12.4 oz boxes/bags",
       "badge": "Lowest seen recently",
-      "explanation": "Pantry-size Cheez-It ~$1.99 — strong snack-cracker value",
+      "customBadge": "FRIDAY",
+      "explanation": "$5 Friday win: grab the bigger Cheez-It boxes and Vons can beat Costco by around 30% per ounce, with way more flavors to choose from.",
       "trackerUrl": "staging-price-tracker/",
       "isPlaceholder": false,
       "onSale": true
+    },
+    {
+      "id": "post_cereal_regular",
+      "name": "Post cereal",
+      "store": "Vons",
+      "price": "3 for $5",
+      "unitPrice": "$4.79 · regular boxes, roughly 10–16 oz",
+      "badge": "Wait",
+      "customBadge": "FRIDAY",
+      "explanation": "Post cereal is 3 for $5 on Friday. Honey Bunches of Oats comes out a little over 10% cheaper than Costco, and you get way more variety.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "sliced_or_shredded_cheese_6_8oz",
+      "name": "Lucerne cheese",
+      "store": "Vons",
+      "price": "3 for $5",
+      "unitPrice": "$2.99 · 6–8 oz packages",
+      "badge": "Wait",
+      "customBadge": "FRIDAY",
+      "explanation": "Lucerne cheese is also in the 3-for-$5 Friday section — an easy add-on if you're already doing the Cheez-It/Post cereal deal.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "ritz_crackers",
+      "name": "Ritz / Wheat Thins / Triscuit",
+      "store": "Vons",
+      "price": "$2.49 each (buy 4+)",
+      "unitPrice": "$2.49 · 8.8–13.7 oz boxes",
+      "badge": "Lowest seen recently",
+      "customBadge": "SNACKS",
+      "explanation": "Ritz is basically Costco pricing in a smaller box. Costco is technically about 4% cheaper per ounce, but Vons lets you mix Ritz, Wheat Thins, and Triscuit instead of buying one giant box.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": true
+    },
+    {
+      "id": "berries_6oz",
+      "name": "Blueberries",
+      "store": "Vons",
+      "price": "$0.99 (6 oz, limit 6)",
+      "unitPrice": "$3.99 · 6 oz clamshells",
+      "badge": "Wait",
+      "customBadge": "PRODUCE",
+      "explanation": "Blueberries are one of the clearest Costco-beaters: 18 oz would cost about $2.97 at Vons vs $5.99 at Costco.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "Tuscan cantaloupe / watermelon",
+      "name": "Tuscan cantaloupe / watermelon",
+      "store": "Vons",
+      "price": "$1.99 each",
+      "unitPrice": "",
+      "badge": "About normal",
+      "customBadge": "PRODUCE",
+      "explanation": "Tuscan cantaloupe is another half-price Costco comparison: Costco is about $4 each, Vons is $1.99.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": true,
+      "onSale": false
+    },
+    {
+      "id": "chobani_yogurt_per_cup",
+      "name": "Chobani 20g protein yogurt",
+      "store": "Vons",
+      "price": "$3.99/4-pack (buy 4+)",
+      "unitPrice": "$0.25/oz",
+      "badge": "Costco still wins",
+      "customBadge": "DEAL",
+      "explanation": "Chobani 20g protein is $1 per cup at Vons this week. A 16-count equivalent is about $15.96 at Vons vs $18.99 at Costco.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "doritos_5_13oz",
+      "name": "Doritos",
+      "store": "Vons",
+      "price": "2 for $5",
+      "unitPrice": "$0.59/oz",
+      "badge": "About normal",
+      "customBadge": "SNACKS",
+      "explanation": "Doritos are close to Costco pricing depending on the bag size, but Vons wins on variety because you can mix flavors instead of buying one huge Nacho Cheese bag.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "nature_valley_bars",
+      "name": "Game Time stack — Nature Valley crunchy",
+      "store": "Vons",
+      "price": "$4/box → $3 after stack",
+      "unitPrice": "$0.42/bar",
+      "badge": "Wait",
+      "customBadge": "DEAL",
+      "explanation": "Best stack: buy five Nature Valley 12-count boxes, drop the total to $15, and get 60 pouches. Costco gives you 49 for about the same price.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "general_mills_cereal_family_size",
+      "name": "Game Time stack — Cinnamon Toast Crunch",
+      "store": "Vons",
+      "price": "$4/box → $15 for 5",
+      "unitPrice": "$6.99 · family-size boxes, roughly 15–18 oz",
+      "badge": "Wait",
+      "customBadge": "DEAL",
+      "explanation": "Cinnamon Toast Crunch also works with the stack: five boxes drops to $15 total, about $0.16/oz, slightly cheaper than Costco.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
+    },
+    {
+      "id": "nature_valley_bars",
+      "name": "Game Time stack — Nature Valley protein",
+      "store": "Vons",
+      "price": "$4/box → $15 for 5",
+      "unitPrice": "$0.42/bar",
+      "badge": "Wait",
+      "customBadge": "DEAL",
+      "explanation": "Even Nature Valley Protein is not a Costco-beater, but it's close enough that if you want the Vons flavors and hit the stack, it's still a solid price.",
+      "trackerUrl": "staging-price-tracker/",
+      "isPlaceholder": false,
+      "onSale": false
     }
   ]
 }

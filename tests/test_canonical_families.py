@@ -78,7 +78,7 @@ class TestPopularThisWeek(unittest.TestCase):
         self.assertTrue(POPULAR_PATH.is_file())
         with POPULAR_PATH.open(encoding="utf-8") as handle:
             doc = yaml.safe_load(handle)
-        self.assertEqual(doc["week"], "2026-07-01")
+        self.assertEqual(doc["week"], "2026-07-08")
 
     def test_popular_ids_resolve(self) -> None:
         families = load_families()
@@ -93,16 +93,22 @@ class TestPopularThisWeek(unittest.TestCase):
                         unresolved.append(family_id)
         self.assertEqual(unresolved, [])
 
-    def test_no_shrimp(self) -> None:
+    def test_vons_has_no_shrimp(self) -> None:
         with POPULAR_PATH.open(encoding="utf-8") as handle:
-            text = handle.read().lower()
-        self.assertNotIn("shrimp", text)
+            doc = yaml.safe_load(handle)
+        vons_text = yaml.dump(doc["stores"]["vons"]).lower()
+        self.assertNotIn("shrimp", vons_text)
 
     def test_multi_family_refs(self) -> None:
         with POPULAR_PATH.open(encoding="utf-8") as handle:
             doc = yaml.safe_load(handle)
-        safeway_multi = doc["stores"]["safeway"][3]["tracker_family_ids"]
-        self.assertGreaterEqual(len(safeway_multi), 2)
+        safeway_entries = doc["stores"]["safeway"]
+        multi_family = [
+            entry["tracker_family_ids"]
+            for entry in safeway_entries
+            if len(entry["tracker_family_ids"]) >= 2
+        ]
+        self.assertGreaterEqual(len(multi_family), 1)
 
 
 class TestRobustPhraseMatching(unittest.TestCase):

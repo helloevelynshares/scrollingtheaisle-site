@@ -1,0 +1,60 @@
+feed,week,family_id,severity,candidate_price,in_raw_cards,in_split_items,audit_disposition,example_text,reason
+safeway,2026-06-17,ben_jerrys_ice_cream,high,5.99,true,false,absent,ben & jerry's ice cream pint. ice cream bars 4-pk. popsicle ice pops 9 to 18-ct. selected varieties.,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+safeway,2026-06-24,cheez_it_crackers,high,9.99,true,false,absent,cheez-it crackers,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+safeway,2026-06-24,dr_pepper_12packs,high,5.00,true,false,accepted,"pepsi, 7up or dr pepper",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+safeway,2026-07-01,ritz_toasted_chips,high,2.99,true,false,absent,nabisco ritz toasted chips cheez-it crackers,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+vons,2026-05-20,lays_potato_chips_regular,high,9.00,true,false,absent,lay's classic,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+vons,2026-06-10,tillamook_ice_cream,high,3.49,true,false,absent,tillamook ice cream or bars,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate
+safeway,2026-07-08,simply_snacks,medium,5.00,true,false,absent,doritos tortilla chips 6 to 10.75-oz. popcorners snacks 7-oz. frito-lay simply snacks 4.5 to 6.5-oz. selected varieties.,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-03,chicken_breast_per_lb,medium,2.99,true,false,absent,"canada dry, 7-up or dr pepper 6 pack, 7.5 - 16.9 oz.
+snapple 6 pack, 16 oz. +crv
+planet oat oatmilk creamer 32 oz.
+lucerne® butter 16 oz.
+spam 12 oz. selected v",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-03,doritos_5_13oz,medium,2.49,true,false,absent,"doritos, ruffles, smartfood, sunchips 6-10.75 oz. tostitos salsa 15.5 oz. daisy sour cream squeeze 14 oz. selected varieties",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-03,goldfish_bags,medium,1.88,true,false,absent,"kellogg's cereal 8.8-16.1 oz.
+pepperidge farm goldfish 5.9-8 oz.
+kettle brand, cape cod 6.5-8 oz.
+keebler or mother's cookies 8.5-12.5 oz.
+nabisco premium salti",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-03,keebler_sandwich_crackers,medium,0.99,true,false,absent,"vitaminwater 20 oz., coke de mexico 12 oz., bodyarmor superdrink 16 oz., rockstar energy 16 oz., powerade 28 oz., smartwater sport 700 ml. +crv, signature selec",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-03,ruffles_regular_bags,medium,2.49,true,false,absent,"doritos, ruffles, smartfood, sunchips 6-10.75 oz. tostitos salsa 15.5 oz. daisy sour cream squeeze 14 oz. selected varieties",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-06-24,tostitos_tortilla_chips,medium,2.99,true,false,absent,"cookies 7-13 oz., belvita 7-8.8 oz., cheetos 6.5-10 oz., tostitos cantina tortilla chips 8-11 oz., frito lay can dip 9 oz., oven baked chips 6.25-7.625 oz. or b",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-07-01,eggs_dozen_normalized,medium,4.99,true,false,absent,"kraft miracle whip
+19-30 oz.
+selected varieties
+or nellie’s free range large brown eggs
+12 ct. grade a",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-07-01,tillamook_ice_cream,medium,3.99,true,false,absent,morning star farms 5.25-12 oz. delimex taquitos 19.2-20 oz. frozen pepperidge farm cookies 5.8-6 oz. tillamook ice cream or bars 1.5 qt. or 4 ct. selected varie,family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+vons,2026-07-01,tostitos_tortilla_chips,medium,1.49,true,false,absent,"tillamook shredded, chunk or sliced cheese
+7-8 oz.
+hunt’s snack pack pudding or gel cups 6 ct.
+cheetos, baked, tostitos cantina tortilla chips",family + price present in raw_offer_cards but NOT in split_offer_items — likely dropped during tile promotion; add a split row (manually_added_missed_tile) and regenerate (multi-product block — lower confidence)
+safeway,2026-04-01,coca_cola_12packs,info,2.79,true,true,rejected,"coca-cola, pepsi or 7up. selected varieties. 2 liter.",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+safeway,2026-04-01,haagen_dazs_pints,info,3.50,true,true,rejected,häagen-dazs ice cream novelties,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+safeway,2026-04-01,nabisco_snack_crackers,info,1.67,true,true,manual_review,"nabisco snack crackers triscuit, wheat thins",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-05-06,coca_cola_12packs,info,10.00,true,true,manual_review,"coca-cola, pepsi, 7up",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-05-12,lays_potato_chips_regular,info,1.99,true,true,manual_review,"sunchips 7 oz., lay's potato chips 5-8 oz., kettle potato chips 5 oz.",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-06-03,eggs_dozen_normalized,info,6.99,true,true,rejected,"vital farms pasture-raised eggs 12 ct. large, grade a.",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+safeway,2026-06-03,lays_potato_chips_regular,info,3.99,true,false,manual_review,lay's potato chips or poppables 5 to 8-oz. doritos or cheetos minis 3.62 to 5.12-oz. selected varieties.,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-06-03,nabisco_snack_crackers,info,2.49,false,true,manual_review,triscuit,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-06-10,eggs_dozen_normalized,info,2.99,false,true,manual_review,"lucerne cage free eggs grade aa, 18-ct.",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-06-17,coca_cola_12packs,info,8.99,true,true,manual_review,coca-cola,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-06-17,eggs_dozen_normalized,info,7.49,true,true,rejected,happy egg free range eggs 12 ct,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+safeway,2026-06-24,nabisco_snack_crackers,info,2.49,false,true,manual_review,nabisco snack crackers,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-07-01,butter_16oz,info,2.99,true,true,manual_review,challenge butter,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+safeway,2026-07-08,butter_16oz,info,3.49,true,true,rejected,land o'lakes butter 16-oz. spread 13 to 15-oz. selected varieties.,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+safeway,2026-07-08,coca_cola_12packs,info,3.99,true,true,manual_review,"coca-cola, pepsi",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-05-13,eggs_dozen_normalized,info,2.50,true,true,rejected,lucerne cage free eggs,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+vons,2026-05-20,haagen_dazs_pints,info,9.00,false,true,rejected,"häagen-dazs ice cream, bars",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+vons,2026-06-17,coca_cola_12packs,info,1.49,true,true,manual_review,"coca-cola, pepsi",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-06-17,eggs_dozen_normalized,info,1.99,false,true,rejected,lucerne large eggs 12 ct,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+vons,2026-06-17,lays_potato_chips_regular,info,2.49,false,true,manual_review,"lay's potato chips, fritos, ruffles",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-06-24,butter_16oz,info,3.49,true,true,manual_review,lucerne butter,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-06-24,coca_cola_12packs,info,5.00,false,true,manual_review,"coca-cola, pepsi",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-06-24,nabisco_snack_crackers,info,2.99,false,true,manual_review,wheat thins,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-07-01,coca_cola_12packs,info,15.99,true,true,manual_review,"coca-cola, pepsi",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-07-01,lays_potato_chips_regular,info,2.50,false,true,manual_review,"lay's potato chips, doritos, smartfood, cheetos, popcorners, stacy's, cape cod, kettle brand, snyder's of hanover, utz, pirate's booty, angie's boom chicka pop,",ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-07-01,nabisco_snack_crackers,info,3.99,true,true,manual_review,nabisco snack crackers,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)
+vons,2026-07-08,coca_cola_12packs,info,0.99,false,true,rejected,coca-cola 2 liter,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (rejected)
+vons,2026-07-08,nabisco_snack_crackers,info,2.49,false,true,manual_review,triscuit,ad text mentions family with a price but it was intentionally blocked by the eligibility gate (manual_review)

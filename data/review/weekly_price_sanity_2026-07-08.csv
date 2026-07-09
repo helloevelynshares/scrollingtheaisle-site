@@ -1,0 +1,36 @@
+family_id,store,week,price,offerText,confidence,check_failed,reason
+simply_refrigerated_juice_lemonade,safeway,2026-05-06,8.99,Simply Orange Juice,medium,true,[outlier] price $8.99 > 3.0× prior week $2.99
+simply_refrigerated_juice_lemonade,safeway,2026-07-01,2.99,"Simply Orange Juice, Coffee mate Creamer",medium,true,[outlier] price $2.99 < 0.5× prior week $5.99
+seedless_grapes_per_lb,safeway,2026-04-01,4.99,Pristine Green and Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+seedless_grapes_per_lb,safeway,2026-06-17,4.99,Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+seedless_grapes_per_lb,safeway,2026-06-24,1.67,Red Seedless Grapes,high,true,[outlier] price $1.67 < 0.5× prior week $4.99
+seedless_grapes_per_lb,safeway,2026-07-01,4.99,Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+pepsi_12packs,safeway,2026-05-12,1.85,"Pepsi, Diet Pepsi, Starry",medium,true,[outlier] price $1.85 < 0.5× prior week $5.00
+pepsi_12packs,safeway,2026-06-17,5.99,"Pepsi 12 Pack, 12 oz cans, 6 Pack, 16.9 oz bottles, Pepsi 100oz bottle, Lipton Tea 64 oz, Pure Leaf Tea 59 oz, Gatorade 8 pack, 20 oz",medium,true,[outlier] price $5.99 > 2.0× median baseline $2.65
+pepsi_12packs,safeway,2026-06-24,2.5,"Pepsi, Dr. Pepper, 7UP, A&W, Sunkist, Canada Dry, Squirt, Mug",medium,true,[outlier] price $2.50 < 0.5× prior week $5.99
+hass_avocados_each,safeway,2026-04-01,5.0,Signature SELECT Hass Avocados,high,true,[outlier] price $5.00 > 2.0× median baseline $1.67
+hass_avocados_each,safeway,2026-05-06,1.67,Hass Avocado,medium,true,[outlier] price $1.67 < 0.5× prior week $5.00
+salmon,safeway,2026-04-01,4.99,Fresh Atlantic Salmon Portion,high,true,[outlier] price $4.99 < 0.5× prior week $9.99
+salmon,safeway,2026-06-17,16.99,Fresh Sockeye Salmon Fillets,high,true,[outlier] price $16.99 > 2.0× median baseline $6.99
+salmon,safeway,2026-06-24,5.99,Fresh Atlantic Salmon Portion,high,true,[outlier] price $5.99 < 0.5× prior week $16.99
+kettle_brand_chips,safeway,2026-04-01,5.0,Kettle Brand Potato Chips 6-8.5 oz,high,true,[outlier] price $5.00 > 2.0× median baseline $2.25
+cherries_per_lb,safeway,2026-06-17,2.99,Red Cherries,high,true,[outlier] price $2.99 < 0.5× prior week $5.99
+cherries_per_lb,safeway,2026-07-01,1.99,Red Cherries,high,true,[outlier] price $1.99 < 0.5× prior week $5.99
+cheez_it_crackers,safeway,2026-07-01,4.99,Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+eggs_dozen_normalized,safeway,2026-06-24,12.99,Vital Farms Pasture Raised Large Eggs,high,true,[outlier] price $12.99 > 2.0× median baseline $5.99
+peaches_per_lb,safeway,2026-06-24,1.99,Yellow Peaches,high,true,[outlier] price $1.99 < 0.5× prior week $4.49
+nectarines_per_lb,safeway,2026-06-24,1.99,Nectarines,high,true,[outlier] price $1.99 < 0.5× prior week $4.49
+sweet_corn,safeway,2026-07-01,0.12,Sweet Corn,high,true,[outlier] price $0.12 < 0.5× prior week $0.50
+sweet_corn,safeway,2026-07-08,0.5,Sweet Corn,high,true,[outlier] price $0.50 > 3.0× prior week $0.12
+tri_tip_roast,safeway,2026-06-17,5.99,USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack,medium,true,[outlier] price $5.99 < 0.5× prior week $12.99
+pepsi_12packs,vons,2026-06-10,0.67,"Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew",medium,true,[outlier] price $0.67 < 0.5× prior week $5.00
+pepsi_12packs,vons,2026-06-17,5.33,"Pepsi, 7UP, Canada Dry, A&W, Sunkist",medium,true,[outlier] price $5.33 > 3.0× prior week $0.67
+pepsi_12packs,vons,2026-06-24,1.67,"Coca-Cola, Pepsi",medium,true,[outlier] price $1.67 < 0.5× prior week $5.33
+pepsi_12packs,vons,2026-07-01,5.33,"Coca-Cola, Pepsi",medium,true,[outlier] price $5.33 > 3.0× prior week $1.67
+pepsi_12packs,vons,2026-07-08,0.99,Pepsi 2 liter,high,true,[outlier] price $0.99 < 0.5× prior week $5.33
+kettle_brand_chips,vons,2026-06-10,3.99,Kettle Brand Potato Chips 6.5-8.5 oz.,high,true,[outlier] price $3.99 > 2.0× median baseline $1.88
+sweet_corn,vons,2026-05-20,5.99,Packaged Sweet Corn 4 ct.,high,true,[outlier] price $5.99 > 2.0× median baseline $0.67
+sweet_corn,vons,2026-06-03,0.67,Sweet Corn,high,true,[outlier] price $0.67 < 0.5× prior week $5.99
+sweet_corn,vons,2026-06-17,0.2,Fresh Sweet Corn,high,true,[outlier] price $0.20 < 0.5× prior week $0.67
+sweet_corn,vons,2026-06-24,5.99,Steamed Corn on the Cob,medium,true,[outlier] price $5.99 > 2.0× median baseline $0.67
+dr_pepper_12packs,vons,2026-06-10,0.67,"Dr Pepper 6 pack, 16.9-oz. bot.",medium,true,[outlier] price $0.67 < 0.5× prior week $5.00

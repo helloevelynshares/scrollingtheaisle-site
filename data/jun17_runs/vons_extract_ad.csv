@@ -1,0 +1,223 @@
+store,region,week_start,week_end,page_number,raw_name,brand,canonical_name,category,subcategory,comparable_group,item_name,price,package_size,package_unit,normalized_unit_price,price_type,promo_type,availability_type,requires_membership,requires_digital_coupon,requires_manufacturer_coupon,requires_clip,minimum_purchase_quantity,maximum_purchase_quantity,limit_text,buy_quantity,free_quantity,discount_percent,dollar_off,points_multiplier,valid_start,valid_end,valid_days,duration_days,is_weekly_ad,is_weekend_only,is_friday_only,is_holiday_sale,is_clearance,is_manager_special,rarity_score,raw_text,source_file,extraction_confidence,normalization_confidence,price_confidence,package_size_confidence,needs_review,notes
+Vons,southern_california,2026-06-17,2026-06-23,1,Sweet or Melon Bowls Bi-color Corn 20-24 oz. package Member Price: Selected varieties 2 for $1 Save up to $12.99 on 3 UIMIT 10 o),,rice,pantry,grains,rice,Sweet or Melon Bowls Bi-color Corn 20-24 oz. package Member Price: Selected varieties 2 for $1 Save up to $12.99 on 3 UI,1,24,oz,0.50,promo,multi_buy,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Sweet or Melon Bowls
+Bi-color Corn 20-24 oz. package
+Member Price: Selected varieties
+
+2 for $1 Save up to $12.99 on 3
+
+UIMIT 10 o)",vons 6-17 - 6-23.pdf,medium,medium,medium,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,Member Price 9.9-13.3 oz. package Selected varieties Up To: $3.99 Signature SELECT® Mini Cucumbers,Signature Select,rice,pantry,grains,rice,Member Price 9.9-13.3 oz. package Selected varieties Up To: $3.99 Signature SELECT® Mini Cucumbers,3.99,13.3,oz,3.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Member Price
+
+9.9-13.3 oz. package
+Selected varieties
+
+Up To: $3.99 Signature SELECT®
+Mini Cucumbers
+2 $ 5 1 Ib, package",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,"! Variety 1 12 pack 12 oz, cans U serected varieties 1 Member Price",,rice,pantry,grains,rice,"! Variety 1 12 pack 12 oz, cans U serected varieties 1 Member Price",19.99,12,pack,19.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"! Variety
+1 12 pack
+12 oz, cans
+U serected varieties
+1 Member Price
+$19.99
+
+CuUcK!",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,1 bottles of cans Selected varieties 1 Member Price Coupons 4),,rice,pantry,grains,rice,1 bottles of cans Selected varieties 1 Member Price Coupons 4),17.99,,,17.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"1 bottles of cans
+Selected varieties
+
+1 Member Price
+
+$17.99
+
+Coupons 4)",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,"Albertsons VONS Peaches, Nectarines or Plums Member Price: $2.99 Ib 62:",,rice,pantry,grains,rice,"Albertsons VONS Peaches, Nectarines or Plums Member Price: $2.99 Ib 62:",2.99,,,2.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Albertsons VONS
+
+Peaches, Nectarines
+or Plums
+Member Price: $2.99 Ib
+
+62:",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,or Hebrew National Beef Hot Dogs 9.43-12 oz. Selected varieties Member Price: $8.99,,rice,pantry,grains,rice,or Hebrew National Beef Hot Dogs 9.43-12 oz. Selected varieties Member Price: $8.99,8.99,12,oz,8.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"or Hebrew National
+Beef Hot Dogs
+9.43-12 oz.
+
+Selected varieties
+Member Price: $8.99
+
+Expires 612",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,"Coke, Pepsi, Canada Dry or Dr Pepper 12 pack, 12 oz. cans Selected varieties BUY 2 GET Save up to $23.98 on 4",,soda,beverages,soda,soft_drinks,"Coke, Pepsi, Canada Dry or Dr Pepper 12 pack, 12 oz. cans Selected varieties BUY 2 GET Save up to $23.98 on 4",23.98,12,pack,23.98,promo,unknown,weekly_ad,false,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Coke, Pepsi, Canada Dry
+or Dr Pepper
+
+12 pack, 12 oz. cans
+Selected varieties BUY 2 GET
+Save up to $23.98 on 4
+
+FREE",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,t q2026. With Coupon’ +CRV Sat Selected varieties Member Price: $6.99 ‘iii,,rice,pantry,grains,rice,t q2026. With Coupon’ +CRV Sat Selected varieties Member Price: $6.99 ‘iii,6.99,,,6.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"t q2026. With Coupon’ +CRV
+
+Sat
+Selected varieties
+Member Price: $6.99
+
+‘iii",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,"Peanut Butter 15-16,3 02 Selected varieties Member Price: $2.99 ‘ii",,butter,dairy,butter,butter,"Peanut Butter 15-16,3 02 Selected varieties Member Price: $2.99 ‘ii",2.99,,,2.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Peanut Butter
+15-16,3 02
+
+Selected varieties
+Member Price: $2.99
+
+‘ii",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,1,"or Viva Signature Cloth 6 double rolls Member Price: $10.99 Expires,",,rice,pantry,grains,rice,"or Viva Signature Cloth 6 double rolls Member Price: $10.99 Expires,",10.99,,,10.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"or Viva
+
+Signature Cloth
+
+6 double rolls
+Member Price: $10.99
+
+Expires,",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,750 mi. Selected varietals DOVBLE DISCOUNT $39.99 Serpe Merber Price 10% OFF When You Buy 6,,rice,pantry,grains,rice,750 mi. Selected varietals DOVBLE DISCOUNT $39.99 Serpe Merber Price 10% OFF When You Buy 6,39.99,,,,promo,percent_off,weekly_ad,false,false,false,false,6,,,,,10,,,,,,,true,false,false,false,false,false,1,"750 mi.
+
+Selected varietals
+DOVBLE DISCOUNT
+$39.99 Serpe Merber Price
+10% OFF When You Buy 6",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,Selected varietals DOVBLE DISCOUNT $39.99 Serpe Merber Price 10% OFF When You Buy 6 10% OFF BONUS SAVINGS,,rice,pantry,grains,rice,Selected varietals DOVBLE DISCOUNT $39.99 Serpe Merber Price 10% OFF When You Buy 6 10% OFF BONUS SAVINGS,39.99,,,,promo,percent_off,weekly_ad,false,false,false,false,6,,,,,10,,,,,,,true,false,false,false,false,false,1,"Selected varietals
+DOVBLE DISCOUNT
+$39.99 Serpe Merber Price
+10% OFF When You Buy 6
+
+$35.99
+10% OFF BONUS SAVINGS",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,750 mi. Selected varieties DOVBLE DISCOUNT $24.68 Segie Member Price 205 OFF When You Buy 6,,rice,pantry,grains,rice,750 mi. Selected varieties DOVBLE DISCOUNT $24.68 Segie Member Price 205 OFF When You Buy 6,24.68,,,24.68,promo,member_price,weekly_ad,true,false,false,false,6,,,,,,,,,,,,true,false,false,false,false,false,1,"750 mi.
+
+Selected varieties
+DOVBLE DISCOUNT
+$24.68 Segie Member Price
+205 OFF When You Buy 6
+$22.21",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,Selected varieties DOVBLE DISCOUNT $24.68 Segie Member Price 205 OFF When You Buy 6 «10% OFF BONUS SAVINGS,,rice,pantry,grains,rice,Selected varieties DOVBLE DISCOUNT $24.68 Segie Member Price 205 OFF When You Buy 6 «10% OFF BONUS SAVINGS,24.68,,,,promo,percent_off,weekly_ad,true,false,false,false,6,,,,,10,,,,,,,true,false,false,false,false,false,1,"Selected varieties
+DOVBLE DISCOUNT
+$24.68 Segie Member Price
+205 OFF When You Buy 6
+$22.21
+
+«10% OFF BONUS SAVINGS",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,750 mi. Selected varieties DOvBLE DISCOUNT $19.74 Segie Member Price “20% OFF When You Buy 6,,rice,pantry,grains,rice,750 mi. Selected varieties DOvBLE DISCOUNT $19.74 Segie Member Price “20% OFF When You Buy 6,19.74,,,,promo,percent_off,weekly_ad,true,false,false,false,6,,,,,20,,,,,,,true,false,false,false,false,false,1,"750 mi.
+
+Selected varieties
+DOvBLE DISCOUNT
+
+$19.74 Segie Member Price
+“20% OFF When You Buy 6",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,750 mi. Selected varieties DOvBLE DISCOUNT $11.10 Single Member Price “10% OFF When You Buy 6,,rice,pantry,grains,rice,750 mi. Selected varieties DOvBLE DISCOUNT $11.10 Single Member Price “10% OFF When You Buy 6,11.10,,,,promo,percent_off,weekly_ad,true,false,false,false,6,,,,,10,,,,,,,true,false,false,false,false,false,1,"750 mi.
+
+Selected varieties
+
+DOvBLE DISCOUNT
+$11.10 Single Member Price
+“10% OFF When You Buy 6",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,2,DOvBLE DISCOUNT $11.10 Single Member Price “10% OFF When You Buy 6 *1O% OFF BONUS SAVINGS,,rice,pantry,grains,rice,DOvBLE DISCOUNT $11.10 Single Member Price “10% OFF When You Buy 6 *1O% OFF BONUS SAVINGS,11.10,,,,promo,percent_off,weekly_ad,true,false,false,false,6,,,,,10,,,,,,,true,false,false,false,false,false,1,"DOvBLE DISCOUNT
+$11.10 Single Member Price
+“10% OFF When You Buy 6
+
+$9.99
+*1O% OFF BONUS SAVINGS",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,percent_off_may_need_base_price; extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,Member Price Selected varieties Menten Prive a Bubbies j “| Mochi 7.5 oz. i = a Horizon Selected varietics | gesses og | Organic Milk,,milk,dairy,,milk,Member Price Selected varieties Menten Prive a Bubbies j “| Mochi 7.5 oz. i = a Horizon Selected varietics | gesses og |,6990,7.5,oz,6990,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Member Price Selected varieties Menten Prive
+a
+Bubbies j “|
+Mochi 7.5 oz. i = a Horizon
+Selected varietics | gesses og | Organic Milk
+Seve $6990n2 f= = =) Plus DHA
+Buyi mya || 64 0z
+/ \ = } | Selected varieties",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,750 mi Selected varieties wi Sele Member Price: $25.52 “Digital coupons must be doweloaded to you U) account pris to purchase and are one time use only. See clip coupon details and di,,rice,pantry,grains,rice,750 mi Selected varieties wi Sele Member Price: $25.52 “Digital coupons must be doweloaded to you U) account pris to pur,25.52,,,25.52,promo,digital_coupon,digital_coupon,true,true,false,true,1,,,,,,,,,,,,true,false,false,false,false,false,2,"750 mi
+
+Selected varieties
+
+wi
+Sele Member Price: $25.52
+
+“Digital coupons must be doweloaded to you U) account pris to purchase and are one time use only. See clip coupon details and di",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,"or Ss English Muffins : meee "" chosen Foods i: ¥ Setected 1 Avocado Oil Selected varieties ; varieties 1 16.9 oz persia 1",,avocados,produce,fruit,avocados,"or Ss English Muffins : meee "" chosen Foods i: ¥ Setected 1 Avocado Oil Selected varieties ; varieties 1 16.9 oz persia ",3,16.9,oz,3,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"or Ss
+English Muffins : meee "" chosen Foods
+i: ¥ Setected 1 Avocado Oil
+Selected varieties ; varieties 1 16.9 oz
+persia 1
+Price; $3,99
+2S7 1 @49
+Member Price 1 Expires 623226, !",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,Member Price +CRV —_ . 2 Oe Segie Member Price $14.43 Selected varieties,,rice,pantry,grains,rice,Member Price +CRV —_ . 2 Oe Segie Member Price $14.43 Selected varieties,14.43,,,14.43,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Member Price +CRV —_ .
+
+2 Oe
+
+Segie Member Price $14.43
+
+Selected varieties",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,"retin G Topo Chico or Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon or Lagunitas ' § 12 pack, 12 oz. cans 812 pack, 12 oz. bottles or [at] 1 ‘ Selected okay of ao""s Selected _— 1",,sparkling_water,beverages,water,sparkling_water,"retin G Topo Chico or Truly a 12 pack, 12 oz. cans ' Hard Seltzer =f Blue Moon or Lagunitas ' § 12 pack, 12 oz. cans 812",19,12,pack,19,promo,unknown,weekly_ad,false,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"retin G
+Topo Chico or Truly a 12 pack, 12 oz. cans
+' Hard Seltzer =f Blue Moon or Lagunitas '
+§ 12 pack, 12 oz. cans 812 pack, 12 oz. bottles or [at] 1
+‘ Selected okay of ao""s Selected _— 1
+Member ] $19. 4 Member ae $19.
+
+Prices effective June 17 - June 23, 2026",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,": Large Yellow B Peaches, Nectarines § or Plums Member Price: $2.99 Ib i",,rice,pantry,grains,rice,": Large Yellow B Peaches, Nectarines § or Plums Member Price: $2.99 Ib i",2.99,,,2.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,": Large Yellow
+B Peaches, Nectarines
+
+§ or Plums
+Member Price: $2.99 Ib
+
+i",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,B 9.43-12 oz B Selected varieties Member Price: $8.99 Busrscaae 0 MRK,,rice,pantry,grains,rice,B 9.43-12 oz B Selected varieties Member Price: $8.99 Busrscaae 0 MRK,8.99,12,oz,8.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"B 9.43-12 oz
+
+B Selected varieties
+
+Member Price: $8.99
+
+Busrscaae 0 MRK",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,4 Bread 24-27 oz. ; or Hamburger Buns Bet B Selected varieties 5 Member Price: $6.99,,bread,bakery,bread,bread,4 Bread 24-27 oz. ; or Hamburger Buns Bet B Selected varieties 5 Member Price: $6.99,6.99,27,oz,6.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"4 Bread 24-27 oz.
+; or Hamburger Buns
+
+Bet
+B Selected varieties
+5 Member Price: $6.99
+
+SI",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,Skippy Peanut Butter # 15-16.3 oz y Selected varieties § Member Price: $2.99 |,,butter,dairy,butter,butter,Skippy Peanut Butter # 15-16.3 oz y Selected varieties § Member Price: $2.99 |,2.99,16.3,oz,2.99,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Skippy
+Peanut Butter
+
+# 15-16.3 oz
+y Selected varieties
+§ Member Price: $2.99 |
+
+a",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,or Viva B Signature Cloth & & double rolls eee Price: $10.99 UD,,rice,pantry,grains,rice,or Viva B Signature Cloth & & double rolls eee Price: $10.99 UD,10.99,,,10.99,promo,unknown,weekly_ad,false,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"or Viva
+
+B Signature Cloth
+
+& & double rolls
+eee Price: $10.99
+
+UD",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,3,B bottles or cans Selected varieties 5 Mesiibec Price: $24.99 . vit,,rice,pantry,grains,rice,B bottles or cans Selected varieties 5 Mesiibec Price: $24.99 . vit,24.99,,,24.99,promo,unknown,weekly_ad,false,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"B bottles or cans
+
+Selected varieties
+
+5 Mesiibec Price: $24.99 .
+
+vit",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,4,"Orange Juice 76 oz, +CRV mate Creamer 64 02., Refrigerated C Buy $25 Seattle's Best Coffee 10 ct K-cups or 10-12 02. bags Selected ets",,coffee,beverages,coffee,coffee,"Orange Juice 76 oz, +CRV mate Creamer 64 02., Refrigerated C Buy $25 Seattle's Best Coffee 10 ct K-cups or 10-12 02. bag",25,76,oz,25,promo,unknown,weekly_ad,false,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Orange Juice 76 oz, +CRV
+mate Creamer 64 02., Refrigerated
+
+C
+Buy $25 Seattle's Best Coffee 10 ct K-cups or 10-12 02. bags
+
+Selected ets",vons 6-17 - 6-23.pdf,medium,medium,high,medium,false,extraction_method=ocr
+Vons,southern_california,2026-06-17,2026-06-23,4,Member Price Selected varieties Fresh Sushi ‘ J Selected sizes . 5 Chic Bouquet Sag 4 aibertsons VONS dlp or cucxi bsaghic coleman ear Selected varieties Buy any $25 ‘,,rice,pantry,grains,rice,Member Price Selected varieties Fresh Sushi ‘ J Selected sizes . 5 Chic Bouquet Sag 4 aibertsons VONS dlp or cucxi bsagh,25,,,25,promo,member_price,weekly_ad,true,false,false,false,1,,,,,,,,,,,,true,false,false,false,false,false,1,"Member Price Selected varieties
+
+Fresh Sushi ‘ J
+Selected sizes . 5 Chic Bouquet Sag
+4 aibertsons VONS dlp or cucxi bsaghic coleman ear Selected varieties
+Buy any $25 ‘
+
+participating products J Seu =",vons 6-17 - 6-23.pdf,medium,medium,high,low,true,extraction_method=ocr
