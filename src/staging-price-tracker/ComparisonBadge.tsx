@@ -15,6 +15,16 @@ type Props = {
   } | null;
 };
 
+function compactFamilyLabel(
+  title: string,
+  detail: string | null,
+): string {
+  if (detail) {
+    return `${title} · ${detail}`;
+  }
+  return title;
+}
+
 export function ComparisonBadge({
   activeFeedId,
   activeGroceryLabel,
@@ -26,18 +36,14 @@ export function ComparisonBadge({
   }
 
   if (familyBadge) {
+    const label = compactFamilyLabel(familyBadge.title, familyBadge.detail);
     return (
-      <div
+      <p
         className={`price-tracker-comparison price-tracker-comparison--${familyBadge.tone}`}
-        aria-label={`Store comparison: ${familyBadge.title}`}
+        aria-label={`Store comparison: ${label}`}
       >
-        <span className="price-tracker-comparison-title">{familyBadge.title}</span>
-        {familyBadge.detail ? (
-          <span className="price-tracker-comparison-detail">
-            {familyBadge.detail}
-          </span>
-        ) : null}
-      </div>
+        {label}
+      </p>
     );
   }
 
@@ -59,19 +65,11 @@ export function ComparisonBadge({
   }
 
   return (
-    <div
+    <p
       className={`price-tracker-comparison price-tracker-comparison--${content.tone}`}
-      aria-label={`Store comparison: ${content.title}`}
+      aria-label={`Store comparison: ${content.label}`}
     >
-      <span className="price-tracker-comparison-title">{content.title}</span>
-      {content.detail ? (
-        <span className="price-tracker-comparison-detail">{content.detail}</span>
-      ) : null}
-      {content.locationNote ? (
-        <span className="price-tracker-comparison-location">
-          {content.locationNote}
-        </span>
-      ) : null}
-    </div>
+      {content.label}
+    </p>
   );
 }

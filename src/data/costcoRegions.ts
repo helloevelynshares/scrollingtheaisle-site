@@ -41,14 +41,14 @@ export function getCostcoRegionForFeed(feedId: string): CostcoRegion | null {
   return costcoFeedIdToRegion[feedId] ?? null;
 }
 
-/** Shopper-facing note for comparison badges and expanded details. */
-export function getCostcoComparisonLocationNote(feedId: string): string | null {
+/** Shopper-facing note shown once per tracker tab (not on every product card). */
+export function getCostcoComparisonPageNote(feedId: string): string | null {
   const region = getCostcoRegionForFeed(feedId);
   if (region === "san_francisco") {
-    return "Costco comparison uses San Francisco Costco pricing.";
+    return "All Costco comparisons on this tab use San Francisco warehouse pricing.";
   }
   if (region === "tustin") {
-    return "Costco comparison uses Tustin Costco pricing.";
+    return "All Costco comparisons on this tab use Tustin warehouse pricing.";
   }
   return null;
 }

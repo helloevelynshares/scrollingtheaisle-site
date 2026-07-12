@@ -52,12 +52,16 @@ type DbPriceComparison = {
   grocery_feed_id: string;
   grocery_store_label: string;
   grocery_price: number | null;
+  grocery_package_description: string | null;
   grocery_unit_type: string | null;
+  grocery_unit_count: number | null;
   grocery_unit_price: number | null;
   costco_region_id: string | null;
   costco_store_label: string | null;
   costco_price: number | null;
+  costco_package_description: string | null;
   costco_unit_type: string | null;
+  costco_unit_count: number | null;
   costco_unit_price: number | null;
   winner: string;
   savings_amount: number | null;
@@ -270,12 +274,16 @@ function mapComparisonRow(row: DbPriceComparison): PriceComparisonView {
     groceryFeedId: row.grocery_feed_id,
     groceryStoreLabel: row.grocery_store_label,
     groceryPrice: row.grocery_price,
+    groceryPackageDescription: row.grocery_package_description,
     groceryUnitType: row.grocery_unit_type,
+    groceryUnitCount: row.grocery_unit_count,
     groceryUnitPrice: row.grocery_unit_price,
     costcoRegionId: row.costco_region_id,
     costcoStoreLabel: row.costco_store_label,
     costcoPrice: row.costco_price,
+    costcoPackageDescription: row.costco_package_description,
     costcoUnitType: row.costco_unit_type,
+    costcoUnitCount: row.costco_unit_count,
     costcoUnitPrice: row.costco_unit_price,
     winner: row.winner as PriceComparisonView["winner"],
     savingsAmount: row.savings_amount,

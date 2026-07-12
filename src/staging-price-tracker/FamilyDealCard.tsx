@@ -26,6 +26,7 @@ import {
   type FamilyStatus,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
+import { getProductCostcoComparisonDetails } from "../data/priceComparisonUtils";
 import { ComparisonBadge } from "./ComparisonBadge";
 import { PriceTrendChart } from "./PriceTrendChart";
 
@@ -94,9 +95,6 @@ function FamilyVarietiesDrawer({ product }: { product: FeedProductView }) {
       {costco ? (
         <div className="family-deal-card__costco">
           <p className="family-deal-card__section-label">Costco comparison</p>
-          {costco.locationNote ? (
-            <p className="family-deal-card__costco-location">{costco.locationNote}</p>
-          ) : null}
           <p className="family-deal-card__costco-intro">{costco.intro}</p>
           <dl className="family-deal-card__costco-rows">
             <div>
@@ -122,6 +120,40 @@ function FamilyVarietiesDrawer({ product }: { product: FeedProductView }) {
             <strong>Verdict:</strong> {costco.verdict}
           </p>
         </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ProductCostcoComparisonPanel({
+  product,
+}: {
+  product: FeedProductView;
+}) {
+  const details = product.priceComparison
+    ? getProductCostcoComparisonDetails(
+        product.priceComparison,
+        product.feedLabel,
+      )
+    : null;
+
+  if (!details) {
+    return null;
+  }
+
+  return (
+    <div className="family-deal-card__costco family-deal-card__costco--details">
+      <p className="family-deal-card__section-label">Costco comparison</p>
+      <p className="family-deal-card__costco-intro">{details.referenceLine}</p>
+      {details.unitPriceLine ? (
+        <p className="family-deal-card__costco-unit-price">
+          {details.unitPriceLine}
+        </p>
+      ) : null}
+      {details.verdictLine ? (
+        <p className="family-deal-card__costco-verdict">
+          <strong>Verdict:</strong> {details.verdictLine}
+        </p>
       ) : null}
     </div>
   );
@@ -181,20 +213,19 @@ export function FamilyDealCard({ product }: Props) {
             </span>
           </p>
         ) : null}
+        {!showVarietiesHint ? (
+          <ComparisonBadge
+            activeFeedId={product.feedId}
+            activeGroceryLabel={product.feedLabel}
+            comparison={product.priceComparison}
+            familyBadge={product.familyComparisonBadge ?? undefined}
+          />
+        ) : null}
       </div>
 
       <div className="family-deal-card__chart">
         <PriceTrendChart product={product} />
       </div>
-
-      {!showVarietiesHint ? (
-        <ComparisonBadge
-          activeFeedId={product.feedId}
-          activeGroceryLabel={product.feedLabel}
-          comparison={product.priceComparison}
-          familyBadge={product.familyComparisonBadge ?? undefined}
-        />
-      ) : null}
 
       <p
         className={`family-deal-card__takeaway family-deal-card__takeaway--${takeaway.tone}`}
@@ -220,6 +251,7 @@ export function FamilyDealCard({ product }: Props) {
             <p className="family-deal-card__effective">{effectivePrice}</p>
           ) : null}
           <p className="family-deal-card__summary">{summary}</p>
+          <ProductCostcoComparisonPanel product={product} />
         </div>
       ) : null}
 

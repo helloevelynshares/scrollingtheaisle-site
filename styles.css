@@ -1052,9 +1052,8 @@ img {
   }
 
   .price-tracker-comparison {
-    font-size: 10px;
-    padding: 5px 7px;
-    margin-top: 4px;
+    font-size: 11px;
+    margin-top: 2px;
   }
 
   .price-tracker-badge {
@@ -1207,8 +1206,7 @@ img {
   }
 
   .price-tracker-comparison {
-    font-size: 9px;
-    padding: 4px 6px;
+    font-size: 10px;
     margin-top: 2px;
   }
 
@@ -1659,6 +1657,19 @@ img {
   line-height: 1.45;
 }
 
+.family-deal-card__costco-unit-price {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.family-deal-card__costco--details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
 .price-tracker-family-header h2 {
   font-size: 20px;
   font-weight: 600;
@@ -2005,55 +2016,37 @@ img {
 }
 
 .price-tracker-comparison {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-top: 6px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  line-height: 1.3;
-  border: 1px solid transparent;
-}
-
-.price-tracker-comparison-title {
-  font-weight: 600;
-}
-
-.price-tracker-comparison-detail {
+  display: block;
+  margin: 3px 0 0;
+  padding: 0;
+  font-size: 12px;
   font-weight: 500;
-  opacity: 0.9;
+  line-height: 1.35;
+  background: none;
+  border: none;
+  border-radius: 0;
 }
 
 .price-tracker-comparison--grocery {
-  background: #eef8f1;
-  border-color: #c8e6d0;
-  color: #1a6b3a;
+  color: #3a7a52;
 }
 
 .price-tracker-comparison--costco {
-  background: #eef3fb;
-  border-color: #c5d4ef;
-  color: #1e4a8a;
+  color: #4a6285;
 }
 
 .price-tracker-comparison--neutral {
-  background: #f7f7f7;
-  border-color: #e4e4e4;
-  color: #555;
+  color: #777;
 }
 
 .price-tracker-comparison--muted {
-  background: #fafafa;
-  border-color: #ececec;
   color: var(--muted);
 }
 
 @media (max-width: 640px) {
   .price-tracker-comparison {
-    margin-top: 4px;
-    padding: 4px 6px;
-    font-size: 10px;
+    margin-top: 2px;
+    font-size: 11px;
   }
 }
 
@@ -2218,6 +2211,11 @@ img {
   margin: 0 0 16px;
   font-size: 13px;
   color: var(--muted);
+}
+
+.price-tracker-costco-page-note {
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .price-tracker-loading {
@@ -2678,6 +2676,25 @@ img {
 .admin-suggestions-empty,
 .admin-suggestions-loading {
   color: var(--muted);
+}
+
+.admin-finds-item {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-finds-photo-link {
+  display: inline-block;
+  width: fit-content;
+}
+
+.admin-finds-photo {
+  display: block;
+  width: min(100%, 280px);
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--border);
 }
 
 /* YAML migration: sectioned tracker + popular this week */

@@ -349,7 +349,9 @@ export function buildFamilyFeedProduct(
         groceryFeedId: feedId,
         groceryStoreLabel: feed.label,
         groceryPrice: grocerySale ?? primaryMember?.baselinePrice ?? null,
+        groceryPackageDescription: "Classic Ritz boxes, 12–13.7 oz",
         groceryUnitType: "oz",
+        groceryUnitCount: 12.85,
         groceryUnitPrice:
           grocerySale != null
             ? groceryUnitPriceForRitz(grocerySale)
@@ -363,7 +365,9 @@ export function buildFamilyFeedProduct(
             ? "Costco San Francisco"
             : "Costco Tustin",
         costcoPrice: family.costcoComparison.price,
+        costcoPackageDescription: `${family.costcoComparison.productLabel} ${family.costcoComparison.packageDescription}`,
         costcoUnitType: "oz",
+        costcoUnitCount: 61.6,
         costcoUnitPrice: family.costcoComparison.unitPrice,
         winner: "unknown",
         savingsAmount: null,

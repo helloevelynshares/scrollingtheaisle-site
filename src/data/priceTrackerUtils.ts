@@ -1,9 +1,14 @@
 import {
   formatCostcoRegionLabel,
-  getCostcoComparisonLocationNote,
   getCostcoRegionForFeed,
 } from "./costcoRegions";
-import { hasMeaningfulCostcoComparison } from "./priceComparisonUtils";
+import {
+  formatCostcoItemLabel,
+  formatCostcoPackageSize,
+  formatCostcoReferenceLine,
+  getProductCostcoComparisonDetails,
+  hasMeaningfulCostcoComparison,
+} from "./priceComparisonUtils";
 import {
   computeFeedProductBenchmark,
   type BenchmarkBucket,
@@ -799,7 +804,6 @@ export function getFamilyExpandedRows(
 }
 
 export type FamilyCostcoComparisonDetails = {
-  locationNote: string | null;
   intro: string;
   costcoLabel: string;
   costcoDetail: string;
@@ -813,10 +817,11 @@ export function getFamilyCostcoComparisonDetails(
   product: FeedProductView,
 ): FamilyCostcoComparisonDetails | null {
   const comparison = product.priceComparison;
-  if (!hasMeaningfulCostcoComparison(comparison)) {
+  if (!comparison || !hasMeaningfulCostcoComparison(comparison)) {
     return null;
   }
 
+  const costcoReference = formatCostcoReferenceLine(comparison);
   const costcoUnit =
     comparison.costcoUnitPrice != null
       ? `about $${comparison.costcoUnitPrice.toFixed(2)}/oz`
@@ -825,7 +830,6 @@ export function getFamilyCostcoComparisonDetails(
     comparison.groceryUnitPrice != null
       ? `about $${comparison.groceryUnitPrice.toFixed(2)}/oz`
       : null;
-  const packageDesc = comparison.comparisonNote?.trim() ?? "61.6 oz";
 
   const costcoDetail = [
     formatPrice(comparison.costcoPrice),
@@ -842,15 +846,43 @@ export function getFamilyCostcoComparisonDetails(
         : null;
   const groceryDetail = [groceryPrice, groceryUnit].filter(Boolean).join(" · ");
 
+  if (product.canonicalId === "ritz_crackers_snacks") {
+    const packageDesc =
+      formatCostcoPackageSize(comparison) ??
+      comparison.comparisonNote?.trim() ??
+      "61.6 oz";
+
+    return {
+      intro:
+        "We compare Costco against the classic Ritz box because that's closest to Costco's big Original Ritz pack.",
+      costcoLabel:
+        formatCostcoItemLabel(comparison) ??
+        `Original Ritz, ${packageDesc}`,
+      costcoDetail,
+      groceryLabel: "Classic Ritz boxes, 12–13.7 oz",
+      groceryDetail,
+      verdict: `Costco is much cheaper if you just want regular Ritz. ${product.feedLabel} is better if you want smaller boxes or different Ritz styles.`,
+    };
+  }
+
+  const details = getProductCostcoComparisonDetails(
+    comparison,
+    product.feedLabel,
+  );
+  if (!details || !costcoReference) {
+    return null;
+  }
+
   return {
-    locationNote: getCostcoComparisonLocationNote(product.feedId),
-    intro:
-      "We compare Costco against the classic Ritz box because that's closest to Costco's big Original Ritz pack.",
-    costcoLabel: `Original Ritz, ${packageDesc} (${comparison.costcoStoreLabel ?? "regional warehouse"})`,
+    intro: details.referenceLine,
+    costcoLabel: formatCostcoItemLabel(comparison) ?? "Matched Costco item",
     costcoDetail,
-    groceryLabel: "Classic Ritz boxes, 12–13.7 oz",
+    groceryLabel:
+      comparison.groceryPackageDescription?.trim() ??
+      product.sizeLabel ??
+      product.displayName,
     groceryDetail,
-    verdict: `Costco is much cheaper if you just want regular Ritz. ${product.feedLabel} is better if you want smaller boxes or different Ritz styles.`,
+    verdict: details.verdictLine ?? "See per-unit pricing above.",
   };
 }
 

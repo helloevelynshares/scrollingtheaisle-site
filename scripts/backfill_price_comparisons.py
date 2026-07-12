@@ -199,12 +199,16 @@ def result_to_dict(row: ComparisonResult) -> dict:
         "groceryFeedId": row.grocery_feed_id,
         "groceryStoreLabel": row.grocery_store_label,
         "groceryPrice": row.grocery_price,
+        "groceryPackageDescription": row.grocery_package_description,
         "groceryUnitType": row.grocery_unit_type,
+        "groceryUnitCount": row.grocery_unit_count,
         "groceryUnitPrice": row.grocery_unit_price,
         "costcoRegionId": row.costco_region_id,
         "costcoStoreLabel": row.costco_store_label,
         "costcoPrice": row.costco_price,
+        "costcoPackageDescription": row.costco_package_description,
         "costcoUnitType": row.costco_unit_type,
+        "costcoUnitCount": row.costco_unit_count,
         "costcoUnitPrice": row.costco_unit_price,
         "winner": row.winner,
         "savingsAmount": row.savings_amount,
@@ -344,7 +348,9 @@ def main() -> None:
                     f"{canonical_id} @ {feed_id}: {row.comparison_status} — {row.comparison_note}"
                 )
 
-    by_key: dict[str, dict] = load_existing_comparisons()
+    by_key: dict[str, dict] = (
+        load_existing_comparisons() if product_filter else {}
+    )
     inserted = 0
     updated = 0
     for row in results:
@@ -447,12 +453,16 @@ export type PriceComparisonView = {{
   groceryFeedId: string;
   groceryStoreLabel: string;
   groceryPrice: number | null;
+  groceryPackageDescription: string | null;
   groceryUnitType: string | null;
+  groceryUnitCount: number | null;
   groceryUnitPrice: number | null;
   costcoRegionId: string | null;
   costcoStoreLabel: string | null;
   costcoPrice: number | null;
+  costcoPackageDescription: string | null;
   costcoUnitType: string | null;
+  costcoUnitCount: number | null;
   costcoUnitPrice: number | null;
   winner: PriceComparisonWinner;
   savingsAmount: number | null;

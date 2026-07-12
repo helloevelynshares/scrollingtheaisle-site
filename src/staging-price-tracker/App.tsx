@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { DEFAULT_FEED_ID, getPriceFeed } from "../data/priceFeeds";
+import { getCostcoComparisonPageNote } from "../data/costcoRegions";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
@@ -32,6 +33,10 @@ export function App() {
   const feedStore = useMemo<"safeway" | "vons">(
     () =>
       activeFeedId === "vons_albertsons_socal" ? "vons" : "safeway",
+    [activeFeedId],
+  );
+  const costcoPageNote = useMemo(
+    () => getCostcoComparisonPageNote(activeFeedId),
     [activeFeedId],
   );
 
@@ -76,6 +81,14 @@ export function App() {
         {activeFeed ? (
           <p className="price-tracker-feed-context">
             Showing {activeFeed.feedLabel} · {activeFeed.regionLabel}
+            {costcoPageNote ? (
+              <>
+                <br />
+                <span className="price-tracker-costco-page-note">
+                  {costcoPageNote}
+                </span>
+              </>
+            ) : null}
           </p>
         ) : null}
 
