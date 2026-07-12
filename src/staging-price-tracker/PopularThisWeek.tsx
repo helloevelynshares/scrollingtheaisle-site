@@ -18,7 +18,7 @@ type Props = {
   onJumpToFamily: (familyIds: string[]) => void;
 };
 
-const DEFAULT_VISIBLE = 8;
+const DEFAULT_VISIBLE = 7;
 
 function badgeClassName(badge: string): string {
   return `popular-this-week__tag popular-this-week__tag--${badge.toLowerCase()}`;
