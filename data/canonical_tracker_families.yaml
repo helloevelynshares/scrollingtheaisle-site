@@ -554,7 +554,7 @@ families:
   display_order: 24
   homepage_group: drinks
 - id: simply_refrigerated_juice_lemonade
-  canonical_tracker_family: Simply refrigerated juice & lemonade
+  canonical_tracker_family: Simply juice
   size_format_subtitle: 46–52 fl oz bottles
   category: beverages
   organic_status: not_applicable
@@ -1256,7 +1256,7 @@ families:
   display_order: 58
   homepage_group: dairy_breakfast_bakery
 - id: pillsbury_refrigerated_dough
-  canonical_tracker_family: Pillsbury refrigerated dough
+  canonical_tracker_family: Pillsbury ready-to-bake dough
   size_format_subtitle: 8–16.3 oz cans/tubes
   category: refrigerated_bakery
   organic_status: not_applicable

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T18:28:34.945Z",
+  "generatedAt": "2026-07-12T23:13:09.376Z",
   "popularWeekLabel": "Jul 8–Jul 14",
   "popularPicksSafeway": [
     {
@@ -42,27 +42,27 @@
       "onSale": false
     },
     {
-      "id": "raw shrimp",
-      "name": "raw shrimp",
+      "id": "Frozen shrimp",
+      "name": "Frozen shrimp",
       "store": "Safeway",
       "price": "$5/lb",
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "FRIDAY",
-      "explanation": "Friday-only: raw shrimp is about 30% cheaper than Costco.",
+      "explanation": "Friday-only: Frozen shrimp is about 30% cheaper than Costco.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
     },
     {
-      "id": "bell peppers",
-      "name": "bell peppers",
+      "id": "Bell peppers",
+      "name": "Bell peppers",
       "store": "Safeway",
       "price": "$1 each",
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "FRIDAY",
-      "explanation": "Friday-only: bell peppers are about 30% cheaper than Costco.",
+      "explanation": "Friday-only: Bell peppers are about 30% cheaper than Costco.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
@@ -266,7 +266,7 @@
     },
     {
       "id": "nature_valley_bars",
-      "name": "Game Time stack — Nature Valley crunchy",
+      "name": "Nature Valley crunchy bars",
       "store": "Vons",
       "price": "$4/box → $3 after stack",
       "unitPrice": "$0.42/bar",
@@ -279,7 +279,7 @@
     },
     {
       "id": "general_mills_cereal_family_size",
-      "name": "Game Time stack — Cinnamon Toast Crunch",
+      "name": "Cinnamon Toast Crunch",
       "store": "Vons",
       "price": "$4/box → $15 for 5",
       "unitPrice": "$6.99 · family-size boxes, roughly 15–18 oz",
@@ -292,7 +292,7 @@
     },
     {
       "id": "nature_valley_bars",
-      "name": "Game Time stack — Nature Valley protein",
+      "name": "Nature Valley protein bars",
       "store": "Vons",
       "price": "$4/box → $15 for 5",
       "unitPrice": "$0.42/bar",

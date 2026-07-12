@@ -540,7 +540,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "simply_refrigerated_juice_lemonade",
-    "displayName": "Simply refrigerated juice & lemonade",
+    "displayName": "Simply juice",
     "subtitle": "46\u201352 fl oz bottles",
     "displayOrder": 25,
     "homepageSection": "drinks",
@@ -553,7 +553,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Simply Orange",
       "Simply Light Orange",
       "Simply Limeade",
-      "Simply refrigerated juice & lemonade"
+      "Simply juice"
     ],
     "legacyCanonicalIds": []
   },
@@ -1175,7 +1175,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "pillsbury_refrigerated_dough",
-    "displayName": "Pillsbury refrigerated dough",
+    "displayName": "Pillsbury ready-to-bake dough",
     "subtitle": "8\u201316.3 oz cans/tubes",
     "displayOrder": 59,
     "homepageSection": "dairy_breakfast_bakery",
@@ -1188,7 +1188,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pillsbury crescent rolls",
       "Pillsbury cinnamon rolls",
       "Pillsbury cookie dough",
-      "Pillsbury refrigerated dough"
+      "Pillsbury ready-to-bake dough"
     ],
     "legacyCanonicalIds": []
   },
@@ -1383,10 +1383,10 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 3
   },
   {
-    "title": "raw shrimp",
+    "title": "Frozen shrimp",
     "trackerFamilyIds": [],
-    "reason": "Friday-only: raw shrimp is about 30% cheaper than Costco.",
-    "subtitle": "Friday-only: raw shrimp is about 30% cheaper than Costco.",
+    "reason": "Friday-only: Frozen shrimp is about 30% cheaper than Costco.",
+    "subtitle": "Friday-only: Frozen shrimp is about 30% cheaper than Costco.",
     "badge": "FRIDAY",
     "price": "$5/lb",
     "availability": "Friday-only",
@@ -1394,10 +1394,10 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 4
   },
   {
-    "title": "bell peppers",
+    "title": "Bell peppers",
     "trackerFamilyIds": [],
-    "reason": "Friday-only: bell peppers are about 30% cheaper than Costco.",
-    "subtitle": "Friday-only: bell peppers are about 30% cheaper than Costco.",
+    "reason": "Friday-only: Bell peppers are about 30% cheaper than Costco.",
+    "subtitle": "Friday-only: Bell peppers are about 30% cheaper than Costco.",
     "badge": "FRIDAY",
     "price": "$1 each",
     "availability": "Friday-only",
@@ -1587,7 +1587,7 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 8
   },
   {
-    "title": "Game Time stack \u2014 Nature Valley crunchy",
+    "title": "Nature Valley crunchy bars",
     "trackerFamilyIds": [
       "nature_valley_bars"
     ],
@@ -1600,7 +1600,7 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 9
   },
   {
-    "title": "Game Time stack \u2014 Cinnamon Toast Crunch",
+    "title": "Cinnamon Toast Crunch",
     "trackerFamilyIds": [
       "general_mills_cereal_family_size"
     ],
@@ -1613,7 +1613,7 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 10
   },
   {
-    "title": "Game Time stack \u2014 Nature Valley protein",
+    "title": "Nature Valley protein bars",
     "trackerFamilyIds": [
       "nature_valley_bars"
     ],

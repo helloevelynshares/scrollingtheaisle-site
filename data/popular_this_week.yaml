@@ -23,17 +23,17 @@ stores:
       subtitle: "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway."
       reason: "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway."
       display_order: 3
-    - title: raw shrimp
+    - title: Frozen shrimp
       tracker_family_ids: []
       badge: FRIDAY
-      subtitle: "Friday-only: raw shrimp is about 30% cheaper than Costco."
-      reason: "Friday-only: raw shrimp is about 30% cheaper than Costco."
+      subtitle: "Friday-only: Frozen shrimp is about 30% cheaper than Costco."
+      reason: "Friday-only: Frozen shrimp is about 30% cheaper than Costco."
       display_order: 4
-    - title: bell peppers
+    - title: Bell peppers
       tracker_family_ids: []
       badge: FRIDAY
-      subtitle: "Friday-only: bell peppers are about 30% cheaper than Costco."
-      reason: "Friday-only: bell peppers are about 30% cheaper than Costco."
+      subtitle: "Friday-only: Bell peppers are about 30% cheaper than Costco."
+      reason: "Friday-only: Bell peppers are about 30% cheaper than Costco."
       display_order: 5
     - title: Nestlé Drumstick ice cream
       tracker_family_ids: []
@@ -155,7 +155,7 @@ stores:
       reason: "Doritos are close to Costco pricing depending on the bag size, but Vons wins on variety because you can mix flavors instead of buying one huge Nacho Cheese bag."
       price: "2 for $5"
       display_order: 8
-    - title: Game Time stack — Nature Valley crunchy
+    - title: Nature Valley crunchy bars
       tracker_family_ids:
         - nature_valley_bars
       badge: DEAL
@@ -163,7 +163,7 @@ stores:
       reason: "Best stack: buy five Nature Valley 12-count boxes, drop the total to $15, and get 60 pouches. Costco gives you 49 for about the same price."
       price: "$4/box → $3 after stack"
       display_order: 9
-    - title: Game Time stack — Cinnamon Toast Crunch
+    - title: Cinnamon Toast Crunch
       tracker_family_ids:
         - general_mills_cereal_family_size
       badge: DEAL
@@ -171,7 +171,7 @@ stores:
       reason: "Cinnamon Toast Crunch also works with the stack: five boxes drops to $15 total, about $0.16/oz, slightly cheaper than Costco."
       price: "$4/box → $15 for 5"
       display_order: 10
-    - title: Game Time stack — Nature Valley protein
+    - title: Nature Valley protein bars
       tracker_family_ids:
         - nature_valley_bars
       badge: DEAL
