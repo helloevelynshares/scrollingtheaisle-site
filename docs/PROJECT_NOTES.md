@@ -184,6 +184,15 @@ Fix / workaround: New table `tracker_vote_items` with `status` (`pending|approve
 How to verify: Submit a custom item on the tracker → success message about review, item not in list. Approve in admin → item appears and accepts votes via RPC `vote_on_item`.  
 Related files: `supabase/migrations/20260614_tracker_vote_items.sql`, `src/staging-price-tracker/TrackVoteModule.tsx`, `src/admin/suggestions/`, `supabase/functions/validate-admin/`, `supabase/functions/admin-suggestion-actions/`
 
+### Grocery finds are moderated before going live
+
+Date discovered: 2026-07-12
+Context: Live grocery finds feed (`finds.html`, `submit.html`, `app.js`).
+What happened: Submissions used to insert with `status='approved'` and appear immediately on the public feed.
+Fix / workaround: New submissions insert with `status='pending'` (RLS policy enforces pending-only inserts). Public feed still reads `status='approved'` only. Admin review at `/admin/finds/` (password via `validate-admin` + `admin-find-actions` Edge Function). On approve, `expires_at` resets to 3 days from approval time. Apply `supabase/migrations/20260712_finds_moderation.sql`.
+How to verify: Post a find → success banner says pending review, item not on feed. Approve in `/admin/finds/` → item appears on `finds.html`. Deploy `admin-find-actions` with `verify_jwt = false` (see `supabase/config.toml`). `npm run build:admin-finds` → commit `admin/finds/` for GitHub Pages.
+Related files: `supabase/migrations/20260712_finds_moderation.sql`, `supabase/functions/admin-find-actions/`, `src/admin/finds/`, `app.js`, `finds.html`, `submit.html`
+
 Deploy admin Edge Functions and set secret:
 
 ```bash
@@ -191,11 +200,10 @@ supabase secrets set ADMIN_PASSWORD=your-secret
 supabase functions deploy validate-admin
 supabase functions deploy admin-suggestion-actions
 supabase functions deploy admin-store-actions
+supabase functions deploy admin-find-actions
 ```
 
-**Important:** `supabase/config.toml` must set `verify_jwt = false` for all three admin functions. If `admin-store-actions` is deployed without it, the Supabase gateway rejects the custom HMAC bearer token (`UNAUTHORIZED_INVALID_JWT_FORMAT`) and `/admin/stores/` sign-in appears to hang or immediately bounce back with a session error after password validation succeeds.
-
-Apply migration: `supabase db push` or run SQL in Supabase dashboard.
+**Important:** `supabase/config.toml` must set `verify_jwt = false` for all four admin functions. If `admin-store-actions` or `admin-find-actions` is deployed without it, the Supabase gateway rejects the custom HMAC bearer token (`UNAUTHORIZED_INVALID_JWT_FORMAT`) and `/admin/stores/` or `/admin/finds/` sign-in appears to hang or immediately bounce back with a session error after password validation succeeds.
 
 ### All 66 YAML families need chartMode-based rangeMode (not isDealFamily)
 

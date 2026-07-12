@@ -62,7 +62,7 @@ function getSubmitPageUrl() {
 
 function getFindsFeedAfterPostUrl() {
   const stagingBase = getStagingLiveFindsBase();
-  return stagingBase ? `${stagingBase}?posted=1` : "finds.html?posted=1";
+  return stagingBase ? `${stagingBase}?submitted=1` : "finds.html?submitted=1";
 }
 
 function escapeHtml(text) {
@@ -201,7 +201,7 @@ async function submitFind(event) {
       photo_url: photoUrl,
       notes: notes || null,
       submitted_by: getVisitorId(),
-      status: "approved",
+      status: "pending",
       ai_extracted: Boolean(aiExtractionState?.used),
       ai_confidence: aiExtractionState?.confidence
         ? JSON.parse(JSON.stringify(aiExtractionState.confidence))
@@ -694,8 +694,13 @@ function initSuccessBanner() {
   if (!banner) return;
 
   const params = new URLSearchParams(window.location.search);
-  if (params.get("posted") === "1") {
+  if (params.get("submitted") === "1") {
     banner.hidden = false;
+    banner.textContent =
+      "Thanks! Your find is pending review and will appear on the feed once approved.";
+  } else if (params.get("posted") === "1") {
+    banner.hidden = false;
+    banner.textContent = "Your find is live.";
   }
 }
 

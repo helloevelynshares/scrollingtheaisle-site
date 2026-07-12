@@ -33,7 +33,7 @@ create table if not exists finds (
   photo_url text,
   notes text,
   submitted_by text,
-  status text default 'approved',
+  status text default 'pending',
   created_at timestamptz default now(),
   expires_at timestamptz default (now() + interval '3 days')
 );
@@ -72,10 +72,10 @@ using (
   and expires_at > now()
 );
 
-create policy "Anyone can insert finds"
+create policy "Anyone can insert pending finds"
 on finds for insert
 with check (
-  status = 'approved'
+  status = 'pending'
 );
 
 create policy "Anyone can vote"
@@ -235,6 +235,7 @@ curl -s -X POST \
 | `index.html` | Landing + Beehiiv signup |
 | `submit.html` | Post a grocery find (with AI photo flow) |
 | `finds.html` | Live public feed |
+| `admin/finds/` | Review pending grocery finds |
 | `staging-live-finds/` | Staging feed + submit |
 | `app.js` | Supabase client and shared logic |
 | `styles.css` | Shared styles |

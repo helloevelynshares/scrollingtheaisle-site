@@ -12,3 +12,6 @@ verify_jwt = false
 
 [functions.admin-store-actions]
 verify_jwt = false
+
+[functions.admin-find-actions]
+verify_jwt = false

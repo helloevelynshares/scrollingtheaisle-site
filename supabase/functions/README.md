@@ -20,12 +20,13 @@ https://wurmdtqysegytsjcudve.functions.supabase.co/analyze-find-photo
 
 ---
 
-## validate-admin / admin-suggestion-actions / admin-store-actions
+## validate-admin / admin-suggestion-actions / admin-store-actions / admin-find-actions
 
-Password-gated admin API for reviewing vote suggestions.
+Password-gated admin API for reviewing vote suggestions and grocery finds.
 
 - **Tracker items:** `/admin/suggestions/` via `admin-suggestion-actions` (`tracker_vote_items`)
 - **Grocery stores:** `/admin/stores/` via `admin-store-actions` (`store_vote_items`)
+- **Grocery finds:** `/admin/finds/` via `admin-find-actions` (`finds`)
 
 **Secrets:**
 
@@ -41,18 +42,19 @@ supabase secrets set ADMIN_PASSWORD=your-secret-here
 supabase functions deploy validate-admin
 supabase functions deploy admin-suggestion-actions
 supabase functions deploy admin-store-actions
+supabase functions deploy admin-find-actions
 ```
 
-`admin-store-actions` must be deployed with JWT verification disabled (same as the other admin functions). `supabase/config.toml` sets `[functions.admin-store-actions] verify_jwt = false`; if you deploy without linking config, pass `--no-verify-jwt` or the gateway will reject the custom HMAC bearer token with `UNAUTHORIZED_INVALID_JWT_FORMAT` and sign-in will appear to hang or immediately expire.
+`admin-store-actions` and `admin-find-actions` must be deployed with JWT verification disabled (same as the other admin functions). `supabase/config.toml` sets `verify_jwt = false` for each; if you deploy without linking config, pass `--no-verify-jwt` or the gateway will reject the custom HMAC bearer token with `UNAUTHORIZED_INVALID_JWT_FORMAT` and sign-in will appear to hang or immediately expire.
 
 **Flow:**
 
 1. `POST validate-admin` with JSON `{ "password": "..." }` → `{ "token": "..." }` (8h HMAC token)
-2. `POST admin-suggestion-actions` or `admin-store-actions` with `Authorization: Bearer <token>` and JSON body:
-   - `{ "action": "list" }` → pending + approved items
-   - `{ "action": "approve", "itemId", "publicName"? }`
-   - `{ "action": "reject", "itemId", "adminNotes"? }`
-   - `{ "action": "merge", "itemId", "mergeIntoId", "addVoteOnMerge"? }`
+2. `POST admin-suggestion-actions`, `admin-store-actions`, or `admin-find-actions` with `Authorization: Bearer <token>` and JSON body:
+   - `{ "action": "list" }` → pending items (finds: pending only)
+   - `{ "action": "approve", "itemId" | "findId", ... }`
+   - `{ "action": "reject", "itemId" | "findId", "adminNotes"? }`
+   - `{ "action": "merge", "itemId", "mergeIntoId", "addVoteOnMerge"? }` (suggestions/stores only)
 
 ---
 

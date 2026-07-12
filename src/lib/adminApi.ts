@@ -201,3 +201,60 @@ export async function fetchAdminStoreSuggestions(): Promise<{
     approved: payload.approved ?? [],
   };
 }
+
+export async function callAdminFindActions(
+  body: AdminSuggestionActionsBody,
+): Promise<unknown> {
+  const token = readAdminToken();
+  if (!token) {
+    throw new Error("Not authenticated");
+  }
+
+  const response = await fetch(getEdgeFunctionUrl("admin-find-actions"), {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+  const payload = await parseAdminResponse(response);
+  if (response.status === 401) {
+    clearAdminToken();
+    throw new Error(adminUnauthorizedMessage(payload));
+  }
+  if (!response.ok) {
+    throw new Error(
+      typeof payload.error === "string" ? payload.error : "Request failed",
+    );
+  }
+
+  return payload;
+}
+
+export type PendingFind = {
+  id: string;
+  item_name: string;
+  price: number;
+  price_display: string | null;
+  store_name: string;
+  location_label: string | null;
+  photo_url: string | null;
+  notes: string | null;
+  submitted_by: string | null;
+  ai_extracted: boolean | null;
+  created_at: string;
+};
+
+export async function fetchAdminFinds(): Promise<{
+  pending: PendingFind[];
+}> {
+  const payload = (await callAdminFindActions({ action: "list" })) as {
+    pending?: PendingFind[];
+  };
+
+  return {
+    pending: payload.pending ?? [],
+  };
+}
