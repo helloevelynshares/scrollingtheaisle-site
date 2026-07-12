@@ -89,7 +89,7 @@ export function FamilyTrackerLabApp() {
           SCROLLING THE AISLE
         </a>
         <nav className="site-nav" aria-label="Main">
-          <a href="/staging-price-tracker/" className="site-nav-link">
+          <a href="/grocery-price-tracker/" className="site-nav-link">
             Price tracker
           </a>
         </nav>

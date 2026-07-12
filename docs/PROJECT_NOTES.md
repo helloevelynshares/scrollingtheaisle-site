@@ -229,14 +229,23 @@ Fix / workaround: Keep each `<Line />` as a **direct** child of `<LineChart>` (s
 How to verify: Playwright — `.recharts-line` count > 0 and hover on a dot shows `.price-tracker-chart-tooltip` with a price. `npm run build:price-tracker`.  
 Related files: `src/staging-price-tracker/PriceTrendChart.tsx`
 
-### Price tracker Vite entry must be `src/staging-price-tracker/index.html`, not `staging-price-tracker/index.html`
+### Price tracker Vite entry must be `src/staging-price-tracker/index.html`, not `grocery-price-tracker/index.html`
 
 Date discovered: 2026-06-07  
 Context: `npm run build:price-tracker` / deploying June weekly ad data.  
-What happened: `staging-price-tracker/index.html` is the **deployed** output (overwritten by `scripts/sync-price-tracker-dist.mjs`). It references pre-built `assets/index-*.js`. Using it as the Vite `rollupOptions.input` rebundles stale JS — source/data changes in `src/` never reach the chart.  
-Fix / workaround: Vite input is `src/staging-price-tracker/index.html` (loads `main.tsx`). Sync copies build output into `staging-price-tracker/` for GitHub Pages. Do not put the source HTML under `price-tracker/` — that path is gitignored.  
-How to verify: `npm run build:price-tracker` runs `scripts/verify-price-tracker-build.mjs` automatically (fails if the JS bundle is missing any `weekStart` from `weeklyAdPrices.generated.ts`). Manual check: `grep 2026-06-03 staging-price-tracker/assets/index-*.js`. After deploy, hard-refresh the live page and confirm the latest week on the chart x-axis.  
-Related files: `vite.config.ts`, `src/staging-price-tracker/index.html`, `scripts/sync-price-tracker-dist.mjs`, `scripts/verify-price-tracker-build.mjs`, `staging-price-tracker/`
+What happened: `grocery-price-tracker/index.html` is the **deployed** output (overwritten by `scripts/sync-price-tracker-dist.mjs`). It references pre-built `assets/index-*.js`. Using it as the Vite `rollupOptions.input` rebundles stale JS — source/data changes in `src/` never reach the chart.  
+Fix / workaround: Vite input is `src/staging-price-tracker/index.html` (loads `main.tsx`). Sync copies build output into `grocery-price-tracker/` for GitHub Pages (`base: "/grocery-price-tracker/"`). Source stays under `src/staging-price-tracker/`; do not use the deployed `grocery-price-tracker/index.html` as the Vite entry.  
+How to verify: `npm run build:price-tracker` runs `scripts/verify-price-tracker-build.mjs` automatically (fails if the JS bundle is missing any `weekStart` from `weeklyAdPrices.generated.ts`). Manual check: `grep 2026-06-03 grocery-price-tracker/assets/index-*.js`. After deploy, hard-refresh the live page and confirm the latest week on the chart x-axis.  
+Related files: `vite.config.ts`, `src/staging-price-tracker/index.html`, `scripts/sync-price-tracker-dist.mjs`, `scripts/verify-price-tracker-build.mjs`, `grocery-price-tracker/`
+
+### Public URLs: `/about/` and `/grocery-price-tracker/`
+
+Date discovered: 2026-07-12  
+Context: Clean public paths on scrollingtheaisle.com (GitHub Pages).  
+What happened: About lived at `/about.html`; tracker at `/staging-price-tracker/` (briefly `/price-tracker/`).  
+Fix / workaround: Serve About from `about/index.html` → `/about/`. Serve tracker from `grocery-price-tracker/` with Vite `base: "/grocery-price-tracker/"`. Static HTML redirects (meta refresh + `location.replace`, preserving query + hash): `about.html` → `/about/`; `staging-price-tracker/` → `/grocery-price-tracker/`. Intermediate `price-tracker/` also redirects to `/grocery-price-tracker/`.  
+How to verify: Open `/about/` and `/grocery-price-tracker/`; hit old `/about.html` and `/staging-price-tracker/?feed=safeway_bay_area` and confirm landing URLs. `npm run build:price-tracker` passes.  
+Related files: `about/index.html`, `about.html`, `staging-price-tracker/index.html`, `vite.config.ts`, `scripts/sync-price-tracker-dist.mjs`, `index.html`, `homepage.js`
 
 Add notes here for useful Cursor prompts, commands, migrations, local testing, and deployment steps.
 
@@ -285,7 +294,7 @@ Context: Pushed commit `286efec` (disclaimer "- Evelyn") to `origin/main`; live 
 What happened: Local + `origin/main` were correct (`HEAD == origin/main == 286efec`, text present). But the live `last-modified` (14:43:12 GMT) predated the commit (14:56:44 GMT), and served `content-length` was 7088 vs local 7097 (exactly the 9 bytes of " - Evelyn"). Cache-busting query strings did NOT help — the **origin** itself was stale. Root cause: GitHub Pages never created a deployment for the pushed commit. The GitHub API (`/deployments`) showed the newest `github-pages` deployment was still the PRIOR commit `f372bbd` (state `success`), with no deployment for `286efec`. This site uses legacy branch-based Pages (no `.github/workflows/`, serves `main` root, CNAME `scrollingtheaisle.com`), which normally auto-builds on push but occasionally misses one.
 Fix / workaround: Push an empty commit to force a rebuild: `git commit --allow-empty -m "Re-trigger GitHub Pages build" && git push origin main`. Use `--allow-empty` (not a normal commit) so the large uncommitted working-tree changes aren't swept in. Build completed ~30-60s later and live text updated (content-length 7097, `last-modified` matched the new push).
 How to verify: `curl -s https://scrollingtheaisle.com/index.html | grep -o "check back often[^<]*"` shows `check back often. - Evelyn`; deployment API newest sha matches `git rev-parse origin/main`: `curl -s https://api.github.com/repos/helloevelynshares/scrollingtheaisle-site/deployments?per_page=1`.
-Related files: `CNAME`, `index.html`, `finds.html`, `about.html`, `submit.html` (no workflow file — Pages builds `main` root directly)
+Related files: `CNAME`, `index.html`, `finds.html`, `about/`, `about.html` (redirect), `submit.html` (no workflow file — Pages builds `main` root directly)
 
 
 Date discovered: 2026-07-06  
@@ -706,10 +715,10 @@ Related files: `src/staging-price-tracker/vote/TrackVotePanel.tsx`, `src/staging
 
 
 Date discovered: 2026-07-05
-Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/staging-price-tracker/
+Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/grocery-price-tracker/
 What happened: Default Vite 6 listened only on `[::1]:5173`. Browsers and tools using IPv4 `127.0.0.1` could not connect. Agent-background Vite processes also stop when the agent session ends.
-Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`, `strictPort: true`. Run dev server in the user's own terminal: `cd <repo> && npm run dev:price-tracker`. Open http://127.0.0.1:5173/staging-price-tracker/ (base path `/staging-price-tracker/`).
-How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; `curl -I http://127.0.0.1:5173/staging-price-tracker/` returns HTTP 200.
+Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`, `strictPort: true`. Run dev server in the user's own terminal: `cd <repo> && npm run dev:price-tracker`. Open http://127.0.0.1:5173/grocery-price-tracker/ (base path `/grocery-price-tracker/`).
+How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; `curl -I http://127.0.0.1:5173/grocery-price-tracker/` returns HTTP 200.
 Related files: `vite.config.ts`, `package.json` (`dev:price-tracker`)
 
 ### Canonical match eligibility gates weekly ad graph updates

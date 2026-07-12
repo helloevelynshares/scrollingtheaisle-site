@@ -4,7 +4,7 @@
  */
 
 const PREVIEW_JSON = "/data/homepage-preview.generated.json";
-const TRACKER_URL = "staging-price-tracker/";
+const TRACKER_URL = "grocery-price-tracker/";
 const STORE_VOTE_STORAGE_KEY = "sta_store_votes";
 const SUPABASE_URL = "https://wurmdtqysegytsjcudve.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_8Wt-it-oIHHIkQOi0D9y_g_qMoH51ZX";

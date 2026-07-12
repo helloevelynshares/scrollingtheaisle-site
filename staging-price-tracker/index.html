@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Safeway Price Tracker — Scrolling the Aisle</title>
-  <link rel="icon" type="image/png" href="/staging-price-tracker/assets/favicon-BAtsHtqr.png" />
-  <script type="module" crossorigin src="/staging-price-tracker/assets/index-B5eXqbD9.js"></script>
-  <link rel="stylesheet" crossorigin href="/staging-price-tracker/assets/index-COumQEyu.css">
+  <title>Redirecting to grocery price tracker…</title>
+  <link rel="canonical" href="https://scrollingtheaisle.com/grocery-price-tracker/" />
+  <meta http-equiv="refresh" content="0;url=/grocery-price-tracker/" />
+  <script>
+    (function () {
+      var target = "/grocery-price-tracker/" + window.location.search + window.location.hash;
+      window.location.replace(target);
+    })();
+  </script>
 </head>
-<body class="staging-page">
-  <div id="root"></div>
-  <script src="/analytics.js"></script>
+<body>
+  <p>This page moved to <a id="redirect-link" href="/grocery-price-tracker/">/grocery-price-tracker/</a>.</p>
+  <script>
+    document.getElementById("redirect-link").href =
+      "/grocery-price-tracker/" + window.location.search + window.location.hash;
+  </script>
 </body>
 </html>

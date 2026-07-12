@@ -4,7 +4,7 @@ import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/staging-price-tracker/",
+  base: "/grocery-price-tracker/",
   server: {
     host: "127.0.0.1",
     port: 5173,

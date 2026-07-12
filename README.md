@@ -250,11 +250,11 @@ Multi-feed price tracker (React + Recharts + Supabase, with Safeway static fallb
 
 ```bash
 npm install
-npm run dev:price-tracker    # local dev → /staging-price-tracker/
-npm run build:price-tracker  # build → staging-price-tracker/
+npm run dev:price-tracker    # local dev → /grocery-price-tracker/
+npm run build:price-tracker  # build → grocery-price-tracker/
 ```
 
-Public URL: `/staging-price-tracker/`. Canonical products live in `src/data/canonicalProducts.ts`; feed tabs in `src/data/priceFeeds.ts`. Safeway weekly ad prices are generated from `data/weekly_ads/` + `scrolling-the-aisle` offer extraction. Switch tabs to compare Bay Area Safeway vs SoCal Vons/Albertsons.
+Public URL: `/grocery-price-tracker/` (old `/staging-price-tracker/` redirects). Canonical products live in `src/data/canonicalProducts.ts`; feed tabs in `src/data/priceFeeds.ts`. Safeway weekly ad prices are generated from `data/weekly_ads/` + `scrolling-the-aisle` offer extraction. Switch tabs to compare Bay Area Safeway vs SoCal Vons/Albertsons.
 
 ## GitHub Pages
 
@@ -270,4 +270,4 @@ Visitor and page-view tracking uses [Cloudflare Web Analytics](https://developer
 4. Paste it into `analytics.js` (replace `YOUR_CF_WEB_ANALYTICS_TOKEN`).
 5. Deploy. Open the live site, then check **Web Analytics** in Cloudflare for traffic within a few minutes.
 
-The shared `analytics.js` is included on all public HTML pages (`/`, `/finds.html`, `/submit.html`, `/staging-price-tracker/`, etc.). Page paths appear separately in the dashboard.
+The shared `analytics.js` is included on all public HTML pages (`/`, `/finds.html`, `/submit.html`, `/about/`, `/grocery-price-tracker/`, etc.). Page paths appear separately in the dashboard.

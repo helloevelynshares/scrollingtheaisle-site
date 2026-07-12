@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-/** Fail if the deployed price-tracker bundle is missing generated weekly ad data. */
+/** Fail if the deployed grocery-price-tracker bundle is missing generated weekly ad data. */
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 
 const root = new URL("..", import.meta.url).pathname;
 const generatedPath = join(root, "src/data/weeklyAdPrices.generated.ts");
-const assetsDir = join(root, "staging-price-tracker/assets");
-const indexPath = join(root, "staging-price-tracker/index.html");
+const assetsDir = join(root, "grocery-price-tracker/assets");
+const indexPath = join(root, "grocery-price-tracker/index.html");
 
 const generated = readFileSync(generatedPath, "utf8");
 const weekStarts = [
@@ -22,7 +22,7 @@ const jsBundle = readdirSync(assetsDir).find(
   (name) => name.startsWith("index-") && name.endsWith(".js"),
 );
 if (!jsBundle) {
-  console.error("No index-*.js bundle found under staging-price-tracker/assets/");
+  console.error("No index-*.js bundle found under grocery-price-tracker/assets/");
   process.exit(1);
 }
 
@@ -36,20 +36,20 @@ if (missingWeeks.length > 0) {
     `Price tracker bundle ${jsBundle} is missing weekly ad data: ${missingWeeks.join(", ")}`,
   );
   console.error(
-    "The Vite entry may be wrong — build from src/staging-price-tracker/index.html, not staging-price-tracker/index.html.",
+    "The Vite entry may be wrong — build from src/staging-price-tracker/index.html, not grocery-price-tracker/index.html.",
   );
   process.exit(1);
 }
 
 if (indexHtml.includes("/src/staging-price-tracker/main.tsx")) {
   console.error(
-    "staging-price-tracker/index.html still references main.tsx — sync/deploy output looks wrong.",
+    "grocery-price-tracker/index.html still references main.tsx — sync/deploy output looks wrong.",
   );
   process.exit(1);
 }
 
 if (!indexHtml.includes(jsBundle)) {
-  console.error(`staging-price-tracker/index.html does not reference ${jsBundle}`);
+  console.error(`grocery-price-tracker/index.html does not reference ${jsBundle}`);
   process.exit(1);
 }
 

@@ -52,7 +52,7 @@ export type HomepagePreview = {
   popularPicksVons: PopularPick[];
 };
 
-const TRACKER_BASE = "staging-price-tracker/";
+const TRACKER_BASE = "grocery-price-tracker/";
 
 function unitPriceDisplay(product: FeedProductView): string {
   const dealUnit = getDealAdjustedUnitPrice(product);

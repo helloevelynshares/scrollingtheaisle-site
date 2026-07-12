@@ -16,6 +16,5 @@ scripts/.playwright-profile/
 data/raw/bulk_transcripts.csv
 node_modules/
 price-tracker-dist/
-price-tracker/
 __pycache__/
 *.pyc

@@ -42,14 +42,14 @@ export function App() {
           SCROLLING THE AISLE
         </a>
         <nav className="site-nav" aria-label="Main">
-          <a href="/about.html" className="site-nav-link">
+          <a href="/about/" className="site-nav-link">
             About
           </a>
           <a href="/finds.html" className="site-nav-link">
             Finds
           </a>
           <a
-            href="/staging-price-tracker/"
+            href="/grocery-price-tracker/"
             className="site-nav-link site-nav-link--active"
             aria-current="page"
           >
