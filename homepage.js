@@ -116,7 +116,6 @@ function renderCategoryPick(pick) {
         <h4 class="hub-picks-cat-item-title">${escapeHtml(pick.name)}</h4>
         <p class="hub-picks-cat-item-price">
           <span class="hub-picks-cat-amount">${escapeHtml(pick.price)}</span>
-          <span class="hub-picks-cat-store">${escapeHtml(pick.store)}</span>
           ${
             pick.unitPrice
               ? `<span class="hub-picks-cat-unit">${escapeHtml(pick.unitPrice)}</span>`
