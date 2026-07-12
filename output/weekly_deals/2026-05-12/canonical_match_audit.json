@@ -1,7 +1,7 @@
 {
   "week_start": "2026-05-12",
   "week_end": "2026-05-19",
-  "generated_at": "2026-07-12T18:28:35.866703+00:00",
+  "generated_at": "2026-07-12T23:45:50.660093+00:00",
   "summary": {
     "accepted": 32,
     "rejected": 0,
@@ -54,12 +54,12 @@
       {
         "family_id": "lays_potato_chips_regular",
         "feed": "Safeway",
-        "detail": "blocked $1.99 \u2014 ambiguous match"
+        "detail": "blocked $1.99: ambiguous match"
       },
       {
         "family_id": "lays_potato_chips_regular",
         "feed": "Safeway",
-        "detail": "blocked $1.99 \u2014 ambiguous match"
+        "detail": "blocked $1.99: ambiguous match"
       }
     ]
   },
@@ -186,7 +186,7 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Simply refrigerated juice & lemonade",
+      "display_name": "Simply juice",
       "subtitle": "46\u201352 fl oz bottles",
       "manufacturer_family": null,
       "allowed_product_lines": [],
@@ -602,7 +602,7 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Simply refrigerated juice & lemonade",
+      "display_name": "Simply juice",
       "subtitle": "46\u201352 fl oz bottles",
       "manufacturer_family": null,
       "allowed_product_lines": [],
@@ -916,7 +916,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $1.99 \u2014 ambiguous match",
+      "graph_preview_change": "blocked $1.99: ambiguous match",
       "display_name": "Lay's potato chips",
       "subtitle": "regular non-kettle bags, roughly 5\u201313 oz",
       "manufacturer_family": null,
@@ -942,7 +942,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $1.99 \u2014 ambiguous match",
+      "graph_preview_change": "blocked $1.99: ambiguous match",
       "display_name": "Lay's potato chips",
       "subtitle": "regular non-kettle bags, roughly 5\u201313 oz",
       "manufacturer_family": null,

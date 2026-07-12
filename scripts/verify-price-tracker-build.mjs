@@ -36,14 +36,14 @@ if (missingWeeks.length > 0) {
     `Price tracker bundle ${jsBundle} is missing weekly ad data: ${missingWeeks.join(", ")}`,
   );
   console.error(
-    "The Vite entry may be wrong — build from src/staging-price-tracker/index.html, not grocery-price-tracker/index.html.",
+    "The Vite entry may be wrong, build from src/staging-price-tracker/index.html, not grocery-price-tracker/index.html.",
   );
   process.exit(1);
 }
 
 if (indexHtml.includes("/src/staging-price-tracker/main.tsx")) {
   console.error(
-    "grocery-price-tracker/index.html still references main.tsx — sync/deploy output looks wrong.",
+    "grocery-price-tracker/index.html still references main.tsx, sync/deploy output looks wrong.",
   );
   process.exit(1);
 }

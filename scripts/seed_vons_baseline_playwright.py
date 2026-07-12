@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fetch Vons (Albertsons SoCal) baseline prices — HTTP first, Playwright fallback.
+Fetch Vons (Albertsons SoCal) baseline prices: HTTP first, Playwright fallback.
 
 Uses the same search UI/API as Safeway:
   https://www.vons.com/shop/search-results.html?q=grapes&tab=products
@@ -65,7 +65,7 @@ def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(
         level=level,
-        format="%(asctime)s %(levelname)s %(name)s — %(message)s",
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
         datefmt="%H:%M:%S",
     )
 
@@ -259,7 +259,7 @@ def _capture_via_playwright_request(
 ) -> dict[str, Any]:
     url = build_pgmsearch_url(query, config)
     headers = build_vons_headers(query, config)
-    # Cookie jar is already populated on the browser context — duplicating Cookie
+    # Cookie jar is already populated on the browser context, duplicating Cookie
     # in APIRequestContext can confuse Imperva and bloat error logs.
     headers.pop("Cookie", None)
     try:
@@ -785,7 +785,7 @@ def main() -> int:
             timeout_sec=http_timeout,
         )
         logger.info(
-            "Done — %d success, %d failure — wrote %s and %s (http_timeout=%.0fs)",
+            "Done: %d success, %d failure, wrote %s and %s (http_timeout=%.0fs)",
             successes,
             failures,
             args.output,
@@ -816,7 +816,7 @@ def main() -> int:
                 inject_cookies_first=args.inject_cookies_first,
             )
             logger.info(
-                "Done — %d success (%d HTTP, %d Playwright), %d failure — wrote %s and %s",
+                "Done: %d success (%d HTTP, %d Playwright), %d failure, wrote %s and %s",
                 successes,
                 http_ok,
                 playwright_ok,
@@ -830,7 +830,7 @@ def main() -> int:
             if "Executable doesn't exist" not in str(exc):
                 raise
             logger.warning(
-                "Playwright browser missing (%s) — retrying HTTP-only for remaining items",
+                "Playwright browser missing (%s), retrying HTTP-only for remaining items",
                 exc,
             )
             successes, failures, _ = run_http_only(
@@ -842,7 +842,7 @@ def main() -> int:
                 timeout_sec=http_timeout,
             )
             logger.info(
-                "Done — %d success, %d failure — wrote %s and %s (http_timeout=%.0fs)",
+                "Done: %d success, %d failure, wrote %s and %s (http_timeout=%.0fs)",
                 successes,
                 failures,
                 args.output,
@@ -942,7 +942,7 @@ def main() -> int:
         writer.writerows(all_csv_rows)
 
     logger.info(
-        "Done — %d success, %d failure — wrote %s and %s",
+        "Done: %d success, %d failure, wrote %s and %s",
         successes,
         failures,
         args.output,

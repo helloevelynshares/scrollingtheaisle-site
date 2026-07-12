@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-06-17 to 2026-06-23
+# Canonical match audit: 2026-06-17 to 2026-06-23
 
-Generated: 2026-07-12T18:28:36.101509+00:00
+Generated: 2026-07-12T23:45:50.885683+00:00
 
 ## Summary
 
@@ -13,89 +13,89 @@ Generated: 2026-07-12T18:28:36.101509+00:00
 
 ### All-time low changes
 
-- `cheetos_regular_bags` (Safeway): $2.49 — Cheetos Mac'n Cheese
-- `goldfish_bags` (Safeway): $3.49 — Pepperidge Farm Goldfish Crackers
-- `breyers_ice_cream` (Safeway): $2.5 — Breyers Ice Cream 48 fl oz
-- `cherries_per_lb` (Safeway): $2.99 — Red Cherries
-- `tri_tip_roast` (Safeway): $5.99 — USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
-- `ruffles_regular_bags` (Vons): $2.49 — Lay's Potato Chips, Fritos, Ruffles
-- `sweet_corn` (Vons): $0.2 — Fresh Sweet Corn
-- `butter_16oz` (Vons): $2.99 — Lucerne Butter Quarters 16 oz
-- `salmon` (Vons): $5.0 — Fresh Atlantic Salmon Fillets Farm Raised
-- `cheetos_regular_bags` (Safeway): $2.49 — Cheetos Mac'n Cheese
-- `goldfish_bags` (Safeway): $3.49 — Pepperidge Farm Goldfish Crackers
-- `breyers_ice_cream` (Safeway): $2.5 — Breyers Ice Cream 48 fl oz
-- `cherries_per_lb` (Safeway): $2.99 — Red Cherries
-- `tri_tip_roast` (Safeway): $5.99 — USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
-- `ruffles_regular_bags` (Vons): $2.49 — Lay's Potato Chips, Fritos, Ruffles
-- `sweet_corn` (Vons): $0.2 — Fresh Sweet Corn
-- `butter_16oz` (Vons): $2.99 — Lucerne Butter Quarters 16 oz
-- `salmon` (Vons): $5.0 — Fresh Atlantic Salmon Fillets Farm Raised
+- `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
+- `goldfish_bags` (Safeway): $3.49: Pepperidge Farm Goldfish Crackers
+- `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
+- `cherries_per_lb` (Safeway): $2.99: Red Cherries
+- `tri_tip_roast` (Safeway): $5.99: USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
+- `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
+- `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
+- `butter_16oz` (Vons): $2.99: Lucerne Butter Quarters 16 oz
+- `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
+- `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
+- `goldfish_bags` (Safeway): $3.49: Pepperidge Farm Goldfish Crackers
+- `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
+- `cherries_per_lb` (Safeway): $2.99: Red Cherries
+- `tri_tip_roast` (Safeway): $5.99: USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
+- `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
+- `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
+- `butter_16oz` (Vons): $2.99: Lucerne Butter Quarters 16 oz
+- `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
 
 ### Graph preview changes
 
-- `ritz_crackers` (Safeway): blocked $2.49 — hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers` (Safeway): blocked $2.99 — hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
-- `coca_cola_12packs` (Safeway): blocked $8.99 — confidence 0.40 < min 0.70
-- `eggs_dozen_normalized` (Safeway): blocked $7.49 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `lays_potato_chips_regular` (Vons): blocked $2.49 — new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons): blocked $1.49 — confidence 0.40 < min 0.70
-- `eggs_dozen_normalized` (Vons): blocked $1.99 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `ritz_crackers` (Safeway): blocked $2.49 — hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers` (Safeway): blocked $2.99 — hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
-- `coca_cola_12packs` (Safeway): blocked $8.99 — confidence 0.40 < min 0.70
-- `eggs_dozen_normalized` (Safeway): blocked $7.49 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `lays_potato_chips_regular` (Vons): blocked $2.49 — new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons): blocked $1.49 — confidence 0.40 < min 0.70
-- `eggs_dozen_normalized` (Vons): blocked $1.99 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: toasted chips
+- `nabisco_snack_crackers` (Safeway): blocked $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
+- `coca_cola_12packs` (Safeway): blocked $8.99: confidence 0.40 < min 0.70
+- `eggs_dozen_normalized` (Safeway): blocked $7.49: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `lays_potato_chips_regular` (Vons): blocked $2.49: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
+- `coca_cola_12packs` (Vons): blocked $1.49: confidence 0.40 < min 0.70
+- `eggs_dozen_normalized` (Vons): blocked $1.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: toasted chips
+- `nabisco_snack_crackers` (Safeway): blocked $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
+- `coca_cola_12packs` (Safeway): blocked $8.99: confidence 0.40 < min 0.70
+- `eggs_dozen_normalized` (Safeway): blocked $7.49: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `lays_potato_chips_regular` (Vons): blocked $2.49: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
+- `coca_cola_12packs` (Vons): blocked $1.49: confidence 0.40 < min 0.70
+- `eggs_dozen_normalized` (Vons): blocked $1.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
 
 ### Blocked from tracker graph
 
-- `ritz_crackers` (Safeway) — **rejected**: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49
+- `ritz_crackers` (Safeway): **rejected**: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49
   - Reason: hard negative keyword/pattern hit: toasted chips
   - Hard negatives: toasted chips
-- `nabisco_snack_crackers` (Safeway) — **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
   - Hard negatives: chips ahoy, cookies
-- `eggs_dozen_normalized` (Safeway) — **rejected**: 'Happy Egg Free Range Eggs 12 ct' @ $7.49
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Happy Egg Free Range Eggs 12 ct' @ $7.49
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons) — **rejected**: 'Lucerne Large Eggs 12 ct' @ $1.99
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $1.99
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `ritz_crackers` (Safeway) — **rejected**: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49
+- `ritz_crackers` (Safeway): **rejected**: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49
   - Reason: hard negative keyword/pattern hit: toasted chips
   - Hard negatives: toasted chips
-- `nabisco_snack_crackers` (Safeway) — **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
   - Hard negatives: chips ahoy, cookies
-- `eggs_dozen_normalized` (Safeway) — **rejected**: 'Happy Egg Free Range Eggs 12 ct' @ $7.49
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Happy Egg Free Range Eggs 12 ct' @ $7.49
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons) — **rejected**: 'Lucerne Large Eggs 12 ct' @ $1.99
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $1.99
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Lay's Potato Chips" @ $None
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips" @ $None
   - Reason: confidence 0.50 < min 0.60
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
   - Reason: confidence 0.40 < min 0.70
-- `lays_potato_chips_regular` (Vons) — **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
+- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
   - Reason: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $1.49
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.49
   - Reason: confidence 0.40 < min 0.70
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Lay's Potato Chips" @ $None
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips" @ $None
   - Reason: confidence 0.50 < min 0.60
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
   - Reason: confidence 0.40 < min 0.70
-- `lays_potato_chips_regular` (Vons) — **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
+- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
   - Reason: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $1.49
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.49
   - Reason: confidence 0.40 < min 0.70
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49 — hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99 — hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
-- `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49 — hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99 — hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
+- `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49: hard negative keyword/pattern hit: toasted chips
+- `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
+- `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49: hard negative keyword/pattern hit: toasted chips
+- `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; ad product type 'chips_ahoy' not in allowed types ['family_size_snack_crackers', 'wheat_thins', 'triscuits', 'chicken_in_a_biskit', 'generic_nabisco_block']
 
 ## Accepted matches
 
@@ -118,7 +118,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Light Orange Juice' @ $5.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `breyers_ice_cream` (Safeway): 'Breyers Ice Cream 48 fl oz' @ $2.5 (confidence 0.90)
   - Display: Breyers ice cream
@@ -208,7 +208,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Light Orange Juice' @ $5.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `breyers_ice_cream` (Safeway): 'Breyers Ice Cream 48 fl oz' @ $2.5 (confidence 0.90)
   - Display: Breyers ice cream

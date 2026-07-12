@@ -1,5 +1,5 @@
 /**
- * Family Deal Card — production UI for grouped deal families (Family Tracker UI Lab Option 9).
+ * Family Deal Card: production UI for grouped deal families (Family Tracker UI Lab Option 9).
  * Family-level price + chart first; included varieties live in a secondary drawer.
  */
 import { useState } from "react";

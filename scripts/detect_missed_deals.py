@@ -10,7 +10,7 @@ week even though the ad clearly advertised it. Two documented causes:
      ``split_offer_items.csv`` (Kettle Brand 7/1, Coca-Cola B2G3F 7/1).
   2. A tile is present but the family's include pattern does not match the ad
      wording (e.g. "Nabisco **Family Size** Snack Crackers" vs the
-     "Nabisco snack crackers" include) — now largely fixed by the robust
+     "Nabisco snack crackers" include), now largely fixed by the robust
      qualifier-tolerant matcher, but new wordings can still slip through.
 
 In both cases the generated TS keeps a ``null`` price and the chart falls back
@@ -21,7 +21,7 @@ family (with a price) but no price was written.
 What it CANNOT catch
 --------------------
 If a tile was dropped *before* text extraction (no row anywhere in raw or
-split — e.g. the Oreo 7/8 half of a combined coupon tile, whose word "oreo"
+split, e.g. the Oreo 7/8 half of a combined coupon tile, whose word "oreo"
 never appeared in any CSV), there is no textual signal to key off. That class
 needs vision-pipeline coverage / a manual PDF audit and is out of scope here.
 
@@ -207,7 +207,7 @@ def _match_text(row: dict[str, str]) -> str:
 
     We deliberately match only the split/product-name field, NOT the full
     ``raw_offer_text`` (which, for multi-product blocks, lists many unrelated
-    brands and would produce spurious keyword hits — e.g. a Cheez-It mention
+    brands and would produce spurious keyword hits, e.g. a Cheez-It mention
     buried in a long "or" list on an unrelated tile).
     """
     for key in ("split_product_text", "verified_raw_product_text", "raw_product_text"):
@@ -271,7 +271,7 @@ class Candidate:
 
     @property
     def reason(self) -> str:
-        block = " (multi-product block — lower confidence)" if self.multi_product else ""
+        block = " (multi-product block, lower confidence)" if self.multi_product else ""
         if self.audit & {"rejected", "manual_review"}:
             return (
                 "ad text mentions family with a price but it was intentionally "
@@ -280,13 +280,13 @@ class Candidate:
         if self.in_raw and not self.in_split:
             return (
                 "family + price present in raw_offer_cards but NOT in "
-                "split_offer_items — likely dropped during tile promotion; "
+                "split_offer_items, likely dropped during tile promotion; "
                 f"add a split row (manually_added_missed_tile) and regenerate{block}"
             )
         if self.in_split:
             return (
                 "family + price present in split_offer_items but no price written "
-                f"to the generated TS — re-run generate_weekly_ad_prices for this family{block}"
+                f"to the generated TS, re-run generate_weekly_ad_prices for this family{block}"
             )
         return f"family + price present in extraction but no tracker price for this week{block}"
 
@@ -304,7 +304,7 @@ def detect_for_feed(
     family_filter: str | None,
 ) -> list[Candidate]:
     if not feed.ts_path.is_file():
-        print(f"Warning: {feed.ts_path} missing — skipping {feed.label}")
+        print(f"Warning: {feed.ts_path} missing, skipping {feed.label}")
         return []
     prices = parse_prices_ts(feed.ts_path, feed.ts_prices_key)
     tracked_weeks = {wk for weeks in prices.values() for wk in weeks}
@@ -420,7 +420,7 @@ def main(argv: list[str] | None = None) -> int:
     mediums = [c for c in all_candidates if c.severity == "medium"]
     infos = [c for c in all_candidates if c.severity == "info"]
     with md_path.open("w", encoding="utf-8") as handle:
-        handle.write(f"# Missed weekly-ad deal candidates — {out_date}\n\n")
+        handle.write(f"# Missed weekly-ad deal candidates: {out_date}\n\n")
         handle.write(
             f"- **High** (in raw, not promoted to split): {len(highs)}\n"
             f"- **Medium** (in split, no TS price, not audit-rejected): {len(mediums)}\n"
@@ -433,7 +433,7 @@ def main(argv: list[str] | None = None) -> int:
             for c in group:
                 price = f"${c.candidate_price:.2f}" if c.candidate_price is not None else "?"
                 handle.write(
-                    f"- `{c.family_id}` ({c.feed}, {c.week}): {price} — "
+                    f"- `{c.family_id}` ({c.feed}, {c.week}): {price}: "
                     f"{c.example_text!r}\n  - {c.reason}\n"
                 )
             handle.write("\n")
@@ -446,7 +446,7 @@ def main(argv: list[str] | None = None) -> int:
     for c in (highs + mediums)[:25]:
         price = f"${c.candidate_price:.2f}" if c.candidate_price is not None else "?"
         print(
-            f"  [{c.severity}] {c.feed} {c.week} {c.family_id} {price} — {c.example_text!r}"
+            f"  [{c.severity}] {c.feed} {c.week} {c.family_id} {price}: {c.example_text!r}"
         )
 
     if args.fail_on_high and highs:

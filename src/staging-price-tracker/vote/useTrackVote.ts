@@ -18,7 +18,7 @@ type SubmitSuggestionResult = {
 };
 
 const MODERATION_SUCCESS_MESSAGE =
-  "Thanks — we'll review this before adding it to the voting list.";
+  "Thanks. We'll review this before adding it to the voting list.";
 
 function formatError(error: unknown): string {
   const message =
@@ -246,7 +246,7 @@ export function useTrackVote() {
           setVotedItems((current) => new Set([...current, normalized]));
           setCustomItem("");
           setStatusTone("success");
-          setStatusMessage("Vote counted — thanks!");
+          setStatusMessage("Vote counted. Thanks!");
         } catch (error) {
           setItems(previousItems);
           throw error;

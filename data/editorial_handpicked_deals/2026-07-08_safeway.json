@@ -11,7 +11,7 @@
       "ad_price": "$5/lb",
       "availability": "Friday-only",
       "source_page": 4,
-      "raw_offer": "Waterfront Bistro Large Raw Shrimp, 31–40 ct, 1 lb bag, frozen — $5/lb",
+      "raw_offer": "Waterfront Bistro Large Raw Shrimp, 31–40 ct, 1 lb bag, frozen: $5/lb",
       "badge": "FRIDAY",
       "subtitle": "Friday-only: Frozen shrimp is about 30% cheaper than Costco.",
       "content_note": "Use as editorial highlight only."
@@ -22,7 +22,7 @@
       "effective_price": "$1 each",
       "availability": "Friday-only",
       "source_page": 4,
-      "raw_offer": "Red, orange, yellow or green bell peppers — 5 for $5",
+      "raw_offer": "Red, orange, yellow or green bell peppers: 5 for $5",
       "badge": "FRIDAY",
       "subtitle": "Friday-only: Bell peppers are about 30% cheaper than Costco.",
       "content_note": "Use as editorial highlight only."
@@ -32,7 +32,7 @@
       "ad_price": "$5 each",
       "availability": "Friday-only",
       "source_page": 4,
-      "raw_offer": "Nestlé Drumstick, 8–20 ct, selected varieties — $5 each",
+      "raw_offer": "Nestlé Drumstick, 8–20 ct, selected varieties: $5 each",
       "badge": "FRIDAY",
       "subtitle": "Friday-only: about 17% cheaper than Costco, plus a variety win.",
       "content_note": "Do not label this as chicken drumsticks. Always say Nestlé Drumstick ice cream."
@@ -43,7 +43,7 @@
       "effective_price": "$2.50 each",
       "availability": "Friday-only",
       "source_page": 4,
-      "raw_offer": "Doritos, Tostitos, Frito-Lay, Frito-Lay Simply Snacks — 2 for $5",
+      "raw_offer": "Doritos, Tostitos, Frito-Lay, Frito-Lay Simply Snacks: 2 for $5",
       "badge": "VARIETY",
       "subtitle": "Friday-only: close to Costco pricing, but Safeway wins on smaller bags and flavor variety.",
       "content_note": "Do not claim huge Costco savings; this is mostly a smaller-bag / variety win."
@@ -53,9 +53,9 @@
       "ad_price": "$0.99 each",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "Hass Avocado — 99¢ each member price",
+      "raw_offer": "Hass Avocado: 99¢ each member price",
       "badge": "DEAL",
-      "subtitle": "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
+      "subtitle": "99¢ each, about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
       "content_note": "Good lead item."
     },
     {
@@ -63,7 +63,7 @@
       "ad_price": "$2.99 each",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "Strawberries 1 lb, Blueberries pint, Raspberries or Blackberries 6 oz — $2.99 each member price",
+      "raw_offer": "Strawberries 1 lb, Blueberries pint, Raspberries or Blackberries 6 oz: $2.99 each member price",
       "badge": "PRODUCE",
       "subtitle": "Best on blackberries at about 30% cheaper than Costco; raspberries and blueberries also look 15–20% cheaper.",
       "content_note": "Mention blackberries as the strongest comparison."
@@ -73,7 +73,7 @@
       "ad_price": "$0.99 each / $3.49 4-pack",
       "availability": "Full week",
       "source_page": 3,
-      "raw_offer": "Chobani Flip or Protein Yogurt — 99¢ each; Chobani/Oikos/Danone-style 4-pack — $3.49",
+      "raw_offer": "Chobani Flip or Protein Yogurt: 99¢ each; Chobani/Oikos/Danone-style 4-pack: $3.49",
       "badge": "DEAL",
       "subtitle": "Cheaper than Costco; with the 4-pack deal, Costco's 16-pack price gets you almost 22 at Safeway.",
       "content_note": "There are two Chobani-related deals; preserve both prices if possible."
@@ -83,7 +83,7 @@
       "ad_price": "$7.99/lb",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "USDA Choice Beef Chuck Short Ribs — $7.99/lb member price",
+      "raw_offer": "USDA Choice Beef Chuck Short Ribs: $7.99/lb member price",
       "badge": "MEAT",
       "subtitle": "Not an exact same-grade match, but Safeway looks cheaper across the comparable Costco short rib options.",
       "content_note": "Use soft wording; grade/cut may not be exact."
@@ -93,9 +93,9 @@
       "ad_price": "$2.99/lb",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "Signature Select Pork Shoulder Country Style Ribs or Blade Steak Pork Spareribs — $2.99/lb member price",
+      "raw_offer": "Signature Select Pork Shoulder Country Style Ribs or Blade Steak Pork Spareribs: $2.99/lb member price",
       "badge": "MEAT",
-      "subtitle": "About 21% cheaper than Costco — one of the stronger meat-counter comparisons.",
+      "subtitle": "About 21% cheaper than Costco, one of the stronger meat-counter comparisons.",
       "content_note": "Use as pork shoulder/country-style ribs, not generic ribs."
     },
     {
@@ -103,7 +103,7 @@
       "ad_price": "$4.99 each",
       "availability": "Full week",
       "source_page": 6,
-      "raw_offer": "Sargento String or Stick Cheese 9–12 oz or Shareables 6–8 oz — $4.99 member price",
+      "raw_offer": "Sargento String or Stick Cheese 9–12 oz or Shareables 6–8 oz: $4.99 member price",
       "badge": "DEAL",
       "subtitle": "Down to nearly a third of regular retail pricing.",
       "content_note": "This is a retail-price highlight more than a Costco comparison."
@@ -113,7 +113,7 @@
       "ad_price": "$3.49 each when you buy 2",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "Nabisco Family Size Oreo Cookies 10.68–17.2 oz or Snack Crackers 6.5–13.7 oz — $3.49 each when you buy 2",
+      "raw_offer": "Nabisco Family Size Oreo Cookies 10.68–17.2 oz or Snack Crackers 6.5–13.7 oz: $3.49 each when you buy 2",
       "badge": "SNACKS",
       "subtitle": "Good time to buy Oreos; the smaller Safeway buy is close enough to Costco that variety matters.",
       "content_note": "Do not mix this with Nabisco single-serve snack packs unless separately verified."
@@ -123,7 +123,7 @@
       "ad_price": "$3.49 each when you buy 2",
       "availability": "Full week",
       "source_page": 1,
-      "raw_offer": "Nabisco Family Size Oreo Cookies 10.68–17.2 oz or Snack Crackers 6.5–13.7 oz — $3.49 each when you buy 2",
+      "raw_offer": "Nabisco Family Size Oreo Cookies 10.68–17.2 oz or Snack Crackers 6.5–13.7 oz: $3.49 each when you buy 2",
       "badge": "VARIETY",
       "subtitle": "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety.",
       "content_note": "This can be merged with the Oreo/Nabisco card if the UI feels too crowded."

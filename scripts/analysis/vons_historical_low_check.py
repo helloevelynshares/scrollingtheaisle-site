@@ -753,7 +753,7 @@ def write_summary_md(
         labels["manual_review"],
     ]
     lines = [
-        f"# {retailer_label} historical-low summary — week of {current_week_start}",
+        f"# {retailer_label} historical-low summary, week of {current_week_start}",
         "",
         f"**Market:** {market_label}",
         f"**Retailer:** {retailer_label}",
@@ -873,13 +873,13 @@ def main() -> int:
         med_label = f"{med}%" if med is not None else "n/a"
         if price is not None:
             print(
-                f"{idx:2}. {row.get('display_name')} — "
-                f"{row.get('historical_label')} — "
+                f"{idx:2}. {row.get('display_name')}: "
+                f"{row.get('historical_label')}: "
                 f"${price:.2f}/{unit} "
                 f"(median save {med_label}, Costco {costco_label})"
             )
         else:
-            print(f"{idx:2}. {row.get('display_name')} — manual review")
+            print(f"{idx:2}. {row.get('display_name')}, manual review")
     return 0
 
 

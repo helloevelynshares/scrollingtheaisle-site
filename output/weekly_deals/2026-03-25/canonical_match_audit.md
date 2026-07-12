@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-03-25 to 2026-03-31
+# Canonical match audit: 2026-03-25 to 2026-03-31
 
-Generated: 2026-07-12T18:28:35.501037+00:00
+Generated: 2026-07-12T23:45:50.311920+00:00
 
 ## Summary
 
@@ -15,28 +15,28 @@ Generated: 2026-07-12T18:28:35.501037+00:00
 
 ### Graph preview changes
 
-- `ritz_crackers` (Safeway): blocked $2.49 — hard negative keyword/pattern hit: chips ahoy
-- `ritz_crackers` (Safeway): blocked $2.49 — hard negative keyword/pattern hit: chips ahoy
+- `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: chips ahoy
+- `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: chips ahoy
 
 ### Blocked from tracker graph
 
-- `ritz_crackers` (Safeway) — **rejected**: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49
+- `ritz_crackers` (Safeway): **rejected**: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49
   - Reason: hard negative keyword/pattern hit: chips ahoy
   - Hard negatives: chips ahoy
-- `ritz_crackers` (Safeway) — **rejected**: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49
+- `ritz_crackers` (Safeway): **rejected**: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49
   - Reason: hard negative keyword/pattern hit: chips ahoy
   - Hard negatives: chips ahoy
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola' @ $None
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola' @ $None
   - Reason: confidence 0.25 < min 0.70
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola' @ $None
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola' @ $None
   - Reason: confidence 0.25 < min 0.70
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `ritz_crackers`: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49 — hard negative keyword/pattern hit: chips ahoy
-- `ritz_crackers`: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49 — hard negative keyword/pattern hit: chips ahoy
+- `ritz_crackers`: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49: hard negative keyword/pattern hit: chips ahoy
+- `ritz_crackers`: 'Ritz Crackers 7.1 to 13.7 oz, Chips Ahoy! Cookies 7 to 13 oz' @ $2.49: hard negative keyword/pattern hit: chips ahoy
 
 ## Accepted matches
 

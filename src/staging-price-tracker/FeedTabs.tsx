@@ -5,7 +5,7 @@ type Props = {
   onChange: (feedId: string) => void;
 };
 
-/** Compact feed selector — feed_id controls which regional price data is shown. */
+/** Compact feed selector; feed_id controls which regional price data is shown. */
 export function FeedTabs({ activeFeedId, onChange }: Props) {
   return (
     <div

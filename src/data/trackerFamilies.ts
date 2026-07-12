@@ -1,5 +1,5 @@
 /**
- * Curated tracker families — additive to the 18 single-SKU canonical products.
+ * Curated tracker families; additive to the 18 single-SKU canonical products.
  * Historical single-SKU rows (e.g. haagen_dazs_ice_cream) are never removed.
  */
 export type TrackerType = "single_sku" | "brand_family" | "deal_family";

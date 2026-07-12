@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-05-12 to 2026-05-19
+# Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-12T18:28:35.866703+00:00
+Generated: 2026-07-12T23:45:50.660093+00:00
 
 ## Summary
 
@@ -13,21 +13,21 @@ Generated: 2026-07-12T18:28:35.866703+00:00
 
 ### All-time low changes
 
-- `cheetos_regular_bags` (Safeway): $4.99 — Cheetos, Tostitos, Fritos
-- `hass_avocados_each` (Safeway): $1.25 — Hass Avocado
-- `cheetos_regular_bags` (Safeway): $4.99 — Cheetos, Tostitos, Fritos
-- `hass_avocados_each` (Safeway): $1.25 — Hass Avocado
+- `cheetos_regular_bags` (Safeway): $4.99: Cheetos, Tostitos, Fritos
+- `hass_avocados_each` (Safeway): $1.25: Hass Avocado
+- `cheetos_regular_bags` (Safeway): $4.99: Cheetos, Tostitos, Fritos
+- `hass_avocados_each` (Safeway): $1.25: Hass Avocado
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Safeway): blocked $1.99 — ambiguous match
-- `lays_potato_chips_regular` (Safeway): blocked $1.99 — ambiguous match
+- `lays_potato_chips_regular` (Safeway): blocked $1.99: ambiguous match
+- `lays_potato_chips_regular` (Safeway): blocked $1.99: ambiguous match
 
 ### Blocked from tracker graph
 
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
   - Reason: ambiguous match
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
   - Reason: ambiguous match
 
 ## Accepted matches
@@ -45,7 +45,7 @@ Generated: 2026-07-12T18:28:35.866703+00:00
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice 52-oz. Selected varieties.' @ $8.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `dreyers_tubs` (Safeway): "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct." @ $2.99 (confidence 0.70)
   - Display: Dreyer's ice cream
@@ -93,7 +93,7 @@ Generated: 2026-07-12T18:28:35.866703+00:00
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice 52-oz. Selected varieties.' @ $8.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `dreyers_tubs` (Safeway): "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct." @ $2.99 (confidence 0.70)
   - Display: Dreyer's ice cream

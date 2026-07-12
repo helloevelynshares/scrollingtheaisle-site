@@ -48,7 +48,7 @@ STANDARD_RITZ_LED_ROW = {
 
 EXPECTED_SAFEWAY_BLURB = (
     "Wheat Thins, Triscuit, and Chicken in a Biskit family-size boxes are $3.49 "
-    "this week — the app labels it as Nabisco family-size snack crackers, but "
+    "this week, the app labels it as Nabisco family-size snack crackers, but "
     "those are the actual eligible items."
 )
 

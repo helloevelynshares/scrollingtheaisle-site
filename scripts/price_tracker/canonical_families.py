@@ -1,4 +1,4 @@
-"""Load and validate data/canonical_tracker_families.yaml — source of truth for tracker families."""
+"""Load and validate data/canonical_tracker_families.yaml, source of truth for tracker families."""
 
 from __future__ import annotations
 
@@ -106,8 +106,8 @@ class TrackerFamily:
 # words to appear between adjacent words of a multi-word include/exclude phrase
 # so the phrase still matches, WITHOUT opening matching up to arbitrary words
 # (which would create cross-product false matches). The list is intentionally
-# limited to non-discriminating qualifiers — no brand names, product nouns,
-# connectors ("or"/"with"), or digits — so it cannot bridge two different
+# limited to non-discriminating qualifiers, no brand names, product nouns,
+# connectors ("or"/"with"), or digits, so it cannot bridge two different
 # products. keep_separate_from patterns get the same treatment, so exclusions
 # stay at least as strong as before.
 QUALIFIER_WORDS: tuple[str, ...] = (
@@ -151,7 +151,7 @@ def phrase_to_pattern(phrase: str) -> str:
     if not text:
         return r"$^"
     # Size ranges like "5–13 oz" → flexible dash
-    text = text.replace("–", "-").replace("—", "-")
+    text = text.replace("–", "-").replace("n/a", "-")
     parts = re.split(r"(\d+(?:\.\d+)?\s*-\s*\d+(?:\.\d+)?)", text)
     escaped_parts: list[str] = []
     for part in parts:

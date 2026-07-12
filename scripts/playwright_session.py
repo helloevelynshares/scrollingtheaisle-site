@@ -1,4 +1,4 @@
-"""Playwright session helpers — inject Albertsons-family cookies from scripts/.env."""
+"""Playwright session helpers, inject Albertsons-family cookies from scripts/.env."""
 
 from __future__ import annotations
 
@@ -67,20 +67,20 @@ def validate_cookie_for_store(cookie_header: str, store: Any) -> list[str]:
     expected = store.banner.lower()
     if banner and banner != expected:
         warnings.append(
-            f"Cookie banner is {banner!r} but {store.host} expects {expected!r} — "
+            f"Cookie banner is {banner!r} but {store.host} expects {expected!r}: "
             f"copy Cookie from DevTools on {store.host}, not another Albertsons site."
         )
     if expected == "vons" and "visid_incap_1610353" in cookie_header:
         warnings.append(
-            "Cookie looks like safeway.com (visid_incap_1610353) — set VONS_COOKIE from vons.com pgmsearch."
+            "Cookie looks like safeway.com (visid_incap_1610353), set VONS_COOKIE from vons.com pgmsearch."
         )
     if expected == "safeway" and "visid_incap_1610354" in cookie_header:
         warnings.append(
-            "Cookie looks like vons.com (visid_incap_1610354) — set SAFEWAY_COOKIE from safeway.com pgmsearch."
+            "Cookie looks like vons.com (visid_incap_1610354), set SAFEWAY_COOKIE from safeway.com pgmsearch."
         )
     if not banner and store.key == "vons":
         warnings.append(
-            f"Cookie missing {BANNER_COOKIE} — paste a fresh Cookie header from {store.host} pgmsearch."
+            f"Cookie missing {BANNER_COOKIE}, paste a fresh Cookie header from {store.host} pgmsearch."
         )
     return warnings
 
@@ -101,7 +101,7 @@ def resolve_store_cookie_header(store: Any) -> tuple[str | None, str | None]:
 def wait_for_enter(prompt: str) -> None:
     if not sys.stdin.isatty():
         logger.warning(
-            "%s (non-interactive terminal — continuing after 15s; use --headful in a real terminal)",
+            "%s (non-interactive terminal, continuing after 15s; use --headful in a real terminal)",
             prompt,
         )
         import time
@@ -111,7 +111,7 @@ def wait_for_enter(prompt: str) -> None:
     try:
         input(prompt)
     except EOFError:
-        logger.warning("No stdin — continuing without pause")
+        logger.warning("No stdin, continuing without pause")
 
 
 def pause_for_manual_setup(store: Any, *, manual_session: bool) -> None:
@@ -150,7 +150,7 @@ def apply_store_cookies_to_context(
     cookie_header, source_env = resolve_store_cookie_header(store)
     if not cookie_header:
         logger.warning(
-            "No %s in scripts/.env — search may hang until Playwright/api timeout. "
+            "No %s in scripts/.env, search may hang until Playwright/api timeout. "
             "Paste Cookie from Chrome DevTools → Network → pgmsearch on %s.",
             store.cookie_env,
             store.host,
@@ -161,7 +161,7 @@ def apply_store_cookies_to_context(
         logger.warning(warning)
     if source_env and source_env != store.cookie_env:
         logger.warning(
-            "Using %s because %s is unset — prefer a store-specific cookie.",
+            "Using %s because %s is unset, prefer a store-specific cookie.",
             source_env,
             store.cookie_env,
         )
@@ -244,7 +244,7 @@ def apply_env_cookies_to_context(
     *,
     use_env_cookies: bool = True,
 ) -> int:
-    """Safeway wrapper — kept for existing seed scripts."""
+    """Safeway wrapper, kept for existing seed scripts."""
     from albertsons_store import SAFEWAY_BAY_AREA
 
     return apply_store_cookies_to_context(

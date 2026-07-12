@@ -1,4 +1,4 @@
-"""Centralized Costco warehouse mapping — single source for Python pipeline."""
+"""Centralized Costco warehouse mapping, single source for Python pipeline."""
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ def warehouse_label(warehouse: str) -> str:
 
 
 def warehouse_for_grocery_feed(feed_id: str) -> str | None:
-    """Return paired Costco warehouse for a grocery feed — never cross-fallback."""
+    """Return paired Costco warehouse for a grocery feed, never cross-fallback."""
     return feed_id_to_warehouse(feed_id)
 
 

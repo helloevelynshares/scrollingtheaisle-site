@@ -123,7 +123,7 @@ def main() -> None:
     for cid, row in sorted(rank1.items()):
         raw_price = parse_price(row.get("price", ""))
         price = effective_price(cid, row.get("product_name", ""), raw_price) if raw_price is not None else None
-        print(f"{cid}: {price} — {row.get('product_name', '')[:60]}")
+        print(f"{cid}: {price}: {row.get('product_name', '')[:60]}")
 
     if args.merge_fallback:
         merge_into_fallback(rank1)

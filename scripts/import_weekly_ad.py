@@ -157,7 +157,7 @@ def run_extraction(feed_key: str, pdf_name: str) -> None:
         if split_csv.is_file():
             print(
                 f"Warning: extraction exited {result.returncode} "
-                f"(often summary_report.py) but {split_csv.name} exists — continuing"
+                f"(often summary_report.py) but {split_csv.name} exists, continuing"
             )
         else:
             raise subprocess.CalledProcessError(result.returncode, cmd)

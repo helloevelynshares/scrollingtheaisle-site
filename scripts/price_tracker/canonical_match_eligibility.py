@@ -1,4 +1,4 @@
-"""Canonical match eligibility — gate weekly ad prices before tracker updates."""
+"""Canonical match eligibility, gate weekly ad prices before tracker updates."""
 
 from __future__ import annotations
 
@@ -250,7 +250,7 @@ def evaluate_canonical_match(
     meta = _family_metadata(family)
 
     if rules is None:
-        # No eligibility rules — accept legacy pattern match (with basic price guard).
+        # No eligibility rules, accept legacy pattern match (with basic price guard).
         conf = CONFIDENCE_MAP.get(keyword_confidence or "medium", 0.7)
         return MatchEligibilityResult(
             match_decision="accepted",

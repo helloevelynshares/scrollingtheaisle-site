@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-05-20 to 2026-05-26
+# Canonical match audit: 2026-05-20 to 2026-05-26
 
-Generated: 2026-07-12T18:28:36.834874+00:00
+Generated: 2026-07-12T23:45:51.577381+00:00
 
 ## Summary
 
@@ -13,22 +13,22 @@ Generated: 2026-07-12T18:28:36.834874+00:00
 
 ### All-time low changes
 
-- `ribeye_steak` (Vons): $7.99 — Ribeye Steak
-- `salmon` (Vons): $7.97 — Fresh Atlantic Salmon Fillet
-- `ribeye_steak` (Vons): $7.99 — Ribeye Steak
-- `salmon` (Vons): $7.97 — Fresh Atlantic Salmon Fillet
+- `ribeye_steak` (Vons): $7.99: Ribeye Steak
+- `salmon` (Vons): $7.97: Fresh Atlantic Salmon Fillet
+- `ribeye_steak` (Vons): $7.99: Ribeye Steak
+- `salmon` (Vons): $7.97: Fresh Atlantic Salmon Fillet
 
 ### Graph preview changes
 
-- `haagen_dazs_pints` (Vons): blocked $4.5 — hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `haagen_dazs_pints` (Vons): blocked $4.5 — hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
 
 ### Blocked from tracker graph
 
-- `haagen_dazs_pints` (Vons) — **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
+- `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
   - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
   - Hard negatives: bars
-- `haagen_dazs_pints` (Vons) — **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
+- `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
   - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
   - Hard negatives: bars
 
@@ -36,8 +36,8 @@ Generated: 2026-07-12T18:28:36.834874+00:00
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5 — hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5 — hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
 
 ## Accepted matches
 

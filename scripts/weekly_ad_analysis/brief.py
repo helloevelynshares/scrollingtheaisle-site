@@ -11,15 +11,15 @@ def _section(title: str, deals: list[dict]) -> str:
     lines = [f"## {title}", ""]
     for deal in deals:
         lines.append(f"### {deal['canonical_name']}")
-        lines.append(f"- **Deal:** {deal.get('deal_price_display', '—')}")
+        lines.append(f"- **Deal:** {deal.get('deal_price_display', 'n/a')}")
         if deal.get("normalized_unit_price") is not None:
             lines.append(
                 f"- **Unit math:** ${deal['normalized_unit_price']:.2f} / {deal.get('normalized_unit', 'unit')}"
             )
         if deal.get("costco_match_name"):
             lines.append(
-                f"- **Costco:** {deal['costco_match_name']} — "
-                f"${deal.get('costco_unit_price', '—')} / {deal.get('costco_unit_type', 'unit')}"
+                f"- **Costco:** {deal['costco_match_name']}: "
+                f"${deal.get('costco_unit_price', 'n/a')} / {deal.get('costco_unit_type', 'unit')}"
             )
         if deal.get("historical_benchmark_bucket") not in {None, "insufficient history"}:
             lines.append(f"- **History:** {deal['historical_benchmark_bucket']}")
@@ -52,7 +52,7 @@ def render_video_brief(
     summary = (
         ", ".join(themes)
         if themes
-        else "A lighter week on tracked food staples — lean on the strongest matches only."
+        else "A lighter week on tracked food staples, lean on the strongest matches only."
     )
 
     friday = [d for d in ranked if d.get("is_five_dollar_friday")]
@@ -89,7 +89,7 @@ def render_video_brief(
     ]
 
     parts = [
-        f"# {market_display_name} weekly ad brief — week of {week_start}",
+        f"# {market_display_name} weekly ad brief, week of {week_start}",
         "",
         f"**Retailer:** {retailer_label}  ",
         f"**Ad week:** {week_start} → {week_end}",

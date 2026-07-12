@@ -84,7 +84,7 @@ def audit_bulk_transcripts() -> None:
     print("## bulk_transcripts.csv")
     found = next((p for p in BULK_TRANSCRIPTS if p.is_file()), None)
     if not found:
-        print("  (not found — add at repo root or data/raw/)")
+        print("  (not found, add at repo root or data/raw/)")
         print("  Run: python scripts/extract_tiktok_food_mentions.py\n")
         return
     with found.open(newline="", encoding="utf-8") as handle:

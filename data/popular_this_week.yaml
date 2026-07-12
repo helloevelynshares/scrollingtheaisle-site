@@ -1,6 +1,6 @@
 week: "2026-07-08"
 stores:
-  # Editorial/content shortlist only — NOT canonical tracker graph data.
+  # Editorial/content shortlist only. NOT canonical tracker graph data.
   # Only link tracker_family_ids when a clean canonical family already exists;
   # otherwise leave empty so the card renders as pure editorial copy.
   safeway:
@@ -8,8 +8,8 @@ stores:
       tracker_family_ids:
         - hass_avocados_each
       badge: DEAL
-      subtitle: "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
-      reason: "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
+      subtitle: "99¢ each, about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
+      reason: "99¢ each, about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway."
       display_order: 1
     - title: Berries
       tracker_family_ids: []
@@ -44,8 +44,8 @@ stores:
     - title: Pork shoulder ribs
       tracker_family_ids: []
       badge: MEAT
-      subtitle: "About 21% cheaper than Costco — one of the stronger meat-counter comparisons."
-      reason: "About 21% cheaper than Costco — one of the stronger meat-counter comparisons."
+      subtitle: "About 21% cheaper than Costco, one of the stronger meat-counter comparisons."
+      reason: "About 21% cheaper than Costco, one of the stronger meat-counter comparisons."
       display_order: 7
     - title: Oreo / Nabisco snacks
       tracker_family_ids:
@@ -80,10 +80,10 @@ stores:
       subtitle: "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety."
       reason: "Costco may be a little cheaper on bulk, but with a gap under 10%, Safeway wins on smaller buy and variety."
       display_order: 12
-  # Strategy (Jul 8–14): Start with $5 Friday — especially Cheez-Its and Post cereal.
+  # Strategy (Jul 8–14): Start with $5 Friday, especially Cheez-Its and Post cereal.
   # Use Buy 4 Mix & Match for Ritz if you want smaller boxes near Costco pricing.
   # Grab clear Costco-beaters like blueberries, cantaloupe, and Chobani.
-  # For Game Time Favorites, hit $20 so the extra $5 comes off — Nature Valley is the cleanest example.
+  # For Game Time Favorites, hit $20 so the extra $5 comes off. Nature Valley is the cleanest example.
   vons:
     - title: Cheez-It crackers
       tracker_family_ids:
@@ -109,8 +109,8 @@ stores:
       tracker_family_ids:
         - sliced_or_shredded_cheese_6_8oz
       badge: FRIDAY
-      subtitle: "Lucerne cheese is also in the 3-for-$5 Friday section — an easy add-on if you're already doing the Cheez-It/Post cereal deal."
-      reason: "Lucerne cheese is also in the 3-for-$5 Friday section — an easy add-on if you're already doing the Cheez-It/Post cereal deal."
+      subtitle: "Lucerne cheese is also in the 3-for-$5 Friday section, an easy add-on if you're already doing the Cheez-It/Post cereal deal."
+      reason: "Lucerne cheese is also in the 3-for-$5 Friday section, an easy add-on if you're already doing the Cheez-It/Post cereal deal."
       price: "3 for $5"
       availability: "Friday-only"
       friday_only: true

@@ -1,5 +1,5 @@
 /**
- * Homepage hub — curated popular picks (Safeway / Vons toggle).
+ * Homepage hub: curated popular picks (Safeway / Vons toggle).
  * Price data: data/homepage-preview.generated.json (npm run generate:homepage-preview)
  */
 
@@ -25,7 +25,7 @@ const VIEW_CONFIG = {
     title: "Scrolling the Aisle's highlights of the week",
     lead: "Hand-picked deals I'm watching at Vons this week.",
     strategy:
-      "This week's Vons strategy: start with $5 Friday, especially Cheez-Its and Post cereal; use Buy 4 Mix & Match for Ritz if you want smaller boxes near Costco pricing; then grab the clear Costco-beaters like blueberries, cantaloupe, and Chobani. For the Game Time Favorites promo, make sure you hit $20 so the extra $5 comes off — Nature Valley is the cleanest example.",
+      "This week's Vons strategy: start with $5 Friday, especially Cheez-Its and Post cereal; use Buy 4 Mix & Match for Ritz if you want smaller boxes near Costco pricing; then grab the clear Costco-beaters like blueberries, cantaloupe, and Chobani. For the Game Time Favorites promo, make sure you hit $20 so the extra $5 comes off. Nature Valley is the cleanest example.",
     picksKey: "popularPicksVons",
     store: "Vons",
     trackerUrl: TRACKER_URLS.vons,
@@ -131,7 +131,7 @@ function renderCategoryPick(pick) {
 
 function renderPicksReport(picks) {
   if (picks.length === 0) {
-    return `<p class="hub-empty">Weekly picks loading soon — check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;
+    return `<p class="hub-empty">Weekly picks loading soon. Check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;
   }
 
   const groups = groupPicksByCategory(picks);
@@ -153,6 +153,13 @@ function renderPicksReport(picks) {
   return `<div class="hub-picks-cat-columns">${sections.join("")}</div>`;
 }
 
+function picksExploreHelpers() {
+  return {
+    escapeHtml,
+    TRACKER_URL,
+  };
+}
+
 function renderPicksGrid() {
   const grid = document.getElementById("picks-grid");
   const titleEl = document.getElementById("picks-title");
@@ -169,6 +176,12 @@ function renderPicksGrid() {
     const strategy = config.strategy ?? "";
     strategyEl.textContent = strategy;
     strategyEl.hidden = !strategy;
+  }
+
+  // Width-layout exploration (homepage-picks-width-explore/). Remove to restore category report.
+  if (window.STAPicksWidthExplore?.renderInto) {
+    window.STAPicksWidthExplore.renderInto(grid, picks, picksExploreHelpers());
+    return;
   }
 
   grid.className = "hub-picks-report";
@@ -203,7 +216,7 @@ async function initHomepage() {
   initStoreSuggestModule();
 }
 
-/* —— Store vote module (homepage hero) —— */
+/* Store vote module (homepage hero) */
 
 /**
  * @typedef {{
@@ -600,12 +613,12 @@ async function handleStoreFormSubmit(event) {
         renderStoreChips();
       }
       form.reset();
-      showStoreStatus("Vote counted — thanks!");
+      showStoreStatus("Vote counted. Thanks!");
       return;
     }
 
     form.reset();
-    showStoreStatus("Thanks — we'll review this before adding it to the voting list.");
+    showStoreStatus("Thanks. We'll review this before adding it to the voting list.");
   } catch (error) {
     showStoreStatus(formatStoreVoteError(error), true);
   } finally {
@@ -640,6 +653,11 @@ async function initStoreSuggestModule() {
     renderStoreChips();
   }
 }
+
+/** Hook for homepage-picks-width-explore/ to re-render after layout version changes. */
+window.STAHomepagePicks = {
+  rerender: renderPicksGrid,
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   void initHomepage();

@@ -1,4 +1,4 @@
-/** Costco warehouse keys — normalized from CSV filename slugs (san-francisco → san_francisco). */
+/** Costco warehouse keys; normalized from CSV filename slugs (san-francisco → san_francisco). */
 export type CostcoRegion = "san_francisco" | "tustin" | "seattle";
 
 /** Grocery tracker tabs that compare against a regional Costco warehouse. */

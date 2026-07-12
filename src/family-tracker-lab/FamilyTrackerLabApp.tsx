@@ -103,7 +103,7 @@ export function FamilyTrackerLabApp() {
             are grouped unless the price difference matters.
           </p>
           <p className="ftl-lead ftl-lead--secondary">
-            Local/staging only — mock Safeway family deals, not connected to
+            Local/staging only. Mock Safeway family deals, not connected to
             Supabase or the live price tracker. Delete{" "}
             <code>src/family-tracker-lab/</code> and{" "}
             <code>family-tracker-lab/</code> when done exploring.

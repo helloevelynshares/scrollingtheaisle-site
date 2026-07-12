@@ -5,7 +5,7 @@ Seed Safeway product search for canonical grocery items (web pgmsearch API).
 Single-query test (Chrome-like headers recommended):
   python scripts/seed_safeway_search.py --query oreo --browser-like --debug
 
-Full canonical seed (requires scripts/.env — never commit):
+Full canonical seed (requires scripts/.env, never commit):
   python scripts/seed_safeway_search.py --browser-like
 
 Timeout: set SAFEWAY_TIMEOUT_SECONDS in scripts/.env (legacy: SAFEWAY_TIMEOUT_SEC).
@@ -43,7 +43,7 @@ def configure_logging(verbose: bool, debug: bool) -> None:
     level = logging.DEBUG if verbose or debug else logging.INFO
     logging.basicConfig(
         level=level,
-        format="%(asctime)s %(levelname)s %(name)s — %(message)s",
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
         datefmt="%H:%M:%S",
     )
 
@@ -113,7 +113,7 @@ def main() -> int:
     missing = config.missing_fields()
     if missing:
         log.error(
-            "Missing required .env value(s): %s — copy scripts/.env.example to scripts/.env",
+            "Missing required .env value(s): %s, copy scripts/.env.example to scripts/.env",
             ", ".join(missing),
         )
         return 1
@@ -130,7 +130,7 @@ def main() -> int:
         log.info("Using browser-like header set")
         if not config.sec_ch_ua:
             log.warning(
-                "SAFEWAY_SEC_CH_UA not set — sec-ch-ua omitted; "
+                "SAFEWAY_SEC_CH_UA not set, sec-ch-ua omitted; "
                 "set it to match your Chrome user-agent for best results"
             )
 
@@ -195,7 +195,7 @@ def main() -> int:
                 log.error("%s", timeout_message(timeout_sec, query=outcome.query))
             elif outcome.error == "auth":
                 log.error(
-                    "Safeway auth/session failure for q=%r — refresh SAFEWAY_COOKIE in scripts/.env",
+                    "Safeway auth/session failure for q=%r, refresh SAFEWAY_COOKIE in scripts/.env",
                     outcome.query,
                 )
 
@@ -206,7 +206,7 @@ def main() -> int:
                 out_file.write(json.dumps(record, ensure_ascii=False) + "\n")
         log.info("Wrote %s", output_path)
 
-    log.info("Done — %d success, %d failure", successes, failures)
+    log.info("Done: %d success, %d failure", successes, failures)
     return 0 if failures == 0 else 2
 
 

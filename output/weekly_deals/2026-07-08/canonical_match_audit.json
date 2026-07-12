@@ -1,9 +1,9 @@
 {
   "week_start": "2026-07-08",
   "week_end": "2026-07-14",
-  "generated_at": "2026-07-12T18:28:36.439303+00:00",
+  "generated_at": "2026-07-12T23:45:51.211340+00:00",
   "summary": {
-    "accepted": 48,
+    "accepted": 50,
     "rejected": 6,
     "manual_review": 4,
     "families_updated": [
@@ -23,6 +23,7 @@
       "chicken_breast_per_lb",
       "ritz_crackers",
       "cheez_it_crackers",
+      "simply_refrigerated_juice_lemonade",
       "strawberries_1_2lb",
       "eggs_dozen_normalized",
       "butter_16oz"
@@ -45,52 +46,52 @@
       {
         "family_id": "coca_cola_12packs",
         "feed": "Safeway",
-        "detail": "blocked $3.99 \u2014 confidence 0.40 < min 0.70"
+        "detail": "blocked $3.99: confidence 0.40 < min 0.70"
       },
       {
         "family_id": "butter_16oz",
         "feed": "Safeway",
-        "detail": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']"
+        "detail": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']"
       },
       {
         "family_id": "salmon",
         "feed": "Safeway",
-        "detail": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']"
+        "detail": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']"
       },
       {
         "family_id": "nabisco_snack_crackers",
         "feed": "Vons",
-        "detail": "blocked $2.49 \u2014 no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)"
+        "detail": "blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)"
       },
       {
         "family_id": "coca_cola_12packs",
         "feed": "Vons",
-        "detail": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']"
+        "detail": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']"
       },
       {
         "family_id": "coca_cola_12packs",
         "feed": "Safeway",
-        "detail": "blocked $3.99 \u2014 confidence 0.40 < min 0.70"
+        "detail": "blocked $3.99: confidence 0.40 < min 0.70"
       },
       {
         "family_id": "butter_16oz",
         "feed": "Safeway",
-        "detail": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']"
+        "detail": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']"
       },
       {
         "family_id": "salmon",
         "feed": "Safeway",
-        "detail": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']"
+        "detail": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']"
       },
       {
         "family_id": "nabisco_snack_crackers",
         "feed": "Vons",
-        "detail": "blocked $2.49 \u2014 no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)"
+        "detail": "blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)"
       },
       {
         "family_id": "coca_cola_12packs",
         "feed": "Vons",
-        "detail": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']"
+        "detail": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']"
       }
     ]
   },
@@ -438,7 +439,7 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Pillsbury refrigerated dough",
+      "display_name": "Pillsbury ready-to-bake dough",
       "subtitle": "8\u201316.3 oz cans/tubes",
       "manufacturer_family": null,
       "allowed_product_lines": [],
@@ -570,6 +571,32 @@
       "graph_preview_change": null,
       "display_name": "Pepsi",
       "subtitle": "12-pack, 12 fl oz cans",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    },
+    {
+      "week_start": "2026-07-08",
+      "week_end": "2026-07-14",
+      "feed": "Vons",
+      "family_id": "simply_refrigerated_juice_lemonade",
+      "offer_text": "Simply Juice 46-52 oz., +CRV Chobani 20g Protein Yogurt 4 ct. Frigo CheeseHeads String Cheese 6.3-12 oz. or Challenge Butter 13-16 oz. Selected varieties",
+      "price": 3.99,
+      "match_decision": "accepted",
+      "match_confidence": 0.7,
+      "match_reason": "No eligibility rules configured; pattern match accepted.",
+      "reject_reason": null,
+      "canonical_intent": null,
+      "ad_product_type": "bars_or_novelties",
+      "hard_negative_hits": [],
+      "output_class": "canonical_tracker_match",
+      "updated_tracker": true,
+      "all_time_low_change": false,
+      "graph_preview_change": null,
+      "display_name": "Simply juice",
+      "subtitle": "46\u201352 fl oz bottles",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -1075,7 +1102,7 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Pillsbury refrigerated dough",
+      "display_name": "Pillsbury ready-to-bake dough",
       "subtitle": "8\u201316.3 oz cans/tubes",
       "manufacturer_family": null,
       "allowed_product_lines": [],
@@ -1207,6 +1234,32 @@
       "graph_preview_change": null,
       "display_name": "Pepsi",
       "subtitle": "12-pack, 12 fl oz cans",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    },
+    {
+      "week_start": "2026-07-08",
+      "week_end": "2026-07-14",
+      "feed": "Vons",
+      "family_id": "simply_refrigerated_juice_lemonade",
+      "offer_text": "Simply Juice 46-52 oz., +CRV Chobani 20g Protein Yogurt 4 ct. Frigo CheeseHeads String Cheese 6.3-12 oz. or Challenge Butter 13-16 oz. Selected varieties",
+      "price": 3.99,
+      "match_decision": "accepted",
+      "match_confidence": 0.7,
+      "match_reason": "No eligibility rules configured; pattern match accepted.",
+      "reject_reason": null,
+      "canonical_intent": null,
+      "ad_product_type": "bars_or_novelties",
+      "hard_negative_hits": [],
+      "output_class": "canonical_tracker_match",
+      "updated_tracker": true,
+      "all_time_low_change": false,
+      "graph_preview_change": null,
+      "display_name": "Simply juice",
+      "subtitle": "46\u201352 fl oz bottles",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -1391,7 +1444,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
+      "graph_preview_change": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
       "display_name": "Butter",
       "subtitle": "16 oz sticks / quarters; normalize to 16 oz",
       "manufacturer_family": null,
@@ -1423,7 +1476,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
+      "graph_preview_change": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
       "display_name": "Salmon",
       "subtitle": "fresh salmon fillet",
       "manufacturer_family": null,
@@ -1453,7 +1506,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
+      "graph_preview_change": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,
@@ -1482,7 +1535,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
+      "graph_preview_change": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
       "display_name": "Butter",
       "subtitle": "16 oz sticks / quarters; normalize to 16 oz",
       "manufacturer_family": null,
@@ -1514,7 +1567,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
+      "graph_preview_change": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
       "display_name": "Salmon",
       "subtitle": "fresh salmon fillet",
       "manufacturer_family": null,
@@ -1544,7 +1597,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
+      "graph_preview_change": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,
@@ -1572,7 +1625,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.99 \u2014 confidence 0.40 < min 0.70",
+      "graph_preview_change": "blocked $3.99: confidence 0.40 < min 0.70",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,
@@ -1598,7 +1651,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)",
+      "graph_preview_change": "blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)",
       "display_name": "Wheat Thins, Triscuit & Chicken in a Biskit",
       "subtitle": "Nabisco family-size snack crackers, 11.5\u201314 oz",
       "manufacturer_family": "Nabisco",
@@ -1637,7 +1690,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.99 \u2014 confidence 0.40 < min 0.70",
+      "graph_preview_change": "blocked $3.99: confidence 0.40 < min 0.70",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,
@@ -1663,7 +1716,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)",
+      "graph_preview_change": "blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)",
       "display_name": "Wheat Thins, Triscuit & Chicken in a Biskit",
       "subtitle": "Nabisco family-size snack crackers, 11.5\u201314 oz",
       "manufacturer_family": "Nabisco",
@@ -1707,7 +1760,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
+      "graph_preview_change": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
       "display_name": "Butter",
       "subtitle": "16 oz sticks / quarters; normalize to 16 oz",
       "manufacturer_family": null,
@@ -1739,7 +1792,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
+      "graph_preview_change": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
       "display_name": "Salmon",
       "subtitle": "fresh salmon fillet",
       "manufacturer_family": null,
@@ -1769,7 +1822,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
+      "graph_preview_change": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,
@@ -1798,7 +1851,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $3.49 \u2014 hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
+      "graph_preview_change": "blocked $3.49: hard negative keyword/pattern hit: spread, 13\\s*to\\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']",
       "display_name": "Butter",
       "subtitle": "16 oz sticks / quarters; normalize to 16 oz",
       "manufacturer_family": null,
@@ -1830,7 +1883,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.99 \u2014 hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
+      "graph_preview_change": "blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \\b[234]\\s*oz\\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']",
       "display_name": "Salmon",
       "subtitle": "fresh salmon fillet",
       "manufacturer_family": null,
@@ -1860,7 +1913,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $0.99 \u2014 hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
+      "graph_preview_change": "blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']",
       "display_name": "Coca-Cola",
       "subtitle": "12-pack, 12 fl oz cans",
       "manufacturer_family": null,

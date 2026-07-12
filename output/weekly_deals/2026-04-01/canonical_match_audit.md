@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-04-01 to 2026-04-07
+# Canonical match audit: 2026-04-01 to 2026-04-07
 
-Generated: 2026-07-12T18:28:35.629413+00:00
+Generated: 2026-07-12T23:45:50.435428+00:00
 
 ## Summary
 
@@ -13,51 +13,51 @@ Generated: 2026-07-12T18:28:35.629413+00:00
 
 ### All-time low changes
 
-- `strawberries_1_2lb` (Safeway): $2.0 — Strawberries 2 lb. Raspberries
-- `mangoes_each` (Safeway): $0.97 — Mango
-- `philadelphia_cream_cheese` (Safeway): $1.99 — Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
-- `salmon` (Safeway): $4.99 — Fresh Atlantic Salmon Portion
-- `strawberries_1_2lb` (Safeway): $2.0 — Strawberries 2 lb. Raspberries
-- `mangoes_each` (Safeway): $0.97 — Mango
-- `philadelphia_cream_cheese` (Safeway): $1.99 — Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
-- `salmon` (Safeway): $4.99 — Fresh Atlantic Salmon Portion
+- `strawberries_1_2lb` (Safeway): $2.0: Strawberries 2 lb. Raspberries
+- `mangoes_each` (Safeway): $0.97: Mango
+- `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
+- `salmon` (Safeway): $4.99: Fresh Atlantic Salmon Portion
+- `strawberries_1_2lb` (Safeway): $2.0: Strawberries 2 lb. Raspberries
+- `mangoes_each` (Safeway): $0.97: Mango
+- `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
+- `salmon` (Safeway): $4.99: Fresh Atlantic Salmon Portion
 
 ### Graph preview changes
 
-- `nabisco_snack_crackers` (Safeway): blocked $1.67 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Safeway): blocked $2.79 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `haagen_dazs_pints` (Safeway): blocked $3.5 — hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `nabisco_snack_crackers` (Safeway): blocked $1.67 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Safeway): blocked $2.79 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `haagen_dazs_pints` (Safeway): blocked $3.5 — hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `nabisco_snack_crackers` (Safeway): blocked $1.67: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `nabisco_snack_crackers` (Safeway): blocked $1.67: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
 
 ### Blocked from tracker graph
 
-- `coca_cola_12packs` (Safeway) — **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
-- `haagen_dazs_pints` (Safeway) — **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
+- `haagen_dazs_pints` (Safeway): **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
   - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
   - Hard negatives: novelties
-- `coca_cola_12packs` (Safeway) — **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
-- `haagen_dazs_pints` (Safeway) — **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
+- `haagen_dazs_pints` (Safeway): **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
   - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
   - Hard negatives: novelties
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5 — hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5 — hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
 
 ## Accepted matches
 
@@ -83,7 +83,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $2.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `strawberries_1_2lb` (Safeway): 'Strawberries 2 lb. Raspberries' @ $2.0 (confidence 0.70)
   - Display: Strawberries
@@ -116,7 +116,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
 - `pillsbury_refrigerated_dough` (Safeway): 'Pillsbury Cinnamon Rolls, Grands! Biscuits or Crescent Rolls 8-13.9 oz. Selected varieties.' @ $2.49 (confidence 0.70)
-  - Display: Pillsbury refrigerated dough
+  - Display: Pillsbury ready-to-bake dough
   - Subtitle: 8–16.3 oz cans/tubes
 - `quest_bars` (Safeway): 'Quest Bars 4-12 ct' @ $0.69 (confidence 0.90)
   - Display: Quest bars
@@ -149,7 +149,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $2.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `strawberries_1_2lb` (Safeway): 'Strawberries 2 lb. Raspberries' @ $2.0 (confidence 0.70)
   - Display: Strawberries
@@ -182,7 +182,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
 - `pillsbury_refrigerated_dough` (Safeway): 'Pillsbury Cinnamon Rolls, Grands! Biscuits or Crescent Rolls 8-13.9 oz. Selected varieties.' @ $2.49 (confidence 0.70)
-  - Display: Pillsbury refrigerated dough
+  - Display: Pillsbury ready-to-bake dough
   - Subtitle: 8–16.3 oz cans/tubes
 - `quest_bars` (Safeway): 'Quest Bars 4-12 ct' @ $0.69 (confidence 0.90)
   - Display: Quest bars

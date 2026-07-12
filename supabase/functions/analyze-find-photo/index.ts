@@ -21,13 +21,13 @@ Return JSON with:
 Examples:
 For a photo showing Keebler Fudge Stripes Minis 10 pack with a 50% off sticker and regular price $7.99:
 item_name = Keebler Fudge Stripes Minis, 10 pack
-price = 50% off — reg. $7.99, approx. $3.99
+price = 50% off, reg. $7.99, approx. $3.99
 store = empty unless Safeway is visible/inferred from UI context
 notes = Club card price/clearance-style tag. 10 pouches, 10 oz total.`;
 
 const MOCK_EXTRACTION = {
   item_name: "Keebler Fudge Stripes Minis, 10 pack",
-  price: "50% off — reg. $7.99, approx. $3.99 (Club Card price)",
+  price: "50% off, reg. $7.99, approx. $3.99 (Club Card price)",
   store: "",
   location: "",
   notes:

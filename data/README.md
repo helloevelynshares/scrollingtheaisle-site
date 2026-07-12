@@ -1,4 +1,4 @@
-# Safeway price tracker — TikTok food SKU workflow
+# Safeway price tracker: TikTok food SKU workflow
 
 Shift from generic staples (`manual_canonical_50.csv`) to food SKUs aligned with TikTok performance.
 
@@ -45,4 +45,4 @@ bottled water, paper towels, toilet paper, dish soap, laundry detergent, shampoo
 - views ≥ 10,000 → priority **2.0**
 - views &lt; 10,000 → priority **1.0**
 
-No fuzzy matching in v1 — fill `accepted_pid` / `accepted_upc` in the ledger after reviewing candidates.
+No fuzzy matching in v1, fill `accepted_pid` / `accepted_upc` in the ledger after reviewing candidates.

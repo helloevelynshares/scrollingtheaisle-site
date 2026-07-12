@@ -1,4 +1,4 @@
-"""Weekly ad preview helpers — date-based active vs preview-only weeks."""
+"""Weekly ad preview helpers, date-based active vs preview-only weeks."""
 
 from __future__ import annotations
 

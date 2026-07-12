@@ -127,7 +127,7 @@ class TestKeywordSanityCheck(unittest.TestCase):
             "Lindt Truffles $11.99", self.ruffles
         )
         # Should fail because "Lindt Truffles" is in keep_separate_from, but
-        # the include tokens check also matters — the key thing is it's not a pass.
+        # the include tokens check also matters, the key thing is it's not a pass.
         self.assertFalse(ok)
 
     def test_unrelated_product_fails_keyword(self) -> None:

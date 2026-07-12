@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-06-10 to 2026-06-16
+# Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-12T18:28:36.044509+00:00
+Generated: 2026-07-12T23:45:50.830691+00:00
 
 ## Summary
 
@@ -13,43 +13,43 @@ Generated: 2026-07-12T18:28:36.044509+00:00
 
 ### All-time low changes
 
-- `cherries_per_lb` (Safeway): $5.99 — Red Cherries
-- `hass_avocados_each` (Safeway): $0.99 — Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `nature_valley_bars` (Safeway): $1.79 — Nature Valley Bars 5-6 ct.
-- `general_mills_cereal_regular` (Safeway): $1.79 — General Mills Cereal Bars 6.84-8.9 oz.
-- `cheetos_regular_bags` (Vons): $2.49 — Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
-- `tostitos_tortilla_chips` (Vons): $1.99 — Tostitos Tortilla Chips 9-13 oz
-- `pepsi_12packs` (Vons): $0.67 — Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
-- `dr_pepper_12packs` (Vons): $0.67 — Dr Pepper 6 pack, 16.9-oz. bot.
-- `cherries_per_lb` (Vons): $1.49 — Red Cherries
-- `cherries_per_lb` (Safeway): $5.99 — Red Cherries
-- `hass_avocados_each` (Safeway): $0.99 — Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `nature_valley_bars` (Safeway): $1.79 — Nature Valley Bars 5-6 ct.
-- `general_mills_cereal_regular` (Safeway): $1.79 — General Mills Cereal Bars 6.84-8.9 oz.
-- `cheetos_regular_bags` (Vons): $2.49 — Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
-- `tostitos_tortilla_chips` (Vons): $1.99 — Tostitos Tortilla Chips 9-13 oz
-- `pepsi_12packs` (Vons): $0.67 — Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
-- `dr_pepper_12packs` (Vons): $0.67 — Dr Pepper 6 pack, 16.9-oz. bot.
-- `cherries_per_lb` (Vons): $1.49 — Red Cherries
+- `cherries_per_lb` (Safeway): $5.99: Red Cherries
+- `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
+- `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
+- `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
+- `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
+- `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
+- `pepsi_12packs` (Vons): $0.67: Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
+- `dr_pepper_12packs` (Vons): $0.67: Dr Pepper 6 pack, 16.9-oz. bot.
+- `cherries_per_lb` (Vons): $1.49: Red Cherries
+- `cherries_per_lb` (Safeway): $5.99: Red Cherries
+- `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
+- `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
+- `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
+- `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
+- `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
+- `pepsi_12packs` (Vons): $0.67: Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
+- `dr_pepper_12packs` (Vons): $0.67: Dr Pepper 6 pack, 16.9-oz. bot.
+- `cherries_per_lb` (Vons): $1.49: Red Cherries
 
 ### Graph preview changes
 
-- `eggs_dozen_normalized` (Safeway): blocked $2.99 — ambiguous match
-- `eggs_dozen_normalized` (Safeway): blocked $2.99 — ambiguous match
+- `eggs_dozen_normalized` (Safeway): blocked $2.99: ambiguous match
+- `eggs_dozen_normalized` (Safeway): blocked $2.99: ambiguous match
 
 ### Blocked from tracker graph
 
-- `oreo_family_size` (Safeway) — **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
+- `oreo_family_size` (Safeway): **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
   - Reason: ad product type 'single_bottle' not in allowed types ['oreo', 'generic_nabisco_block']
-- `oreo_family_size` (Safeway) — **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
+- `oreo_family_size` (Safeway): **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
   - Reason: ad product type 'single_bottle' not in allowed types ['oreo', 'generic_nabisco_block']
-- `eggs_dozen_normalized` (Safeway) — **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
+- `eggs_dozen_normalized` (Safeway): **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
   - Reason: ambiguous match
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
   - Reason: confidence 0.10 < min 0.70
-- `eggs_dozen_normalized` (Safeway) — **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
+- `eggs_dozen_normalized` (Safeway): **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
   - Reason: ambiguous match
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
   - Reason: confidence 0.10 < min 0.70
 
 ## Accepted matches

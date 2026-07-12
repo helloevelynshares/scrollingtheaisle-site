@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T23:13:09.376Z",
+  "generatedAt": "2026-07-12T23:46:20.386Z",
   "popularWeekLabel": "Jul 8–Jul 14",
   "popularPicksSafeway": [
     {
@@ -10,7 +10,7 @@
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "DEAL",
-      "explanation": "99¢ each — about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
+      "explanation": "99¢ each, about 26% cheaper than Costco; for about Costco's 6-pack price, you can get roughly 8 at Safeway.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
@@ -88,7 +88,7 @@
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "MEAT",
-      "explanation": "About 21% cheaper than Costco — one of the stronger meat-counter comparisons.",
+      "explanation": "About 21% cheaper than Costco, one of the stronger meat-counter comparisons.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
@@ -194,7 +194,7 @@
       "unitPrice": "$2.99 · 6–8 oz packages",
       "badge": "Wait",
       "customBadge": "FRIDAY",
-      "explanation": "Lucerne cheese is also in the 3-for-$5 Friday section — an easy add-on if you're already doing the Cheez-It/Post cereal deal.",
+      "explanation": "Lucerne cheese is also in the 3-for-$5 Friday section, an easy add-on if you're already doing the Cheez-It/Post cereal deal.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": false,
       "onSale": false

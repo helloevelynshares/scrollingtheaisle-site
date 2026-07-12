@@ -74,7 +74,7 @@ function unitPriceDisplay(product: FeedProductView): string {
     return `${formatPrice(price)} · ${product.sizeLabel}`;
   }
 
-  return price != null ? formatPrice(price) : "—";
+  return price != null ? formatPrice(price) : "n/a";
 }
 
 function getBadge(product: FeedProductView): HomepageBadge {
@@ -133,14 +133,14 @@ function toPopularPick(
   const onSale = product ? isProductOnSale(product) : false;
   const current = product ? getCurrentPrice(product) : null;
   // Curated editorial cards carry a manual price string (effective_price/ad_price).
-  // Prefer it so handpicked deals never render a blank "—".
+  // Prefer it so handpicked deals never render a blank "n/a".
   const editorialPrice = (entry.price ?? "").trim();
 
   return {
     id: primaryId,
     name: entry.title,
     store: storeLabel,
-    price: editorialPrice || (current != null ? formatPrice(current) : "—"),
+    price: editorialPrice || (current != null ? formatPrice(current) : "n/a"),
     unitPrice: product ? unitPriceDisplay(product) : "",
     badge: product ? getBadge(product) : onSale ? "Stock up" : "About normal",
     customBadge: entry.badge || undefined,

@@ -136,7 +136,7 @@ class TestRobustPhraseMatching(unittest.TestCase):
         self.assertTrue(self._matches("Oreo cookies", "Oreo Cookies"))
 
     def test_non_qualifier_word_does_not_bridge(self) -> None:
-        # A non-qualifier word between brand and product must NOT match — this is
+        # A non-qualifier word between brand and product must NOT match, this is
         # what stops the gap from bridging two different products.
         self.assertFalse(
             self._matches("Nabisco snack crackers", "Nabisco Oreo Cookies and Snack Crackers")

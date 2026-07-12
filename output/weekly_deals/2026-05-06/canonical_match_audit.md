@@ -1,10 +1,10 @@
-# Canonical match audit — 2026-05-06 to 2026-05-12
+# Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-12T18:28:35.763133+00:00
+Generated: 2026-07-12T23:45:50.559324+00:00
 
 ## Summary
 
-- **Accepted:** 68
+- **Accepted:** 70
 - **Rejected:** 0
 - **Manual review:** 2
 - **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, berries_6oz, general_mills_cereal_regular, ribeye_steak
@@ -13,19 +13,19 @@ Generated: 2026-07-12T18:28:35.763133+00:00
 
 ### All-time low changes
 
-- `sweet_corn` (Safeway): $0.5 — Sweet Corn
-- `sweet_corn` (Safeway): $0.5 — Sweet Corn
+- `sweet_corn` (Safeway): $0.5: Sweet Corn
+- `sweet_corn` (Safeway): $0.5: Sweet Corn
 
 ### Graph preview changes
 
-- `coca_cola_12packs` (Safeway): blocked $5.0 — confidence 0.40 < min 0.70
-- `coca_cola_12packs` (Safeway): blocked $5.0 — confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.40 < min 0.70
 
 ### Blocked from tracker graph
 
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
   - Reason: confidence 0.40 < min 0.70
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
   - Reason: confidence 0.40 < min 0.70
 
 ## Accepted matches
@@ -46,7 +46,7 @@ Generated: 2026-07-12T18:28:35.763133+00:00
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $8.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
   - Display: Tillamook ice cream
@@ -102,6 +102,9 @@ Generated: 2026-07-12T18:28:35.763133+00:00
 - `dr_pepper_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice' @ $2.99 (confidence 0.90)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
 - `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
   - Display: Breyers ice cream
   - Subtitle: tubs, including Carb Smart and Sunday Swirls
@@ -148,7 +151,7 @@ Generated: 2026-07-12T18:28:35.763133+00:00
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice' @ $8.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
   - Display: Tillamook ice cream
@@ -204,6 +207,9 @@ Generated: 2026-07-12T18:28:35.763133+00:00
 - `dr_pepper_12packs` (Vons): 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5 (confidence 0.70)
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice' @ $2.99 (confidence 0.90)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
 - `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
   - Display: Breyers ice cream
   - Subtitle: tubs, including Carb Smart and Sunday Swirls

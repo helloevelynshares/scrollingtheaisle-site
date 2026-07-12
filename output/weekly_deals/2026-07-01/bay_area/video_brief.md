@@ -1,4 +1,4 @@
-# Bay Area weekly ad brief — week of 2026-07-01
+# Bay Area weekly ad brief, week of 2026-07-01
 **Retailer:** Safeway  
 **Ad week:** 2026-07-01 → 2026-07-07
 ## Summary
@@ -8,7 +8,7 @@ $5 Friday food deals
 ### Kettle Brand Chips
 - **Deal:** $5.00
 - **Unit math:** $1.67 / oz
-- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES — $0.2389 / unit
+- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES: $0.2389 / unit
 - **History:** all-time low
 - **Confidence:** high
 - **Speaking point:** This is not a perfect Costco comparison, but it is near the lowest price we have tracked for this category.
@@ -18,7 +18,7 @@ $5 Friday food deals
 ### Kettle Brand Chips
 - **Deal:** $5.00
 - **Unit math:** $1.67 / oz
-- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES — $0.2389 / unit
+- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES: $0.2389 / unit
 - **History:** all-time low
 - **Confidence:** high
 - **Speaking point:** This is not a perfect Costco comparison, but it is near the lowest price we have tracked for this category.
@@ -33,7 +33,7 @@ $5 Friday food deals
 ### Kettle Brand Chips
 - **Deal:** $5.00
 - **Unit math:** $1.67 / oz
-- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES — $0.2389 / unit
+- **Costco:** KETTLE POTATO CHIPS JALAPENO 28 OUNCES: $0.2389 / unit
 - **History:** all-time low
 - **Confidence:** high
 - **Speaking point:** This is not a perfect Costco comparison, but it is near the lowest price we have tracked for this category.

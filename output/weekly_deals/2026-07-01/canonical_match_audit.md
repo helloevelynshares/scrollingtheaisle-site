@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-07-01 to 2026-07-07
+# Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-12T18:28:36.316267+00:00
+Generated: 2026-07-12T23:45:51.092687+00:00
 
 ## Summary
 
@@ -13,47 +13,47 @@ Generated: 2026-07-12T18:28:36.316267+00:00
 
 ### All-time low changes
 
-- `lays_potato_chips_regular` (Safeway): $2.2 — Lay's Potato Chips
-- `kettle_brand_chips` (Safeway): $1.67 — Kettle Brand Potato Chips
-- `coca_cola_12packs` (Safeway): $5.2 — Coca-Cola 12-pack 12-oz. cans
-- `cherries_per_lb` (Safeway): $1.99 — Red Cherries
-- `sweet_corn` (Safeway): $0.12 — Sweet Corn
-- `peaches_per_lb` (Vons): $1.99 — Yellow Peaches, White Peaches
-- `lays_potato_chips_regular` (Safeway): $2.2 — Lay's Potato Chips
-- `kettle_brand_chips` (Safeway): $1.67 — Kettle Brand Potato Chips
-- `coca_cola_12packs` (Safeway): $5.2 — Coca-Cola 12-pack 12-oz. cans
-- `cherries_per_lb` (Safeway): $1.99 — Red Cherries
-- `sweet_corn` (Safeway): $0.12 — Sweet Corn
-- `peaches_per_lb` (Vons): $1.99 — Yellow Peaches, White Peaches
+- `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
+- `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
+- `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
+- `cherries_per_lb` (Safeway): $1.99: Red Cherries
+- `sweet_corn` (Safeway): $0.12: Sweet Corn
+- `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
+- `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
+- `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
+- `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
+- `cherries_per_lb` (Safeway): $1.99: Red Cherries
+- `sweet_corn` (Safeway): $0.12: Sweet Corn
+- `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
 
 ### Graph preview changes
 
-- `butter_16oz` (Safeway): blocked $2.99 — new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
-- `lays_potato_chips_regular` (Vons): blocked $2.5 — ambiguous match
-- `nabisco_snack_crackers` (Vons): blocked $3.99 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33 — confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway): blocked $2.99 — new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
-- `lays_potato_chips_regular` (Vons): blocked $2.5 — ambiguous match
-- `nabisco_snack_crackers` (Vons): blocked $3.99 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33 — confidence 0.40 < min 0.70
+- `butter_16oz` (Safeway): blocked $2.99: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
+- `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
+- `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.40 < min 0.70
+- `butter_16oz` (Safeway): blocked $2.99: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
+- `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
+- `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.40 < min 0.70
 
 ### Blocked from tracker graph
 
-- `butter_16oz` (Safeway) — **manual_review**: 'Challenge Butter' @ $2.99
+- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
   - Reason: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
-- `lays_potato_chips_regular` (Vons) — **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
+- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: ambiguous match
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
   - Reason: confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway) — **manual_review**: 'Challenge Butter' @ $2.99
+- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
   - Reason: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
-- `lays_potato_chips_regular` (Vons) — **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
+- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: ambiguous match
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
   - Reason: confidence 0.40 < min 0.70
 
 ## Accepted matches
@@ -83,7 +83,7 @@ Generated: 2026-07-12T18:28:36.316267+00:00
   - Display: LaCroix sparkling water
   - Subtitle: 8-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice, Coffee mate Creamer' @ $2.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `dreyers_tubs` (Safeway): "Dreyer's Ice Cream" @ $2.99 (confidence 0.90)
   - Display: Dreyer's ice cream
@@ -197,7 +197,7 @@ Generated: 2026-07-12T18:28:36.316267+00:00
   - Display: LaCroix sparkling water
   - Subtitle: 8-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice, Coffee mate Creamer' @ $2.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `dreyers_tubs` (Safeway): "Dreyer's Ice Cream" @ $2.99 (confidence 0.90)
   - Display: Dreyer's ice cream

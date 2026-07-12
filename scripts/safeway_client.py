@@ -56,14 +56,14 @@ PGMSEARCH_COOKIE_HINT = (
 def timeout_message(timeout_sec: float, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Safeway pgmsearch timed out after {timeout_sec:g}s{q} — {PGMSEARCH_COOKIE_HINT}"
+        f"Safeway pgmsearch timed out after {timeout_sec:g}s{q}: {PGMSEARCH_COOKIE_HINT}"
     )
 
 
 def auth_message(status_code: int, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Safeway pgmsearch returned HTTP {status_code}{q} (session/auth) — "
+        f"Safeway pgmsearch returned HTTP {status_code}{q} (session/auth): "
         f"{PGMSEARCH_COOKIE_HINT}"
     )
 
@@ -76,7 +76,7 @@ def empty_response_message(*, query: str | None = None) -> str:
 def stuck_loading_message(api_timeout_sec: float, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Safeway search stuck loading — no pgmsearch response after {api_timeout_sec:g}s{q} — "
+        f"Safeway search stuck loading, no pgmsearch response after {api_timeout_sec:g}s{q}: "
         f"{PGMSEARCH_COOKIE_HINT}, or run --headful to sign in and set store"
     )
 
@@ -129,7 +129,7 @@ def build_search_params(query: str, config: SafewaySearchConfig) -> dict[str, st
 
 
 def _apply_sec_ch_headers(headers: dict[str, str], config: SafewaySearchConfig) -> None:
-    """Only send sec-ch-ua* when configured — avoids conflicting with user-agent."""
+    """Only send sec-ch-ua* when configured, avoids conflicting with user-agent."""
     if config.sec_ch_ua:
         headers["sec-ch-ua"] = config.sec_ch_ua
     if config.sec_ch_ua_mobile:
@@ -275,7 +275,7 @@ def _search_via_curl(
     timeout_sec: float,
     browser_like: bool,
 ) -> SearchOutcome:
-    """Use system curl — matches working Chrome DevTools captures; requests often times out."""
+    """Use system curl, matches working Chrome DevTools captures; requests often times out."""
     url = build_pgmsearch_url(query, config)
     headers = build_headers(query, config, browser_like=browser_like)
     cmd = [
@@ -362,7 +362,7 @@ def _search_via_curl(
     if status_code is not None and status_code != 200:
         preview = body[:200].decode("utf-8", errors="replace")
         msg = f"Safeway pgmsearch returned HTTP {status_code} for q={query!r}"
-        logger.warning("%s — body preview: %s", msg, preview)
+        logger.warning("%s, body preview: %s", msg, preview)
         return SearchOutcome(
             query=query,
             status_code=status_code,
@@ -403,7 +403,7 @@ def _search_via_curl(
             message=msg,
         )
 
-    logger.info("200 success for q=%r via curl — %s", query, _summarize_payload(payload))
+    logger.info("200 success for q=%r via curl: %s", query, _summarize_payload(payload))
     return SearchOutcome(
         query=query,
         status_code=200,
@@ -485,7 +485,7 @@ def _search_via_requests(
                 request_url=prepared.url,
                 message=msg,
             )
-        logger.info("200 success for q=%r — %s", query, _summarize_payload(payload))
+        logger.info("200 success for q=%r: %s", query, _summarize_payload(payload))
         return SearchOutcome(
             query=query,
             status_code=status,
@@ -497,7 +497,7 @@ def _search_via_requests(
     if status in (401, 403):
         msg = auth_message(status, query=query)
         logger.warning(
-            "%s — body preview: %s",
+            "%s, body preview: %s",
             msg,
             (response.text or "")[:200],
         )
@@ -514,7 +514,7 @@ def _search_via_requests(
     if status == 429:
         retry_after = response.headers.get("Retry-After", "unknown")
         logger.warning(
-            "429 rate limited for q=%r — Retry-After: %s",
+            "429 rate limited for q=%r: Retry-After: %s",
             query,
             retry_after,
         )
@@ -528,7 +528,7 @@ def _search_via_requests(
         )
 
     logger.warning(
-        "unexpected HTTP %d for q=%r — body preview: %s",
+        "unexpected HTTP %d for q=%r, body preview: %s",
         status,
         query,
         (response.text or "")[:200],

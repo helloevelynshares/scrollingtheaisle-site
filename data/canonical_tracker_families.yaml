@@ -1433,7 +1433,7 @@ families:
     - canned_salmon
     - salmon_spread_or_dip
     - frozen_salmon
-  notes: Track fresh salmon fillets only — not smoked/nova/cured packs.
+  notes: Track fresh salmon fillets only, not smoked/nova/cured packs.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

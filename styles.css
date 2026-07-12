@@ -1304,7 +1304,7 @@ img {
   gap: 10px;
 }
 
-/* Family Deal Card — Option 9 pattern (family-level chart + varieties drawer) */
+/* Family Deal Card: Option 9 pattern (family-level chart + varieties drawer) */
 .family-deal-card {
   gap: 8px;
   /* Fill the grid cell so all cards in a row have identical height */
@@ -1325,7 +1325,7 @@ img {
   margin: 0;
   letter-spacing: -0.3px;
   flex: 1 1 auto;
-  /* Clamp to 2 lines on all viewports — mobile overrides to 12px */
+  /* Clamp to 2 lines on all viewports; mobile overrides to 12px */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -1495,7 +1495,7 @@ img {
   color: var(--accent);
 }
 
-/* Details toggle — subtle disclosure link at card bottom */
+/* Details toggle: subtle disclosure link at card bottom */
 .family-deal-card__details-toggle {
   margin: 0;
   padding: 0;
@@ -1525,7 +1525,7 @@ img {
   color: var(--accent);
 }
 
-/* Details panel — summary + stock-up revealed on toggle */
+/* Details panel: summary + stock-up revealed on toggle */
 .family-deal-card__details-panel {
   display: grid;
   gap: 6px;
@@ -3015,7 +3015,7 @@ img {
   justify-content: center;
 }
 
-/* Store vote module (homepage hero) — mirrors .price-tracker-vote */
+/* Store vote module (homepage hero); mirrors .price-tracker-vote */
 .hub-store-suggest {
   min-width: 0;
 }
@@ -3146,7 +3146,7 @@ img {
   margin-top: 20px;
 }
 
-/* Homepage highlights — category market report */
+/* Homepage highlights: category market report */
 .hub-picks-report {
   display: block;
 }
@@ -3348,7 +3348,7 @@ img {
   color: #555;
 }
 
-/* Curated editorial badges — palette matches .popular-this-week__tag--* on the tracker.
+/* Curated editorial badges; palette matches .popular-this-week__tag--* on the tracker.
    Scoped under .hub-badge--custom so they never override the existing on-sale
    .hub-badge--deal pill (Vons cards keep their derived badges). */
 .hub-badge--custom {

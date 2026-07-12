@@ -3,7 +3,7 @@
 This is a SEPARATE analysis mode from the canonical tracker-graph pipeline. It
 produces a content/TikTok-oriented view of a week's grocery ad that can INCLUDE
 ad-deal-only items (no canonical family), missing-Costco items, proxy matches,
-and Friday-only deals — exactly the items the graph-safe report downranks.
+and Friday-only deals, exactly the items the graph-safe report downranks.
 
 It NEVER writes to ``weeklyAdPrices.generated.ts`` or any generated graph TS,
 and it never mutates canonical eligibility. It only reads:
@@ -233,7 +233,7 @@ def _safe_for_script(item: ContentItem, seed: dict) -> str:
     if usable and pct is not None and pct > -8:
         return "quick mention"
     if usable and pct is not None and pct <= -8:
-        # Costco clearly cheaper but same product — variety/smaller-buy angle.
+        # Costco clearly cheaper but same product, variety/smaller-buy angle.
         return "quick mention"
     if proxy and pct is not None and pct > 0 and not item.is_coverage_gap:
         return "strong supporting mention"
@@ -264,7 +264,7 @@ def _one_liner(item: ContentItem, store_label: str) -> str:
         # Grocery clearly cheaper on a usable match.
         line = f"{store_label} is about {pct:.0f}% cheaper than Costco on this."
     else:
-        # Roughly tied or Costco cheaper — variety / smaller-quantity angle.
+        # Roughly tied or Costco cheaper, variety / smaller-quantity angle.
         line = (
             "Costco is similar or a little cheaper, but "
             f"{store_label} wins if you want variety or smaller quantity."
@@ -274,7 +274,7 @@ def _one_liner(item: ContentItem, store_label: str) -> str:
     if proxy and has_costco:
         line += " This is a directional comparison, not exact."
     if item.availability == "friday_only":
-        line += " (Friday-only — not valid all week.)"
+        line += " (Friday-only, not valid all week.)"
     return line
 
 
@@ -353,7 +353,7 @@ def build_items(week: str, store: str) -> list[ContentItem]:
             costco_date=costco_date,
         )
 
-        # Content score — never requires canonical/graph match.
+        # Content score, never requires canonical/graph match.
         costco_pct_for_score = None
         if pct is not None and pct > 0 and not is_coverage_gap:
             costco_pct_for_score = pct
@@ -401,31 +401,31 @@ COVERAGE_SPEC = {
          "notes": "No Nestle Drumstick ice cream in SF crawl; only FRESH ORGANIC CHICKEN DRUMSTICK #22501 $1.99/lb (different product). Coverage gap."},
         {"item": "Doritos", "costco_item_number": "933402", "unit": "30 oz bag",
          "proposed_target": "already mapped (canonical doritos_nacho_cheese, config/costco_item_mappings.csv)",
-         "notes": "DORITOS NACHO CHEESE 30 OZ — already mapped for the canonical tracker."},
+         "notes": "DORITOS NACHO CHEESE 30 OZ, already mapped for the canonical tracker."},
         {"item": "avocados", "costco_item_number": "647465", "unit": "6 count",
          "proposed_target": "already mapped (canonical avocados)",
-         "notes": "AVOCADOS HASS VARIETY 6 COUNT — already mapped."},
+         "notes": "AVOCADOS HASS VARIETY 6 COUNT, already mapped."},
         {"item": "blackberries", "costco_item_number": "791185", "unit": "12 oz (organic)",
          "proposed_target": "config/content_costco_mappings.csv (berry_mix_6oz)",
-         "notes": "ORGANIC BLACKBERRIES 12 OZ — exists; add as content-mode comparable (organic vs conventional caveat)."},
+         "notes": "ORGANIC BLACKBERRIES 12 OZ, exists; add as content-mode comparable (organic vs conventional caveat)."},
         {"item": "raspberries", "costco_item_number": "56366", "unit": "12 oz",
          "proposed_target": "config/content_costco_mappings.csv (new raspberries row)",
-         "notes": "RASPBERRIES 12 OZ — exists; conventional, good same-product comparable."},
+         "notes": "RASPBERRIES 12 OZ, exists; conventional, good same-product comparable."},
         {"item": "blueberries", "costco_item_number": "57554", "unit": "18 oz",
          "proposed_target": "config/content_costco_mappings.csv (new blueberries row)",
-         "notes": "BLUEBERRIES 18 OZ — exists; same-product comparable."},
+         "notes": "BLUEBERRIES 18 OZ, exists; same-product comparable."},
         {"item": "Chobani", "costco_item_number": "1005641", "unit": "20 ct 5.3 oz",
          "proposed_target": "config/content_costco_mappings.csv (chobani_yogurt)",
-         "notes": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OZ — exists but was unmapped; matches the Safeway single-serve 3/$4 cups (Costco is cheaper per cup). Protein 16-ct #1920008 relates to the Vons 4-ct protein deal, not Safeway."},
+         "notes": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OZ, exists but was unmapped; matches the Safeway single-serve 3/$4 cups (Costco is cheaper per cup). Protein 16-ct #1920008 relates to the Vons 4-ct protein deal, not Safeway."},
         {"item": "beef chuck short ribs", "costco_item_number": "34044", "unit": "per lb (Choice boneless)",
          "proposed_target": "config/content_costco_mappings.csv (beef_chuck_short_ribs)",
-         "notes": "CHOICE BEEF CHUCK BONELESS SHORT RIBS $12.29/lb — exists; Prime bone-in #12329 $7.99/lb and #12239 $10.99/lb also exist. Add as content comparable (grade/bone caveat)."},
+         "notes": "CHOICE BEEF CHUCK BONELESS SHORT RIBS $12.29/lb, exists; Prime bone-in #12329 $7.99/lb and #12239 $10.99/lb also exist. Add as content comparable (grade/bone caveat)."},
         {"item": "pork shoulder ribs", "costco_item_number": "33997", "unit": "per lb",
          "proposed_target": "config/content_costco_mappings.csv (pork_shoulder_ribs)",
-         "notes": "PORK SHOULDER COUNTRY RIBS BONELESS $3.79/lb — exists; near-exact same product. Add as content comparable."},
+         "notes": "PORK SHOULDER COUNTRY RIBS BONELESS $3.79/lb, exists; near-exact same product. Add as content comparable."},
         {"item": "Sargento / string cheese", "costco_item_number": "1352319", "unit": "60 ct 1 oz",
          "proposed_target": "config/content_costco_mappings.csv (sargento_cheese, category comparable)",
-         "notes": "GALBANI WHOLE MILK STRING CHEESE 60 COUNT $11.49 — bulk store-brand; no Sargento SKU. Bulk is cheaper per stick, so this is NOT a Costco beat."},
+         "notes": "GALBANI WHOLE MILK STRING CHEESE 60 COUNT $11.49, bulk store-brand; no Sargento SKU. Bulk is cheaper per stick, so this is NOT a Costco beat."},
         {"item": "Oreo regular packs", "costco_item_number": None, "unit": "n/a",
          "proposed_target": None,
          "notes": "No regular Oreo SKU in SF crawl (only mini/assorted cookies). Coverage gap; Costco Oreo (~$3.79) known in stores but not crawled."},
@@ -482,7 +482,7 @@ WHY_DIFFERS = (
     "ribs, Sargento cheese), have no Costco mapping, rely on a proxy/comparable "
     "match, or are Friday-only. This content-first view keeps the same-strict "
     "'beats Costco' guardrails but scores items on shopper interest, absolute "
-    "price, category, seasonality, and TikTok hook — so a $5 Friday shrimp or a "
+    "price, category, seasonality, and TikTok hook, so a $5 Friday shrimp or a "
     "$0.99 avocado surfaces even when the graph pipeline would never chart it. "
     "Canonical eligibility is untouched; nothing here updates any tracker graph."
 )
@@ -513,7 +513,7 @@ def build_gap_analysis_md(week: str, store: str, items: list[ContentItem], cover
     _, _, warehouse_label = STORE_WAREHOUSE[store]
     now = datetime.now(timezone.utc).isoformat()
     L: list[str] = []
-    L.append(f"# Content gap analysis — {store_label} {week}")
+    L.append(f"# Content gap analysis: {store_label} {week}")
     L.append("")
     L.append(f"_Generated {now} · CONTENT ANALYSIS ONLY (no website UI changed, no tracker graph updated)._")
     L.append("")
@@ -525,7 +525,7 @@ def build_gap_analysis_md(week: str, store: str, items: list[ContentItem], cover
     L.append("")
     L.append(f"All Costco comparisons use **{warehouse_label}** (Safeway → San Francisco; Vons → Tustin).")
     L.append("")
-    L.append("### Table A — shortlist item, ad provenance, availability")
+    L.append("### Table A, shortlist item, ad provenance, availability")
     L.append("")
     L.append("| Item from shortlist | Raw weekly ad offer text | Source PDF & page | Parsed ad price | Parsed package size / unit | Full-week or Friday-only |")
     L.append("|---|---|---|---|---|---|")
@@ -542,7 +542,7 @@ def build_gap_analysis_md(week: str, store: str, items: list[ContentItem], cover
             f"{_md_escape(it.source_pdf)} {page} | {adp} | {_md_escape(pkg)} | {_availability_label(it.availability)} |"
         )
     L.append("")
-    L.append("### Table B — Costco comparison, match quality, verdict")
+    L.append("### Table B: Costco comparison, match quality, verdict")
     L.append("")
     L.append("| Item from shortlist | Costco matched item | Costco warehouse | Costco price | Costco size / unit | Grocery unit price | Costco unit price | % diff | Match type | Updates canonical graph | Safe for content script | Why previously missed/downranked |")
     L.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
@@ -571,7 +571,7 @@ def build_gap_analysis_md(week: str, store: str, items: list[ContentItem], cover
                 f"{_fmt_price(pm['costco_price'])} / {pm['costco_unit']} → {pm['goes_to']}"
             )
         else:
-            proposed = "— (none)"
+            proposed = "n/a (none)"
         L.append(
             f"| {_md_escape(c['item'])} | {'yes' if c['costco_sf_data_exists'] else 'no'} | "
             f"{_md_escape(proposed)} | {'yes' if c['is_coverage_gap'] else 'no'} | {_md_escape(c['notes'])} |"
@@ -584,15 +584,15 @@ def _do_not_say(items: list[ContentItem]) -> list[str]:
     claims = [
         "Do not present any Friday-only deal (raw shrimp $5/lb, bell peppers 5/$5, "
         "Nestle Drumstick 8-ct $5, Doritos 2/$5, sweet corn 10/$5) as an all-week price.",
-        "Do not call the berry deal an exact Costco match — Costco blackberries are "
+        "Do not call the berry deal an exact Costco match: Costco blackberries are "
         "organic 12 oz vs the conventional 6 oz ad pack; keep it directional.",
-        "Do not say Sargento string cheese 'beats Costco' — Costco's Galbani 60-ct "
+        "Do not say Sargento string cheese 'beats Costco': Costco's Galbani 60-ct "
         "bulk is cheaper per stick; it is a strong absolute deal / no-bulk-lock-in only.",
         "Do not claim a Costco price for raw shrimp, Nestle Drumstick, sweet corn, bell "
-        "peppers, or Oreo — those SKUs are not in this SF crawl (coverage gaps).",
-        "Do not call the Chobani single-serve 3/$4 cheaper than Costco — Costco's 20-ct "
+        "peppers, or Oreo, those SKUs are not in this SF crawl (coverage gaps).",
+        "Do not call the Chobani single-serve 3/$4 cheaper than Costco: Costco's 20-ct "
         "variety multipack is cheaper per cup; only the 20g protein 4-ct beats Costco.",
-        "Do not reuse the graph-safe 'do not update tracker' guardrails as content bans — "
+        "Do not reuse the graph-safe 'do not update tracker' guardrails as content bans: "
         "content mode never updates a graph, so a proxy is fine to *mention* (labeled) even "
         "though it must never write to weeklyAdPrices.generated.ts.",
     ]
@@ -610,7 +610,7 @@ def build_script_shortlist_md(week: str, store: str, items: list[ContentItem]) -
     manual = [it for it in items if it.needs_manual_verification]
 
     L: list[str] = []
-    L.append(f"# Content script shortlist — {store_label} {week}")
+    L.append(f"# Content script shortlist: {store_label} {week}")
     L.append("")
     L.append(f"_Generated {now} · content-first ranking (compared only to {warehouse_label})._")
     L.append("")
@@ -630,7 +630,7 @@ def build_script_shortlist_md(week: str, store: str, items: list[ContentItem]) -
             match_label = "exact" if it.match_type in USABLE_MATCH_TYPES else "proxy/comparable"
             cheaper = "yes" if it.can_say_cheaper_than_costco else "no"
             conf = "n/a (coverage gap)" if it.is_coverage_gap else it.match_type
-            L.append(f"- **{_md_escape(it.display_item)}** — content_score {it.content_score}")
+            L.append(f"- **{_md_escape(it.display_item)}**, content_score {it.content_score}")
             L.append(f"    - _{_availability_label(it.availability)} · {match_label} match · "
                      f"Costco confidence: {conf} · safe: {it.safe_for_script}_")
             L.append(f"    - Script line: \"{it.script_one_liner}\"")
@@ -638,9 +638,9 @@ def build_script_shortlist_md(week: str, store: str, items: list[ContentItem]) -
                 cheaper_note = ""
             elif (it.match_type in PROXY_MATCH_TYPES and not it.is_coverage_gap
                   and it.pct_diff_vs_costco is not None and it.pct_diff_vs_costco >= 8):
-                cheaper_note = " — directional only (say 'roughly cheaper, not exact')"
+                cheaper_note = ", directional only (say 'roughly cheaper, not exact')"
             else:
-                cheaper_note = " — use smaller-buy / variety framing only"
+                cheaper_note = ", use smaller-buy / variety framing only"
             L.append(f"    - Safe to say 'cheaper than Costco': {cheaper}" + cheaper_note)
             L.append(f"    - Source: `{_md_escape(it.source_pdf)}` {page} · raw: \"{_md_escape(it.raw_offer_text) or 'unknown'}\"")
             L.append("")
@@ -654,7 +654,7 @@ def build_script_shortlist_md(week: str, store: str, items: list[ContentItem]) -
     L.append("")
     if manual:
         for it in sorted(manual, key=lambda i: i.content_score, reverse=True):
-            L.append(f"- **{_md_escape(it.display_item)}** — {_md_escape(it.notes)}")
+            L.append(f"- **{_md_escape(it.display_item)}**: {_md_escape(it.notes)}")
     else:
         L.append("- (none this week)")
     L.append("")
@@ -662,12 +662,12 @@ def build_script_shortlist_md(week: str, store: str, items: list[ContentItem]) -
     L.append("")
     if do_not_use:
         for it in sorted(do_not_use, key=lambda i: i.content_score, reverse=True):
-            L.append(f"- **{_md_escape(it.display_item)}** — {_md_escape(it.notes)}")
+            L.append(f"- **{_md_escape(it.display_item)}**: {_md_escape(it.notes)}")
     else:
-        L.append("- (none this week — every shortlist item is usable with correct framing; "
+        L.append("- (none this week, every shortlist item is usable with correct framing; "
                  "see the Do-not-say claims below for the wording guardrails.)")
     L.append("")
-    L.append("## Do-not-say claims (misleading — do NOT say on camera)")
+    L.append("## Do-not-say claims (misleading, do NOT say on camera)")
     L.append("")
     for claim in _do_not_say(items):
         L.append(f"- {claim}")

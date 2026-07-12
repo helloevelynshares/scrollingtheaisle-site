@@ -46,7 +46,7 @@ export function familyHomepageSection(id: string): HomepageSectionId | undefined
   return getTrackerFamily(resolveFamilyId(id))?.homepageSection;
 }
 
-/** User-facing title — never expose internal ids. */
+/** User-facing title; never expose internal ids. */
 export function familyDisplayName(id: string): string {
   const family = getTrackerFamily(resolveFamilyId(id));
   return family?.displayName ?? "Tracked item";

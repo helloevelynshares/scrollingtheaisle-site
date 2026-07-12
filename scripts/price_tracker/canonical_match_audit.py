@@ -153,7 +153,7 @@ def write_all_audits(
 
 def render_audit_markdown(bundle: WeekAuditBundle) -> str:
     lines = [
-        f"# Canonical match audit — {bundle.week_start} to {bundle.week_end}",
+        f"# Canonical match audit: {bundle.week_start} to {bundle.week_end}",
         "",
         f"Generated: {bundle.generated_at}",
         "",
@@ -174,7 +174,7 @@ def render_audit_markdown(bundle: WeekAuditBundle) -> str:
         for change in bundle.all_time_low_changes:
             lines.append(
                 f"- `{change['family_id']}` ({change['feed']}): "
-                f"${change['price']} — {change['offer_text']}"
+                f"${change['price']}: {change['offer_text']}"
             )
         lines.append("")
     else:
@@ -196,7 +196,7 @@ def render_audit_markdown(bundle: WeekAuditBundle) -> str:
         lines.append("")
         for record in blocked:
             lines.append(
-                f"- `{record.family_id}` ({record.feed}) — **{record.match_decision}**: "
+                f"- `{record.family_id}` ({record.feed}): **{record.match_decision}**: "
                 f"{record.offer_text!r} @ ${record.price}"
             )
             if record.reject_reason:
@@ -216,7 +216,7 @@ def render_audit_markdown(bundle: WeekAuditBundle) -> str:
         lines.append("")
         for record in bundle.rejected_tempting:
             lines.append(
-                f"- `{record.family_id}`: {record.offer_text!r} @ ${record.price} — "
+                f"- `{record.family_id}`: {record.offer_text!r} @ ${record.price}: "
                 f"{record.reject_reason}"
             )
         lines.append("")

@@ -1,6 +1,6 @@
 /**
  * canonical_products are shared across all regional feeds.
- * Display names, search aliases, and sort order live here — not duplicated per retailer.
+ * Display names, search aliases, and sort order live here, not duplicated per retailer.
  */
 export type CanonicalProduct = {
   id: string;

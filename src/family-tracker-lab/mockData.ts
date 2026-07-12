@@ -1,4 +1,4 @@
-/** Local mock data for family tracker UI lab — not wired to production. */
+/** Local mock data for family tracker UI lab; not wired to production. */
 
 export type StockUpRating =
   | "Great"
@@ -88,7 +88,7 @@ export const MOCK_FAMILIES: GroceryFamily[] = [
     summary: "Ben & Jerry's pints are at a strong stock-up price.",
     variantNote: "Most flavors same pint size, family stays simple.",
     takeaway: "Great week to buy if you have freezer space.",
-    pricingBehavior: "Safe to group — consistent size/price.",
+    pricingBehavior: "Safe to group; consistent size/price.",
     groupedThisWeek: true,
     variants: [
       { id: "bj-half-baked", name: "Half Baked", size: "16oz", priceLabel: "$3.49" },
@@ -123,7 +123,7 @@ export const MOCK_FAMILIES: GroceryFamily[] = [
 
 export const RECOMMENDATION_HEADLINES: Record<string, string> = {
   lays: "Buy Lay's this week",
-  ritz: "Stock up on Ritz — favor original crackers",
+  ritz: "Stock up on Ritz. Favor original crackers",
   "ben-jerrys": "Stock up on Ben & Jerry's",
   "coke-12pk": "Only buy Coke if you want five 12-packs",
 };

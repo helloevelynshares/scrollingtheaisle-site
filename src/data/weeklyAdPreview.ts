@@ -72,9 +72,9 @@ export function formatPreviewBannerMessage(
 ): string {
   const startLabel = formatPreviewStartLabel(weekStart, asOf);
   if (startLabel === "tomorrow") {
-    return `Preview prices from the upcoming ${feedLabel} weekly ad — deals start tomorrow (${formatAdWeekStartDate(weekStart)}).`;
+    return `Preview prices from the upcoming ${feedLabel} weekly ad. Deals start tomorrow (${formatAdWeekStartDate(weekStart)}).`;
   }
-  return `Preview prices from the upcoming ${feedLabel} weekly ad — deals start ${startLabel}.`;
+  return `Preview prices from the upcoming ${feedLabel} weekly ad. Deals start ${startLabel}.`;
 }
 
 export function formatAdWeekStartDate(weekStart: string): string {

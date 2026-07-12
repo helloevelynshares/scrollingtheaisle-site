@@ -1,16 +1,16 @@
-# Content gap analysis — Safeway 2026-07-08
+# Content gap analysis: Safeway 2026-07-08
 
 _Generated 2026-07-08T15:33:09.907808+00:00 · CONTENT ANALYSIS ONLY (no website UI changed, no tracker graph updated)._
 
 ## Why the manual shortlist differs from the previous report.
 
-The previous `fresh_costco_deal_report` was optimized for canonical tracker-graph-safe matches: an item only ranked well if it had a canonical family, an exact/usable baseline, and a same-product Costco match that was safe to write to a price graph. That is the right bar for the tracker graphs (it is what keeps smoked salmon from overwriting the fresh-salmon chart), but it is the wrong bar for content. As a result the graph-safe report omitted or buried items that are excellent *content* deals but are ad-deal-only (raw shrimp, bell peppers, Nestle Drumstick, beef chuck short ribs, Sargento cheese), have no Costco mapping, rely on a proxy/comparable match, or are Friday-only. This content-first view keeps the same-strict 'beats Costco' guardrails but scores items on shopper interest, absolute price, category, seasonality, and TikTok hook — so a $5 Friday shrimp or a $0.99 avocado surfaces even when the graph pipeline would never chart it. Canonical eligibility is untouched; nothing here updates any tracker graph.
+The previous `fresh_costco_deal_report` was optimized for canonical tracker-graph-safe matches: an item only ranked well if it had a canonical family, an exact/usable baseline, and a same-product Costco match that was safe to write to a price graph. That is the right bar for the tracker graphs (it is what keeps smoked salmon from overwriting the fresh-salmon chart), but it is the wrong bar for content. As a result the graph-safe report omitted or buried items that are excellent *content* deals but are ad-deal-only (raw shrimp, bell peppers, Nestle Drumstick, beef chuck short ribs, Sargento cheese), have no Costco mapping, rely on a proxy/comparable match, or are Friday-only. This content-first view keeps the same-strict 'beats Costco' guardrails but scores items on shopper interest, absolute price, category, seasonality, and TikTok hook. So a $5 Friday shrimp or a $0.99 avocado surfaces even when the graph pipeline would never chart it. Canonical eligibility is untouched; nothing here updates any tracker graph.
 
 ## Missing/downranked item table
 
 All Costco comparisons use **Costco San Francisco** (Safeway → San Francisco; Vons → Tustin).
 
-### Table A — shortlist item, ad provenance, availability
+### Table A, shortlist item, ad provenance, availability
 
 | Item from shortlist | Raw weekly ad offer text | Source PDF & page | Parsed ad price | Parsed package size / unit | Full-week or Friday-only |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ All Costco comparisons use **Costco San Francisco** (Safeway → San Francisco; 
 | Chobani Greek yogurt (3/$4 single-serve) | Chobani Greek Yogurt, Oikos Triple Zero Greek Yogurt, or Danone Light + Fit Greek Yogurt Selected varieties. 4.5-5.3 oz. 3/$4 Member Price | safeway 7-8 - 7-14.pdf p3 | $1.33 (cup (3 for $4)) | 4.5-5.3 oz. | full-week |
 | Beef chuck short ribs | USDA Choice Beef Chuck Short Ribs 7.99 LB MEMBER PRICE | safeway 7-8 - 7-14.pdf p1 | $7.99 (lb) | lb | full-week |
 
-### Table B — Costco comparison, match quality, verdict
+### Table B: Costco comparison, match quality, verdict
 
 | Item from shortlist | Costco matched item | Costco warehouse | Costco price | Costco size / unit | Grocery unit price | Costco unit price | % diff | Match type | Updates canonical graph | Safe for content script | Why previously missed/downranked |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -48,17 +48,17 @@ All Costco comparisons use **Costco San Francisco** (Safeway → San Francisco; 
 
 | Item | Costco SF data exists? | Proposed mapping | Coverage gap? | Notes |
 |---|---|---|---|---|
-| raw shrimp | no | — (none) | yes | No raw frozen shrimp SKU in SF crawl. Prepared only (Kirkland Garlic Butter Shrimp 2 lb $15.99, Shrimp Cocktail $10.99/lb). Coverage gap for an exact raw-shrimp comparison. |
-| bell peppers | no | — (none) | yes | No fresh bell peppers in SF crawl. Coverage gap (Costco 6-ct exists in stores ~$1/ea but not crawled). |
-| drumsticks (Nestle ice cream) | no | — (none) | yes | No Nestle Drumstick ice cream in SF crawl; only FRESH ORGANIC CHICKEN DRUMSTICK #22501 $1.99/lb (different product). Coverage gap. |
-| Doritos | yes | #933402 DORITOS NACHO CHEESE 30 OUNCES $6.99 / 30 oz bag → already mapped (canonical doritos_nacho_cheese, config/costco_item_mappings.csv) | no | DORITOS NACHO CHEESE 30 OZ — already mapped for the canonical tracker. |
-| avocados | yes | #647465 AVOCADOS HASS VARIETY 6 COUNT $7.99 / 6 count → already mapped (canonical avocados) | no | AVOCADOS HASS VARIETY 6 COUNT — already mapped. |
-| blackberries | yes | #791185 ORGANIC BLACKBERRIES 12 OZ $8.99 / 12 oz (organic) → config/content_costco_mappings.csv (berry_mix_6oz) | no | ORGANIC BLACKBERRIES 12 OZ — exists; add as content-mode comparable (organic vs conventional caveat). |
-| raspberries | yes | #56366 RASPBERRIES 12 OZ $6.99 / 12 oz → config/content_costco_mappings.csv (new raspberries row) | no | RASPBERRIES 12 OZ — exists; conventional, good same-product comparable. |
-| blueberries | yes | #57554 BLUEBERRIES 18 OZ $5.99 / 18 oz → config/content_costco_mappings.csv (new blueberries row) | no | BLUEBERRIES 18 OZ — exists; same-product comparable. |
-| Chobani | yes | #1005641 CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA $17.89 / 20 ct 5.3 oz → config/content_costco_mappings.csv (chobani_yogurt) | no | CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OZ — exists but was unmapped; matches the Safeway single-serve 3/$4 cups (Costco is cheaper per cup). Protein 16-ct #1920008 relates to the Vons 4-ct protein deal, not Safeway. |
-| beef chuck short ribs | yes | #34044 CHOICE BEEF CHUCK BONELESS SHORT RIBS VAC PACK PER LB $12.29 / per lb (Choice boneless) → config/content_costco_mappings.csv (beef_chuck_short_ribs) | no | CHOICE BEEF CHUCK BONELESS SHORT RIBS $12.29/lb — exists; Prime bone-in #12329 $7.99/lb and #12239 $10.99/lb also exist. Add as content comparable (grade/bone caveat). |
-| pork shoulder ribs | yes | #33997 PORK SHOULDER COUNTRY RIBS BONELESS PER LB. $3.79 / per lb → config/content_costco_mappings.csv (pork_shoulder_ribs) | no | PORK SHOULDER COUNTRY RIBS BONELESS $3.79/lb — exists; near-exact same product. Add as content comparable. |
-| Sargento / string cheese | yes | #1352319 GALBANI WHOLE MILK STRING CHEESE 60 COUNT 1 OUNCE EACH $11.49 / 60 ct 1 oz → config/content_costco_mappings.csv (sargento_cheese, category comparable) | no | GALBANI WHOLE MILK STRING CHEESE 60 COUNT $11.49 — bulk store-brand; no Sargento SKU. Bulk is cheaper per stick, so this is NOT a Costco beat. |
-| Oreo regular packs | no | — (none) | yes | No regular Oreo SKU in SF crawl (only mini/assorted cookies). Coverage gap; Costco Oreo (~$3.79) known in stores but not crawled. |
-| Oreo BTS / single-serve / snack packs | no | — (none) | yes | No Oreo single-serve/snack multipack SKU in SF crawl. Coverage gap. |
+| raw shrimp | no |: (none) | yes | No raw frozen shrimp SKU in SF crawl. Prepared only (Kirkland Garlic Butter Shrimp 2 lb $15.99, Shrimp Cocktail $10.99/lb). Coverage gap for an exact raw-shrimp comparison. |
+| bell peppers | no |: (none) | yes | No fresh bell peppers in SF crawl. Coverage gap (Costco 6-ct exists in stores ~$1/ea but not crawled). |
+| drumsticks (Nestle ice cream) | no |: (none) | yes | No Nestle Drumstick ice cream in SF crawl; only FRESH ORGANIC CHICKEN DRUMSTICK #22501 $1.99/lb (different product). Coverage gap. |
+| Doritos | yes | #933402 DORITOS NACHO CHEESE 30 OUNCES $6.99 / 30 oz bag → already mapped (canonical doritos_nacho_cheese, config/costco_item_mappings.csv) | no | DORITOS NACHO CHEESE 30 OZ. Already mapped for the canonical tracker. |
+| avocados | yes | #647465 AVOCADOS HASS VARIETY 6 COUNT $7.99 / 6 count → already mapped (canonical avocados) | no | AVOCADOS HASS VARIETY 6 COUNT. Already mapped. |
+| blackberries | yes | #791185 ORGANIC BLACKBERRIES 12 OZ $8.99 / 12 oz (organic) → config/content_costco_mappings.csv (berry_mix_6oz) | no | ORGANIC BLACKBERRIES 12 OZ. Exists; add as content-mode comparable (organic vs conventional caveat). |
+| raspberries | yes | #56366 RASPBERRIES 12 OZ $6.99 / 12 oz → config/content_costco_mappings.csv (new raspberries row) | no | RASPBERRIES 12 OZ. Exists; conventional, good same-product comparable. |
+| blueberries | yes | #57554 BLUEBERRIES 18 OZ $5.99 / 18 oz → config/content_costco_mappings.csv (new blueberries row) | no | BLUEBERRIES 18 OZ. Exists; same-product comparable. |
+| Chobani | yes | #1005641 CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA $17.89 / 20 ct 5.3 oz → config/content_costco_mappings.csv (chobani_yogurt) | no | CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OZ. Exists but was unmapped; matches the Safeway single-serve 3/$4 cups (Costco is cheaper per cup). Protein 16-ct #1920008 relates to the Vons 4-ct protein deal, not Safeway. |
+| beef chuck short ribs | yes | #34044 CHOICE BEEF CHUCK BONELESS SHORT RIBS VAC PACK PER LB $12.29 / per lb (Choice boneless) → config/content_costco_mappings.csv (beef_chuck_short_ribs) | no | CHOICE BEEF CHUCK BONELESS SHORT RIBS $12.29/lb. Exists; Prime bone-in #12329 $7.99/lb and #12239 $10.99/lb also exist. Add as content comparable (grade/bone caveat). |
+| pork shoulder ribs | yes | #33997 PORK SHOULDER COUNTRY RIBS BONELESS PER LB. $3.79 / per lb → config/content_costco_mappings.csv (pork_shoulder_ribs) | no | PORK SHOULDER COUNTRY RIBS BONELESS $3.79/lb. Exists; near-exact same product. Add as content comparable. |
+| Sargento / string cheese | yes | #1352319 GALBANI WHOLE MILK STRING CHEESE 60 COUNT 1 OUNCE EACH $11.49 / 60 ct 1 oz → config/content_costco_mappings.csv (sargento_cheese, category comparable) | no | GALBANI WHOLE MILK STRING CHEESE 60 COUNT $11.49. Bulk store-brand; no Sargento SKU. Bulk is cheaper per stick, so this is NOT a Costco beat. |
+| Oreo regular packs | no |: (none) | yes | No regular Oreo SKU in SF crawl (only mini/assorted cookies). Coverage gap; Costco Oreo (~$3.79) known in stores but not crawled. |
+| Oreo BTS / single-serve / snack packs | no |: (none) | yes | No Oreo single-serve/snack multipack SKU in SF crawl. Coverage gap. |

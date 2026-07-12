@@ -1,7 +1,7 @@
 {
   "week_start": "2026-03-25",
   "week_end": "2026-03-31",
-  "generated_at": "2026-07-12T18:28:35.501037+00:00",
+  "generated_at": "2026-07-12T23:45:50.311920+00:00",
   "summary": {
     "accepted": 38,
     "rejected": 2,
@@ -32,12 +32,12 @@
       {
         "family_id": "ritz_crackers",
         "feed": "Safeway",
-        "detail": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy"
+        "detail": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy"
       },
       {
         "family_id": "ritz_crackers",
         "feed": "Safeway",
-        "detail": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy"
+        "detail": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy"
       }
     ]
   },
@@ -1051,7 +1051,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy",
+      "graph_preview_change": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy",
       "display_name": "Ritz crackers",
       "subtitle": "8.8\u201313.7 oz boxes",
       "manufacturer_family": null,
@@ -1079,7 +1079,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy",
+      "graph_preview_change": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy",
       "display_name": "Ritz crackers",
       "subtitle": "8.8\u201313.7 oz boxes",
       "manufacturer_family": null,
@@ -1163,7 +1163,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy",
+      "graph_preview_change": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy",
       "display_name": "Ritz crackers",
       "subtitle": "8.8\u201313.7 oz boxes",
       "manufacturer_family": null,
@@ -1191,7 +1191,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.49 \u2014 hard negative keyword/pattern hit: chips ahoy",
+      "graph_preview_change": "blocked $2.49: hard negative keyword/pattern hit: chips ahoy",
       "display_name": "Ritz crackers",
       "subtitle": "8.8\u201313.7 oz boxes",
       "manufacturer_family": null,

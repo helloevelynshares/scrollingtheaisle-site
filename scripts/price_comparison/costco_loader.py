@@ -387,7 +387,7 @@ def match_costco_item(
       best,
       parsed=parse_item_sign(best.item_sign, meta.comparable_unit),
     )
-  return best, "Text match — verify size/flavor" if best.match_method == "text" else None
+  return best, "Text match, verify size/flavor" if best.match_method == "text" else None
 
 
 def match_costco_history(

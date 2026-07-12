@@ -1,7 +1,7 @@
 {
   "week_start": "2026-05-20",
   "week_end": "2026-05-26",
-  "generated_at": "2026-07-12T18:28:36.834874+00:00",
+  "generated_at": "2026-07-12T23:45:51.577381+00:00",
   "summary": {
     "accepted": 22,
     "rejected": 2,
@@ -49,12 +49,12 @@
       {
         "family_id": "haagen_dazs_pints",
         "feed": "Vons",
-        "detail": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
+        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
       },
       {
         "family_id": "haagen_dazs_pints",
         "feed": "Vons",
-        "detail": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
+        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
       }
     ]
   },
@@ -652,7 +652,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -680,7 +680,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -711,7 +711,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -739,7 +739,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5 \u2014 hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,

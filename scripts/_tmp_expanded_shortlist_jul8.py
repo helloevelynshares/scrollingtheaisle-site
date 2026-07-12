@@ -335,11 +335,11 @@ def row_to_item(row: dict, store: str, sw_base: dict, vn_base: dict) -> AdItem |
     # Known bad matches
     nl = name.lower()
     if "coca-cola 2 liter" in nl or "pepsi 2 liter" in nl or "7up 2 liter" in nl:
-        caveats.append("2-liter bottle — NOT 12-pack soda; do not use for 12-pack tracker narrative")
+        caveats.append("2-liter bottle: NOT 12-pack soda; do not use for 12-pack tracker narrative")
     if "coca-cola, pepsi" in nl and store == "Safeway":
-        caveats.append("Multi-brand soda block — verify 12-pack vs 2-liter in store")
+        caveats.append("Multi-brand soda block, verify 12-pack vs 2-liter in store")
     if "weber seasoning" in nl and "kettle" in nl:
-        caveats.append("Multi-product promo block — Kettle chips price unclear from split row")
+        caveats.append("Multi-product promo block: Kettle chips price unclear from split row")
 
     if "sold in 10 lb bag" in (row.get("raw_offer_text") or "").lower():
         caveats.append("Sold in 10 lb bag minimum (~$9.90 total)")

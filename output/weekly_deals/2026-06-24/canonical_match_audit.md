@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-06-24 to 2026-06-30
+# Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-12T18:28:36.199218+00:00
+Generated: 2026-07-12T23:45:50.977968+00:00
 
 ## Summary
 
@@ -13,75 +13,75 @@ Generated: 2026-07-12T18:28:36.199218+00:00
 
 ### All-time low changes
 
-- `tillamook_ice_cream` (Safeway): $3.5 — Tillamook Ice Cream
-- `peaches_per_lb` (Safeway): $1.99 — Yellow Peaches
-- `nectarines_per_lb` (Safeway): $1.99 — Nectarines
-- `doritos_5_13oz` (Vons): $1.99 — Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
-- `cheetos_regular_bags` (Vons): $1.99 — Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
-- `hass_avocados_each` (Vons): $0.99 — Medium Ripe Hass Avocados
-- `nectarines_per_lb` (Vons): $1.99 — Nectarines
-- `tillamook_ice_cream` (Safeway): $3.5 — Tillamook Ice Cream
-- `peaches_per_lb` (Safeway): $1.99 — Yellow Peaches
-- `nectarines_per_lb` (Safeway): $1.99 — Nectarines
-- `doritos_5_13oz` (Vons): $1.99 — Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
-- `cheetos_regular_bags` (Vons): $1.99 — Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
-- `hass_avocados_each` (Vons): $0.99 — Medium Ripe Hass Avocados
-- `nectarines_per_lb` (Vons): $1.99 — Nectarines
+- `tillamook_ice_cream` (Safeway): $3.5: Tillamook Ice Cream
+- `peaches_per_lb` (Safeway): $1.99: Yellow Peaches
+- `nectarines_per_lb` (Safeway): $1.99: Nectarines
+- `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
+- `nectarines_per_lb` (Vons): $1.99: Nectarines
+- `tillamook_ice_cream` (Safeway): $3.5: Tillamook Ice Cream
+- `peaches_per_lb` (Safeway): $1.99: Yellow Peaches
+- `nectarines_per_lb` (Safeway): $1.99: Nectarines
+- `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
+- `nectarines_per_lb` (Vons): $1.99: Nectarines
 
 ### Graph preview changes
 
-- `nabisco_snack_crackers` (Safeway): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `berries_6oz` (Safeway): blocked $2.99 — hard negative keyword/pattern hit: strawberries, 1 lb
-- `nabisco_snack_crackers` (Vons): blocked $2.99 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $1.67 — confidence 0.40 < min 0.70
-- `ben_jerrys_ice_cream` (Vons): blocked $4.99 — confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): blocked $3.99 — large price change 33% vs prior week requires audit
-- `nabisco_snack_crackers` (Safeway): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `berries_6oz` (Safeway): blocked $2.99 — hard negative keyword/pattern hit: strawberries, 1 lb
-- `nabisco_snack_crackers` (Vons): blocked $2.99 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $1.67 — confidence 0.40 < min 0.70
-- `ben_jerrys_ice_cream` (Vons): blocked $4.99 — confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): blocked $3.99 — large price change 33% vs prior week requires audit
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.40 < min 0.70
+- `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
+- `butter_16oz` (Vons): blocked $3.99: large price change 33% vs prior week requires audit
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.40 < min 0.70
+- `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
+- `butter_16oz` (Vons): blocked $3.99: large price change 33% vs prior week requires audit
 
 ### Blocked from tracker graph
 
-- `berries_6oz` (Safeway) — **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
+- `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: strawberries, 1 lb
   - Hard negatives: strawberries, 1 lb
-- `berries_6oz` (Safeway) — **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
+- `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: strawberries, 1 lb
   - Hard negatives: strawberries, 1 lb
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Nabisco Snack Crackers' @ $2.49
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `oreo_family_size` (Safeway) — **manual_review**: 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $None
+- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $None
   - Reason: confidence 0.50 < min 0.65
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Wheat Thins' @ $2.99
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
   - Reason: confidence 0.40 < min 0.70
-- `ben_jerrys_ice_cream` (Vons) — **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
+- `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons) — **manual_review**: 'Lucerne Butter' @ $3.99
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
   - Reason: large price change 33% vs prior week requires audit
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Nabisco Snack Crackers' @ $2.49
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `oreo_family_size` (Safeway) — **manual_review**: 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $None
+- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $None
   - Reason: confidence 0.50 < min 0.65
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Wheat Thins' @ $2.99
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
   - Reason: confidence 0.40 < min 0.70
-- `ben_jerrys_ice_cream` (Vons) — **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
+- `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons) — **manual_review**: 'Lucerne Butter' @ $3.99
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
   - Reason: large price change 33% vs prior week requires audit
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99 — hard negative keyword/pattern hit: strawberries, 1 lb
-- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99 — hard negative keyword/pattern hit: strawberries, 1 lb
+- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
 
 ## Accepted matches
 
@@ -113,7 +113,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Light Orange Juice' @ $5.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream' @ $3.5 (confidence 0.90)
   - Display: Tillamook ice cream
@@ -233,7 +233,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Dr Pepper
   - Subtitle: 12-pack, 12 fl oz cans
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Light Orange Juice' @ $5.99 (confidence 0.70)
-  - Display: Simply refrigerated juice & lemonade
+  - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream' @ $3.5 (confidence 0.90)
   - Display: Tillamook ice cream

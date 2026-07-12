@@ -1,6 +1,6 @@
 # Scrolling the Aisle
 
-Static site for Scrolling the Aisle — weekly deal tracking plus a community “live grocery finds” feed.
+Static site for Scrolling the Aisle, weekly deal tracking plus a community “live grocery finds” feed.
 
 ## Supabase setup
 
@@ -91,14 +91,14 @@ on find_reports for insert
 with check (true);
 ```
 
-**Price tracker voting** — run `supabase/migrations/20260608_product_track_voting.sql` in the SQL Editor (or `supabase db push` from this repo). Votes and suggestions land in `product_track_votes` / `product_track_suggestions` (review in Supabase → Table Editor). The `product_track_suggestion_totals` view powers vote counts on the page.
+**Price tracker voting**, run `supabase/migrations/20260608_product_track_voting.sql` in the SQL Editor (or `supabase db push` from this repo). Votes and suggestions land in `product_track_votes` / `product_track_suggestions` (review in Supabase → Table Editor). The `product_track_suggestion_totals` view powers vote counts on the page.
 
-**Price tracker feeds** — run these in order in the SQL Editor (or `supabase db push`):
+**Price tracker feeds**, run these in order in the SQL Editor (or `supabase db push`):
 
-1. `supabase/migrations/20260609_price_tracker_feeds.sql` — `canonical_products`, `price_feeds`, `feed_product_matches`, `weekly_price_observations`
-2. `supabase/migrations/20260609_price_tracker_seed.sql` — Safeway Bay Area baseline + weekly observations (regenerate with `npm run generate:price-tracker-seed` after weekly ad updates)
+1. `supabase/migrations/20260609_price_tracker_feeds.sql`: `canonical_products`, `price_feeds`, `feed_product_matches`, `weekly_price_observations`
+2. `supabase/migrations/20260609_price_tracker_seed.sql`: Safeway Bay Area baseline + weekly observations (regenerate with `npm run generate:price-tracker-seed` after weekly ad updates)
 
-**Vons / Albertsons baselines (SoCal)** — same Albertsons `pgmsearch` API via [Vons search](https://www.vons.com/shop/search-results.html?q=grapes&tab=products):
+**Vons / Albertsons baselines (SoCal)**, same Albertsons `pgmsearch` API via [Vons search](https://www.vons.com/shop/search-results.html?q=grapes&tab=products):
 
 ```bash
 # 1. In Chrome on vons.com: set SoCal store, search any item, copy Cookie from Network → pgmsearch
@@ -112,14 +112,14 @@ Queries: `data/canonical/price_tracker_baseline_queries.csv`. Output: `data/proc
 
 ### 3. Create the storage bucket
 
-**Option A — Dashboard**
+**Option A: Dashboard**
 
 1. Supabase → **Storage** → **New bucket**
 2. Name: `find-photos` (must match exactly)
 3. **Public bucket**: On
 4. Create the bucket
 
-**Option B — SQL Editor** (same result)
+**Option B: SQL Editor** (same result)
 
 ```sql
 insert into storage.buckets (id, name, public)
@@ -149,7 +149,7 @@ using (
 
 If the table already exists, run `supabase/migrations/20260524_add_ai_find_columns.sql` in the SQL Editor to add:
 
-- `price_display` — human-readable price text
+- `price_display`, human-readable price text
 - `ai_extracted`, `ai_confidence`, `raw_ai_extraction`
 
 ## AI photo analysis
@@ -184,7 +184,7 @@ supabase secrets set OPENAI_API_KEY=sk-your-key-here
 supabase functions deploy analyze-find-photo
 ```
 
-4. **`app.js`** — endpoint is derived from `SUPABASE_URL` automatically:
+4. **`app.js`**, endpoint is derived from `SUPABASE_URL` automatically:
 
 ```text
 https://wurmdtqysegytsjcudve.functions.supabase.co/analyze-find-photo
@@ -216,7 +216,7 @@ Use `http://127.0.0.1:54321/functions/v1/analyze-find-photo` in `app.js` while t
 
 1. Open `http://localhost:8000/submit.html` or `http://localhost:8000/staging-live-finds/submit.html`
 2. Upload a shelf-tag photo (e.g. Keebler Fudge Stripes with 50% off sticker)
-3. Wait for “Analyzing photo…” — fields should auto-fill
+3. Wait for “Analyzing photo…”, fields should auto-fill
 4. Review and edit, then **Post find**
 5. Confirm redirect and feed card with photo and price text
 
@@ -266,7 +266,7 @@ Push to your `gh-pages` branch (or main, depending on settings). No build step r
 Visitor and page-view tracking uses [Cloudflare Web Analytics](https://developers.cloudflare.com/web-analytics/).
 
 1. In the [Cloudflare dashboard](https://dash.cloudflare.com/) go to **Web Analytics** → **Add a site** → hostname `scrollingtheaisle.com`.
-2. Choose **Enable with JS Snippet installation** (required for GitHub Pages — the site is not proxied through Cloudflare).
+2. Choose **Enable with JS Snippet installation** (required for GitHub Pages, the site is not proxied through Cloudflare).
 3. Copy the `token` from the snippet Cloudflare gives you.
 4. Paste it into `analytics.js` (replace `YOUR_CF_WEB_ANALYTICS_TOKEN`).
 5. Deploy. Open the live site, then check **Web Analytics** in Cloudflare for traffic within a few minutes.

@@ -1,4 +1,4 @@
-# Vons / Albertsons historical-low summary — week of 2026-07-01
+# Vons / Albertsons historical-low summary, week of 2026-07-01
 
 **Market:** socal_oc
 **Retailer:** Vons / Albertsons

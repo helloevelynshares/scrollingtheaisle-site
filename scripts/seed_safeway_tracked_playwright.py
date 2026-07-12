@@ -78,7 +78,7 @@ def resolve_ledger_items(
         return partial
 
     logger.warning(
-        "No ledger row matched %r — running one-off search (not saved to ledger)",
+        "No ledger row matched %r, running one-off search (not saved to ledger)",
         query_filter,
     )
     return [
@@ -316,7 +316,7 @@ def main() -> int:
             len(to_run),
         )
     if not to_run:
-        logger.info("Nothing to run — all scoped items already succeeded.")
+        logger.info("Nothing to run, all scoped items already succeeded.")
         if args.resume and items:
             candidate_rows = write_merged_outputs(
                 items,
@@ -325,7 +325,7 @@ def main() -> int:
                 candidates_csv=args.candidates_csv,
                 top_n=args.top_n,
             )
-            logger.info("Refreshed outputs — %d candidate rows", candidate_rows)
+            logger.info("Refreshed outputs: %d candidate rows", candidate_rows)
         return 0
 
     try:
@@ -413,12 +413,12 @@ def main() -> int:
     total_fail = len(items) - total_ok
 
     logger.info(
-        "This run — %d success, %d failure",
+        "This run: %d success, %d failure",
         run_successes,
         run_failures,
     )
     logger.info(
-        "Merged scope — %d/%d ok — jsonl: %s — candidates: %s (%d rows)",
+        "Merged scope: %d/%d ok, jsonl: %s, candidates: %s (%d rows)",
         total_ok,
         len(items),
         args.output,

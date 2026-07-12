@@ -83,7 +83,7 @@ def base_normalize_unit_price(row: dict[str, str]) -> float | None:
     if basis == "multi_buy":
         # Always try explicit "N for $X" normalization first (e.g. "PICK 4 FOR $20 WHEN YOU BUY 4").
         # The old guard `not re.search(r"(when you )?buy N")` skipped this for bundle deals that
-        # restate the quantity condition — those still need the per-unit divide.
+        # restate the quantity condition, those still need the per-unit divide.
         # Only skip if there is no "N for $X" pattern AND there is a "save $X when you buy N"
         # style (discount trigger rather than total price), i.e. _multi_buy_unit_price returns None.
         unit = _multi_buy_unit_price(row, price)
@@ -129,7 +129,7 @@ def normalize_per_lb(row: dict[str, str]) -> float | None:
     lbs = _extract_lb_weight(text)
     if lbs and lbs > 0:
         # Safety check: if the extracted weight equals the advertised price the offer text
-        # likely says "$X/lb" not "weighs X lbs" — skip division to avoid yielding $1.00.
+        # likely says "$X/lb" not "weighs X lbs", skip division to avoid yielding $1.00.
         if price > 0 and abs(lbs - price) / price < 0.02:
             return price
         return round(price / lbs, 2)

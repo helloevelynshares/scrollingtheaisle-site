@@ -1,4 +1,4 @@
-/** Mock FeedProductView chart payloads for family lab — local only, no Supabase. */
+/** Mock FeedProductView chart payloads for family lab; local only, no Supabase. */
 
 import type { FeedProductView, WeeklyPrice } from "../data/priceTrackerTypes";
 
@@ -122,6 +122,6 @@ export const MOCK_CHART_PRODUCTS: Record<string, FeedProductView> = {
       "2026-05-12": 5.99,
       "2026-06-17": 5.99,
       "2026-07-01": 3.6,
-    }, "Buy 2 get 3 free — effective ~$3.60 each when buying 5"),
+    }, "Buy 2 get 3 free; effective ~$3.60 each when buying 5"),
   ),
 };

@@ -22,7 +22,7 @@ export type WeeklyPrice = {
   sourceLabel?: string;
   offerText?: string;
   isBaselineFallback: boolean;
-  /** e.g. "friday_only", "short_term_dip" — from split_offer_items availability_type_guess */
+  /** e.g. "friday_only", "short_term_dip"; from split_offer_items availability_type_guess */
   availabilityType?: string | null;
   /** Promotional copy from split_offer_items promo_text, e.g. "3 for $5 Friday July 3rd" */
   promoNote?: string | null;
@@ -76,7 +76,7 @@ export type FeedProductView = {
   displayOrder?: number;
 };
 
-/** feed_product_matches row — maps canonical item to a retailer SKU for price fetching. */
+/** feed_product_matches row; maps canonical item to a retailer SKU for price fetching. */
 export type FeedProductMatch = {
   canonicalProductId: string;
   feedId: string;
@@ -88,7 +88,7 @@ export type FeedProductMatch = {
   baselineSource: string | null;
 };
 
-/** weekly_price_observations row — one week of prices for canonical + feed. */
+/** weekly_price_observations row; one week of prices for canonical + feed. */
 export type WeeklyPriceObservation = {
   canonicalProductId: string;
   feedId: string;

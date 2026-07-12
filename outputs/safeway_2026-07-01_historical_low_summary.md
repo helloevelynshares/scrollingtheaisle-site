@@ -1,4 +1,4 @@
-# Safeway historical-low summary — week of 2026-07-01
+# Safeway historical-low summary, week of 2026-07-01
 
 **Market:** bay_area
 **Retailer:** Safeway

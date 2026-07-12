@@ -46,7 +46,7 @@ def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(
         level=level,
-        format="%(asctime)s %(levelname)s %(name)s — %(message)s",
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
         datefmt="%H:%M:%S",
     )
 
@@ -255,7 +255,7 @@ def main() -> int:
         logger.info("Merged %d canonical_id(s) into %s", inserted, merge_target)
 
     logger.info(
-        "Done — %d success, %d failure — wrote %s and %s",
+        "Done: %d success, %d failure, wrote %s and %s",
         successes,
         failures,
         args.output,

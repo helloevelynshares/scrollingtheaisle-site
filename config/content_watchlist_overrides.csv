@@ -1,9 +1,9 @@
 canonical_product_id,canonical_category_id,market,include_in_weekly_ad_brief,content_priority,shopper_popularity_score,content_clarity_score,default_content_angle,track_costco_comp,track_historical_low,notes
-strawberries,,all,true,high,5,5,seasonal produce staple,true,true,Broad berries category — strawberries anchor
+strawberries,,all,true,high,5,5,seasonal produce staple,true,true,Broad berries category. Strawberries anchor
 avocados,,all,true,high,5,5,produce staple,true,true,Category-first Hass avocados
 doritos_nacho_cheese,,all,true,high,4,4,party chips / flavor variety,true,true,Represents party chips category
 cheetos_crunchy,,all,true,high,4,4,party chips,true,true,Frito-Lay chip family
-coke_zero,,all,true,medium,4,3,soda 12-pack comparison,true,true,12-pack soda — size matching can be fuzzy
+coke_zero,,all,true,medium,4,3,soda 12-pack comparison,true,true,12-pack soda, size matching can be fuzzy
 chobani_greek_yogurt,,all,true,high,4,3,Greek yogurt tubs vs cups,true,true,Prefer tub matches; flag cup-only deals
 cheerios,,all,true,medium,4,4,cereal stock-up,true,true,Plain Cheerios anchor for cereal category
 tillamook_ice_cream,,all,true,high,4,4,premium ice cream pint,true,true,Regional brand ice cream
@@ -15,7 +15,7 @@ haagen_dazs_ice_cream,,all,true,medium,3,4,premium ice cream,true,true,Ice cream
 grapes,,all,true,high,5,5,produce grapes,true,true,Broad grapes category
 eggs_18_count,,all,true,high,5,4,egg stock-up,true,true,18-count egg anchor
 oreos_sandwich_cookies,,all,true,high,5,5,cookies / sandwich cookies,true,true,Oreo family not single flavor
-protein_bars,,all,true,medium,3,3,protein snack bars,true,true,RXBAR-style bars — brand varies
+protein_bars,,all,true,medium,3,3,protein snack bars,true,true,RXBAR-style bars, brand varies
 kettle_brand_chips,,all,true,medium,4,4,premium potato chips,true,true,Kettle Brand anchor for premium chips
-,ben_jerrys_ice_cream,all,true,high,4,4,ice cream pints and bars,false,true,Deal family — no clean Costco comp yet
-,ritz_crackers_snacks,all,true,medium,4,4,crackers variety vs Costco bulk,true,true,Deal family — static Costco Ritz reference
+,ben_jerrys_ice_cream,all,true,high,4,4,ice cream pints and bars,false,true,Deal family. No clean Costco comp yet
+,ritz_crackers_snacks,all,true,medium,4,4,crackers variety vs Costco bulk,true,true,Deal family. Static Costco Ritz reference

@@ -80,7 +80,7 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     "pint": (
         r"\bpint\b",
-        # "14 oz" is ambiguous (ice cream pint vs cracker box) — require an ice
+        # "14 oz" is ambiguous (ice cream pint vs cracker box), require an ice
         # cream / pint context so it does not swallow snack-cracker sizes.
         r"14\s*oz.{0,20}(?:ice\s+cream|pint)",
         r"(?:ice\s+cream|pint).{0,20}14\s*oz",
@@ -119,7 +119,7 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     "wheat_thins": (r"wheat\s+thins",),
     "triscuits": (r"triscuit",),
     "chicken_in_a_biskit": (r"chicken\s+in\s+a\s+biskit",),
-    # Nabisco single-serve / multipack snack packs — NOT family-size boxes.
+    # Nabisco single-serve / multipack snack packs: NOT family-size boxes.
     "single_serve_snack_multipack": (
         r"single\s+serve",
         r"snack\s+pack",

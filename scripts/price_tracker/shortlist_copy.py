@@ -54,11 +54,11 @@ def family_shortlist_blurb(
     Families that carry explicit `allowed_product_lines` + a family-size package
     type lead with the real eligible items and clarify the generic app label,
     e.g. "Wheat Thins, Triscuit, and Chicken in a Biskit family-size boxes are
-    $3.49 this week — the app labels it as Nabisco family-size snack crackers,
+    $3.49 this week, the app labels it as Nabisco family-size snack crackers,
     but those are the actual eligible items."
 
     The family-size sentence is only emitted when the caller confirms the offer
-    is family-size eligible (``family_size_eligible=True``) — i.e. it passed the
+    is family-size eligible (``family_size_eligible=True``), i.e. it passed the
     same canonical match eligibility gate the tracker uses. This prevents
     standard-size / Ritz-led mix-or-match offers from being mislabeled as a
     "family-size boxes are $X" deal. Without confirmation, a generic
@@ -69,7 +69,7 @@ def family_shortlist_blurb(
         joined = _oxford_join(list(family.allowed_product_lines))
         app_label = _app_label(family)
         return (
-            f"{joined} family-size boxes are {price_text} {week_label} — the app "
+            f"{joined} family-size boxes are {price_text} {week_label}, the app "
             f"labels it as {app_label}, but those are the actual eligible items."
         )
     name = family.display_name or family.canonical_tracker_family

@@ -14,7 +14,7 @@ Examples:
     --input data/canonical/manual_canonical_50.csv --max-items 5 --headful
 
 Persistent profile: scripts/.playwright-profile
-Also loads SAFEWAY_COOKIE from scripts/.env (same fix as requests — stops infinite loading)
+Also loads SAFEWAY_COOKIE from scripts/.env (same fix as requests, stops infinite loading)
 Output: scripts/output/safeway_search_seed.jsonl
 """
 
@@ -47,7 +47,7 @@ def configure_logging(verbose: bool) -> None:
     level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(
         level=level,
-        format="%(asctime)s %(levelname)s %(name)s — %(message)s",
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
         datefmt="%H:%M:%S",
     )
 
@@ -171,7 +171,7 @@ def _capture_search_once(
 
     ok = status_code == 200 and payload is not None and error is None
     if ok:
-        logger.info("200 success for q=%r — %s", query, api_url or page_url)
+        logger.info("200 success for q=%r: %s", query, api_url or page_url)
 
     record: dict[str, Any] = {
         "query": query,
@@ -198,7 +198,7 @@ def capture_search(
     Load Safeway search results and capture the pgmsearch XHR.
 
     Uses wait_until=commit (not domcontentloaded) because Safeway often never
-    finishes DOM load while analytics keep running — that made runs look stuck.
+    finishes DOM load while analytics keep running, that made runs look stuck.
     """
     record = _capture_search_once(
         page,
@@ -357,7 +357,7 @@ def main() -> int:
         context.close()
 
     logger.info(
-        "Done — %d success, %d failure — wrote %s",
+        "Done: %d success, %d failure, wrote %s",
         successes,
         failures,
         args.output,

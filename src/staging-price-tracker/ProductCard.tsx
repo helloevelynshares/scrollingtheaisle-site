@@ -19,7 +19,7 @@ export function ProductCard({ product }: Props) {
           ) : null}
         </header>
         <p className="price-tracker-empty-state">
-          Tracking soon — no {product.feedLabel} prices for{" "}
+          Tracking soon. No {product.feedLabel} prices for{" "}
           {product.regionLabel} yet.
         </p>
       </article>

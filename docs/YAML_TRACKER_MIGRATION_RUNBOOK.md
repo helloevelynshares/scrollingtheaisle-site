@@ -53,7 +53,7 @@ Do **not** overwrite good baselines unless running an explicit refresh workflow.
 
 ## Rebuild weekly ad graphs
 
-Uses cached `split_offer_items.csv` — never re-extracts PDFs.
+Uses cached `split_offer_items.csv`, never re-extracts PDFs.
 
 ```bash
 npm run generate:weekly-ad-prices
@@ -72,8 +72,8 @@ Checks: product-type compatibility, unit/package, hard-negative keywords, confid
 | `match_decision` | Tracker graph updated? |
 |------------------|------------------------|
 | `accepted` | Yes |
-| `rejected` | No — ad deal only |
-| `manual_review` | No — needs human review |
+| `rejected` | No, ad deal only |
+| `manual_review` | No, needs human review |
 
 After every generate/import run, inspect:
 
@@ -126,7 +126,7 @@ npm run generate:canonical-families
 npm run build:price-tracker
 ```
 
-Open `/staging-price-tracker/` — confirm section chips, search, Popular this week, and 4-col desktop grid.
+Open `/staging-price-tracker/`, confirm section chips, search, Popular this week, and 4-col desktop grid.
 
 ## Full build
 

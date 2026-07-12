@@ -1,73 +1,73 @@
-# Canonical match audit — 2026-07-08 to 2026-07-14
+# Canonical match audit: 2026-07-08 to 2026-07-14
 
-Generated: 2026-07-12T18:28:36.439303+00:00
+Generated: 2026-07-12T23:45:51.211340+00:00
 
 ## Summary
 
-- **Accepted:** 48
+- **Accepted:** 50
 - **Rejected:** 6
 - **Manual review:** 4
-- **Families updated:** doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb, ritz_crackers, cheez_it_crackers, strawberries_1_2lb, eggs_dozen_normalized, butter_16oz
+- **Families updated:** doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb, ritz_crackers, cheez_it_crackers, simply_refrigerated_juice_lemonade, strawberries_1_2lb, eggs_dozen_normalized, butter_16oz
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `cheez_it_crackers` (Vons): $1.67 — Cheez-It Crackers, Keebler Fudge Shoppe Cookies
-- `cheez_it_crackers` (Vons): $1.67 — Cheez-It Crackers, Keebler Fudge Shoppe Cookies
+- `cheez_it_crackers` (Vons): $1.67: Cheez-It Crackers, Keebler Fudge Shoppe Cookies
+- `cheez_it_crackers` (Vons): $1.67: Cheez-It Crackers, Keebler Fudge Shoppe Cookies
 
 ### Graph preview changes
 
-- `coca_cola_12packs` (Safeway): blocked $3.99 — confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway): blocked $3.49 — hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
-- `salmon` (Safeway): blocked $4.99 — hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
-- `nabisco_snack_crackers` (Vons): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $0.99 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `coca_cola_12packs` (Safeway): blocked $3.99 — confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway): blocked $3.49 — hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
-- `salmon` (Safeway): blocked $4.99 — hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
-- `nabisco_snack_crackers` (Vons): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $0.99 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `coca_cola_12packs` (Safeway): blocked $3.99: confidence 0.40 < min 0.70
+- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
+- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
+- `nabisco_snack_crackers` (Vons): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `coca_cola_12packs` (Safeway): blocked $3.99: confidence 0.40 < min 0.70
+- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
+- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
+- `nabisco_snack_crackers` (Vons): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
 
 ### Blocked from tracker graph
 
-- `butter_16oz` (Safeway) — **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
+- `butter_16oz` (Safeway): **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
   - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
   - Hard negatives: spread, 13\s*to\s*15
-- `salmon` (Safeway) — **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
+- `salmon` (Safeway): **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
   - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
   - Hard negatives: smoked, nova, 4 oz, acme, \b[234]\s*oz\b
-- `coca_cola_12packs` (Vons) — **rejected**: 'Coca-Cola 2 liter' @ $0.99
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
-- `butter_16oz` (Safeway) — **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
+- `butter_16oz` (Safeway): **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
   - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
   - Hard negatives: spread, 13\s*to\s*15
-- `salmon` (Safeway) — **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
+- `salmon` (Safeway): **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
   - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
   - Hard negatives: smoked, nova, 4 oz, acme, \b[234]\s*oz\b
-- `coca_cola_12packs` (Vons) — **rejected**: 'Coca-Cola 2 liter' @ $0.99
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi' @ $3.99
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $3.99
   - Reason: confidence 0.40 < min 0.70
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Wheat Thins' @ $2.49
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Safeway) — **manual_review**: 'Coca-Cola, Pepsi' @ $3.99
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $3.99
   - Reason: confidence 0.40 < min 0.70
-- `nabisco_snack_crackers` (Vons) — **manual_review**: 'Wheat Thins' @ $2.49
+- `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49 — hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
-- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99 — hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
-- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
-- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49 — hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
-- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99 — hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
-- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99 — hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
+- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
+- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; ad product type 'butter_spread' not in allowed types ['butter_sticks']
+- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; ad product type 'smoked_salmon' not in allowed types ['fresh_salmon_fillets']
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; ad product type '2_liter_bottle' not in allowed types ['12_pack_cans']
 
 ## Accepted matches
 
@@ -112,7 +112,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `pillsbury_refrigerated_dough` (Safeway): 'Pillsbury Grands! Biscuits, Cinnamon Rolls' @ $2.5 (confidence 0.70)
-  - Display: Pillsbury refrigerated dough
+  - Display: Pillsbury ready-to-bake dough
   - Subtitle: 8–16.3 oz cans/tubes
 - `chicken_breast_per_lb` (Safeway): 'O Organics Organic Fresh Boneless Skinless Chicken Breast Value Pack.' @ $5.99 (confidence 0.90)
   - Display: Chicken breast
@@ -129,6 +129,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `pepsi_12packs` (Vons): 'Pepsi 2 liter' @ $0.99 (confidence 0.90)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice 46-52 oz., +CRV Chobani 20g Protein Yogurt 4 ct. Frigo CheeseHeads String Cheese 6.3-12 oz. or Challenge Butter 13-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
 - `strawberries_1_2lb` (Vons): 'Fresh Strawberries' @ $2.5 (confidence 0.90)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
@@ -188,7 +191,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `pillsbury_refrigerated_dough` (Safeway): 'Pillsbury Grands! Biscuits, Cinnamon Rolls' @ $2.5 (confidence 0.70)
-  - Display: Pillsbury refrigerated dough
+  - Display: Pillsbury ready-to-bake dough
   - Subtitle: 8–16.3 oz cans/tubes
 - `chicken_breast_per_lb` (Safeway): 'O Organics Organic Fresh Boneless Skinless Chicken Breast Value Pack.' @ $5.99 (confidence 0.90)
   - Display: Chicken breast
@@ -205,6 +208,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `pepsi_12packs` (Vons): 'Pepsi 2 liter' @ $0.99 (confidence 0.90)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice 46-52 oz., +CRV Chobani 20g Protein Yogurt 4 ct. Frigo CheeseHeads String Cheese 6.3-12 oz. or Challenge Butter 13-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
 - `strawberries_1_2lb` (Vons): 'Fresh Strawberries' @ $2.5 (confidence 0.90)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb

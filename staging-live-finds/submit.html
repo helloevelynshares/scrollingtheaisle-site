@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Post a find (Staging) — Scrolling the Aisle</title>
+  <title>Post a find (Staging): Scrolling the Aisle</title>
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="stylesheet" href="../styles.css" />
 </head>
@@ -25,7 +25,7 @@
   <main class="page-main">
     <section class="hero">
       <h1>Post a grocery find</h1>
-      <p>Upload a shelf tag or product photo — we’ll try to fill in the details. Review everything before you post. Finds are reviewed before they go live.</p>
+      <p>Upload a shelf tag or product photo. We'll try to fill in the details. Review everything before you post. Finds are reviewed before they go live.</p>
     </section>
 
     <form id="submit-form" class="submit-form" novalidate>
@@ -46,12 +46,12 @@
       </div>
 
       <p class="ai-helper-text">AI can make mistakes. Please confirm the item and price before posting.</p>
-      <p id="ai-fill-banner" class="ai-fill-banner" hidden>We filled this in from your photo — please double-check.</p>
+      <p id="ai-fill-banner" class="ai-fill-banner" hidden>We filled this in from your photo. Please double-check.</p>
 
       <div class="form-group">
         <label for="item_name">Item name</label>
         <input type="text" id="item_name" name="item_name" required autocomplete="off" data-ai-field />
-        <p id="item_name-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
+        <p id="item_name-warning" class="field-warning" hidden>Couldn't read this clearly. Please check.</p>
       </div>
 
       <div class="form-group">
@@ -62,16 +62,16 @@
           name="price"
           required
           autocomplete="off"
-          placeholder="e.g. $3.99 or 50% off — reg. $7.99"
+          placeholder="e.g. $3.99 or 50% off, reg. $7.99"
           data-ai-field
         />
-        <p id="price-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
+        <p id="price-warning" class="field-warning" hidden>Couldn't read this clearly. Please check.</p>
       </div>
 
       <div class="form-group">
         <label for="store_name">Store</label>
         <input type="text" id="store_name" name="store_name" required autocomplete="organization" data-ai-field />
-        <p id="store_name-warning" class="field-warning" hidden>Couldn’t read this clearly — please check.</p>
+        <p id="store_name-warning" class="field-warning" hidden>Couldn't read this clearly. Please check.</p>
       </div>
 
       <div class="form-group">

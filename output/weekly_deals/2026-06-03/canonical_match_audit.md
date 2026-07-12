@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-06-03 to 2026-06-09
+# Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-12T18:28:35.919853+00:00
+Generated: 2026-07-12T23:45:50.711005+00:00
 
 ## Summary
 
@@ -13,45 +13,45 @@ Generated: 2026-07-12T18:28:35.919853+00:00
 
 ### All-time low changes
 
-- `cheetos_regular_bags` (Safeway): $2.59 — Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.
-- `kettle_brand_chips` (Safeway): $1.99 — Kettle Brand Potato Chips
-- `goldfish_bags` (Safeway): $5.0 — Goldfish Crackers
-- `seedless_grapes_per_lb` (Safeway): $1.67 — Red Seedless Grapes
-- `sweet_corn` (Safeway): $0.33 — Sweet Corn
-- `seedless_grapes_per_lb` (Vons): $1.97 — Black Seedless Grapes
-- `sweet_corn` (Vons): $0.67 — Sweet Corn
-- `cheetos_regular_bags` (Safeway): $2.59 — Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.
-- `kettle_brand_chips` (Safeway): $1.99 — Kettle Brand Potato Chips
-- `goldfish_bags` (Safeway): $5.0 — Goldfish Crackers
-- `seedless_grapes_per_lb` (Safeway): $1.67 — Red Seedless Grapes
-- `sweet_corn` (Safeway): $0.33 — Sweet Corn
-- `seedless_grapes_per_lb` (Vons): $1.97 — Black Seedless Grapes
-- `sweet_corn` (Vons): $0.67 — Sweet Corn
+- `cheetos_regular_bags` (Safeway): $2.59: Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.
+- `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
+- `goldfish_bags` (Safeway): $5.0: Goldfish Crackers
+- `seedless_grapes_per_lb` (Safeway): $1.67: Red Seedless Grapes
+- `sweet_corn` (Safeway): $0.33: Sweet Corn
+- `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
+- `sweet_corn` (Vons): $0.67: Sweet Corn
+- `cheetos_regular_bags` (Safeway): $2.59: Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.
+- `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
+- `goldfish_bags` (Safeway): $5.0: Goldfish Crackers
+- `seedless_grapes_per_lb` (Safeway): $1.67: Red Seedless Grapes
+- `sweet_corn` (Safeway): $0.33: Sweet Corn
+- `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
+- `sweet_corn` (Vons): $0.67: Sweet Corn
 
 ### Graph preview changes
 
-- `nabisco_snack_crackers` (Safeway): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `eggs_dozen_normalized` (Safeway): blocked $6.99 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `nabisco_snack_crackers` (Safeway): blocked $2.49 — no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `eggs_dozen_normalized` (Safeway): blocked $6.99 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `eggs_dozen_normalized` (Safeway): blocked $6.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `eggs_dozen_normalized` (Safeway): blocked $6.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
 
 ### Blocked from tracker graph
 
-- `eggs_dozen_normalized` (Safeway) — **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Safeway) — **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
   - Reason: confidence 0.50 < min 0.60
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Wheat Thins' @ $2.49
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
   - Reason: confidence 0.10 < min 0.70
-- `lays_potato_chips_regular` (Safeway) — **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
+- `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
   - Reason: confidence 0.50 < min 0.60
-- `nabisco_snack_crackers` (Safeway) — **manual_review**: 'Wheat Thins' @ $2.49
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola, Pepsi' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
   - Reason: confidence 0.10 < min 0.70
 
 ## Accepted matches

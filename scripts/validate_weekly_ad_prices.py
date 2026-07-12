@@ -4,11 +4,11 @@
 Reads src/data/weeklyAdPrices.generated.ts, vonsWeeklyAdPrices.generated.ts, and
 data/canonical_tracker_families.yaml. Checks each non-null price entry for:
 
-  1. Keyword sanity   — offerText must contain at least one token from the
+  1. Keyword sanity  , offerText must contain at least one token from the
                         family's include list; must NOT match keep_separate_from.
-  2. Price outlier    — price > 2× median (baseline) OR > 3× prior week OR
+  2. Price outlier   , price > 2× median (baseline) OR > 3× prior week OR
                         < 0.5× prior week (when prior exists).
-  3. Per-lb plausibility — for per-lb families, price should be $0.25–$50/lb.
+  3. Per-lb plausibility, for per-lb families, price should be $0.25–$50/lb.
   4. High confidence + bad keyword = immediate fail.
 
 Output: data/review/weekly_price_sanity_{YYYY-MM-DD}.csv
@@ -124,7 +124,7 @@ def keyword_sanity_check(
 
     text_lower = offer_text.lower()
 
-    # Check keep_separate_from — any match is a failure
+    # Check keep_separate_from, any match is a failure
     for pattern in family.exclude_patterns:
         if re.search(pattern, text_lower, re.IGNORECASE):
             return False, f"offerText matches keep_separate_from pattern: {pattern!r}"
@@ -213,7 +213,7 @@ def validate_feed(
             continue
         family = families_by_id.get(family_id)
         if family is None:
-            continue  # unknown family — skip
+            continue  # unknown family, skip
 
         sorted_wks = _sorted_weeks(week_data)
         all_prices: list[float] = [
@@ -309,7 +309,7 @@ def main(argv: list[str] | None = None) -> int:
         (VONS_TS, "vons"),
     ]:
         if not ts_path.is_file():
-            print(f"Warning: {ts_path} not found — skipping {store_label}")
+            print(f"Warning: {ts_path} not found, skipping {store_label}")
             continue
         prices = parse_prices_ts(ts_path)
         rows = validate_feed(
@@ -334,7 +334,7 @@ def main(argv: list[str] | None = None) -> int:
         for r in all_rows[:20]:
             print(
                 f"  [{r['store']}] {r['family_id']} {r['week']} "
-                f"${r['price']} — {r['reason']}"
+                f"${r['price']}: {r['reason']}"
             )
         if len(all_rows) > 20:
             print(f"  ... and {len(all_rows) - 20} more (see CSV)")

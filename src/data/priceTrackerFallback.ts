@@ -22,7 +22,7 @@ import {
 const SAFEWAY_FEED_ID = "safeway_bay_area";
 const VONS_FEED_ID = "vons_albertsons_socal";
 
-/** Safeway baselines keyed by canonical / family id — used when Supabase is unavailable. */
+/** Safeway baselines keyed by canonical / family id; used when Supabase is unavailable. */
 export const SAFEWAY_BASELINES: Record<
   string,
   { price: number; source: string; retailerProductName: string }

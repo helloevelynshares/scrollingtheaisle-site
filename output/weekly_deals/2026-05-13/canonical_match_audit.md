@@ -1,6 +1,6 @@
-# Canonical match audit — 2026-05-13 to 2026-05-19
+# Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-12T18:28:36.772593+00:00
+Generated: 2026-07-12T23:45:51.515859+00:00
 
 ## Summary
 
@@ -13,25 +13,25 @@ Generated: 2026-07-12T18:28:36.772593+00:00
 
 ### All-time low changes
 
-- `strawberries_1_2lb` (Vons): $1.28 — Local Strawberries
-- `mangoes_each` (Vons): $0.5 — Extra Large Mangoes
-- `strawberries_1_2lb` (Vons): $1.28 — Local Strawberries
-- `mangoes_each` (Vons): $0.5 — Extra Large Mangoes
+- `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
+- `mangoes_each` (Vons): $0.5: Extra Large Mangoes
+- `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
+- `mangoes_each` (Vons): $0.5: Extra Large Mangoes
 
 ### Graph preview changes
 
-- `eggs_dozen_normalized` (Vons): blocked $2.5 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons): blocked $2.5 — ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `eggs_dozen_normalized` (Vons): blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `eggs_dozen_normalized` (Vons): blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
 
 ### Blocked from tracker graph
 
-- `eggs_dozen_normalized` (Vons) — **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons) — **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
   - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
   - Reason: confidence 0.38 < min 0.70
-- `coca_cola_12packs` (Vons) — **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
+- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
   - Reason: confidence 0.38 < min 0.70
 
 ## Accepted matches

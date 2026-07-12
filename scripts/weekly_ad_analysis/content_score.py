@@ -84,12 +84,12 @@ class ContentScoreInput:
     costco_percent_cheaper: float | None = None
     costco_match_type: str | None = None
     near_costco_with_smaller_qty: bool = False
-    # "strong" | "moderate" | "weak" — how good the absolute ad price is
+    # "strong" | "moderate" | "weak", how good the absolute ad price is
     # (seasonal-low, deep discount, cheap unit, etc.).
     absolute_price_strength: str = "moderate"
     is_friday_only: bool = False
     is_seasonal_produce: bool = False
-    # "strong" | "moderate" | "weak" | "none" — TikTok hook potential.
+    # "strong" | "moderate" | "weak" | "none": TikTok hook potential.
     tiktok_hook: str = "moderate"
 
 
@@ -128,7 +128,7 @@ def _costco_unit_win_points(pct: float | None, match_type: str | None) -> tuple[
             f"beats Costco by ~{pct:.0f}% on a usable match"
         )
     if match in PROXY_COSTCO_MATCH_TYPES:
-        # Directional only — cap low so proxies never look like hard wins.
+        # Directional only, cap low so proxies never look like hard wins.
         raw = min(6, (pct / 25.0) * 6)
         return _clamp(raw, 6), f"directionally under Costco (~{pct:.0f}%, proxy only)"
     return 0, None

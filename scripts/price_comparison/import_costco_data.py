@@ -2,7 +2,7 @@
 """Import read-only Costco warehouse CSVs into a normalized local cache.
 
 Reads from costco-mvp/costco_data (override with COSTCO_DATA_ROOT).
-Writes to data/processed/costco/ inside this repo — never modifies costco-mvp.
+Writes to data/processed/costco/ inside this repo, never modifies costco-mvp.
 
 Usage:
   python3 scripts/price_comparison/import_costco_data.py

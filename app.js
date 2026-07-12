@@ -571,7 +571,7 @@ async function analyzePhotoFile(file) {
     }
 
     applyAiExtraction(data);
-    setPhotoAnalyzeStatus("Analysis complete — please review the fields below.");
+    setPhotoAnalyzeStatus("Analysis complete. Please review the fields below.");
   } catch (err) {
     if (generation !== photoAnalyzeGeneration) return;
     console.error(err);

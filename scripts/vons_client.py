@@ -54,7 +54,7 @@ STORE_CONTEXT_HINT = (
 def timeout_message(timeout_sec: float, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Vons pgmsearch timed out after {timeout_sec:g}s{q} — {PGMSEARCH_COOKIE_HINT}; "
+        f"Vons pgmsearch timed out after {timeout_sec:g}s{q}: {PGMSEARCH_COOKIE_HINT}; "
         f"{STORE_CONTEXT_HINT}"
     )
 
@@ -62,7 +62,7 @@ def timeout_message(timeout_sec: float, *, query: str | None = None) -> str:
 def auth_message(status_code: int, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Vons pgmsearch returned HTTP {status_code}{q} (session/auth) — "
+        f"Vons pgmsearch returned HTTP {status_code}{q} (session/auth): "
         f"{PGMSEARCH_COOKIE_HINT}; {STORE_CONTEXT_HINT}"
     )
 
@@ -75,7 +75,7 @@ def empty_response_message(*, query: str | None = None) -> str:
 def stuck_loading_message(api_timeout_sec: float, *, query: str | None = None) -> str:
     q = f" for q={query!r}" if query else ""
     return (
-        f"Vons search stuck loading — no pgmsearch response after {api_timeout_sec:g}s{q} — "
+        f"Vons search stuck loading, no pgmsearch response after {api_timeout_sec:g}s{q}: "
         f"{PGMSEARCH_COOKIE_HINT}; {STORE_CONTEXT_HINT}"
     )
 
@@ -90,7 +90,7 @@ def _outcome_from_http_status(
     """Map non-200 HTTP to SearchOutcome, or None when caller should parse JSON."""
     if status_code in (401, 403):
         msg = auth_message(status_code, query=query)
-        logger.warning("%s — body preview: %s", msg, body[:200].decode("utf-8", errors="replace"))
+        logger.warning("%s, body preview: %s", msg, body[:200].decode("utf-8", errors="replace"))
         return SearchOutcome(
             query=query,
             status_code=status_code,
@@ -103,7 +103,7 @@ def _outcome_from_http_status(
     if status_code != 200:
         preview = body[:200].decode("utf-8", errors="replace")
         msg = f"Vons pgmsearch returned HTTP {status_code} for q={query!r}"
-        logger.warning("%s — body preview: %s", msg, preview)
+        logger.warning("%s, body preview: %s", msg, preview)
         return SearchOutcome(
             query=query,
             status_code=status_code,
@@ -191,7 +191,7 @@ def _search_via_curl(
     timeout_sec: float,
     config: VonsSearchConfig,
 ) -> SearchOutcome:
-    """Use system curl — matches working Safari DevTools captures; requests often times out."""
+    """Use system curl, matches working Safari DevTools captures; requests often times out."""
     url = build_pgmsearch_url(query, config)
     headers = build_vons_headers(query, config)
     cmd = [

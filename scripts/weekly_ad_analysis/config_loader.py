@@ -1,4 +1,4 @@
-"""Weekly ad analysis — shared types and config loading."""
+"""Weekly ad analysis, shared types and config loading."""
 
 from __future__ import annotations
 

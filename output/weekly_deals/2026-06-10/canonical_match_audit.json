@@ -1,7 +1,7 @@
 {
   "week_start": "2026-06-10",
   "week_end": "2026-06-16",
-  "generated_at": "2026-07-12T18:28:36.044509+00:00",
+  "generated_at": "2026-07-12T23:45:50.830691+00:00",
   "summary": {
     "accepted": 72,
     "rejected": 2,
@@ -149,12 +149,12 @@
       {
         "family_id": "eggs_dozen_normalized",
         "feed": "Safeway",
-        "detail": "blocked $2.99 \u2014 ambiguous match"
+        "detail": "blocked $2.99: ambiguous match"
       },
       {
         "family_id": "eggs_dozen_normalized",
         "feed": "Safeway",
-        "detail": "blocked $2.99 \u2014 ambiguous match"
+        "detail": "blocked $2.99: ambiguous match"
       }
     ]
   },
@@ -2104,7 +2104,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.99 \u2014 ambiguous match",
+      "graph_preview_change": "blocked $2.99: ambiguous match",
       "display_name": "Eggs",
       "subtitle": "large eggs; normalized to 12-count/dozen",
       "manufacturer_family": null,
@@ -2156,7 +2156,7 @@
       "output_class": "manual_review_required",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.99 \u2014 ambiguous match",
+      "graph_preview_change": "blocked $2.99: ambiguous match",
       "display_name": "Eggs",
       "subtitle": "large eggs; normalized to 12-count/dozen",
       "manufacturer_family": null,

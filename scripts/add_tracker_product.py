@@ -75,14 +75,14 @@ def query_in_new_only(product_id: str) -> bool:
 def validate_metadata(product_id: str) -> list[str]:
     missing: list[str] = []
     if not canonical_in_ts(product_id):
-        missing.append(f"src/data/canonicalProducts.ts — add id: {product_id!r}")
+        missing.append(f"src/data/canonicalProducts.ts, add id: {product_id!r}")
     if not matcher_in_generate(product_id):
         missing.append(
-            f"scripts/generate_weekly_ad_prices.py — add ProductMatcher + TRACKER_CANONICAL_IDS"
+            f"scripts/generate_weekly_ad_prices.py, add ProductMatcher + TRACKER_CANONICAL_IDS"
         )
     if not query_in_new_only(product_id):
         missing.append(
-            f"data/canonical/price_tracker_baseline_queries_new_only.csv — add search row"
+            f"data/canonical/price_tracker_baseline_queries_new_only.csv, add search row"
         )
     return missing
 

@@ -33,7 +33,7 @@ export type PricePoint = WeeklyPrice & {
 
 const INFERRED_BASELINE_SOURCE = "Inferred from weekly ad matches";
 
-/** Highest non-low-confidence weekly ad price — anchor when no store baseline exists. */
+/** Highest non-low-confidence weekly ad price; anchor when no store baseline exists. */
 export function inferBaselineFromWeeklyPrices(
   weeklyPrices: WeeklyPrice[],
 ): number | null {
@@ -91,7 +91,7 @@ export function getChartPricePoints(product: FeedProductView): PricePoint[] {
     .sort((a, b) => a.weekStart.localeCompare(b.weekStart));
 }
 
-/** Costco warehouse prices for the feed's paired region — never mixed across locations. */
+/** Costco warehouse prices for the feed's paired region; never mixed across locations. */
 export function getCostcoChartPricePoints(
   product: FeedProductView,
 ): PricePoint[] {
@@ -139,9 +139,9 @@ export type UnifiedChartRow = {
   priceType: string;
   isBaselineFallback: boolean;
   costcoPrice: number | null;
-  /** e.g. "friday_only" — forwarded from WeeklyPrice for tooltip Option A */
+  /** e.g. "friday_only"; forwarded from WeeklyPrice for tooltip Option A */
   availabilityType?: string | null;
-  /** Promo copy e.g. "3 for $5 Friday July 3rd" — forwarded for tooltip Option A */
+  /** Promo copy e.g. "3 for $5 Friday July 3rd"; forwarded for tooltip Option A */
   promoNote?: string | null;
 };
 
@@ -293,7 +293,7 @@ export function getDiscountPercent(product: FeedProductView): number | null {
 
 export function formatPrice(price: number | null | undefined): string {
   if (price == null || Number.isNaN(price)) {
-    return "—";
+    return "n/a";
   }
   return `$${price.toFixed(2)}`;
 }
@@ -545,12 +545,12 @@ function getGroceryVsCostcoPercent(product: FeedProductView): number | null {
 
 function closeEnoughLabel(feedLabel: string): string {
   if (feedLabel === "Safeway") {
-    return "Close enough — Safeway has more variety";
+    return "Close enough. Safeway has more variety";
   }
   if (feedLabel === "Vons") {
-    return "Close enough — Vons has more variety";
+    return "Close enough. Vons has more variety";
   }
-  return `Close enough — ${feedLabel} has more variety`;
+  return `Close enough. ${feedLabel} has more variety`;
 }
 
 /** Primary buy/wait headline for collapsed family cards. */
@@ -610,7 +610,7 @@ export function getFamilyBuyWaitTakeaway(
   };
 }
 
-/** Price line for collapsed family cards — current sale or usual price. */
+/** Price line for collapsed family cards: current sale or usual price. */
 export function getFamilyUsuallyLabel(product: FeedProductView): string {
   const preview = isProductInPreviewWeek(product);
   const latestWeek = getLatestWeeklyPrice(product);
@@ -694,7 +694,7 @@ export function getFamilyBuyWaitReason(product: FeedProductView): string | null 
       return `Costco is a little cheaper, but ${product.feedLabel} has more Ritz styles and smaller boxes.`;
     }
     if (takeaway.tone === "buy") {
-      return `Strong ${product.feedLabel} sale — ${product.feedLabel} still has more Ritz styles than Costco.`;
+      return `Strong ${product.feedLabel} sale. ${product.feedLabel} still has more Ritz styles than Costco.`;
     }
   }
 
@@ -987,7 +987,7 @@ export function getFamilySummary(product: FeedProductView): string {
   if (product.canonicalId === "ben_jerrys_ice_cream") {
     return onSale
       ? `${name} is at a strong stock-up price this week.`
-      : `${name} is at regular pricing — worth waiting for a sale.`;
+      : `${name} is at regular pricing. Worth waiting for a sale.`;
   }
 
   if (product.canonicalId === "ritz_crackers_snacks") {
