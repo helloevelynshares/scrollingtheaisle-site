@@ -32,21 +32,26 @@ const VIEW_CONFIG = {
   },
 };
 
-const BADGE_CLASS = {
-  "Stock up": "hub-badge--stock-up",
-  "Good small-pack buy": "hub-badge--good-buy",
-  "Costco still wins": "hub-badge--costco",
-  Wait: "hub-badge--wait",
-  "Lowest seen recently": "hub-badge--low",
-  "Beats Costco": "hub-badge--beats",
-  "About normal": "hub-badge--normal",
+const BADGE_TO_CATEGORY = {
+  friday: "Friday",
+  produce: "Produce",
+  meat: "Meat",
+  snacks: "Snacks",
+  variety: "Variety",
+  deal: "Other Deals",
 };
 
-const DEFAULT_VISIBLE_PICKS = 8;
+const CATEGORY_ORDER = [
+  "Friday",
+  "Produce",
+  "Meat",
+  "Snacks",
+  "Variety",
+  "Other Deals",
+];
 
 let previewData = null;
 let activeView = "safeway";
-const expandedByView = { safeway: false, vons: false };
 
 function escapeHtml(text) {
   if (text == null || text === "") return "";
@@ -66,16 +71,6 @@ async function loadPreviewData() {
   }
 }
 
-function badgeHtml(badge) {
-  const cls = BADGE_CLASS[badge] || "hub-badge--normal";
-  return `<span class="hub-badge ${cls}">${escapeHtml(badge)}</span>`;
-}
-
-function customBadgeHtml(badge) {
-  const variant = String(badge).trim().toLowerCase();
-  return `<span class="hub-badge hub-badge--custom hub-badge--${variant}">${escapeHtml(badge)}</span>`;
-}
-
 function picksForView(view) {
   if (!previewData) return [];
   const config = VIEW_CONFIG[view];
@@ -93,32 +88,70 @@ function leadLineForView(view) {
   return `${config.lead} · ${curated}`;
 }
 
-function renderDealCard(pick) {
-  const hasCustomBadge =
-    typeof pick.customBadge === "string" && pick.customBadge.trim() !== "";
-  const dealBadge =
-    pick.onSale && !pick.isPlaceholder
-      ? '<span class="hub-badge hub-badge--deal">Deal</span>'
-      : "";
-  const badgeMarkup = hasCustomBadge
-    ? customBadgeHtml(pick.customBadge)
-    : dealBadge || badgeHtml(pick.badge);
+function categoryForPick(pick) {
+  const raw = String(pick.customBadge || "")
+    .trim()
+    .toLowerCase();
+  return BADGE_TO_CATEGORY[raw] || "Other Deals";
+}
 
+function groupPicksByCategory(picks) {
+  const groups = new Map(CATEGORY_ORDER.map((name) => [name, []]));
+  for (const pick of picks) {
+    const cat = categoryForPick(pick);
+    if (!groups.has(cat)) groups.set(cat, []);
+    groups.get(cat).push(pick);
+  }
+  for (const [key, list] of [...groups.entries()]) {
+    if (list.length === 0) groups.delete(key);
+  }
+  return groups;
+}
+
+function renderCategoryPick(pick) {
+  const placeholder = pick.isPlaceholder ? " is-placeholder" : "";
   return `
-    <article class="hub-deal-card${pick.isPlaceholder ? " hub-deal-card--placeholder" : ""}">
-      <div class="hub-deal-card-top">
-        <h3 class="hub-deal-card-title">${escapeHtml(pick.name)}</h3>
-        ${badgeMarkup}
+    <article class="hub-picks-cat-item${placeholder}">
+      <div class="hub-picks-cat-item-head">
+        <h4 class="hub-picks-cat-item-title">${escapeHtml(pick.name)}</h4>
+        <p class="hub-picks-cat-item-price">
+          <span class="hub-picks-cat-amount">${escapeHtml(pick.price)}</span>
+          <span class="hub-picks-cat-store">${escapeHtml(pick.store)}</span>
+          ${
+            pick.unitPrice
+              ? `<span class="hub-picks-cat-unit">${escapeHtml(pick.unitPrice)}</span>`
+              : ""
+          }
+        </p>
       </div>
-      <p class="hub-deal-card-price">
-        <span class="hub-deal-card-amount">${escapeHtml(pick.price)}</span>
-        <span class="hub-deal-card-store">${escapeHtml(pick.store)}</span>
-      </p>
-      ${pick.unitPrice ? `<p class="hub-deal-card-unit">${escapeHtml(pick.unitPrice)}</p>` : ""}
-      <p class="hub-deal-card-note">${escapeHtml(pick.explanation)}</p>
-      <a href="${escapeHtml(pick.trackerUrl || TRACKER_URL)}" class="hub-deal-card-link">See price history →</a>
+      <p class="hub-picks-cat-item-note">${escapeHtml(pick.explanation)}</p>
+      <a href="${escapeHtml(pick.trackerUrl || TRACKER_URL)}" class="hub-picks-cat-link">See price history →</a>
     </article>
   `;
+}
+
+function renderPicksReport(picks) {
+  if (picks.length === 0) {
+    return `<p class="hub-empty">Weekly picks loading soon — check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;
+  }
+
+  const groups = groupPicksByCategory(picks);
+  const sections = [];
+
+  for (const [category, items] of groups) {
+    const slug = category.toLowerCase().replace(/\s+/g, "-");
+    sections.push(`
+      <section class="hub-picks-cat-section hub-picks-cat-section--${slug}" aria-labelledby="picks-cat-${slug}">
+        <header class="hub-picks-cat-header">
+          <h3 id="picks-cat-${slug}" class="hub-picks-cat-title">${escapeHtml(category)}</h3>
+          <span class="hub-picks-cat-count">${items.length}</span>
+        </header>
+        <div class="hub-picks-cat-items">${items.map(renderCategoryPick).join("")}</div>
+      </section>
+    `);
+  }
+
+  return `<div class="hub-picks-cat-columns">${sections.join("")}</div>`;
 }
 
 function renderPicksGrid() {
@@ -139,47 +172,8 @@ function renderPicksGrid() {
     strategyEl.hidden = !strategy;
   }
 
-  if (picks.length === 0) {
-    grid.innerHTML = `<p class="hub-empty">Weekly picks loading soon — check the <a href="${TRACKER_URL}">price tracker</a>.</p>`;
-    renderPicksMoreToggle(0);
-    return;
-  }
-
-  const hiddenCount = Math.max(picks.length - DEFAULT_VISIBLE_PICKS, 0);
-  const expanded = expandedByView[activeView] === true;
-  const visiblePicks =
-    expanded || hiddenCount === 0
-      ? picks
-      : picks.slice(0, DEFAULT_VISIBLE_PICKS);
-
-  grid.innerHTML = visiblePicks.map(renderDealCard).join("");
-  renderPicksMoreToggle(hiddenCount);
-}
-
-function renderPicksMoreToggle(hiddenCount) {
-  const grid = document.getElementById("picks-grid");
-  if (!grid) return;
-
-  const existing = document.getElementById("picks-more");
-  if (existing) existing.remove();
-
-  if (hiddenCount <= 0) return;
-
-  const expanded = expandedByView[activeView] === true;
-  const btn = document.createElement("button");
-  btn.type = "button";
-  btn.id = "picks-more";
-  btn.className = "hub-picks-more";
-  btn.setAttribute("aria-expanded", expanded ? "true" : "false");
-  btn.textContent = expanded
-    ? "Show fewer deals"
-    : `More handpicked deals (${hiddenCount})`;
-  btn.addEventListener("click", () => {
-    expandedByView[activeView] = !expanded;
-    renderPicksGrid();
-  });
-
-  grid.insertAdjacentElement("afterend", btn);
+  grid.className = "hub-picks-report";
+  grid.innerHTML = renderPicksReport(picks);
 }
 
 function setActiveView(view) {
@@ -212,10 +206,24 @@ async function initHomepage() {
 
 /* —— Store vote module (homepage hero) —— */
 
+/**
+ * @typedef {{
+ *   id: string,
+ *   voteCount: number,
+ *   label: string,
+ *   normalizedName: string,
+ *   createdAt: string | null,
+ *   approvedAt: string | null,
+ * }} StoreVoteItem
+ */
+
 let supabaseClient = null;
-/** @type {Map<string, { id: string, voteCount: number }>} */
-let storeVoteItems = new Map();
+/** @type {Map<string, StoreVoteItem>} keyed by store id */
+let storeVotesById = new Map();
+/** @type {Map<string, StoreVoteItem>} keyed by normalized_name */
+let storeVotesByNormalized = new Map();
 let storeVoteLoading = true;
+let storeVoteListReady = false;
 let storePendingVote = null;
 let storePendingSuggest = false;
 
@@ -288,6 +296,18 @@ function hideStoreStatus() {
   el.classList.remove("price-tracker-vote-status--success", "price-tracker-vote-status--error");
 }
 
+function setStoreVoteListStatus(message) {
+  const el = document.getElementById("store-vote-list-status");
+  if (!el) return;
+  if (message) {
+    el.textContent = message;
+    el.hidden = false;
+  } else {
+    el.textContent = "";
+    el.hidden = true;
+  }
+}
+
 function setChipVoteNote(chip, text) {
   let note = chip.querySelector(".price-tracker-vote-card-note");
   if (text) {
@@ -302,12 +322,70 @@ function setChipVoteNote(chip, text) {
   }
 }
 
+function rebuildStoreVoteIndexes(items) {
+  const byId = new Map();
+  const byNormalized = new Map();
+  for (const item of items) {
+    if (!item?.id) continue;
+    byId.set(item.id, item);
+    if (item.normalizedName) {
+      byNormalized.set(item.normalizedName, item);
+    }
+  }
+  storeVotesById = byId;
+  storeVotesByNormalized = byNormalized;
+}
+
+function compareStoreVoteItems(a, b) {
+  const voteDiff = (b.voteCount ?? 0) - (a.voteCount ?? 0);
+  if (voteDiff !== 0) return voteDiff;
+
+  const aApproved = a.approvedAt || "";
+  const bApproved = b.approvedAt || "";
+  if (aApproved !== bApproved) {
+    if (!aApproved) return 1;
+    if (!bApproved) return -1;
+    return aApproved < bApproved ? -1 : 1;
+  }
+
+  const aCreated = a.createdAt || "";
+  const bCreated = b.createdAt || "";
+  if (aCreated !== bCreated) {
+    if (!aCreated) return 1;
+    if (!bCreated) return -1;
+    return aCreated < bCreated ? -1 : 1;
+  }
+
+  return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+}
+
+function sortedStoreVoteItems() {
+  return [...storeVotesById.values()].sort(compareStoreVoteItems);
+}
+
+function upsertStoreVoteItem(item) {
+  if (!item?.id) return;
+  storeVotesById.set(item.id, item);
+  if (item.normalizedName) {
+    storeVotesByNormalized.set(item.normalizedName, item);
+  }
+}
+
+function bumpStoreVoteCountById(itemId) {
+  const entry = storeVotesById.get(itemId);
+  if (!entry) return null;
+  entry.voteCount += 1;
+  upsertStoreVoteItem(entry);
+  return entry;
+}
+
 function updateChipStates(votedStores) {
   document.querySelectorAll(".hub-store-chip").forEach((chip) => {
-    const store = chip.dataset.store;
-    const normalized = store ? normalizeStoreName(store) : "";
+    const storeId = chip.dataset.storeId;
+    const item = storeId ? storeVotesById.get(storeId) : null;
+    const normalized = item?.normalizedName || normalizeStoreName(chip.dataset.store || "");
     const voted = Boolean(normalized && votedStores.has(normalized));
-    const isPending = storePendingVote === normalized;
+    const isPending = storePendingVote === storeId || storePendingVote === normalized;
     chip.classList.toggle("price-tracker-vote-card--voted", voted);
     chip.setAttribute("aria-pressed", voted ? "true" : "false");
     chip.disabled =
@@ -319,33 +397,44 @@ function updateChipStates(votedStores) {
   });
 }
 
-function bumpStoreVoteCount(normalizedName) {
-  const entry = storeVoteItems.get(normalizedName);
-  if (!entry) return;
-  entry.voteCount += 1;
-  storeVoteItems.set(normalizedName, entry);
-}
-
 function formatStoreVoteLabel(name, voteCount) {
   return voteCount > 0 ? `${name} ▲ ${voteCount}` : name;
 }
 
-function renderStoreChips() {
-  document.querySelectorAll(".hub-store-chip").forEach((chip) => {
-    const store = chip.dataset.store;
-    if (!store) return;
-    const normalized = normalizeStoreName(store);
-    const item = storeVoteItems.get(normalized);
-    const count = item?.voteCount ?? 0;
-    let label = chip.querySelector(".price-tracker-vote-card-label");
-    if (!label) {
-      chip.textContent = "";
-      label = document.createElement("span");
-      label.className = "price-tracker-vote-card-label";
-      chip.appendChild(label);
-    }
-    label.textContent = formatStoreVoteLabel(store, count);
+function createStoreChip(item) {
+  const chip = document.createElement("button");
+  chip.type = "button";
+  chip.className = "hub-store-chip price-tracker-vote-card";
+  chip.setAttribute("role", "listitem");
+  chip.dataset.storeId = item.id;
+  chip.dataset.store = item.label;
+  chip.setAttribute("aria-pressed", "false");
+
+  const label = document.createElement("span");
+  label.className = "price-tracker-vote-card-label";
+  label.textContent = formatStoreVoteLabel(item.label, item.voteCount);
+  chip.appendChild(label);
+
+  chip.addEventListener("click", () => {
+    void handleStoreChipVote(chip);
   });
+
+  return chip;
+}
+
+function renderStoreChips() {
+  const strip = document.getElementById("store-vote-strip");
+  if (!strip) return;
+
+  strip.setAttribute("aria-busy", storeVoteLoading ? "true" : "false");
+  strip.replaceChildren();
+
+  if (storeVoteListReady) {
+    for (const item of sortedStoreVoteItems()) {
+      strip.appendChild(createStoreChip(item));
+    }
+  }
+
   updateChipStates(readVotedStores());
 }
 
@@ -357,25 +446,29 @@ async function fetchStoreVoteItems() {
 
   const { data, error } = await supabase
     .from("store_vote_items")
-    .select("id, public_name, raw_text, normalized_name, vote_count")
-    .eq("status", "approved")
-    .order("vote_count", { ascending: false })
-    .order("public_name", { ascending: true })
-    .order("raw_text", { ascending: true });
+    .select("id, public_name, raw_text, normalized_name, vote_count, created_at, approved_at")
+    .eq("status", "approved");
 
   if (error) {
     throw error;
   }
 
-  const next = new Map();
+  const items = [];
   for (const row of data ?? []) {
-    next.set(row.normalized_name, {
+    if (!row?.id) continue;
+    const label = (row.public_name?.trim() || row.raw_text || "").trim();
+    if (!label) continue;
+    items.push({
       id: row.id,
       voteCount: row.vote_count ?? 0,
-      label: row.public_name?.trim() || row.raw_text,
+      label,
+      normalizedName: row.normalized_name || normalizeStoreName(label),
+      createdAt: row.created_at ?? null,
+      approvedAt: row.approved_at ?? null,
     });
   }
-  storeVoteItems = next;
+
+  rebuildStoreVoteIndexes(items);
 }
 
 async function voteOnStoreItem(itemId) {
@@ -412,62 +505,41 @@ async function submitStoreSuggestion(storeName, city) {
 }
 
 async function handleStoreChipVote(chip) {
+  const storeId = chip.dataset.storeId?.trim();
   const store = chip.dataset.store?.trim();
-  if (!store || storePendingVote || storePendingSuggest) return;
+  if (!storeId || !store || storePendingVote || storePendingSuggest || storeVoteLoading) {
+    return;
+  }
 
-  const normalized = normalizeStoreName(store);
+  const item = storeVotesById.get(storeId);
+  if (!item) {
+    showStoreStatus("This store isn't available for voting right now.", true);
+    return;
+  }
+
+  const normalized = item.normalizedName || normalizeStoreName(store);
   const votedStores = readVotedStores();
   if (votedStores.has(normalized)) {
     showStoreStatus("You already voted for this store.");
     return;
   }
 
-  const item = storeVoteItems.get(normalized);
-
   hideStoreStatus();
-  storePendingVote = normalized;
+  storePendingVote = storeId;
   updateChipStates(votedStores);
-  if (item) {
-    bumpStoreVoteCount(normalized);
-    renderStoreChips();
-  }
+  bumpStoreVoteCountById(storeId);
+  renderStoreChips();
 
   try {
-    if (item?.id) {
-      await voteOnStoreItem(item.id);
-    } else {
-      const result = await submitStoreSuggestion(store, null);
-      if (result?.action === "voted") {
-        storeVoteItems.set(normalized, {
-          id: result.item_id,
-          voteCount: (item?.voteCount ?? 0) + 1,
-          label: store,
-        });
-        renderStoreChips();
-      } else {
-        if (item) {
-          const entry = storeVoteItems.get(normalized);
-          if (entry) {
-            entry.voteCount = Math.max(0, entry.voteCount - 1);
-            storeVoteItems.set(normalized, entry);
-            renderStoreChips();
-          }
-        }
-        showStoreStatus("Thanks — we'll review this before adding it to the voting list.");
-        return;
-      }
-    }
-
+    await voteOnStoreItem(storeId);
     markStoreVoted(normalized);
-    showStoreStatus(`Vote counted for ${store}. Thanks!`);
+    showStoreStatus(`Vote counted for ${item.label}. Thanks!`);
   } catch (error) {
-    if (item) {
-      const entry = storeVoteItems.get(normalized);
-      if (entry) {
-        entry.voteCount = Math.max(0, entry.voteCount - 1);
-        storeVoteItems.set(normalized, entry);
-        renderStoreChips();
-      }
+    const entry = storeVotesById.get(storeId);
+    if (entry) {
+      entry.voteCount = Math.max(0, entry.voteCount - 1);
+      upsertStoreVoteItem(entry);
+      renderStoreChips();
     }
     showStoreStatus(formatStoreVoteError(error), true);
   } finally {
@@ -510,16 +582,24 @@ async function handleStoreFormSubmit(event) {
 
     if (result?.action === "voted") {
       markStoreVoted(normalized);
-      if (storeVoteItems.has(normalized)) {
-        bumpStoreVoteCount(normalized);
-      } else {
-        storeVoteItems.set(normalized, {
-          id: result.item_id,
-          voteCount: 1,
-          label: store,
-        });
+      if (storeVoteListReady) {
+        const existing =
+          (result.item_id && storeVotesById.get(result.item_id)) ||
+          storeVotesByNormalized.get(normalized);
+        if (existing) {
+          bumpStoreVoteCountById(existing.id);
+        } else if (result.item_id) {
+          upsertStoreVoteItem({
+            id: result.item_id,
+            voteCount: 1,
+            label: store,
+            normalizedName: normalized,
+            createdAt: null,
+            approvedAt: null,
+          });
+        }
+        renderStoreChips();
       }
-      renderStoreChips();
       form.reset();
       showStoreStatus("Vote counted — thanks!");
       return;
@@ -535,29 +615,27 @@ async function handleStoreFormSubmit(event) {
   }
 }
 
-function initStoreChipPicker() {
-  document.querySelectorAll(".hub-store-chip").forEach((chip) => {
-    chip.addEventListener("click", () => {
-      void handleStoreChipVote(chip);
-    });
-  });
-}
-
 async function initStoreSuggestModule() {
   const module = document.getElementById("store-suggest-module");
   if (!module) return;
 
-  initStoreChipPicker();
-  renderStoreChips();
-
   const form = document.getElementById("store-custom-form");
   form?.addEventListener("submit", handleStoreFormSubmit);
 
+  setStoreVoteListStatus("");
+  renderStoreChips();
+
   try {
     await fetchStoreVoteItems();
+    storeVoteListReady = true;
+    setStoreVoteListStatus("");
     renderStoreChips();
-  } catch {
-    /* Chips can still submit via RPC when migration is applied. */
+  } catch (error) {
+    storeVoteListReady = false;
+    rebuildStoreVoteIndexes([]);
+    console.error("Failed to load approved store vote items", error);
+    setStoreVoteListStatus("Store votes couldn't load right now. You can still suggest a store below.");
+    renderStoreChips();
   } finally {
     storeVoteLoading = false;
     renderStoreChips();

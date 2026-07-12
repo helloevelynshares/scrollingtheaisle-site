@@ -3007,6 +3007,17 @@ img {
   margin: 0;
 }
 
+.hub-store-vote-strip-msg {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.hub-store-vote .price-tracker-vote-strip {
+  min-height: 30px;
+}
+
 .hub-store-vote .price-tracker-vote-custom-row input[name="city"] {
   flex: 0.85 1 96px;
   max-width: 132px;
@@ -3097,28 +3108,6 @@ img {
   border: 1px solid #fcd9b0;
 }
 
-/* "More handpicked deals" expander — mirrors the tracker's .popular-this-week__more. */
-.hub-picks-more {
-  margin: 14px 0 0;
-  appearance: none;
-  display: inline-block;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--accent);
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.2;
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.hub-picks-more:hover {
-  border-color: var(--accent);
-  color: var(--accent-dark);
-}
-
 .hub-section-footer {
   margin: 20px 0 0;
 }
@@ -3140,103 +3129,155 @@ img {
   margin-top: 20px;
 }
 
-.hub-deal-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+/* Homepage highlights — category market report */
+.hub-picks-report {
+  display: block;
 }
 
-@media (min-width: 640px) {
-  .hub-deal-grid {
+.hub-picks-cat-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px 32px;
+}
+
+@media (min-width: 700px) {
+  .hub-picks-cat-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 960px) {
-  .hub-deal-grid {
+@media (min-width: 1100px) {
+  .hub-picks-cat-columns {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.hub-deal-card {
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hub-deal-card--placeholder {
-  border-style: dashed;
-  opacity: 0.92;
-}
-
-.hub-deal-card-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.hub-deal-card-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-  letter-spacing: -0.2px;
-  line-height: 1.25;
-  flex: 1 1 auto;
+.hub-picks-cat-section {
+  border-top: 2px solid var(--text);
+  padding-top: 8px;
   min-width: 0;
 }
 
-.hub-deal-card-price {
-  margin: 0;
+.hub-picks-cat-section--friday {
+  border-top-color: #c47a1a;
+}
+
+.hub-picks-cat-section--produce {
+  border-top-color: #2f7d32;
+}
+
+.hub-picks-cat-section--meat {
+  border-top-color: #9c2a2a;
+}
+
+.hub-picks-cat-section--snacks,
+.hub-picks-cat-section--variety {
+  border-top-color: #5a3a91;
+}
+
+.hub-picks-cat-section--other-deals {
+  border-top-color: #1a7f4b;
+}
+
+.hub-picks-cat-header {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
   gap: 8px;
-  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
-.hub-deal-card-amount {
-  font-size: 26px;
+.hub-picks-cat-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hub-picks-cat-count {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.hub-picks-cat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+
+.hub-picks-cat-item:last-child {
+  border-bottom: none;
+}
+
+.hub-picks-cat-item.is-placeholder {
+  opacity: 0.94;
+}
+
+.hub-picks-cat-item-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hub-picks-cat-item-title {
+  margin: 0;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.15px;
+  line-height: 1.3;
+}
+
+.hub-picks-cat-item-price {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+
+.hub-picks-cat-amount {
+  font-size: 15px;
   font-weight: 700;
   color: var(--accent);
-  line-height: 1.1;
+  line-height: 1.25;
 }
 
-.hub-deal-card-store {
-  font-size: 14px;
+.hub-picks-cat-store,
+.hub-picks-cat-unit {
+  font-size: 12px;
   color: var(--muted);
   font-weight: 500;
 }
 
-.hub-deal-card-unit {
+.hub-picks-cat-item-note {
   margin: 0;
-  font-size: 14px;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.hub-deal-card-note {
-  margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.45;
-  flex: 1;
 }
 
-.hub-deal-card-link {
-  font-size: 14px;
+.hub-picks-cat-link {
+  font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-  margin-top: 4px;
+  width: fit-content;
+  white-space: nowrap;
 }
 
-.hub-deal-card-link:hover {
+.hub-picks-cat-link:hover {
   text-decoration: underline;
+  color: var(--accent-dark);
+}
+
+.hub-picks-cat-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .hub-badge,

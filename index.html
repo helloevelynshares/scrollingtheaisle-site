@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrolling the Aisle — Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/styles.css?v=hub5" />
+  <link rel="stylesheet" href="/styles.css?v=hub13" />
 </head>
 <body class="hub-page">
   <header class="page-header">
@@ -52,20 +52,8 @@
         <div class="hub-store-suggest" id="store-suggest-module">
           <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
             <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
-            <div class="price-tracker-vote-strip" role="list" aria-label="Popular grocery stores">
-              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Trader Joe's" aria-pressed="false">
-                <span class="price-tracker-vote-card-label">Trader Joe's</span>
-              </button>
-              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Whole Foods" aria-pressed="false">
-                <span class="price-tracker-vote-card-label">Whole Foods</span>
-              </button>
-              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Sprouts" aria-pressed="false">
-                <span class="price-tracker-vote-card-label">Sprouts</span>
-              </button>
-              <button type="button" class="hub-store-chip price-tracker-vote-card" role="listitem" data-store="Kroger" aria-pressed="false">
-                <span class="price-tracker-vote-card-label">Kroger</span>
-              </button>
-            </div>
+            <p id="store-vote-list-status" class="hub-store-vote-strip-msg" hidden></p>
+            <div class="price-tracker-vote-strip" id="store-vote-strip" role="list" aria-label="Popular grocery stores" aria-busy="true"></div>
             <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
               <div class="price-tracker-vote-custom-row">
                 <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
@@ -113,7 +101,7 @@
         </button>
       </div>
 
-      <div id="picks-grid" class="hub-deal-grid" role="tabpanel" aria-labelledby="picks-title" aria-live="polite"></div>
+      <div id="picks-grid" class="hub-picks-report" role="tabpanel" aria-labelledby="picks-title" aria-live="polite"></div>
 
       <p class="hub-section-footer">
         <a href="grocery-price-tracker/" class="hub-text-link">Open the full price tracker →</a>
@@ -142,7 +130,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/homepage.js?v=hub6"></script>
+  <script src="/homepage.js?v=hub13"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>
