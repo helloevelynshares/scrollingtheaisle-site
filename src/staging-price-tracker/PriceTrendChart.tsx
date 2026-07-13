@@ -15,9 +15,7 @@ import {
   formatPriceRange,
   getAllPricePoints,
   getChartPricePoints,
-  getCostcoChartRegionLabel,
   getEffectiveBaseline,
-  hasCostcoChartData,
   type UnifiedChartRow,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
@@ -97,12 +95,10 @@ function PriceChartTooltip({
   compact,
   rangeMode,
   product,
-  costcoRegionLabel,
 }: TooltipProps<number, string> & {
   compact: boolean;
   rangeMode: boolean;
   product: FeedProductView;
-  costcoRegionLabel: string | null;
 }) {
   if (!active || !payload?.length) {
     return null;
@@ -131,13 +127,7 @@ function PriceChartTooltip({
   let displayDateLabel: string = row.label;
   let isLimitedDay = false;
 
-  if (dataKey === "costcoPrice") {
-    const costcoRow = row as UnifiedChartRow;
-    seriesLabel = costcoRegionLabel
-      ? `Costco (${costcoRegionLabel})`
-      : "Costco warehouse";
-    priceLabel = formatPrice(costcoRow.costcoPrice);
-  } else if (rangeMode && dataKey === "priceMax") {
+  if (rangeMode && dataKey === "priceMax") {
     seriesLabel = getRangeTooltipLabel();
     const rangeRow = row as RangeChartRow;
     priceLabel =
@@ -208,11 +198,9 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
   const sparkline = variant === "sparkline";
   const minimal = compact || sparkline;
   // rangeMode is driven by chartMode only; brand_family YAML families use
-  // chartMode:"single" and should show the baseline + weekly-ad + Costco chart.
+  // chartMode:"single" and show baseline + weekly-ad grocery prices.
   // Only deal_family products with multiple members set chartMode:"range".
   const rangeMode = product.chartMode === "range";
-  const showCostcoOverlay = !sparkline && !rangeMode && hasCostcoChartData(product);
-  const costcoRegionLabel = getCostcoChartRegionLabel(product);
   const baseline = getEffectiveBaseline(product);
 
   const rangeChartData: RangeChartRow[] = (
@@ -229,8 +217,6 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
   const unifiedChartData = rangeMode ? [] : buildUnifiedChartRows(product);
 
   const chartData = rangeMode ? rangeChartData : unifiedChartData;
-  const hasCostcoLine =
-    showCostcoOverlay && unifiedChartData.some((row) => row.costcoPrice != null);
 
   const allValues = rangeMode
     ? chartData.flatMap((row) => {
@@ -239,13 +225,7 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
           ? [rangeRow.price, rangeRow.priceMax]
           : [rangeRow.price];
       })
-    : (chartData as UnifiedChartRow[]).flatMap((row) => {
-        const values = [row.groceryPrice];
-        if (row.costcoPrice != null) {
-          values.push(row.costcoPrice);
-        }
-        return values;
-      });
+    : (chartData as UnifiedChartRow[]).map((row) => row.groceryPrice);
 
   const yMin = allValues.length > 0 ? Math.min(...allValues) : 0;
   const yMax = allValues.length > 0 ? Math.max(...allValues) : 0;
@@ -298,7 +278,6 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
                   compact={minimal}
                   rangeMode={rangeMode}
                   product={product}
-                  costcoRegionLabel={costcoRegionLabel}
                 />
               }
             />
@@ -430,18 +409,6 @@ export function PriceTrendChart({ product, variant = "default" }: Props) {
                 connectNulls
               />
             )}
-            {!rangeMode && hasCostcoLine ? (
-              <Line
-                type="monotone"
-                dataKey="costcoPrice"
-                stroke="#0071ce"
-                strokeWidth={compact ? 1.5 : 2}
-                strokeDasharray="6 4"
-                dot={{ r: compact ? 2.5 : 3.5, fill: "#0071ce", stroke: "#fff" }}
-                connectNulls
-                isAnimationActive={false}
-              />
-            ) : null}
           </LineChart>
         </ResponsiveContainer>
       </div>

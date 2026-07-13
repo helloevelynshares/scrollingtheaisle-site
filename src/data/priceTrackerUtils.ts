@@ -1,8 +1,4 @@
 import {
-  formatCostcoRegionLabel,
-  getCostcoRegionForFeed,
-} from "./costcoRegions";
-import {
   formatCostcoItemLabel,
   formatCostcoPackageSize,
   formatCostcoReferenceLine,
@@ -28,7 +24,6 @@ export type PricePoint = WeeklyPrice & {
   isBaseline?: boolean;
   label?: string;
   priceMax?: number;
-  isCostco?: boolean;
 };
 
 const INFERRED_BASELINE_SOURCE = "Inferred from weekly ad matches";
@@ -91,46 +86,6 @@ export function getChartPricePoints(product: FeedProductView): PricePoint[] {
     .sort((a, b) => a.weekStart.localeCompare(b.weekStart));
 }
 
-/** Costco warehouse prices for the feed's paired region; never mixed across locations. */
-export function getCostcoChartPricePoints(
-  product: FeedProductView,
-): PricePoint[] {
-  const history = product.costcoPriceHistory ?? [];
-  if (
-    !product.costcoComparable ||
-    history.length === 0 ||
-    !hasMeaningfulCostcoComparison(product.priceComparison)
-  ) {
-    return [];
-  }
-
-  // Normalize Costco price to the same unit the grocery graph tracks.
-  // For produce tracked per-lb or per-each, use unitPrice (already per-lb/each).
-  // For packaged goods (oz, bar, can, etc.) use the raw package price so the
-  // y-axis stays in familiar "price per purchase" territory.
-  const groceryUnitType = product.priceComparison?.groceryUnitType;
-  const useUnitPrice =
-    (groceryUnitType === "lb" || groceryUnitType === "each") &&
-    history.some((p) => p.unitPrice != null && p.unitPrice < p.price);
-
-  return history.map((point) => ({
-    weekStart: point.date,
-    label: formatWeekLabel(point.date),
-    price:
-      useUnitPrice && point.unitPrice != null ? point.unitPrice : point.price,
-    adPrice: null,
-    matchConfidence: null,
-    priceType: "baseline" as const,
-    isBaselineFallback: false,
-    isCostco: true,
-    sourceLabel: point.sourceFile,
-  }));
-}
-
-export function hasCostcoChartData(product: FeedProductView): boolean {
-  return getCostcoChartPricePoints(product).length > 0;
-}
-
 export type UnifiedChartRow = {
   weekStart: string;
   label: string;
@@ -138,74 +93,19 @@ export type UnifiedChartRow = {
   groceryPriceMax?: number;
   priceType: string;
   isBaselineFallback: boolean;
-  costcoPrice: number | null;
   /** e.g. "friday_only"; forwarded from WeeklyPrice for tooltip Option A */
   availabilityType?: string | null;
   /** Promo copy e.g. "3 for $5 Friday July 3rd"; forwarded for tooltip Option A */
   promoNote?: string | null;
 };
 
-function addDays(isoDate: string, days: number): string {
-  const date = new Date(`${isoDate}T12:00:00`);
-  date.setDate(date.getDate() + days);
-  return date.toISOString().slice(0, 10);
-}
-
-/** Map a Costco observation date onto the grocery weekly bucket it falls in. */
-function findGroceryWeekForCostcoDate(
-  costcoDate: string,
-  weekStarts: string[],
-): string | null {
-  const sorted = weekStarts.filter((week) => week !== "baseline").sort();
-  if (sorted.length === 0) {
-    return null;
-  }
-
-  for (let index = 0; index < sorted.length; index += 1) {
-    const start = sorted[index];
-    const nextStart = sorted[index + 1];
-    const endExclusive = nextStart ?? addDays(start, 7);
-    if (costcoDate >= start && costcoDate < endExclusive) {
-      return start;
-    }
-  }
-
-  const lastWeek = sorted[sorted.length - 1];
-  if (costcoDate >= lastWeek && costcoDate < addDays(lastWeek, 7)) {
-    return lastWeek;
-  }
-
-  return null;
-}
-
-/** Grocery + Costco rows sharing one x-axis so warehouse points align to ad weeks. */
+/** Grocery weekly-ad rows for single-mode price charts. */
 export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow[] {
   // Single-mode charts use ReferenceLine for baseline; skip the synthetic
   // "Baseline" x-axis anchor here (range-mode charts still use getAllPricePoints).
   const groceryPoints = getAllPricePoints(product).filter(
     (point) => point.weekStart !== "baseline",
   );
-  const costcoPoints = getCostcoChartPricePoints(product);
-  const weekStarts = groceryPoints.map((point) => point.weekStart);
-  const costcoByWeek = new Map<string, number>();
-
-  for (const point of costcoPoints) {
-    const week = findGroceryWeekForCostcoDate(point.weekStart, weekStarts);
-    if (week != null) {
-      costcoByWeek.set(week, point.price);
-    }
-  }
-
-  // When Costco data exists but doesn't cover every historical week, fill all
-  // weeks with the most-recent known Costco price so the line is continuous
-  // ("flat line" from last observed price extended backward and forward).
-  let flatCostcoPrice: number | null = null;
-  if (costcoPoints.length > 0) {
-    const sorted = [...costcoPoints].sort((a, b) =>
-      a.weekStart.localeCompare(b.weekStart),
-    );
-    flatCostcoPrice = sorted[sorted.length - 1].price;
-  }
 
   return groceryPoints.map((point) => ({
     weekStart: point.weekStart,
@@ -214,15 +114,9 @@ export function buildUnifiedChartRows(product: FeedProductView): UnifiedChartRow
     groceryPriceMax: point.priceMax ?? point.price,
     priceType: point.priceType,
     isBaselineFallback: point.isBaselineFallback,
-    costcoPrice: costcoByWeek.get(point.weekStart) ?? flatCostcoPrice,
     availabilityType: point.availabilityType ?? null,
     promoNote: point.promoNote ?? null,
   }));
-}
-
-export function getCostcoChartRegionLabel(product: FeedProductView): string | null {
-  const region = getCostcoRegionForFeed(product.feedId);
-  return region ? formatCostcoRegionLabel(region) : null;
 }
 
 export function getLatestWeeklyPrice(product: FeedProductView): WeeklyPrice | null {

@@ -26,7 +26,10 @@ import {
   type FamilyStatus,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
-import { getProductCostcoComparisonDetails } from "../data/priceComparisonUtils";
+import {
+  getComparisonBadgeContent,
+  getProductCostcoComparisonDetails,
+} from "../data/priceComparisonUtils";
 import { ComparisonBadge } from "./ComparisonBadge";
 import { PriceTrendChart } from "./PriceTrendChart";
 
@@ -178,6 +181,20 @@ export function FamilyDealCard({ product }: Props) {
   const isAtl = benchmark.benchmarkBucket === "all-time low";
   const showAtlHint = atlPrice != null && benchmark.observationCount >= 2;
 
+  // Avoid "Costco wins" twice: badge above the chart already covers that case.
+  const costcoAlreadyCalledOut =
+    (!showVarietiesHint &&
+      product.familyComparisonBadge?.tone === "costco") ||
+    (!showVarietiesHint &&
+      product.priceComparison != null &&
+      getComparisonBadgeContent(
+        product.priceComparison,
+        product.feedId,
+        product.feedLabel,
+      )?.tone === "costco");
+  const showTakeaway =
+    takeaway.tone !== "costco" || !costcoAlreadyCalledOut;
+
   return (
     <article className="price-tracker-card price-tracker-card--family family-deal-card">
       <header className="family-deal-card__header">
@@ -227,11 +244,13 @@ export function FamilyDealCard({ product }: Props) {
         <PriceTrendChart product={product} />
       </div>
 
-      <p
-        className={`family-deal-card__takeaway family-deal-card__takeaway--${takeaway.tone}`}
-      >
-        {takeaway.label}
-      </p>
+      {showTakeaway ? (
+        <p
+          className={`family-deal-card__takeaway family-deal-card__takeaway--${takeaway.tone}`}
+        >
+          {takeaway.label}
+        </p>
+      ) : null}
 
       <button
         type="button"
