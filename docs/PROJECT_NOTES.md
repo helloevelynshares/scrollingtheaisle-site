@@ -133,13 +133,22 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
-### Homepage highlights use a category market-report layout
+### Homepage highlights use balanced editorial breakout (Version 1)
 
 Date discovered: 2026-07-12
-Context: Homepage “Scrolling the Aisle's highlights of the week” after choosing exploration Version 4.
-What happened: Replaced the equal-sized deal card grid (+ top-8 expander) with a denser category report grouped by editorial `customBadge` → Friday / Produce / Meat / Snacks / Variety / Other Deals (`DEAL` and missing badges → Other Deals). Section headings carry category context; per-item badge pills are not repeated. All picks render (no “More handpicked deals” expander on the homepage). Item rows stack title above price so long offer strings (e.g. “$3.49 each when you buy 2”) don’t crush the deal name in narrow columns. Safeway/Vons toggle unchanged; data still from `data/homepage-preview.generated.json`.
-How to verify: Open `index.html` → picks show grouped columns; long prices don’t squeeze titles; toggle Safeway/Vons; each deal keeps name, price, explanation, store, and price-history link.
+Context: Homepage “Scrolling the Aisle's highlights of the week” after layout exploration.
+What happened: Chose exploration **Version 1: Balanced editorial breakout** as the public layout. Category columns grouped by editorial `customBadge` → Friday / Produce / Meat / Snacks / Variety / Other Deals (`DEAL` and missing badges → Other Deals). Colored category titles + borders; name and price sit side-by-side on each row; 2 cols from 640px, 3 from 900px. Safeway/Vons toggle unchanged; data from `data/homepage-preview.generated.json`.
+How to verify: Open `index.html` → picks show grouped columns with colored category heads; name/price on one row; no layout switcher; toggle Safeway/Vons.
 Related files: `homepage.js` (`groupPicksByCategory`, `renderPicksReport`), `styles.css` (`.hub-picks-cat-*`), `index.html` (`#picks-grid.hub-picks-report`)
+
+### Never ship layout exploration switchers to production
+
+Date discovered: 2026-07-12
+Context: Temporary multi-version layout pickers (e.g. former `homepage-picks-width-explore/` with “Layout exploration” 1–6 controls) are for Evelyn to compare options locally only.
+What happened: An explore switcher was left wired into `index.html` / `homepage.js`, so end users could browse every draft layout.
+Fix / workaround: **Always true:** never ship version explorers, A/B layout switchers, or TEMP explore CSS/JS on the public site. Keep experiments off the production path (local-only folder, or unlinked). When a layout is chosen, port **only that version** into the real homepage files (`homepage.js`, `styles.css`, `index.html`) and delete the explore scaffolding before considering the work shipped.
+How to verify: Public homepage has no “Layout exploration” chrome, no version tabs/arrows, and no `*-explore/` scripts linked from `index.html`.
+Related files: `index.html`, `homepage.js`, `styles.css`
 
 ### "Hand-picked deals" section has TWO independent render paths (tracker React vs homepage briefing)
 

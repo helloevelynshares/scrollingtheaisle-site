@@ -112,7 +112,7 @@ function renderCategoryPick(pick) {
   const placeholder = pick.isPlaceholder ? " is-placeholder" : "";
   return `
     <article class="hub-picks-cat-item${placeholder}">
-      <div class="hub-picks-cat-item-head">
+      <div class="hub-picks-cat-item-top">
         <h4 class="hub-picks-cat-item-title">${escapeHtml(pick.name)}</h4>
         <p class="hub-picks-cat-item-price">
           <span class="hub-picks-cat-amount">${escapeHtml(pick.price)}</span>
@@ -153,13 +153,6 @@ function renderPicksReport(picks) {
   return `<div class="hub-picks-cat-columns">${sections.join("")}</div>`;
 }
 
-function picksExploreHelpers() {
-  return {
-    escapeHtml,
-    TRACKER_URL,
-  };
-}
-
 function renderPicksGrid() {
   const grid = document.getElementById("picks-grid");
   const titleEl = document.getElementById("picks-title");
@@ -176,12 +169,6 @@ function renderPicksGrid() {
     const strategy = config.strategy ?? "";
     strategyEl.textContent = strategy;
     strategyEl.hidden = !strategy;
-  }
-
-  // Width-layout exploration (homepage-picks-width-explore/). Remove to restore category report.
-  if (window.STAPicksWidthExplore?.renderInto) {
-    window.STAPicksWidthExplore.renderInto(grid, picks, picksExploreHelpers());
-    return;
   }
 
   grid.className = "hub-picks-report";
@@ -653,11 +640,6 @@ async function initStoreSuggestModule() {
     renderStoreChips();
   }
 }
-
-/** Hook for homepage-picks-width-explore/ to re-render after layout version changes. */
-window.STAHomepagePicks = {
-  rerender: renderPicksGrid,
-};
 
 document.addEventListener("DOMContentLoaded", () => {
   void initHomepage();
