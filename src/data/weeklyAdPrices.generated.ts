@@ -1770,11 +1770,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.15,
+      "offerText": "Lay's Potato Chips 4.75-8 oz.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "4X POINTS BUY 1 GET 1 FREE"
     },
     "2026-06-10": {
       "price": null,
@@ -1784,11 +1784,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.15,
+      "offerText": "Lay's Potato Chips",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "BUY 1 GET 1 FREE Member Price; Earn 4X Points"
     },
     "2026-06-24": {
       "price": 2.99,
@@ -2223,9 +2223,9 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "Member Price"
     },
     "2026-06-24": {
-      "price": null,
+      "price": 2.0,
       "offerText": "Goldfish Crackers or Crisps 4 to 8-oz.",
-      "confidence": null,
+      "confidence": "medium",
       "availabilityType": "full_week",
       "promoNote": "BUY 1 GET 1 FREE EQUAL OR LESSER VALUE MEMBER PRICE"
     },
@@ -4815,9 +4815,9 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": null,
+      "price": 7.21,
       "offerText": "Dr Pepper",
-      "confidence": null,
+      "confidence": "high",
       "availabilityType": "full_week",
       "promoNote": "4X POINTS Mix & Match BUY 2 GET 2 FREE"
     },

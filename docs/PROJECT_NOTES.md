@@ -896,6 +896,19 @@ Fix / workaround:
 How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility.TestGoldfishBagsVsTubs -v`; `goldfish_bags["2026-05-06"].price` is `null` in `weeklyAdPrices.generated.ts`; chart no longer spikes to $7.99.  
 Related files: `config/canonical_match_rules.yaml`, `data/canonical_tracker_families.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `scripts/generate_weekly_ad_prices.py`, `tests/test_canonical_match_eligibility.py`, `src/data/weeklyAdPrices.generated.ts`
 
+### BOGO without shelf price fell back to baseline (Goldfish 2026-06-24)
+
+Date discovered: 2026-07-14  
+Context: Safeway 6/24 Mix & Match tile "Goldfish Crackers or Crisps 4 to 8-oz. BUY 1 GET 1 FREE EQUAL OR LESSER VALUE MEMBER PRICE" — no printed dollar amount on the ad. Chart hovered at baseline $3.99 instead of effective ~$2.  
+What happened: Extraction stored `price_basis=bogo` with empty `advertised_price`. `normalize` returned null → UI `getCurrentPrice` fell back to shelf baseline. Same class as other equal-or-lesser BOGO weeks noted earlier.  
+Fix / workaround (applies to **all** tracker families, not just Goldfish):
+1. `base_normalize_unit_price(..., fallback_reference_price=baseline)` → BOGO/B2G effective unit (`buy/(buy+free) × reference`). Safeway baseline from `SAFEWAY_BASELINES` / Vons from `vonsBaseline.generated.ts`.
+2. Eligibility: size-confirmed Mix & Match ("A or B") no longer auto-manual_review; BOGO without shelf price no longer takes the full -0.30 no-price confidence penalty.
+3. Rematch: `goldfish_bags` Safeway 2026-06-24 → **$2.00** (3.99÷2) with BOGO promoNote.  
+How to verify: hover Goldfish 6/24 → ~$2 + BOGO note; `PYTHONPATH=scripts python3 -m unittest tests.test_normalization.TestNormalization.test_bogo_without_advertised_price_uses_baseline_reference tests.test_canonical_match_eligibility.TestGoldfishBagsVsTubs -v`.  
+Re-apply across families: `python3 scripts/generate_weekly_ad_prices.py --product-ids <id1,id2,...>` (or full rematch). Prefer printed `advertised_price` when the ad has one (B2G3F $5.49 path unchanged).  
+Related files: `scripts/price_tracker/normalization.py`, `scripts/generate_weekly_ad_prices.py` (`load_feed_baselines`), `scripts/price_tracker/canonical_match_eligibility.py`, `src/data/weeklyAdPrices.generated.ts`
+
 ## Content-first Analysis Mode
 
 ### Content deal shortlist mode (separate from canonical graph matching)

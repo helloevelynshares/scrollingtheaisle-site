@@ -293,28 +293,77 @@ def parse_price(value: str | None) -> float | None:
         return None
 
 
+def load_feed_baselines(feed_label: str) -> dict[str, float]:
+    """Shelf / store-search baselines used as BOGO reference when the ad omits price."""
+    if feed_label == "Safeway":
+        text = (ROOT / "src" / "data" / "priceTrackerFallback.ts").read_text(
+            encoding="utf-8"
+        )
+        block = re.search(
+            r"export const SAFEWAY_BASELINES[^=]*=\s*\{(?P<body>.*?)\n\};",
+            text,
+            re.S,
+        )
+        if not block:
+            return {}
+        return {
+            m.group(1): float(m.group(2))
+            for m in re.finditer(
+                r'"([^"]+)":\s*\{\s*price:\s*([\d.]+)',
+                block.group("body"),
+            )
+        }
+    if feed_label == "Vons":
+        text = (ROOT / "src" / "data" / "vonsBaseline.generated.ts").read_text(
+            encoding="utf-8"
+        )
+        return {
+            m.group(1): float(m.group(2))
+            for m in re.finditer(
+                r'"([^"]+)":\s*\{\s*"baselinePrice":\s*([\d.]+)',
+                text,
+            )
+        }
+    return {}
+
+
 def normalize_unit_price(
-    row: dict[str, str], matcher: ProductMatcher | None = None
+    row: dict[str, str],
+    matcher: ProductMatcher | None = None,
+    *,
+    reference_price: float | None = None,
 ) -> float | None:
     rule = _NORMALIZATION_BY_ID.get(matcher.canonical_id) if matcher else None
-    return normalize_price(row, rule)
+    return normalize_price(
+        row, rule, fallback_reference_price=reference_price
+    )
 
 
-def preference_score(row: dict[str, str], matcher: ProductMatcher) -> int:
+def preference_score(
+    row: dict[str, str],
+    matcher: ProductMatcher,
+    *,
+    reference_price: float | None = None,
+) -> int:
     text = split_text(row)
     full = row_text(row)
     score = 0
     for index, pattern in enumerate(matcher.prefer_patterns):
         if re.search(pattern, text) or re.search(pattern, full):
             score = max(score, (len(matcher.prefer_patterns) - index) * 10)
-    price = normalize_unit_price(row, matcher)
+    price = normalize_unit_price(row, matcher, reference_price=reference_price)
     if price is not None:
         score += 1
     return score
 
 
-def match_confidence(row: dict[str, str], matcher: ProductMatcher) -> str | None:
-    if normalize_unit_price(row, matcher) is None:
+def match_confidence(
+    row: dict[str, str],
+    matcher: ProductMatcher,
+    *,
+    reference_price: float | None = None,
+) -> str | None:
+    if normalize_unit_price(row, matcher, reference_price=reference_price) is None:
         return None
 
     text = split_text(row)
@@ -332,7 +381,7 @@ def match_confidence(row: dict[str, str], matcher: ProductMatcher) -> str | None
     if matcher.canonical_id == "strawberries_1_2lb" and re.search(r"large pack|2 lb", full):
         confidence = "medium"
     if matcher.canonical_id == "chobani_yogurt_per_cup":
-        price = normalize_unit_price(row, matcher)
+        price = normalize_unit_price(row, matcher, reference_price=reference_price)
         if price is not None and price < 3:
             confidence = "medium"
         elif re.search(r"5\.3|4-5\.3|cup", full):
@@ -394,6 +443,7 @@ def pick_best_row(
     week_end: str | None = None,
     prior_price: float | None = None,
     historical_low: float | None = None,
+    reference_price: float | None = None,
     audit_collector: CanonicalMatchAuditCollector | None = None,
 ) -> dict[str, str] | None:
     candidates = [row for row in rows if matches(row, matcher)]
@@ -401,7 +451,9 @@ def pick_best_row(
         # Audit near-matches blocked by exclude patterns or with no eligible candidate.
         if eligibility is not None and audit_collector and feed_label and week_start and week_end:
             for row in pattern_hit_rows(rows, matcher):
-                conf_label = match_confidence(row, matcher)
+                conf_label = match_confidence(
+                    row, matcher, reference_price=reference_price
+                )
                 elig = eligibility.evaluate(
                     row,
                     matcher.canonical_id,
@@ -410,7 +462,9 @@ def pick_best_row(
                     historical_low=historical_low,
                 )
                 if elig.match_decision != "accepted":
-                    unit_price = normalize_unit_price(row, matcher)
+                    unit_price = normalize_unit_price(
+                        row, matcher, reference_price=reference_price
+                    )
                     audit_collector.add(
                         AuditRecord(
                             week_start=week_start,
@@ -444,19 +498,27 @@ def pick_best_row(
     if _PICK_LOWEST_BY_ID.get(matcher.canonical_id):
 
         def normalized_price(row: dict[str, str]) -> float:
-            value = normalize_unit_price(row, matcher)
+            value = normalize_unit_price(
+                row, matcher, reference_price=reference_price
+            )
             return value if value is not None else float("inf")
 
         ranked = sorted(candidates, key=normalized_price)
     else:
-        ranked = sorted(candidates, key=lambda row: preference_score(row, matcher), reverse=True)
+        ranked = sorted(
+            candidates,
+            key=lambda row: preference_score(
+                row, matcher, reference_price=reference_price
+            ),
+            reverse=True,
+        )
 
     best_row: dict[str, str] | None = None
     best_eligibility = None
     audit_row: dict[str, str] | None = None
 
     for row in ranked:
-        conf_label = match_confidence(row, matcher)
+        conf_label = match_confidence(row, matcher, reference_price=reference_price)
         if eligibility is not None:
             elig = eligibility.evaluate(
                 row,
@@ -492,7 +554,9 @@ def pick_best_row(
         and audit_row is not None
         and best_eligibility is not None
     ):
-        unit_price = normalize_unit_price(audit_row, matcher)
+        unit_price = normalize_unit_price(
+            audit_row, matcher, reference_price=reference_price
+        )
         audit_collector.add(
             AuditRecord(
                 week_start=week_start,
@@ -557,6 +621,7 @@ def build_family_prices(
     target_families = family_ids if family_ids is not None else set(TRACKER_FAMILY_IDS)
     family_matchers = [m for m in FAMILY_MATCHERS if m.canonical_id in target_families]
     member_matchers = [m for m in FAMILY_MEMBER_MATCHERS if m.family_id in target_families]
+    baselines = load_feed_baselines(feed_label)
 
     weeks: list[dict[str, str]] = []
     family_prices: dict[str, dict[str, dict[str, object | None]]] = {
@@ -582,7 +647,11 @@ def build_family_prices(
         )
 
         for matcher in family_matchers:
-            best = pick_best_row(week_rows, matcher)
+            best = pick_best_row(
+                week_rows,
+                matcher,
+                reference_price=baselines.get(matcher.canonical_id),
+            )
             if best is None:
                 family_prices[matcher.canonical_id][week_start] = {
                     "price": None,
@@ -593,11 +662,14 @@ def build_family_prices(
                 }
                 continue
 
+            ref = baselines.get(matcher.canonical_id)
             family_prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(best, matcher),
+                "price": normalize_unit_price(best, matcher, reference_price=ref),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
-                "confidence": match_confidence(best, matcher),
+                "confidence": match_confidence(
+                    best, matcher, reference_price=ref
+                ),
                 "availabilityType": best.get("availability_type_guess") or None,
                 "promoNote": best.get("promo_text") or None,
             }
@@ -622,11 +694,14 @@ def build_family_prices(
                 matcher.exclude_patterns,
                 matcher.prefer_patterns,
             )
+            ref = baselines.get(matcher.family_id)
             member_weeks[week_start] = {
-                "price": normalize_unit_price(best, pseudo),
+                "price": normalize_unit_price(best, pseudo, reference_price=ref),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
-                "confidence": match_confidence(best, pseudo),
+                "confidence": match_confidence(
+                    best, pseudo, reference_price=ref
+                ),
                 "availabilityType": best.get("availability_type_guess") or None,
                 "promoNote": best.get("promo_text") or None,
             }
@@ -699,6 +774,7 @@ def build_prices(
 ) -> tuple[list[dict[str, str]], dict[str, dict[str, dict[str, object | None]]]]:
     target_ids = product_ids if product_ids is not None else set(TRACKER_CANONICAL_IDS)
     matchers = [m for m in MATCHERS if m.canonical_id in target_ids]
+    baselines = load_feed_baselines(feed_label)
 
     weeks: list[dict[str, str]] = []
     prices: dict[str, dict[str, dict[str, object | None]]] = {
@@ -723,6 +799,7 @@ def build_prices(
         for matcher in matchers:
             prior = _prior_week_price(prices, matcher.canonical_id, week_start)
             hist_low = _historical_low(prices, matcher.canonical_id, week_start)
+            ref = baselines.get(matcher.canonical_id)
             best = pick_best_row(
                 week_rows,
                 matcher,
@@ -732,6 +809,7 @@ def build_prices(
                 week_end=week_end,
                 prior_price=prior,
                 historical_low=hist_low,
+                reference_price=ref,
                 audit_collector=audit_collector,
             )
             if best is None:
@@ -745,10 +823,14 @@ def build_prices(
                 continue
 
             prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(best, matcher),
+                "price": normalize_unit_price(
+                    best, matcher, reference_price=ref
+                ),
                 "offerText": best.get("split_product_text")
                 or best.get("raw_offer_text"),
-                "confidence": match_confidence(best, matcher),
+                "confidence": match_confidence(
+                    best, matcher, reference_price=ref
+                ),
                 "availabilityType": best.get("availability_type_guess") or None,
                 "promoNote": best.get("promo_text") or None,
             }

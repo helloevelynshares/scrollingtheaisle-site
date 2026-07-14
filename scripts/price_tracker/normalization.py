@@ -125,11 +125,24 @@ def _buy_x_get_y_unit_price(row: dict[str, str], price: float) -> float | None:
     return None
 
 
-def base_normalize_unit_price(row: dict[str, str]) -> float | None:
+def base_normalize_unit_price(
+    row: dict[str, str],
+    *,
+    fallback_reference_price: float | None = None,
+) -> float | None:
     price = _parse_price(row.get("advertised_price"))
-    if price is None:
-        return None
     basis = (row.get("price_basis") or "").lower()
+    # BOGO / buy-X-get-Y ads often print the mechanic but not a shelf price
+    # ("BUY 1 GET 1 FREE EQUAL OR LESSER VALUE"). Use the tracker baseline (or
+    # another caller-supplied reference) so charts show effective unit cost.
+    if price is None:
+        if (
+            basis in {"bogo", "buy_x_get_y"}
+            and fallback_reference_price is not None
+            and fallback_reference_price > 0
+        ):
+            return _buy_x_get_y_unit_price(row, float(fallback_reference_price))
+        return None
     # Explicit "N for $X" always wins, even when vision labeled the row as each/$5 ea.
     explicit = _explicit_n_for_x_unit_price(row)
     if explicit is not None:
@@ -290,7 +303,18 @@ NORMALIZERS: dict[str, Callable[[dict[str, str]], float | None]] = {
 }
 
 
-def normalize_price(row: dict[str, str], rule: str | None) -> float | None:
+def normalize_price(
+    row: dict[str, str],
+    rule: str | None,
+    *,
+    fallback_reference_price: float | None = None,
+) -> float | None:
     if rule and rule in NORMALIZERS:
-        return NORMALIZERS[rule](row)
-    return base_normalize_unit_price(row)
+        result = NORMALIZERS[rule](row)
+        if result is not None:
+            return result
+        # Specialized normalizers that need an advertised price still return None
+        # for BOGO-without-price; fall through to baseline-backed BOGO math.
+    return base_normalize_unit_price(
+        row, fallback_reference_price=fallback_reference_price
+    )

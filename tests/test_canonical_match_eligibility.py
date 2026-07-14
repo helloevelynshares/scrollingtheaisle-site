@@ -366,6 +366,26 @@ class TestGoldfishBagsVsTubs(unittest.TestCase):
         )
         self.assertEqual(result.match_decision, "accepted")
 
+    def test_accept_crackers_or_crisps_with_size(self) -> None:
+        # Mix & Match "Crackers or Crisps" with bag size → accepted (not stuck
+        # in manual_review solely because of "or").
+        result = evaluate_canonical_match(
+            {
+                "split_product_text": "Goldfish Crackers or Crisps 4 to 8-oz.",
+                "raw_offer_text": "Goldfish Crackers or Crisps 4 to 8-oz. "
+                "BUY 1 GET 1 FREE MEMBER PRICE",
+                "promo_text": "BUY 1 GET 1 FREE EQUAL OR LESSER VALUE MEMBER PRICE",
+                "advertised_price": "",
+                "price_basis": "bogo",
+                "package_unit": "each",
+                "package_text": "4 to 8-oz.",
+            },
+            self.family,
+            rules=self.merged,
+            keyword_confidence="medium",
+        )
+        self.assertEqual(result.match_decision, "accepted", result.reject_reason)
+
     def test_manual_review_bare_goldfish_without_size(self) -> None:
         result = evaluate_canonical_match(
             _row("Goldfish Crackers", price="5.00"),

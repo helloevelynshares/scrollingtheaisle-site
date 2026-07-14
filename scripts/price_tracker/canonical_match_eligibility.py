@@ -352,26 +352,30 @@ def evaluate_canonical_match(
         except ValueError:
             price = None
 
+    # BOGO / buy-X-get-Y tiles frequently omit a printed shelf price; that is
+    # expected, not a weak match. Count the promo mechanic as priced evidence.
+    basis = (row.get("price_basis") or "").lower()
+    priced_for_confidence = price is not None or basis in {"bogo", "buy_x_get_y"}
+
     confidence = _confidence_score(
         text=primary_text,
         rules=rules,
         classification=classification,
         keyword_confidence=keyword_confidence,
-        has_price=price is not None,
+        has_price=priced_for_confidence,
     )
 
     manual_review = False
-    # Multi-item ads ("A or B", "A, B, C") need review. A single comma before a
-    # size/grade ("Grade AA, 18-ct.") is common on real egg cartons and should
-    # not force manual review by itself.
+    # Multi-item Mix & Match copy ("Crackers or Crisps", "A, B, C") is common.
+    # Gate it behind size confirmation below when require_confirmation_keywords
+    # is set; bare multi-item lists still need review.
     lowered_primary = primary_text.lower()
-    if re.search(r"\bor\b", lowered_primary) or lowered_primary.count(",") >= 2:
-        manual_review = True
-    if keyword_confidence == "medium" and confidence < rules.min_confidence + 0.1:
-        manual_review = True
+    variant_list = bool(
+        re.search(r"\bor\b", lowered_primary) or lowered_primary.count(",") >= 2
+    )
 
     # Confirmation gate first so a real size/carton signal can boost confidence
-    # before the ATL / large-change floors run.
+    # before the ATL / large-change / medium-confidence floors run.
     if rules.require_confirmation_keywords:
         confirmation_hits = _keyword_hits(full_text, rules.require_confirmation_keywords)
         if not confirmation_hits:
@@ -385,6 +389,20 @@ def evaluate_canonical_match(
             # legitimate new low (e.g. berries $2.99 after a $5 week) is not
             # stuck in manual_review by the ATL confidence floor.
             confidence = min(1.0, confidence + 0.15)
+            # Size-confirmed Mix & Match ("Goldfish Crackers or Crisps 4 to 8-oz")
+            # should update the graph; do not force review solely for "or".
+            variant_list = False
+
+    if variant_list:
+        manual_review = True
+        reject_parts.append("multi-item variant list (or/comma) needs review")
+
+    if keyword_confidence == "medium" and confidence < rules.min_confidence + 0.1:
+        manual_review = True
+        if "medium-confidence" not in " ".join(reject_parts):
+            reject_parts.append(
+                f"medium pattern confidence {confidence:.2f} needs review"
+            )
 
     # New all-time low needs higher confidence
     if (

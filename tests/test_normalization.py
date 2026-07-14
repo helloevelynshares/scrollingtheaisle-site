@@ -76,6 +76,19 @@ class TestNormalization(unittest.TestCase):
         result = normalize_per_lb(row("$4.99", "boneless skinless chicken breast per lb"))
         self.assertEqual(result, 4.99)
 
+    def test_bogo_without_advertised_price_uses_baseline_reference(self) -> None:
+        """Safeway 'BUY 1 GET 1 FREE EQUAL OR LESSER' tiles often omit shelf price."""
+        deal = row(
+            "",
+            "Goldfish Crackers or Crisps 4 to 8-oz. BUY 1 GET 1 FREE MEMBER PRICE",
+            basis="bogo",
+        )
+        self.assertIsNone(base_normalize_unit_price(deal))
+        self.assertEqual(
+            base_normalize_unit_price(deal, fallback_reference_price=3.99),
+            2.0,
+        )
+
     def test_b2g3f_coca_cola_12pack(self) -> None:
         promo = "BUY 2, GET 3 FREE WHEN YOU BUY 5 MEMBER PRICE"
         deal_row = row(
