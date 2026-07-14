@@ -9,7 +9,10 @@ data/canonical_tracker_families.yaml. Checks each non-null price entry for:
   2. Price outlier   , price > 2× median (baseline) OR > 3× prior week OR
                         < 0.5× prior week (when prior exists).
   3. Per-lb plausibility, for per-lb families, price should be $0.25–$50/lb.
-  4. High confidence + bad keyword = immediate fail.
+  4. $5 Friday multi-buy trap, friday_only snack/chip points at exactly $5.00
+                        without an "N for $X" promo are treated as suspect
+                        unnormalized bundle totals (Kettle Brand 2026-04-01).
+  5. High confidence + bad keyword = immediate fail.
 
 Output: data/review/weekly_price_sanity_{YYYY-MM-DD}.csv
 
@@ -191,6 +194,42 @@ def per_lb_check(price: float, family: TrackerFamily) -> tuple[bool, str]:
     return True, ""
 
 
+# Snack categories where $5 Friday is almost always N-for-$5, not $5/bag.
+_FRIDAY_MULTIBUY_CATEGORIES = {
+    "chips_salty_snacks",
+    "cookies_crackers",
+    "crackers_snacks",
+}
+_N_FOR_X_RE = re.compile(r"\d+\s*(?:for|/)\s*\$?\s*\d", re.I)
+
+
+def friday_multibuy_suspect_check(
+    entry: dict[str, Any],
+    family: TrackerFamily,
+) -> tuple[bool, str]:
+    """Catch $5 Friday multi-buys misread as a single-bag $5 price.
+
+    Safeway $5 Friday chip tiles often show ``2 for $5`` / ``3 for $5`` with a
+    per-unit Member Price ($2.50 / $1.67). Vision sometimes emits ``$5 ea`` and
+    the chart plots an impossible $5 bag (Kettle Brand Safeway 2026-04-01).
+    """
+    availability = (entry.get("availabilityType") or "").lower()
+    if availability != "friday_only":
+        return True, ""
+    price = entry.get("price")
+    if price is None or abs(float(price) - 5.0) > 1e-6:
+        return True, ""
+    if family.category not in _FRIDAY_MULTIBUY_CATEGORIES:
+        return True, ""
+    promo_blob = f"{entry.get('promoNote') or ''} {entry.get('offerText') or ''}"
+    if _N_FOR_X_RE.search(promo_blob):
+        return True, ""
+    return False, (
+        "friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText "
+        "— likely an unnormalized $5 Friday multi-buy total (not $5/bag)"
+    )
+
+
 # ---------------------------------------------------------------------------
 # Main validation loop
 # ---------------------------------------------------------------------------
@@ -252,6 +291,11 @@ def validate_feed(
             lb_ok, lb_reason = per_lb_check(price, family)
             if not lb_ok:
                 failures.append(f"[per_lb] {lb_reason}")
+
+            # 4. $5 Friday multi-buy trap (unnormalized bundle total)
+            fri_ok, fri_reason = friday_multibuy_suspect_check(entry, family)
+            if not fri_ok:
+                failures.append(f"[friday_multibuy] {fri_reason}")
 
             if failures:
                 rows.append(

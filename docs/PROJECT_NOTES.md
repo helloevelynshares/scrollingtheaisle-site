@@ -546,6 +546,19 @@ Fix / workaround: Refresh `SAFEWAY_COOKIE` from that capture; set `SAFEWAY_STORE
 How to verify: `.venv/bin/python scripts/seed_safeway_baseline.py --query "goldfish cheddar cracker" --timeout 30 -v` → `200 success`, candidates CSV populated (e.g. Goldfish Cheddar 10 Oz **$4.99**).  
 Related files: `scripts/.env`, `scripts/safeway_config.py`, `scripts/safeway_client.py`, `scripts/seed_safeway_baseline.py`
 
+### Kettle Brand Safeway 2026-04-01: $5 Friday misread as $5/bag (was 2 for $5)
+
+Date discovered: 2026-07-14
+Context: Kettle Brand chart on Safeway called out $5 for Friday April 3rd; user suspected multi-buy, not a single bag.
+What happened: PDF page 6 `$5 Friday` tile is **SunChips / Kettle Brand Potato Chips 5–8.5 oz / Cheetos 6.5–10 oz** with **2 for $5** and Member Price **$2.50 ea**. Vision wrote `raw_offer_text="$5 ea …"`, `price_basis=each`, `advertised_price=5.0`, and dropped Cheetos from the split — so the tracker plotted **$5.00**.
+Fix / workaround:
+1. Corrected sibling `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv` (+ raw card) for `raw_offer_id=c9f97af3a547`: `2.50`, `multi_buy`, promo `2 for $5 Friday April 3rd`, add Cheetos split; use `Sun Chips 7 oz` wording.
+2. `base_normalize_unit_price` always applies explicit `N for $X` even when `price_basis=each`.
+3. Validator `friday_multibuy_suspect_check`: friday_only snack/chip at exactly **$5.00** with no `N for $X` in promo/offer → `[friday_multibuy]` flag.
+4. Added YAML include `SunChips` (one word) for ads that omit the space.
+How to verify: `kettle_brand_chips` / `sun_chips_7oz` / `cheetos_regular_bags` for `2026-04-01` → `price: 2.5`, promoNote `2 for $5 Friday April 3rd`. `PYTHONPATH=scripts python3 -m unittest tests.test_normalization tests.test_validate_weekly_ad_prices -v`. Re-run `validate_weekly_ad_prices.py --family-id kettle_brand_chips` → no friday_multibuy flag on April.
+Related files: `scripts/price_tracker/normalization.py`, `scripts/validate_weekly_ad_prices.py`, `src/data/weeklyAdPrices.generated.ts`, sibling `split_offer_items.csv`
+
 ### Kettle Brand Safeway 2026-07-01: vision pipeline missed $5 Friday tile (fixed)
 
 Date discovered: 2026-07-06  

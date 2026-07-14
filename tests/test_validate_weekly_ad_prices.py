@@ -15,6 +15,7 @@ from price_tracker.canonical_families import TrackerFamily  # noqa: E402
 from validate_weekly_ad_prices import (  # noqa: E402
     _compute_median_baseline,
     _include_tokens,
+    friday_multibuy_suspect_check,
     keyword_sanity_check,
     per_lb_check,
     price_outlier_check,
@@ -29,6 +30,7 @@ def _make_family(
     subtitle: str = "regular bags",
     include: tuple[str, ...] = ("Test Product",),
     keep_separate_from: tuple[str, ...] = (),
+    category: str = "",
 ) -> TrackerFamily:
     """Build a minimal TrackerFamily for testing."""
     from price_tracker.canonical_families import build_patterns_from_family
@@ -41,6 +43,7 @@ def _make_family(
         "homepage_group": "snacks_and_crackers",
         "include": list(include),
         "keep_separate_from": list(keep_separate_from),
+        "category": category,
     }
     patterns, excludes, prefers = build_patterns_from_family(raw)
     return TrackerFamily(
@@ -54,6 +57,7 @@ def _make_family(
         patterns=patterns,
         exclude_patterns=excludes,
         prefer_patterns=prefers,
+        category=category,
     )
 
 
@@ -231,6 +235,63 @@ class TestPerLbCheck(unittest.TestCase):
         ok, reason = per_lb_check(55.0, family)
         self.assertFalse(ok)
         self.assertIn("maximum", reason)
+
+
+class TestFridayMultibuySuspect(unittest.TestCase):
+    def setUp(self) -> None:
+        self.kettle = _make_family(
+            family_id="kettle_brand_chips",
+            canonical_name="Kettle Brand potato chips",
+            include=("Kettle Brand Chips",),
+            category="chips_salty_snacks",
+        )
+
+    def test_april_style_five_dollar_trap(self) -> None:
+        entry = {
+            "price": 5.0,
+            "availabilityType": "friday_only",
+            "promoNote": "Member Price",
+            "offerText": "Kettle Brand Potato Chips 6-8.5 oz",
+        }
+        ok, reason = friday_multibuy_suspect_check(entry, self.kettle)
+        self.assertFalse(ok)
+        self.assertIn("unnormalized", reason)
+
+    def test_normalized_2_for_5_passes(self) -> None:
+        entry = {
+            "price": 2.5,
+            "availabilityType": "friday_only",
+            "promoNote": "2 for $5 Friday April 3rd",
+            "offerText": "Kettle Brand Potato Chips",
+        }
+        ok, _ = friday_multibuy_suspect_check(entry, self.kettle)
+        self.assertTrue(ok)
+
+    def test_five_dollar_with_n_for_in_promo_passes(self) -> None:
+        # Odd residual $5 with wording still present — not this trap.
+        entry = {
+            "price": 5.0,
+            "availabilityType": "friday_only",
+            "promoNote": "2 for $5 Member Price",
+            "offerText": "Kettle Brand Potato Chips",
+        }
+        ok, _ = friday_multibuy_suspect_check(entry, self.kettle)
+        self.assertTrue(ok)
+
+    def test_non_snack_friday_five_passes(self) -> None:
+        meat = _make_family(
+            canonical_name="Ribs",
+            include=("Pork Ribs",),
+            category="meat_seafood",
+        )
+        entry = {
+            "price": 5.0,
+            "availabilityType": "friday_only",
+            "promoNote": "Member Price",
+            "offerText": "Pork Ribs",
+        }
+        ok, _ = friday_multibuy_suspect_check(entry, meat)
+        self.assertTrue(ok)
 
 
 class TestParsePricesTs(unittest.TestCase):

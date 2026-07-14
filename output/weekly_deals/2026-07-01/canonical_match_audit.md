@@ -1,74 +1,47 @@
 # Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-14T13:32:36.850564+00:00
+Generated: 2026-07-14T14:17:21.173442+00:00
 
 ## Summary
 
-- **Accepted:** 78
+- **Accepted:** 25
 - **Rejected:** 0
-- **Manual review:** 6
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb
+- **Manual review:** 0
+- **Families updated:** kettle_brand_chips, doritos_5_13oz, lays_potato_chips_regular, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
+- `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
 - `butter_16oz` (Safeway): $2.99: Challenge Butter
-- `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
-- `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
-- `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
-- `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
-- `cherries_per_lb` (Safeway): $1.99: Red Cherries
-- `sweet_corn` (Safeway): $0.12: Sweet Corn
-- `butter_16oz` (Safeway): $2.99: Challenge Butter
-- `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
-
-### Graph preview changes
-
-- `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
-- `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
-- `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
-- `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
-
-### Blocked from tracker graph
-
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
-  - Reason: ambiguous match
-- `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.65 < min 0.70
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
-  - Reason: ambiguous match
-- `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.65 < min 0.70
+- `salmon` (Safeway): $5.0: Fresh Atlantic Salmon Portion
 
 ## Accepted matches
 
-- `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $2.2 (confidence 0.90)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $2.2 (confidence 1.00)
-  - Display: Lay's potato chips
-  - Subtitle: regular non-kettle bags, roughly 5–13 oz
 - `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
   - Display: Kettle Brand potato chips
-  - Subtitle: 6.5–8.5 oz bags
+  - Subtitle: regular size, 6.5–8.5 oz
+- `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $2.2 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $2.2 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular size, 5–13 oz
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
+  - Display: Kettle Brand potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
 - `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips' @ $2.2 (confidence 0.90)
   - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
+  - Subtitle: regular size, 9–13 oz
 - `cheez_it_crackers` (Safeway): "Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats" @ $4.99 (confidence 0.90)
   - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
+  - Subtitle: regular size, 6.5–12.4 oz
 - `coca_cola_12packs` (Safeway): 'Coca-Cola 12-pack 12-oz. cans' @ $5.2 (confidence 1.00)
   - Display: Coca-Cola
   - Subtitle: 12-pack, 12 fl oz cans
@@ -99,9 +72,6 @@ Generated: 2026-07-14T13:32:36.850564+00:00
 - `mangoes_each` (Safeway): 'Mango' @ $1.25 (confidence 0.70)
   - Display: Mangoes
   - Subtitle: each or multi-buy
-- `plums_per_lb` (Safeway): 'Black Plums' @ $2.5 (confidence 0.90)
-  - Display: Plums
-  - Subtitle: per lb
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
@@ -111,15 +81,12 @@ Generated: 2026-07-14T13:32:36.850564+00:00
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
 - `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 0.90)
   - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
+  - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $1.99 (confidence 0.90)
   - Display: Post cereal
-  - Subtitle: regular boxes, roughly 10–16 oz
+  - Subtitle: regular size, 10–16 oz
 - `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
   - Display: Clif Bars
   - Subtitle: per bar (multipack price ÷ bar count)
@@ -130,161 +97,5 @@ Generated: 2026-07-14T13:32:36.850564+00:00
   - Display: Tri-tip roast
   - Subtitle: per lb
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `cheetos_regular_bags` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `ruffles_regular_bags` (Vons): "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `pepsi_12packs` (Vons): 'Coca-Cola, Pepsi' @ $5.33 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `seedless_grapes_per_lb` (Vons): 'Large Red Seedless Grapes' @ $2.53 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Vons): 'Large Cherries Northwest Grown' @ $2.99 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `hass_avocados_each` (Vons): 'Medium Ripe Hass Avocados' @ $1.0 (confidence 0.90)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `peaches_per_lb` (Vons): 'Yellow Peaches, White Peaches' @ $1.99 (confidence 0.70)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Vons): 'Nectarines' @ $1.99 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
-- `general_mills_cereal_regular` (Vons): 'Cheerios' @ $2.0 (confidence 0.70)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `ribeye_steak` (Vons): 'Ribeye Steak LIMIT 2 VALUE PACKS' @ $7.99 (confidence 0.90)
-  - Display: Ribeye steak
-  - Subtitle: per lb
-- `tri_tip_roast` (Vons): 'Tri-Tip Roast LIMIT 2 ROASTS' @ $4.99 (confidence 0.90)
-  - Display: Tri-tip roast
-  - Subtitle: per lb
-- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $7.97 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $2.2 (confidence 0.90)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $2.2 (confidence 1.00)
-  - Display: Lay's potato chips
-  - Subtitle: regular non-kettle bags, roughly 5–13 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: 6.5–8.5 oz bags
-- `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips' @ $2.2 (confidence 0.90)
-  - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
-- `cheez_it_crackers` (Safeway): "Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats" @ $4.99 (confidence 0.90)
-  - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
-- `coca_cola_12packs` (Safeway): 'Coca-Cola 12-pack 12-oz. cans' @ $5.2 (confidence 1.00)
-  - Display: Coca-Cola
-  - Subtitle: 12-pack, 12 fl oz cans
-- `pepsi_12packs` (Safeway): 'Pepsi Zero Sugar' @ $None (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `lacroix_8pack` (Safeway): 'La Croix Sparkling Water 8 pack, 12 oz. cans.' @ $3.49 (confidence 0.70)
-  - Display: LaCroix sparkling water
-  - Subtitle: 8-pack, 12 fl oz cans
-- `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice, Coffee mate Creamer' @ $2.99 (confidence 0.70)
-  - Display: Simply juice
-  - Subtitle: 46–52 fl oz bottles
-- `dreyers_tubs` (Safeway): "Dreyer's Ice Cream" @ $2.99 (confidence 0.90)
-  - Display: Dreyer's ice cream
-  - Subtitle: 1.5 qt tubs
-- `strawberries_1_2lb` (Safeway): 'Strawberries Large Pack' @ $5.0 (confidence 0.70)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Safeway): 'Red Seedless Grapes' @ $4.99 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Safeway): 'Red Cherries' @ $1.99 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `mangoes_each` (Safeway): 'Mango' @ $1.25 (confidence 0.70)
-  - Display: Mangoes
-  - Subtitle: each or multi-buy
-- `plums_per_lb` (Safeway): 'Black Plums' @ $2.5 (confidence 0.90)
-  - Display: Plums
-  - Subtitle: per lb
-- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenge Butter' @ $2.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
-  - Display: Philadelphia cream cheese
-  - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 0.90)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `post_cereal_regular` (Safeway): 'Post Cereal' @ $1.99 (confidence 0.90)
-  - Display: Post cereal
-  - Subtitle: regular boxes, roughly 10–16 oz
-- `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
-  - Display: Clif Bars
-  - Subtitle: per bar (multipack price ÷ bar count)
-- `ribeye_steak` (Safeway): 'USDA Choice Beef Ribeye Steak, Bone-In' @ $9.99 (confidence 0.70)
-  - Display: Ribeye steak
-  - Subtitle: per lb
-- `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast Value Pack' @ $12.99 (confidence 0.70)
-  - Display: Tri-tip roast
-  - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `cheetos_regular_bags` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `ruffles_regular_bags` (Vons): "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `pepsi_12packs` (Vons): 'Coca-Cola, Pepsi' @ $5.33 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `seedless_grapes_per_lb` (Vons): 'Large Red Seedless Grapes' @ $2.53 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Vons): 'Large Cherries Northwest Grown' @ $2.99 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `hass_avocados_each` (Vons): 'Medium Ripe Hass Avocados' @ $1.0 (confidence 0.90)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `peaches_per_lb` (Vons): 'Yellow Peaches, White Peaches' @ $1.99 (confidence 0.70)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Vons): 'Nectarines' @ $1.99 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
-- `general_mills_cereal_regular` (Vons): 'Cheerios' @ $2.0 (confidence 0.70)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `ribeye_steak` (Vons): 'Ribeye Steak LIMIT 2 VALUE PACKS' @ $7.99 (confidence 0.90)
-  - Display: Ribeye steak
-  - Subtitle: per lb
-- `tri_tip_roast` (Vons): 'Tri-Tip Roast LIMIT 2 ROASTS' @ $4.99 (confidence 0.90)
-  - Display: Tri-tip roast
-  - Subtitle: per lb
-- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $7.97 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet

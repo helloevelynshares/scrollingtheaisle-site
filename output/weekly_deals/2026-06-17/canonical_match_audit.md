@@ -1,47 +1,29 @@
 # Canonical match audit: 2026-06-17 to 2026-06-23
 
-Generated: 2026-07-14T13:32:36.566729+00:00
+Generated: 2026-07-14T14:17:21.166375+00:00
 
 ## Summary
 
-- **Accepted:** 64
-- **Rejected:** 6
-- **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, cheez_it_crackers, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, sliced_or_shredded_cheese_6_8oz, tri_tip_roast, salmon, ritz_crackers, berries_6oz, plums_per_lb, eggs_dozen_normalized, ribeye_steak
+- **Accepted:** 20
+- **Rejected:** 2
+- **Manual review:** 2
+- **Families updated:** cheetos_regular_bags, sun_chips_7oz, doritos_5_13oz, ruffles_regular_bags, cheez_it_crackers, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, sweet_corn, butter_16oz, sliced_or_shredded_cheese_6_8oz, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
-- `goldfish_bags` (Safeway): $3.49: Pepperidge Farm Goldfish Crackers
-- `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
-- `cherries_per_lb` (Safeway): $2.99: Red Cherries
-- `tri_tip_roast` (Safeway): $5.99: USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
-- `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
-- `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
-- `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
 - `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
-- `goldfish_bags` (Safeway): $3.49: Pepperidge Farm Goldfish Crackers
 - `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
 - `cherries_per_lb` (Safeway): $2.99: Red Cherries
 - `tri_tip_roast` (Safeway): $5.99: USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack
-- `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
-- `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
-- `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
 
 ### Graph preview changes
 
 - `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: toasted chips
 - `nabisco_snack_crackers` (Safeway): blocked $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
 - `coca_cola_12packs` (Safeway): blocked $8.99: confidence 0.55 < min 0.70
-- `lays_potato_chips_regular` (Vons): blocked $2.49: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons): blocked $1.49: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers` (Safeway): blocked $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
-- `coca_cola_12packs` (Safeway): blocked $8.99: confidence 0.55 < min 0.70
-- `lays_potato_chips_regular` (Vons): blocked $2.49: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `coca_cola_12packs` (Vons): blocked $1.49: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
 ### Blocked from tracker graph
 
@@ -51,30 +33,10 @@ Generated: 2026-07-14T13:32:36.566729+00:00
 - `nabisco_snack_crackers` (Safeway): **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
   - Hard negatives: chips ahoy, cookies
-- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $1.49
-  - Reason: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2\s*[- ]?liter
-- `ritz_crackers` (Safeway): **rejected**: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49
-  - Reason: hard negative keyword/pattern hit: toasted chips
-  - Hard negatives: toasted chips
-- `nabisco_snack_crackers` (Safeway): **rejected**: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99
-  - Reason: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
-  - Hard negatives: chips ahoy, cookies
-- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $1.49
-  - Reason: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2\s*[- ]?liter
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips" @ $None
   - Reason: confidence 0.50 < min 0.60
 - `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
   - Reason: confidence 0.55 < min 0.70
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
-  - Reason: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
-- `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips" @ $None
-  - Reason: confidence 0.50 < min 0.60
-- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
-  - Reason: confidence 0.55 < min 0.70
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Fritos, Ruffles" @ $2.49
-  - Reason: new all-time low $2.49 requires confidence >= 0.80 (got 0.65)
 
 ## Rejected tempting items
 
@@ -82,28 +44,33 @@ These looked like deals but were blocked from updating canonical trackers:
 
 - `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49: hard negative keyword/pattern hit: toasted chips
 - `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
-- `coca_cola_12packs`: 'Coca-Cola, Pepsi' @ $1.49: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `ritz_crackers`: 'Ritz Crackers or Toasted Chips, Nabisco Snack Crackers' @ $2.49: hard negative keyword/pattern hit: toasted chips
-- `nabisco_snack_crackers`: 'Chips Ahoy! Cookies 7-13 oz, Nabisco Snack Crackers 3.5-9.1 oz, Triscuit Crackers 7-8.5 oz, Kettle Potato Chips 5-8.5 oz' @ $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
-- `coca_cola_12packs`: 'Coca-Cola, Pepsi' @ $1.49: hard negative keyword/pattern hit: 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
 ## Accepted matches
 
-- `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
 - `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $2.49 (confidence 0.90)
   - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
+  - Subtitle: regular size, 6.5–10 oz
+- `sun_chips_7oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
+  - Display: Sun Chips
+  - Subtitle: regular size, 7 oz
+- `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $2.49 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: regular size, 6.5–10 oz
 - `ruffles_regular_bags` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
   - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
+  - Subtitle: regular size, 5–13 oz
+- `sun_chips_7oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
+  - Display: Sun Chips
+  - Subtitle: regular size, 7 oz
 - `cheez_it_crackers` (Safeway): "Cheez-It Crackers, Chex Mix, Bugles, Gardetto's, Nature Valley Crunchy Granola Bars, Fiber One Bars, Betty Crocker Fruit Snacks, Fruit by the Foot, Fruit Gushers, Fruit Roll-Ups, Mott's Fruit Flavored Snacks" @ $2.49 (confidence 0.70)
   - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
-- `goldfish_bags` (Safeway): 'Pepperidge Farm Goldfish Crackers' @ $3.49 (confidence 0.90)
+  - Subtitle: regular size, 6.5–12.4 oz
+- `goldfish_bags` (Safeway): 'Pepperidge Farm Goldfish Crackers' @ $3.49 (confidence 1.00)
   - Display: Goldfish
-  - Subtitle: 6–8 oz bags
+  - Subtitle: regular size, 6–8 oz
 - `pepsi_12packs` (Safeway): 'Pepsi 12 Pack, 12 oz cans, 6 Pack, 16.9 oz bottles, Pepsi 100oz bottle, Lipton Tea 64 oz, Pure Leaf Tea 59 oz, Gatorade 8 pack, 20 oz' @ $5.99 (confidence 0.70)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
@@ -125,12 +92,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `hass_avocados_each` (Safeway): 'Hass Avocados' @ $2.0 (confidence 0.90)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
-- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $4.49 (confidence 0.90)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Safeway): 'Nectarines' @ $4.49 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
@@ -144,140 +105,5 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Tri-tip roast
   - Subtitle: per lb
 - `salmon` (Safeway): 'Fresh Sockeye Salmon Fillets' @ $16.99 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `ruffles_regular_bags` (Vons): "Lay's Potato Chips, Fritos, Ruffles" @ $2.49 (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `ritz_crackers` (Vons): 'Ritz Crackers 5 to 13 oz' @ $2.49 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: 8.8–13.7 oz boxes
-- `pepsi_12packs` (Vons): 'Pepsi, 7UP, Canada Dry, A&W, Sunkist' @ $5.33 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `strawberries_1_2lb` (Vons): 'Fresh Strawberries' @ $2.5 (confidence 0.90)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Vons): 'Red Seedless Grapes' @ $2.5 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `berries_6oz` (Vons): 'Local Blueberries' @ $2.56 (confidence 0.98)
-  - Display: Blueberries / raspberries / blackberries
-  - Subtitle: 6 oz clamshells
-- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.67 (confidence 0.90)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `plums_per_lb` (Vons): 'Black Plums' @ $1.99 (confidence 0.90)
-  - Display: Plums
-  - Subtitle: per lb
-- `sweet_corn` (Vons): 'Fresh Sweet Corn' @ $0.2 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter Quarters 16 oz' @ $2.99 (confidence 1.00)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `ribeye_steak` (Vons): 'Fresh Beef Ribeye Steak Bone-In Value Pack' @ $12.99 (confidence 0.90)
-  - Display: Ribeye steak
-  - Subtitle: per lb
-- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $5.0 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $2.49 (confidence 0.90)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `ruffles_regular_bags` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `cheez_it_crackers` (Safeway): "Cheez-It Crackers, Chex Mix, Bugles, Gardetto's, Nature Valley Crunchy Granola Bars, Fiber One Bars, Betty Crocker Fruit Snacks, Fruit by the Foot, Fruit Gushers, Fruit Roll-Ups, Mott's Fruit Flavored Snacks" @ $2.49 (confidence 0.70)
-  - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
-- `goldfish_bags` (Safeway): 'Pepperidge Farm Goldfish Crackers' @ $3.49 (confidence 0.90)
-  - Display: Goldfish
-  - Subtitle: 6–8 oz bags
-- `pepsi_12packs` (Safeway): 'Pepsi 12 Pack, 12 oz cans, 6 Pack, 16.9 oz bottles, Pepsi 100oz bottle, Lipton Tea 64 oz, Pure Leaf Tea 59 oz, Gatorade 8 pack, 20 oz' @ $5.99 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Light Orange Juice' @ $5.99 (confidence 0.70)
-  - Display: Simply juice
-  - Subtitle: 46–52 fl oz bottles
-- `breyers_ice_cream` (Safeway): 'Breyers Ice Cream 48 fl oz' @ $2.5 (confidence 0.90)
-  - Display: Breyers ice cream
-  - Subtitle: tubs, including Carb Smart and Sunday Swirls
-- `strawberries_1_2lb` (Safeway): 'Strawberries' @ $5.0 (confidence 0.90)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Safeway): 'Red Seedless Grapes' @ $4.99 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Safeway): 'Red Cherries' @ $2.99 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `hass_avocados_each` (Safeway): 'Hass Avocados' @ $2.0 (confidence 0.90)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $4.49 (confidence 0.90)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Safeway): 'Nectarines' @ $4.49 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
-- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Land O Lakes Butter' @ $3.49 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `sliced_or_shredded_cheese_6_8oz` (Safeway): 'Lucerne Sliced Cheese 6-8 oz, Lucerne Shredded Cheese 5-8 oz' @ $5.99 (confidence 0.70)
-  - Display: Sliced or shredded cheese
-  - Subtitle: 6–8 oz packages
-- `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack' @ $5.99 (confidence 0.70)
-  - Display: Tri-tip roast
-  - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Sockeye Salmon Fillets' @ $16.99 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `ruffles_regular_bags` (Vons): "Lay's Potato Chips, Fritos, Ruffles" @ $2.49 (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `ritz_crackers` (Vons): 'Ritz Crackers 5 to 13 oz' @ $2.49 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: 8.8–13.7 oz boxes
-- `pepsi_12packs` (Vons): 'Pepsi, 7UP, Canada Dry, A&W, Sunkist' @ $5.33 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `strawberries_1_2lb` (Vons): 'Fresh Strawberries' @ $2.5 (confidence 0.90)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Vons): 'Red Seedless Grapes' @ $2.5 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `berries_6oz` (Vons): 'Local Blueberries' @ $2.56 (confidence 0.98)
-  - Display: Blueberries / raspberries / blackberries
-  - Subtitle: 6 oz clamshells
-- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.67 (confidence 0.90)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `plums_per_lb` (Vons): 'Black Plums' @ $1.99 (confidence 0.90)
-  - Display: Plums
-  - Subtitle: per lb
-- `sweet_corn` (Vons): 'Fresh Sweet Corn' @ $0.2 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter Quarters 16 oz' @ $2.99 (confidence 1.00)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `ribeye_steak` (Vons): 'Fresh Beef Ribeye Steak Bone-In Value Pack' @ $12.99 (confidence 0.90)
-  - Display: Ribeye steak
-  - Subtitle: per lb
-- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet

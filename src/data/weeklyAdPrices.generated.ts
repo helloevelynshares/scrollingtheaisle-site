@@ -1389,11 +1389,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "2X Points; Earn 4X Points"
     },
     "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.5,
+      "offerText": "Cheetos 6.5 to 10 oz",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": "2 for $5 Friday April 3rd"
     },
     "2026-05-06": {
       "price": 5.0,
@@ -1418,10 +1418,10 @@ export const WEEKLY_AD_PRICES: Record<
     },
     "2026-06-10": {
       "price": null,
-      "offerText": "Cheetos, Lay's, Simply",
+      "offerText": null,
       "confidence": null,
-      "availabilityType": "full_week",
-      "promoNote": "BUY 2 GET 2 FREE EQUAL OR LESSER VALUE MEMBER PRICE"
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-17": {
       "price": 2.49,
@@ -3477,11 +3477,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-04-01": {
-      "price": 5.0,
-      "offerText": "Kettle Brand Potato Chips 6-8.5 oz",
+      "price": 2.5,
+      "offerText": "Kettle Brand Potato Chips 5 to 8.5 oz",
       "confidence": "high",
       "availabilityType": "friday_only",
-      "promoNote": "Member Price"
+      "promoNote": "2 for $5 Friday April 3rd"
     },
     "2026-05-06": {
       "price": null,
@@ -4269,32 +4269,32 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.5,
+      "offerText": "Sun Chips 7 oz",
+      "confidence": "high",
+      "availabilityType": "friday_only",
+      "promoNote": "2 for $5 Friday April 3rd"
     },
     "2026-05-06": {
       "price": null,
-      "offerText": null,
+      "offerText": "SunChips 4.75 to 10.25-oz.",
       "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "availabilityType": "full_week",
+      "promoNote": "EQUAL OR LESSER VALUE MEMBER PRICE WHEN YOU BUY 4"
     },
     "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
+      "price": 1.99,
+      "offerText": "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.",
+      "confidence": "medium",
+      "availabilityType": "full_week",
       "promoNote": null
     },
     "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE; Earn 4X Points"
     },
     "2026-06-10": {
       "price": null,
@@ -4304,11 +4304,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.49,
+      "offerText": "Ruffles, Doritos, SunChips",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE; Earn 4X Points"
     },
     "2026-06-24": {
       "price": null,

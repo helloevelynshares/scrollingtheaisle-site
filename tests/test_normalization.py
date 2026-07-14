@@ -90,6 +90,23 @@ class TestNormalization(unittest.TestCase):
             places=2,
         )
 
+    def test_multi_buy_3_for_5(self) -> None:
+        deal = row("5.0", "Kettle Brand Potato Chips 3 for $5 Friday", basis="multi_buy")
+        self.assertEqual(base_normalize_unit_price(deal), 1.67)
+
+    def test_multi_buy_2_for_5(self) -> None:
+        deal = row("5.0", "Member Price 2 for $5 SunChips or Kettle Brand", basis="multi_buy")
+        self.assertEqual(base_normalize_unit_price(deal), 2.5)
+
+    def test_explicit_n_for_x_overrides_mislabeled_each(self) -> None:
+        """Vision said $5 ea / each, but offer text has 2 for $5 → unitize."""
+        deal = row(
+            "5.0",
+            "2 for $5 Member Price SunChips or Kettle Brand Potato Chips",
+            basis="each",
+        )
+        self.assertEqual(base_normalize_unit_price(deal), 2.5)
+
 
 class TestMatcherSeparation(unittest.TestCase):
     """Smoke tests that YAML exclude patterns keep known families separate."""

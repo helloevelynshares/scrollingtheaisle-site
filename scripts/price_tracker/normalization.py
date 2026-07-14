@@ -53,6 +53,23 @@ def _multi_buy_unit_price(row: dict[str, str], price: float) -> float | None:
     return None
 
 
+def _explicit_n_for_x_unit_price(row: dict[str, str]) -> float | None:
+    """Unit price from an explicit ``N for $X`` / ``N/$X`` total in offer text.
+
+    Applied regardless of ``price_basis`` so a multi-buy total mislabeled as
+    ``each`` (e.g. ``$5 ea`` on a ``2 for $5`` Friday tile) still normalizes.
+    """
+    promo = _promo_text(row)
+    count_match = _re.search(r"(\d+)\s*(?:for|/)\s*\$?\s*(\d+(?:\.\d+)?)", promo)
+    if not count_match:
+        return None
+    count = float(count_match.group(1))
+    total = float(count_match.group(2))
+    if count <= 0:
+        return None
+    return round(total / count, 2)
+
+
 def _buy_x_get_y_unit_price(row: dict[str, str], price: float) -> float | None:
     """Compute effective per-unit price for buy-X-get-Y-free deals.
 
@@ -79,7 +96,10 @@ def base_normalize_unit_price(row: dict[str, str]) -> float | None:
     if price is None:
         return None
     basis = (row.get("price_basis") or "").lower()
-    promo = _promo_text(row)
+    # Explicit "N for $X" always wins, even when vision labeled the row as each/$5 ea.
+    explicit = _explicit_n_for_x_unit_price(row)
+    if explicit is not None:
+        return explicit
     # Handle B2G3F / BOGO: compute effective per-unit price from reference price
     if basis in {"bogo", "buy_x_get_y"}:
         unit = _buy_x_get_y_unit_price(row, price)

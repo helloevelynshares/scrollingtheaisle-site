@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-14T13:32:36.443309+00:00
+Generated: 2026-07-14T14:17:22.015253+00:00
 
 ## Summary
 
-- **Accepted:** 74
-- **Rejected:** 2
-- **Manual review:** 4
-- **Families updated:** cheetos_regular_bags, tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon, doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, keebler_sandwich_crackers, dr_pepper_12packs, clif_bars
+- **Accepted:** 16
+- **Rejected:** 0
+- **Manual review:** 1
+- **Families updated:** tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon
 
 ## Graph update safety check
 
@@ -15,54 +15,22 @@ Generated: 2026-07-14T13:32:36.443309+00:00
 
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
 - `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
-- `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
-- `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
-- `pepsi_12packs` (Vons): $0.67: Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
-- `dr_pepper_12packs` (Vons): $0.67: Dr Pepper 6 pack, 16.9-oz. bot.
-- `cherries_per_lb` (Vons): $1.49: Red Cherries
-- `cherries_per_lb` (Safeway): $5.99: Red Cherries
-- `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
-- `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
-- `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
-- `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
-- `pepsi_12packs` (Vons): $0.67: Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew
-- `dr_pepper_12packs` (Vons): $0.67: Dr Pepper 6 pack, 16.9-oz. bot.
-- `cherries_per_lb` (Vons): $1.49: Red Cherries
-
-### Graph preview changes
-
-- `berries_6oz` (Vons): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
-- `berries_6oz` (Vons): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
+- `salmon` (Safeway): $6.99: Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen
 
 ### Blocked from tracker graph
 
-- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
-- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
 - `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
   - Reason: confidence 0.40 < min 0.65
-- `berries_6oz` (Vons): **manual_review**: 'Blueberries, 11 oz' @ $5.0
-  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
-- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
-  - Reason: confidence 0.40 < min 0.65
-- `berries_6oz` (Vons): **manual_review**: 'Blueberries, 11 oz' @ $5.0
-  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): "Cheetos, Lay's, Simply" @ $None (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
 - `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips Selected varieties' @ $None (confidence 0.70)
   - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
+  - Subtitle: regular size, 9–13 oz
 - `cheez_it_crackers` (Safeway): 'Cheez-It Crackers' @ $None (confidence 0.70)
   - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
+  - Subtitle: regular size, 6.5–12.4 oz
 - `pepsi_12packs` (Safeway): 'Pepsi' @ $1.29 (confidence 0.90)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
@@ -81,12 +49,6 @@ Generated: 2026-07-14T13:32:36.443309+00:00
 - `mangoes_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
   - Display: Mangoes
   - Subtitle: each or multi-buy
-- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
@@ -99,180 +61,15 @@ Generated: 2026-07-14T13:32:36.443309+00:00
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese Selected varieties.' @ $3.99 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
 - `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 0.90)
   - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
+  - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $2.49 (confidence 0.90)
   - Display: Post cereal
-  - Subtitle: regular boxes, roughly 10–16 oz
+  - Subtitle: regular size, 10–16 oz
 - `tri_tip_roast` (Safeway): 'Chef’s Counter Tri Tip Roast Value Pack' @ $12.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen' @ $6.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `cheetos_regular_bags` (Vons): "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties" @ $2.49 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz." @ $3.99 (confidence 1.00)
-  - Display: Lay's potato chips
-  - Subtitle: regular non-kettle bags, roughly 5–13 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: 6.5–8.5 oz bags
-- `ruffles_regular_bags` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `tostitos_tortilla_chips` (Vons): 'Tostitos Tortilla Chips 9-13 oz' @ $1.99 (confidence 0.90)
-  - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
-- `keebler_sandwich_crackers` (Vons): 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49 (confidence 0.70)
-  - Display: Keebler sandwich crackers
-  - Subtitle: 8-pack boxes
-- `pepsi_12packs` (Vons): 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `dr_pepper_12packs` (Vons): 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67 (confidence 0.70)
-  - Display: Dr Pepper
-  - Subtitle: 12-pack, 12 fl oz cans
-- `strawberries_1_2lb` (Vons): 'Strawberries 1 lb' @ $1.99 (confidence 0.90)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Vons): 'Green Seedless Grapes' @ $1.97 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Vons): 'Red Cherries' @ $1.49 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `sweet_corn` (Vons): 'Sweet Corn' @ $0.67 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 0.90)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)
-  - Display: Clif Bars
-  - Subtitle: per bar (multipack price ÷ bar count)
-- `cheetos_regular_bags` (Safeway): "Cheetos, Lay's, Simply" @ $None (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips Selected varieties' @ $None (confidence 0.70)
-  - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
-- `cheez_it_crackers` (Safeway): 'Cheez-It Crackers' @ $None (confidence 0.70)
-  - Display: Cheez-It crackers
-  - Subtitle: 6.5–12.4 oz boxes/bags
-- `pepsi_12packs` (Safeway): 'Pepsi' @ $1.29 (confidence 0.90)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `strawberries_1_2lb` (Safeway): 'Strawberries LARGE PACK' @ $5.0 (confidence 0.70)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Safeway): 'Red Seedless Grapes' @ $1.99 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Safeway): 'Red Cherries' @ $5.99 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `hass_avocados_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `mangoes_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
-  - Display: Mangoes
-  - Subtitle: each or multi-buy
-- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
-  - Display: Peaches
-  - Subtitle: per lb
-- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
-  - Display: Nectarines
-  - Subtitle: per lb
-- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese Selected varieties.' @ $3.99 (confidence 0.90)
-  - Display: Philadelphia cream cheese
-  - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 0.90)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `post_cereal_regular` (Safeway): 'Post Cereal' @ $2.49 (confidence 0.90)
-  - Display: Post cereal
-  - Subtitle: regular boxes, roughly 10–16 oz
-- `tri_tip_roast` (Safeway): 'Chef’s Counter Tri Tip Roast Value Pack' @ $12.99 (confidence 0.70)
-  - Display: Tri-tip roast
-  - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen' @ $6.99 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
-  - Display: Doritos
-  - Subtitle: 5–13 oz bags
-- `cheetos_regular_bags` (Vons): "Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties" @ $2.49 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: 6.5–10 oz bags
-- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz." @ $3.99 (confidence 1.00)
-  - Display: Lay's potato chips
-  - Subtitle: regular non-kettle bags, roughly 5–13 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: 6.5–8.5 oz bags
-- `ruffles_regular_bags` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
-  - Display: Ruffles
-  - Subtitle: regular bags, roughly 5–13 oz
-- `tostitos_tortilla_chips` (Vons): 'Tostitos Tortilla Chips 9-13 oz' @ $1.99 (confidence 0.90)
-  - Display: Tostitos tortilla chips
-  - Subtitle: roughly 9–13 oz bags
-- `keebler_sandwich_crackers` (Vons): 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49 (confidence 0.70)
-  - Display: Keebler sandwich crackers
-  - Subtitle: 8-pack boxes
-- `pepsi_12packs` (Vons): 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
-- `dr_pepper_12packs` (Vons): 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67 (confidence 0.70)
-  - Display: Dr Pepper
-  - Subtitle: 12-pack, 12 fl oz cans
-- `strawberries_1_2lb` (Vons): 'Strawberries 1 lb' @ $1.99 (confidence 0.90)
-  - Display: Strawberries
-  - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Vons): 'Green Seedless Grapes' @ $1.97 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
-- `cherries_per_lb` (Vons): 'Red Cherries' @ $1.49 (confidence 0.90)
-  - Display: Cherries
-  - Subtitle: per lb
-- `sweet_corn` (Vons): 'Sweet Corn' @ $0.67 (confidence 0.90)
-  - Display: Sweet corn
-  - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
-  - Display: Nature Valley bars
-  - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 0.90)
-  - Display: General Mills cereal
-  - Subtitle: regular boxes, roughly 8.9–15 oz
-- `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)
-  - Display: Clif Bars
-  - Subtitle: per bar (multipack price ÷ bar count)

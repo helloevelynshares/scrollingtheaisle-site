@@ -252,6 +252,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Sun Chips Garden Salsa",
       "Sun Chips French Onion",
       "Sun Chips 7 oz bags",
+      "SunChips",
       "Sun Chips"
     ],
     "legacyCanonicalIds": []
