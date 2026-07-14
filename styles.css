@@ -2939,14 +2939,15 @@ img {
 .hub-main {
   max-width: none;
   margin: 0;
-  padding: 16px 0 56px;
+  /* Keep bottom padding light — picks section spacing is handled on #picks-section */
+  padding: 16px 0 0;
 }
 
 .hub-hero {
   text-align: center;
-  padding: 8px 0 24px;
+  padding: 8px 0 0;
   max-width: 920px;
-  margin: 0 auto 28px;
+  margin: 0 auto;
 }
 
 .hub-eyebrow {
@@ -2975,7 +2976,7 @@ img {
 
 .hub-signup {
   max-width: 540px;
-  margin: 0 auto 14px;
+  margin: 0 auto 20px;
   padding: 14px 16px;
   background: var(--card);
   border-radius: var(--radius);
@@ -3086,6 +3087,8 @@ img {
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
+  /* Single controlled gap after hero cards (was ~100px from stacked paddings) */
+  padding-top: 32px;
 }
 
 .hub-section-header {
