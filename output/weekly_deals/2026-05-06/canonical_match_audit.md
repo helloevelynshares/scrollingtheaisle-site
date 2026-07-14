@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-14T04:55:14.165787+00:00
+Generated: 2026-07-14T13:32:36.039548+00:00
 
 ## Summary
 
-- **Accepted:** 70
+- **Accepted:** 68
 - **Rejected:** 2
 - **Manual review:** 2
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, general_mills_cereal_regular, ribeye_steak
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, eggs_dozen_normalized, general_mills_cereal_regular, ribeye_steak
 
 ## Graph update safety check
 
@@ -87,9 +87,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -136,8 +133,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Mangoes
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -192,9 +189,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -241,8 +235,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Mangoes
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz

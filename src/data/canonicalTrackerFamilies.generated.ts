@@ -877,26 +877,19 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "eggs_dozen_normalized",
-    "displayName": "Eggs",
-    "subtitle": "per dozen (18/24 ct packs scaled to 12)",
+    "displayName": "Lucerne Eggs",
+    "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
     "displayOrder": 43,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "dairy",
     "confidence": "working",
     "costcoComparable": true,
     "searchAliases": [
-      "large eggs",
-      "large eggs 12 ct",
-      "large eggs 18 ct",
-      "large eggs 24 ct",
       "Lucerne eggs",
       "Lucerne Large Eggs",
-      "Eggland's Best",
-      "Happy Egg",
-      "dozen eggs",
-      "cage free eggs",
-      "free range eggs",
-      "Large eggs"
+      "Lucerne Cage Free Eggs",
+      "Lucerne Farms Eggs",
+      "Lucerne eggs"
     ],
     "legacyCanonicalIds": [
       "eggs_18_count"

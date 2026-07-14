@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-14T04:55:14.768224+00:00
+Generated: 2026-07-14T13:32:36.711749+00:00
 
 ## Summary
 
@@ -137,8 +137,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -191,8 +191,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -263,8 +263,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -317,8 +317,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz

@@ -313,17 +313,14 @@ families:
       - egg_whites_liquid
       - candy_eggs
     positive_keywords:
+      - lucerne
       - eggs
       - large eggs
       - dozen
       - 12 ct
       - 18 ct
       - 24 ct
-      - lucerne
-      - eggland
-      - happy egg
       - cage free
-      - free range
       - grade a
       - grade aa
     negative_keywords:
@@ -349,23 +346,13 @@ families:
       - pasture-raised
       - pasture raised
       - vital farms
-    # Require a carton / poultry signal so bare seasonal "Eggs" tiles cannot update.
-    require_confirmation_keywords:
-      - 12 ct
-      - 12-ct
-      - 18 ct
-      - 18-ct
-      - 24 ct
-      - 24-ct
-      - dozen
-      - large eggs
-      - grade a
-      - grade aa
-      - cage free
-      - free range
       - eggland
-      - lucerne
       - happy egg
+      - nellie
+      - open nature
+    # Lucerne-only carton: brand required, plus a count/grade signal.
+    require_confirmation_keywords:
+      - lucerne
     min_confidence: 0.65
     atl_requires_confidence: 0.85
     large_price_change_pct: 35

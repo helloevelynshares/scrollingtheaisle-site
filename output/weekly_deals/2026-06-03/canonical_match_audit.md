@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-14T04:55:14.401186+00:00
+Generated: 2026-07-14T13:32:36.299282+00:00
 
 ## Summary
 
@@ -134,8 +134,8 @@ Generated: 2026-07-14T04:55:14.401186+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -218,8 +218,8 @@ Generated: 2026-07-14T04:55:14.401186+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz

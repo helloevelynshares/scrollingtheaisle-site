@@ -238,21 +238,27 @@ def load_split_items(path: Path, banner_filter: str | None) -> list[dict[str, st
 
 
 def split_text(row: dict[str, str]) -> str:
-    return (row.get("split_product_text") or row.get("raw_offer_text") or "").lower()
+    text = (row.get("split_product_text") or row.get("raw_offer_text") or "").lower()
+    # Trademark marks break word-boundary brand matches (e.g. Lucerne® Eggs).
+    return re.sub(r"[®™©]", "", text)
 
 
 def row_text(row: dict[str, str]) -> str:
-    return " ".join(
-        filter(
-            None,
-            [
-                row.get("split_product_text"),
-                row.get("raw_offer_text"),
-                row.get("promo_text"),
-                row.get("package_text"),
-            ],
-        )
-    ).lower()
+    return re.sub(
+        r"[®™©]",
+        "",
+        " ".join(
+            filter(
+                None,
+                [
+                    row.get("split_product_text"),
+                    row.get("raw_offer_text"),
+                    row.get("promo_text"),
+                    row.get("package_text"),
+                ],
+            )
+        ).lower(),
+    )
 
 
 def matches(row: dict[str, str], matcher: ProductMatcher) -> bool:

@@ -931,24 +931,17 @@ families:
   display_order: 42
   homepage_group: produce
 - id: eggs_dozen_normalized
-  canonical_tracker_family: Large eggs
-  display_name: Eggs
+  canonical_tracker_family: Lucerne eggs
+  display_name: Lucerne Eggs
   size_format_subtitle: per dozen
-  subtitle: per dozen (18/24 ct packs scaled to 12)
+  subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
   category: dairy
   organic_status: conventional
   include:
-  - large eggs
-  - large eggs 12 ct
-  - large eggs 18 ct
-  - large eggs 24 ct
   - Lucerne eggs
   - Lucerne Large Eggs
-  - Eggland's Best
-  - Happy Egg
-  - dozen eggs
-  - cage free eggs
-  - free range eggs
+  - Lucerne Cage Free Eggs
+  - Lucerne Farms Eggs
   keep_separate_from:
   - egg whites
   - liquid eggs
@@ -966,9 +959,14 @@ families:
   - pasture-raised
   - pasture raised
   - Vital Farms
-  notes: Track conventional large eggs as price per dozen. Scale 18/24 ct packs to
-    a dozen. Never match chocolate/candy/Easter eggs. Specialty organic and
-    pasture-raised cartons stay separate.
+  - Eggland's Best
+  - Happy Egg
+  - Nellie's
+  - Nellies
+  - Open Nature
+  notes: Track Lucerne store-brand large eggs only (interchangeable weekly buy).
+    Normalize 18/24 ct packs to price per dozen. Prefer crawl baseline Lucerne
+    12-count shelf price for the "Usually" anchor.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

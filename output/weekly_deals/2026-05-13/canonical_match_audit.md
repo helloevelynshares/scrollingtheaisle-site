@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-14T04:55:15.335954+00:00
+Generated: 2026-07-14T13:32:37.336116+00:00
 
 ## Summary
 
@@ -49,8 +49,8 @@ Generated: 2026-07-14T04:55:15.335954+00:00
   - Display: Mangoes
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -79,8 +79,8 @@ Generated: 2026-07-14T04:55:15.335954+00:00
   - Display: Mangoes
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz

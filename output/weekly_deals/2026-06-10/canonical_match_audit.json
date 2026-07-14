@@ -1,7 +1,7 @@
 {
   "week_start": "2026-06-10",
   "week_end": "2026-06-16",
-  "generated_at": "2026-07-14T04:55:14.532265+00:00",
+  "generated_at": "2026-07-14T13:32:36.443309+00:00",
   "summary": {
     "accepted": 74,
     "rejected": 2,
@@ -47,12 +47,6 @@
         "feed": "Safeway",
         "price": 0.99,
         "offer_text": "Hass Avocado, Large Mango, Cucumber, Roma Tomato"
-      },
-      {
-        "family_id": "eggs_dozen_normalized",
-        "feed": "Safeway",
-        "price": 1.99,
-        "offer_text": "Lucerne Cage Free Eggs Grade AA, 18-ct."
       },
       {
         "family_id": "nature_valley_bars",
@@ -107,12 +101,6 @@
         "feed": "Safeway",
         "price": 0.99,
         "offer_text": "Hass Avocado, Large Mango, Cucumber, Roma Tomato"
-      },
-      {
-        "family_id": "eggs_dozen_normalized",
-        "feed": "Safeway",
-        "price": 1.99,
-        "offer_text": "Lucerne Cage Free Eggs Grade AA, 18-ct."
       },
       {
         "family_id": "nature_valley_bars",
@@ -499,10 +487,10 @@
       "hard_negative_hits": [],
       "output_class": "canonical_tracker_match",
       "updated_tracker": true,
-      "all_time_low_change": true,
+      "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Eggs",
-      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "display_name": "Lucerne Eggs",
+      "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -1047,8 +1035,8 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Eggs",
-      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "display_name": "Lucerne Eggs",
+      "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -1461,10 +1449,10 @@
       "hard_negative_hits": [],
       "output_class": "canonical_tracker_match",
       "updated_tracker": true,
-      "all_time_low_change": true,
+      "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Eggs",
-      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "display_name": "Lucerne Eggs",
+      "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -2009,8 +1997,8 @@
       "updated_tracker": true,
       "all_time_low_change": false,
       "graph_preview_change": null,
-      "display_name": "Eggs",
-      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "display_name": "Lucerne Eggs",
+      "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,

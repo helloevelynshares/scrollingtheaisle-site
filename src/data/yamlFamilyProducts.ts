@@ -27,8 +27,8 @@ const VONS_FEED_ID = "vons_albertsons_socal";
 
 /**
  * Legacy eggs_18_count baselines are package totals (e.g. Nellie's 18-count
- * $10.99). The tracker family charts $/dozen, so scale 18-count shelf prices
- * down. Skip already-low values (likely sale scrapes mislabeled as baseline).
+ * $10.99). When still 18-count and ≥ $5, scale to $/dozen. Lucerne 12-count
+ * shelf (~$3.99) is already per dozen and left unchanged.
  */
 export function normalizeEggsBaselineToDozen(
   legacyId: string,

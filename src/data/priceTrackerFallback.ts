@@ -318,9 +318,9 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Nature Valley Crunchy Oats 'n Honey Granola Bars",
   },
   "eggs_18_count": {
-    price: 10.99,
-    source: "Safeway search result CSV",
-    retailerProductName: "Nellies Eggs Free Range Large Brown - 18 Count",
+    price: 3.99,
+    source: "Safeway search result CSV (Lucerne 12-count shelf)",
+    retailerProductName: "Lucerne Farms Eggs Large Cage Free - 12 Count",
   },
   "fage_greek_yogurt": {
     price: 6.99,

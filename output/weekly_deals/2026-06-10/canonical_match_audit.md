@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-14T04:55:14.532265+00:00
+Generated: 2026-07-14T13:32:36.443309+00:00
 
 ## Summary
 
@@ -15,7 +15,6 @@ Generated: 2026-07-14T04:55:14.532265+00:00
 
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
 - `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `eggs_dozen_normalized` (Safeway): $1.99: Lucerne Cage Free Eggs Grade AA, 18-ct.
 - `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
@@ -25,7 +24,6 @@ Generated: 2026-07-14T04:55:14.532265+00:00
 - `cherries_per_lb` (Vons): $1.49: Red Cherries
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
 - `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
-- `eggs_dozen_normalized` (Safeway): $1.99: Lucerne Cage Free Eggs Grade AA, 18-ct.
 - `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
@@ -93,8 +91,8 @@ Generated: 2026-07-14T04:55:14.532265+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -156,8 +154,8 @@ Generated: 2026-07-14T04:55:14.532265+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
@@ -204,8 +202,8 @@ Generated: 2026-07-14T04:55:14.532265+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -267,8 +265,8 @@ Generated: 2026-07-14T04:55:14.532265+00:00
   - Display: Sweet corn
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes

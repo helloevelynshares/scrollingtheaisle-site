@@ -118,6 +118,8 @@ QUALIFIER_WORDS: tuple[str, ...] = (
     "mega",
     "king",
     "jumbo",
+    "large",
+    "grade",
     "share",
     "sharing",
     "fun",
@@ -131,6 +133,7 @@ QUALIFIER_WORDS: tuple[str, ...] = (
     "varieties",
     "brand",
     "new",
+    "farms",
 )
 
 # Optional, bounded run of qualifier words (each followed by whitespace).

@@ -508,12 +508,12 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "LB"
   },
   "eggs_18_count": {
-    "baselinePrice": 1.99,
-    "baselineSource": "Vons search result CSV (rank 1)",
-    "retailerProductId": "960304348",
-    "upc": "0002113003154",
-    "retailerProductName": "Lucerne Farms Eggs Cage Free Large - 18 Count",
-    "size": "DOZEN"
+    "baselinePrice": 3.99,
+    "baselineSource": "Safeway Lucerne 12-count shelf proxy (Vons crawl rank-1 was a $1.99 sale)",
+    "retailerProductId": "960273951",
+    "upc": "0002113003234",
+    "retailerProductName": "Lucerne Farms Eggs Large Cage Free - 12 Count",
+    "size": "COUNT"
   },
   "oreos_sandwich_cookies": {
     "baselinePrice": 4.99,

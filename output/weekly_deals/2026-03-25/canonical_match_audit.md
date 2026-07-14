@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-03-25 to 2026-03-31
 
-Generated: 2026-07-14T04:55:13.888802+00:00
+Generated: 2026-07-14T13:32:35.743145+00:00
 
 ## Summary
 
-- **Accepted:** 38
+- **Accepted:** 36
 - **Rejected:** 2
 - **Manual review:** 4
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, ritz_toasted_chips, pepsi_12packs, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, chicken_thigh_per_lb, salmon
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, ritz_toasted_chips, pepsi_12packs, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, chicken_thigh_per_lb, salmon
 
 ## Graph update safety check
 
@@ -79,9 +79,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `mangoes_each` (Safeway): 'Large Mango' @ $1.5 (confidence 0.70)
   - Display: Mangoes
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): "Eggland's Best Large Eggs" @ $3.5 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): 'Lucerne Butter' @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -136,9 +133,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `mangoes_each` (Safeway): 'Large Mango' @ $1.5 (confidence 0.70)
   - Display: Mangoes
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): "Eggland's Best Large Eggs" @ $3.5 (confidence 1.00)
-  - Display: Eggs
-  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): 'Lucerne Butter' @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz

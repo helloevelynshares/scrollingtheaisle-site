@@ -120,7 +120,7 @@ class TestCanonicalMatchEligibility(unittest.TestCase):
 
 
 class TestEggsDozenNormalized(unittest.TestCase):
-    """Conventional large eggs only — never candy; always $/dozen."""
+    """Lucerne large eggs only — never candy / premium brands; always $/dozen."""
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -152,10 +152,13 @@ class TestEggsDozenNormalized(unittest.TestCase):
         self.assertEqual(result.match_decision, "accepted")
         self.assertEqual(result.ad_product_type, "eggs_dozen")
 
-    def test_accept_eggland_best_12_ct_in_name(self) -> None:
+    def test_reject_eggland_best_not_lucerne(self) -> None:
         result = self._evaluate("Eggland's Best Large Eggs 12 ct", "7.00")
-        self.assertEqual(result.match_decision, "accepted")
-        self.assertEqual(result.ad_product_type, "eggs_dozen")
+        self.assertNotEqual(result.match_decision, "accepted")
+
+    def test_reject_happy_egg_not_lucerne(self) -> None:
+        result = self._evaluate("Happy Egg Free Range Eggs", "7.49", package_text="12 ct")
+        self.assertNotEqual(result.match_decision, "accepted")
 
     def test_reject_vital_farms_pasture_raised(self) -> None:
         result = self._evaluate(
