@@ -838,6 +838,7 @@ What happened:
 3. **Berries** often have size only in `package_text` ("Blackberries" + "6 oz."); include required "blueberries 6 oz" in product text, and hard negatives on full text rejected "Blackberries 6 oz" when the shared package said "Pint, 6 oz".
 Fix / workaround:
 - Eggs family renamed pattern basis to "Large eggs"; block `candy_eggs`; require carton confirmation (12/18/24 ct, dozen, Lucerne, etc.); normalize via `package_text` (`18-ct.` → $/dozen); pick lowest conventional carton; keep organic/pasture-raised/Vital Farms separate.
+- **Usually $10.99 / ATL $1.99 mismatch (2026-07-14):** Safeway baseline was Nellie's **18-count pack** $10.99 mapped onto the dozen chart unscaled. Scale 18-count baselines ×12/18 (→ **$7.33/dozen**). Card title uses `display_name` **Eggs**; price lines append ** / dozen**.
 - Tighten `12_pack_cans` so bare `12 ct` without can/soda context does not steal egg cartons.
 - Clif subtitle: **per bar (multipack price ÷ bar count)**.
 - Berries: match bare berry names + `require_confirmation_keywords` 6 oz (from package_text); identity negatives from product text only; confirmation boost before ATL confidence floor.

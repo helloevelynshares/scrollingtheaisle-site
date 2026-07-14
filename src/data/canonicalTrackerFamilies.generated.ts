@@ -877,8 +877,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "eggs_dozen_normalized",
-    "displayName": "Large eggs",
-    "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+    "displayName": "Eggs",
+    "subtitle": "per dozen (18/24 ct packs scaled to 12)",
     "displayOrder": 43,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "dairy",
@@ -1223,7 +1223,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "clif_bars",
-    "displayName": "Clif bars",
+    "displayName": "Clif Bars",
     "subtitle": "per bar (multipack price \u00f7 bar count)",
     "displayOrder": 61,
     "homepageSection": "dairy_breakfast_bakery",

@@ -25,6 +25,28 @@ import {
 const SAFEWAY_FEED_ID = "safeway_bay_area";
 const VONS_FEED_ID = "vons_albertsons_socal";
 
+/**
+ * Legacy eggs_18_count baselines are package totals (e.g. Nellie's 18-count
+ * $10.99). The tracker family charts $/dozen, so scale 18-count shelf prices
+ * down. Skip already-low values (likely sale scrapes mislabeled as baseline).
+ */
+export function normalizeEggsBaselineToDozen(
+  legacyId: string,
+  price: number,
+  productName?: string,
+): number {
+  if (legacyId !== "eggs_18_count") {
+    return price;
+  }
+  const name = (productName || "").toLowerCase();
+  const looksLike18Pack =
+    /\b18\b/.test(name) || name.includes("18 count") || name.includes("18-count");
+  if (looksLike18Pack && price >= 5) {
+    return Math.round(price * (12 / 18) * 100) / 100;
+  }
+  return price;
+}
+
 function baselineForFamily(
   familyId: string,
   feedId: string,
@@ -37,15 +59,34 @@ function baselineForFamily(
     if (feedId === SAFEWAY_FEED_ID) {
       const entry = SAFEWAY_BASELINES[legacyId];
       if (entry) {
-        return entry;
+        const price = normalizeEggsBaselineToDozen(
+          legacyId,
+          entry.price,
+          entry.retailerProductName,
+        );
+        return {
+          price,
+          source:
+            price !== entry.price
+              ? `${entry.source} (scaled to dozen from 18-count)`
+              : entry.source,
+        };
       }
     }
     if (feedId === VONS_FEED_ID) {
       const entry = VONS_BASELINE_BY_CANONICAL[legacyId];
       if (entry) {
+        const price = normalizeEggsBaselineToDozen(
+          legacyId,
+          entry.baselinePrice,
+          entry.retailerProductName,
+        );
         return {
-          price: entry.baselinePrice,
-          source: entry.baselineSource,
+          price,
+          source:
+            price !== entry.baselinePrice
+              ? `${entry.baselineSource} (scaled to dozen from 18-count)`
+              : entry.baselineSource,
         };
       }
     }

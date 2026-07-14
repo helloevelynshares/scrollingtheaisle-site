@@ -20,7 +20,6 @@ import {
   getFamilyUsuallyRangeLabel,
   getFamilyVariantNote,
   hasFamilyVarieties,
-  isDealFamily,
   isProductOnSale,
   type FamilyStockUpRating,
   type FamilyStatus,
@@ -175,6 +174,13 @@ export function FamilyDealCard({ product }: Props) {
   const showVarietiesHint = hasFamilyVarieties(product);
   const onSale = isProductOnSale(product);
   const productMeta = product.subtitle ?? product.sizeLabel;
+  const unitHint = (() => {
+    const meta = (productMeta || "").toLowerCase();
+    if (meta.startsWith("per dozen")) return " / dozen";
+    if (meta.startsWith("per bar")) return " / bar";
+    if (meta.startsWith("per lb")) return " / lb";
+    return "";
+  })();
 
   const benchmark = computeFeedProductBenchmark(product);
   const atlPrice = benchmark.allTimeLowUnitPrice;
@@ -200,7 +206,7 @@ export function FamilyDealCard({ product }: Props) {
       <header className="family-deal-card__header">
         <div>
           <h2>{product.displayName}</h2>
-          {productMeta && !isDealFamily(product) ? (
+          {productMeta ? (
             <p className="price-tracker-product-meta">{productMeta}</p>
           ) : null}
         </div>
@@ -214,9 +220,13 @@ export function FamilyDealCard({ product }: Props) {
           }`}
         >
           {saleLabel}
+          {unitHint}
         </p>
         {usualRange ? (
-          <p className="family-deal-card__usual">{usualRange}</p>
+          <p className="family-deal-card__usual">
+            {usualRange}
+            {unitHint}
+          </p>
         ) : null}
         {showAtlHint ? (
           <p
@@ -227,6 +237,7 @@ export function FamilyDealCard({ product }: Props) {
             {isAtl ? "All-time low" : "All-time low:"}{" "}
             <span className="family-deal-card__atl-price">
               {formatPrice(atlPrice)}
+              {unitHint}
             </span>
           </p>
         ) : null}

@@ -933,8 +933,8 @@ families:
 - id: eggs_dozen_normalized
   canonical_tracker_family: Large eggs
   display_name: Eggs
-  size_format_subtitle: per dozen (12-count); 18/24 ct scaled to dozen
-  subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  size_format_subtitle: per dozen
+  subtitle: per dozen (18/24 ct packs scaled to 12)
   category: dairy
   organic_status: conventional
   include:

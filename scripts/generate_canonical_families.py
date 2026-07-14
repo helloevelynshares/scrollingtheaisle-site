@@ -151,8 +151,8 @@ def render_ts() -> str:
     family_payload = [
         {
             "id": f.id,
-            "displayName": f.canonical_tracker_family,
-            "subtitle": f.size_format_subtitle,
+            "displayName": f.display_name or f.canonical_tracker_family,
+            "subtitle": f.subtitle or f.size_format_subtitle,
             "displayOrder": f.display_order,
             "homepageSection": f.homepage_section,
             "category": f.category,
