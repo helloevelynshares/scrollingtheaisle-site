@@ -59,7 +59,7 @@ class TestCanonicalFamiliesYaml(unittest.TestCase):
             "Wheat Thins, Triscuit & Chicken in a Biskit",
         )
         self.assertEqual(
-            family.subtitle, "Nabisco family-size snack crackers, 11.5–14 oz"
+            family.subtitle, "family size, 11.5–14 oz"
         )
         self.assertEqual(family.manufacturer_family, "Nabisco")
         self.assertEqual(family.package_type, "family_size_box")

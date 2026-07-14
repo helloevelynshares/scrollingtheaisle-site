@@ -133,14 +133,14 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
-### Card size subtitles are sentence-cased at render
+### Card size subtitles use Regular size / Family size + range
 
 Date discovered: 2026-07-14
-Context: Tracker family cards show `size_format_subtitle` / `subtitle` under the product title (e.g. "family size…", "regular bags…", "tubs…").
-What happened: YAML subtitles are stored lowercase; UI should read as sentence case ("Family size…", "Regular bags…", "Tubs…").
-Fix / workaround: Use `toSentenceCase()` in `priceTrackerUtils.ts` when rendering meta in `FamilyDealCard.tsx` and `ProductCard.tsx`. Do not rewrite all YAML for display casing alone.
-How to verify: Oreo / Ruffles / Breyers cards show capitalized first letter on the grey size line.
-Related files: `src/data/priceTrackerUtils.ts`, `src/staging-price-tracker/FamilyDealCard.tsx`, `src/staging-price-tracker/ProductCard.tsx`
+Context: Tracker family cards show `size_format_subtitle` under the product title.
+What happened: User-facing size lines mixed filler (“regular bags”, “roughly…”, “X oz bags”) instead of a clear size tier.
+Fix / workaround: Where the family is a standard-vs-larger pack split, set YAML to `regular size, <range>` or `family size, <range>` (party/giant map to family size). Skip the prefix for per-lb, packs, tubs, each, etc. `toSentenceCase()` capitalizes the first letter at render. Nabisco cracker shortlist blurbs still use the app label “Nabisco family-size snack crackers” via `shortlist_copy._app_label`, not the size subtitle.
+How to verify: Oreo → “Family size, 10.68–18.71 oz”; Ruffles → “Regular size, 5–13 oz”; regenerate with `npm run generate:canonical-families`.
+Related files: `data/canonical_tracker_families.yaml`, `src/data/priceTrackerUtils.ts`, `src/staging-price-tracker/FamilyDealCard.tsx`, `scripts/price_tracker/shortlist_copy.py`
 
 ### Homepage highlights use balanced editorial breakout (Version 1)
 

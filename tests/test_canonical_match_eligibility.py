@@ -217,7 +217,7 @@ class TestNabiscoFamilySizeSnackCrackers(unittest.TestCase):
     """Wheat Thins / Triscuit / Chicken in a Biskit family-size snack crackers."""
 
     DISPLAY_NAME = "Wheat Thins, Triscuit & Chicken in a Biskit"
-    SUBTITLE = "Nabisco family-size snack crackers, 11.5–14 oz"
+    SUBTITLE = "family size, 11.5–14 oz"
 
     @classmethod
     def setUpClass(cls) -> None:

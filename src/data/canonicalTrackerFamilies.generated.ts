@@ -79,7 +79,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "doritos_5_13oz",
     "displayName": "Doritos",
-    "subtitle": "5\u201313 oz bags",
+    "subtitle": "regular size, 5\u201313 oz",
     "displayOrder": 1,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -102,7 +102,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "cheetos_regular_bags",
     "displayName": "Cheetos",
-    "subtitle": "6.5\u201310 oz bags",
+    "subtitle": "regular size, 6.5\u201310 oz",
     "displayOrder": 2,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -126,7 +126,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "cheetos_party_size",
     "displayName": "Cheetos Party Size",
-    "subtitle": "roughly 15 oz bags",
+    "subtitle": "family size, 15 oz",
     "displayOrder": 3,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -141,7 +141,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "lays_potato_chips_regular",
     "displayName": "Lay's potato chips",
-    "subtitle": "regular non-kettle bags, roughly 5\u201313 oz",
+    "subtitle": "regular size, 5\u201313 oz",
     "displayOrder": 4,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -162,7 +162,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "lays_kettle_cooked",
     "displayName": "Lay's Kettle Cooked chips",
-    "subtitle": "7.75 oz bags",
+    "subtitle": "regular size, 7.75 oz",
     "displayOrder": 5,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -181,7 +181,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "lays_party_size",
     "displayName": "Lay's Party Size",
-    "subtitle": "roughly 12.5\u201313 oz bags",
+    "subtitle": "family size, 12.5\u201313 oz",
     "displayOrder": 6,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -198,7 +198,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "kettle_brand_chips",
     "displayName": "Kettle Brand potato chips",
-    "subtitle": "6.5\u20138.5 oz bags",
+    "subtitle": "regular size, 6.5\u20138.5 oz",
     "displayOrder": 7,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -221,7 +221,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "ruffles_regular_bags",
     "displayName": "Ruffles",
-    "subtitle": "regular bags, roughly 5\u201313 oz",
+    "subtitle": "regular size, 5\u201313 oz",
     "displayOrder": 8,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -240,7 +240,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "sun_chips_7oz",
     "displayName": "Sun Chips",
-    "subtitle": "7 oz bags",
+    "subtitle": "regular size, 7 oz",
     "displayOrder": 9,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -259,7 +259,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "tostitos_tortilla_chips",
     "displayName": "Tostitos tortilla chips",
-    "subtitle": "roughly 9\u201313 oz bags",
+    "subtitle": "regular size, 9\u201313 oz",
     "displayOrder": 10,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -279,7 +279,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "simply_snacks",
     "displayName": "Simply snacks",
-    "subtitle": "Simply-branded bags, roughly 4.5\u201313 oz",
+    "subtitle": "regular size, 4.5\u201313 oz",
     "displayOrder": 11,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -299,7 +299,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "simply_party_size",
     "displayName": "Simply Party Size",
-    "subtitle": "larger Simply bags, roughly 10\u201311 oz",
+    "subtitle": "family size, 10\u201311 oz",
     "displayOrder": 12,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -315,7 +315,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "ritz_crackers",
     "displayName": "Ritz crackers",
-    "subtitle": "8.8\u201313.7 oz boxes",
+    "subtitle": "regular size, 8.8\u201313.7 oz",
     "displayOrder": 13,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -336,7 +336,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "ritz_toasted_chips",
     "displayName": "Nabisco Ritz Toasted Chips",
-    "subtitle": "7\u20138.1 oz bags",
+    "subtitle": "regular size, 7\u20138.1 oz",
     "displayOrder": 14,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -351,7 +351,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "nabisco_snack_crackers",
     "displayName": "Wheat Thins, Triscuit & Chicken in a Biskit",
-    "subtitle": "Nabisco family-size snack crackers, 11.5\u201314 oz",
+    "subtitle": "family size, 11.5\u201314 oz",
     "displayOrder": 15,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -373,7 +373,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "cheez_it_crackers",
     "displayName": "Cheez-It crackers",
-    "subtitle": "6.5\u201312.4 oz boxes/bags",
+    "subtitle": "regular size, 6.5\u201312.4 oz",
     "displayOrder": 16,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -392,7 +392,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "chips_ahoy",
     "displayName": "Chips Ahoy cookies",
-    "subtitle": "9.5\u201313 oz packages",
+    "subtitle": "regular size, 9.5\u201313 oz",
     "displayOrder": 17,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -411,7 +411,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "oreo_family_size",
     "displayName": "Oreo cookies",
-    "subtitle": "family size, roughly 10.68\u201318.71 oz",
+    "subtitle": "family size, 10.68\u201318.71 oz",
     "displayOrder": 18,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
@@ -433,7 +433,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "goldfish_bags",
     "displayName": "Goldfish",
-    "subtitle": "6\u20138 oz bags",
+    "subtitle": "regular size, 6\u20138 oz",
     "displayOrder": 19,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "crackers_snacks",
@@ -1067,7 +1067,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "general_mills_cereal_regular",
     "displayName": "General Mills cereal",
-    "subtitle": "regular boxes, roughly 8.9\u201315 oz",
+    "subtitle": "regular size, 8.9\u201315 oz",
     "displayOrder": 53,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "cereal_breakfast",
@@ -1089,7 +1089,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "general_mills_cereal_family_size",
     "displayName": "General Mills cereal (family size)",
-    "subtitle": "family-size boxes, roughly 15\u201318 oz",
+    "subtitle": "family size, 15\u201318 oz",
     "displayOrder": 54,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "cereal_breakfast",
@@ -1107,7 +1107,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "post_cereal_regular",
     "displayName": "Post cereal",
-    "subtitle": "regular boxes, roughly 10\u201316 oz",
+    "subtitle": "regular size, 10\u201316 oz",
     "displayOrder": 55,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "cereal_breakfast",
@@ -1126,7 +1126,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "post_cereal_giant_size",
     "displayName": "Post cereal (giant size)",
-    "subtitle": "giant-size boxes, roughly 21\u201324.7 oz",
+    "subtitle": "family size, 21\u201324.7 oz",
     "displayOrder": 56,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "cereal_breakfast",

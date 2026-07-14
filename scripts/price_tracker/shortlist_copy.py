@@ -32,7 +32,14 @@ def _price_text(price: float | None) -> str:
 
 
 def _app_label(family: TrackerFamily) -> str:
-    """Subtitle without the trailing size range, e.g. the app's promo title."""
+    """Weekly-ad promo title when it differs from the size subtitle.
+
+    Size subtitles use ``regular size, <range>`` / ``family size, <range>`` and are
+    not the store's promo wording. Nabisco snack crackers still need the app's
+    generic label in the shortlist blurb.
+    """
+    if family.id == "nabisco_snack_crackers":
+        return "Nabisco family-size snack crackers"
     subtitle = family.subtitle or family.size_format_subtitle or ""
     return subtitle.split(",")[0].strip()
 

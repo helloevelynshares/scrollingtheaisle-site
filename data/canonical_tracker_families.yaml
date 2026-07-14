@@ -10,13 +10,16 @@ usage_notes:
   butter per 16 oz, and cheese 6–8 oz.
 - 'Promo groups are separate from tracker families: multiple tracker families can share the same weekly promo mechanic but
   still feed separate price graphs.'
-- Do not show internal phrases like regular bags to end users; use family name + size subtitle instead.
+- Prefer size_format_subtitle as `regular size, <range>` or `family size, <range>` when the
+  family is a standard-vs-larger pack (party/giant map to family size). Avoid filler like
+  “bags”, “boxes”, or “roughly”. Skip the prefix for formats that are not that split
+  (per lb, packs, tubs, each, etc.).
 - display_order is the recommended homepage order, roughly prioritized by stock-up popularity, weekly-ad recurrence, and TikTok/video
   relevance.
 families:
 - id: doritos_5_13oz
   canonical_tracker_family: Doritos
-  size_format_subtitle: 5–13 oz bags
+  size_format_subtitle: regular size, 5–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -39,7 +42,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: cheetos_regular_bags
   canonical_tracker_family: Cheetos
-  size_format_subtitle: 6.5–10 oz bags
+  size_format_subtitle: regular size, 6.5–10 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -62,7 +65,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: cheetos_party_size
   canonical_tracker_family: Cheetos Party Size
-  size_format_subtitle: roughly 15 oz bags
+  size_format_subtitle: family size, 15 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -78,7 +81,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_potato_chips_regular
   canonical_tracker_family: Lay's potato chips
-  size_format_subtitle: regular non-kettle bags, roughly 5–13 oz
+  size_format_subtitle: regular size, 5–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -102,7 +105,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_kettle_cooked
   canonical_tracker_family: Lay's Kettle Cooked chips
-  size_format_subtitle: 7.75 oz bags
+  size_format_subtitle: regular size, 7.75 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -123,7 +126,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_party_size
   canonical_tracker_family: Lay's Party Size
-  size_format_subtitle: roughly 12.5–13 oz bags
+  size_format_subtitle: family size, 12.5–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -140,7 +143,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: kettle_brand_chips
   canonical_tracker_family: Kettle Brand potato chips
-  size_format_subtitle: 6.5–8.5 oz bags
+  size_format_subtitle: regular size, 6.5–8.5 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -164,7 +167,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: ruffles_regular_bags
   canonical_tracker_family: Ruffles
-  size_format_subtitle: regular bags, roughly 5–13 oz
+  size_format_subtitle: regular size, 5–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -191,7 +194,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: sun_chips_7oz
   canonical_tracker_family: Sun Chips
-  size_format_subtitle: 7 oz bags
+  size_format_subtitle: regular size, 7 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -211,7 +214,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: tostitos_tortilla_chips
   canonical_tracker_family: Tostitos tortilla chips
-  size_format_subtitle: roughly 9–13 oz bags
+  size_format_subtitle: regular size, 9–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -231,7 +234,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: simply_snacks
   canonical_tracker_family: Simply snacks
-  size_format_subtitle: Simply-branded bags, roughly 4.5–13 oz
+  size_format_subtitle: regular size, 4.5–13 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -254,7 +257,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: simply_party_size
   canonical_tracker_family: Simply Party Size
-  size_format_subtitle: larger Simply bags, roughly 10–11 oz
+  size_format_subtitle: family size, 10–11 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -271,7 +274,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: ritz_crackers
   canonical_tracker_family: Ritz crackers
-  size_format_subtitle: 8.8–13.7 oz boxes
+  size_format_subtitle: regular size, 8.8–13.7 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
@@ -293,7 +296,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: ritz_toasted_chips
   canonical_tracker_family: Nabisco Ritz Toasted Chips
-  size_format_subtitle: 7–8.1 oz bags
+  size_format_subtitle: regular size, 7–8.1 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
@@ -310,8 +313,8 @@ families:
 - id: nabisco_snack_crackers
   canonical_tracker_family: Wheat Thins, Triscuit & Chicken in a Biskit
   display_name: Wheat Thins, Triscuit & Chicken in a Biskit
-  size_format_subtitle: Nabisco family-size snack crackers, 11.5–14 oz
-  subtitle: Nabisco family-size snack crackers, 11.5–14 oz
+  size_format_subtitle: family size, 11.5–14 oz
+  subtitle: family size, 11.5–14 oz
   manufacturer_family: Nabisco
   package_type: family_size_box
   size_range: 11.5–14 oz
@@ -370,7 +373,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: cheez_it_crackers
   canonical_tracker_family: Cheez-It crackers
-  size_format_subtitle: 6.5–12.4 oz boxes/bags
+  size_format_subtitle: regular size, 6.5–12.4 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
@@ -390,7 +393,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: chips_ahoy
   canonical_tracker_family: Chips Ahoy cookies
-  size_format_subtitle: 9.5–13 oz packages
+  size_format_subtitle: regular size, 9.5–13 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
@@ -411,7 +414,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: oreo_family_size
   canonical_tracker_family: Oreo cookies
-  size_format_subtitle: family size, roughly 10.68–18.71 oz
+  size_format_subtitle: family size, 10.68–18.71 oz
   category: cookies_crackers
   organic_status: not_applicable
   include:
@@ -432,7 +435,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: goldfish_bags
   canonical_tracker_family: Goldfish
-  size_format_subtitle: 6–8 oz bags
+  size_format_subtitle: regular size, 6–8 oz
   category: crackers_snacks
   organic_status: not_applicable
   include:
@@ -1164,7 +1167,7 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: general_mills_cereal_regular
   canonical_tracker_family: General Mills cereal
-  size_format_subtitle: regular boxes, roughly 8.9–15 oz
+  size_format_subtitle: regular size, 8.9–15 oz
   category: cereal_breakfast
   organic_status: not_applicable
   include:
@@ -1189,7 +1192,7 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: general_mills_cereal_family_size
   canonical_tracker_family: General Mills cereal (family size)
-  size_format_subtitle: family-size boxes, roughly 15–18 oz
+  size_format_subtitle: family size, 15–18 oz
   category: cereal_breakfast
   organic_status: not_applicable
   include:
@@ -1208,7 +1211,7 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: post_cereal_regular
   canonical_tracker_family: Post cereal
-  size_format_subtitle: regular boxes, roughly 10–16 oz
+  size_format_subtitle: regular size, 10–16 oz
   category: cereal_breakfast
   organic_status: not_applicable
   include:
@@ -1228,7 +1231,7 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: post_cereal_giant_size
   canonical_tracker_family: Post cereal (giant size)
-  size_format_subtitle: giant-size boxes, roughly 21–24.7 oz
+  size_format_subtitle: family size, 21–24.7 oz
   category: cereal_breakfast
   organic_status: not_applicable
   include:
