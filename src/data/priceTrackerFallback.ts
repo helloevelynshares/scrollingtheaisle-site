@@ -163,13 +163,13 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Wheat Thins Snacks Big 100% Whole Grain - 8 Oz",
   },
   "nectarines_per_lb": {
-    price: 1.2,
-    source: "Safeway search result CSV",
+    price: 2.99,
+    source: "Safeway shelf (Evelyn 2026-07-14): conventional nectarines $2.99/lb",
     retailerProductName: "Yellow Nectarine",
   },
   "peaches_per_lb": {
-    price: 1.5,
-    source: "Safeway search result CSV",
+    price: 2.99,
+    source: "Safeway shelf (Evelyn 2026-07-14): conventional peaches $2.99/lb",
     retailerProductName: "Yellow Peach",
   },
   "pepsi_12packs": {
@@ -188,9 +188,9 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Pillsbury Grands! Biscuits Flaky Layers Buttermilk 8 Count - 16.3 Oz",
   },
   "plums_per_lb": {
-    price: 0.85,
-    source: "Safeway search result CSV",
-    retailerProductName: "Organic Red Plum",
+    price: 2.99,
+    source: "Aligned to conventional stone-fruit shelf ~$2.99/lb (Evelyn 2026-07-14); prior crawl matched organic sale",
+    retailerProductName: "Black Plums",
   },
   "post_cereal_giant_size": {
     price: 4.49,
@@ -233,9 +233,9 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Lucerne Milk - Half Gallon (container may vary)",
   },
   "simply_refrigerated_juice_lemonade": {
-    price: 3.0,
-    source: "Safeway search result CSV",
-    retailerProductName: "Minute Maid Zero Sugar Lemonade Juice - 52 Fl. Oz. Bottle",
+    price: 8.99,
+    source: "Flyer Everyday Price for Simply Orange ~52 oz (Evelyn 2026-07-14); prior $3 crawl was a deep promo",
+    retailerProductName: "Simply Orange Juice",
   },
   "simply_snacks": {
     price: 5.49,
@@ -253,8 +253,8 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "SunChips Snacks Whole Grain Original - 7 Oz",
   },
   "sweet_corn": {
-    price: 0.13,
-    source: "Safeway search result CSV",
+    price: 0.79,
+    source: "Safeway each-ear shelf estimate from highest recent flyer member price (Evelyn 2026-07-14); prior $0.13 crawl was bad",
     retailerProductName: "Sweet Corn",
   },
   "thomas_bagels_muffins_bread": {

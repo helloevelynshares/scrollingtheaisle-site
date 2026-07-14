@@ -15,6 +15,7 @@ from price_tracker.canonical_families import TrackerFamily  # noqa: E402
 from validate_weekly_ad_prices import (  # noqa: E402
     _compute_median_baseline,
     _include_tokens,
+    above_baseline_check,
     friday_multibuy_suspect_check,
     keyword_sanity_check,
     per_lb_check,
@@ -294,6 +295,18 @@ class TestFridayMultibuySuspect(unittest.TestCase):
         ok, reason = friday_multibuy_suspect_check(entry, avocados)
         self.assertFalse(ok)
         self.assertIn("unnormalized", reason)
+
+
+class TestAboveBaseline(unittest.TestCase):
+    def test_price_above_baseline_fails(self) -> None:
+        ok, reason = above_baseline_check(4.49, 2.99)
+        self.assertFalse(ok)
+        self.assertIn("store baseline", reason)
+
+    def test_price_at_or_below_baseline_passes(self) -> None:
+        self.assertTrue(above_baseline_check(2.99, 2.99)[0])
+        self.assertTrue(above_baseline_check(1.99, 2.99)[0])
+        self.assertTrue(above_baseline_check(4.49, None)[0])
 
 
 class TestParsePricesTs(unittest.TestCase):

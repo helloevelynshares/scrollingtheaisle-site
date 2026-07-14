@@ -1,1 +1,38 @@
 family_id,store,week,price,offerText,confidence,check_failed,reason
+seedless_grapes_per_lb,safeway,2026-04-01,4.99,Pristine Green and Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+seedless_grapes_per_lb,safeway,2026-06-17,4.99,Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+seedless_grapes_per_lb,safeway,2026-06-24,1.67,Red Seedless Grapes,high,true,[outlier] price $1.67 < 0.5× prior week $4.99
+seedless_grapes_per_lb,safeway,2026-07-01,4.99,Red Seedless Grapes,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+salmon,safeway,2026-04-01,0.12,Fresh Atlantic Salmon Portion,high,true,[outlier] price $0.12 < 0.5× prior week $5.00
+salmon,safeway,2026-05-06,8.99,Fresh Atlantic Salmon Whole Fillet,high,true,[outlier] price $8.99 > 3.0× prior week $0.12
+strawberries_1_2lb,safeway,2026-06-10,5.0,Strawberries LARGE PACK,medium,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag)
+strawberries_1_2lb,safeway,2026-06-17,5.0,Strawberries,high,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag)
+strawberries_1_2lb,safeway,2026-07-01,5.0,Strawberries Large Pack,medium,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag)
+cheetos_regular_bags,safeway,2026-05-06,5.0,Cheetos Mac'n Cheese,high,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag)
+cherries_per_lb,safeway,2026-06-17,2.99,Red Cherries,high,true,[outlier] price $2.99 < 0.5× prior week $5.99
+cherries_per_lb,safeway,2026-07-01,1.99,Red Cherries,high,true,[outlier] price $1.99 < 0.5× prior week $5.99
+tri_tip_roast,safeway,2026-06-17,5.99,USDA Choice Boneless Beef Tri Tip Roast Untrimmed Twin Pack,medium,true,[outlier] price $5.99 < 0.5× prior week $12.99
+sweet_corn,safeway,2026-07-01,0.12,Sweet Corn,high,true,[outlier] price $0.12 < 0.5× prior week $0.50
+sweet_corn,safeway,2026-07-08,0.5,Sweet Corn,high,true,[outlier] price $0.50 > 3.0× prior week $0.12
+berries_6oz,safeway,2026-05-06,5.0,Blackberries,medium,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag); [above_baseline] price $5.00 > store baseline $4.99 (weekly tracked price should not exceed shelf baseline)
+pepsi_12packs,safeway,2026-05-12,1.85,"Pepsi, Diet Pepsi, Starry",medium,true,[outlier] price $1.85 < 0.5× prior week $5.00
+pepsi_12packs,safeway,2026-06-17,5.99,"Pepsi 12 Pack, 12 oz cans, 6 Pack, 16.9 oz bottles, Pepsi 100oz bottle, Lipton Tea 64 oz, Pure Leaf Tea 59 oz, Gatorade 8 pack, 20 oz",medium,true,[outlier] price $5.99 > 2.0× median baseline $2.65
+pepsi_12packs,safeway,2026-06-24,2.5,"Pepsi, Dr. Pepper, 7UP, A&W, Sunkist, Canada Dry, Squirt, Mug",medium,true,[outlier] price $2.50 < 0.5× prior week $5.99
+cheez_it_crackers,safeway,2026-07-01,4.99,Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats,high,true,[outlier] price $4.99 > 2.0× median baseline $2.49
+tostitos_tortilla_chips,vons,2026-05-20,5.0,Gold Pretzels 10-16 oz. Tostitos Tortilla Chips 9-13 oz. Salsa 15.5 oz.,high,true,[friday_multibuy] friday_only snack priced at $5.00 without 'N for $X' in promoNote/offerText — likely an unnormalized $5 Friday multi-buy total (not $5/bag)
+ribeye_steak,vons,2026-05-06,8.77,Ribeye Steak Bone-in Value pack,high,true,[above_baseline] price $8.77 > store baseline $7.99 (weekly tracked price should not exceed shelf baseline)
+ribeye_steak,vons,2026-06-17,12.99,Fresh Beef Ribeye Steak Bone-In Value Pack,high,true,[above_baseline] price $12.99 > store baseline $7.99 (weekly tracked price should not exceed shelf baseline)
+simply_refrigerated_juice_lemonade,vons,2026-05-06,2.99,Simply Juice,high,true,[above_baseline] price $2.99 > store baseline $2.00 (weekly tracked price should not exceed shelf baseline)
+simply_refrigerated_juice_lemonade,vons,2026-07-08,3.99,"Simply Juice 46-52 oz., +CRV Chobani 20g Protein Yogurt 4 ct. Frigo CheeseHeads String Cheese 6.3-12 oz. or Challenge Butter 13-16 oz. Selected varieties",medium,true,[above_baseline] price $3.99 > store baseline $2.00 (weekly tracked price should not exceed shelf baseline)
+sweet_corn,vons,2026-05-20,5.99,Packaged Sweet Corn 4 ct.,high,true,[outlier] price $5.99 > 2.0× median baseline $0.67; [above_baseline] price $5.99 > store baseline $0.50 (weekly tracked price should not exceed shelf baseline)
+sweet_corn,vons,2026-06-03,0.67,Sweet Corn,high,true,[outlier] price $0.67 < 0.5× prior week $5.99; [above_baseline] price $0.67 > store baseline $0.50 (weekly tracked price should not exceed shelf baseline)
+sweet_corn,vons,2026-06-10,0.67,Sweet Corn,high,true,[above_baseline] price $0.67 > store baseline $0.50 (weekly tracked price should not exceed shelf baseline)
+sweet_corn,vons,2026-06-17,0.2,Fresh Sweet Corn,high,true,[outlier] price $0.20 < 0.5× prior week $0.67
+sweet_corn,vons,2026-06-24,5.99,Steamed Corn on the Cob,medium,true,[outlier] price $5.99 > 2.0× median baseline $0.67; [above_baseline] price $5.99 > store baseline $0.50 (weekly tracked price should not exceed shelf baseline)
+kettle_brand_chips,vons,2026-06-10,3.99,Kettle Brand Potato Chips 6.5-8.5 oz.,high,true,[outlier] price $3.99 > 2.0× median baseline $1.88
+pepsi_12packs,vons,2026-06-10,0.67,"Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew",medium,true,[outlier] price $0.67 < 0.5× prior week $5.00
+pepsi_12packs,vons,2026-06-17,5.33,"Pepsi, 7UP, Canada Dry, A&W, Sunkist",medium,true,[outlier] price $5.33 > 3.0× prior week $0.67
+pepsi_12packs,vons,2026-06-24,1.67,"Coca-Cola, Pepsi",medium,true,[outlier] price $1.67 < 0.5× prior week $5.33
+pepsi_12packs,vons,2026-07-01,5.33,"Coca-Cola, Pepsi",medium,true,[outlier] price $5.33 > 3.0× prior week $1.67
+pepsi_12packs,vons,2026-07-08,0.99,Pepsi 2 liter,high,true,[outlier] price $0.99 < 0.5× prior week $5.33
+dr_pepper_12packs,vons,2026-06-10,0.67,"Dr Pepper 6 pack, 16.9-oz. bot.",medium,true,[outlier] price $0.67 < 0.5× prior week $5.00

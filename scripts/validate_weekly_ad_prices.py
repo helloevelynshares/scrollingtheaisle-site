@@ -9,10 +9,12 @@ data/canonical_tracker_families.yaml. Checks each non-null price entry for:
   2. Price outlier   , price > 2× median (baseline) OR > 3× prior week OR
                         < 0.5× prior week (when prior exists).
   3. Per-lb plausibility, for per-lb families, price should be $0.25–$50/lb.
-  4. $5 Friday multi-buy trap, friday_only snack/chip points at exactly $5.00
+  4. $5 Friday multi-buy trap, friday_only snack/chip/produce points at exactly $5.00
                         without an "N for $X" promo are treated as suspect
                         unnormalized bundle totals (Kettle Brand 2026-04-01).
-  5. High confidence + bad keyword = immediate fail.
+  5. Above store baseline, weekly chart price must not exceed shelf baseline
+                        (peach/nectarine $4.49 Every Day spikes).
+  6. High confidence + bad keyword = immediate fail.
 
 Output: data/review/weekly_price_sanity_{YYYY-MM-DD}.csv
 
@@ -38,6 +40,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 from price_tracker.canonical_families import TrackerFamily, load_families  # noqa: E402
+from generate_weekly_ad_prices import load_feed_baselines  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 SAFEWAY_TS = ROOT / "src" / "data" / "weeklyAdPrices.generated.ts"
@@ -194,6 +197,21 @@ def per_lb_check(price: float, family: TrackerFamily) -> tuple[bool, str]:
     return True, ""
 
 
+def above_baseline_check(
+    price: float,
+    baseline: float | None,
+) -> tuple[bool, str]:
+    """Weekly chart points should not sit above the store shelf baseline."""
+    if baseline is None:
+        return True, ""
+    if float(price) > float(baseline) + 0.009:
+        return False, (
+            f"price ${price:.2f} > store baseline ${baseline:.2f} "
+            "(weekly tracked price should not exceed shelf baseline)"
+        )
+    return True, ""
+
+
 # Snack categories where $5 Friday is almost always N-for-$5, not $5/bag.
 _FRIDAY_MULTIBUY_CATEGORIES = {
     "chips_salty_snacks",
@@ -245,8 +263,10 @@ def validate_feed(
     families_by_id: dict[str, TrackerFamily],
     store_label: str,
     filter_family_id: str | None = None,
+    baselines: dict[str, float] | None = None,
 ) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
+    baselines = baselines or {}
 
     for family_id, week_data in prices.items():
         if filter_family_id and family_id != filter_family_id:
@@ -263,6 +283,7 @@ def validate_feed(
         ]
 
         prior_price: float | None = None
+        baseline = baselines.get(family_id)
 
         for week in sorted_wks:
             entry = week_data[week]
@@ -297,6 +318,11 @@ def validate_feed(
             fri_ok, fri_reason = friday_multibuy_suspect_check(entry, family)
             if not fri_ok:
                 failures.append(f"[friday_multibuy] {fri_reason}")
+
+            # 5. Weekly price must not exceed shelf baseline
+            bl_ok, bl_reason = above_baseline_check(float(price), baseline)
+            if not bl_ok:
+                failures.append(f"[above_baseline] {bl_reason}")
 
             if failures:
                 rows.append(
@@ -349,16 +375,20 @@ def main(argv: list[str] | None = None) -> int:
 
     all_rows: list[dict[str, str]] = []
 
-    for ts_path, store_label in [
-        (SAFEWAY_TS, "safeway"),
-        (VONS_TS, "vons"),
+    for ts_path, store_label, feed_label in [
+        (SAFEWAY_TS, "safeway", "Safeway"),
+        (VONS_TS, "vons", "Vons"),
     ]:
         if not ts_path.is_file():
             print(f"Warning: {ts_path} not found, skipping {store_label}")
             continue
         prices = parse_prices_ts(ts_path)
         rows = validate_feed(
-            prices, families_by_id, store_label, args.family_id
+            prices,
+            families_by_id,
+            store_label,
+            args.family_id,
+            baselines=load_feed_baselines(feed_label),
         )
         all_rows.extend(rows)
 

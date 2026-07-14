@@ -1,62 +1,55 @@
 # Canonical match audit: 2026-04-01 to 2026-04-07
 
-Generated: 2026-07-14T14:22:10.545154+00:00
+Generated: 2026-07-14T15:15:35.068666+00:00
 
 ## Summary
 
-- **Accepted:** 25
-- **Rejected:** 3
-- **Manual review:** 1
-- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, ritz_crackers, cheez_it_crackers, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, strawberries_1_2lb, seedless_grapes_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, ribeye_steak, salmon
+- **Accepted:** 22
+- **Rejected:** 2
+- **Manual review:** 3
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, ritz_crackers, cheez_it_crackers, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, strawberries_1_2lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, ribeye_steak, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `hass_avocados_each` (Safeway): $0.97: Hass Avocado
-- `mangoes_each` (Safeway): $0.97: Mango
 - `strawberries_1_2lb` (Safeway): $2.0: Strawberries 2 lb. Raspberries
 - `hass_avocados_each` (Safeway): $0.97: Hass Avocado
-- `mangoes_each` (Safeway): $0.97: Mango
 - `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
+- `salmon` (Safeway): $0.12: Fresh Atlantic Salmon Portion
 
 ### Graph preview changes
 
+- `berries_6oz` (Safeway): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `nabisco_snack_crackers` (Safeway): blocked $1.67: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
-- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `coca_cola_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
+- `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
+- `berries_6oz` (Safeway): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ### Blocked from tracker graph
 
 - `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
-  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
 - `haagen_dazs_pints` (Safeway): **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
-  - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
+  - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
   - Hard negatives: novelties
-- `berries_6oz` (Safeway): **rejected**: 'Strawberries 2 lb. Raspberries' @ $3.99
-  - Reason: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
-  - Hard negatives: strawberries
+- `berries_6oz` (Safeway): **manual_review**: 'Blackberries' @ $3.99
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `berries_6oz` (Safeway): **manual_review**: 'Blackberries' @ $3.99
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
-- `berries_6oz`: 'Strawberries 2 lb. Raspberries' @ $3.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
 
 ## Accepted matches
 
-- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $0.97 (confidence 0.70)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `mangoes_each` (Safeway): 'Mango' @ $0.97 (confidence 0.70)
-  - Display: Mangoes
-  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Lay’s, Fritos, Doritos' @ $1.99 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -90,9 +83,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `strawberries_1_2lb` (Safeway): 'Strawberries 2 lb. Raspberries' @ $2.0 (confidence 0.70)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `seedless_grapes_per_lb` (Safeway): 'Pristine Green and Red Seedless Grapes' @ $4.99 (confidence 0.90)
-  - Display: Seedless grapes
-  - Subtitle: per lb; normalize bags to per lb
 - `hass_avocados_each` (Safeway): 'Hass Avocado' @ $0.97 (confidence 0.70)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -123,6 +113,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `ribeye_steak` (Safeway): 'USDA Choice Beef Ribeye Steak' @ $7.99 (confidence 0.90)
   - Display: Ribeye steak
   - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Fillet' @ $10.99 (confidence 1.00)
+- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $0.12 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet

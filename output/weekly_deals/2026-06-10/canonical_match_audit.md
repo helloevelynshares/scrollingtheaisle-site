@@ -1,41 +1,35 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-14T14:22:10.549505+00:00
+Generated: 2026-07-14T15:15:35.873198+00:00
 
 ## Summary
 
-- **Accepted:** 18
+- **Accepted:** 21
 - **Rejected:** 0
-- **Manual review:** 1
-- **Families updated:** hass_avocados_each, mangoes_each, tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon
+- **Manual review:** 0
+- **Families updated:** cheetos_regular_bags, tostitos_tortilla_chips, cheez_it_crackers, oreo_family_size, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `cherries_per_lb` (Safeway): $5.99: Red Cherries
+- `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
-- `salmon` (Safeway): $6.99: Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen
-
-### Blocked from tracker graph
-
-- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
-  - Reason: confidence 0.40 < min 0.65
 
 ## Accepted matches
 
-- `hass_avocados_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `mangoes_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
-  - Display: Mangoes
-  - Subtitle: each or multi-buy
+- `cheetos_regular_bags` (Safeway): "Cheetos, Lay's, Simply" @ $None (confidence 0.70)
+  - Display: Cheetos
+  - Subtitle: regular size, 6.5–10 oz
 - `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips Selected varieties' @ $None (confidence 0.70)
   - Display: Tostitos tortilla chips
   - Subtitle: regular size, 9–13 oz
 - `cheez_it_crackers` (Safeway): 'Cheez-It Crackers' @ $None (confidence 0.70)
   - Display: Cheez-It crackers
   - Subtitle: regular size, 6.5–12.4 oz
+- `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None (confidence 0.70)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
 - `pepsi_12packs` (Safeway): 'Pepsi' @ $1.29 (confidence 0.90)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
@@ -54,6 +48,12 @@ Generated: 2026-07-14T14:22:10.549505+00:00
 - `mangoes_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
   - Display: Mangoes
   - Subtitle: each or multi-buy
+- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
@@ -66,6 +66,9 @@ Generated: 2026-07-14T14:22:10.549505+00:00
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese Selected varieties.' @ $3.99 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 0.90)
+  - Display: Nature Valley bars
+  - Subtitle: roughly 5–12 ct boxes
 - `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 0.90)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz

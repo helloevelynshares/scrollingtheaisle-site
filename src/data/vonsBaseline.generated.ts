@@ -228,16 +228,16 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "nectarines_per_lb": {
-    "baselinePrice": 1.2,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 2.99,
+    "baselineSource": "Aligned to Safeway conventional shelf $2.99/lb (Evelyn 2026-07-14); prior crawl was a sale scrape",
     "retailerProductId": "184140162",
     "upc": "0048414024702",
     "retailerProductName": "Yellow Nectarine",
     "size": "LB"
   },
   "peaches_per_lb": {
-    "baselinePrice": 1.5,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 2.99,
+    "baselineSource": "Aligned to Safeway conventional shelf $2.99/lb (Evelyn 2026-07-14); prior crawl was a sale scrape",
     "retailerProductId": "184140090",
     "upc": "0048414025103",
     "retailerProductName": "Yellow Peach",
@@ -268,8 +268,8 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "plums_per_lb": {
-    "baselinePrice": 0.51,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 2.99,
+    "baselineSource": "Aligned to conventional stone-fruit shelf ~$2.99/lb (Evelyn 2026-07-14)",
     "retailerProductId": "184140160",
     "upc": "0048414016001",
     "retailerProductName": "Red Plum",
@@ -340,11 +340,11 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "EACH"
   },
   "simply_refrigerated_juice_lemonade": {
-    "baselinePrice": 2.0,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 8.99,
+    "baselineSource": "Aligned to Safeway Everyday Price for Simply ~52 oz (Evelyn 2026-07-14); prior crawl was a promo",
     "retailerProductId": "970010654",
     "upc": "0002500012052",
-    "retailerProductName": "Minute Maid Zero Sugar Lemonade Juice - 52 Fl. Oz. Bottle",
+    "retailerProductName": "Simply Orange Juice",
     "size": "FL.OZ"
   },
   "simply_snacks": {
@@ -372,8 +372,8 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "sweet_corn": {
-    "baselinePrice": 0.5,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 0.79,
+    "baselineSource": "Aligned to Safeway each-ear shelf estimate (Evelyn 2026-07-14)",
     "retailerProductId": "184350009",
     "upc": "0048435002001",
     "retailerProductName": "Sweet Corn",

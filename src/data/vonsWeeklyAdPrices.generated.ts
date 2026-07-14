@@ -665,10 +665,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
   },
   "ribeye_steak": {
     "2026-05-06": {
-      "price": 8.77,
-      "offerText": "Ribeye Steak Bone-in Value pack",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-05-13": {
@@ -700,10 +700,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": 12.99,
-      "offerText": "Fresh Beef Ribeye Steak Bone-In Value Pack",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-06-24": {
@@ -2499,10 +2499,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-20": {
-      "price": 5.99,
-      "offerText": "Packaged Sweet Corn 4 ct.",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-06-03": {
@@ -2527,10 +2527,10 @@ export const VONS_WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": 5.99,
-      "offerText": "Steamed Corn on the Cob",
-      "confidence": "medium",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-07-01": {

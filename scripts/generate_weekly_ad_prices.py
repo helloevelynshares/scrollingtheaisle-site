@@ -265,9 +265,19 @@ def matches(row: dict[str, str], matcher: ProductMatcher) -> bool:
     text = split_text(row)
     if not any(re.search(pattern, text) for pattern in matcher.patterns):
         return False
-    # Size / format exclusions often live only in package_text or raw_offer_text
-    # (e.g. split "Goldfish Crackers" + package "30 oz"). Check the full row.
-    exclude_text = row_text(row)
+    # Size / format exclusions often live only in package_text (e.g. Goldfish "30 oz").
+    # Do NOT scan raw_offer_text for excludes: mix-or-match flyers say
+    # "Yellow Peaches or Nectarines", and sibling keep_separate_from terms would
+    # kill both halves even after a clean split.
+    exclude_text = " ".join(
+        filter(
+            None,
+            [
+                text,
+                re.sub(r"[®™©]", "", (row.get("package_text") or "").lower()),
+            ],
+        )
+    )
     return not any(re.search(pattern, exclude_text) for pattern in matcher.exclude_patterns)
 
 
@@ -291,6 +301,95 @@ def parse_price(value: str | None) -> float | None:
         return float(cleaned)
     except ValueError:
         return None
+
+
+_EVERYDAY_SHELF_RE = re.compile(
+    r"\b(every\s*day|everyday(?:\s+price)?)\b",
+    re.I,
+)
+_MEMBER_PRICE_RE = re.compile(r"\bmember\s+price\b", re.I)
+_BASELINE_ROLE_VALUES = frozenset(
+    {
+        "baseline_candidate",
+        "regular_price",
+        "shelf_price",
+        "everyday_price",
+    }
+)
+
+
+def is_everyday_shelf_price_row(row: dict[str, str]) -> bool:
+    """True for non-sale flyer rows (shelf / bare 'Every Day' / Everyday Price).
+
+    These are reference prices printed in the circular, not weekly deals, and
+    must not become chart dips/spikes (peach/nectarine 2026-06-17 $4.49).
+
+    Keep promo rows that still say Member Price (e.g. ``2/$4 Member Price Every Day``).
+    """
+    role = (row.get("price_role_guess") or "").strip().lower()
+    if role in _BASELINE_ROLE_VALUES:
+        return True
+    promo_type = (row.get("promo_type_guess") or "").strip().lower()
+    if promo_type in _BASELINE_ROLE_VALUES or promo_type in {
+        "everyday",
+        "every_day",
+        "regular",
+    }:
+        return True
+    promo = (row.get("promo_text") or "").strip()
+    if re.fullmatch(r"every\s*day|everyday(?:\s+price)?", promo, re.I):
+        return True
+    if re.search(r"\beveryday\s+price\b", promo, re.I) and not _MEMBER_PRICE_RE.search(
+        promo
+    ):
+        return True
+    raw = row.get("raw_offer_text") or ""
+    if _EVERYDAY_SHELF_RE.search(raw) and not _MEMBER_PRICE_RE.search(raw):
+        # e.g. "Yellow Peaches or Nectarines Every Day 4.49 lb"
+        return True
+    return False
+
+
+def exceeds_store_baseline(
+    unit_price: float | None, baseline: float | None
+) -> bool:
+    """Weekly tracked unit price should not sit above the shelf baseline."""
+    if unit_price is None or baseline is None:
+        return False
+    return float(unit_price) > float(baseline) + 0.009
+
+
+def null_week_price() -> dict[str, object | None]:
+    return {
+        "price": None,
+        "offerText": None,
+        "confidence": None,
+        "availabilityType": None,
+        "promoNote": None,
+    }
+
+
+def week_price_from_row(
+    row: dict[str, str],
+    matcher: ProductMatcher,
+    *,
+    baseline: float | None,
+) -> dict[str, object | None]:
+    """Build a chart week entry, dropping everyday shelf rows and above-baseline prices."""
+    if is_everyday_shelf_price_row(row):
+        return null_week_price()
+    unit = normalize_unit_price(row, matcher, reference_price=baseline)
+    if exceeds_store_baseline(unit, baseline):
+        return null_week_price()
+    return {
+        "price": unit,
+        "offerText": row.get("split_product_text") or row.get("raw_offer_text"),
+        "confidence": match_confidence(
+            row, matcher, reference_price=baseline
+        ),
+        "availabilityType": row.get("availability_type_guess") or None,
+        "promoNote": row.get("promo_text") or None,
+    }
 
 
 def load_feed_baselines(feed_label: str) -> dict[str, float]:
@@ -518,6 +617,13 @@ def pick_best_row(
     audit_row: dict[str, str] | None = None
 
     for row in ranked:
+        if is_everyday_shelf_price_row(row):
+            continue
+        unit_preview = normalize_unit_price(
+            row, matcher, reference_price=reference_price
+        )
+        if exceeds_store_baseline(unit_preview, reference_price):
+            continue
         conf_label = match_confidence(row, matcher, reference_price=reference_price)
         if eligibility is not None:
             elig = eligibility.evaluate(
@@ -653,26 +759,13 @@ def build_family_prices(
                 reference_price=baselines.get(matcher.canonical_id),
             )
             if best is None:
-                family_prices[matcher.canonical_id][week_start] = {
-                    "price": None,
-                    "offerText": None,
-                    "confidence": None,
-                    "availabilityType": None,
-                    "promoNote": None,
-                }
+                family_prices[matcher.canonical_id][week_start] = null_week_price()
                 continue
 
             ref = baselines.get(matcher.canonical_id)
-            family_prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(best, matcher, reference_price=ref),
-                "offerText": best.get("split_product_text")
-                or best.get("raw_offer_text"),
-                "confidence": match_confidence(
-                    best, matcher, reference_price=ref
-                ),
-                "availabilityType": best.get("availability_type_guess") or None,
-                "promoNote": best.get("promo_text") or None,
-            }
+            family_prices[matcher.canonical_id][week_start] = week_price_from_row(
+                best, matcher, baseline=ref
+            )
 
         for matcher in member_matchers:
             member_bucket = member_prices.setdefault(matcher.family_id, {})
@@ -813,27 +906,12 @@ def build_prices(
                 audit_collector=audit_collector,
             )
             if best is None:
-                prices[matcher.canonical_id][week_start] = {
-                    "price": None,
-                    "offerText": None,
-                    "confidence": None,
-                    "availabilityType": None,
-                    "promoNote": None,
-                }
+                prices[matcher.canonical_id][week_start] = null_week_price()
                 continue
 
-            prices[matcher.canonical_id][week_start] = {
-                "price": normalize_unit_price(
-                    best, matcher, reference_price=ref
-                ),
-                "offerText": best.get("split_product_text")
-                or best.get("raw_offer_text"),
-                "confidence": match_confidence(
-                    best, matcher, reference_price=ref
-                ),
-                "availabilityType": best.get("availability_type_guess") or None,
-                "promoNote": best.get("promo_text") or None,
-            }
+            prices[matcher.canonical_id][week_start] = week_price_from_row(
+                best, matcher, baseline=ref
+            )
 
     return weeks, prices
 

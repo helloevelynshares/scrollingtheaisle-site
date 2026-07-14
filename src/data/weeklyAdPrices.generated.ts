@@ -950,11 +950,11 @@ export const WEEKLY_AD_PRICES: Record<
   },
   "chicken_thigh_per_lb": {
     "2026-03-25": {
-      "price": 5.0,
-      "offerText": "Signature SELECT Boneless Skinless Chicken Thighs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Mix & Match Meat & Seafood PICK 4 FOR $20 WHEN YOU BUY 4 MEMBER PRICE"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-04-01": {
       "price": null,
@@ -971,11 +971,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-12": {
-      "price": 5.99,
-      "offerText": "Open Nature Boneless Skinless Chicken Thighs",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Member Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-03": {
       "price": null,
@@ -1022,14 +1022,14 @@ export const WEEKLY_AD_PRICES: Record<
   },
   "salmon": {
     "2026-03-25": {
-      "price": 9.99,
-      "offerText": "Waterfront Bistro Wild Alaskan Pink Salmon",
+      "price": 5.0,
+      "offerText": "Fresh Atlantic Salmon Whole Fillet",
       "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Member Price"
+      "availabilityType": "friday_only",
+      "promoNote": "$5 FRIDAY MAR. 27TH"
     },
     "2026-04-01": {
-      "price": 4.99,
+      "price": 0.12,
       "offerText": "Fresh Atlantic Salmon Portion",
       "confidence": "high",
       "availabilityType": "full_week",
@@ -1064,10 +1064,10 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "MEMBER PRICE"
     },
     "2026-06-17": {
-      "price": 16.99,
-      "offerText": "Fresh Sockeye Salmon Fillets",
+      "price": 5.0,
+      "offerText": "Fresh Atlantic Salmon Portion",
       "confidence": "high",
-      "availabilityType": "full_week",
+      "availabilityType": "friday_only",
       "promoNote": "Member Price"
     },
     "2026-06-24": {
@@ -1540,10 +1540,10 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-06": {
-      "price": 6.99,
-      "offerText": "Red Cherries",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-05-12": {
@@ -1900,18 +1900,18 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "Member Price"
     },
     "2026-05-06": {
-      "price": 8.99,
-      "offerText": "Simply Orange Juice",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Everyday Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-12": {
-      "price": 8.99,
-      "offerText": "Simply Orange Juice 52-oz. Selected varieties.",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Everyday Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-03": {
       "price": null,
@@ -1928,18 +1928,18 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": 5.99,
-      "offerText": "Simply Light Orange Juice",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Every Day"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-24": {
-      "price": 5.99,
-      "offerText": "Simply Light Orange Juice",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Every Day"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-07-01": {
       "price": 2.99,
@@ -2000,11 +2000,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": 5.99,
-      "offerText": "Lucerne Sliced Cheese 6-8 oz, Lucerne Shredded Cheese 5-8 oz",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "MEMBER PRICE; Earn 4X Points"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-24": {
       "price": null,
@@ -3340,11 +3340,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-06": {
-      "price": 5.0,
-      "offerText": "Blackberries",
-      "confidence": "medium",
-      "availabilityType": "friday_only",
-      "promoNote": "Member Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-05-12": {
       "price": null,
@@ -3389,11 +3389,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-08": {
-      "price": 2.99,
-      "offerText": "Blackberries 6 oz",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "MEMBER PRICE MIX & MATCH"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     }
   },
   "nature_valley_bars": {
@@ -4376,11 +4376,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "MEMBER PRICE"
     },
     "2026-06-17": {
-      "price": 4.49,
-      "offerText": "Nectarines",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Every Day"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-24": {
       "price": 1.99,
@@ -4592,11 +4592,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "MEMBER PRICE"
     },
     "2026-06-17": {
-      "price": 4.49,
-      "offerText": "Yellow Peaches",
-      "confidence": "high",
-      "availabilityType": "full_week",
-      "promoNote": "Every Day"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-24": {
       "price": 1.99,
@@ -4694,11 +4694,11 @@ export const WEEKLY_AD_PRICES: Record<
   },
   "mangoes_each": {
     "2026-03-25": {
-      "price": 1.5,
-      "offerText": "Large Mango",
-      "confidence": "medium",
-      "availabilityType": "full_week",
-      "promoNote": "Member Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-04-01": {
       "price": 0.97,

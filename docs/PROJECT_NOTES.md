@@ -546,6 +546,19 @@ Fix / workaround: Refresh `SAFEWAY_COOKIE` from that capture; set `SAFEWAY_STORE
 How to verify: `.venv/bin/python scripts/seed_safeway_baseline.py --query "goldfish cheddar cracker" --timeout 30 -v` → `200 success`, candidates CSV populated (e.g. Goldfish Cheddar 10 Oz **$4.99**).  
 Related files: `scripts/.env`, `scripts/safeway_config.py`, `scripts/safeway_client.py`, `scripts/seed_safeway_baseline.py`
 
+### Weekly chart price must not exceed shelf baseline (peaches $4.49 Every Day)
+
+Date discovered: 2026-07-14
+Context: Peaches/nectarines Safeway charts spiked above the dashed baseline; user confirmed conventional Safeway shelf is **$2.99/lb**.
+What happened: (1) Crawl baselines were sale scrapes (`peaches $1.50`, `nectarines $1.20`, also bad `plums $0.85`, `sweet_corn $0.13`, `Simply $3`). (2) Flyer **Every Day $4.49** / `price_role_guess=baseline_candidate` was written as a weekly “deal”. (3) Rematch of “Yellow Peaches or Nectarines” failed because `keep_separate_from` scanned full `raw_offer_text`.
+Fix / workaround:
+1. Set peaches/nectarines (and plums) baselines to **$2.99/lb**; fix corn/Simply estimate baselines in `priceTrackerFallback.ts` + Vons twin.
+2. Generator drops everyday/shelf rows (`is_everyday_shelf_price_row`) and any unit price **> store baseline** (`week_price_from_row` / `pick_best_row`).
+3. `matches()` excludes only against **split + package_text** (not raw), so mix-or-match siblings still match after split.
+4. Validator `[above_baseline]` check via `load_feed_baselines`.
+How to verify: Peach/nectarine Safeway week `2026-06-17` is **null** (Every Day); `2026-06-24` is **$1.99**; baseline line **$2.99**. Audit: no weekly price > baseline. `PYTHONPATH=scripts python3 -m unittest tests.test_everyday_shelf_filter tests.test_validate_weekly_ad_prices.TestAboveBaseline -v`.
+Related files: `scripts/generate_weekly_ad_prices.py`, `scripts/validate_weekly_ad_prices.py`, `src/data/priceTrackerFallback.ts`, `src/data/weeklyAdPrices.generated.ts`
+
 ### Hass avocados Safeway 2026-04-01: $5 Friday misread as $5 each (was 5 for $5)
 
 Date discovered: 2026-07-14

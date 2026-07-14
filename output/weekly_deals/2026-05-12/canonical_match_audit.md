@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-14T14:22:10.547407+00:00
+Generated: 2026-07-14T15:15:35.070392+00:00
 
 ## Summary
 
-- **Accepted:** 18
-- **Rejected:** 1
-- **Manual review:** 2
-- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, pepsi_12packs, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, chicken_thigh_per_lb
+- **Accepted:** 15
+- **Rejected:** 2
+- **Manual review:** 1
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, pepsi_12packs, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, salmon
 
 ## Graph update safety check
 
@@ -17,34 +17,30 @@ Generated: 2026-07-14T14:22:10.547407+00:00
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Safeway): blocked $1.99: ambiguous match
-- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
-- `salmon` (Safeway): blocked $6.99: new all-time low $6.99 requires confidence >= 0.85 (got 0.75)
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `lays_potato_chips_regular` (Safeway): blocked $1.99: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ### Blocked from tracker graph
 
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
-  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+  - Hard negatives: large pack
+- `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
   - Hard negatives: large pack
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
-  - Reason: ambiguous match
-- `salmon` (Safeway): **manual_review**: 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99
-  - Reason: new all-time low $6.99 requires confidence >= 0.85 (got 0.75)
+  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ## Accepted matches
 
-- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
-  - Display: Hass avocados
-  - Subtitle: each or multi-buy
-- `mangoes_each` (Safeway): 'Mango' @ $1.25 (confidence 0.70)
-  - Display: Mangoes
-  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos, Ruffles, Smartfood' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -60,9 +56,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `pepsi_12packs` (Safeway): 'Pepsi, Diet Pepsi, Starry' @ $1.85 (confidence 0.70)
   - Display: Pepsi
   - Subtitle: 12-pack, 12 fl oz cans
-- `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice 52-oz. Selected varieties.' @ $8.99 (confidence 0.70)
-  - Display: Simply juice
-  - Subtitle: 46–52 fl oz bottles
 - `dreyers_tubs` (Safeway): "Dreyer's Ice Cream 1.5 qt., Haagen-Dazs Ice Cream 14 oz., Novelties 3-6 ct., Nestle Outshine Fruit Bars 6-12 ct." @ $2.99 (confidence 0.70)
   - Display: Dreyer's ice cream
   - Subtitle: 1.5 qt tubs
@@ -90,6 +83,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `general_mills_cereal_regular` (Safeway): 'General Mills Cheerios' @ $1.99 (confidence 0.70)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
-- `chicken_thigh_per_lb` (Safeway): 'Open Nature Boneless Skinless Chicken Thighs' @ $5.99 (confidence 0.90)
-  - Display: Chicken thighs
-  - Subtitle: per lb
+- `salmon` (Safeway): 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99 (confidence 0.75)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
