@@ -32,26 +32,10 @@ export const SECTION_COLLAPSED_PRODUCT_IDS: Partial<
   drinks: ["simply_refrigerated_juice_lemonade"],
 };
 
-/**
- * Staples that must stay visible even when they are not a strong deal this week
- * (otherwise deal-quality ranking buries them behind "Show more").
- */
-export const SECTION_ALWAYS_VISIBLE_PRODUCT_IDS: Partial<
-  Record<HomepageSectionId, readonly string[]>
-> = {
-  dairy_breakfast_bakery: ["eggs_dozen_normalized", "butter_16oz"],
-};
-
 export function getCollapsedProductIds(
   sectionId: HomepageSectionId,
 ): readonly string[] {
   return SECTION_COLLAPSED_PRODUCT_IDS[sectionId] ?? [];
-}
-
-export function getAlwaysVisibleProductIds(
-  sectionId: HomepageSectionId,
-): readonly string[] {
-  return SECTION_ALWAYS_VISIBLE_PRODUCT_IDS[sectionId] ?? [];
 }
 
 /**
@@ -78,28 +62,6 @@ export function partitionSectionProducts(
 
   // Hide the lowest-ranked (worst-deal) tail; keep the top deals visible.
   const hiddenCount = Math.min(collapsedCount, products.length);
-  let visible = products.slice(0, products.length - hiddenCount);
-  let hidden = products.slice(products.length - hiddenCount);
-
-  // Pull staples (e.g. Lucerne eggs) out of the hidden tail if ranking buried them.
-  const alwaysVisible = new Set(getAlwaysVisibleProductIds(sectionId));
-  if (alwaysVisible.size > 0 && hidden.some((p) => alwaysVisible.has(p.canonicalId))) {
-    const rescued: FeedProductView[] = [];
-    const stillHidden: FeedProductView[] = [];
-    for (const product of hidden) {
-      if (alwaysVisible.has(product.canonicalId)) {
-        rescued.push(product);
-      } else {
-        stillHidden.push(product);
-      }
-    }
-    // Keep visible length stable: drop the weakest non-staples from the visible
-    // tail for each rescued staple.
-    const demoteCount = Math.min(rescued.length, visible.length);
-    const demoted = visible.slice(visible.length - demoteCount);
-    visible = [...visible.slice(0, visible.length - demoteCount), ...rescued];
-    hidden = [...demoted.filter((p) => !alwaysVisible.has(p.canonicalId)), ...stillHidden];
-  }
-
-  return { visible, hiddenCount: hidden.length };
+  const visible = products.slice(0, products.length - hiddenCount);
+  return { visible, hiddenCount };
 }
