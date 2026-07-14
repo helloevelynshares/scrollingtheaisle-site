@@ -754,6 +754,9 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     "confidence": "working",
     "costcoComparable": true,
     "searchAliases": [
+      "blueberries",
+      "raspberries",
+      "blackberries",
       "blueberries 6 oz",
       "raspberries 6 oz",
       "blackberries 6 oz",
@@ -874,20 +877,26 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "eggs_dozen_normalized",
-    "displayName": "Eggs",
-    "subtitle": "large eggs; normalized to 12-count/dozen",
+    "displayName": "Large eggs",
+    "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
     "displayOrder": 43,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "dairy",
     "confidence": "working",
     "costcoComparable": true,
     "searchAliases": [
+      "large eggs",
       "large eggs 12 ct",
       "large eggs 18 ct",
       "large eggs 24 ct",
+      "Lucerne eggs",
+      "Lucerne Large Eggs",
+      "Eggland's Best",
+      "Happy Egg",
       "dozen eggs",
-      "egg multipacks",
-      "Eggs"
+      "cage free eggs",
+      "free range eggs",
+      "Large eggs"
     ],
     "legacyCanonicalIds": [
       "eggs_18_count"
@@ -1215,7 +1224,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   {
     "id": "clif_bars",
     "displayName": "Clif bars",
-    "subtitle": "single bars or multipacks; normalize per bar",
+    "subtitle": "per bar (multipack price \u00f7 bar count)",
     "displayOrder": 61,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "snacks",

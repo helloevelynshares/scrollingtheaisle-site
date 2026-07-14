@@ -28,7 +28,11 @@ def build_yaml_matchers(families: list[TrackerFamily] | None = None) -> tuple[Ya
                 exclude_patterns=family.exclude_patterns,
                 prefer_patterns=family.prefer_patterns,
                 normalization=family.normalization,
-                pick_lowest_in_week=family.normalization == "strawberries_per_lb",
+                pick_lowest_in_week=(
+                    family.normalization == "strawberries_per_lb"
+                    or family.id == "eggs_dozen_normalized"
+                    or family.id == "berries_6oz"
+                ),
             )
         )
     return tuple(matchers)

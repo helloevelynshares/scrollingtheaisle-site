@@ -1,10 +1,10 @@
 {
   "week_start": "2026-05-13",
   "week_end": "2026-05-19",
-  "generated_at": "2026-07-12T23:45:51.515859+00:00",
+  "generated_at": "2026-07-14T04:55:15.335954+00:00",
   "summary": {
-    "accepted": 18,
-    "rejected": 2,
+    "accepted": 20,
+    "rejected": 0,
     "manual_review": 2,
     "families_updated": [
       "kettle_brand_chips",
@@ -14,6 +14,7 @@
       "seedless_grapes_per_lb",
       "cherries_per_lb",
       "mangoes_each",
+      "eggs_dozen_normalized",
       "lucerne_cream_cheese",
       "salmon"
     ],
@@ -43,18 +44,7 @@
         "offer_text": "Extra Large Mangoes"
       }
     ],
-    "graph_preview_changes": [
-      {
-        "family_id": "eggs_dozen_normalized",
-        "feed": "Vons",
-        "detail": "blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']"
-      },
-      {
-        "family_id": "eggs_dozen_normalized",
-        "feed": "Vons",
-        "detail": "blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']"
-      }
-    ]
+    "graph_preview_changes": []
   },
   "accepted": [
     {
@@ -243,6 +233,32 @@
       "week_start": "2026-05-13",
       "week_end": "2026-05-19",
       "feed": "Vons",
+      "family_id": "eggs_dozen_normalized",
+      "offer_text": "Lucerne Large Eggs 12 ct",
+      "price": 2.5,
+      "match_decision": "accepted",
+      "match_confidence": 1.0,
+      "match_reason": "Eligible eggs_dozen match (type=eggs_dozen, confidence=1.00)",
+      "reject_reason": null,
+      "canonical_intent": "eggs_dozen",
+      "ad_product_type": "eggs_dozen",
+      "hard_negative_hits": [],
+      "output_class": "canonical_tracker_match",
+      "updated_tracker": true,
+      "all_time_low_change": false,
+      "graph_preview_change": null,
+      "display_name": "Eggs",
+      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    },
+    {
+      "week_start": "2026-05-13",
+      "week_end": "2026-05-19",
+      "feed": "Vons",
       "family_id": "lucerne_cream_cheese",
       "offer_text": "Lucerne Cream Cheese",
       "price": 2.29,
@@ -477,6 +493,32 @@
       "week_start": "2026-05-13",
       "week_end": "2026-05-19",
       "feed": "Vons",
+      "family_id": "eggs_dozen_normalized",
+      "offer_text": "Lucerne Large Eggs 12 ct",
+      "price": 2.5,
+      "match_decision": "accepted",
+      "match_confidence": 1.0,
+      "match_reason": "Eligible eggs_dozen match (type=eggs_dozen, confidence=1.00)",
+      "reject_reason": null,
+      "canonical_intent": "eggs_dozen",
+      "ad_product_type": "eggs_dozen",
+      "hard_negative_hits": [],
+      "output_class": "canonical_tracker_match",
+      "updated_tracker": true,
+      "all_time_low_change": false,
+      "graph_preview_change": null,
+      "display_name": "Eggs",
+      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    },
+    {
+      "week_start": "2026-05-13",
+      "week_end": "2026-05-19",
+      "feed": "Vons",
       "family_id": "lucerne_cream_cheese",
       "offer_text": "Lucerne Cream Cheese",
       "price": 2.29,
@@ -526,60 +568,7 @@
       "eligible_item_examples": []
     }
   ],
-  "rejected": [
-    {
-      "week_start": "2026-05-13",
-      "week_end": "2026-05-19",
-      "feed": "Vons",
-      "family_id": "eggs_dozen_normalized",
-      "offer_text": "Lucerne Large Eggs 12 ct",
-      "price": 2.5,
-      "match_decision": "rejected",
-      "match_confidence": 0.96,
-      "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "ad product type '12_pack_cans' not in allowed types ['eggs_dozen']",
-      "canonical_intent": "eggs_dozen",
-      "ad_product_type": "12_pack_cans",
-      "hard_negative_hits": [],
-      "output_class": "ad_deal_only",
-      "updated_tracker": false,
-      "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']",
-      "display_name": "Eggs",
-      "subtitle": "large eggs; normalized to 12-count/dozen",
-      "manufacturer_family": null,
-      "allowed_product_lines": [],
-      "package_type": null,
-      "size_range": null,
-      "eligible_item_examples": []
-    },
-    {
-      "week_start": "2026-05-13",
-      "week_end": "2026-05-19",
-      "feed": "Vons",
-      "family_id": "eggs_dozen_normalized",
-      "offer_text": "Lucerne Large Eggs 12 ct",
-      "price": 2.5,
-      "match_decision": "rejected",
-      "match_confidence": 0.96,
-      "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "ad product type '12_pack_cans' not in allowed types ['eggs_dozen']",
-      "canonical_intent": "eggs_dozen",
-      "ad_product_type": "12_pack_cans",
-      "hard_negative_hits": [],
-      "output_class": "ad_deal_only",
-      "updated_tracker": false,
-      "all_time_low_change": false,
-      "graph_preview_change": "blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']",
-      "display_name": "Eggs",
-      "subtitle": "large eggs; normalized to 12-count/dozen",
-      "manufacturer_family": null,
-      "allowed_product_lines": [],
-      "package_type": null,
-      "size_range": null,
-      "eligible_item_examples": []
-    }
-  ],
+  "rejected": [],
   "manual_review": [
     {
       "week_start": "2026-05-13",
@@ -589,9 +578,9 @@
       "offer_text": "Coca-Cola 12-pack, 12-oz cans",
       "price": null,
       "match_decision": "manual_review",
-      "match_confidence": 0.37999999999999995,
+      "match_confidence": 0.53,
       "match_reason": "Pattern matched but confidence below threshold.",
-      "reject_reason": "confidence 0.38 < min 0.70",
+      "reject_reason": "confidence 0.53 < min 0.70",
       "canonical_intent": "12_pack_cans",
       "ad_product_type": "12_pack_cans",
       "hard_negative_hits": [],
@@ -615,9 +604,9 @@
       "offer_text": "Coca-Cola 12-pack, 12-oz cans",
       "price": null,
       "match_decision": "manual_review",
-      "match_confidence": 0.37999999999999995,
+      "match_confidence": 0.53,
       "match_reason": "Pattern matched but confidence below threshold.",
-      "reject_reason": "confidence 0.38 < min 0.70",
+      "reject_reason": "confidence 0.53 < min 0.70",
       "canonical_intent": "12_pack_cans",
       "ad_product_type": "12_pack_cans",
       "hard_negative_hits": [],

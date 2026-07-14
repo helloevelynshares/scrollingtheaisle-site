@@ -22,6 +22,7 @@ def row(
     basis: str = "",
     size_min: str = "",
     unit: str = "",
+    package_text: str = "",
 ) -> dict[str, str]:
     return {
         "advertised_price": price,
@@ -31,6 +32,7 @@ def row(
         "price_basis": basis,
         "package_size_min": size_min,
         "package_unit": unit,
+        "package_text": package_text,
     }
 
 
@@ -50,6 +52,16 @@ class TestNormalization(unittest.TestCase):
     def test_eggs_18_to_dozen(self) -> None:
         result = normalize_per_dozen(row("$8.97", "large eggs 18 ct"))
         self.assertAlmostEqual(result or 0, 5.98, places=2)
+
+    def test_eggs_18_ct_hyphen_in_package_text(self) -> None:
+        result = normalize_per_dozen(
+            row("$2.99", "Lucerne Cage Free Eggs Grade AA", package_text="18-ct.")
+        )
+        self.assertAlmostEqual(result or 0, 1.99, places=2)
+
+    def test_clif_12_pack_per_bar(self) -> None:
+        result = normalize_per_bar(row("$14.99", "CLIF Bars 12 pack"))
+        self.assertAlmostEqual(result or 0, 1.25, places=2)
 
     def test_chobani_4pack_per_cup(self) -> None:
         result = normalize_per_cup(row("$4.99", "chobani greek yogurt 4-5.3 oz cups 4 pk"))

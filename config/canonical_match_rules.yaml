@@ -293,6 +293,14 @@ families:
       - 18 oz
       - 1 lb
       - pint
+      - large pack
+      - organic
+    # Size often lives in package_text ("Blackberries" + package "6 oz.").
+    require_confirmation_keywords:
+      - 6 oz
+      - 6-oz
+      - 6oz
+      - "6 oz."
     min_confidence: 0.65
     atl_requires_confidence: 0.85
     large_price_change_pct: 40
@@ -303,17 +311,61 @@ families:
       - eggs_dozen
     disallowed_product_types:
       - egg_whites_liquid
+      - candy_eggs
     positive_keywords:
       - eggs
+      - large eggs
       - dozen
       - 12 ct
       - 18 ct
       - 24 ct
+      - lucerne
+      - eggland
+      - happy egg
+      - cage free
+      - free range
+      - grade a
+      - grade aa
     negative_keywords:
       - egg whites
       - liquid eggs
       - egg beaters
       - hard boiled
+      - chocolate
+      - candy
+      - russell stover
+      - reese
+      - cadbury
+      - hershey
+      - kinder joy
+      - ferrero
+      - peeps
+      - easter
+      - fillable
+      - dye kit
+      - eggo
+      - waffle
+      - organic
+      - pasture-raised
+      - pasture raised
+      - vital farms
+    # Require a carton / poultry signal so bare seasonal "Eggs" tiles cannot update.
+    require_confirmation_keywords:
+      - 12 ct
+      - 12-ct
+      - 18 ct
+      - 18-ct
+      - 24 ct
+      - 24-ct
+      - dozen
+      - large eggs
+      - grade a
+      - grade aa
+      - cage free
+      - free range
+      - eggland
+      - lucerne
+      - happy egg
     min_confidence: 0.65
     atl_requires_confidence: 0.85
     large_price_change_pct: 35

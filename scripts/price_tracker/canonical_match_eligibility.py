@@ -197,7 +197,9 @@ def _confidence_score(
         and classification.primary_type in rules.allowed_product_types
     ):
         score += 0.05
-    if re.search(r",|\sor\s", text.lower()):
+    # Confidence also dips for multi-item list copy (A or B / A, B, C), not for a
+    # single size/grade comma like "Grade AA, 18-ct."
+    if re.search(r"\bor\b", text.lower()) or text.lower().count(",") >= 2:
         score -= 0.15
     if not has_price:
         score -= 0.3
@@ -205,7 +207,12 @@ def _confidence_score(
 
 
 def _offer_texts(row: dict[str, str]) -> tuple[str, str]:
-    """Return (primary split text, full combined text)."""
+    """Return (primary split text, full combined text).
+
+    Full text includes package_text because size often lives only there
+    (e.g. product "Blackberries" + package "6 oz.", or "Lucerne Large Eggs" +
+    "12 ct").
+    """
     primary = (row.get("split_product_text") or row.get("raw_offer_text") or "").strip()
     full = " ".join(
         filter(
@@ -214,6 +221,7 @@ def _offer_texts(row: dict[str, str]) -> tuple[str, str]:
                 row.get("split_product_text"),
                 row.get("raw_offer_text"),
                 row.get("promo_text"),
+                row.get("package_text"),
             ],
         )
     ).strip()
@@ -245,7 +253,9 @@ def evaluate_canonical_match(
 ) -> MatchEligibilityResult:
     """Decide whether a pattern-matched ad row may update the canonical tracker."""
     primary_text, full_text = _offer_texts(row)
-    classification = classify_product_type(primary_text)
+    # Classify on product + package so "Lucerne Large Eggs" + "12 ct" and
+    # "Blackberries" + "6 oz." resolve to the intended product type.
+    classification = classify_product_type(f"{primary_text} {row.get('package_text') or ''}")
     unit_hint = extract_unit_hint(full_text, row)
     meta = _family_metadata(family)
 
@@ -262,10 +272,13 @@ def evaluate_canonical_match(
             **meta,
         )
 
+    # Product-identity negatives (chocolate, pint, strawberries) must come from
+    # the product text — not package_text. A mixed-deal package like
+    # "Pint, 6 oz" would otherwise reject a genuine "Blackberries 6 oz" row.
     hard_negatives = list(
         dict.fromkeys(
             _keyword_hits(primary_text, rules.negative_keywords)
-            + _pattern_hits(primary_text, rules.disallowed_package_patterns)
+            + _pattern_hits(full_text, rules.disallowed_package_patterns)
         )
     )
 
@@ -279,15 +292,29 @@ def evaluate_canonical_match(
             f"hard negative keyword/pattern hit: {', '.join(hard_negatives)}"
         )
 
+    # Prefer an allowed product type from all matched types (not only primary).
+    # Egg cartons labeled "12 ct" used to classify primarily as 12_pack_cans.
     ad_type = classification.primary_type
-    if ad_type and rules.disallowed_product_types and ad_type in rules.disallowed_product_types:
-        product_type_match = False
-        reject_parts.append(
-            f"ad product type {ad_type!r} is incompatible with "
-            f"canonical intent {rules.canonical_intent!r}"
-        )
+    if rules.allowed_product_types and classification.all_types:
+        allowed_hits = [
+            t for t in classification.all_types if t in rules.allowed_product_types
+        ]
+        if allowed_hits:
+            ad_type = allowed_hits[0]
 
-    if rules.allowed_product_types and ad_type:
+    if rules.disallowed_product_types:
+        disallowed_hits = [
+            t for t in classification.all_types if t in rules.disallowed_product_types
+        ]
+        if disallowed_hits:
+            product_type_match = False
+            ad_type = disallowed_hits[0]
+            reject_parts.append(
+                f"ad product type {disallowed_hits[0]!r} is incompatible with "
+                f"canonical intent {rules.canonical_intent!r}"
+            )
+
+    if rules.allowed_product_types and ad_type and product_type_match:
         if ad_type not in rules.allowed_product_types:
             # Allow generic nabisco if explicitly listed
             if not (
@@ -334,10 +361,30 @@ def evaluate_canonical_match(
     )
 
     manual_review = False
-    if re.search(r",|\sor\s", primary_text.lower()):
+    # Multi-item ads ("A or B", "A, B, C") need review. A single comma before a
+    # size/grade ("Grade AA, 18-ct.") is common on real egg cartons and should
+    # not force manual review by itself.
+    lowered_primary = primary_text.lower()
+    if re.search(r"\bor\b", lowered_primary) or lowered_primary.count(",") >= 2:
         manual_review = True
     if keyword_confidence == "medium" and confidence < rules.min_confidence + 0.1:
         manual_review = True
+
+    # Confirmation gate first so a real size/carton signal can boost confidence
+    # before the ATL / large-change floors run.
+    if rules.require_confirmation_keywords:
+        confirmation_hits = _keyword_hits(full_text, rules.require_confirmation_keywords)
+        if not confirmation_hits:
+            manual_review = True
+            reject_parts.append(
+                "no family-size / eligible-size confirmation "
+                f"(needs one of: {', '.join(rules.require_confirmation_keywords)})"
+            )
+        else:
+            # Confirmed size/carton signal is strong evidence — boost so a
+            # legitimate new low (e.g. berries $2.99 after a $5 week) is not
+            # stuck in manual_review by the ATL confidence floor.
+            confidence = min(1.0, confidence + 0.15)
 
     # New all-time low needs higher confidence
     if (
@@ -352,7 +399,7 @@ def evaluate_canonical_match(
             f"{rules.atl_requires_confidence:.2f} (got {confidence:.2f})"
         )
 
-  # Large preview price change
+    # Large preview price change
     if (
         price is not None
         and prior_price is not None
@@ -364,19 +411,6 @@ def evaluate_canonical_match(
             reject_parts.append(
                 f"large price change {change_pct:.0f}% vs prior week requires audit"
             )
-
-    # Confirmation gate: some families (e.g. Nabisco family-size snack crackers)
-    # require an explicit size / package signal before updating the graph. A bare
-    # generic promo ("Nabisco snack crackers", no size, no eligible items) is
-    # ambiguous → manual review instead of an auto graph update.
-    if rules.require_confirmation_keywords and not _keyword_hits(
-        full_text, rules.require_confirmation_keywords
-    ):
-        manual_review = True
-        reject_parts.append(
-            "no family-size / eligible-size confirmation "
-            f"(needs one of: {', '.join(rules.require_confirmation_keywords)})"
-        )
 
     if hard_negatives or not product_type_match or not package_type_match or not unit_match:
         reason = "; ".join(reject_parts) if reject_parts else "eligibility check failed"

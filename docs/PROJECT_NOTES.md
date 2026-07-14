@@ -828,6 +828,23 @@ Context: Follow-up to the "Oreo/Nabisco Family Size Safeway 7/8" note, the user 
 How to verify: `PYTHONPATH=scripts /usr/bin/python3 -m unittest discover -s tests` (118 OK). `PYTHONPATH=scripts /usr/bin/python3 scripts/detect_missed_deals.py`. `grep '"2026-05-06"' -A4` region of `oreo_family_size` in `src/data/weeklyAdPrices.generated.ts` → `"price": 3.49`. `npm run build:price-tracker` → "Price tracker build OK … 2026-07-08".
 Related files: `scripts/price_tracker/canonical_families.py` (`phrase_to_pattern`, `QUALIFIER_WORDS`), `scripts/detect_missed_deals.py`, `tests/test_detect_missed_deals.py`, `tests/test_canonical_families.py`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
 
+### Eggs candy false matches + missing cartons; Clif per-bar; berries package size
+
+Date discovered: 2026-07-13  
+Context: Staging price tracker showed suspicious ATLs (eggs $1.50, Clif $1.17) and sparse history for berries / Nabisco family-size crackers.  
+What happened:
+1. **Eggs $1.50** was Russell Stover Chocolate Eggs (2 for $3), not cartons. Bare `\beggs?\b` taxonomy + family name "Eggs" as an include matched candy. Real Lucerne/Eggland rows were missed or beaten by candy; `12 ct` on cartons was also misclassified as soda `12_pack_cans`.
+2. **Clif $1.17 / $1.25** was correct per-bar math ($6.99÷6, $14.99÷12) but read like a single-bar shelf price.
+3. **Berries** often have size only in `package_text` ("Blackberries" + "6 oz."); include required "blueberries 6 oz" in product text, and hard negatives on full text rejected "Blackberries 6 oz" when the shared package said "Pint, 6 oz".
+Fix / workaround:
+- Eggs family renamed pattern basis to "Large eggs"; block `candy_eggs`; require carton confirmation (12/18/24 ct, dozen, Lucerne, etc.); normalize via `package_text` (`18-ct.` → $/dozen); pick lowest conventional carton; keep organic/pasture-raised/Vital Farms separate.
+- Tighten `12_pack_cans` so bare `12 ct` without can/soda context does not steal egg cartons.
+- Clif subtitle: **per bar (multipack price ÷ bar count)**.
+- Berries: match bare berry names + `require_confirmation_keywords` 6 oz (from package_text); identity negatives from product text only; confirmation boost before ATL confidence floor.
+How to validate a price: hover chart `offerText`/`promoNote`; `PYTHONPATH=scripts python3 scripts/validate_weekly_ad_prices.py`; dry-run `generate_weekly_ad_prices.py --product-id <id>`; compare to `split_offer_items.csv` `advertised_price` + `package_text`.
+How to verify: Safeway eggs weeks show Eggland/Happy Egg/Lucerne (not chocolate); Lucerne 18-ct $2.99 → **$1.99/dozen**; Clif card subtitle says per bar; Safeway berries 2026-07-08 = Blackberries 6 oz $2.99. `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility tests.test_normalization -v`.
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `scripts/price_tracker/canonical_match_eligibility.py`, `scripts/price_tracker/normalization.py`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
+
 ## Content-first Analysis Mode
 
 ### Content deal shortlist mode (separate from canonical graph matching)

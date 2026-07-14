@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-12T23:45:51.515859+00:00
+Generated: 2026-07-14T04:55:15.335954+00:00
 
 ## Summary
 
-- **Accepted:** 18
-- **Rejected:** 2
+- **Accepted:** 20
+- **Rejected:** 0
 - **Manual review:** 2
-- **Families updated:** kettle_brand_chips, goldfish_bags, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, lucerne_cream_cheese, salmon
+- **Families updated:** kettle_brand_chips, goldfish_bags, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, eggs_dozen_normalized, lucerne_cream_cheese, salmon
 
 ## Graph update safety check
 
@@ -18,21 +18,12 @@ Generated: 2026-07-12T23:45:51.515859+00:00
 - `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
 - `mangoes_each` (Vons): $0.5: Extra Large Mangoes
 
-### Graph preview changes
-
-- `eggs_dozen_normalized` (Vons): blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons): blocked $2.5: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-
 ### Blocked from tracker graph
 
-- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
-  - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
-  - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
-  - Reason: confidence 0.38 < min 0.70
+  - Reason: confidence 0.53 < min 0.70
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola 12-pack, 12-oz cans' @ $None
-  - Reason: confidence 0.38 < min 0.70
+  - Reason: confidence 0.53 < min 0.70
 
 ## Accepted matches
 
@@ -57,6 +48,9 @@ Generated: 2026-07-12T23:45:51.515859+00:00
 - `mangoes_each` (Vons): 'Extra Large Mangoes' @ $0.5 (confidence 0.90)
   - Display: Mangoes
   - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -84,6 +78,9 @@ Generated: 2026-07-12T23:45:51.515859+00:00
 - `mangoes_each` (Vons): 'Extra Large Mangoes' @ $0.5 (confidence 0.90)
   - Display: Mangoes
   - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz

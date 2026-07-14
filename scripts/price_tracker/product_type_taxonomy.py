@@ -58,12 +58,15 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
         r"8\s*[- ]?pack.{0,20}bottle",
         r"6\s*[- ]?pack.{0,20}bottle",
     ),
+    # Soda / beverage 12-packs only. Bare "12 ct" also appears on egg cartons
+    # and protein-bar multipacks, so require pack/can/soda context.
     "12_pack_cans": (
         r"12\s*[- ]?pack",
         r"12\s*pk",
-        r"12\s*ct",
-        r"12\s*[- ]?count",
         r"12\s*fl\s*oz\s*cans?",
+        r"12\s*(?:ct|count).{0,20}cans?",
+        r"(?:cans?|soda|cola|pepsi|coke|beverage).{0,30}12\s*(?:ct|count)",
+        r"12\s*(?:ct|count).{0,30}(?:cans?|soda|cola|pepsi|coke)",
     ),
     # Ice cream
     "bars_or_novelties": (
@@ -142,25 +145,57 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
         r"snack\s+crackers",
         r"sandwich\s+cookies",
     ),
-    # Produce
+    # Produce — size may live in package_text, so also allow bare berry names;
+    # eligibility still requires a 6 oz confirmation elsewhere.
     "berries_6oz_clamshell": (
         r"(?:blueberr|raspberr|blackberr).{0,20}6\s*oz",
         r"berries?\s+6\s*oz",
+        r"\bblueberries?\b",
+        r"\braspberries?\b",
+        r"\bblackberries?\b",
     ),
     "strawberries_clamshell": (r"strawberr",),
-    "berries_large_pack": (r"(?:blueberr|raspberr|blackberr).{0,20}(?:18|24)\s*oz",),
-    # Eggs
+    "berries_large_pack": (
+        r"(?:blueberr|raspberr|blackberr).{0,20}(?:18|24)\s*oz",
+        r"(?:blueberr|raspberr|blackberr).{0,20}large\s+pack",
+        r"large\s+pack.{0,20}(?:blueberr|raspberr|blackberr)",
+    ),
+    # Eggs — candy / seasonal chocolate eggs first so they don't classify as
+    # cartons. Carton eggs require poultry/carton signals, not bare "egg".
+    "candy_eggs": (
+        r"chocolate\s+eggs?",
+        r"candy\s+eggs?",
+        r"russell\s+stover",
+        r"reese[\u2019']?s?\s+eggs?",
+        r"cadbury",
+        r"hershey[\u2019']?s?\s+eggs?",
+        r"kinder\s+joy",
+        r"ferrero\s+egg",
+        r"marshmallow\s+eggs?",
+        r"\bpeeps\b",
+        r"fillable\s+eggs?",
+        r"plastic\s+eggs?",
+        r"easter\s+eggs?",
+        r"egg\s+slices?",
+        r"dye\s+kit",
+    ),
     "egg_whites_liquid": (
         r"egg\s+whites?",
         r"liquid\s+eggs?",
         r"egg\s+beaters",
     ),
     "eggs_dozen": (
-        r"\beggs?\b",
-        r"dozen",
-        r"\b12\s*ct\b",
-        r"\b18\s*ct\b",
-        r"\b24\s*ct\b",
+        r"large\s+eggs?",
+        r"cage[\s-]?free\s+eggs?",
+        r"free[\s-]?range\s+eggs?",
+        r"grade\s+a{1,2}\b",
+        r"\bdozen\b",
+        r"eggland",
+        r"lucerne.{0,40}\beggs?\b",
+        r"\beggs?\b.{0,20}(?:12|18|24)\s*[- ]?(?:ct|count)",
+        r"(?:12|18|24)\s*[- ]?(?:ct|count).{0,20}\beggs?\b",
+        r"\bcarton\b.{0,20}\beggs?\b",
+        r"\beggs?\b.{0,20}\bcarton\b",
     ),
     # Chips
     "party_size": (r"party\s+size",),

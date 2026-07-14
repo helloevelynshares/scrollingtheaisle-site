@@ -1,11 +1,11 @@
 {
   "week_start": "2026-05-20",
   "week_end": "2026-05-26",
-  "generated_at": "2026-07-12T23:45:51.577381+00:00",
+  "generated_at": "2026-07-14T04:55:15.435753+00:00",
   "summary": {
     "accepted": 22,
     "rejected": 2,
-    "manual_review": 0,
+    "manual_review": 2,
     "families_updated": [
       "doritos_5_13oz",
       "cheetos_regular_bags",
@@ -49,12 +49,22 @@
       {
         "family_id": "haagen_dazs_pints",
         "feed": "Vons",
-        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
+        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'"
+      },
+      {
+        "family_id": "berries_6oz",
+        "feed": "Vons",
+        "detail": "blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)"
       },
       {
         "family_id": "haagen_dazs_pints",
         "feed": "Vons",
-        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']"
+        "detail": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'"
+      },
+      {
+        "family_id": "berries_6oz",
+        "feed": "Vons",
+        "detail": "blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)"
       }
     ]
   },
@@ -260,7 +270,7 @@
       "all_time_low_change": false,
       "graph_preview_change": null,
       "display_name": "Eggs",
-      "subtitle": "large eggs; normalized to 12-count/dozen",
+      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -546,7 +556,7 @@
       "all_time_low_change": false,
       "graph_preview_change": null,
       "display_name": "Eggs",
-      "subtitle": "large eggs; normalized to 12-count/dozen",
+      "subtitle": "per dozen (12-count); 18/24 ct scaled to dozen",
       "manufacturer_family": null,
       "allowed_product_lines": [],
       "package_type": null,
@@ -641,9 +651,9 @@
       "offer_text": "H\u00e4agen-Dazs Ice Cream, Bars",
       "price": 4.5,
       "match_decision": "rejected",
-      "match_confidence": 0.58,
+      "match_confidence": 0.73,
       "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "canonical_intent": "pint",
       "ad_product_type": "bars_or_novelties",
       "hard_negative_hits": [
@@ -652,7 +662,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -669,9 +679,9 @@
       "offer_text": "H\u00e4agen-Dazs Ice Cream, Bars",
       "price": 4.5,
       "match_decision": "rejected",
-      "match_confidence": 0.58,
+      "match_confidence": 0.73,
       "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "canonical_intent": "pint",
       "ad_product_type": "bars_or_novelties",
       "hard_negative_hits": [
@@ -680,7 +690,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -690,7 +700,60 @@
       "eligible_item_examples": []
     }
   ],
-  "manual_review": [],
+  "manual_review": [
+    {
+      "week_start": "2026-05-20",
+      "week_end": "2026-05-26",
+      "feed": "Vons",
+      "family_id": "berries_6oz",
+      "offer_text": "Blueberries",
+      "price": 3.99,
+      "match_decision": "manual_review",
+      "match_confidence": 0.83,
+      "match_reason": "Pattern matched but needs manual review before graph update.",
+      "reject_reason": "no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)",
+      "canonical_intent": "berries_6oz_clamshell",
+      "ad_product_type": "berries_6oz_clamshell",
+      "hard_negative_hits": [],
+      "output_class": "manual_review_required",
+      "updated_tracker": false,
+      "all_time_low_change": false,
+      "graph_preview_change": "blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)",
+      "display_name": "Blueberries / raspberries / blackberries",
+      "subtitle": "6 oz clamshells",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    },
+    {
+      "week_start": "2026-05-20",
+      "week_end": "2026-05-26",
+      "feed": "Vons",
+      "family_id": "berries_6oz",
+      "offer_text": "Blueberries",
+      "price": 3.99,
+      "match_decision": "manual_review",
+      "match_confidence": 0.83,
+      "match_reason": "Pattern matched but needs manual review before graph update.",
+      "reject_reason": "no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)",
+      "canonical_intent": "berries_6oz_clamshell",
+      "ad_product_type": "berries_6oz_clamshell",
+      "hard_negative_hits": [],
+      "output_class": "manual_review_required",
+      "updated_tracker": false,
+      "all_time_low_change": false,
+      "graph_preview_change": "blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)",
+      "display_name": "Blueberries / raspberries / blackberries",
+      "subtitle": "6 oz clamshells",
+      "manufacturer_family": null,
+      "allowed_product_lines": [],
+      "package_type": null,
+      "size_range": null,
+      "eligible_item_examples": []
+    }
+  ],
   "rejected_tempting": [
     {
       "week_start": "2026-05-20",
@@ -700,9 +763,9 @@
       "offer_text": "H\u00e4agen-Dazs Ice Cream, Bars",
       "price": 4.5,
       "match_decision": "rejected",
-      "match_confidence": 0.58,
+      "match_confidence": 0.73,
       "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "canonical_intent": "pint",
       "ad_product_type": "bars_or_novelties",
       "hard_negative_hits": [
@@ -711,7 +774,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,
@@ -728,9 +791,9 @@
       "offer_text": "H\u00e4agen-Dazs Ice Cream, Bars",
       "price": 4.5,
       "match_decision": "rejected",
-      "match_confidence": 0.58,
+      "match_confidence": 0.73,
       "match_reason": "Pattern matched but failed eligibility checks.",
-      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "reject_reason": "hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "canonical_intent": "pint",
       "ad_product_type": "bars_or_novelties",
       "hard_negative_hits": [
@@ -739,7 +802,7 @@
       "output_class": "ad_deal_only",
       "updated_tracker": false,
       "all_time_low_change": false,
-      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']",
+      "graph_preview_change": "blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'",
       "display_name": "H\u00e4agen-Dazs ice cream pints",
       "subtitle": "14 oz pints",
       "manufacturer_family": null,

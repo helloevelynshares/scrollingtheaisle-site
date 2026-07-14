@@ -249,6 +249,7 @@ def row_text(row: dict[str, str]) -> str:
                 row.get("split_product_text"),
                 row.get("raw_offer_text"),
                 row.get("promo_text"),
+                row.get("package_text"),
             ],
         )
     ).lower()

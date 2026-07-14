@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-12T23:45:50.977968+00:00
+Generated: 2026-07-14T04:55:14.768224+00:00
 
 ## Summary
 
-- **Accepted:** 80
+- **Accepted:** 84
 - **Rejected:** 2
-- **Manual review:** 12
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, goldfish_bags, coca_cola_12packs, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cheetos_regular_bags, ritz_crackers, lucerne_cream_cheese, chicken_breast_per_lb
+- **Manual review:** 10
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, goldfish_bags, coca_cola_12packs, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cheetos_regular_bags, ritz_crackers, berries_6oz, lucerne_cream_cheese, chicken_breast_per_lb
 
 ## Graph update safety check
 
@@ -31,25 +31,23 @@ Generated: 2026-07-12T23:45:50.977968+00:00
 ### Graph preview changes
 
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
 - `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): blocked $3.99: large price change 33% vs prior week requires audit
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
 - `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): blocked $3.99: large price change 33% vs prior week requires audit
 
 ### Blocked from tracker graph
 
 - `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
-  - Reason: hard negative keyword/pattern hit: strawberries, 1 lb
+  - Reason: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
   - Hard negatives: strawberries, 1 lb
 - `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
-  - Reason: hard negative keyword/pattern hit: strawberries, 1 lb
+  - Reason: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
   - Hard negatives: strawberries, 1 lb
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
@@ -58,11 +56,9 @@ Generated: 2026-07-12T23:45:50.977968+00:00
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
-  - Reason: confidence 0.40 < min 0.70
+  - Reason: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
-  - Reason: large price change 33% vs prior week requires audit
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $None
@@ -70,18 +66,16 @@ Generated: 2026-07-12T23:45:50.977968+00:00
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
-  - Reason: confidence 0.40 < min 0.70
+  - Reason: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
-- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
-  - Reason: large price change 33% vs prior week requires audit
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
-- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb
+- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
+- `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
 
 ## Accepted matches
 
@@ -142,10 +136,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Vital Farms Pasture Raised Large Eggs' @ $12.99 (confidence 1.00)
+- `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 0.93)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
@@ -155,8 +149,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
 - `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)
 - `tri_tip_roast` (Safeway): "Chef's Counter Marinated Tri Tip Roast selected varieties" @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
@@ -184,6 +178,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `seedless_grapes_per_lb` (Vons): 'Green Seedless Grapes' @ $3.99 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
+- `berries_6oz` (Vons): 'Raspberries, 6 oz' @ $3.5 (confidence 1.00)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Vons): 'Medium Ripe Hass Avocados' @ $0.99 (confidence 0.90)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -195,7 +192,10 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.57 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -262,10 +262,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Vital Farms Pasture Raised Large Eggs' @ $12.99 (confidence 1.00)
+- `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 0.93)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
@@ -275,8 +275,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
 - `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)
 - `tri_tip_roast` (Safeway): "Chef's Counter Marinated Tri Tip Roast selected varieties" @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
@@ -304,6 +304,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `seedless_grapes_per_lb` (Vons): 'Green Seedless Grapes' @ $3.99 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
+- `berries_6oz` (Vons): 'Raspberries, 6 oz' @ $3.5 (confidence 1.00)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Vons): 'Medium Ripe Hass Avocados' @ $0.99 (confidence 0.90)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -315,7 +318,10 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.57 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-12T23:45:50.830691+00:00
+Generated: 2026-07-14T04:55:14.532265+00:00
 
 ## Summary
 
-- **Accepted:** 72
+- **Accepted:** 74
 - **Rejected:** 2
 - **Manual review:** 4
-- **Families updated:** cheetos_regular_bags, tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon, doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, keebler_sandwich_crackers, dr_pepper_12packs, eggs_dozen_normalized, clif_bars
+- **Families updated:** cheetos_regular_bags, tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon, doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, keebler_sandwich_crackers, dr_pepper_12packs, clif_bars
 
 ## Graph update safety check
 
@@ -15,6 +15,7 @@ Generated: 2026-07-12T23:45:50.830691+00:00
 
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
 - `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
+- `eggs_dozen_normalized` (Safeway): $1.99: Lucerne Cage Free Eggs Grade AA, 18-ct.
 - `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
@@ -24,6 +25,7 @@ Generated: 2026-07-12T23:45:50.830691+00:00
 - `cherries_per_lb` (Vons): $1.49: Red Cherries
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
 - `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
+- `eggs_dozen_normalized` (Safeway): $1.99: Lucerne Cage Free Eggs Grade AA, 18-ct.
 - `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
@@ -34,23 +36,23 @@ Generated: 2026-07-12T23:45:50.830691+00:00
 
 ### Graph preview changes
 
-- `eggs_dozen_normalized` (Safeway): blocked $2.99: ambiguous match
-- `eggs_dozen_normalized` (Safeway): blocked $2.99: ambiguous match
+- `berries_6oz` (Vons): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
+- `berries_6oz` (Vons): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
 
 ### Blocked from tracker graph
 
-- `oreo_family_size` (Safeway): **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
-  - Reason: ad product type 'single_bottle' not in allowed types ['oreo', 'generic_nabisco_block']
-- `oreo_family_size` (Safeway): **rejected**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
-  - Reason: ad product type 'single_bottle' not in allowed types ['oreo', 'generic_nabisco_block']
-- `eggs_dozen_normalized` (Safeway): **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
-  - Reason: ambiguous match
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: confidence 0.10 < min 0.70
-- `eggs_dozen_normalized` (Safeway): **manual_review**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99
-  - Reason: ambiguous match
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: confidence 0.10 < min 0.70
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $None
+  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola, Pepsi' @ $None
+  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
+  - Reason: confidence 0.40 < min 0.65
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries, 11 oz' @ $5.0
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
+- `oreo_family_size` (Safeway): **manual_review**: 'Nabisco Family Size Oreo Cookies 13.1-20 oz.' @ $None
+  - Reason: confidence 0.40 < min 0.65
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries, 11 oz' @ $5.0
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); large price change 100% vs prior week requires audit
 
 ## Accepted matches
 
@@ -90,6 +92,9 @@ Generated: 2026-07-12T23:45:50.830691+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -152,7 +157,7 @@ Generated: 2026-07-12T23:45:50.830691+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
@@ -160,8 +165,8 @@ Generated: 2026-07-12T23:45:50.830691+00:00
   - Display: General Mills cereal
   - Subtitle: regular boxes, roughly 8.9–15 oz
 - `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)
 - `cheetos_regular_bags` (Safeway): "Cheetos, Lay's, Simply" @ $None (confidence 0.70)
   - Display: Cheetos
   - Subtitle: 6.5–10 oz bags
@@ -198,6 +203,9 @@ Generated: 2026-07-12T23:45:50.830691+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
+  - Display: Eggs
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
@@ -260,7 +268,7 @@ Generated: 2026-07-12T23:45:50.830691+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
@@ -268,5 +276,5 @@ Generated: 2026-07-12T23:45:50.830691+00:00
   - Display: General Mills cereal
   - Subtitle: regular boxes, roughly 8.9–15 oz
 - `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)

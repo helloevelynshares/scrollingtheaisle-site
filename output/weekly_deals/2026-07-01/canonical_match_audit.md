@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-12T23:45:51.092687+00:00
+Generated: 2026-07-14T04:55:14.902962+00:00
 
 ## Summary
 
-- **Accepted:** 76
+- **Accepted:** 78
 - **Rejected:** 0
-- **Manual review:** 8
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb
+- **Manual review:** 6
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb
 
 ## Graph update safety check
 
@@ -18,43 +18,39 @@ Generated: 2026-07-12T23:45:51.092687+00:00
 - `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
+- `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
 - `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
+- `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `peaches_per_lb` (Vons): $1.99: Yellow Peaches, White Peaches
 
 ### Graph preview changes
 
-- `butter_16oz` (Safeway): blocked $2.99: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
 - `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
 - `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway): blocked $2.99: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
+- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
 - `lays_potato_chips_regular` (Vons): blocked $2.5: ambiguous match
 - `nabisco_snack_crackers` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
 
 ### Blocked from tracker graph
 
-- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
-  - Reason: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
 - `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: ambiguous match
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.40 < min 0.70
-- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
-  - Reason: new all-time low $2.99 requires confidence >= 0.85 (got 0.75)
+  - Reason: confidence 0.65 < min 0.70
 - `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: ambiguous match
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Select Nabisco Snack Crackers' @ $3.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.40 < min 0.70
+  - Reason: confidence 0.65 < min 0.70
 
 ## Accepted matches
 
@@ -109,6 +105,9 @@ Generated: 2026-07-12T23:45:51.092687+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter' @ $2.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
@@ -122,8 +121,8 @@ Generated: 2026-07-12T23:45:51.092687+00:00
   - Display: Post cereal
   - Subtitle: regular boxes, roughly 10–16 oz
 - `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)
 - `ribeye_steak` (Safeway): 'USDA Choice Beef Ribeye Steak, Bone-In' @ $9.99 (confidence 0.70)
   - Display: Ribeye steak
   - Subtitle: per lb
@@ -223,6 +222,9 @@ Generated: 2026-07-12T23:45:51.092687+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter' @ $2.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
@@ -236,8 +238,8 @@ Generated: 2026-07-12T23:45:51.092687+00:00
   - Display: Post cereal
   - Subtitle: regular boxes, roughly 10–16 oz
 - `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
-  - Display: Clif bars
-  - Subtitle: single bars or multipacks; normalize per bar
+  - Display: Clif Bars
+  - Subtitle: per bar (multipack price ÷ bar count)
 - `ribeye_steak` (Safeway): 'USDA Choice Beef Ribeye Steak, Bone-In' @ $9.99 (confidence 0.70)
   - Display: Ribeye steak
   - Subtitle: per lb

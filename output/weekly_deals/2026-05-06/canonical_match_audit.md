@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-12T23:45:50.559324+00:00
+Generated: 2026-07-14T04:55:14.165787+00:00
 
 ## Summary
 
 - **Accepted:** 70
-- **Rejected:** 0
+- **Rejected:** 2
 - **Manual review:** 2
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, berries_6oz, general_mills_cereal_regular, ribeye_steak
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, oreo_family_size, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, general_mills_cereal_regular, ribeye_steak
 
 ## Graph update safety check
 
@@ -18,15 +18,30 @@ Generated: 2026-07-12T23:45:50.559324+00:00
 
 ### Graph preview changes
 
-- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.40 < min 0.70
-- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.40 < min 0.70
+- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `berries_6oz` (Vons): blocked $3.5: hard negative keyword/pattern hit: organic
+- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `berries_6oz` (Vons): blocked $3.5: hard negative keyword/pattern hit: organic
 
 ### Blocked from tracker graph
 
+- `berries_6oz` (Vons): **rejected**: 'Organic Blueberries 6 oz' @ $3.5
+  - Reason: hard negative keyword/pattern hit: organic
+  - Hard negatives: organic
+- `berries_6oz` (Vons): **rejected**: 'Organic Blueberries 6 oz' @ $3.5
+  - Reason: hard negative keyword/pattern hit: organic
+  - Hard negatives: organic
 - `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
-  - Reason: confidence 0.40 < min 0.70
+  - Reason: confidence 0.50 < min 0.70
 - `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
-  - Reason: confidence 0.40 < min 0.70
+  - Reason: confidence 0.50 < min 0.70
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `berries_6oz`: 'Organic Blueberries 6 oz' @ $3.5: hard negative keyword/pattern hit: organic
+- `berries_6oz`: 'Organic Blueberries 6 oz' @ $3.5: hard negative keyword/pattern hit: organic
 
 ## Accepted matches
 
@@ -54,6 +69,9 @@ Generated: 2026-07-12T23:45:50.559324+00:00
 - `cherries_per_lb` (Safeway): 'Red Cherries' @ $6.99 (confidence 0.90)
   - Display: Cherries
   - Subtitle: per lb
+- `berries_6oz` (Safeway): 'Blackberries' @ $5.0 (confidence 0.98)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -71,8 +89,8 @@ Generated: 2026-07-12T23:45:50.559324+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
@@ -111,9 +129,6 @@ Generated: 2026-07-12T23:45:50.559324+00:00
 - `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `berries_6oz` (Vons): 'Organic Blueberries 6 oz' @ $3.5 (confidence 0.86)
-  - Display: Blueberries / raspberries / blackberries
-  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -122,8 +137,8 @@ Generated: 2026-07-12T23:45:50.559324+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)
@@ -159,6 +174,9 @@ Generated: 2026-07-12T23:45:50.559324+00:00
 - `cherries_per_lb` (Safeway): 'Red Cherries' @ $6.99 (confidence 0.90)
   - Display: Cherries
   - Subtitle: per lb
+- `berries_6oz` (Safeway): 'Blackberries' @ $5.0 (confidence 0.98)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -176,8 +194,8 @@ Generated: 2026-07-12T23:45:50.559324+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Happy Egg Free Range Eggs' @ $7.49 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
@@ -216,9 +234,6 @@ Generated: 2026-07-12T23:45:50.559324+00:00
 - `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
-- `berries_6oz` (Vons): 'Organic Blueberries 6 oz' @ $3.5 (confidence 0.86)
-  - Display: Blueberries / raspberries / blackberries
-  - Subtitle: 6 oz clamshells
 - `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
@@ -227,8 +242,8 @@ Generated: 2026-07-12T23:45:50.559324+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)

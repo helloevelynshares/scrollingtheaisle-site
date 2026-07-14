@@ -21,7 +21,12 @@ def _promo_text(row: dict[str, str]) -> str:
     return " ".join(
         filter(
             None,
-            [row.get("promo_text"), row.get("raw_offer_text"), row.get("split_product_text")],
+            [
+                row.get("promo_text"),
+                row.get("raw_offer_text"),
+                row.get("split_product_text"),
+                row.get("package_text"),
+            ],
         )
     ).lower()
 
@@ -142,8 +147,22 @@ def normalize_per_dozen(row: dict[str, str]) -> float | None:
         return None
     text = _promo_text(row)
     for count in (24, 18, 12):
-        if _re.search(rf"{count}\s*(?:ct|count|-count)", text):
+        # Match "18 ct", "18-ct.", "18 count", "18-count"
+        if _re.search(rf"{count}\s*[- ]?(?:ct|count)\b", text):
             return round(price * (12 / count), 2)
+    if _re.search(r"\bdozen\b|\bdz\b", text):
+        return price
+    # Fall back to CSV package size when text is sparse (e.g. "Eggs" + size 18).
+    for key in ("package_size_min", "package_size_max"):
+        raw = (row.get(key) or "").strip()
+        if not raw:
+            continue
+        try:
+            size = float(raw)
+        except ValueError:
+            continue
+        if size in (24, 18, 12):
+            return round(price * (12 / size), 2)
     return price
 
 

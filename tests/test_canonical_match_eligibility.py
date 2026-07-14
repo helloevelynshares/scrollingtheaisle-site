@@ -18,7 +18,12 @@ from price_tracker.canonical_match_eligibility import (  # noqa: E402
 )
 
 
-def _row(text: str, price: str = "4.99") -> dict[str, str]:
+def _row(
+    text: str,
+    price: str = "4.99",
+    *,
+    package_text: str = "",
+) -> dict[str, str]:
     return {
         "split_product_text": text,
         "raw_offer_text": text,
@@ -26,6 +31,7 @@ def _row(text: str, price: str = "4.99") -> dict[str, str]:
         "advertised_price": price,
         "price_basis": "each",
         "package_unit": "each",
+        "package_text": package_text,
     }
 
 
@@ -111,6 +117,97 @@ class TestCanonicalMatchEligibility(unittest.TestCase):
         )
         self.assertEqual(sticks.match_decision, "accepted")
         self.assertEqual(sticks.ad_product_type, "butter_sticks")
+
+
+class TestEggsDozenNormalized(unittest.TestCase):
+    """Conventional large eggs only — never candy; always $/dozen."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.families = {f.id: f for f in load_families()}
+        cls.rules = load_match_rules()
+        cls.family = cls.families["eggs_dozen_normalized"]
+        cls.merged = merge_family_yaml_rules(cls.family, cls.rules)
+
+    def _evaluate(self, text: str, price: str, package_text: str = "") -> object:
+        return evaluate_canonical_match(
+            _row(text, price=price, package_text=package_text),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+
+    def test_reject_chocolate_eggs(self) -> None:
+        result = self._evaluate("Russell Stover Chocolate Eggs", "3.00", package_text="1 oz")
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "candy_eggs")
+
+    def test_reject_reeses_eggs(self) -> None:
+        result = self._evaluate("Reese’s Eggs", "4.49", package_text="7-10 oz.")
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "candy_eggs")
+
+    def test_accept_lucerne_large_eggs_with_pack_in_package_text(self) -> None:
+        result = self._evaluate("Lucerne Large Eggs", "2.49", package_text="12 ct")
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.ad_product_type, "eggs_dozen")
+
+    def test_accept_eggland_best_12_ct_in_name(self) -> None:
+        result = self._evaluate("Eggland's Best Large Eggs 12 ct", "7.00")
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.ad_product_type, "eggs_dozen")
+
+    def test_reject_vital_farms_pasture_raised(self) -> None:
+        result = self._evaluate(
+            "Vital Farms Pasture Raised Large Eggs", "12.99", package_text="12 ct."
+        )
+        self.assertEqual(result.match_decision, "rejected")
+
+    def test_lucerne_18ct_not_misclassified_as_soda_pack(self) -> None:
+        result = self._evaluate(
+            "Lucerne Cage Free Eggs Grade AA, 18-ct.", "2.99", package_text="18-ct."
+        )
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.ad_product_type, "eggs_dozen")
+
+
+class TestBerries6oz(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.families = {f.id: f for f in load_families()}
+        cls.rules = load_match_rules()
+        cls.family = cls.families["berries_6oz"]
+        cls.merged = merge_family_yaml_rules(cls.family, cls.rules)
+
+    def test_accept_blackberry_with_6oz_in_package_text(self) -> None:
+        result = evaluate_canonical_match(
+            _row("Blackberries", price="5.00", package_text="6 oz."),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.ad_product_type, "berries_6oz_clamshell")
+
+    def test_manual_review_bare_blueberry_without_size(self) -> None:
+        result = evaluate_canonical_match(
+            _row("Blueberries", price="2.50"),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "manual_review")
+
+    def test_accept_blackberry_6oz_even_if_package_mentions_pint(self) -> None:
+        # Mixed-deal package labels sometimes say "Pint, 6 oz" for a group that
+        # includes both pints and 6 oz clamshells. Product text wins.
+        result = evaluate_canonical_match(
+            _row("Blackberries 6 oz", price="2.99", package_text="Pint, 6 oz"),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="medium",
+        )
+        self.assertEqual(result.match_decision, "accepted")
 
 
 class TestNabiscoFamilySizeSnackCrackers(unittest.TestCase):

@@ -1,12 +1,12 @@
 # Canonical match audit: 2026-05-20 to 2026-05-26
 
-Generated: 2026-07-12T23:45:51.577381+00:00
+Generated: 2026-07-14T04:55:15.435753+00:00
 
 ## Summary
 
 - **Accepted:** 22
 - **Rejected:** 2
-- **Manual review:** 0
+- **Manual review:** 2
 - **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, tostitos_tortilla_chips, strawberries_1_2lb, cherries_per_lb, sweet_corn, eggs_dozen_normalized, general_mills_cereal_regular, ribeye_steak, salmon
 
 ## Graph update safety check
@@ -20,24 +20,30 @@ Generated: 2026-07-12T23:45:51.577381+00:00
 
 ### Graph preview changes
 
-- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
+- `berries_6oz` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
+- `berries_6oz` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ### Blocked from tracker graph
 
 - `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
-  - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+  - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
   - Hard negatives: bars
 - `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
-  - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+  - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
   - Hard negatives: bars
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
-- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; ad product type 'bars_or_novelties' not in allowed types ['pint']
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
+- `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'
 
 ## Accepted matches
 
@@ -64,7 +70,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.70)
   - Display: General Mills cereal
   - Subtitle: regular boxes, roughly 8.9–15 oz
@@ -97,7 +103,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
 - `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.70)
   - Display: General Mills cereal
   - Subtitle: regular boxes, roughly 8.9–15 oz

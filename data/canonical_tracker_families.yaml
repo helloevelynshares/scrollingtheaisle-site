@@ -782,6 +782,9 @@ families:
   category: produce
   organic_status: conventional
   include:
+  - blueberries
+  - raspberries
+  - blackberries
   - blueberries 6 oz
   - raspberries 6 oz
   - blackberries 6 oz
@@ -789,8 +792,13 @@ families:
   keep_separate_from:
   - strawberries
   - organic berries
+  - organic
   - large blueberry packs
-  notes: ''
+  - large pack
+  - pint
+  notes: Match blueberry/raspberry/blackberry clamshells. Size may live in
+    package_text; eligibility requires a 6 oz confirmation so bare berry tiles
+    without size do not update the graph.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -923,22 +931,44 @@ families:
   display_order: 42
   homepage_group: produce
 - id: eggs_dozen_normalized
-  canonical_tracker_family: Eggs
-  size_format_subtitle: large eggs; normalized to 12-count/dozen
+  canonical_tracker_family: Large eggs
+  display_name: Eggs
+  size_format_subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+  subtitle: per dozen (12-count); 18/24 ct scaled to dozen
   category: dairy
   organic_status: conventional
   include:
+  - large eggs
   - large eggs 12 ct
   - large eggs 18 ct
   - large eggs 24 ct
+  - Lucerne eggs
+  - Lucerne Large Eggs
+  - Eggland's Best
+  - Happy Egg
   - dozen eggs
-  - egg multipacks
+  - cage free eggs
+  - free range eggs
   keep_separate_from:
   - egg whites
   - liquid eggs
-  - organic eggs unless intentionally grouped
-  - pasture-raised specialty eggs if not comparable
-  notes: Use one egg tracker. Normalize all pack counts to price per dozen; show actual count in offer details.
+  - egg beaters
+  - hard boiled
+  - chocolate eggs
+  - candy eggs
+  - Russell Stover
+  - Reese's Eggs
+  - Cadbury
+  - Kinder Joy
+  - Ferrero Egg
+  - Easter eggs
+  - organic eggs
+  - pasture-raised
+  - pasture raised
+  - Vital Farms
+  notes: Track conventional large eggs as price per dozen. Scale 18/24 ct packs to
+    a dozen. Never match chocolate/candy/Easter eggs. Specialty organic and
+    pasture-raised cartons stay separate.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1303,7 +1333,9 @@ families:
   - reviewed_weekly_ads_and_transcripts
   id: clif_bars
   canonical_tracker_family: Clif bars
-  size_format_subtitle: single bars or multipacks; normalize per bar
+  display_name: Clif Bars
+  size_format_subtitle: per bar (multipack price ÷ bar count)
+  subtitle: per bar (multipack price ÷ bar count)
   include:
   - Clif bars
   - Clif Kid Zbar
@@ -1314,7 +1346,9 @@ families:
   - RXBAR
   - KIND bars
   - generic protein bars
+  - Luna Bars
   notes: Track Clif separately rather than using a broad protein-bar bucket.
+    Chart prices are per bar so a $14.99 12-pack shows as ~$1.25, not pack total.
   display_order: 61
   homepage_group: dairy_breakfast_bakery
 - category: meat

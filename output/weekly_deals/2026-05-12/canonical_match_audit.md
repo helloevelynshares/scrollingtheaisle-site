@@ -1,11 +1,11 @@
 # Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-12T23:45:50.660093+00:00
+Generated: 2026-07-14T04:55:14.287928+00:00
 
 ## Summary
 
 - **Accepted:** 32
-- **Rejected:** 0
+- **Rejected:** 2
 - **Manual review:** 2
 - **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, chicken_thigh_per_lb, salmon
 
@@ -21,14 +21,29 @@ Generated: 2026-07-12T23:45:50.660093+00:00
 ### Graph preview changes
 
 - `lays_potato_chips_regular` (Safeway): blocked $1.99: ambiguous match
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
 - `lays_potato_chips_regular` (Safeway): blocked $1.99: ambiguous match
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
 
 ### Blocked from tracker graph
 
+- `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
+  - Hard negatives: large pack
+- `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
+  - Hard negatives: large pack
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
   - Reason: ambiguous match
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
   - Reason: ambiguous match
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.); new all-time low $3.99 requires confidence >= 0.85 (got 0.58)
 
 ## Accepted matches
 

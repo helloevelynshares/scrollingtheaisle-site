@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-12T23:45:50.711005+00:00
+Generated: 2026-07-14T04:55:14.401186+00:00
 
 ## Summary
 
-- **Accepted:** 54
-- **Rejected:** 2
-- **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, simply_snacks, ritz_crackers, ritz_toasted_chips, goldfish_bags, keebler_sandwich_crackers, pepsi_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, post_cereal_regular, dr_pepper_12packs, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon
+- **Accepted:** 56
+- **Rejected:** 0
+- **Manual review:** 8
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, simply_snacks, ritz_crackers, ritz_toasted_chips, goldfish_bags, keebler_sandwich_crackers, pepsi_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, post_cereal_regular, dr_pepper_12packs, berries_6oz, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon
 
 ## Graph update safety check
 
@@ -20,6 +20,7 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `sweet_corn` (Safeway): $0.33: Sweet Corn
 - `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
 - `sweet_corn` (Vons): $0.67: Sweet Corn
+- `butter_16oz` (Vons): $2.99: Lucerne Butter
 - `cheetos_regular_bags` (Safeway): $2.59: Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.
 - `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
 - `goldfish_bags` (Safeway): $5.0: Goldfish Crackers
@@ -27,32 +28,33 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `sweet_corn` (Safeway): $0.33: Sweet Corn
 - `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
 - `sweet_corn` (Vons): $0.67: Sweet Corn
+- `butter_16oz` (Vons): $2.99: Lucerne Butter
 
 ### Graph preview changes
 
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `eggs_dozen_normalized` (Safeway): blocked $6.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `berries_6oz` (Safeway): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `eggs_dozen_normalized` (Safeway): blocked $6.99: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
+- `berries_6oz` (Safeway): blocked $5.0: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 
 ### Blocked from tracker graph
 
-- `eggs_dozen_normalized` (Safeway): **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
-  - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
-- `eggs_dozen_normalized` (Safeway): **rejected**: 'Pete & Gerry’s Free Range Organic Eggs 12 ct. Large, Grade A.' @ $6.99
-  - Reason: ad product type '12_pack_cans' not in allowed types ['eggs_dozen']
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
   - Reason: confidence 0.50 < min 0.60
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `berries_6oz` (Safeway): **manual_review**: 'Blueberries' @ $5.0
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: confidence 0.10 < min 0.70
+  - Reason: confidence 0.35 < min 0.70
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips 4.75-8 oz." @ $None
   - Reason: confidence 0.50 < min 0.60
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `berries_6oz` (Safeway): **manual_review**: 'Blueberries' @ $5.0
+  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $None
-  - Reason: confidence 0.10 < min 0.70
+  - Reason: confidence 0.35 < min 0.70
 
 ## Accepted matches
 
@@ -104,7 +106,7 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.33 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.75)
+- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal 10.5 to 15.5 oz Selected varieties' @ $1.99 (confidence 0.90)
@@ -119,6 +121,9 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
+- `berries_6oz` (Vons): 'Blackberries, Blueberries' @ $2.5 (confidence 1.00)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `peaches_per_lb` (Vons): 'Scotttsdale Groves & Shippers Yellow Peaches' @ $2.99 (confidence 0.90)
   - Display: Peaches
   - Subtitle: per lb
@@ -130,8 +135,8 @@ Generated: 2026-07-12T23:45:50.711005+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
@@ -185,7 +190,7 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.33 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.75)
+- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal 10.5 to 15.5 oz Selected varieties' @ $1.99 (confidence 0.90)
@@ -200,6 +205,9 @@ Generated: 2026-07-12T23:45:50.711005+00:00
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
+- `berries_6oz` (Vons): 'Blackberries, Blueberries' @ $2.5 (confidence 1.00)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
 - `peaches_per_lb` (Vons): 'Scotttsdale Groves & Shippers Yellow Peaches' @ $2.99 (confidence 0.90)
   - Display: Peaches
   - Subtitle: per lb
@@ -211,8 +219,8 @@ Generated: 2026-07-12T23:45:50.711005+00:00
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
   - Display: Eggs
-  - Subtitle: large eggs; normalized to 12-count/dozen
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.75)
+  - Subtitle: per dozen (12-count); 18/24 ct scaled to dozen
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
