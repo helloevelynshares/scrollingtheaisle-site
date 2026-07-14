@@ -21,6 +21,7 @@ import {
   getFamilyVariantNote,
   hasFamilyVarieties,
   isProductOnSale,
+  toSentenceCase,
   type FamilyStockUpRating,
   type FamilyStatus,
 } from "../data/priceTrackerUtils";
@@ -207,7 +208,9 @@ export function FamilyDealCard({ product }: Props) {
         <div>
           <h2>{product.displayName}</h2>
           {productMeta ? (
-            <p className="price-tracker-product-meta">{productMeta}</p>
+            <p className="price-tracker-product-meta">
+              {toSentenceCase(productMeta)}
+            </p>
           ) : null}
         </div>
         {status ? <FamilyStatusBadge status={status} /> : null}

@@ -133,6 +133,15 @@ Related files: `scripts/generate_weekly_ad_prices.py`, `src/data/priceTrackerV1.
 
 ## Cursor / Dev Workflow Notes
 
+### Card size subtitles are sentence-cased at render
+
+Date discovered: 2026-07-14
+Context: Tracker family cards show `size_format_subtitle` / `subtitle` under the product title (e.g. "family size…", "regular bags…", "tubs…").
+What happened: YAML subtitles are stored lowercase; UI should read as sentence case ("Family size…", "Regular bags…", "Tubs…").
+Fix / workaround: Use `toSentenceCase()` in `priceTrackerUtils.ts` when rendering meta in `FamilyDealCard.tsx` and `ProductCard.tsx`. Do not rewrite all YAML for display casing alone.
+How to verify: Oreo / Ruffles / Breyers cards show capitalized first letter on the grey size line.
+Related files: `src/data/priceTrackerUtils.ts`, `src/staging-price-tracker/FamilyDealCard.tsx`, `src/staging-price-tracker/ProductCard.tsx`
+
 ### Homepage highlights use balanced editorial breakout (Version 1)
 
 Date discovered: 2026-07-12

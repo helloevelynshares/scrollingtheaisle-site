@@ -1,4 +1,7 @@
-import { hasChartableData } from "../data/priceTrackerUtils";
+import {
+  hasChartableData,
+  toSentenceCase,
+} from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import { FamilyDealCard } from "./FamilyDealCard";
 
@@ -14,7 +17,7 @@ export function ProductCard({ product }: Props) {
           <h2>{product.displayName}</h2>
           {product.subtitle || product.sizeLabel ? (
             <p className="price-tracker-product-meta">
-              {product.subtitle ?? product.sizeLabel}
+              {toSentenceCase(product.subtitle ?? product.sizeLabel ?? "")}
             </p>
           ) : null}
         </header>

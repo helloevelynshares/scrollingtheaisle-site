@@ -192,6 +192,15 @@ export function formatPrice(price: number | null | undefined): string {
   return `$${price.toFixed(2)}`;
 }
 
+/** Capitalize only the first letter: "regular bags…" → "Regular bags…". */
+export function toSentenceCase(text: string): string {
+  const trimmed = text.trim();
+  if (!trimmed) {
+    return text;
+  }
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+}
+
 /** Pack count from labels like "12-pack, 12 fl oz cans". */
 export function parsePackUnitCount(
   sizeLabel: string | undefined,
