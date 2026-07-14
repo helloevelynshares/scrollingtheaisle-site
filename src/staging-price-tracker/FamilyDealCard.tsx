@@ -13,7 +13,6 @@ import {
   getFamilyExpandedRows,
   getFamilyExpandedSectionTitle,
   getFamilyPricingBehavior,
-  getFamilyStatus,
   getFamilyStockUpRating,
   getFamilySummary,
   getFamilyUsuallyLabel,
@@ -23,7 +22,6 @@ import {
   isProductOnSale,
   toSentenceCase,
   type FamilyStockUpRating,
-  type FamilyStatus,
 } from "../data/priceTrackerUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
 import {
@@ -36,20 +34,6 @@ import { PriceTrendChart } from "./PriceTrendChart";
 type Props = {
   product: FeedProductView;
 };
-
-function FamilyStatusBadge({ status }: { status: FamilyStatus }) {
-  const tone =
-    status === "Promo deal this week" || status === "Preview promo"
-      ? "promo"
-      : status.startsWith("Preview")
-        ? "preview"
-        : "sale";
-  return (
-    <span className={`family-deal-card__status family-deal-card__status--${tone}`}>
-      {status}
-    </span>
-  );
-}
 
 function FamilyStockUpBadge({ rating }: { rating: FamilyStockUpRating }) {
   const tone =
@@ -165,7 +149,6 @@ function ProductCostcoComparisonPanel({
 export function FamilyDealCard({ product }: Props) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const status = getFamilyStatus(product);
   const saleLabel = getFamilyUsuallyLabel(product);
   const effectivePrice = getFamilyEffectivePriceLabel(product);
   const usualRange = getFamilyUsuallyRangeLabel(product);
@@ -213,7 +196,6 @@ export function FamilyDealCard({ product }: Props) {
             </p>
           ) : null}
         </div>
-        {status ? <FamilyStatusBadge status={status} /> : null}
       </header>
 
       <div className="family-deal-card__price-block">
