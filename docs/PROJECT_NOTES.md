@@ -856,6 +856,20 @@ How to validate a price: hover chart `offerText`/`promoNote`; `PYTHONPATH=script
 How to verify: Safeway eggs weeks show Eggland/Happy Egg/Lucerne (not chocolate); Lucerne 18-ct $2.99 → **$1.99/dozen**; Clif card subtitle says per bar; Safeway berries 2026-07-08 = Blackberries 6 oz $2.99. `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility tests.test_normalization -v`.
 Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `scripts/price_tracker/canonical_match_eligibility.py`, `scripts/price_tracker/normalization.py`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
 
+### Goldfish 30 oz tub matched as 6–8 oz bags (Safeway 2026-05-06 $7.99 spike)
+
+Date discovered: 2026-07-14  
+Context: Price tracker Safeway chart for `goldfish_bags` spiked to $7.99 on the 2026-05-06 week. Family intent is regular ~6–8 oz bags only.  
+What happened: Extraction correctly captured `Goldfish Crackers 30 oz. 7.99 ea` (`package_text=30 oz`), but matching used `split_product_text` = "Goldfish Crackers" and **no eligibility rules**, so the 30 oz tub was accepted at confidence 0.90. `matches()` also applied `keep_separate_from` excludes only to split text, so size exclusions in package_text were invisible. Same failure class as Kettle party-size / Nabisco bare-block mismatches.  
+Fix / workaround:
+1. Taxonomy: `goldfish_tub` (20–49 oz / tub / carton) before `goldfish_crackers`.
+2. `config/canonical_match_rules.yaml` → `goldfish_bags`: disallow `goldfish_tub`, reject `\b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b`, require bag-size confirmation (4–8 / 5.9 / 6.1 / 8 oz, etc.). Bare "Goldfish Crackers" → manual_review.
+3. YAML `keep_separate_from`: Goldfish tub/carton + 27/30/33 oz + 45 pack.
+4. `matches()` now applies exclude patterns to full `row_text()` (includes `package_text` / `raw_offer_text`).
+5. Rematched: Safeway 2026-05-06 → `null`; 2026-06-03 bare Friday "Goldfish or Eggo" → `null`; 2026-06-17 6.1–8 oz $3.49 and Vons 2026-05-13 5.9–8 oz $1.88 preserved.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility.TestGoldfishBagsVsTubs -v`; `goldfish_bags["2026-05-06"].price` is `null` in `weeklyAdPrices.generated.ts`; chart no longer spikes to $7.99.  
+Related files: `config/canonical_match_rules.yaml`, `data/canonical_tracker_families.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `scripts/generate_weekly_ad_prices.py`, `tests/test_canonical_match_eligibility.py`, `src/data/weeklyAdPrices.generated.ts`
+
 ## Content-first Analysis Mode
 
 ### Content deal shortlist mode (separate from canonical graph matching)

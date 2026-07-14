@@ -122,6 +122,17 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     "wheat_thins": (r"wheat\s+thins",),
     "triscuits": (r"triscuit",),
     "chicken_in_a_biskit": (r"chicken\s+in\s+a\s+biskit",),
+    # Goldfish large tubs / cartons (≈20–45 oz) must beat the generic crackers
+    # type so 6–8 oz bag tracking never ingests tub prices (e.g. 30 oz @ $7.99).
+    "goldfish_tub": (
+        r"goldfish.{0,40}\b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b",
+        r"\b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b.{0,40}goldfish",
+        r"goldfish.{0,20}\btub\b",
+        r"\btub\b.{0,20}goldfish",
+        r"goldfish.{0,20}\bcarton\b",
+        r"\bcarton\b.{0,20}goldfish",
+    ),
+    "goldfish_crackers": (r"\bgoldfish\b",),
     # Nabisco single-serve / multipack snack packs: NOT family-size boxes.
     "single_serve_snack_multipack": (
         r"single\s+serve",

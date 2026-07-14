@@ -449,7 +449,13 @@ families:
   - Pepperidge Farm snack packs
   - Chessmen
   - Farmhouse cookies
-  notes: Track Goldfish bags only. Do not group with Milano or other Pepperidge Farm cookies/snacks.
+  - Goldfish tub
+  - Goldfish carton
+  - 30 oz
+  - 27 oz
+  - 33 oz
+  - 45 pack
+  notes: Track Goldfish bags only (≈4–8 oz). Never match large Goldfish tubs/cartons (e.g. 30 oz). Do not group with Milano or other Pepperidge Farm cookies/snacks.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

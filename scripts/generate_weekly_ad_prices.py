@@ -265,7 +265,10 @@ def matches(row: dict[str, str], matcher: ProductMatcher) -> bool:
     text = split_text(row)
     if not any(re.search(pattern, text) for pattern in matcher.patterns):
         return False
-    return not any(re.search(pattern, text) for pattern in matcher.exclude_patterns)
+    # Size / format exclusions often live only in package_text or raw_offer_text
+    # (e.g. split "Goldfish Crackers" + package "30 oz"). Check the full row.
+    exclude_text = row_text(row)
+    return not any(re.search(pattern, exclude_text) for pattern in matcher.exclude_patterns)
 
 
 def pattern_hit_rows(

@@ -2188,10 +2188,10 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-05-06": {
-      "price": 7.99,
-      "offerText": "Goldfish Crackers",
-      "confidence": "high",
-      "availabilityType": "full_week",
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
       "promoNote": null
     },
     "2026-05-12": {
@@ -2202,11 +2202,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-03": {
-      "price": 5.0,
-      "offerText": "Goldfish Crackers",
-      "confidence": "high",
-      "availabilityType": "friday_only",
-      "promoNote": "Member Price"
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
     },
     "2026-06-10": {
       "price": null,

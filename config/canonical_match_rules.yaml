@@ -371,3 +371,48 @@ families:
     min_confidence: 0.6
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
+
+  # Regular Goldfish bags only (≈4–8 oz). Large tubs/cartons (e.g. 30 oz @
+  # $7.99 on Safeway 2026-05-06) must never update this tracker family.
+  goldfish_bags:
+    canonical_intent: goldfish_crackers
+    allowed_product_types:
+      - goldfish_crackers
+    disallowed_product_types:
+      - goldfish_tub
+    positive_keywords:
+      - goldfish
+      - pepperidge farm goldfish
+      - crisps
+    negative_keywords:
+      - tub
+      - carton
+      - 30 oz
+      - 27 oz
+      - 33 oz
+      - milano
+      - chessmen
+      - farmhouse
+    disallowed_package_patterns:
+      - \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b
+      - \btub\b
+      - \bcarton\b
+    # Bare "Goldfish Crackers" with no size → manual review (could be a tub).
+    # Real bag deals always state a ~4–8 oz range.
+    require_confirmation_keywords:
+      - 4 to 8
+      - 4-8
+      - 4–8
+      - 5.9
+      - 6.1
+      - 6-8
+      - 6–8
+      - 6 to 8
+      - 6.6
+      - 7.2
+      - 8 oz
+      - 8-oz
+      - 8oz
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35

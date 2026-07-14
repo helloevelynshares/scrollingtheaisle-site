@@ -301,5 +301,80 @@ class TestNabiscoFamilySizeSnackCrackers(unittest.TestCase):
         self.assertIn("confirmation", (result.reject_reason or "").lower())
 
 
+class TestGoldfishBagsVsTubs(unittest.TestCase):
+    """Regular 4–8 oz Goldfish bags must never match 30 oz tubs."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.families = {f.id: f for f in load_families()}
+        cls.rules = load_match_rules()
+        cls.family = cls.families["goldfish_bags"]
+        cls.merged = merge_family_yaml_rules(cls.family, cls.rules)
+
+    def test_reject_30oz_tub_safeway_2026_05_06(self) -> None:
+        # Exact failure: split name dropped the size; package carried "30 oz".
+        result = evaluate_canonical_match(
+            _row(
+                "Goldfish Crackers",
+                price="7.99",
+                package_text="30 oz",
+            ),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "rejected")
+        self.assertEqual(result.ad_product_type, "goldfish_tub")
+
+    def test_reject_30oz_in_raw_offer_text(self) -> None:
+        result = evaluate_canonical_match(
+            {
+                "split_product_text": "Goldfish Crackers",
+                "raw_offer_text": "Goldfish Crackers 30 oz. 7.99 ea",
+                "promo_text": "",
+                "advertised_price": "7.99",
+                "price_basis": "each",
+                "package_unit": "each",
+                "package_text": "30 oz",
+            },
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "rejected")
+
+    def test_accept_6_1_to_8_oz_bag(self) -> None:
+        result = evaluate_canonical_match(
+            _row(
+                "Pepperidge Farm Goldfish Crackers",
+                price="3.49",
+                package_text="6.1-8 oz",
+            ),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "accepted")
+        self.assertEqual(result.ad_product_type, "goldfish_crackers")
+
+    def test_accept_5_9_to_8_oz_bag(self) -> None:
+        result = evaluate_canonical_match(
+            _row("Pepperidge Farm Goldfish 5.9-8 oz", price="1.88"),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "accepted")
+
+    def test_manual_review_bare_goldfish_without_size(self) -> None:
+        result = evaluate_canonical_match(
+            _row("Goldfish Crackers", price="5.00"),
+            self.family,
+            rules=self.merged,
+            keyword_confidence="high",
+        )
+        self.assertEqual(result.match_decision, "manual_review")
+
+
 if __name__ == "__main__":
     unittest.main()
