@@ -278,20 +278,22 @@ class TestFridayMultibuySuspect(unittest.TestCase):
         ok, _ = friday_multibuy_suspect_check(entry, self.kettle)
         self.assertTrue(ok)
 
-    def test_non_snack_friday_five_passes(self) -> None:
-        meat = _make_family(
-            canonical_name="Ribs",
-            include=("Pork Ribs",),
-            category="meat_seafood",
+    def test_produce_friday_five_dollar_trap(self) -> None:
+        avocados = _make_family(
+            family_id="hass_avocados_each",
+            canonical_name="Hass avocados",
+            include=("Hass avocado",),
+            category="produce",
         )
         entry = {
             "price": 5.0,
             "availabilityType": "friday_only",
             "promoNote": "Member Price",
-            "offerText": "Pork Ribs",
+            "offerText": "Signature SELECT Hass Avocados",
         }
-        ok, _ = friday_multibuy_suspect_check(entry, meat)
-        self.assertTrue(ok)
+        ok, reason = friday_multibuy_suspect_check(entry, avocados)
+        self.assertFalse(ok)
+        self.assertIn("unnormalized", reason)
 
 
 class TestParsePricesTs(unittest.TestCase):

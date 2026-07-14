@@ -546,6 +546,19 @@ Fix / workaround: Refresh `SAFEWAY_COOKIE` from that capture; set `SAFEWAY_STORE
 How to verify: `.venv/bin/python scripts/seed_safeway_baseline.py --query "goldfish cheddar cracker" --timeout 30 -v` → `200 success`, candidates CSV populated (e.g. Goldfish Cheddar 10 Oz **$4.99**).  
 Related files: `scripts/.env`, `scripts/safeway_config.py`, `scripts/safeway_client.py`, `scripts/seed_safeway_baseline.py`
 
+### Hass avocados Safeway 2026-04-01: $5 Friday misread as $5 each (was 5 for $5)
+
+Date discovered: 2026-07-14
+Context: Same failure class as Kettle Brand April 3 — chart showed $5 for Friday-only Hass avocados.
+What happened: Vision stored `$5 ea` / `per_pack` for `Signature SELECT Hass Avocados or Cucumbers 5 ct`. PDF `$5 Friday` tile is a **5 for $5** multi-buy (~$1/ea). Prefer-score also favored plural “Hass avocados” Friday row over the same week’s **97¢** full-week avocado/mango deal.
+Fix / workaround:
+1. Corrected sibling CSV `raw_offer_id=8c8950291ca5` to `5 for $5 Friday April 3rd` / `multi_buy`.
+2. Normalization: `Member Price: $X ea` override when cheaper than advertised; divide `N ct` pack totals; keep always-on `N for $X`.
+3. `pick_lowest_in_week` for `hass_avocados_each` + `mangoes_each` so 97¢ beats a unitized Friday multi-buy.
+4. Extended `[friday_multibuy]` validator to `produce` (not only snacks).
+How to verify: April Safeway avocados chart point is **$0.97** (full-week), not $5; friday_multibuy no longer flags after regenerating. `PYTHONPATH=scripts python3 -m unittest tests.test_normalization.TestNormalization tests.test_validate_weekly_ad_prices.TestFridayMultibuySuspect -v`.
+Related files: `scripts/price_tracker/normalization.py`, `scripts/price_tracker/yaml_matchers.py`, `scripts/validate_weekly_ad_prices.py`, `src/data/weeklyAdPrices.generated.ts`
+
 ### Kettle Brand Safeway 2026-04-01: $5 Friday misread as $5/bag (was 2 for $5)
 
 Date discovered: 2026-07-14

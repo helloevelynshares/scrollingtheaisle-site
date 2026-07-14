@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-07-08 to 2026-07-14
 
-Generated: 2026-07-14T14:17:22.588205+00:00
+Generated: 2026-07-14T14:22:10.554119+00:00
 
 ## Summary
 
-- **Accepted:** 12
+- **Accepted:** 14
 - **Rejected:** 4
 - **Manual review:** 0
-- **Families updated:** doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb
 
 ## Graph update safety check
 
@@ -44,6 +44,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $0.99 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.25 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $2.5 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

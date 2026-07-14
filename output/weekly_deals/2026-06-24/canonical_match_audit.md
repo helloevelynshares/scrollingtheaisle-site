@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-14T14:17:21.169783+00:00
+Generated: 2026-07-14T14:22:10.551858+00:00
 
 ## Summary
 
-- **Accepted:** 24
+- **Accepted:** 25
 - **Rejected:** 1
 - **Manual review:** 3
-- **Families updated:** kettle_brand_chips, doritos_5_13oz, lays_potato_chips_regular, lays_party_size, ruffles_regular_bags, coca_cola_12packs, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, coca_cola_12packs, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon
 
 ## Graph update safety check
 
@@ -41,9 +41,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $2.5 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado each' @ $2.0 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango, Cucumber, Red, Orange, Yellow' @ $1.25 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Fritos, Ruffles, Doritos' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-14T14:17:21.156429+00:00
+Generated: 2026-07-14T14:22:10.546381+00:00
 
 ## Summary
 
 - **Accepted:** 15
 - **Rejected:** 2
 - **Manual review:** 1
-- **Families updated:** cheetos_regular_bags, sun_chips_7oz, doritos_5_13oz, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, berries_6oz, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, sun_chips_7oz, pepsi_12packs, simply_refrigerated_juice_lemonade, tillamook_ice_cream, cherries_per_lb, berries_6oz, sweet_corn, butter_16oz, salmon
 
 ## Graph update safety check
 
@@ -42,12 +42,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $5.0 (confidence 0.90)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
-- `sun_chips_7oz` (Safeway): 'SunChips 4.75 to 10.25-oz.' @ $None (confidence 0.70)
-  - Display: Sun Chips
-  - Subtitle: regular size, 7 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Lay’s, Doritos, Tostitos' @ $None (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

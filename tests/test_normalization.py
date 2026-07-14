@@ -107,6 +107,23 @@ class TestNormalization(unittest.TestCase):
         )
         self.assertEqual(base_normalize_unit_price(deal), 2.5)
 
+    def test_pack_count_per_pack_five_ct(self) -> None:
+        deal = row(
+            "5.0",
+            "Signature SELECT Hass Avocados or Cucumbers 5 ct",
+            basis="per_pack",
+            package_text="5 ct",
+        )
+        self.assertEqual(base_normalize_unit_price(deal), 1.0)
+
+    def test_member_price_each_beats_friday_badge(self) -> None:
+        deal = row(
+            "5.0",
+            "Large Hass Avocados Member Price: $1.25 ea $5 Friday",
+            basis="each",
+        )
+        self.assertEqual(base_normalize_unit_price(deal), 1.25)
+
 
 class TestMatcherSeparation(unittest.TestCase):
     """Smoke tests that YAML exclude patterns keep known families separate."""

@@ -1,32 +1,36 @@
 # Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-14T14:17:21.173442+00:00
+Generated: 2026-07-14T14:22:10.552956+00:00
 
 ## Summary
 
-- **Accepted:** 25
+- **Accepted:** 26
 - **Rejected:** 0
 - **Manual review:** 0
-- **Families updated:** kettle_brand_chips, doritos_5_13oz, lays_potato_chips_regular, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, lays_potato_chips_regular, kettle_brand_chips, tostitos_tortilla_chips, cheez_it_crackers, coca_cola_12packs, pepsi_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `lays_potato_chips_regular` (Safeway): $2.2: Lay's Potato Chips
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
+- `dreyers_tubs` (Safeway): $0.25: Dreyer's Ice Cream
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
 - `butter_16oz` (Safeway): $2.99: Challenge Butter
+- `clif_bars` (Safeway): $0.1: CLIF Bars
 - `salmon` (Safeway): $5.0: Fresh Atlantic Salmon Portion
 
 ## Accepted matches
 
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Mango' @ $1.25 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $2.2 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -54,7 +58,7 @@ Generated: 2026-07-14T14:17:21.173442+00:00
 - `simply_refrigerated_juice_lemonade` (Safeway): 'Simply Orange Juice, Coffee mate Creamer' @ $2.99 (confidence 0.70)
   - Display: Simply juice
   - Subtitle: 46–52 fl oz bottles
-- `dreyers_tubs` (Safeway): "Dreyer's Ice Cream" @ $2.99 (confidence 0.90)
+- `dreyers_tubs` (Safeway): "Dreyer's Ice Cream" @ $0.25 (confidence 0.90)
   - Display: Dreyer's ice cream
   - Subtitle: 1.5 qt tubs
 - `strawberries_1_2lb` (Safeway): 'Strawberries Large Pack' @ $5.0 (confidence 0.70)
@@ -87,7 +91,7 @@ Generated: 2026-07-14T14:17:21.173442+00:00
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
-- `clif_bars` (Safeway): 'CLIF Bars' @ $1.25 (confidence 0.90)
+- `clif_bars` (Safeway): 'CLIF Bars' @ $0.1 (confidence 0.90)
   - Display: Clif Bars
   - Subtitle: per bar (multipack price ÷ bar count)
 - `ribeye_steak` (Safeway): 'USDA Choice Beef Ribeye Steak, Bone-In' @ $9.99 (confidence 0.70)

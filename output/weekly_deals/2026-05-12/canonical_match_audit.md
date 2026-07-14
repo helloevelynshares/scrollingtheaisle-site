@@ -1,21 +1,19 @@
 # Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-14T14:17:21.158741+00:00
+Generated: 2026-07-14T14:22:10.547407+00:00
 
 ## Summary
 
 - **Accepted:** 18
 - **Rejected:** 1
 - **Manual review:** 2
-- **Families updated:** cheetos_regular_bags, sun_chips_7oz, doritos_5_13oz, ruffles_regular_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, chicken_thigh_per_lb
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, pepsi_12packs, simply_refrigerated_juice_lemonade, dreyers_tubs, strawberries_1_2lb, seedless_grapes_per_lb, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, chicken_thigh_per_lb
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `sun_chips_7oz` (Safeway): $1.99: Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.
-- `sun_chips_7oz` (Safeway): $1.99: Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.
-- `hass_avocados_each` (Safeway): $1.25: Hass Avocado
 
 ### Graph preview changes
 
@@ -41,12 +39,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): 'Cheetos, Tostitos, Fritos' @ $4.99 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
-- `sun_chips_7oz` (Safeway): "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99 (confidence 0.70)
-  - Display: Sun Chips
-  - Subtitle: regular size, 7 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Mango' @ $1.25 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos, Ruffles, Smartfood' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

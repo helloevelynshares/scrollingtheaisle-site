@@ -4053,10 +4053,10 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": "Member Price"
     },
     "2026-04-01": {
-      "price": 5.0,
-      "offerText": "Signature SELECT Hass Avocados",
-      "confidence": "high",
-      "availabilityType": "friday_only",
+      "price": 0.97,
+      "offerText": "Hass Avocado",
+      "confidence": "medium",
+      "availabilityType": "full_week",
       "promoNote": "Member Price"
     },
     "2026-05-06": {

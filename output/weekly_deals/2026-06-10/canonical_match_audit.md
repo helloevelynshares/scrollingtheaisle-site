@@ -1,20 +1,19 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-14T14:17:22.015253+00:00
+Generated: 2026-07-14T14:22:10.549505+00:00
 
 ## Summary
 
-- **Accepted:** 16
+- **Accepted:** 18
 - **Rejected:** 0
 - **Manual review:** 1
-- **Families updated:** tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, tostitos_tortilla_chips, cheez_it_crackers, pepsi_12packs, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `cherries_per_lb` (Safeway): $5.99: Red Cherries
-- `hass_avocados_each` (Safeway): $0.99: Hass Avocado, Large Mango, Cucumber, Roma Tomato
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `salmon` (Safeway): $6.99: Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen
 
@@ -25,6 +24,12 @@ Generated: 2026-07-14T14:17:22.015253+00:00
 
 ## Accepted matches
 
+- `hass_avocados_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Hass Avocado, Large Mango, Cucumber, Roma Tomato' @ $0.99 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips Selected varieties' @ $None (confidence 0.70)
   - Display: Tostitos tortilla chips
   - Subtitle: regular size, 9–13 oz
@@ -52,7 +57,7 @@ Generated: 2026-07-14T14:17:22.015253+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $1.99 (confidence 1.00)
+- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11 (confidence 1.00)
   - Display: Lucerne Eggs
   - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
 - `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-03-25 to 2026-03-31
 
-Generated: 2026-07-14T14:17:21.144268+00:00
+Generated: 2026-07-14T14:22:10.542666+00:00
 
 ## Summary
 
-- **Accepted:** 19
+- **Accepted:** 20
 - **Rejected:** 1
 - **Manual review:** 2
-- **Families updated:** cheetos_regular_bags, doritos_5_13oz, ruffles_regular_bags, ritz_toasted_chips, pepsi_12packs, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, chicken_thigh_per_lb, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, ritz_toasted_chips, pepsi_12packs, dr_pepper_12packs, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, butter_16oz, philadelphia_cream_cheese, general_mills_cereal_regular, post_cereal_regular, clif_bars, chicken_thigh_per_lb, salmon
 
 ## Graph update safety check
 
@@ -36,9 +36,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): 'Doritos or Cheetos 6-10.25 oz. Selected varieties.' @ $None (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.5 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $1.99 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -84,7 +87,7 @@ These looked like deals but were blocked from updating canonical trackers:
 - `post_cereal_regular` (Safeway): 'Post Cereal 10 to 14.75 oz' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
-- `clif_bars` (Safeway): 'CLIF Bars' @ $1.17 (confidence 0.90)
+- `clif_bars` (Safeway): 'CLIF Bars' @ $0.19 (confidence 0.90)
   - Display: Clif Bars
   - Subtitle: per bar (multipack price ÷ bar count)
 - `chicken_thigh_per_lb` (Safeway): 'Signature SELECT Boneless Skinless Chicken Thighs' @ $5.0 (confidence 0.90)

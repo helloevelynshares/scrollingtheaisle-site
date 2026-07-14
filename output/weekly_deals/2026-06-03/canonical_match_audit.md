@@ -1,19 +1,18 @@
 # Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-14T14:17:21.161021+00:00
+Generated: 2026-07-14T14:22:10.548418+00:00
 
 ## Summary
 
-- **Accepted:** 19
+- **Accepted:** 18
 - **Rejected:** 0
 - **Manual review:** 4
-- **Families updated:** cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, doritos_5_13oz, ruffles_regular_bags, simply_snacks, keebler_sandwich_crackers, pepsi_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, post_cereal_regular
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, sun_chips_7oz, simply_snacks, keebler_sandwich_crackers, pepsi_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, sweet_corn, butter_16oz, post_cereal_regular
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
 - `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
 - `seedless_grapes_per_lb` (Safeway): $1.67: Red Seedless Grapes
 - `sweet_corn` (Safeway): $0.33: Sweet Corn
@@ -37,15 +36,12 @@ Generated: 2026-07-14T14:17:21.161021+00:00
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59 (confidence 0.70)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.99 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
-- `sun_chips_7oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
-  - Display: Sun Chips
-  - Subtitle: regular size, 7 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mangoes' @ $1.25 (confidence 0.90)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

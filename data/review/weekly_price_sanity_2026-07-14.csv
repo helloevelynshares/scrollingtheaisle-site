@@ -1,2 +1,1 @@
 family_id,store,week,price,offerText,confidence,check_failed,reason
-kettle_brand_chips,vons,2026-06-10,3.99,Kettle Brand Potato Chips 6.5-8.5 oz.,high,true,[outlier] price $3.99 > 2.0× median baseline $1.88

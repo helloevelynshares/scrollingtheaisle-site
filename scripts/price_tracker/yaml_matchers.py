@@ -30,8 +30,13 @@ def build_yaml_matchers(families: list[TrackerFamily] | None = None) -> tuple[Ya
                 normalization=family.normalization,
                 pick_lowest_in_week=(
                     family.normalization == "strawberries_per_lb"
-                    or family.id == "eggs_dozen_normalized"
-                    or family.id == "berries_6oz"
+                    or family.id
+                    in {
+                        "eggs_dozen_normalized",
+                        "berries_6oz",
+                        "hass_avocados_each",
+                        "mangoes_each",
+                    }
                 ),
             )
         )

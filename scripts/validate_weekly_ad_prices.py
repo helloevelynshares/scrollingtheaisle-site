@@ -199,6 +199,7 @@ _FRIDAY_MULTIBUY_CATEGORIES = {
     "chips_salty_snacks",
     "cookies_crackers",
     "crackers_snacks",
+    "produce",
 }
 _N_FOR_X_RE = re.compile(r"\d+\s*(?:for|/)\s*\$?\s*\d", re.I)
 

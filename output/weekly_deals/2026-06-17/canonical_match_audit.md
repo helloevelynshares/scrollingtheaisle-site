@@ -1,19 +1,18 @@
 # Canonical match audit: 2026-06-17 to 2026-06-23
 
-Generated: 2026-07-14T14:17:21.166375+00:00
+Generated: 2026-07-14T14:22:10.550486+00:00
 
 ## Summary
 
-- **Accepted:** 20
+- **Accepted:** 19
 - **Rejected:** 2
 - **Manual review:** 2
-- **Families updated:** cheetos_regular_bags, sun_chips_7oz, doritos_5_13oz, ruffles_regular_bags, cheez_it_crackers, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, sweet_corn, butter_16oz, sliced_or_shredded_cheese_6_8oz, tri_tip_roast, salmon
+- **Families updated:** hass_avocados_each, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, cheez_it_crackers, goldfish_bags, pepsi_12packs, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, sweet_corn, butter_16oz, sliced_or_shredded_cheese_6_8oz, tri_tip_roast, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
-- `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
 - `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
 - `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
 - `cherries_per_lb` (Safeway): $2.99: Red Cherries
@@ -23,7 +22,7 @@ Generated: 2026-07-14T14:17:21.166375+00:00
 
 - `ritz_crackers` (Safeway): blocked $2.49: hard negative keyword/pattern hit: toasted chips
 - `nabisco_snack_crackers` (Safeway): blocked $2.99: hard negative keyword/pattern hit: chips ahoy, cookies; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'
-- `coca_cola_12packs` (Safeway): blocked $8.99: confidence 0.55 < min 0.70
+- `coca_cola_12packs` (Safeway): blocked $1.5: confidence 0.55 < min 0.70
 
 ### Blocked from tracker graph
 
@@ -35,7 +34,7 @@ Generated: 2026-07-14T14:17:21.166375+00:00
   - Hard negatives: chips ahoy, cookies
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Lay's Potato Chips" @ $None
   - Reason: confidence 0.50 < min 0.60
-- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $8.99
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi' @ $1.5
   - Reason: confidence 0.55 < min 0.70
 
 ## Rejected tempting items
@@ -47,12 +46,9 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $2.49 (confidence 0.90)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
-- `sun_chips_7oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
-  - Display: Sun Chips
-  - Subtitle: regular size, 7 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocados' @ $2.0 (confidence 0.90)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz

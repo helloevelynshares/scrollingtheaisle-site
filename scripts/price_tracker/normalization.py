@@ -70,6 +70,40 @@ def _explicit_n_for_x_unit_price(row: dict[str, str]) -> float | None:
     return round(total / count, 2)
 
 
+def _member_price_each_from_text(row: dict[str, str]) -> float | None:
+    """Small-print ``Member Price: $X.XX ea`` when it disagrees with a big $5 badge."""
+    promo = _promo_text(row)
+    m = _re.search(
+        r"member\s+price\s*:?\s*\$?\s*(\d+(?:\.\d+)?)\s*(?:ea\.?|each)\b",
+        promo,
+    )
+    if not m:
+        return None
+    return round(float(m.group(1)), 2)
+
+
+def _pack_count_unit_price(row: dict[str, str], price: float) -> float | None:
+    """Divide pack-total prices by N from ``5 ct`` / ``5-count`` package cues."""
+    if price <= 0:
+        return None
+    promo = _promo_text(row)
+    size = row.get("package_size_min") or row.get("package_size_max") or ""
+    unit = (row.get("package_unit") or "").lower()
+    count: float | None = None
+    if size and unit in {"", "count", "ct", "each"}:
+        try:
+            count = float(size)
+        except ValueError:
+            count = None
+    if count is None:
+        m = _re.search(r"\b(\d+)\s*-?\s*(?:ct|count)\b", promo)
+        if m:
+            count = float(m.group(1))
+    if count is None or count <= 1:
+        return None
+    return round(price / count, 2)
+
+
 def _buy_x_get_y_unit_price(row: dict[str, str], price: float) -> float | None:
     """Compute effective per-unit price for buy-X-get-Y-free deals.
 
@@ -100,6 +134,10 @@ def base_normalize_unit_price(row: dict[str, str]) -> float | None:
     explicit = _explicit_n_for_x_unit_price(row)
     if explicit is not None:
         return explicit
+    # Small-print unit price on $5 Friday tiles (e.g. Member Price: $1.25 ea).
+    member_each = _member_price_each_from_text(row)
+    if member_each is not None and member_each < price:
+        return member_each
     # Handle B2G3F / BOGO: compute effective per-unit price from reference price
     if basis in {"bogo", "buy_x_get_y"}:
         unit = _buy_x_get_y_unit_price(row, price)
@@ -114,6 +152,11 @@ def base_normalize_unit_price(row: dict[str, str]) -> float | None:
         unit = _multi_buy_unit_price(row, price)
         if unit is not None:
             return unit
+    # Pack totals labeled per_pack with "5 ct" → per-unit (do not use for eggs/bars `each`).
+    if basis == "per_pack":
+        pack_unit = _pack_count_unit_price(row, price)
+        if pack_unit is not None:
+            return pack_unit
     return round(price, 2)
 
 

@@ -1,19 +1,22 @@
 # Canonical match audit: 2026-04-01 to 2026-04-07
 
-Generated: 2026-07-14T14:17:21.151819+00:00
+Generated: 2026-07-14T14:22:10.545154+00:00
 
 ## Summary
 
-- **Accepted:** 26
+- **Accepted:** 25
 - **Rejected:** 3
 - **Manual review:** 1
-- **Families updated:** cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, doritos_5_13oz, simply_snacks, ritz_crackers, cheez_it_crackers, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, ribeye_steak, salmon
+- **Families updated:** hass_avocados_each, mangoes_each, doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, ritz_crackers, cheez_it_crackers, pepsi_12packs, dr_pepper_12packs, simply_refrigerated_juice_lemonade, strawberries_1_2lb, seedless_grapes_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, ribeye_steak, salmon
 
 ## Graph update safety check
 
 ### All-time low changes
 
+- `hass_avocados_each` (Safeway): $0.97: Hass Avocado
+- `mangoes_each` (Safeway): $0.97: Mango
 - `strawberries_1_2lb` (Safeway): $2.0: Strawberries 2 lb. Raspberries
+- `hass_avocados_each` (Safeway): $0.97: Hass Avocado
 - `mangoes_each` (Safeway): $0.97: Mango
 - `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
 
@@ -48,15 +51,12 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `cheetos_regular_bags` (Safeway): 'Cheetos 6.5 to 10 oz' @ $2.5 (confidence 0.90)
-  - Display: Cheetos
-  - Subtitle: regular size, 6.5–10 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips 5 to 8.5 oz' @ $2.5 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
-- `sun_chips_7oz` (Safeway): 'Sun Chips 7 oz' @ $2.5 (confidence 0.90)
-  - Display: Sun Chips
-  - Subtitle: regular size, 7 oz
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $0.97 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Mango' @ $0.97 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Lay’s, Fritos, Doritos' @ $1.99 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -93,7 +93,7 @@ These looked like deals but were blocked from updating canonical trackers:
 - `seedless_grapes_per_lb` (Safeway): 'Pristine Green and Red Seedless Grapes' @ $4.99 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
-- `hass_avocados_each` (Safeway): 'Signature SELECT Hass Avocados' @ $5.0 (confidence 0.90)
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $0.97 (confidence 0.70)
   - Display: Hass avocados
   - Subtitle: each or multi-buy
 - `mangoes_each` (Safeway): 'Mango' @ $0.97 (confidence 0.70)
