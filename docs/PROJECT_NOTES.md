@@ -556,8 +556,17 @@ Date discovered: 2026-07-14
 Context: Jul 15–21 ad in preview while Jul 8–14 is still the active store week.  
 What happened: Cards showed "Preview: $2.50 starting tomorrow" for Doritos/Ruffles/Oreo even when the Jul 15 graph point was $5.99 (worse) or baseline (unmatched). Root cause: preview UI used the preview-week *flag* with *this week's* price, and `isProductInPreviewWeek` is true for every product once any upcoming week exists. Also, comparing to an older ad week (e.g. Goldfish Jul 1 at $2) blocked highlighting a Jul 15 $2.49 deal that beats this week's baseline $3.99.  
 Fix / workaround: Use `hasHighlightablePreviewDeal` — real upcoming ad match AND `preview.price < getCurrentWeeklyPrice().price` (this week's chart point). Otherwise keep this-week/usual labels; still plot the upcoming point. Wire green Preview styling through that helper in `FamilyDealCard`.  
-How to verify: As of Jul 14, Doritos → `$2.50 this week` (not Preview); Goldfish/Cherries → `Preview: $X starting tomorrow` matching Jul 15 graph.  
+How to verify: As of Jul 14, Ruffles/Oreo (no improving Jul 15 match) stay on this-week/usual copy; Doritos after price correction → `Preview: $2.49 starting tomorrow`; Goldfish/Cherries also Preview.  
 Related files: `src/data/priceTrackerUtils.ts`, `src/data/trackerFamilyUtils.ts` (`saleRangeFromWeekly`), `src/staging-price-tracker/FamilyDealCard.tsx`
+
+### Doritos Jul 15 $5.99 was seafood price bleed
+
+Date discovered: 2026-07-14  
+Context: Safeway Jul 15–21 page-1 coupon grid. Real tile: Lay's / Lay's Kettle / PopCorners / Doritos **5–10.75 oz @ $2.49** clip-or-CLICK Mix & Match. Directly above: Waterfront Bistro shrimp/salmon **$5.99**.  
+What happened: Vision wrote Doritos as `4.5-8 oz @ $5.99 MEMBER PRICE` (`raw_offer_id` a995d9904a92, `crop_override_price`). Matcher accepted it onto `doritos_5_13oz`, so the graph showed $5.99 instead of the regular-size $2.49 deal.  
+Fix / workaround: Manually correct the sibling `split_offer_items.csv` row (price 2.49, size 5–10.75 oz, promo clip-or-CLICK), then `/usr/bin/python3 scripts/generate_weekly_ad_prices.py --product-ids doritos_5_13oz --feed safeway` (incremental merge updates differing weeks).  
+How to verify: `doritos_5_13oz["2026-07-15"].price === 2.49` in `weeklyAdPrices.generated.ts`; offerText mentions PopCorners / 10.75.  
+Related files: `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, flyer `safeway 7-15 - 7-21.pdf` p1
 
 Date discovered: 2026-07-05  
 Context: HTTP/curl pgmsearch via `seed_safeway_baseline.py`; prior `.env` used SF Jackson St store **4601 / 94111 / pickup** with Chrome UA + logged-in cookie. Requests failed or mismatched session.  

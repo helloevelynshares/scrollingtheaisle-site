@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-07-15 to 2026-07-21
 
-Generated: 2026-07-15T04:12:03.113049+00:00
+Generated: 2026-07-15T04:20:51.847469+00:00
 
 ## Summary
 
@@ -97,7 +97,7 @@ These looked like deals but were blocked from updating canonical trackers:
 
 ## Accepted matches
 
-- `doritos_5_13oz` (Safeway): 'Lay’s, Lay’s Kettle, Popcorners or Doritos 4.5-8 oz. Selected varieties.' @ $5.99 (confidence 0.70)
+- `doritos_5_13oz` (Safeway): "Lay's, Lay's Kettle, PopCorners or Doritos 5 to 10.75-oz. Selected varieties." @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
 - `ritz_crackers` (Safeway): 'Ritz Crackers or Cheez-It Crackers Selected varieties' @ $2.49 (confidence 0.83)
@@ -166,7 +166,7 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
-- `doritos_5_13oz` (Safeway): 'Lay’s, Lay’s Kettle, Popcorners or Doritos 4.5-8 oz. Selected varieties.' @ $5.99 (confidence 0.70)
+- `doritos_5_13oz` (Safeway): "Lay's, Lay's Kettle, PopCorners or Doritos 5 to 10.75-oz. Selected varieties." @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
 - `ritz_crackers` (Safeway): 'Ritz Crackers or Cheez-It Crackers Selected varieties' @ $2.49 (confidence 0.83)
