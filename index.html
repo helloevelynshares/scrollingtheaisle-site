@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrolling the Aisle: Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/styles.css?v=hub20" />
+  <link rel="stylesheet" href="/styles.css?v=hub25" />
 </head>
 <body class="hub-page">
   <header class="page-header">
@@ -33,40 +33,82 @@
         Every week, Scrolling the Aisle (or Evelyn, the human behind it, really) helps you navigate the grocery ads, comparing sales against Costco, past prices, and unit prices.
       </p>
 
-      <div id="hero-signup" class="hub-signup beehiiv-form-wrapper" tabindex="-1">
-        <script
-          async
-          src="https://subscribe-forms.beehiiv.com/v3/loader.js"
-          data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
-        </script>
-      </div>
+      <div class="hub-signup-row">
+        <div class="hub-signup-stack">
+          <div id="hero-signup" class="hub-signup beehiiv-form-wrapper" tabindex="-1">
+            <script
+              async
+              src="https://subscribe-forms.beehiiv.com/v3/loader.js"
+              data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
+            </script>
+          </div>
 
-      <div class="hub-hero-row">
-        <div class="hub-hero-trackers" id="hub-tracker-module">
-          <p class="hub-hero-trackers-intro">Hop into the live aisles we've got going:</p>
-          <div class="hub-hero-actions">
-            <a href="grocery-price-tracker/?feed=safeway_bay_area" class="btn btn-secondary hub-hero-cta">Scroll through the Safeway aisle</a>
-            <a href="grocery-price-tracker/?feed=vons_albertsons_socal" class="btn btn-secondary hub-hero-cta">Scroll through the Vons aisle</a>
+          <div class="hub-hero-trackers" id="hub-tracker-module">
+            <p class="hub-hero-trackers-intro">Hop into the live aisles we've got going:</p>
+            <div class="hub-hero-actions">
+              <a href="grocery-price-tracker/?feed=safeway_bay_area" class="btn btn-secondary hub-hero-cta">Scroll through the Safeway aisle</a>
+              <a href="grocery-price-tracker/?feed=vons_albertsons_socal" class="btn btn-secondary hub-hero-cta">Scroll through the Vons aisle</a>
+            </div>
+          </div>
+
+          <div class="hub-store-suggest" id="store-suggest-module">
+            <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
+              <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
+              <p id="store-vote-list-status" class="hub-store-vote-strip-msg" hidden></p>
+              <div class="price-tracker-vote-strip" id="store-vote-strip" role="list" aria-label="Popular grocery stores" aria-busy="true"></div>
+              <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
+                <div class="price-tracker-vote-custom-row">
+                  <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
+                  <input id="store-input-custom" type="text" name="store" placeholder="Suggest another store…" autocomplete="organization" maxlength="80" required />
+                  <label class="visually-hidden" for="store-city-custom">City (optional)</label>
+                  <input id="store-city-custom" type="text" name="city" placeholder="City (optional)" autocomplete="address-level2" maxlength="80" />
+                  <button type="submit" class="btn btn-primary btn-sm price-tracker-vote-submit">Suggest</button>
+                </div>
+              </form>
+              <p id="store-suggest-status" class="price-tracker-vote-status" role="status" aria-live="polite" hidden></p>
+            </section>
           </div>
         </div>
 
-        <div class="hub-store-suggest" id="store-suggest-module">
-          <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
-            <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
-            <p id="store-vote-list-status" class="hub-store-vote-strip-msg" hidden></p>
-            <div class="price-tracker-vote-strip" id="store-vote-strip" role="list" aria-label="Popular grocery stores" aria-busy="true"></div>
-            <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
-              <div class="price-tracker-vote-custom-row">
-                <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
-                <input id="store-input-custom" type="text" name="store" placeholder="Suggest another store…" autocomplete="organization" maxlength="80" required />
-                <label class="visually-hidden" for="store-city-custom">City (optional)</label>
-                <input id="store-city-custom" type="text" name="city" placeholder="City (optional)" autocomplete="address-level2" maxlength="80" />
-                <button type="submit" class="btn btn-primary btn-sm price-tracker-vote-submit">Suggest</button>
-              </div>
-            </form>
-            <p id="store-suggest-status" class="price-tracker-vote-status" role="status" aria-live="polite" hidden></p>
-          </section>
-        </div>
+        <aside
+          class="hub-coupon-check"
+          id="coupon-check-module"
+          data-poll-id="safeway_cheezit_pringles_3off_202607"
+          aria-labelledby="coupon-check-heading"
+        >
+          <p class="hub-coupon-check-kicker">Safeway shoppers</p>
+          <h2 id="coupon-check-heading" class="hub-coupon-check-heading">Do you see this coupon?</h2>
+          <p class="hub-coupon-check-lead">Quick check on how personalized this stackable-deal coupon is.</p>
+          <figure class="hub-coupon-check-figure">
+            <img
+              src="/media/coupons/safeway-cheezit-pringles-3off.png"
+              alt="$3 off Cheez-It, Pringles or Pop-Tarts when you buy four. Expires 7/28/26."
+              width="640"
+              height="360"
+              loading="lazy"
+            />
+          </figure>
+          <div class="hub-coupon-check-actions" role="group" aria-label="Do you see this coupon?">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm hub-coupon-check-btn"
+              data-option-id="safeway_cheezit_pringles_3off_202607_yes"
+              data-answer="yes"
+            >
+              Yep
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm hub-coupon-check-btn"
+              data-option-id="safeway_cheezit_pringles_3off_202607_no"
+              data-answer="no"
+            >
+              Nope
+            </button>
+          </div>
+          <p id="coupon-check-tally" class="hub-coupon-check-tally" aria-live="polite" hidden></p>
+          <p id="coupon-check-status" class="hub-coupon-check-status" role="status" aria-live="polite" hidden></p>
+        </aside>
       </div>
     </section>
     </div>
@@ -134,7 +176,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/homepage.js?v=hub16"></script>
+  <script src="/homepage.js?v=hub17"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>
