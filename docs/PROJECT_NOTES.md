@@ -545,9 +545,10 @@ Weekly command (Jul 15–21 example):
   --safeway-pdf "safeway 7-15 - 7-21.pdf" \
   --vons-pdf "vons 7-15 - 7-21.pdf"
 npm run verify:weekly-ad
+npm run audit:weekly-ad-import -- --week-start 2026-07-15
 npm run build:price-tracker
 ```
-Verify: `/usr/bin/python3 scripts/import_weekly_ad.py --verify-only` → tracked product count unchanged, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`.
+Verify: `/usr/bin/python3 scripts/import_weekly_ad.py --verify-only` → tracked product count unchanged, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`. After import, read `output/weekly_deals/{week}/import_qa_audit.md` for crop price overrides and tracked WoW worsens before publishing.
 Related files: `scripts/import_weekly_ad.py`, `scripts/price_tracker/weekly_ad_preview.py`, `src/data/weeklyAdPreview.ts`, `src/staging-price-tracker/WeeklyAdPreviewBanner.tsx`, `data/weekly_ads/flyer_manifest_*.csv`
 
 ### Preview highlight only when beating this week's price
@@ -566,7 +567,21 @@ Context: Safeway Jul 15–21 page-1 coupon grid. Real tile: Lay's / Lay's Kettle
 What happened: Vision wrote Doritos as `4.5-8 oz @ $5.99 MEMBER PRICE` (`raw_offer_id` a995d9904a92, `crop_override_price`). Matcher accepted it onto `doritos_5_13oz`, so the graph showed $5.99 instead of the regular-size $2.49 deal.  
 Fix / workaround: Manually correct the sibling `split_offer_items.csv` row (price 2.49, size 5–10.75 oz, promo clip-or-CLICK), then `/usr/bin/python3 scripts/generate_weekly_ad_prices.py --product-ids doritos_5_13oz --feed safeway` (incremental merge updates differing weeks).  
 How to verify: `doritos_5_13oz["2026-07-15"].price === 2.49` in `weeklyAdPrices.generated.ts`; offerText mentions PopCorners / 10.75.  
-Related files: `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, flyer `safeway 7-15 - 7-21.pdf` p1
+Prevention: After each import run `/usr/bin/python3 scripts/audit_weekly_ad_import.py --week-start YYYY-MM-DD` (also auto-runs at end of `import_weekly_ad.py`). It lists crop first-pass→final price raises (bleed risk) and tracked week-over-week worsens. Dedicated raw cards still showed `original 2.49 → verified 5.99` for this tile.  
+Related files: `scripts/audit_weekly_ad_import.py`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, flyer `safeway 7-15 - 7-21.pdf` p1
+
+### Post-import QA: crop overrides + WoW worsens
+
+Date discovered: 2026-07-14  
+Context: Doritos crop verifier overwrote a correct first-pass $2.49 with adjacent seafood $5.99; need a habit + tool before publish.  
+What happened: Manual flyer spot-checks are easy to skip; `needs_human_grounding` / `crop_override_price` rows are numerous.  
+Fix / workaround:
+1. `scripts/audit_weekly_ad_import.py` reads dedicated `raw_offer_cards.csv` (original vs verified price) + consolidated split tags + generated TS week-over-week matches.
+2. Writes `output/weekly_deals/{week}/import_qa_audit.md` (+ `.json`).
+3. `npm run audit:weekly-ad-import -- --week-start YYYY-MM-DD`. Optional `--fail-on-bleed-risk` / `--fail-on-findings`.
+4. `import_weekly_ad.py` runs the audit after generate (non-fatal if audit errors).
+How to verify: For 2026-07-15, audit lists Doritos-class bleed from dedicated raw (`$2.49 → $5.99`) even after consolidated CSV was corrected. `PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_audit_weekly_ad_import -v`.  
+Related files: `scripts/audit_weekly_ad_import.py`, `scripts/import_weekly_ad.py`, `package.json` (`audit:weekly-ad-import`)
 
 Date discovered: 2026-07-05  
 Context: HTTP/curl pgmsearch via `seed_safeway_baseline.py`; prior `.env` used SF Jackson St store **4601 / 94111 / pickup** with Chrome UA + logged-in cookie. Requests failed or mismatched session.  

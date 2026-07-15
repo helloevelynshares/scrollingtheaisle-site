@@ -408,6 +408,23 @@ def main() -> None:
         "\nInspect canonical match audit after import:"
     )
     print(f"  output/weekly_deals/{args.week_start}/canonical_match_audit.md")
+    print("\nRun crop-override + week-over-week QA:")
+    print(
+        f"  /usr/bin/python3 scripts/audit_weekly_ad_import.py "
+        f"--week-start {args.week_start}"
+    )
+    print(
+        f"  npm run audit:weekly-ad-import -- --week-start {args.week_start}"
+    )
+    try:
+        from audit_weekly_ad_import import build_report, write_outputs, print_console
+
+        report = build_report(args.week_start)
+        md_path, _json_path = write_outputs(report)
+        print_console(report)
+        print(f"\nImport QA written: {md_path}")
+    except Exception as exc:  # noqa: BLE001 — don't fail import if audit helper breaks
+        print(f"\nWarning: import QA audit skipped ({exc})")
     print("\nImport complete. Run: npm run build:price-tracker")
 
 
