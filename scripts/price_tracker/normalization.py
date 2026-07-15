@@ -190,6 +190,10 @@ def normalize_strawberries_per_lb(row: dict[str, str]) -> float | None:
         return round(price / lbs, 2)
     if _re.search(r"2\s*lb|2-lb", text):
         return round(price / 2, 2)
+    # "Large Pack" without an explicit lb weight is ambiguous for the 1–2 lb
+    # graph; do not treat the pack total as a per-lb / 1-lb proxy.
+    if _re.search(r"large\s+pack", text) and not _re.search(r"\b\d+(?:\.\d+)?\s*lb\b", text):
+        return None
     return price
 
 

@@ -36,6 +36,7 @@ def build_yaml_matchers(families: list[TrackerFamily] | None = None) -> tuple[Ya
                         "berries_6oz",
                         "hass_avocados_each",
                         "mangoes_each",
+                        "chobani_yogurt_per_cup",
                     }
                 ),
             )

@@ -1244,8 +1244,11 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     "costcoComparable": true,
     "searchAliases": [
       "boneless skinless chicken breast",
+      "boneless skinless chicken breasts",
       "chicken breast value pack",
+      "chicken breasts",
       "fresh chicken breast",
+      "fresh chicken breasts",
       "Chicken breast"
     ],
     "legacyCanonicalIds": []

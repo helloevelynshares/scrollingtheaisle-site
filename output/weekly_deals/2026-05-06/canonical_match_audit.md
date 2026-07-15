@@ -1,38 +1,89 @@
 # Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-14T15:15:35.456331+00:00
+Generated: 2026-07-15T03:51:02.929006+00:00
 
 ## Summary
 
-- **Accepted:** 13
-- **Rejected:** 1
-- **Manual review:** 1
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, sun_chips_7oz, oreo_family_size, pepsi_12packs, tillamook_ice_cream, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, salmon
+- **Accepted:** 58
+- **Rejected:** 8
+- **Manual review:** 6
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, sun_chips_7oz, oreo_family_size, tillamook_ice_cream, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, chicken_breast_per_lb, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, eggs_dozen_normalized, general_mills_cereal_regular
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `sweet_corn` (Safeway): $0.5: Sweet Corn
+- `sweet_corn` (Safeway): $0.5: Sweet Corn
 
 ### Graph preview changes
 
 - `goldfish_bags` (Safeway): blocked $7.99: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
 - `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `pepsi_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `dr_pepper_12packs` (Safeway): blocked $5.0: confidence 0.68 < min 0.70
+- `pepsi_12packs` (Vons): blocked $4.5: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs` (Vons): blocked $4.5: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `berries_6oz` (Vons): blocked $3.5: hard negative keyword/pattern hit: organic
+- `goldfish_bags` (Safeway): blocked $7.99: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
+- `coca_cola_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `pepsi_12packs` (Safeway): blocked $5.0: confidence 0.50 < min 0.70
+- `dr_pepper_12packs` (Safeway): blocked $5.0: confidence 0.68 < min 0.70
+- `pepsi_12packs` (Vons): blocked $4.5: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs` (Vons): blocked $4.5: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `berries_6oz` (Vons): blocked $3.5: hard negative keyword/pattern hit: organic
 
 ### Blocked from tracker graph
 
 - `goldfish_bags` (Safeway): **rejected**: 'Goldfish Crackers' @ $7.99
   - Reason: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
   - Hard negatives: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b
+- `pepsi_12packs` (Vons): **rejected**: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5
+  - Reason: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: 20 oz, gatorade, 20\s*oz
+- `dr_pepper_12packs` (Vons): **rejected**: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5
+  - Reason: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: 20 oz, 20\s*oz
+- `berries_6oz` (Vons): **rejected**: 'Organic Blueberries 6 oz' @ $3.5
+  - Reason: hard negative keyword/pattern hit: organic
+  - Hard negatives: organic
+- `goldfish_bags` (Safeway): **rejected**: 'Goldfish Crackers' @ $7.99
+  - Reason: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
+  - Hard negatives: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b
+- `pepsi_12packs` (Vons): **rejected**: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5
+  - Reason: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: 20 oz, gatorade, 20\s*oz
+- `dr_pepper_12packs` (Vons): **rejected**: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5
+  - Reason: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: 20 oz, 20\s*oz
+- `berries_6oz` (Vons): **rejected**: 'Organic Blueberries 6 oz' @ $3.5
+  - Reason: hard negative keyword/pattern hit: organic
+  - Hard negatives: organic
 - `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
   - Reason: confidence 0.50 < min 0.70
+- `pepsi_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+  - Reason: confidence 0.50 < min 0.70
+- `dr_pepper_12packs` (Safeway): **manual_review**: 'Dr Pepper Mini cans, 6-pack, 7.5-oz. 12-pack, 12-oz. bottles' @ $5.0
+  - Reason: confidence 0.68 < min 0.70
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+  - Reason: confidence 0.50 < min 0.70
+- `pepsi_12packs` (Safeway): **manual_review**: 'Coca-Cola, Pepsi, 7UP' @ $5.0
+  - Reason: confidence 0.50 < min 0.70
+- `dr_pepper_12packs` (Safeway): **manual_review**: 'Dr Pepper Mini cans, 6-pack, 7.5-oz. 12-pack, 12-oz. bottles' @ $5.0
+  - Reason: confidence 0.68 < min 0.70
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
 - `goldfish_bags`: 'Goldfish Crackers' @ $7.99: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
+- `pepsi_12packs`: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs`: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `berries_6oz`: 'Organic Blueberries 6 oz' @ $3.5: hard negative keyword/pattern hit: organic
+- `goldfish_bags`: 'Goldfish Crackers' @ $7.99: hard negative keyword/pattern hit: \b(?:2[0-9]|3[0-9]|4[0-9])\s*oz\b; ad product type 'goldfish_tub' is incompatible with canonical intent 'goldfish_crackers'; no family-size / eligible-size confirmation (needs one of: 4 to 8, 4-8, 4–8, 5.9, 6.1, 6-8, 6–8, 6 to 8, 6.6, 7.2, 8 oz, 8-oz, 8oz)
+- `pepsi_12packs`: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5: hard negative keyword/pattern hit: 20 oz, gatorade, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs`: 'Coke, Pepsi, Canada Dry, Dr Pepper 12 pack, 12 oz. cans Pepsi Prebiotic Cola 8 pack, 12 oz. or Gatorade 8 pack, 20 oz. Selected varieties' @ $4.5: hard negative keyword/pattern hit: 20 oz, 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `berries_6oz`: 'Organic Blueberries 6 oz' @ $3.5: hard negative keyword/pattern hit: organic
 
 ## Accepted matches
 
@@ -48,9 +99,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.49 (confidence 1.00)
   - Display: Oreo cookies
   - Subtitle: family size, 10.68–18.71 oz
-- `pepsi_12packs` (Safeway): 'Coca-Cola, Pepsi, 7UP' @ $5.0 (confidence 0.70)
-  - Display: Pepsi
-  - Subtitle: 12-pack, 12 fl oz cans
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
   - Display: Tillamook ice cream
   - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
@@ -72,6 +120,144 @@ These looked like deals but were blocked from updating canonical trackers:
 - `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips" @ $2.5 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular size, 5–13 oz
+- `ruffles_regular_bags` (Vons): 'Ruffles' @ $2.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular size, 5–13 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Cantina Tortilla Chips 8-11 oz.' @ $2.99 (confidence 0.70)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Vons): 'Lay’s Simply Snacks' @ $2.99 (confidence 0.90)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `cheez_it_crackers` (Vons): 'Cheez-It Crackers' @ $2.5 (confidence 0.90)
+  - Display: Cheez-It crackers
+  - Subtitle: regular size, 6.5–12.4 oz
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice' @ $2.99 (confidence 0.90)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
+- `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Breyers ice cream
+  - Subtitle: tubs, including Carb Smart and Sunday Swirls
+- `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Vons): 'Large Mangoes' @ $0.99 (confidence 0.90)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)
+  - Display: General Mills cereal
+  - Subtitle: regular size, 8.9–15 oz
+- `chicken_breast_per_lb` (Vons): 'Fresh Bulk Boneless Skinless Chicken Breasts' @ $1.99 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Safeway): 'Lay’s, Doritos, Tostitos' @ $None (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `cheetos_regular_bags` (Safeway): "Cheetos Mac'n Cheese" @ $5.0 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: regular size, 6.5–10 oz
+- `sun_chips_7oz` (Safeway): 'SunChips 4.75 to 10.25-oz.' @ $None (confidence 0.70)
+  - Display: Sun Chips
+  - Subtitle: regular size, 7 oz
+- `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.49 (confidence 1.00)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 48-oz. 3.99 MEMBER PRICE clip' @ $3.99 (confidence 0.70)
+  - Display: Tillamook ice cream
+  - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.67 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Large Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `peaches_per_lb` (Safeway): 'Yellow Peaches' @ $2.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Safeway): 'Nectarines' @ $2.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): "Land O'Lakes Butter" @ $3.49 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips" @ $2.5 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular size, 5–13 oz
+- `ruffles_regular_bags` (Vons): 'Ruffles' @ $2.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular size, 5–13 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Cantina Tortilla Chips 8-11 oz.' @ $2.99 (confidence 0.70)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Vons): 'Lay’s Simply Snacks' @ $2.99 (confidence 0.90)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `cheez_it_crackers` (Vons): 'Cheez-It Crackers' @ $2.5 (confidence 0.90)
+  - Display: Cheez-It crackers
+  - Subtitle: regular size, 6.5–12.4 oz
+- `simply_refrigerated_juice_lemonade` (Vons): 'Simply Juice' @ $2.99 (confidence 0.90)
+  - Display: Simply juice
+  - Subtitle: 46–52 fl oz bottles
+- `breyers_ice_cream` (Vons): 'Ben & Jerry’s 14.4-16 oz. or 4 ct. Breyers 1.5 qt. Klondike 4-6 ct. or talenti 10.2-16 oz. Selected varieties' @ $3.99 (confidence 0.70)
+  - Display: Breyers ice cream
+  - Subtitle: tubs, including Carb Smart and Sunday Swirls
+- `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `hass_avocados_each` (Vons): 'Large Hass Avocados' @ $1.5 (confidence 0.90)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Vons): 'Large Mangoes' @ $0.99 (confidence 0.90)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs' @ $0.99 (confidence 1.00)
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal' @ $1.99 (confidence 0.90)
+  - Display: General Mills cereal
+  - Subtitle: regular size, 8.9–15 oz
+- `chicken_breast_per_lb` (Vons): 'Fresh Bulk Boneless Skinless Chicken Breasts' @ $1.99 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet

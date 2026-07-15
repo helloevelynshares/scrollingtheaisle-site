@@ -516,26 +516,38 @@ How to verify: `supabase db push --dry-run` lists only `20260617_price_compariso
 Related files: `supabase/migrations/20260616_price_comparisons.sql`, `supabase/migrations/20260617_price_comparisons_seed.sql`, `scripts/backfill_price_comparisons.py`
 
 
-### Weekly ad preview workflow (upcoming ad before start date)
+### Weekly ad import: use system Python + banner+start --only-file token
+
+Date discovered: 2026-07-14
+Context: Importing Safeway/Vons Jul 15–21 ads via `scripts/import_weekly_ad.py`.
+What happened: (1) Site `.venv` lacks sibling vision deps (`pandas`/`openai`) so extraction crashed immediately. (2) `--only-file` used the end date (`7-21`), which matched **both** PDFs and started processing Vons during the Safeway run. (3) Prior week pollution: Vons Jul 8 rows (118) were sitting in the Safeway consolidated `split_offer_items.csv`; Vons consolidated was missing 7-08 and had an incomplete 6-24 (22 vs 163). (4) Vons merge failed once on ragged CSV `None` keys.
+Fix / workaround:
+1. Run `/usr/bin/python3 scripts/import_weekly_ad.py ...` (or any env with sibling `requirements.txt`).
+2. `--only-file` token is now `safeway 7-15` / `vons 7-15` (banner + week-start).
+3. Merge keeps only the target banner in each consolidated cache; union fieldnames and drop `None` restkeys.
+4. If Safeway cache contains Vons rows, move them into the Vons cache before rematch.
+How to verify: Extraction plan shows `Flyers to process: 1 / 1` for each banner; `verify-only` reports PREVIEW before week start; no Vons banner rows in Safeway `split_offer_items.csv`.
+Related files: `scripts/import_weekly_ad.py`, `docs/PROJECT_NOTES.md` (Weekly ad preview workflow), sibling `outputs/product_discovery_{safeway,vons}/split_offer_items.csv`
+
 
 Date discovered: 2026-07-07
 Context: First time loading a weekly ad before its effective start date (Jul 8–14 ad imported on Jul 7).
 What happened: Price tracker had no concept of preview vs active ad weeks; UI said "this week" for prices that were not yet in stores.
 Fix / workaround:
-1. **Import orchestrator:** `python3 scripts/import_weekly_ad.py --week-start YYYY-MM-DD --week-end YYYY-MM-DD --safeway-pdf "safeway …pdf" --vons-pdf "vons …pdf"`. Updates manifests (site + sibling repo), runs vision extraction (`discover_product_candidates.py` with `--only-file` date token e.g. `7-8`), merges banner-filtered rows into sibling `split_offer_items.csv`, regenerates TS. Use `--skip-extraction` when CSV already exists; `--verify-only` to audit counts.
+1. **Import orchestrator:** `/usr/bin/python3 scripts/import_weekly_ad.py --week-start YYYY-MM-DD --week-end YYYY-MM-DD --safeway-pdf "safeway …pdf" --vons-pdf "vons …pdf"`. Use **system Python** (or any env with sibling-repo deps: pandas/openai/PyMuPDF), not the site `.venv` which lacks them. Updates manifests (site + sibling repo), runs vision extraction (`discover_product_candidates.py` with `--only-file` banner+start token e.g. `safeway 7-15` — not bare end-date `7-21`, which matches both banners), merges banner-filtered rows into sibling `split_offer_items.csv`, regenerates TS. Use `--skip-extraction` when CSV already exists; `--verify-only` to audit counts.
 2. **Preview detection:** `today < week_start` → preview (date-based, no manual flag). Python: `scripts/price_tracker/weekly_ad_preview.py`. TypeScript: `src/data/weeklyAdPreview.ts` + `isPreviewWeek` on each `WeeklyPrice` in `yamlFamilyProducts.ts`.
 3. **UI:** `WeeklyAdPreviewBanner` below feed tabs; card copy uses "Preview: $X starting tomorrow" instead of "this week"; status pills "Preview sale" / "Preview promo".
 4. **Safeguards:** `generate_weekly_ad_prices.py` validates canonical product IDs unchanged (66 families) before/after; logs matched/unmatched per feed.
-Weekly command (Jul 8–14 example):
+Weekly command (Jul 15–21 example):
 ```bash
-python3 scripts/import_weekly_ad.py \
-  --week-start 2026-07-08 --week-end 2026-07-14 \
-  --safeway-pdf "safeway 7-8 - 7-14.pdf" \
-  --vons-pdf "vons 7-8 - 7-14.pdf"
+/usr/bin/python3 scripts/import_weekly_ad.py \
+  --week-start 2026-07-15 --week-end 2026-07-21 \
+  --safeway-pdf "safeway 7-15 - 7-21.pdf" \
+  --vons-pdf "vons 7-15 - 7-21.pdf"
 npm run verify:weekly-ad
 npm run build:price-tracker
 ```
-Verify: `python3 scripts/import_weekly_ad.py --verify-only` → 66 tracked products, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`.
+Verify: `/usr/bin/python3 scripts/import_weekly_ad.py --verify-only` → tracked product count unchanged, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`.
 Related files: `scripts/import_weekly_ad.py`, `scripts/price_tracker/weekly_ad_preview.py`, `src/data/weeklyAdPreview.ts`, `src/staging-price-tracker/WeeklyAdPreviewBanner.tsx`, `data/weekly_ads/flyer_manifest_*.csv`
 
 

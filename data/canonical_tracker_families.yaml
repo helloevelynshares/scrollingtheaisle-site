@@ -179,6 +179,8 @@ families:
   keep_separate_from:
   - Simply Ruffles
   - Ruffles Party Size
+  - Party Size Ruffles
+  - party size
   - Frito-Lay multipack chips
   - Lindt
   - Gourmet Truffles
@@ -742,6 +744,8 @@ families:
   - organic strawberries
   - mixed berries 6 oz
   - blueberries / raspberries / blackberries
+  - large pack
+  - large blueberry packs
   notes: Merge 1 lb and 2 lb conventional strawberry packs into one graph. Normalize by lb; if both appear in the same weekly
     ad, use the lower unit price for the weekly price calculation and keep the actual pack size in offer details.
   confidence: working
@@ -1369,8 +1373,11 @@ families:
   size_format_subtitle: per lb
   include:
   - boneless skinless chicken breast
+  - boneless skinless chicken breasts
   - chicken breast value pack
+  - chicken breasts
   - fresh chicken breast
+  - fresh chicken breasts
   keep_separate_from:
   - chicken thighs
   - chicken wings

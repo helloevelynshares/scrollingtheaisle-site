@@ -590,28 +590,6 @@ export const PRICE_COMPARISONS_BY_KEY: Record<string, PriceComparisonView> = {
     "comparisonStatus": "not_sold_at_costco",
     "comparisonNote": "No Costco match in warehouse search data"
   },
-  "oreos_sandwich_cookies:vons_albertsons_socal": {
-    "canonicalProductId": "oreos_sandwich_cookies",
-    "groceryFeedId": "vons_albertsons_socal",
-    "groceryStoreLabel": "Vons / Albertsons",
-    "groceryPrice": 3.99,
-    "groceryPackageDescription": "oz",
-    "groceryUnitType": "oz",
-    "groceryUnitCount": 18,
-    "groceryUnitPrice": 0.2217,
-    "costcoRegionId": "costco_oc",
-    "costcoStoreLabel": "Costco Tustin",
-    "costcoPrice": 10.99,
-    "costcoPackageDescription": "NABISCO OREO COOKIES 3.92LBS",
-    "costcoUnitType": "lb",
-    "costcoUnitCount": 3.92,
-    "costcoUnitPrice": 2.8036,
-    "winner": "unknown",
-    "savingsAmount": null,
-    "savingsPercent": null,
-    "comparisonStatus": "unit_mismatch",
-    "comparisonNote": "Grocery unit (oz) vs Costco unit (lb)"
-  },
   "kettle_brand_chips:safeway_bay_area": {
     "canonicalProductId": "kettle_brand_chips",
     "groceryFeedId": "safeway_bay_area",

@@ -133,9 +133,14 @@ def run_extraction(feed_key: str, pdf_name: str) -> None:
     if not discover.is_file():
         raise SystemExit(f"Missing vision pipeline: {discover}")
 
-    # Use date-range token (e.g. "7-8") to avoid matching every historical flyer.
+    # Prefer "safeway 7-15" (banner + week-start) so --only-file does not also
+    # match the other banner's PDF that shares the same end date (e.g. "7-21").
     stem = pdf_name.replace(".pdf", "")
-    date_token = stem.split()[-1] if " " in stem else stem
+    parts = stem.split()
+    if len(parts) >= 2:
+        only_file_token = f"{parts[0]} {parts[1]}"
+    else:
+        only_file_token = stem
     output_slug = stem.replace(" ", "_").replace("/", "-")
     output_dir = cfg["discovery_dir"].parent / f"product_discovery_{feed_key}_{output_slug}"
     cmd = [
@@ -148,7 +153,7 @@ def run_extraction(feed_key: str, pdf_name: str) -> None:
         "--output-dir",
         str(output_dir),
         "--only-file",
-        date_token,
+        only_file_token,
     ]
     print(f"Running vision extraction: {' '.join(cmd)}")
     result = subprocess.run(cmd, cwd=DATA_ROOT)
@@ -220,7 +225,13 @@ def merge_split_offer_items(
 
     existing_rows: list[dict[str, str]] = []
     if target.is_file():
-        existing_rows = load_manifest_rows_from_split(target)
+        # Keep only this banner in the consolidated cache (guards against prior
+        # --only-file pollution that mixed Safeway/Vons into one file).
+        existing_rows = [
+            row
+            for row in load_manifest_rows_from_split(target)
+            if (row.get("banner") or "").strip().lower() == cfg["banner"].lower()
+        ]
 
     existing_ids = {
         row.get("split_item_id")
@@ -238,11 +249,22 @@ def merge_split_offer_items(
 
     target.parent.mkdir(parents=True, exist_ok=True)
     if merged:
-        fieldnames = list(merged[0].keys())
+        # Union of keys, drop DictReader restkey (None) from ragged rows.
+        fieldnames: list[str] = []
+        seen: set[str] = set()
+        for row in merged:
+            for key in row:
+                if key is None or key in seen:
+                    continue
+                seen.add(key)
+                fieldnames.append(key)
+        cleaned = [
+            {key: (row.get(key) or "") for key in fieldnames} for row in merged
+        ]
         with target.open("w", newline="", encoding="utf-8") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
             writer.writeheader()
-            writer.writerows(merged)
+            writer.writerows(cleaned)
 
     print(
         f"Merged {added} offer row(s) for {cfg['label']} week {week_start} "
