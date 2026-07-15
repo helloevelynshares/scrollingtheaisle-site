@@ -584,9 +584,18 @@ Related files: `scripts/audit_weekly_ad_import.py`, `~/Documents/scrolling-the-a
 Date discovered: 2026-07-15  
 Context: Safeway Jul 15–21 page-3 clip-or-CLICK grid. Real tile: **Pepperidge Farm Goldfish Crackers or Crisps 4 to 8-oz @ $1.99 ea** Member Price. Neighbor below: Ritz / Cheez-It @ **$2.49**.  
 What happened: Vision extracted Goldfish as `6.1-8 oz @ $2.49` (same price as Ritz; size also drifted). Crop PNG for offer 12 cut the price text; first-pass + crop verify still agreed on $2.49. Tracker correctly matched that wrong row → chart showed $2.49.  
-Fix / workaround: Manually correct dedicated + consolidated `split_offer_items.csv` (and dedicated `raw_offer_cards.csv`) to $1.99 / 4 to 8-oz / clip-or-CLICK, then `python3 scripts/generate_weekly_ad_prices.py --product-ids goldfish_bags --feed safeway`.  
-How to verify: `goldfish_bags["2026-07-15"].price === 1.99`; offerText includes Pepperidge Farm / 4 to 8-oz; promoNote mentions clip or CLICK. Confirm on flyer PDF page 3.  
+Fix / workaround: Manually correct dedicated + consolidated `split_offer_items.csv` (and dedicated `raw_offer_cards.csv`) to $1.99 / 4 to 8-oz / clip-or-CLICK, then `python3 scripts/generate_weekly_ad_prices.py --product-ids goldfish_bags --feed safeway`. Then **`npm run build:price-tracker`** and commit `grocery-price-tracker/` (see next note).  
+How to verify: `goldfish_bags["2026-07-15"].price === 1.99`; offerText includes Pepperidge Farm / 4 to 8-oz; promoNote mentions clip or CLICK. Confirm on flyer PDF page 3. In `grocery-price-tracker/assets/index-*.js` search goldfish Jul 15 → `price:1.99`.  
 Related files: `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `.../product_discovery_safeway_safeway_7-15_-_7-21/`, `src/data/weeklyAdPrices.generated.ts`, `safeway 7-15 - 7-21.pdf` p3
+
+### Rematch/source fix is not live until `grocery-price-tracker/` rebuild is committed
+
+Date discovered: 2026-07-15  
+Context: User still saw Goldfish at **$2.49** after commit `5ea2307` set `weeklyAdPrices.generated.ts` → `goldfish_bags["2026-07-15"]` to **$1.99**.  
+What happened: GitHub Pages serves the prebuilt bundle under `grocery-price-tracker/` (synced from Vite via `scripts/sync-price-tracker-dist.mjs`). `5ea2307` updated source TS + audits but left `grocery-price-tracker/assets/index-BRs2cMuN.js` with the old `price:2.49` (last built in `da12eed`). Default feed is Safeway (`safeway_bay_area`); Vons still has no Jul 15 Goldfish ad match (baseline). Preview vs current-week logic was fine once the week became ACTIVE (Jul 15).  
+Fix / workaround: After any weekly rematch or `weeklyAdPrices.generated.ts` change that should reach shoppers: `npm run build:price-tracker`, commit the new `grocery-price-tracker/` assets (and admin dist if rebuilt), push `main`. Hard-refresh `/grocery-price-tracker/` (or `/staging-price-tracker/` redirect).  
+How to verify: `rg 'goldfish_bags:\{' -n grocery-price-tracker/assets/index-*.js` then confirm `"2026-07-15":{price:1.99`; live page Goldfish card shows ~$1.99 this week.  
+Related files: `grocery-price-tracker/`, `scripts/sync-price-tracker-dist.mjs`, `package.json` (`build:price-tracker`), `src/data/weeklyAdPrices.generated.ts`
 
 ### Chips Ahoy Jul 15 missed because of bang in "Chips Ahoy!"
 
