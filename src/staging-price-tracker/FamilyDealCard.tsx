@@ -19,6 +19,7 @@ import {
   getFamilyUsuallyRangeLabel,
   getFamilyVariantNote,
   hasFamilyVarieties,
+  hasHighlightablePreviewDeal,
   isProductOnSale,
   toSentenceCase,
   type FamilyStockUpRating,
@@ -156,7 +157,9 @@ export function FamilyDealCard({ product }: Props) {
   const summary = getFamilySummary(product);
   const takeaway = getFamilyBuyWaitTakeaway(product);
   const showVarietiesHint = hasFamilyVarieties(product);
-  const onSale = isProductOnSale(product);
+  // Green deal styling: improving upcoming preview, or a real sale this week.
+  const onSale =
+    hasHighlightablePreviewDeal(product) || isProductOnSale(product);
   const productMeta = product.subtitle ?? product.sizeLabel;
   const unitHint = (() => {
     const meta = (productMeta || "").toLowerCase();

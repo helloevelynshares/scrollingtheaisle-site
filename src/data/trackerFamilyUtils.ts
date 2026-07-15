@@ -23,6 +23,7 @@ import {
   VONS_FAMILY_WEEKLY_AD_WEEKS,
   type GeneratedWeeklyAdPrice,
 } from "./familyWeeklyAdPrices.generated";
+import { isActiveAdWeek } from "./weeklyAdPreview";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
 const VONS_FEED_ID = "vons_albertsons_socal";
@@ -183,26 +184,52 @@ function priceRangeFromMembers(
   return { min: Math.min(...values), max: Math.max(...values) };
 }
 
+function hasRealAdWeek(week: WeeklyPrice): boolean {
+  return (
+    !week.isBaselineFallback &&
+    week.priceType === "weekly_ad" &&
+    week.adPrice != null
+  );
+}
+
+/**
+ * "This week" sale range from the calendar-active ad week (or latest
+ * non-preview ad match). Never use an upcoming preview week here — preview
+ * callouts are handled separately when the upcoming price beats this week.
+ */
 function saleRangeFromWeekly(
   weeklyPrices: WeeklyPrice[],
 ): { min: number; max: number } | null {
-  const latest = [...weeklyPrices].sort((a, b) =>
+  const sorted = [...weeklyPrices].sort((a, b) =>
     a.weekStart.localeCompare(b.weekStart),
-  ).at(-1);
+  );
 
-  if (!latest || latest.isBaselineFallback || latest.adPrice == null) {
+  const active = [...sorted]
+    .reverse()
+    .find(
+      (week) =>
+        isActiveAdWeek(week.weekStart, week.weekEnd ?? week.weekStart) &&
+        hasRealAdWeek(week),
+    );
+  const target =
+    active ??
+    [...sorted]
+      .reverse()
+      .find((week) => !week.isPreviewWeek && hasRealAdWeek(week));
+
+  if (!target || target.adPrice == null) {
     return null;
   }
 
   const weekSlots = weeklyPrices.filter(
-    (slot) => slot.weekStart === latest.weekStart,
+    (slot) => slot.weekStart === target.weekStart,
   );
   const adValues = weekSlots
     .map((slot) => slot.adPrice)
     .filter((value): value is number => value != null);
 
   if (adValues.length === 0) {
-    return { min: latest.adPrice, max: latest.priceMax ?? latest.adPrice };
+    return { min: target.adPrice, max: target.priceMax ?? target.adPrice };
   }
 
   return { min: Math.min(...adValues), max: Math.max(...adValues) };
@@ -330,8 +357,9 @@ export function buildFamilyFeedProduct(
 
   const grocerySale =
     salePriceRange?.min ??
-    weeklyPrices
-      .filter((week) => week.adPrice != null)
+    [...weeklyPrices]
+      .sort((a, b) => a.weekStart.localeCompare(b.weekStart))
+      .filter((week) => !week.isPreviewWeek && week.adPrice != null)
       .at(-1)?.adPrice ??
     null;
 
