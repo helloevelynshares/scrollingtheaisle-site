@@ -25,8 +25,6 @@ const VIEW_CONFIG = {
   vons: {
     title: "Scrolling the Aisle's highlights of the week",
     lead: "Hand-picked deals I'm watching at Vons this week.",
-    strategy:
-      "This week's Vons strategy: start with $5 Friday, especially Cheez-Its and Post cereal; use Buy 4 Mix & Match for Ritz if you want smaller boxes near Costco pricing; then grab the clear Costco-beaters like blueberries, cantaloupe, and Chobani. For the Game Time Favorites promo, make sure you hit $20 so the extra $5 comes off. Nature Valley is the cleanest example.",
     picksKey: "popularPicksVons",
     store: "Vons",
     trackerUrl: TRACKER_URLS.vons,
@@ -111,6 +109,9 @@ function groupPicksByCategory(picks) {
 
 function renderCategoryPick(pick) {
   const placeholder = pick.isPlaceholder ? " is-placeholder" : "";
+  const trackerLink = pick.isPlaceholder
+    ? ""
+    : `<a href="${escapeHtml(pick.trackerUrl || TRACKER_URL)}" class="hub-picks-cat-link">See price history →</a>`;
   return `
     <article class="hub-picks-cat-item${placeholder}">
       <div class="hub-picks-cat-item-top">
@@ -125,7 +126,7 @@ function renderCategoryPick(pick) {
         </p>
       </div>
       <p class="hub-picks-cat-item-note">${escapeHtml(pick.explanation)}</p>
-      <a href="${escapeHtml(pick.trackerUrl || TRACKER_URL)}" class="hub-picks-cat-link">See price history →</a>
+      ${trackerLink}
     </article>
   `;
 }

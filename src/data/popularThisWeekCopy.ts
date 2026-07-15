@@ -11,10 +11,7 @@ const STORE_LEAD: Record<PopularThisWeekStore, string> = {
 };
 
 /** Optional weekly shopping strategy blurb shown under the section lead. */
-const STORE_STRATEGY: Partial<Record<PopularThisWeekStore, string>> = {
-  vons:
-    "This week's Vons strategy: start with $5 Friday, especially Cheez-Its and Post cereal; use Buy 4 Mix & Match for Ritz if you want smaller boxes near Costco pricing; then grab the clear Costco-beaters like blueberries, cantaloupe, and Chobani. For the Game Time Favorites promo, make sure you hit $20 so the extra $5 comes off. Nature Valley is the cleanest example.",
-};
+const STORE_STRATEGY: Partial<Record<PopularThisWeekStore, string>> = {};
 
 function formatWeekRange(weekStart: string, weekEnd?: string): string {
   const start = new Date(`${weekStart}T12:00:00`);
