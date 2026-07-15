@@ -237,16 +237,21 @@ def load_split_items(path: Path, banner_filter: str | None) -> list[dict[str, st
     return rows
 
 
+_TRADEMARK_PUNCT_RE = re.compile(r"[®™©!]")
+
+
+def _strip_trademark_punct(text: str) -> str:
+    """Remove marks that break inter-word /\b brand patterns (Lucerne®, Chips Ahoy!)."""
+    return _TRADEMARK_PUNCT_RE.sub("", text)
+
+
 def split_text(row: dict[str, str]) -> str:
     text = (row.get("split_product_text") or row.get("raw_offer_text") or "").lower()
-    # Trademark marks break word-boundary brand matches (e.g. Lucerne® Eggs).
-    return re.sub(r"[®™©]", "", text)
+    return _strip_trademark_punct(text)
 
 
 def row_text(row: dict[str, str]) -> str:
-    return re.sub(
-        r"[®™©]",
-        "",
+    return _strip_trademark_punct(
         " ".join(
             filter(
                 None,
@@ -274,7 +279,7 @@ def matches(row: dict[str, str], matcher: ProductMatcher) -> bool:
             None,
             [
                 text,
-                re.sub(r"[®™©]", "", (row.get("package_text") or "").lower()),
+                _strip_trademark_punct((row.get("package_text") or "").lower()),
             ],
         )
     )

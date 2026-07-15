@@ -50,8 +50,21 @@ CANONICAL_PACKAGES: dict[str, CanonicalPackageMeta] = {
     "chobani_greek_yogurt": CanonicalPackageMeta(
         "chobani_greek_yogurt", 32, "oz", "oz", "oz", "dairy",
         (r"chobani.*greek", r"chobani.*yogurt",),
-        (r"drink|complete|flip|20g protein drink",),
+        (r"drink|complete|flip|20g protein drink|5\.3|6\.7|variety|count|/\s*\d+\s*oz",),
         (r"plain greek", r"40\s*oz|48\s*oz|32\s*oz"),
+    ),
+    "chobani_yogurt_tub": CanonicalPackageMeta(
+        "chobani_yogurt_tub", 32, "oz", "oz", "oz", "dairy",
+        (r"chobani.*greek", r"chobani.*yogurt",),
+        (r"drink|complete|flip|20g protein drink|5\.3|6\.7|variety|count|/\s*\d+\s*oz",),
+        (r"plain greek", r"40\s*oz|48\s*oz|32\s*oz"),
+    ),
+    "chobani_yogurt_per_cup": CanonicalPackageMeta(
+        # Per-cup family: grocery shelf is $/cup; Costco multipacks compare as count→each.
+        "chobani_yogurt_per_cup", 1, "each", "each", "each", "dairy",
+        (r"chobani",),
+        (r"drink|complete|32\s*oz|40\s*oz|48\s*oz|\btub\b",),
+        (r"5\.3", r"6\.7", r"4(?:\s*-)?pack|4\s*pk|4\s*ct", r"20\s*count|variety|/\s*5\.3"),
     ),
     "cheerios": CanonicalPackageMeta(
         "cheerios", 8.9, "oz", "oz", "oz", "cereal",

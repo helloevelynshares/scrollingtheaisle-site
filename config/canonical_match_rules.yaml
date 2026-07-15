@@ -451,6 +451,42 @@ families:
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
 
+  lays_kettle_cooked:
+    canonical_intent: kettle_cooked
+    allowed_product_types:
+      - kettle_cooked
+      - regular_chip_bag
+    disallowed_product_types:
+      - party_size
+    positive_keywords:
+      - kettle
+    negative_keywords:
+      - party size
+      - family size
+      - kettle brand
+      - stax
+    min_confidence: 0.6
+    atl_requires_confidence: 0.8
+    large_price_change_pct: 40
+
+  popcorners:
+    canonical_intent: regular_chip_bag
+    allowed_product_types:
+      - regular_chip_bag
+      - popcorners
+    disallowed_product_types:
+      - party_size
+    positive_keywords:
+      - popcorners
+      - pop corners
+    negative_keywords:
+      - party size
+      - multipack
+      - variety pack
+    min_confidence: 0.6
+    atl_requires_confidence: 0.8
+    large_price_change_pct: 40
+
   # Regular Goldfish bags only (≈4–8 oz). Large tubs/cartons (e.g. 30 oz @
   # $7.99 on Safeway 2026-05-06) must never update this tracker family.
   goldfish_bags:

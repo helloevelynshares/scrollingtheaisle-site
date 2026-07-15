@@ -210,13 +210,15 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     ),
     # Chips
     "party_size": (r"party\s+size",),
-    "kettle_cooked": (r"kettle\s+cooked",),
+    "kettle_cooked": (r"kettle\s+cooked", r"lay'?s\s+kettle"),
+    "popcorners": (r"pop\s*corners?",),
     "regular_chip_bag": (
         r"lay'?s",
         r"doritos",
         r"cheetos",
         r"ruffles",
         r"tostitos",
+        r"pop\s*corners?",
     ),
 }
 

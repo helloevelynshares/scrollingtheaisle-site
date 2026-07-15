@@ -3536,5 +3536,497 @@ export const COSTCO_PRICE_HISTORY: Record<
         "itemNumber": "1841371"
       }
     ]
+  },
+  "chobani_yogurt_tub": {
+    "san_francisco": [
+      {
+        "date": "2026-05-24",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-05-24_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-04",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-03_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-11",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-11_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-19",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-18_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-23",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-23_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-24",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-24_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-02",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-01_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-08",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-08_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-12",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-12_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
+      }
+    ]
+  },
+  "chobani_yogurt_per_cup": {
+    "san_francisco": [
+      {
+        "date": "2026-06-19",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "low stock",
+        "sourceFile": "2026-06-18_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-23",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-06-23_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-24",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-06-24_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-02",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-01_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-08",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-08_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-12",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "low stock",
+        "sourceFile": "2026-07-12_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      }
+    ],
+    "tustin": [
+      {
+        "date": "2026-06-19",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-18_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-24",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-24_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-02",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-01_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-08",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-08_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-12",
+        "region": "tustin",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK STYLE YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-12_tustin_consolidated.csv",
+        "itemNumber": "1005641"
+      }
+    ],
+    "seattle": [
+      {
+        "date": "2026-03-30",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-03-30_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-03-31",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "low stock",
+        "sourceFile": "2026-03-31_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-02",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "low stock",
+        "sourceFile": "2026-04-01_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-03",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-02_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-04",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-03_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-05",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "low stock",
+        "sourceFile": "2026-04-05_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-07",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "low stock",
+        "sourceFile": "2026-04-06_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-12",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-12_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-16",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-15_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-22",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-21_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-04-26",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-04-25_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-05-03",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-05-03_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-05-24",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-05-24_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-06-04",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-03_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-06-11",
+        "region": "seattle",
+        "price": 18.99,
+        "unitPrice": 1.1869,
+        "packageDescription": "CHOBANI 20G PROTEIN VARIETY 16/6.7 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-11_seattle_consolidated.csv",
+        "itemNumber": "1920008"
+      },
+      {
+        "date": "2026-06-19",
+        "region": "seattle",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-18_seattle_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "seattle",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_seattle_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "seattle",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI NON-FAT GREEK YOGURT 20/5.3 OZ",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
+        "itemNumber": "1005641"
+      }
+    ]
   }
 };

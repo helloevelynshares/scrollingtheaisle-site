@@ -570,6 +570,38 @@ How to verify: `doritos_5_13oz["2026-07-15"].price === 2.49` in `weeklyAdPrices.
 Prevention: After each import run `/usr/bin/python3 scripts/audit_weekly_ad_import.py --week-start YYYY-MM-DD` (also auto-runs at end of `import_weekly_ad.py`). It lists crop first-pass→final price raises (bleed risk) and tracked week-over-week worsens. Dedicated raw cards still showed `original 2.49 → verified 5.99` for this tile.  
 Related files: `scripts/audit_weekly_ad_import.py`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`, flyer `safeway 7-15 - 7-21.pdf` p1
 
+### Goldfish Jul 15 $2.49 was Ritz price bleed (real tile $1.99)
+
+Date discovered: 2026-07-15  
+Context: Safeway Jul 15–21 page-3 clip-or-CLICK grid. Real tile: **Pepperidge Farm Goldfish Crackers or Crisps 4 to 8-oz @ $1.99 ea** Member Price. Neighbor below: Ritz / Cheez-It @ **$2.49**.  
+What happened: Vision extracted Goldfish as `6.1-8 oz @ $2.49` (same price as Ritz; size also drifted). Crop PNG for offer 12 cut the price text; first-pass + crop verify still agreed on $2.49. Tracker correctly matched that wrong row → chart showed $2.49.  
+Fix / workaround: Manually correct dedicated + consolidated `split_offer_items.csv` (and dedicated `raw_offer_cards.csv`) to $1.99 / 4 to 8-oz / clip-or-CLICK, then `python3 scripts/generate_weekly_ad_prices.py --product-ids goldfish_bags --feed safeway`.  
+How to verify: `goldfish_bags["2026-07-15"].price === 1.99`; offerText includes Pepperidge Farm / 4 to 8-oz; promoNote mentions clip or CLICK. Confirm on flyer PDF page 3.  
+Related files: `~/Documents/scrolling-the-aisle/outputs/product_discovery_safeway/split_offer_items.csv`, `.../product_discovery_safeway_safeway_7-15_-_7-21/`, `src/data/weeklyAdPrices.generated.ts`, `safeway 7-15 - 7-21.pdf` p3
+
+### Chips Ahoy Jul 15 missed because of bang in "Chips Ahoy!"
+
+Date discovered: 2026-07-15  
+Context: Safeway Jul 15–21 page-5 tile **Nabisco Chips Ahoy! Cookies 9.5 to 13-oz @ $2.49 ea** (Member Price; must buy multiples of 2 / Mix & Match Nabisco). Extraction was correct; tracker showed baseline only.  
+What happened: YAML include phrases are `Chips Ahoy cookies` → regex requires whitespace between `ahoy` and `cookies`. Ad copy prints **`Chips Ahoy!`**, so `matches()` failed (0 include hits) even though eligibility/taxonomy already understood `chips_ahoy`.  
+Fix / workaround: Strip trademark-style `!` alongside `®™©` in `split_text` / `row_text` (`_strip_trademark_punct` in `generate_weekly_ad_prices.py`). Rematch: `python3 scripts/generate_weekly_ad_prices.py --product-ids chips_ahoy --feed safeway`.  
+How to verify: `chips_ahoy["2026-07-15"].price === 2.49`; `PYTHONPATH=scripts python3 -m unittest tests.test_split_text_trademark -v`.  
+Related files: `scripts/generate_weekly_ad_prices.py`, `tests/test_split_text_trademark.py`, `src/data/weeklyAdPrices.generated.ts`, `data/canonical_tracker_families.yaml` (`chips_ahoy`)
+
+### Lay's / Lay's Kettle Jul 15 missed: unsplit Mix & Match + abbreviated names
+
+Date discovered: 2026-07-15  
+Context: Safeway Jul 15–21 page-1 clip-or-CLICK Mix & Match: **Lay's, Lay's Kettle, PopCorners or Doritos 5–10.75 oz @ $2.49** (same tile Doritos was price-bleed–corrected earlier). Tracker showed baseline for Lay's regular + Lay's Kettle.  
+What happened: Row stayed `group_not_split` with abbreviated flyer names. Doritos matched via bare `\bdoritos\b`. Lay's regular includes require **Lay's potato chips** / flavor names (not bare `Lay's`). Lay's Kettle includes required **Lay's Kettle Cooked …** (ads say `Lay's Kettle` or `Kettle Cooked Chips`). So `matches()` returned 0 include hits.  
+Fix / workaround:
+1. Split sibling rows in consolidated + dedicated `split_offer_items.csv` (`raw_offer_id=a995d9904a92`): Lay's Potato Chips / Lay's Kettle Cooked Chips / PopCorners / Doritos @ $2.49.
+2. YAML: broaden `lays_kettle_cooked` includes (`Lay's Kettle`, `Kettle Cooked Chips`, etc.); add `Lay's Kettle` to regular Lay's `keep_separate_from`; add new family `popcorners`.
+3. Eligibility/taxonomy: kettle + popcorners rules; `lay's kettle` → `kettle_cooked` type.
+4. Rematch: `PYTHONPATH=scripts python3 scripts/generate_weekly_ad_prices.py --product-ids lays_potato_chips_regular,lays_kettle_cooked,popcorners,doritos_5_13oz --feed safeway` (+ `--feed vons` for new family scaffold).
+5. PopCorners Safeway baseline: estimate **$4.29** (same-aisle Lay's/Doritos shelf anchor) until a crawl with fresh `SAFEWAY_COOKIE`.
+How to verify: `lays_potato_chips_regular` / `lays_kettle_cooked` / `popcorners` / `doritos_5_13oz` all have `["2026-07-15"].price === 2.49`. PopCorners also picks Safeway 2026-06-17 PopCorners split @ $2.49.  
+Related files: sibling `split_offer_items.csv`, `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `src/data/priceTrackerFallback.ts`, `src/data/weeklyAdPrices.generated.ts`
+
 ### Post-import QA: crop overrides + WoW worsens
 
 Date discovered: 2026-07-14  
@@ -965,6 +997,19 @@ Fix / workaround (applies to **all** tracker families, not just Goldfish):
 How to verify: hover Goldfish 6/24 → ~$2 + BOGO note; `PYTHONPATH=scripts python3 -m unittest tests.test_normalization.TestNormalization.test_bogo_without_advertised_price_uses_baseline_reference tests.test_canonical_match_eligibility.TestGoldfishBagsVsTubs -v`.  
 Re-apply across families: `python3 scripts/generate_weekly_ad_prices.py --product-ids <id1,id2,...>` (or full rematch). Prefer printed `advertised_price` when the ad has one (B2G3F $5.49 path unchanged).  
 Related files: `scripts/price_tracker/normalization.py`, `scripts/generate_weekly_ad_prices.py` (`load_feed_baselines`), `scripts/price_tracker/canonical_match_eligibility.py`, `src/data/weeklyAdPrices.generated.ts`
+
+### Chobani cups vs 32 oz tub must be separate tracker families
+
+Date discovered: 2026-07-14  
+Context: Price tracker showed `chobani_yogurt_per_cup` with subtitle “normalize per cup”, but the shelf baseline was the legacy 32 oz tub ($7.99) because `chobani_greek_yogurt` mapped into the cups family.  
+What happened: Off-sale weeks charted ~$7.99 (tub) next to sale weeks at ~$1/cup — clearly not normalized. YAML already said keep cups separate from tubs; legacy remap + baseline inheritance undid that.  
+Fix / workaround:
+1. New YAML family `chobani_yogurt_tub` (32 oz only). Remap legacy `chobani_greek_yogurt` → `chobani_yogurt_tub` (not cups).
+2. Cups family (`chobani_yogurt_per_cup`) only matches single cups / 4-packs; normalize per cup. Exclude tubs and multi-brand Mix tiles (Simply Juice, Frigo, Oikos, etc.).
+3. User-confirmed shelf anchors: regular Greek single cup **$1.99**; 20g protein 4-pack **$9.99** ($2.50/cup); 32 oz tub **$7.99**. Store cup/tub baselines under quoted keys in `SAFEWAY_BASELINES` so `load_feed_baselines` parses them (regex only matches `"id": { price:`).
+4. Costco: cups → 20-ct 5.3 oz (#1005641) compared as each/cup; tubs → 40 oz (#2059712). `parse_item_sign(..., target_unit="each")` treats `20 COUNT 5.3 OZ` / `20/5.3 OZ` as 20 each.  
+How to verify: Cups chart baseline ~$1.99 with sale weeks ≤$1.25; tub chart baseline $7.99 and never inherits cup deals; `LEGACY_CANONICAL_TO_FAMILY["chobani_greek_yogurt"] == "chobani_yogurt_tub"`.  
+Related files: `data/canonical_tracker_families.yaml`, `scripts/price_tracker/canonical_families.py`, `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`, `config/costco_item_mappings.csv`, `scripts/price_comparison/unit_normalize.py`, `scripts/price_comparison/canonical_metadata.py`
 
 ## Content-first Analysis Mode
 

@@ -436,11 +436,27 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "FL.OZ"
   },
   "chobani_greek_yogurt": {
-    "baselinePrice": 6.99,
-    "baselineSource": "Vons search result CSV (rank 1)",
+    "baselinePrice": 7.99,
+    "baselineSource": "User-confirmed shelf (32 oz tub)",
     "retailerProductId": "960055227",
     "upc": "0089470001014",
-    "retailerProductName": "Chobani Non-Fat Vanilla Blended Greek Yogurt - 32 Oz",
+    "retailerProductName": "Chobani Non-Fat Plain Greek Yogurt - 32 Oz",
+    "size": "OUNCE"
+  },
+  "chobani_yogurt_per_cup": {
+    "baselinePrice": 1.99,
+    "baselineSource": "User-confirmed shelf (regular Greek single cup)",
+    "retailerProductId": null,
+    "upc": null,
+    "retailerProductName": "Chobani Greek Yogurt 5.3 oz cup",
+    "size": "OUNCE"
+  },
+  "chobani_yogurt_tub": {
+    "baselinePrice": 7.99,
+    "baselineSource": "User-confirmed shelf (32 oz tub)",
+    "retailerProductId": "960055227",
+    "upc": "0089470001014",
+    "retailerProductName": "Chobani Non-Fat Plain Greek Yogurt - 32 Oz",
     "size": "OUNCE"
   },
   "cheerios": {

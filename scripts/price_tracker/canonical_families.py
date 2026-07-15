@@ -46,7 +46,7 @@ LEGACY_CANONICAL_TO_FAMILY: dict[str, str] = {
     "doritos_nacho_cheese": "doritos_5_13oz",
     "cheetos_crunchy": "cheetos_regular_bags",
     "coke_zero": "coca_cola_12packs",
-    "chobani_greek_yogurt": "chobani_yogurt_per_cup",
+    "chobani_greek_yogurt": "chobani_yogurt_tub",
     "cheerios": "general_mills_cereal_regular",
     "tillamook_ice_cream": "tillamook_ice_cream",
     "mission_tortilla_chips": "tostitos_tortilla_chips",

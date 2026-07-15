@@ -94,10 +94,11 @@ families:
   - Lay's Cheddar & Sour Cream
   keep_separate_from:
   - Lay's Kettle Cooked
+  - Lay's Kettle
   - Lay's Stax
   - Lay's Party Size
   - Simply Lay's
-  notes: ''
+  notes: 'Flyers often abbreviate siblings as Lay''s Kettle (no Cooked); keep_separate covers that.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -105,7 +106,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_kettle_cooked
   canonical_tracker_family: Lay's Kettle Cooked chips
-  size_format_subtitle: regular size, 7.75 oz
+  size_format_subtitle: regular size, 7.75–8 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -114,15 +115,40 @@ families:
   - Lay's Kettle Cooked BBQ
   - Lay's Kettle Cooked Sea Salt & Vinegar
   - Lay's Kettle Cooked Cajun Spiced
+  - Lay's Kettle Cooked
+  - Lay's Kettle
+  - Kettle Cooked Potato Chips
+  - Kettle Cooked Chips
   keep_separate_from:
   - regular Lay's potato chips
   - Kettle Brand chips
   - Simply Lay's
-  notes: ''
+  - Party Size
+  - Family Size
+  notes: 'Ads often print Lay''s Kettle or Kettle Cooked Chips without the full brand+line name.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
   display_order: 5
+  homepage_group: snacks_and_crackers
+- id: popcorners
+  canonical_tracker_family: PopCorners
+  size_format_subtitle: regular size, 5–10.75 oz
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - PopCorners
+  - Popcorners
+  - Pop Corners
+  keep_separate_from:
+  - Party Size
+  - multipacks
+  - variety packs
+  notes: 'Frito-Lay popped corn chip; often Mix & Match with Lay''s / Doritos in Safeway ads.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 13
   homepage_group: snacks_and_crackers
 - id: lays_party_size
   canonical_tracker_family: Lay's Party Size
@@ -1078,27 +1104,67 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: chobani_yogurt_per_cup
   canonical_tracker_family: Chobani yogurt
+  display_name: Chobani yogurt cups
   size_format_subtitle: single cups or 4-packs; normalize per cup
   category: yogurt
   organic_status: not_applicable
   include:
-  - Chobani 5.3 oz cups
-  - Chobani Greek yogurt cups
-  - Chobani Less Sugar cups
-  - Chobani Zero Sugar cups
-  - Chobani 4-packs
+  - Chobani yogurt
+  - Chobani 5.3 oz
+  - Chobani Greek yogurt
+  - Chobani Greek
+  - Chobani Less Sugar
+  - Chobani Zero Sugar
+  - Less Sugar Yogurt
+  - Zero Sugar Yogurt
+  - Chobani 20g protein
+  - Chobani 4-pack
+  - Chobani 4 ct
   keep_separate_from:
-  - Chobani 32 oz tubs
+  - Chobani 32 oz
+  - Chobani tub
+  - 32 oz tub
   - Fage cups
   - Fage tubs
   - Oikos
   - Yoplait
   - Go-Gurt
-  notes: Merge Chobani single cups and 4-packs. Normalize price per cup and retain actual count/size in details.
+  - Simply Juice
+  - Frigo CheeseHeads
+  - Challenge Butter
+  - Danone Light
+  notes: >
+    Cups only — never 32 oz tubs (tracked as chobani_yogurt_tub).
+    Merge single cups and 4-packs; normalize to $/cup.
+    Shelf anchors: regular Greek single cup $1.99; 20g protein 4-pack $9.99 ($2.50/cup).
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
   display_order: 48
+  homepage_group: dairy_breakfast_bakery
+- id: chobani_yogurt_tub
+  canonical_tracker_family: Chobani yogurt tub
+  display_name: Chobani yogurt tub
+  size_format_subtitle: 32 oz tub
+  category: yogurt
+  organic_status: not_applicable
+  include:
+  - Chobani 32 oz
+  - Chobani Greek yogurt tub
+  keep_separate_from:
+  - Chobani 5.3 oz
+  - Chobani 4-pack
+  - Chobani 4 ct
+  - Chobani cups
+  - Fage
+  - Oikos
+  notes: >
+    32 oz tubs only — never single cups or 4-packs (tracked as chobani_yogurt_per_cup).
+    Cannot normalize to per-cup. Shelf baseline $7.99.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 49
   homepage_group: dairy_breakfast_bakery
 - id: fage_cups
   canonical_tracker_family: Fage Greek yogurt cups
@@ -1117,7 +1183,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 49
+  display_order: 50
   homepage_group: dairy_breakfast_bakery
 - id: fage_tub
   canonical_tracker_family: Fage Greek yogurt tub
@@ -1135,7 +1201,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 50
+  display_order: 51
   homepage_group: dairy_breakfast_bakery
 - id: lucerne_yogurt_tubs
   canonical_tracker_family: Lucerne yogurt tubs
@@ -1153,7 +1219,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 51
+  display_order: 52
   homepage_group: dairy_breakfast_bakery
 - id: nature_valley_bars
   canonical_tracker_family: Nature Valley bars
@@ -1174,7 +1240,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 52
+  display_order: 53
   homepage_group: dairy_breakfast_bakery
 - id: general_mills_cereal_regular
   canonical_tracker_family: General Mills cereal
@@ -1199,7 +1265,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 53
+  display_order: 54
   homepage_group: dairy_breakfast_bakery
 - id: general_mills_cereal_family_size
   canonical_tracker_family: General Mills cereal (family size)
@@ -1218,7 +1284,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 54
+  display_order: 55
   homepage_group: dairy_breakfast_bakery
 - id: post_cereal_regular
   canonical_tracker_family: Post cereal
@@ -1238,7 +1304,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 55
+  display_order: 56
   homepage_group: dairy_breakfast_bakery
 - id: post_cereal_giant_size
   canonical_tracker_family: Post cereal (giant size)
@@ -1256,7 +1322,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 56
+  display_order: 57
   homepage_group: dairy_breakfast_bakery
 - id: thomas_bagels_muffins_bread
   canonical_tracker_family: Thomas bagels / English muffins / swirl bread
@@ -1276,7 +1342,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 57
+  display_order: 58
   homepage_group: dairy_breakfast_bakery
 - id: kings_hawaiian_rolls
   canonical_tracker_family: King's Hawaiian rolls
@@ -1295,7 +1361,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 58
+  display_order: 59
   homepage_group: dairy_breakfast_bakery
 - id: pillsbury_refrigerated_dough
   canonical_tracker_family: Pillsbury ready-to-bake dough
@@ -1315,7 +1381,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 59
+  display_order: 60
   homepage_group: dairy_breakfast_bakery
 - category: snacks
   organic_status: not_applicable
@@ -1336,7 +1402,7 @@ families:
   - KIND bars
   - generic protein bars
   notes: Track Quest separately rather than using a broad protein-bar bucket.
-  display_order: 60
+  display_order: 61
   homepage_group: dairy_breakfast_bakery
 - category: snacks
   organic_status: not_applicable
@@ -1361,7 +1427,7 @@ families:
   - Luna Bars
   notes: Track Clif separately rather than using a broad protein-bar bucket.
     Chart prices are per bar so a $14.99 12-pack shows as ~$1.25, not pack total.
-  display_order: 61
+  display_order: 62
   homepage_group: dairy_breakfast_bakery
 - category: meat
   organic_status: not_applicable
@@ -1384,7 +1450,7 @@ families:
   - cooked chicken
   - organic chicken unless intentionally grouped
   notes: Separate from thighs because breast and thigh prices commonly differ.
-  display_order: 62
+  display_order: 63
   homepage_group: meat_and_seafood
 - category: meat
   organic_status: not_applicable
@@ -1405,7 +1471,7 @@ families:
   - cooked chicken
   - organic chicken unless intentionally grouped
   notes: Separate from breast because breast and thigh prices commonly differ. Preserve bone-in/boneless detail in offer metadata.
-  display_order: 63
+  display_order: 64
   homepage_group: meat_and_seafood
 - id: ribeye_steak
   canonical_tracker_family: Ribeye steak
@@ -1424,7 +1490,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 64
+  display_order: 66
   homepage_group: meat_and_seafood
 - id: tri_tip_roast
   canonical_tracker_family: Tri-tip roast
@@ -1442,7 +1508,7 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 65
+  display_order: 67
   homepage_group: meat_and_seafood
 - id: salmon
   canonical_tracker_family: Salmon
@@ -1486,5 +1552,5 @@ families:
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 66
+  display_order: 68
   homepage_group: meat_and_seafood

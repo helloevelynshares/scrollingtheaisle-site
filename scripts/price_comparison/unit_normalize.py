@@ -87,6 +87,9 @@ def parse_item_sign(item_sign: str, target_unit: str | None = None) -> ParsedPac
         count = float(m.group(1))
         size = float(m.group(2))
         unit = _normalize_unit(m.group(3))
+        if target_unit in {"each", "cup", "bar"}:
+            unit = "bar" if target_unit == "bar" else "each"
+            return ParsedPackage(text, count, unit, unit, "high")
         return ParsedPackage(text, count * size, unit, unit, "high")
 
     m = TWO_PACK_RE.search(lower)
@@ -106,13 +109,17 @@ def parse_item_sign(item_sign: str, target_unit: str | None = None) -> ParsedPac
         count = float(bar_match.group(1))
         return ParsedPackage(text, count, "bar", "bar", "high")
 
-    # Multipack single-serve bags: "54 PACK 1 OUNCE EA", "30 COUNT 1.75 OUNCE EACH"
+    # Multipack single-serve: "54 PACK 1 OUNCE EA", "20 COUNT 5.3 OUNCES EA".
+    # When comparing per cup/each (yogurt cups, etc.), treat count as unit count.
     multipack_bag = re.search(
         r"(\d+)\s*(?:pack|count|ct)\s*(\d+(?:\.\d+)?)\s*(?:oz|ounce)\s*(?:ea|each)?",
         lower,
     )
     if multipack_bag:
         count = float(multipack_bag.group(1))
+        if target_unit in {"each", "cup", "bar"}:
+            unit = "bar" if target_unit == "bar" else "each"
+            return ParsedPackage(text, count, unit, unit, "high")
         return ParsedPackage(text, count, "bag", "bag", "high")
 
     serve_each = re.search(
@@ -121,6 +128,8 @@ def parse_item_sign(item_sign: str, target_unit: str | None = None) -> ParsedPac
     )
     if serve_each and any(word in lower for word in ("variety", "mix", "multipack", "snack pack")):
         count = float(serve_each.group(1))
+        if target_unit in {"each", "cup"}:
+            return ParsedPackage(text, count, "each", "each", "medium")
         return ParsedPackage(text, count, "bag", "bag", "medium")
 
     count_only = COUNT_RE.search(lower)

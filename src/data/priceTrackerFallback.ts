@@ -142,6 +142,11 @@ export const SAFEWAY_BASELINES: Record<
     source: "Safeway search result CSV",
     retailerProductName: "Lays Potato Chips Classic - 8 Oz",
   },
+  "popcorners": {
+    price: 4.29,
+    source: "Estimate anchored to same-aisle Lay's / Doritos regular bag shelf (~$4.29); Safeway baseline crawl not refreshed for this add",
+    retailerProductName: "PopCorners (regular bag, ~5–10.75 oz)",
+  },
   "lucerne_cream_cheese": {
     price: 3.99,
     source: "Safeway search result CSV",
@@ -292,10 +297,20 @@ export const SAFEWAY_BASELINES: Record<
     source: "Safeway search result CSV",
     retailerProductName: "Coca-Cola Zero Sugar Soda",
   },
-  chobani_greek_yogurt: {
+  "chobani_greek_yogurt": {
     price: 7.99,
-    source: "Safeway search result CSV",
-    retailerProductName: "Chobani Non-Fat Plain Greek Yogurt",
+    source: "User-confirmed shelf (32 oz tub)",
+    retailerProductName: "Chobani Non-Fat Plain Greek Yogurt - 32 Oz",
+  },
+  "chobani_yogurt_per_cup": {
+    price: 1.99,
+    source: "User-confirmed shelf (regular Greek single cup)",
+    retailerProductName: "Chobani Greek Yogurt 5.3 oz cup",
+  },
+  "chobani_yogurt_tub": {
+    price: 7.99,
+    source: "User-confirmed shelf (32 oz tub)",
+    retailerProductName: "Chobani Non-Fat Plain Greek Yogurt - 32 Oz",
   },
   cheerios: {
     price: 6.99,

@@ -5,8 +5,12 @@ doritos_nacho_cheese,san_francisco,2014409,legacy NKD 30 oz (2026-03 chips crawl
 doritos_nacho_cheese,san_francisco,933402,current SF consolidated 30 oz
 doritos_nacho_cheese,tustin,933402,1.875 lb Tustin warehouse, different SKU than SF
 cheetos_crunchy,,316780,28 oz
-chobani_greek_yogurt,san_francisco,2059712,40 oz plain Greek SF
-chobani_greek_yogurt,tustin,1920008,16-pack 6.7 oz Tustin, different format than SF
+chobani_greek_yogurt,san_francisco,2059712,40 oz plain Greek SF (tub; legacy id for chobani_yogurt_tub)
+chobani_greek_yogurt,tustin,1415774,40 oz vanilla Greek when available; prefer tub over 16-pack cups
+chobani_yogurt_tub,san_francisco,2059712,40 oz plain Greek SF tub
+chobani_yogurt_tub,tustin,1415774,40 oz vanilla Greek tub when available at Tustin
+chobani_yogurt_per_cup,san_francisco,1005641,20-count 5.3 oz variety; normalize Costco pack to per cup
+chobani_yogurt_per_cup,tustin,1005641,20-count 5.3 oz variety; normalize Costco pack to per cup
 cheerios,,522107,2-pack ~40 oz
 fage_greek_yogurt,,824383,48 oz nonfat
 frito_lay_multipack_chips,,188140,30 count classic mix

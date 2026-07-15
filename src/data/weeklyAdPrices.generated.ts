@@ -566,46 +566,46 @@ export const WEEKLY_AD_PRICES: Record<
   },
   "chobani_yogurt_per_cup": {
     "2026-03-25": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.99,
+      "offerText": "Chobani Greek, Less Sugar",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Member Price; Earn 4X Points"
     },
     "2026-04-01": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.99,
+      "offerText": "Chobani Greek Yogurt. Selected varieties.",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "4X Points. Member Price"
     },
     "2026-05-06": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.89,
+      "offerText": "Chobani Greek, Less Sugar Yogurt 5.3-oz. 89\u00a2 MEMBER PRICE clip",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE clip or CLICK!"
     },
     "2026-05-12": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.99,
+      "offerText": "Chobani Greek Yogurt",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Member Price"
     },
     "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.87,
+      "offerText": "Chobani Zero Sugar Yogurt",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Earn 4X Points!"
     },
     "2026-06-10": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.99,
+      "offerText": "Chobani Greek Yogurt",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "Member Price Earn 4X Points"
     },
     "2026-06-17": {
       "price": null,
@@ -615,11 +615,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-24": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 0.89,
+      "offerText": "Chobani Greek, Less Sugar Yogurt 5.3 oz",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE"
     },
     "2026-07-01": {
       "price": null,
@@ -636,11 +636,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-15": {
-      "price": 1.25,
-      "offerText": "Chobani Yogurt 5.3 oz. Selected varieties.",
+      "price": 1.0,
+      "offerText": "Chobani Greek, Less Sugar",
       "confidence": "medium",
       "availabilityType": "full_week",
-      "promoNote": "4/$5 Member Price; Earn 4X Points"
+      "promoNote": "MEMBER PRICE"
     }
   },
   "berries_6oz": {
@@ -1268,11 +1268,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-15": {
-      "price": 2.49,
-      "offerText": "Goldfish Crackers Selected varieties",
-      "confidence": "high",
+      "price": 1.99,
+      "offerText": "Pepperidge Farm Goldfish Crackers or Crisps 4 to 8-oz. Selected varieties.",
+      "confidence": "medium",
       "availabilityType": "full_week",
-      "promoNote": "Member Price"
+      "promoNote": "Member Price; clip or CLICK!"
     }
   },
   "tillamook_ice_cream": {
@@ -3164,11 +3164,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-15": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.49,
+      "offerText": "Lay's Potato Chips",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE Mix & MATCH clip or CLICK! Limit 4 items."
     }
   },
   "sweet_corn": {
@@ -3789,18 +3789,18 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-08": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 3.49,
+      "offerText": "Nabisco Chips Ahoy! Cookies 7-13 oz. Selected varieties.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "When you buy 2 or more Member Price Single item 3.99"
     },
     "2026-07-15": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.49,
+      "offerText": "Nabisco Chips Ahoy! Cookies 9.5 to 13-oz. Selected varieties.",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "With Member Price. Must buy in multiples of 2. Mix & Match Nabisco snack group."
     }
   },
   "nature_valley_bars": {
@@ -4034,8 +4034,8 @@ export const WEEKLY_AD_PRICES: Record<
     },
     "2026-07-15": {
       "price": 2.49,
-      "offerText": "Lay's, Lay's Kettle, PopCorners or Doritos 5 to 10.75-oz. Selected varieties.",
-      "confidence": "medium",
+      "offerText": "Doritos",
+      "confidence": "high",
       "availabilityType": "full_week",
       "promoNote": "MEMBER PRICE Mix & MATCH clip or CLICK! Limit 4 items."
     }
@@ -4465,11 +4465,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-03": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.15,
+      "offerText": "Kettle Cooked Potato Chips 7.75-8 oz.",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "4X POINTS BUY 1 GET 1 FREE"
     },
     "2026-06-10": {
       "price": null,
@@ -4479,11 +4479,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-06-17": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.15,
+      "offerText": "Kettle Cooked Chips",
+      "confidence": "medium",
+      "availabilityType": "full_week",
+      "promoNote": "BUY 1 GET 1 FREE Member Price; Earn 4X Points"
     },
     "2026-06-24": {
       "price": null,
@@ -4507,11 +4507,11 @@ export const WEEKLY_AD_PRICES: Record<
       "promoNote": null
     },
     "2026-07-15": {
-      "price": null,
-      "offerText": null,
-      "confidence": null,
-      "availabilityType": null,
-      "promoNote": null
+      "price": 2.49,
+      "offerText": "Lay's Kettle Cooked Chips",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE Mix & MATCH clip or CLICK! Limit 4 items."
     }
   },
   "strawberries_1_2lb": {
@@ -5302,6 +5302,164 @@ export const WEEKLY_AD_PRICES: Record<
       "confidence": null,
       "availabilityType": null,
       "promoNote": null
+    }
+  },
+  "chobani_yogurt_tub": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-15": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    }
+  },
+  "popcorners": {
+    "2026-03-25": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-04-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-06": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-05-12": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-03": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-10": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-06-17": {
+      "price": 2.49,
+      "offerText": "PopCorners",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE; Earn 4X Points"
+    },
+    "2026-06-24": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-01": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-08": {
+      "price": null,
+      "offerText": null,
+      "confidence": null,
+      "availabilityType": null,
+      "promoNote": null
+    },
+    "2026-07-15": {
+      "price": 2.49,
+      "offerText": "PopCorners",
+      "confidence": "high",
+      "availabilityType": "full_week",
+      "promoNote": "MEMBER PRICE Mix & MATCH clip or CLICK! Limit 4 items."
     }
   }
 };

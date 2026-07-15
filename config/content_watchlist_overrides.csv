@@ -4,7 +4,9 @@ avocados,,all,true,high,5,5,produce staple,true,true,Category-first Hass avocado
 doritos_nacho_cheese,,all,true,high,4,4,party chips / flavor variety,true,true,Represents party chips category
 cheetos_crunchy,,all,true,high,4,4,party chips,true,true,Frito-Lay chip family
 coke_zero,,all,true,medium,4,3,soda 12-pack comparison,true,true,12-pack soda, size matching can be fuzzy
-chobani_greek_yogurt,,all,true,high,4,3,Greek yogurt tubs vs cups,true,true,Prefer tub matches; flag cup-only deals
+chobani_greek_yogurt,,all,true,high,4,3,Greek yogurt tubs only (cups are chobani_yogurt_per_cup),true,true,Prefer 32 oz tub matches; never cups or 4-packs
+chobani_yogurt_tub,,all,true,high,4,3,Greek yogurt tubs,true,true,Prefer 32 oz tub matches; never cups or 4-packs
+chobani_yogurt_per_cup,,all,true,high,4,3,Greek yogurt cups and 4-packs only,true,true,Prefer cups/4-packs; never 32 oz tubs; normalize per cup
 cheerios,,all,true,medium,4,4,cereal stock-up,true,true,Plain Cheerios anchor for cereal category
 tillamook_ice_cream,,all,true,high,4,4,premium ice cream pint,true,true,Regional brand ice cream
 mission_tortilla_chips,,all,true,medium,3,4,tortilla chips,true,true,Tortilla chip category
