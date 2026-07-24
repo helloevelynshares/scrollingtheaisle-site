@@ -1,51 +1,88 @@
 week: "2026-07-22"
 stores:
   # Editorial/content shortlist only. NOT canonical tracker graph data.
+  # Curated from Evelyn's Safeway Jul 22 video script (order ≈ video emphasis).
   # Only link tracker_family_ids when a clean canonical family already exists;
   # otherwise leave empty so the card renders as pure editorial copy.
+  # Do not mention Costco in handpicked summary copy; skip fresh/smoked salmon.
   safeway:
-    - title: Seedless grapes
-      tracker_family_ids: [seedless_grapes_per_lb]
-      badge: PRODUCE
-      subtitle: "$1.99/lb — strong sale vs recent Safeway ad history."
-      reason: "$1.99/lb — strong sale vs recent Safeway ad history."
-      price: "$1.99/lb"
+    - title: Blueberries
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday large pack $5 — the standout $5 Friday berry this week."
+      reason: "Friday large pack $5 — the standout $5 Friday berry this week."
+      price: "$5"
       display_order: 1
+    - title: Strawberries
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday large pack $5 — easy berry add-on alongside the blueberries."
+      reason: "Friday large pack $5 — easy berry add-on alongside the blueberries."
+      price: "$5"
+      display_order: 2
+    - title: Waterloo sparkling water
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
+      reason: "Friday $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
+      price: "$5"
+      display_order: 3
+    - title: Cape Cod / Sun Chips
+      tracker_family_ids: [sun_chips_7oz]
+      badge: FRIDAY
+      subtitle: "Friday only — Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from."
+      reason: "Friday only — Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from."
+      price: "2/$5"
+      display_order: 4
+    - title: Chobani yogurt cups
+      tracker_family_ids: [chobani_yogurt_per_cup]
+      badge: DEAL
+      subtitle: "4-pack $3.49 (~$0.87/cup) — mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch)."
+      reason: "4-pack $3.49 (~$0.87/cup) — mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch)."
+      price: "$3.49"
+      display_order: 5
     - title: Hass avocados
       tracker_family_ids: [hass_avocados_each]
       badge: PRODUCE
       subtitle: "4 for $5 ($1.25 each) — solid full-week produce deal."
       reason: "4 for $5 ($1.25 each) — solid full-week produce deal."
       price: "4/$5"
-      display_order: 2
+      display_order: 6
+    - title: Bell peppers
+      tracker_family_ids: []
+      badge: PRODUCE
+      subtitle: "4 for $5 with the avocado mix — strong absolute pepper price this week."
+      reason: "4 for $5 with the avocado mix — strong absolute pepper price this week."
+      price: "4/$5"
+      display_order: 7
     - title: Honey Nut Cheerios & Cinnamon Toast Crunch
       tracker_family_ids: [general_mills_cereal_regular]
       badge: DEAL
-      subtitle: "$1.99 mix & match — strong absolute cereal price this week."
-      reason: "$1.99 mix & match — strong absolute cereal price this week."
+      subtitle: "$1.99 mix & match when you buy 4 — more box flavors to choose from."
+      reason: "$1.99 mix & match when you buy 4 — more box flavors to choose from."
       price: "$1.99"
-      display_order: 3
-    - title: Honey mangoes
-      tracker_family_ids: [mangoes_each]
-      badge: PRODUCE
-      subtitle: "4 for $5 ($1.25 each) with avocados/peppers — good absolute produce mix."
-      reason: "4 for $5 ($1.25 each) with avocados/peppers — good absolute produce mix."
-      price: "4/$5"
-      display_order: 4
-    - title: Blueberries
+      display_order: 8
+    - title: Kettle Brand chips
+      tracker_family_ids: [kettle_brand_chips]
+      badge: SNACKS
+      subtitle: "Near a recent low at $1.99 — grab flavors like spicy kimchi and dill pickle."
+      reason: "Near a recent low at $1.99 — grab flavors like spicy kimchi and dill pickle."
+      price: "$1.99"
+      display_order: 9
+    - title: Nature Valley biscuits
+      tracker_family_ids: [nature_valley_bars]
+      badge: SNACKS
+      subtitle: "$1.99 in the mix & match — strong value on the biscuit boxes."
+      reason: "$1.99 in the mix & match — strong value on the biscuit boxes."
+      price: "$1.99"
+      display_order: 10
+    - title: Special K & Nutri-Grain bars
       tracker_family_ids: []
-      badge: PRODUCE
-      subtitle: "2 for $5 ($2.50/pint) — good absolute berry deal."
-      reason: "2 for $5 ($2.50/pint) — good absolute berry deal."
-      price: "2/$5"
-      display_order: 5
-    - title: Sun Chips
-      tracker_family_ids: [sun_chips_7oz]
-      badge: FRIDAY
-      subtitle: "Friday only — Cape Cod kettle or Sun Chips 2 for $5 ($2.50)."
-      reason: "Friday only — Cape Cod kettle or Sun Chips 2 for $5 ($2.50)."
-      price: "2/$5"
-      display_order: 6
+      badge: DEAL
+      subtitle: "$1.99 with digital coupon — easy mix & match on Special K and Nutri-Grain."
+      reason: "$1.99 with digital coupon — easy mix & match on Special K and Nutri-Grain."
+      price: "$1.99"
+      display_order: 11
   vons:
     - title: Hand-picked deals updating soon
       tracker_family_ids: []

@@ -1403,17 +1403,63 @@ export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-22";
 export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntry[]> = {
   safeway: [
   {
-    "title": "Seedless grapes",
-    "trackerFamilyIds": [
-      "seedless_grapes_per_lb"
-    ],
-    "reason": "$1.99/lb \u2014 strong sale vs recent Safeway ad history.",
-    "subtitle": "$1.99/lb \u2014 strong sale vs recent Safeway ad history.",
-    "badge": "PRODUCE",
-    "price": "$1.99/lb",
+    "title": "Blueberries",
+    "trackerFamilyIds": [],
+    "reason": "Friday large pack $5 \u2014 the standout $5 Friday berry this week.",
+    "subtitle": "Friday large pack $5 \u2014 the standout $5 Friday berry this week.",
+    "badge": "FRIDAY",
+    "price": "$5",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 1
+  },
+  {
+    "title": "Strawberries",
+    "trackerFamilyIds": [],
+    "reason": "Friday large pack $5 \u2014 easy berry add-on alongside the blueberries.",
+    "subtitle": "Friday large pack $5 \u2014 easy berry add-on alongside the blueberries.",
+    "badge": "FRIDAY",
+    "price": "$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 2
+  },
+  {
+    "title": "Waterloo sparkling water",
+    "trackerFamilyIds": [],
+    "reason": "Friday $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
+    "subtitle": "Friday $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
+    "badge": "FRIDAY",
+    "price": "$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 3
+  },
+  {
+    "title": "Cape Cod / Sun Chips",
+    "trackerFamilyIds": [
+      "sun_chips_7oz"
+    ],
+    "reason": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from.",
+    "subtitle": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from.",
+    "badge": "FRIDAY",
+    "price": "2/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 4
+  },
+  {
+    "title": "Chobani yogurt cups",
+    "trackerFamilyIds": [
+      "chobani_yogurt_per_cup"
+    ],
+    "reason": "4-pack $3.49 (~$0.87/cup) \u2014 mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch).",
+    "subtitle": "4-pack $3.49 (~$0.87/cup) \u2014 mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch).",
+    "badge": "DEAL",
+    "price": "$3.49",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 5
   },
   {
     "title": "Hass avocados",
@@ -1426,57 +1472,68 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "price": "4/$5",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 2
+    "displayOrder": 6
+  },
+  {
+    "title": "Bell peppers",
+    "trackerFamilyIds": [],
+    "reason": "4 for $5 with the avocado mix \u2014 strong absolute pepper price this week.",
+    "subtitle": "4 for $5 with the avocado mix \u2014 strong absolute pepper price this week.",
+    "badge": "PRODUCE",
+    "price": "4/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 7
   },
   {
     "title": "Honey Nut Cheerios & Cinnamon Toast Crunch",
     "trackerFamilyIds": [
       "general_mills_cereal_regular"
     ],
-    "reason": "$1.99 mix & match \u2014 strong absolute cereal price this week.",
-    "subtitle": "$1.99 mix & match \u2014 strong absolute cereal price this week.",
+    "reason": "$1.99 mix & match when you buy 4 \u2014 more box flavors to choose from.",
+    "subtitle": "$1.99 mix & match when you buy 4 \u2014 more box flavors to choose from.",
     "badge": "DEAL",
     "price": "$1.99",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 3
+    "displayOrder": 8
   },
   {
-    "title": "Honey mangoes",
+    "title": "Kettle Brand chips",
     "trackerFamilyIds": [
-      "mangoes_each"
+      "kettle_brand_chips"
     ],
-    "reason": "4 for $5 ($1.25 each) with avocados/peppers \u2014 good absolute produce mix.",
-    "subtitle": "4 for $5 ($1.25 each) with avocados/peppers \u2014 good absolute produce mix.",
-    "badge": "PRODUCE",
-    "price": "4/$5",
+    "reason": "Near a recent low at $1.99 \u2014 grab flavors like spicy kimchi and dill pickle.",
+    "subtitle": "Near a recent low at $1.99 \u2014 grab flavors like spicy kimchi and dill pickle.",
+    "badge": "SNACKS",
+    "price": "$1.99",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 4
+    "displayOrder": 9
   },
   {
-    "title": "Blueberries",
+    "title": "Nature Valley biscuits",
+    "trackerFamilyIds": [
+      "nature_valley_bars"
+    ],
+    "reason": "$1.99 in the mix & match \u2014 strong value on the biscuit boxes.",
+    "subtitle": "$1.99 in the mix & match \u2014 strong value on the biscuit boxes.",
+    "badge": "SNACKS",
+    "price": "$1.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 10
+  },
+  {
+    "title": "Special K & Nutri-Grain bars",
     "trackerFamilyIds": [],
-    "reason": "2 for $5 ($2.50/pint) \u2014 good absolute berry deal.",
-    "subtitle": "2 for $5 ($2.50/pint) \u2014 good absolute berry deal.",
-    "badge": "PRODUCE",
-    "price": "2/$5",
+    "reason": "$1.99 with digital coupon \u2014 easy mix & match on Special K and Nutri-Grain.",
+    "subtitle": "$1.99 with digital coupon \u2014 easy mix & match on Special K and Nutri-Grain.",
+    "badge": "DEAL",
+    "price": "$1.99",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 5
-  },
-  {
-    "title": "Sun Chips",
-    "trackerFamilyIds": [
-      "sun_chips_7oz"
-    ],
-    "reason": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5 ($2.50).",
-    "subtitle": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5 ($2.50).",
-    "badge": "FRIDAY",
-    "price": "2/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 6
+    "displayOrder": 11
   }
 ],
   vons: [
