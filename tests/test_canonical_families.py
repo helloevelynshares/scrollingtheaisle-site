@@ -163,5 +163,70 @@ class TestRobustPhraseMatching(unittest.TestCase):
         self.assertFalse(any(re.search(p, text) for p in crackers.exclude_patterns))
 
 
+class TestKettleBrandChipsMatcher(unittest.TestCase):
+    """Safeway/Vons flyers often omit 'Brand' from Kettle titles (Jul 22 miss)."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        import sys
+
+        scripts = str(ROOT / "scripts")
+        if scripts not in sys.path:
+            sys.path.insert(0, scripts)
+        from generate_weekly_ad_prices import matches  # noqa: WPS433
+        from price_tracker.yaml_matchers import build_yaml_matchers  # noqa: WPS433
+
+        cls.matches = staticmethod(matches)
+        cls.matcher = next(m for m in build_yaml_matchers() if m.canonical_id == "kettle_brand_chips")
+        cls.family = family_by_id()["kettle_brand_chips"]
+
+    @staticmethod
+    def _row(title: str, package: str = "") -> dict[str, str]:
+        return {
+            "split_product_text": title,
+            "raw_offer_text": title,
+            "package_text": package,
+            "advertised_price": "1.99",
+            "price_basis": "each",
+        }
+
+    def test_yaml_has_brand_optional_includes(self) -> None:
+        # Regression: if includes again require the literal word Brand, Jul-style
+        # "Kettle Potato Chips" / "Kettle chips" titles stop matching.
+        includes_lower = [p.lower() for p in self.family.include]
+        self.assertTrue(
+            any("brand" not in p and "kettle" in p and "chip" in p for p in includes_lower),
+            "kettle_brand_chips must include Brand-optional flyer phrases",
+        )
+        self.assertIn("kettle potato chips", includes_lower)
+        self.assertIn("kettle chips", includes_lower)
+
+    def test_flyer_titles_without_brand_match(self) -> None:
+        for title in (
+            "Kettle Potato Chips",
+            "Kettle chips",
+            "Kettle Chips",
+            "Kettle Brand Potato Chips 6.5 to 8.5 oz",
+            "Kettle Brand Chips",
+        ):
+            with self.subTest(title=title):
+                self.assertTrue(self.matches(self._row(title), self.matcher))
+
+    def test_excludes_cape_cod_lays_party_and_mix_tiles(self) -> None:
+        for title in (
+            "Cape Cod Kettle Chips",
+            "Cape Cod Kettle Cooked Potato Chips",
+            "Lay's Kettle Cooked Chips",
+            "Kettle Brand Chips Party Size",
+            "SunChips, Lay's Potato Chips, Kettle Brand Potato Chips",
+            "Chips Ahoy, Nabisco, Triscuit, Kettle Brand Chips",
+        ):
+            with self.subTest(title=title):
+                self.assertFalse(
+                    self.matches(self._row(title), self.matcher),
+                    f"should not match: {title}",
+                )
+
+
 if __name__ == "__main__":
     unittest.main()

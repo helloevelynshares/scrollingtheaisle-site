@@ -355,6 +355,50 @@ def is_everyday_shelf_price_row(row: dict[str, str]) -> bool:
     return False
 
 
+def is_crop_tile_mismatch_row(row: dict[str, str]) -> bool:
+    """True when crop verification disagreed with the first-pass tile identity."""
+    reasons = (row.get("review_reasons") or "").lower()
+    return "crop_tile_mismatch" in reasons
+
+
+_BOGO_PROMO_RE = re.compile(
+    r"\bbogo\b|buy\s+\d+[,\s]+get\s+\d+\s+free|buy\s+\d+\s+get\s+\d+",
+    re.I,
+)
+
+
+def is_untrustworthy_crop_mismatch_row(
+    row: dict[str, str],
+    *,
+    unit_price: float | None = None,
+    baseline: float | None = None,
+) -> bool:
+    """Reject crop_tile_mismatch only when paired with bleed-like signals.
+
+    Bare ``crop_tile_mismatch`` is common on otherwise-correct Lucerne egg tiles
+    (Vons 2026-05-20 $2.99, 2026-07-08 $2.49). Hard-rejecting every mismatch
+    wiped real deals. Still reject the Jul 15 failure class: mismatch + BOGO
+    promo glued on, or mismatch + unit price above shelf baseline.
+    """
+    if not is_crop_tile_mismatch_row(row):
+        return False
+    promo_blob = " ".join(
+        [
+            row.get("promo_text") or "",
+            row.get("promo_type_guess") or "",
+            row.get("price_basis") or "",
+        ]
+    )
+    if _BOGO_PROMO_RE.search(promo_blob) or (row.get("price_basis") or "").lower() in {
+        "bogo",
+        "buy_x_get_y",
+    }:
+        return True
+    if exceeds_store_baseline(unit_price, baseline):
+        return True
+    return False
+
+
 def exceeds_store_baseline(
     unit_price: float | None, baseline: float | None
 ) -> bool:
@@ -384,6 +428,10 @@ def week_price_from_row(
     if is_everyday_shelf_price_row(row):
         return null_week_price()
     unit = normalize_unit_price(row, matcher, reference_price=baseline)
+    if is_untrustworthy_crop_mismatch_row(
+        row, unit_price=unit, baseline=baseline
+    ):
+        return null_week_price()
     if exceeds_store_baseline(unit, baseline):
         return null_week_price()
     return {
@@ -395,6 +443,24 @@ def week_price_from_row(
         "availabilityType": row.get("availability_type_guess") or None,
         "promoNote": row.get("promo_text") or None,
     }
+
+
+def _remap_baselines_to_family_ids(
+    raw: dict[str, float],
+) -> dict[str, float]:
+    """Expose baselines under both legacy ids and YAML family ids.
+
+    Store crawls key SAFEWAY_BASELINES / vonsBaseline by legacy canonical ids
+    (e.g. ``eggs_18_count``). YAML matchers / generated weekly TS use family ids
+    (``eggs_dozen_normalized``). Without remapping, above-baseline drops and
+    BOGO fallbacks silently no-op for remapped families.
+    """
+    out = dict(raw)
+    for legacy_id, price in raw.items():
+        family_id = LEGACY_CANONICAL_TO_FAMILY.get(legacy_id, legacy_id)
+        # Keep an existing family-keyed entry if present; otherwise inherit legacy.
+        out.setdefault(family_id, price)
+    return out
 
 
 def load_feed_baselines(feed_label: str) -> dict[str, float]:
@@ -410,24 +476,26 @@ def load_feed_baselines(feed_label: str) -> dict[str, float]:
         )
         if not block:
             return {}
-        return {
+        raw = {
             m.group(1): float(m.group(2))
             for m in re.finditer(
                 r'"([^"]+)":\s*\{\s*price:\s*([\d.]+)',
                 block.group("body"),
             )
         }
+        return _remap_baselines_to_family_ids(raw)
     if feed_label == "Vons":
         text = (ROOT / "src" / "data" / "vonsBaseline.generated.ts").read_text(
             encoding="utf-8"
         )
-        return {
+        raw = {
             m.group(1): float(m.group(2))
             for m in re.finditer(
                 r'"([^"]+)":\s*\{\s*"baselinePrice":\s*([\d.]+)',
                 text,
             )
         }
+        return _remap_baselines_to_family_ids(raw)
     return {}
 
 
@@ -627,6 +695,10 @@ def pick_best_row(
         unit_preview = normalize_unit_price(
             row, matcher, reference_price=reference_price
         )
+        if is_untrustworthy_crop_mismatch_row(
+            row, unit_price=unit_preview, baseline=reference_price
+        ):
+            continue
         if exceeds_store_baseline(unit_preview, reference_price):
             continue
         conf_label = match_confidence(row, matcher, reference_price=reference_price)

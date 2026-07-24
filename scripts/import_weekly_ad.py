@@ -411,10 +411,11 @@ def main() -> None:
     print("\nRun crop-override + week-over-week QA:")
     print(
         f"  /usr/bin/python3 scripts/audit_weekly_ad_import.py "
-        f"--week-start {args.week_start}"
+        f"--week-start {args.week_start} --fail-on-tracked-findings"
     )
     print(
-        f"  npm run audit:weekly-ad-import -- --week-start {args.week_start}"
+        f"  npm run audit:weekly-ad-import -- --week-start {args.week_start} "
+        f"--fail-on-tracked-findings"
     )
     try:
         from audit_weekly_ad_import import build_report, write_outputs, print_console
@@ -423,6 +424,15 @@ def main() -> None:
         md_path, _json_path = write_outputs(report)
         print_console(report)
         print(f"\nImport QA written: {md_path}")
+        if report.tracked_finding_count:
+            print(
+                f"\nERROR: {report.tracked_finding_count} tracked import QA finding(s). "
+                "Fix WoW worsens / bleed-risk crop raises before publish "
+                "(or re-run audit with --fail-on-tracked-findings)."
+            )
+            raise SystemExit(1)
+    except SystemExit:
+        raise
     except Exception as exc:  # noqa: BLE001 — don't fail import if audit helper breaks
         print(f"\nWarning: import QA audit skipped ({exc})")
     print("\nImport complete. Run: npm run build:price-tracker")

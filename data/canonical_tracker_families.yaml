@@ -122,10 +122,13 @@ families:
   keep_separate_from:
   - regular Lay's potato chips
   - Kettle Brand chips
+  - Cape Cod
+  - Cape Cod Kettle
   - Simply Lay's
   - Party Size
   - Family Size
-  notes: 'Ads often print Lay''s Kettle or Kettle Cooked Chips without the full brand+line name.'
+  - Sun Chips
+  notes: 'Ads often print Lay''s Kettle or Kettle Cooked Chips without the full brand+line name. Do not take Cape Cod / Sun Chips mix tiles.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -180,12 +183,29 @@ families:
   - Kettle Brand Honey Dijon
   - Kettle Brand Chips
   - Kettle Brand potato chips
+  # Flyer coupon titles often omit "Brand" (e.g. "Kettle Potato Chips"); "brand"
+  # is already a QUALIFIER_WORD so these still match "Kettle Brand …" copy.
+  - Kettle Potato Chips
+  - Kettle chips
   keep_separate_from:
   - Lay's Kettle Cooked
   - store-brand kettle chips
   - Kettle Brand Chips Party Size
   - Party Size
-  notes: 'Party Size (11+ oz) is a different SKU; tracked bags are 6.5–8.5 oz. Exclude ceiling/Up-To prices.'
+  # Cape Cod kettle-cooked (not Kettle Brand); defensive for short titles like
+  # "Cape Cod Kettle Chips" that would otherwise hit include "Kettle chips".
+  - Cape Cod
+  - Cape Cod Kettle
+  # Unsplit mix tiles that mention Kettle among other brands (no eligibility rules
+  # on this family, so excludes are the gate).
+  - Sun Chips
+  - Sunchips
+  - Lay's Potato Chips
+  - Chips Ahoy
+  - Nabisco
+  - Triscuit
+  - Tim's Cascade
+  notes: 'Party Size (11+ oz) is a different SKU; tracked bags are 6.5–8.5 oz. Exclude ceiling/Up-To prices. Ads often say "Kettle Potato Chips" without the word Brand. Also exclude Cape Cod / Lay''s Kettle / multi-brand mix tiles.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1032,6 +1052,9 @@ families:
   - peanut butter
   - almond butter
   - nut butter
+  - seed butter
+  - bean butter
+  - bean, nut or seed butter
   - Skippy
   - Jif
   notes: Treat 16 oz butter brands as interchangeable for the tracker. Each week, graph the best normalized 16 oz price and
@@ -1442,14 +1465,20 @@ families:
   - boneless skinless chicken breasts
   - chicken breast value pack
   - chicken breasts
+  - chicken boneless skinless breasts
+  - chicken boneless skinless breast
   - fresh chicken breast
   - fresh chicken breasts
   keep_separate_from:
   - chicken thighs
   - chicken wings
   - cooked chicken
+  - chicken breast strips
+  - chicken strips
+  - chicken tenders
+  - Open Nature Chicken Breast Strips
   - organic chicken unless intentionally grouped
-  notes: Separate from thighs because breast and thigh prices commonly differ.
+  notes: Separate from thighs because breast and thigh prices commonly differ. Exclude breaded/precooked strips and tenders. Ads sometimes reorder as "chicken boneless skinless breasts".
   display_order: 63
   homepage_group: meat_and_seafood
 - category: meat

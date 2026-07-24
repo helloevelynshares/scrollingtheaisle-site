@@ -1,11 +1,11 @@
 # Highlight recommendations: 2026-07-15 → 2026-07-21
 
-_Updated 2026-07-15 with fresh Costco SF crawl. Full Costco-aware writeup: `fresh_costco_highlight_recommendations.md`. Handpicked YAML / homepage NOT updated._
+_Updated 2026-07-15 with Costco SF (Safeway) + Tustin (Vons). Writeups: `fresh_costco_highlight_recommendations.md` (Safeway) · `fresh_costco_vons_highlight_recommendations.md` (Vons). Handpicked YAML / homepage NOT updated._
 
 ## Status
 
 - **Ad week active** (started Wed Jul 15).
-- Costco: **`2026-07-15_san-francisco_consolidated.csv`** imported; Safeway comps vs SF only.
+- Costco: SF for Safeway · **`2026-07-15_tustin_consolidated.csv`** for Vons.
 - Tracker matches: Safeway 12 / Vons 10 (66 families unchanged).
 - Doritos Jul 15 corrected to **$2.49** (was bad $5.99 crop bleed).
 
@@ -27,8 +27,21 @@ _Updated 2026-07-15 with fresh Costco SF crawl. Full Costco-aware writeup: `fres
 
 See `fresh_costco_highlight_recommendations.md` for tables, Costco price moves (strawberries 2 lb $3.99→$5.49, grapes $7.99→$8.49), and suggested handpicked order.
 
-## Vons (tracker only; no fresh Tustin crawl this pass)
+## Vons (with Costco Tustin)
 
-Chicken $1.99/lb · avocados 99¢ · grapes $1.99/lb · cereal $1.29 · salmon $8.99/lb · Fage 99¢.
+Full writeup: `fresh_costco_vons_highlight_recommendations.md`.
+
+### Lead
+1. **Hass avocados 99¢** — ATL; beats Costco Tustin 6-ct (~$1.33/ea) by ~26%.
+2. **Chicken breast $1.99/lb** — beats Costco breast $2.79/lb by ~29%.
+3. **Grapes $1.99/lb** — near ATL; beats Costco organic bags (~$2.66–$2.83/lb).
+4. **Cheerios/CTC $1.29** — ATL; beats Costco unit; coupon / medium confidence.
+5. **Salmon $8.99/lb** — beats Costco Atlantic $12.99/lb (~31%); not hist low.
+
+### Supporting
+Keebler $2.49 (buy 4) · Fage 99¢ (verify mega-tile).
+
+### Skip
+Eggs BOGO (Costco wins on dozen) · peaches/nectarines $2.99 (worse than prior weeks + Costco).
 
 _Await your curated list before `popular_this_week.yaml` / homepage update._

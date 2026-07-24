@@ -10,8 +10,12 @@ SCRIPT_DIR = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 from generate_weekly_ad_prices import (  # noqa: E402
+    _remap_baselines_to_family_ids,
     exceeds_store_baseline,
+    is_crop_tile_mismatch_row,
     is_everyday_shelf_price_row,
+    is_untrustworthy_crop_mismatch_row,
+    load_feed_baselines,
     week_price_from_row,
 )
 from price_tracker.yaml_matchers import build_yaml_matchers  # noqa: E402
@@ -78,6 +82,88 @@ class EverydayShelfFilterTest(unittest.TestCase):
         }
         entry3 = week_price_from_row(real_sale, matcher, baseline=2.99)
         self.assertEqual(entry3["price"], 1.99)
+
+
+class CropTileMismatchFilterTest(unittest.TestCase):
+    def test_detects_crop_tile_mismatch_flag(self) -> None:
+        self.assertTrue(
+            is_crop_tile_mismatch_row(
+                {"review_reasons": "crop_tile_mismatch"}
+            )
+        )
+        self.assertFalse(
+            is_crop_tile_mismatch_row(
+                {"review_reasons": "crop_override_price"}
+            )
+        )
+
+    def test_bare_mismatch_keeps_plausible_sale(self) -> None:
+        """Many real Lucerne weeks are tagged crop_tile_mismatch but look fine."""
+        matcher = _matcher("eggs_dozen_normalized")
+        row = {
+            "advertised_price": "2.49",
+            "price_basis": "each",
+            "promo_text": "",
+            "split_product_text": "Lucerne Large Eggs",
+            "raw_offer_text": "Lucerne Large Eggs 12 ct",
+            "package_text": "12 ct",
+            "review_reasons": "crop_tile_mismatch",
+            "availability_type_guess": "full_week",
+        }
+        self.assertTrue(is_crop_tile_mismatch_row(row))
+        self.assertFalse(
+            is_untrustworthy_crop_mismatch_row(row, unit_price=2.49, baseline=3.99)
+        )
+        entry = week_price_from_row(row, matcher, baseline=3.99)
+        self.assertEqual(entry["price"], 2.49)
+
+    def test_vons_eggs_bogo_mismatch_nulled(self) -> None:
+        """Jul 15 Vons: eggs + BOGO promo while crop was ground beef."""
+        matcher = _matcher("eggs_dozen_normalized")
+        row = {
+            "advertised_price": "4.99",
+            "price_basis": "each",
+            "promo_text": "Buy 1 Get 1 Free",
+            "split_product_text": "Lucerne Large Eggs",
+            "raw_offer_text": "Lucerne Large Eggs 12 ct",
+            "package_text": "12 ct",
+            "review_reasons": "crop_tile_mismatch",
+            "availability_type_guess": "full_week",
+        }
+        self.assertTrue(
+            is_untrustworthy_crop_mismatch_row(row, unit_price=4.99, baseline=3.99)
+        )
+        entry = week_price_from_row(row, matcher, baseline=3.99)
+        self.assertIsNone(entry["price"])
+        self.assertIsNone(entry["promoNote"])
+
+
+class BaselineRemapTest(unittest.TestCase):
+    def test_remap_exposes_yaml_family_ids(self) -> None:
+        remapped = _remap_baselines_to_family_ids({"eggs_18_count": 3.99})
+        self.assertEqual(remapped["eggs_18_count"], 3.99)
+        self.assertEqual(remapped["eggs_dozen_normalized"], 3.99)
+
+    def test_vons_baselines_resolve_eggs_family(self) -> None:
+        baselines = load_feed_baselines("Vons")
+        self.assertIn("eggs_dozen_normalized", baselines)
+        self.assertGreater(baselines["eggs_dozen_normalized"], 0)
+
+    def test_eggs_above_baseline_nulled_when_family_keyed(self) -> None:
+        matcher = _matcher("eggs_dozen_normalized")
+        # No crop mismatch — only above-baseline should kill the point.
+        row = {
+            "advertised_price": "4.99",
+            "price_basis": "each",
+            "promo_text": "",
+            "split_product_text": "Lucerne Large Eggs",
+            "raw_offer_text": "Lucerne Large Eggs 12 ct",
+            "package_text": "12 ct",
+            "review_reasons": "",
+            "availability_type_guess": "full_week",
+        }
+        entry = week_price_from_row(row, matcher, baseline=3.99)
+        self.assertIsNone(entry["price"])
 
 
 if __name__ == "__main__":

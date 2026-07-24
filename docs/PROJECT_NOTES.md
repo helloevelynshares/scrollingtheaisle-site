@@ -107,6 +107,24 @@ Weekly ad prices for the staging price tracker:
 
 Gotchas: grouped offers split into per-item rows, matchers in `scripts/generate_weekly_ad_prices.py` pick the best split row per canonical item. Multi-buy promos need per-unit normalization (`3 for $5`, `when you buy 3`, etc.). Some tracker items have no ad match yet (e.g. Coke Zero 12pk) or use a close proxy (Fairlife → Premier Protein 4pk).
 
+### Jul 22 false matches: seed butter, strips, Cape Cod, chicken word order
+
+Date discovered: 2026-07-23  
+Context: Safeway week `2026-07-22` import → tracker publish.  
+What happened: (1) `butter_16oz` matched O Organics **Seed Butter**; (2) `chicken_breast_per_lb` preferred Open Nature **breast strips** $6.99 over front-page Signature SELECT breasts $2.99/lb; (3) `lays_kettle_cooked` took Cape Cod from a Friday Cape Cod/Sun Chips tile; (4) after excluding strips, real breasts still failed because flyer text is `chicken boneless skinless breasts` (chicken first) while includes expected `boneless skinless chicken breasts`.  
+Fix / workaround: YAML `keep_separate_from` for seed/bean butter, chicken strips/tenders, Cape Cod; add include phrases `chicken boneless skinless breast(s)`. Rematch then `npm run build:price-tracker`.  
+How to verify: `chicken_breast_per_lb["2026-07-22"].price === 2.99` with offerText Signature SELECT breasts; no Jul 22 rows for `butter_16oz` / `lays_kettle_cooked`.  
+Related files: `data/canonical_tracker_families.yaml`, `src/data/weeklyAdPrices.generated.ts`, `output/weekly_deals/2026-07-22/`
+
+### Kettle Brand Safeway 2026-07-22 missed: include required “Brand”
+
+Date discovered: 2026-07-23  
+Context: Safeway week `2026-07-22` coupon-grid tile “Kettle Potato Chips” @ $1.99 Member Price (page 3) not on `kettle_brand_chips` chart.  
+What happened: (1) All YAML includes required the literal word **Brand** (`Kettle Brand potato chips`, etc.), but flyer title is **Kettle Potato Chips** (bags still say Kettle Brand). Matcher returned no hit → null week. (2) Extraction OCR’d package as `1.5-2 oz`; PDF shows **6 to 7.5-oz.** (bags net wt 7.5 oz). Size error did not gate the miss (family has no `match_eligibility` size rules). (3) Broadening includes alone also matched unsplit multi-brand tiles (e.g. SunChips/Lay’s/Kettle, Chips Ahoy/Nabisco/Triscuit/Kettle) because this family has no eligibility multi-item gate.  
+Fix / workaround: Add includes `Kettle Potato Chips` and `Kettle chips` (QUALIFIER_WORD `brand` still matches “Kettle Brand …”); add `keep_separate_from` for Cape Cod / Cape Cod Kettle, party size, Lay’s Kettle, and co-listed mix-tile brands (`Sun Chips`/`Sunchips`, `Lay's Potato Chips`, `Chips Ahoy`, `Nabisco`, `Triscuit`, `Tim's Cascade`). Rematch + `npm run build:price-tracker`. Regression coverage: `tests/test_canonical_families.py` (`TestKettleBrandChipsMatcher`).  
+How to verify: `kettle_brand_chips["2026-07-22"].price === 1.99` with offerText `Kettle Potato Chips`; May 12 / Jun 17 multi-brand blobs stay null. `python -m unittest tests.test_canonical_families.TestKettleBrandChipsMatcher`. PDF: `safeway 7-22 - 7-28.pdf` p.3 coupon grid.  
+Related files: `data/canonical_tracker_families.yaml` (`kettle_brand_chips`), `src/data/weeklyAdPrices.generated.ts`, `tests/test_canonical_families.py`, sibling `split_offer_items.csv` row `8849a49be6b6`
+
 **Vons baselines (SoCal):** Same Albertsons `pgmsearch` API: `python scripts/seed_vons_baseline_playwright.py --http-only` (curl transport in `vons_client.py`; Playwright fallback). Env: `VONS_COOKIE`, `VONS_VISITOR_ID`, `VONS_STORE_ID=2053`, `VONS_ZIPCODE=92110`, `VONS_CHANNEL=instore`, `VONS_USER_AGENT` (Safari), optional `VONS_UUID`, `VONS_SUBSCRIPTION_KEY`. Then `npm run generate:vons-feed-matches` → `src/data/vonsBaseline.generated.ts`. **Vons weekly ads** via `vonsWeeklyAdPrices.generated.ts`.
 
 TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_transcripts.csv` → `data/processed/tiktok_item_mentions.csv`.
@@ -628,8 +646,8 @@ What happened: Manual flyer spot-checks are easy to skip; `needs_human_grounding
 Fix / workaround:
 1. `scripts/audit_weekly_ad_import.py` reads dedicated `raw_offer_cards.csv` (original vs verified price) + consolidated split tags + generated TS week-over-week matches.
 2. Writes `output/weekly_deals/{week}/import_qa_audit.md` (+ `.json`).
-3. `npm run audit:weekly-ad-import -- --week-start YYYY-MM-DD`. Optional `--fail-on-bleed-risk` / `--fail-on-findings`.
-4. `import_weekly_ad.py` runs the audit after generate (non-fatal if audit errors).
+3. `npm run audit:weekly-ad-import -- --week-start YYYY-MM-DD --fail-on-tracked-findings`. Flags bare `crop_tile_mismatch` for review; `--fail-on-tracked-findings` exits 1 on **WoW worsens + bleed-risk crop raises** (not every noisy mismatch).
+4. `import_weekly_ad.py` runs the audit after generate and **fails the import** when `tracked_finding_count > 0`.
 How to verify: For 2026-07-15, audit lists Doritos-class bleed from dedicated raw (`$2.49 → $5.99`) even after consolidated CSV was corrected. `PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_audit_weekly_ad_import -v`.  
 Related files: `scripts/audit_weekly_ad_import.py`, `scripts/import_weekly_ad.py`, `package.json` (`audit:weekly-ad-import`)
 
@@ -1028,6 +1046,19 @@ Fix / workaround:
 4. Costco: cups → 20-ct 5.3 oz (#1005641) compared as each/cup; tubs → 40 oz (#2059712). `parse_item_sign(..., target_unit="each")` treats `20 COUNT 5.3 OZ` / `20/5.3 OZ` as 20 each.  
 How to verify: Cups chart baseline ~$1.99 with sale weeks ≤$1.25; tub chart baseline $7.99 and never inherits cup deals; `LEGACY_CANONICAL_TO_FAMILY["chobani_greek_yogurt"] == "chobani_yogurt_tub"`.  
 Related files: `data/canonical_tracker_families.yaml`, `scripts/price_tracker/canonical_families.py`, `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`, `config/costco_item_mappings.csv`, `scripts/price_comparison/unit_normalize.py`, `scripts/price_comparison/canonical_metadata.py`
+
+### Vons Lucerne eggs Jul 15 $4.99 BOGO was crop bleed (not in ad)
+
+Date discovered: 2026-07-15  
+Context: Tracker showed Vons Lucerne Eggs @ **$4.99** with hover “Buy 1 Get 1 Free” for week 2026-07-15; user could not find that deal in the weekly ad.  
+What happened: Vision first-pass wrote “Lucerne Large Eggs 12 ct @ $4.99 / Buy 1 Get 1 Free” (page 3 offer 7). Crop verification of the same index saw **Signature SELECT ground beef $5.99/lb**. Row kept first-pass with `review_reasons=crop_tile_mismatch` and `price_basis=each` (so BOGO math never halved). Two generator gaps let it ship: (1) baselines keyed only as legacy `eggs_18_count`, so YAML family `eggs_dozen_normalized` never got `[above_baseline]` vs $3.99 shelf; (2) bare `crop_tile_mismatch` was not a match reject, and import QA was non-fatal.  
+Fix / workaround:
+1. `load_feed_baselines` remaps legacy → YAML family ids via `LEGACY_CANONICAL_TO_FAMILY` (`eggs_18_count` → `eggs_dozen_normalized`).
+2. `is_untrustworthy_crop_mismatch_row`: reject mismatch **only** when paired with BOGO/`buy_x_get_y` promo or unit price above baseline (bare mismatch alone is too common on real Lucerne weeks).
+3. Import QA: flag bare `crop_tile_mismatch`; `--fail-on-tracked-findings` / import exit on WoW worsens + mismatch findings.
+4. Rematched Vons `eggs_dozen_normalized` → `2026-07-15` **null**; prior real weeks ($2.49 etc.) kept.  
+How to verify: `eggs_dozen_normalized["2026-07-15"].price` is `null` in `vonsWeeklyAdPrices.generated.ts`; `PYTHONPATH=scripts python3 -m unittest tests.test_everyday_shelf_filter tests.test_audit_weekly_ad_import -v`.  
+Related files: `scripts/generate_weekly_ad_prices.py`, `scripts/audit_weekly_ad_import.py`, `scripts/import_weekly_ad.py`, `tests/test_everyday_shelf_filter.py`, `tests/test_audit_weekly_ad_import.py`, `src/data/vonsWeeklyAdPrices.generated.ts`
 
 ## Content-first Analysis Mode
 

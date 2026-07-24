@@ -216,6 +216,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Kettle Brand Honey Dijon",
       "Kettle Brand Chips",
       "Kettle Brand potato chips",
+      "Kettle Potato Chips",
+      "Kettle chips",
       "Kettle Brand potato chips"
     ],
     "legacyCanonicalIds": [
@@ -1290,6 +1292,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "boneless skinless chicken breasts",
       "chicken breast value pack",
       "chicken breasts",
+      "chicken boneless skinless breasts",
+      "chicken boneless skinless breast",
       "fresh chicken breast",
       "fresh chicken breasts",
       "Chicken breast"
@@ -1394,28 +1398,93 @@ export const LEGACY_CANONICAL_TO_FAMILY: Record<string, string> = {
   "protein_bars": "quest_bars"
 };
 
-export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-15";
+export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-22";
 
 export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntry[]> = {
   safeway: [
   {
-    "title": "Hand-picked deals updating later today",
-    "trackerFamilyIds": [],
-    "reason": "I'm still reviewing this week's Safeway ad. These hand-picked deals will be updated later today.",
-    "subtitle": "I'm still reviewing this week's Safeway ad. These hand-picked deals will be updated later today.",
-    "badge": "DEAL",
-    "price": "Soon",
+    "title": "Seedless grapes",
+    "trackerFamilyIds": [
+      "seedless_grapes_per_lb"
+    ],
+    "reason": "$1.99/lb \u2014 strong sale vs recent Safeway ad history.",
+    "subtitle": "$1.99/lb \u2014 strong sale vs recent Safeway ad history.",
+    "badge": "PRODUCE",
+    "price": "$1.99/lb",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 1
+  },
+  {
+    "title": "Hass avocados",
+    "trackerFamilyIds": [
+      "hass_avocados_each"
+    ],
+    "reason": "4 for $5 ($1.25 each) \u2014 solid full-week produce deal.",
+    "subtitle": "4 for $5 ($1.25 each) \u2014 solid full-week produce deal.",
+    "badge": "PRODUCE",
+    "price": "4/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 2
+  },
+  {
+    "title": "Honey Nut Cheerios & Cinnamon Toast Crunch",
+    "trackerFamilyIds": [
+      "general_mills_cereal_regular"
+    ],
+    "reason": "$1.99 mix & match \u2014 strong absolute cereal price this week.",
+    "subtitle": "$1.99 mix & match \u2014 strong absolute cereal price this week.",
+    "badge": "DEAL",
+    "price": "$1.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 3
+  },
+  {
+    "title": "Honey mangoes",
+    "trackerFamilyIds": [
+      "mangoes_each"
+    ],
+    "reason": "4 for $5 ($1.25 each) with avocados/peppers \u2014 good absolute produce mix.",
+    "subtitle": "4 for $5 ($1.25 each) with avocados/peppers \u2014 good absolute produce mix.",
+    "badge": "PRODUCE",
+    "price": "4/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 4
+  },
+  {
+    "title": "Blueberries",
+    "trackerFamilyIds": [],
+    "reason": "2 for $5 ($2.50/pint) \u2014 good absolute berry deal.",
+    "subtitle": "2 for $5 ($2.50/pint) \u2014 good absolute berry deal.",
+    "badge": "PRODUCE",
+    "price": "2/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 5
+  },
+  {
+    "title": "Sun Chips",
+    "trackerFamilyIds": [
+      "sun_chips_7oz"
+    ],
+    "reason": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5 ($2.50).",
+    "subtitle": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5 ($2.50).",
+    "badge": "FRIDAY",
+    "price": "2/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 6
   }
 ],
   vons: [
   {
-    "title": "Hand-picked deals updating later today",
+    "title": "Hand-picked deals updating soon",
     "trackerFamilyIds": [],
-    "reason": "I'm still reviewing this week's Vons ad. These hand-picked deals will be updated later today.",
-    "subtitle": "I'm still reviewing this week's Vons ad. These hand-picked deals will be updated later today.",
+    "reason": "Vons ad for Jul 22\u201328 isn't imported yet \u2014 hand-picked deals will update when that flyer lands.",
+    "subtitle": "Vons ad for Jul 22\u201328 isn't imported yet \u2014 hand-picked deals will update when that flyer lands.",
     "badge": "DEAL",
     "price": "Soon",
     "availability": "",

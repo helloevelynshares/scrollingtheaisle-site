@@ -80,15 +80,9 @@ function unitPriceDisplay(product: FeedProductView): string {
 function getBadge(product: FeedProductView): HomepageBadge {
   const benchmark = computeFeedProductBenchmark(product);
   const discount = getDiscountPercent(product) ?? 0;
-  const comparison = product.priceComparison;
 
-  if (
-    comparison?.winner === "costco" &&
-    comparison.comparisonStatus === "comparable"
-  ) {
-    return "Costco still wins";
-  }
-
+  // Hand-picked summaries stay Safeway/Vons-deal focused — never surface Costco
+  // win/loss wording on these editorial cards (Costco stays on product charts).
   if (
     benchmark.benchmarkBucket === "all-time low" ||
     benchmark.benchmarkBucket === "near all-time low"
@@ -101,13 +95,6 @@ function getBadge(product: FeedProductView): HomepageBadge {
     discount >= 15
   ) {
     return "Stock up";
-  }
-
-  if (
-    comparison?.winner === "grocery" &&
-    comparison.comparisonStatus === "comparable"
-  ) {
-    return "Beats Costco";
   }
 
   if (

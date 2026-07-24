@@ -1,22 +1,56 @@
-week: "2026-07-15"
+week: "2026-07-22"
 stores:
   # Editorial/content shortlist only. NOT canonical tracker graph data.
-  # Placeholder until today's handpicked deals are curated (week of Jul 15–21).
   # Only link tracker_family_ids when a clean canonical family already exists;
   # otherwise leave empty so the card renders as pure editorial copy.
   safeway:
-    - title: Hand-picked deals updating later today
-      tracker_family_ids: []
-      badge: DEAL
-      subtitle: "I'm still reviewing this week's Safeway ad. These hand-picked deals will be updated later today."
-      reason: "I'm still reviewing this week's Safeway ad. These hand-picked deals will be updated later today."
-      price: "Soon"
+    - title: Seedless grapes
+      tracker_family_ids: [seedless_grapes_per_lb]
+      badge: PRODUCE
+      subtitle: "$1.99/lb — strong sale vs recent Safeway ad history."
+      reason: "$1.99/lb — strong sale vs recent Safeway ad history."
+      price: "$1.99/lb"
       display_order: 1
+    - title: Hass avocados
+      tracker_family_ids: [hass_avocados_each]
+      badge: PRODUCE
+      subtitle: "4 for $5 ($1.25 each) — solid full-week produce deal."
+      reason: "4 for $5 ($1.25 each) — solid full-week produce deal."
+      price: "4/$5"
+      display_order: 2
+    - title: Honey Nut Cheerios & Cinnamon Toast Crunch
+      tracker_family_ids: [general_mills_cereal_regular]
+      badge: DEAL
+      subtitle: "$1.99 mix & match — strong absolute cereal price this week."
+      reason: "$1.99 mix & match — strong absolute cereal price this week."
+      price: "$1.99"
+      display_order: 3
+    - title: Honey mangoes
+      tracker_family_ids: [mangoes_each]
+      badge: PRODUCE
+      subtitle: "4 for $5 ($1.25 each) with avocados/peppers — good absolute produce mix."
+      reason: "4 for $5 ($1.25 each) with avocados/peppers — good absolute produce mix."
+      price: "4/$5"
+      display_order: 4
+    - title: Blueberries
+      tracker_family_ids: []
+      badge: PRODUCE
+      subtitle: "2 for $5 ($2.50/pint) — good absolute berry deal."
+      reason: "2 for $5 ($2.50/pint) — good absolute berry deal."
+      price: "2/$5"
+      display_order: 5
+    - title: Sun Chips
+      tracker_family_ids: [sun_chips_7oz]
+      badge: FRIDAY
+      subtitle: "Friday only — Cape Cod kettle or Sun Chips 2 for $5 ($2.50)."
+      reason: "Friday only — Cape Cod kettle or Sun Chips 2 for $5 ($2.50)."
+      price: "2/$5"
+      display_order: 6
   vons:
-    - title: Hand-picked deals updating later today
+    - title: Hand-picked deals updating soon
       tracker_family_ids: []
       badge: DEAL
-      subtitle: "I'm still reviewing this week's Vons ad. These hand-picked deals will be updated later today."
-      reason: "I'm still reviewing this week's Vons ad. These hand-picked deals will be updated later today."
+      subtitle: "Vons ad for Jul 22–28 isn't imported yet — hand-picked deals will update when that flyer lands."
+      reason: "Vons ad for Jul 22–28 isn't imported yet — hand-picked deals will update when that flyer lands."
       price: "Soon"
       display_order: 1

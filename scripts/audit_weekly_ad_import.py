@@ -105,6 +105,18 @@ class AuditReport:
     def finding_count(self) -> int:
         return len(self.crop_overrides) + len(self.wow_worsens)
 
+    @property
+    def tracked_finding_count(self) -> int:
+        """Findings that should block publish (chart already wrong or high bleed risk).
+
+        WoW worsens mean a tracked family chart point jumped badly. Bleed-risk
+        crop raises are the Doritos-class adjacent-tile overwrite. Bare
+        ``crop_tile_mismatch`` is still listed in the audit for review but is
+        too common on otherwise-correct tiles to hard-fail every import.
+        """
+        bleed = sum(1 for f in self.crop_overrides if "bleed" in (f.note or ""))
+        return len(self.wow_worsens) + bleed
+
 
 def _parse_float(value: Any) -> float | None:
     if value is None or value == "":
@@ -172,6 +184,7 @@ def crop_overrides_from_raw(
         original = row.get("original_advertised_price")
         verified = row.get("verified_advertised_price")
         final = row.get("advertised_price")
+        has_mismatch = "crop_tile_mismatch" in reasons
         has_override_tag = "crop_override_price" in reasons or (
             "crop_verification_override" in reasons and "first_pass_crop_disagreement" in reasons
         )
@@ -180,14 +193,23 @@ def crop_overrides_from_raw(
         price_disagreed = (
             o_price is not None and v_price is not None and abs(o_price - v_price) >= 0.01
         )
-        if not (has_override_tag or price_disagreed):
+        if not (has_override_tag or price_disagreed or has_mismatch):
             continue
-        note = ""
+        notes: list[str] = []
+        if has_mismatch:
+            notes.append(
+                "crop_tile_mismatch — first-pass tile identity disagreed with crop"
+            )
         if price_disagreed and o_price is not None and v_price is not None:
             if v_price > o_price * WOW_HIGH_FACTOR or (v_price - o_price) >= WOW_ABS_DELTA:
-                note = "crop raised price vs first-pass — check adjacent-tile bleed"
+                notes.append(
+                    "crop raised price vs first-pass — check adjacent-tile bleed"
+                )
             elif o_price > v_price * WOW_HIGH_FACTOR or (o_price - v_price) >= WOW_ABS_DELTA:
-                note = "crop lowered price vs first-pass — confirm which is correct"
+                notes.append(
+                    "crop lowered price vs first-pass — confirm which is correct"
+                )
+        note = "; ".join(notes)
         # Prefer showing the crop disagreement pair (original → verified).
         display_final = verified if price_disagreed else (final or verified)
         findings.append(
@@ -222,8 +244,15 @@ def crop_overrides_from_split(
         if row.get("week_start") != week_start:
             continue
         reasons = row.get("review_reasons") or ""
-        if "crop_override_price" not in reasons and "crop_verification_override" not in reasons:
+        if (
+            "crop_override_price" not in reasons
+            and "crop_verification_override" not in reasons
+            and "crop_tile_mismatch" not in reasons
+        ):
             continue
+        note = "tagged crop override in consolidated split"
+        if "crop_tile_mismatch" in reasons:
+            note = "crop_tile_mismatch in consolidated split — do not trust for tracked match"
         findings.append(
             CropOverrideFinding(
                 feed=FEED_PATHS[feed_key]["label"],
@@ -236,7 +265,7 @@ def crop_overrides_from_split(
                 package=_short(row.get("package_text") or "", 40),
                 layout=str(row.get("layout_type") or ""),
                 review_reasons=_short(reasons, 120),
-                note="tagged crop override in consolidated split",
+                note=note,
             )
         )
     return findings
@@ -507,6 +536,14 @@ def parse_args() -> argparse.Namespace:
         help="Exit 1 when any crop override or WoW worsen is found",
     )
     parser.add_argument(
+        "--fail-on-tracked-findings",
+        action="store_true",
+        help=(
+            "Exit 1 when tracked WoW worsens or bleed-risk crop raises exist "
+            "(recommended gate before publish)"
+        ),
+    )
+    parser.add_argument(
         "--fail-on-bleed-risk",
         action="store_true",
         help="Exit 1 only when crop raised price vs first-pass (bleed-risk class)",
@@ -536,6 +573,12 @@ def main() -> None:
     if args.fail_on_bleed_risk and bleed_count:
         raise SystemExit(
             f"Failing: {bleed_count} crop raise(s) vs first-pass (adjacent-tile bleed risk)"
+        )
+    if args.fail_on_tracked_findings and report.tracked_finding_count:
+        raise SystemExit(
+            f"Failing: {report.tracked_finding_count} tracked import QA finding(s) "
+            f"({len(report.wow_worsens)} WoW worsen(s), "
+            f"{sum(1 for f in report.crop_overrides if 'bleed' in f.note)} bleed-risk)"
         )
     if args.fail_on_findings and report.finding_count:
         raise SystemExit(f"Failing: {report.finding_count} import QA finding(s)")

@@ -99,10 +99,12 @@ _Generated 2026-07-15 · ANALYSIS ONLY (handpicked YAML / homepage not updated).
 
 ---
 
-## Vons glance (same Costco SF math for avo; Tustin for others if mapped)
+## Vons
 
-Not the focus of this run’s SF crawl, but tracker still matched: **chicken breast $1.99/lb**, **avocados 99¢** (stronger Costco beat than Safeway Friday), **grapes $1.99/lb**, **Cheerios/CTC $1.29**, **salmon $8.99/lb**, **Fage 99¢**. If you want a Vons+Tustin pass next, drop a fresh Tustin consolidated file.
+Full Vons + Costco Tustin writeup (prior weeks + unit corrections):  
+→ **`fresh_costco_vons_highlight_recommendations.md`**
 
+Lead: avocados 99¢ (ATL) · chicken $1.99/lb · grapes $1.99/lb · cereal $1.29 · salmon $8.99/lb.
 ---
 
 ## Artifacts
