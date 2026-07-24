@@ -2975,20 +2975,9 @@ img {
 }
 
 .hub-signup-row {
-  display: grid;
-  gap: 14px;
-  align-items: start;
   max-width: 920px;
   margin: 0 auto 20px;
   text-align: left;
-}
-
-@media (min-width: 768px) {
-  .hub-signup-row {
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
-    gap: 16px;
-    align-items: stretch;
-  }
 }
 
 .hub-signup-stack {
@@ -3007,106 +2996,6 @@ img {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border: 1px solid rgba(255, 56, 92, 0.12);
-}
-
-.hub-coupon-check {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 12px 14px;
-  background: var(--card);
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-.hub-coupon-check-kicker {
-  margin: 0 0 4px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.hub-coupon-check-heading {
-  margin: 0 0 4px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--text);
-}
-
-.hub-coupon-check-lead {
-  margin: 0 0 10px;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--muted);
-}
-
-.hub-coupon-check-figure {
-  margin: 0 0 10px;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-.hub-coupon-check-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 168px;
-  object-fit: contain;
-  object-position: left center;
-  background: #fff;
-}
-
-.hub-coupon-check-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-}
-
-.hub-coupon-check-btn {
-  flex: 1 1 auto;
-  min-width: 72px;
-  justify-content: center;
-}
-
-.hub-coupon-check-btn.is-selected,
-.hub-coupon-check-btn[aria-pressed="true"] {
-  border-color: rgba(255, 56, 92, 0.45);
-  color: var(--accent-dark);
-  background: rgba(255, 56, 92, 0.06);
-}
-
-.hub-coupon-check-btn:disabled {
-  opacity: 0.72;
-  cursor: default;
-}
-
-.hub-coupon-check-tally {
-  margin: 8px 0 0;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--muted);
-}
-
-.hub-coupon-check-status {
-  margin: 6px 0 0;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.hub-coupon-check-status--success {
-  color: #2f6b3a;
-}
-
-.hub-coupon-check-status--error {
-  color: #b42318;
 }
 
 .hub-hero-row {

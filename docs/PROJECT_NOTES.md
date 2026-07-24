@@ -301,14 +301,15 @@ Add notes here for useful Cursor prompts, commands, migrations, local testing, a
 
 Living notes rule: `.cursor/rules/project-notes.mdc`, agents should read and update `docs/PROJECT_NOTES.md`.
 
-### Homepage coupon check poll (beside email signup)
+### Homepage coupon check poll (removed from UI)
 
 Date discovered: 2026-07-15  
-Context: Wanted a short ask for Safeway shoppers whether they see a specific personalized/stackable coupon (Cheez-It / Pringles / Pop-Tarts $3 off when buying four), next to the Beehiiv signup without stealing focus.  
-What happened: Needed a side module with embedded coupon screenshot + Yes/No tallies to gauge personalization.  
-Fix / workaround: Signup row is `.hub-signup-row` (email wider on desktop; coupon check secondary). Image at `media/coupons/safeway-cheezit-pringles-3off.png`. Supabase tables `coupon_check_polls` + `coupon_check_options`, RPC `vote_coupon_check(text)`; seed poll id `safeway_cheezit_pringles_3off_202607`. Client dedupes via `localStorage` key `sta_coupon_check_votes`.  
-How to verify: Apply `supabase/migrations/20260715_coupon_check_poll.sql` (`supabase db push` or SQL editor). `npm run preview:homepage` → http://127.0.0.1:8000/ → coupon module beside signup; Yep/Nope increments counts; reload shows prior answer.  
-Related files: `index.html`, `homepage.js`, `styles.css`, `media/coupons/safeway-cheezit-pringles-3off.png`, `supabase/migrations/20260715_coupon_check_poll.sql`
+Date updated: 2026-07-23  
+Context: Short ask for Safeway shoppers whether they see a specific personalized/stackable coupon (Cheez-It / Pringles / Pop-Tarts $3 off), beside Beehiiv signup.  
+What happened: Module shipped 2026-07-15; removed from public homepage UI on 2026-07-23 (signup/stack left as single column).  
+Fix / workaround: Backend left in place — Supabase tables `coupon_check_polls` + `coupon_check_options`, RPC `vote_coupon_check(text)`, seed poll id `safeway_cheezit_pringles_3off_202607` via `supabase/migrations/20260715_coupon_check_poll.sql`. Client UI/JS/CSS and unused image `media/coupons/safeway-cheezit-pringles-3off.png` removed.  
+How to verify: Homepage hero shows Beehiiv + trackers + store suggest only — no “Do you see this coupon?” module.  
+Related files: `supabase/migrations/20260715_coupon_check_poll.sql` (backend only); formerly `index.html`, `homepage.js`, `styles.css`
 
 ### Homepage store vote module (compact chips + Supabase)
 
