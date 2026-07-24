@@ -1427,10 +1427,10 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
   {
     "title": "Waterloo sparkling water",
     "trackerFamilyIds": [],
-    "reason": "Friday $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
-    "subtitle": "Friday $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
+    "reason": "Friday 2 for $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
+    "subtitle": "Friday 2 for $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
     "badge": "FRIDAY",
-    "price": "$5",
+    "price": "2/$5",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 3

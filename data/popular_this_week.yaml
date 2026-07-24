@@ -23,9 +23,9 @@ stores:
     - title: Waterloo sparkling water
       tracker_family_ids: []
       badge: FRIDAY
-      subtitle: "Friday $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
-      reason: "Friday $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
-      price: "$5"
+      subtitle: "Friday 2 for $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
+      reason: "Friday 2 for $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode."
+      price: "2/$5"
       display_order: 3
     - title: Cape Cod / Sun Chips
       tracker_family_ids: [sun_chips_7oz]

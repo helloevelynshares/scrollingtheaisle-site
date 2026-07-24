@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-24T04:38:02.454Z",
+  "generatedAt": "2026-07-24T15:20:56.953Z",
   "popularWeekLabel": "Jul 22–Jul 28",
   "popularPicksSafeway": [
     {
@@ -32,11 +32,11 @@
       "id": "Waterloo sparkling water",
       "name": "Waterloo sparkling water",
       "store": "Safeway",
-      "price": "$5",
+      "price": "2/$5",
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "FRIDAY",
-      "explanation": "Friday $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode.",
+      "explanation": "Friday 2 for $5 on 12-packs — mix flavors like guava berry, banana berry, and apple pie a la mode.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
