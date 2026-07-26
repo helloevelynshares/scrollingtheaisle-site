@@ -1,5 +1,5 @@
 /**
- * Homepage hub: curated popular picks (Safeway / Vons toggle).
+ * Homepage hub: curated Safeway popular picks.
  * Price data: data/homepage-preview.generated.json (npm run generate:homepage-preview)
  */
 
@@ -8,10 +8,6 @@ const TRACKER_URL = "grocery-price-tracker/";
 const STORE_VOTE_STORAGE_KEY = "sta_store_votes";
 const SUPABASE_URL = "https://wurmdtqysegytsjcudve.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_8Wt-it-oIHHIkQOi0D9y_g_qMoH51ZX";
-const TRACKER_URLS = {
-  safeway: `${TRACKER_URL}?feed=safeway_bay_area`,
-  vons: `${TRACKER_URL}?feed=vons_albertsons_socal`,
-};
 
 const VIEW_CONFIG = {
   safeway: {
@@ -19,14 +15,7 @@ const VIEW_CONFIG = {
     lead: "Hand-picked deals I'm watching at Safeway this week.",
     picksKey: "popularPicksSafeway",
     store: "Safeway",
-    trackerUrl: TRACKER_URLS.safeway,
-  },
-  vons: {
-    title: "Scrolling the Aisle's highlights of the week",
-    lead: "Hand-picked deals I'm watching at Vons this week.",
-    picksKey: "popularPicksVons",
-    store: "Vons",
-    trackerUrl: TRACKER_URLS.vons,
+    trackerUrl: `${TRACKER_URL}?feed=safeway_bay_area`,
   },
 };
 
@@ -176,30 +165,8 @@ function renderPicksGrid() {
   grid.innerHTML = renderPicksReport(picks);
 }
 
-function setActiveView(view) {
-  if (!VIEW_CONFIG[view]) return;
-  activeView = view;
-
-  document.querySelectorAll(".hub-picks-toggle-btn").forEach((btn) => {
-    const isActive = btn.dataset.view === view;
-    btn.classList.toggle("is-active", isActive);
-    btn.setAttribute("aria-selected", isActive ? "true" : "false");
-  });
-
-  renderPicksGrid();
-}
-
-function initPicksToggle() {
-  document.querySelectorAll(".hub-picks-toggle-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      setActiveView(btn.dataset.view);
-    });
-  });
-}
-
 async function initHomepage() {
   await loadPreviewData();
-  initPicksToggle();
   renderPicksGrid();
   initStoreSuggestModule();
 }

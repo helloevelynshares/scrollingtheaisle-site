@@ -6,6 +6,7 @@ import { fetchFeedProducts } from "../lib/priceTrackerApi";
 import { FeedTabs } from "./FeedTabs";
 import { SectionedTrackerList } from "./SectionedTrackerList";
 import { SiteDisclaimerBanner } from "./SiteDisclaimerBanner";
+import { SocalNoticeBanner } from "./SocalNoticeBanner";
 import { WeeklyAdPreviewBanner } from "./WeeklyAdPreviewBanner";
 
 function feedIdFromUrl(): string {
@@ -75,6 +76,8 @@ export function App() {
         </section>
 
         <FeedTabs activeFeedId={activeFeedId} onChange={setActiveFeedId} />
+
+        {feedStore === "vons" ? <SocalNoticeBanner /> : null}
 
         <WeeklyAdPreviewBanner feedStore={feedStore} />
 

@@ -186,13 +186,15 @@ export function SectionedTrackerList({ products, feedStore }: Props) {
 
   return (
     <div className="sectioned-tracker">
-      {controls}
-      <PopularThisWeek
-        feedStore={feedStore}
-        products={products}
-        onJumpToFamily={handleJumpToFamily}
-      />
+      {feedStore === "safeway" ? (
+        <PopularThisWeek
+          feedStore={feedStore}
+          products={products}
+          onJumpToFamily={handleJumpToFamily}
+        />
+      ) : null}
       <TrackVotePanel id="track-vote" />
+      {controls}
       {sections}
     </div>
   );

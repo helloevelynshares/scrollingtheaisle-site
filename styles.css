@@ -773,6 +773,78 @@ img {
   color: #5c4a1a;
 }
 
+.socal-notice-banner {
+  margin: 0 0 16px;
+}
+
+.socal-notice-banner__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px 10px 14px;
+  border: 1px solid #d7e2ef;
+  border-left: 3px solid #7a95b3;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, #f4f7fb 0%, #fafafa 100%);
+}
+
+.socal-notice-banner__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: #5f7a96;
+}
+
+.socal-notice-banner__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.socal-notice-banner__title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #3f5166;
+}
+
+.socal-notice-banner__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #4a5563;
+}
+
+.socal-notice-banner__dismiss {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: -4px -4px 0 0;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b7c8f;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.socal-notice-banner__dismiss:hover {
+  background: #e8eef5;
+  color: #3f5166;
+}
+
+.socal-notice-banner__dismiss:focus-visible {
+  outline: 2px solid #7a95b3;
+  outline-offset: 1px;
+}
+
 .family-deal-card__status--preview {
   background: #fff8e6;
   color: #8a6d1a;
