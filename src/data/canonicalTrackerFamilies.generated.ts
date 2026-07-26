@@ -155,6 +155,9 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lay's Salt & Vinegar",
       "Lay's Dill Pickle",
       "Lay's Cheddar & Sour Cream",
+      "Lay's Poppables",
+      "Poppables",
+      "Lay's Popables",
       "Lay's potato chips"
     ],
     "legacyCanonicalIds": []
@@ -195,9 +198,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lay's Party Size",
       "Lay's Party Size"
     ],
-    "legacyCanonicalIds": [
-      "frito_lay_multipack_chips"
-    ]
+    "legacyCanonicalIds": []
   },
   {
     "id": "kettle_brand_chips",
@@ -299,6 +300,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Simply Lay's",
       "Simply Ruffles",
       "Simply Popables",
+      "Simply NKD",
+      "Simply snacks",
       "Simply snacks"
     ],
     "legacyCanonicalIds": []
@@ -409,6 +412,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Cheez-It Extra Toasty",
       "Cheez-It Snap'd",
       "Cheez-It Puff'd",
+      "Cheez-It Ultimate Snack Mix",
+      "Cheez-It Snack Mix",
       "Cheez-It crackers"
     ],
     "legacyCanonicalIds": []
@@ -448,6 +453,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Oreo Thins",
       "Oreo limited edition flavors",
       "family size Oreo",
+      "Oreo Family Size",
+      "family size Oreos",
       "Oreo cookies"
     ],
     "legacyCanonicalIds": [
@@ -654,6 +661,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Breyers Carb Smart",
       "Breyers Sunday Swirls",
       "Breyers Natural Vanilla",
+      "Breyers Sundae Swirls",
+      "Breyers CarbSmart",
       "Breyers ice cream"
     ],
     "legacyCanonicalIds": []
@@ -955,6 +964,10 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Sargento sliced cheese 6\u20138 oz",
       "Kraft sliced or shredded cheese 6\u20138 oz",
       "Tillamook sliced or shredded cheese 6\u20138 oz",
+      "Tillamook shredded cheese",
+      "Tillamook sliced cheese",
+      "Tillamook cheese 6.5-8 oz",
+      "Tillamook Shredded, Chunk, Sliced or Snack Cheese",
       "store-brand sliced or shredded cheese",
       "Sliced or shredded cheese"
     ],
@@ -1015,6 +1028,10 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Chobani 20g protein",
       "Chobani 4-pack",
       "Chobani 4 ct",
+      "Chobani Layered",
+      "Chobani Flip",
+      "Chobani Creations",
+      "Chobani Complete",
       "Chobani yogurt"
     ],
     "legacyCanonicalIds": []
@@ -1126,6 +1143,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Chex cereal",
       "Reese's Puffs",
       "General Mills cereal",
+      "Honey Nut Cheerios",
+      "Honey Nut Cheerios cereal",
       "General Mills cereal"
     ],
     "legacyCanonicalIds": [
@@ -1146,6 +1165,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "family size Cinnamon Toast Crunch",
       "family size Lucky Charms",
       "family size Chex",
+      "family size Honey Nut Cheerios",
+      "Honey Nut Cheerios family size",
       "General Mills cereal (family size)"
     ],
     "legacyCanonicalIds": []
@@ -1372,6 +1393,310 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Salmon"
     ],
     "legacyCanonicalIds": []
+  },
+  {
+    "id": "cape_cod_chips",
+    "displayName": "Cape Cod potato chips",
+    "subtitle": "regular size, 6.5\u20138.5 oz",
+    "displayOrder": 69,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "chips_salty_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Cape Cod",
+      "Cape Cod Chips",
+      "Cape Cod Kettle Chips",
+      "Cape Cod Kettle Cooked Potato Chips",
+      "Cape Cod potato chips",
+      "Cape Cod potato chips"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "smartfood_popcorn",
+    "displayName": "Smartfood popcorn",
+    "subtitle": "regular size, 4.75\u201311 oz",
+    "displayOrder": 70,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "chips_salty_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Smartfood",
+      "Smartfood Popcorn",
+      "Smartfood White Cheddar",
+      "Smartfood popcorn"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "pringles",
+    "displayName": "Pringles",
+    "subtitle": "regular cans, selected varieties",
+    "displayOrder": 71,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "chips_salty_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Pringles",
+      "Pringles Chips",
+      "Pringles potato crisps",
+      "Pringles"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "snyders_pretzels",
+    "displayName": "Snyder's pretzels",
+    "subtitle": "regular size, 10\u201316 oz",
+    "displayOrder": 72,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "chips_salty_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Snyder's",
+      "Snyder's Pretzels",
+      "Snyders Pretzels",
+      "Snyder's of Hanover",
+      "Snyder's pretzels"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "frito_lay_multipack_chips",
+    "displayName": "Frito-Lay variety pack",
+    "subtitle": "18 ct multipack",
+    "displayOrder": 73,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "chips_salty_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Frito-Lay Variety Pack",
+      "Frito Lay Variety Pack",
+      "Frito-Lay multipack",
+      "Frito Lay Classic Mix Variety Pack",
+      "Frito-Lay variety pack"
+    ],
+    "legacyCanonicalIds": [
+      "frito_lay_multipack_chips"
+    ]
+  },
+  {
+    "id": "pop_tarts",
+    "displayName": "Pop-Tarts",
+    "subtitle": "8 ct toaster pastries, selected varieties",
+    "displayOrder": 74,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "cookies_crackers",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Pop-Tarts",
+      "Kellogg's Pop-Tarts",
+      "Kellogg Pop-Tarts",
+      "Pop Tarts",
+      "Pop-Tarts"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "kellogg_breakfast_bars",
+    "displayName": "Nutri-Grain & Special K bars",
+    "subtitle": "5\u201310 ct breakfast bars",
+    "displayOrder": 75,
+    "homepageSection": "dairy_breakfast_bakery",
+    "category": "bars_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Nutri-Grain",
+      "Nutri Grain",
+      "Kellogg's Nutri-Grain",
+      "Nutri-Grain Bars",
+      "Special K Bars",
+      "Special K breakfast bars",
+      "Nutri-Grain & Special K bars"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "betty_crocker_fruit_snacks",
+    "displayName": "Betty Crocker fruit snacks",
+    "subtitle": "5\u201310 ct pouches (Gushers, Fruit by the Foot, selected)",
+    "displayOrder": 76,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "bars_snacks",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Betty Crocker Fruit Snacks",
+      "Betty Crocker fruit snacks",
+      "Gushers",
+      "Fruit Gushers",
+      "Fruit by the Foot",
+      "Fruit Roll-Ups",
+      "Betty Crocker fruit snacks"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "waterloo_sparkling_water",
+    "displayName": "Waterloo sparkling water",
+    "subtitle": "8\u201312 pack, 12 fl oz cans",
+    "displayOrder": 77,
+    "homepageSection": "drinks",
+    "category": "beverages",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Waterloo",
+      "Waterloo Sparkling Water",
+      "Waterloo sparkling water",
+      "Waterloo sparkling water"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "bell_peppers",
+    "displayName": "Bell peppers",
+    "subtitle": "each or multi-buy",
+    "displayOrder": 78,
+    "homepageSection": "fresh_produce",
+    "category": "produce",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Bell Pepper",
+      "Bell Peppers",
+      "Green Bell Peppers",
+      "Green Bell Pepper",
+      "Yellow Bell Pepper",
+      "Red Bell Pepper",
+      "Orange Bell Pepper",
+      "Bell peppers"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "chicken_wings_per_lb",
+    "displayName": "Chicken wings",
+    "subtitle": "per lb (party wings)",
+    "displayOrder": 79,
+    "homepageSection": "meat_and_seafood",
+    "category": "meat",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Chicken Party Wings",
+      "Chicken Wings",
+      "party wings",
+      "fresh chicken wings",
+      "Chicken wings"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "shrimp_16oz",
+    "displayName": "Shrimp",
+    "subtitle": "16 oz bags (cooked or raw)",
+    "displayOrder": 80,
+    "homepageSection": "meat_and_seafood",
+    "category": "meat_seafood",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Cooked Shrimp",
+      "Raw Shrimp",
+      "Waterfront BISTRO Cooked Shrimp",
+      "Waterfront BISTRO Raw Shrimp",
+      "Waterfront Bistro Shrimp",
+      "shrimp 16 oz",
+      "shrimp 31-40",
+      "Shrimp"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "beef_short_ribs_per_lb",
+    "displayName": "Beef short ribs",
+    "subtitle": "per lb",
+    "displayOrder": 81,
+    "homepageSection": "meat_and_seafood",
+    "category": "meat_seafood",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Beef Chuck Short Ribs",
+      "Beef Short Ribs",
+      "short ribs",
+      "Flanken Style Short Ribs",
+      "flanken short ribs",
+      "Beef short ribs"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "pork_spare_ribs_per_lb",
+    "displayName": "Pork spare ribs",
+    "subtitle": "per lb",
+    "displayOrder": 82,
+    "homepageSection": "meat_and_seafood",
+    "category": "meat_seafood",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Pork Spareribs",
+      "pork spare ribs",
+      "spareribs",
+      "St. Louis Style Pork Ribs",
+      "St. Louis Style Pork Back Ribs",
+      "St. Louis Style Pork Spareribs",
+      "pork back ribs",
+      "Pork spare ribs"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "oscar_mayer_hot_dogs",
+    "displayName": "Oscar Mayer hot dogs",
+    "subtitle": "15\u201316 oz packs",
+    "displayOrder": 83,
+    "homepageSection": "meat_and_seafood",
+    "category": "meat",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Oscar Mayer Hot Dogs",
+      "Oscar Mayer Beef Franks",
+      "Oscar Mayer Franks",
+      "Oscar Mayer Meat Franks",
+      "Oscar Mayer hot dogs"
+    ],
+    "legacyCanonicalIds": []
+  },
+  {
+    "id": "cake_mix",
+    "displayName": "Cake mix",
+    "subtitle": "boxed mix ~15.25 oz, selected varieties",
+    "displayOrder": 84,
+    "homepageSection": "dairy_breakfast_bakery",
+    "category": "baking",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Cake Mix",
+      "Pillsbury Cake Mix",
+      "Pillsbury Moist Supreme Cake Mix",
+      "Betty Crocker Cake Mix",
+      "Duncan Hines Cake Mix",
+      "devil's food cake mix",
+      "Cake mix"
+    ],
+    "legacyCanonicalIds": []
   }
 ];
 
@@ -1394,7 +1719,7 @@ export const LEGACY_CANONICAL_TO_FAMILY: Record<string, string> = {
   "kettle_brand_chips": "kettle_brand_chips",
   "ben_jerrys_ice_cream": "ben_jerrys_ice_cream",
   "ritz_crackers_snacks": "ritz_crackers",
-  "frito_lay_multipack_chips": "lays_party_size",
+  "frito_lay_multipack_chips": "frito_lay_multipack_chips",
   "protein_bars": "quest_bars"
 };
 

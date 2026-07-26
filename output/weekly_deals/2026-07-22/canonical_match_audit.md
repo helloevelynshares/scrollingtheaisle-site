@@ -1,17 +1,24 @@
 # Canonical match audit: 2026-07-22 to 2026-07-28
 
-Generated: 2026-07-24T15:20:59.004707+00:00
+Generated: 2026-07-26T03:56:35.071250+00:00
 
 ## Summary
 
-- **Accepted:** 28
-- **Rejected:** 8
+- **Accepted:** 56
+- **Rejected:** 12
 - **Manual review:** 2
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, chips_ahoy, tillamook_ice_cream, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, chobani_yogurt_per_cup, general_mills_cereal_regular, pillsbury_refrigerated_dough, chicken_breast_per_lb, salmon
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, chips_ahoy, tillamook_ice_cream, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, chobani_yogurt_per_cup, general_mills_cereal_regular, pillsbury_refrigerated_dough, chicken_breast_per_lb, salmon, lays_potato_chips_regular, oreo_family_size, cherries_per_lb, berries_6oz, eggs_dozen_normalized, butter_16oz, sliced_or_shredded_cheese_6_8oz, post_cereal_regular
 
 ## Graph update safety check
 
-- No new all-time lows written this run.
+### All-time low changes
+
+- `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75 to 10.75 oz
+- `simply_snacks` (Vons): $2.49: Simply NKD 4.75 to 10.75 oz
+- `chips_ahoy` (Vons): $1.99: Chips Ahoy! Cookies 7 to 13 oz
+- `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75 to 10.75 oz
+- `simply_snacks` (Vons): $2.49: Simply NKD 4.75 to 10.75 oz
+- `chips_ahoy` (Vons): $1.99: Chips Ahoy! Cookies 7 to 13 oz
 
 ### Graph preview changes
 
@@ -20,11 +27,15 @@ Generated: 2026-07-24T15:20:59.004707+00:00
 - `pepsi_12packs` (Safeway): blocked $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz` (Safeway): blocked $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `nabisco_snack_crackers` (Safeway): blocked $4.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Safeway): blocked $4.99: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $4.99 requires confidence >= 0.90 (got 0.55)
 - `pepsi_12packs` (Safeway): blocked $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz` (Safeway): blocked $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
 ### Blocked from tracker graph
 
@@ -39,6 +50,12 @@ Generated: 2026-07-24T15:20:59.004707+00:00
 - `butter_16oz` (Safeway): **rejected**: 'Challenge Spreadable Butter' @ $4.26
   - Reason: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
   - Hard negatives: spread, spreadable
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+- `pepsi_12packs` (Vons): **rejected**: 'Pepsi 2 liter' @ $0.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
 - `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola 6-pack, 16.9-oz. bottles. Selected varieties.' @ $4.99
   - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $4.99 requires confidence >= 0.90 (got 0.55)
 - `pepsi_12packs` (Safeway): **rejected**: 'Pepsi Soda 12-pack, 12-oz cans' @ $5.4
@@ -50,6 +67,12 @@ Generated: 2026-07-24T15:20:59.004707+00:00
 - `butter_16oz` (Safeway): **rejected**: 'Challenge Spreadable Butter' @ $4.26
   - Reason: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
   - Hard negatives: spread, spreadable
+- `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+- `pepsi_12packs` (Vons): **rejected**: 'Pepsi 2 liter' @ $0.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $4.99
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $4.99
@@ -62,9 +85,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `pepsi_12packs`: 'Pepsi Soda 12-pack, 12-oz cans' @ $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz`: 'O Organics! Organic Blueberries pint' @ $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz`: 'Challenge Spreadable Butter' @ $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs`: 'Pepsi Soda 12-pack, 12-oz cans' @ $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz`: 'O Organics! Organic Blueberries pint' @ $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz`: 'Challenge Spreadable Butter' @ $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
 ## Accepted matches
 
@@ -80,6 +107,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sun_chips_7oz` (Safeway): 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5 (confidence 0.70)
   - Display: Sun Chips
   - Subtitle: regular size, 7 oz
+- `simply_snacks` (Safeway): 'Simply NKD' @ $2.49 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
 - `chips_ahoy` (Safeway): 'Nabisco Chips Ahoy! Cookies' @ $3.49 (confidence 1.00)
   - Display: Chips Ahoy cookies
   - Subtitle: regular size, 9.5–13 oz
@@ -110,6 +140,45 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion Farm Raised. Seasoned' @ $5.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos 4.75 to 10.75 oz' @ $2.49 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75 to 10.75 oz" @ $2.49 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular size, 5–13 oz
+- `simply_snacks` (Vons): 'Simply NKD 4.75 to 10.75 oz' @ $2.49 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `chips_ahoy` (Vons): 'Chips Ahoy! Cookies 7 to 13 oz' @ $1.99 (confidence 1.00)
+  - Display: Chips Ahoy cookies
+  - Subtitle: regular size, 9.5–13 oz
+- `oreo_family_size` (Vons): 'Oreo Cookies 7.9 to 14.03 oz' @ $1.99 (confidence 1.00)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `seedless_grapes_per_lb` (Vons): 'Green or Red Seedless Grapes' @ $3.99 (confidence 0.70)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `cherries_per_lb` (Vons): 'Large Cherries' @ $3.99 (confidence 0.90)
+  - Display: Cherries
+  - Subtitle: per lb
+- `berries_6oz` (Vons): 'Blueberries' @ $0.99 (confidence 0.98)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs 18 ct' @ $1.33 (confidence 1.00)
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+- `butter_16oz` (Vons): 'Lucerne Butter 16 oz' @ $2.99 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `sliced_or_shredded_cheese_6_8oz` (Vons): 'Tillamook sliced or shredded cheese 6.5-8 oz' @ $1.99 (confidence 0.70)
+  - Display: Sliced or shredded cheese
+  - Subtitle: 6–8 oz packages
+- `post_cereal_regular` (Vons): 'Post Cereal 9.5 to 16.6 oz' @ $1.88 (confidence 0.90)
+  - Display: Post cereal
+  - Subtitle: regular size, 10–16 oz
+- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
 - `doritos_5_13oz` (Safeway): 'Doritos, Lay’s, Miss Vickie’s' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -122,6 +191,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sun_chips_7oz` (Safeway): 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5 (confidence 0.70)
   - Display: Sun Chips
   - Subtitle: regular size, 7 oz
+- `simply_snacks` (Safeway): 'Simply NKD' @ $2.49 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
 - `chips_ahoy` (Safeway): 'Nabisco Chips Ahoy! Cookies' @ $3.49 (confidence 1.00)
   - Display: Chips Ahoy cookies
   - Subtitle: regular size, 9.5–13 oz
@@ -150,5 +222,44 @@ These looked like deals but were blocked from updating canonical trackers:
   - Display: Chicken breast
   - Subtitle: per lb
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion Farm Raised. Seasoned' @ $5.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `doritos_5_13oz` (Vons): 'Doritos 4.75 to 10.75 oz' @ $2.49 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75 to 10.75 oz" @ $2.49 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular size, 5–13 oz
+- `simply_snacks` (Vons): 'Simply NKD 4.75 to 10.75 oz' @ $2.49 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `chips_ahoy` (Vons): 'Chips Ahoy! Cookies 7 to 13 oz' @ $1.99 (confidence 1.00)
+  - Display: Chips Ahoy cookies
+  - Subtitle: regular size, 9.5–13 oz
+- `oreo_family_size` (Vons): 'Oreo Cookies 7.9 to 14.03 oz' @ $1.99 (confidence 1.00)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `seedless_grapes_per_lb` (Vons): 'Green or Red Seedless Grapes' @ $3.99 (confidence 0.70)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `cherries_per_lb` (Vons): 'Large Cherries' @ $3.99 (confidence 0.90)
+  - Display: Cherries
+  - Subtitle: per lb
+- `berries_6oz` (Vons): 'Blueberries' @ $0.99 (confidence 0.98)
+  - Display: Blueberries / raspberries / blackberries
+  - Subtitle: 6 oz clamshells
+- `eggs_dozen_normalized` (Vons): 'Lucerne Cage Free Large Eggs 18 ct' @ $1.33 (confidence 1.00)
+  - Display: Lucerne Eggs
+  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+- `butter_16oz` (Vons): 'Lucerne Butter 16 oz' @ $2.99 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `sliced_or_shredded_cheese_6_8oz` (Vons): 'Tillamook sliced or shredded cheese 6.5-8 oz' @ $1.99 (confidence 0.70)
+  - Display: Sliced or shredded cheese
+  - Subtitle: 6–8 oz packages
+- `post_cereal_regular` (Vons): 'Post Cereal 9.5 to 16.6 oz' @ $1.88 (confidence 0.90)
+  - Display: Post cereal
+  - Subtitle: regular size, 10–16 oz
+- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet

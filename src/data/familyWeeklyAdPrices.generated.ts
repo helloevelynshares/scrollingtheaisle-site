@@ -151,6 +151,12 @@ export const VONS_FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-07-21",
     "sourceFile": "vons 7-15 - 7-21.pdf",
     "sourceLabel": "Vons weekly ad 07/15\u201307/21"
+  },
+  {
+    "weekStart": "2026-07-22",
+    "weekEnd": "2026-07-28",
+    "sourceFile": "vons 7-22 - 7-28.pdf",
+    "sourceLabel": "Vons weekly ad 07/22\u201307/28"
   }
 ];
 

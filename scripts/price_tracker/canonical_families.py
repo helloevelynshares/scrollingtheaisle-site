@@ -59,7 +59,7 @@ LEGACY_CANONICAL_TO_FAMILY: dict[str, str] = {
     "kettle_brand_chips": "kettle_brand_chips",
     "ben_jerrys_ice_cream": "ben_jerrys_ice_cream",
     "ritz_crackers_snacks": "ritz_crackers",
-    "frito_lay_multipack_chips": "lays_party_size",
+    "frito_lay_multipack_chips": "frito_lay_multipack_chips",
     "protein_bars": "quest_bars",
 }
 

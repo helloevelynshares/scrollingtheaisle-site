@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-24T15:20:58.449368+00:00
+Generated: 2026-07-26T03:56:34.505096+00:00
 
 ## Summary
 
-- **Accepted:** 80
+- **Accepted:** 82
 - **Rejected:** 8
 - **Manual review:** 12
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, oreo_family_size, goldfish_bags, coca_cola_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cheetos_regular_bags, lays_kettle_cooked, ritz_crackers, berries_6oz, hass_avocados_each, lucerne_cream_cheese, chicken_breast_per_lb
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, oreo_family_size, goldfish_bags, coca_cola_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cheetos_regular_bags, lays_kettle_cooked, simply_snacks, ritz_crackers, berries_6oz, hass_avocados_each, lucerne_cream_cheese, chicken_breast_per_lb
 
 ## Graph update safety check
 
@@ -19,6 +19,7 @@ Generated: 2026-07-24T15:20:58.449368+00:00
 - `nectarines_per_lb` (Safeway): $1.99: Nectarines
 - `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `simply_snacks` (Vons): $2.5: Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz
 - `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
 - `peaches_per_lb` (Vons): $1.99: White Peaches
 - `nectarines_per_lb` (Vons): $1.99: Nectarines
@@ -28,6 +29,7 @@ Generated: 2026-07-24T15:20:58.449368+00:00
 - `nectarines_per_lb` (Safeway): $1.99: Nectarines
 - `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
+- `simply_snacks` (Vons): $2.5: Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz
 - `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
 - `peaches_per_lb` (Vons): $1.99: White Peaches
 - `nectarines_per_lb` (Vons): $1.99: Nectarines
@@ -205,6 +207,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 0.90)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
+- `simply_snacks` (Vons): 'Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz' @ $2.5 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
 - `ritz_crackers` (Vons): 'Nabisco Ritz Crackers' @ $2.99 (confidence 1.00)
   - Display: Ritz crackers
   - Subtitle: regular size, 8.8–13.7 oz
@@ -325,6 +330,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 0.90)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
+- `simply_snacks` (Vons): 'Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz' @ $2.5 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
 - `ritz_crackers` (Vons): 'Nabisco Ritz Crackers' @ $2.99 (confidence 1.00)
   - Display: Ritz crackers
   - Subtitle: regular size, 8.8–13.7 oz

@@ -125,6 +125,15 @@ Fix / workaround: Add includes `Kettle Potato Chips` and `Kettle chips` (QUALIFI
 How to verify: `kettle_brand_chips["2026-07-22"].price === 1.99` with offerText `Kettle Potato Chips`; May 12 / Jun 17 multi-brand blobs stay null. `python -m unittest tests.test_canonical_families.TestKettleBrandChipsMatcher`. PDF: `safeway 7-22 - 7-28.pdf` p.3 coupon grid.  
 Related files: `data/canonical_tracker_families.yaml` (`kettle_brand_chips`), `src/data/weeklyAdPrices.generated.ts`, `tests/test_canonical_families.py`, sibling `split_offer_items.csv` row `8849a49be6b6`
 
+### Vons 2026-07-22 import: chips/eggs/chicken vision errors
+
+Date discovered: 2026-07-25  
+Context: Vons-only import of `vons 7-22 - 7-28.pdf` via `/usr/bin/python3 scripts/import_weekly_ad.py --week-start 2026-07-22 --week-end 2026-07-28 --vons-pdf "vons 7-22 - 7-28.pdf"`.  
+What happened: Vision misread several front-page tiles: chips as **2 for $6** with Ruffles/Kettle (real: Lay’s/Doritos/Simply NKD/Miss Vickie’s/Tim’s **$2.49 when you buy 3**, 4.75–10.75 oz); Post cereal **$1.99** (real **$1.88 buy 3**); eggs **12 ct** (real Lucerne Cage Free **18 ct** $1.99); hallucinated Large Strawberries/Raspberries/Blackberries and 2 lb strawberries; missed Large Cherries $3.99/lb, Lucerne Butter $2.99 buy 2, Tillamook cheese $1.99; matched bone-in **Fresh Split Chicken Breasts** $1.69 onto `chicken_breast_per_lb`.  
+Fix / workaround: Manually correct dedicated + consolidated `split_offer_items.csv`; YAML `keep_separate_from` for split/bone-in chicken breasts; add cheese/Simply NKD includes; rematch `--feed vons` then `npm run build:price-tracker`. Friday Hass avocados 3 for $5 ($1.67) correctly stays unmatched when above Vons baseline $1.50.  
+How to verify: Vons Jul 22 — Doritos/Lay’s/Simply $2.49, Post $1.88, eggs $1.33/dozen, cherries $3.99, butter $2.99, blueberries $0.99, Oreo/Chips Ahoy $1.99; no chicken_breast / strawberries / Ruffles / kettle for that week. Bundle includes `2026-07-22`.  
+Related files: `data/canonical_tracker_families.yaml`, `src/data/vonsWeeklyAdPrices.generated.ts`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`, `output/weekly_deals/2026-07-22/`
+
 **Vons baselines (SoCal):** Same Albertsons `pgmsearch` API: `python scripts/seed_vons_baseline_playwright.py --http-only` (curl transport in `vons_client.py`; Playwright fallback). Env: `VONS_COOKIE`, `VONS_VISITOR_ID`, `VONS_STORE_ID=2053`, `VONS_ZIPCODE=92110`, `VONS_CHANNEL=instore`, `VONS_USER_AGENT` (Safari), optional `VONS_UUID`, `VONS_SUBSCRIPTION_KEY`. Then `npm run generate:vons-feed-matches` → `src/data/vonsBaseline.generated.ts`. **Vons weekly ads** via `vonsWeeklyAdPrices.generated.ts`.
 
 TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_transcripts.csv` → `data/processed/tiktok_item_mentions.csv`.
@@ -392,6 +401,15 @@ Checks: (1) keyword sanity (offerText must match at least one include token; mus
 False matches fixed 2026-07-06: `haagen_dazs_pints` ("coffee"/"vanilla" → too generic; removed standalone flavor words from include), `butter_16oz` (peanut butter added to keep_separate_from), `general_mills_cereal_regular` ("Chex Mix", "Rold Gold" added to keep_separate_from; "Chex" → "Chex cereal" in include), `mangoes_each` ("habanero", "chicken" added to keep_separate_from), `nature_valley_bars` (already had "protein bars" in keep_separate_from; stale TS re-generated to apply exclusion), `ruffles_regular_bags` (Lindt/LINDOR/Gourmet Truffles/chocolate truffles added to keep_separate_from as preventive measure).  
 How to verify: 0 `[keyword/FAIL]` rows in sanity CSV. `PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_validate_weekly_ad_prices -v` → 32 tests OK.  
 Related files: `scripts/validate_weekly_ad_prices.py`, `data/canonical_tracker_families.yaml`, `data/review/weekly_price_sanity_{date}.csv`, `tests/test_validate_weekly_ad_prices.py`
+
+### Product-matching eval scaffold (dry-run, not production)
+
+Date discovered: 2026-07-25  
+Context: Accumulate labeled match corrections without changing `generate_weekly_ad_prices.py`.  
+What happened: Prior fixes lived in YAML, PROJECT_NOTES prose, and fragile sibling-repo CSV edits; no machine-readable eval set.  
+Fix / workaround: Isolated scaffold under `scripts/product_matching/` + `data/product_matching/`. Run `PYTHONPATH=scripts python3 -m product_matching.eval_runner`. After any human match correction: append a line to `eval_cases.jsonl` and a row to `corrections.yaml` (see `docs/product_matching.md`). Production matcher does not read these files yet. Four open `baseline_bug` rows document wrong Vons rank-1 SKUs (Hershey’s→Ben & Jerry’s, Malt-O-Meal→Cheerios, BJ non-dairy→Häagen-Dazs, Miss Vickie’s→Kettle Brand) for a separate baseline fix.  
+How to verify: Eval prints precision/recall + failure list; exit 2 if incorrect automatic accepts remain.  
+Related files: `docs/product_matching.md`, `data/product_matching/eval_cases.jsonl`, `data/product_matching/corrections.yaml`, `scripts/product_matching/eval_runner.py`
 
 Playwright setup: `pip install -r scripts/requirements.txt && playwright install chromium`
 

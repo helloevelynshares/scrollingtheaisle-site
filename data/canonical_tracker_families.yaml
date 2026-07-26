@@ -1,5 +1,5 @@
 schema_version: 2
-last_updated: '2026-07-05'
+last_updated: '2026-07-25'
 purpose: Human-editable canonical tracker-family reference for Scrolling the Aisle price graphs. Families mirror weekly-ad
   sale groupings, while keeping user-facing headlines simple and putting size/format details in subtitles.
 usage_notes:
@@ -92,12 +92,20 @@ families:
   - Lay's Salt & Vinegar
   - Lay's Dill Pickle
   - Lay's Cheddar & Sour Cream
+  - 'Lay''s Poppables'
+  - Poppables
+  - 'Lay''s Popables'
   keep_separate_from:
   - Lay's Kettle Cooked
   - Lay's Kettle
   - Lay's Stax
   - Lay's Party Size
   - Simply Lay's
+  - Simply Popables
+  - Simply Poppables
+  - Pringles
+  - Cape Cod
+  - Smartfood
   notes: 'Flyers often abbreviate siblings as Lay''s Kettle (no Cooked); keep_separate covers that.'
   confidence: working
   source_basis:
@@ -128,6 +136,7 @@ families:
   - Party Size
   - Family Size
   - Sun Chips
+  - Cape Cod chips
   notes: 'Ads often print Lay''s Kettle or Kettle Cooked Chips without the full brand+line name. Do not take Cape Cod / Sun Chips mix tiles.'
   confidence: working
   source_basis:
@@ -293,11 +302,15 @@ families:
   - Simply Lay's
   - Simply Ruffles
   - Simply Popables
+  - Simply NKD
+  - Simply snacks
   keep_separate_from:
   - regular Cheetos
   - regular Doritos
   - regular Lay's
   - Party Size
+  - 'Lay''s Poppables'
+  - Poppables
   notes: ''
   confidence: working
   source_basis:
@@ -431,6 +444,8 @@ families:
   - Cheez-It Extra Toasty
   - Cheez-It Snap'd
   - Cheez-It Puff'd
+  - Cheez-It Ultimate Snack Mix
+  - Cheez-It Snack Mix
   keep_separate_from:
   - Goldfish
   - Nabisco snack crackers
@@ -473,6 +488,8 @@ families:
   - Oreo Thins
   - Oreo limited edition flavors
   - family size Oreo
+  - Oreo Family Size
+  - family size Oreos
   keep_separate_from:
   - Chips Ahoy
   - Nabisco snack crackers
@@ -605,6 +622,7 @@ families:
   keep_separate_from:
   - soda 12-packs
   - water bottles
+  - Waterloo
   notes: ''
   confidence: working
   source_basis:
@@ -710,6 +728,8 @@ families:
   - Breyers Carb Smart
   - Breyers Sunday Swirls
   - Breyers Natural Vanilla
+  - Breyers Sundae Swirls
+  - Breyers CarbSmart
   keep_separate_from:
   - Dreyer's
   - Häagen-Dazs
@@ -1076,6 +1096,10 @@ families:
   - Sargento sliced cheese 6–8 oz
   - Kraft sliced or shredded cheese 6–8 oz
   - Tillamook sliced or shredded cheese 6–8 oz
+  - Tillamook shredded cheese
+  - Tillamook sliced cheese
+  - Tillamook cheese 6.5-8 oz
+  - Tillamook Shredded, Chunk, Sliced or Snack Cheese
   - store-brand sliced or shredded cheese
   keep_separate_from:
   - cream cheese
@@ -1143,6 +1167,10 @@ families:
   - Chobani 20g protein
   - Chobani 4-pack
   - Chobani 4 ct
+  - Chobani Layered
+  - Chobani Flip
+  - Chobani Creations
+  - Chobani Complete
   keep_separate_from:
   - Chobani 32 oz
   - Chobani tub
@@ -1259,6 +1287,11 @@ families:
   - protein bars
   - Kellogg's breakfast bars
   - Betty Crocker fruit snacks
+  - Nutri-Grain
+  - Special K Bars
+  - Pop-Tarts
+  - Gushers
+  - Fruit by the Foot
   notes: ''
   confidence: working
   source_basis:
@@ -1277,6 +1310,8 @@ families:
   - Chex cereal
   - Reese's Puffs
   - General Mills cereal
+  - Honey Nut Cheerios
+  - Honey Nut Cheerios cereal
   keep_separate_from:
   - General Mills family size
   - Post cereal
@@ -1300,6 +1335,8 @@ families:
   - family size Cinnamon Toast Crunch
   - family size Lucky Charms
   - family size Chex
+  - family size Honey Nut Cheerios
+  - Honey Nut Cheerios family size
   keep_separate_from:
   - regular-size General Mills cereal
   - Post cereal
@@ -1380,6 +1417,9 @@ families:
   - hamburger buns
   - hot dog buns
   - Hawaiian sliced bread
+  - Hawaiian Brand chips
+  - Hawaiian chips
+  - Sweet Maui Onion
   notes: ''
   confidence: working
   source_basis:
@@ -1400,6 +1440,9 @@ families:
   keep_separate_from:
   - frozen breakfast
   - bakery rolls
+  - cake mix
+  - frosting
+  - Pillsbury Cake Mix
   notes: ''
   confidence: working
   source_basis:
@@ -1478,7 +1521,14 @@ families:
   - chicken tenders
   - Open Nature Chicken Breast Strips
   - organic chicken unless intentionally grouped
-  notes: Separate from thighs because breast and thigh prices commonly differ. Exclude breaded/precooked strips and tenders. Ads sometimes reorder as "chicken boneless skinless breasts".
+  - split chicken breast
+  - split chicken breasts
+  - bone-in chicken breast
+  - bone-in chicken breasts
+  - Fresh Split Chicken Breasts
+  - party wings
+  - Chicken Party Wings
+  notes: Separate from thighs because breast and thigh prices commonly differ. Exclude breaded/precooked strips and tenders. Ads sometimes reorder as "chicken boneless skinless breasts". Exclude bone-in split breasts (common Vons front-page value-pack tile).
   display_order: 63
   homepage_group: meat_and_seafood
 - category: meat
@@ -1499,6 +1549,8 @@ families:
   - chicken wings
   - cooked chicken
   - organic chicken unless intentionally grouped
+  - party wings
+  - Chicken Party Wings
   notes: Separate from breast because breast and thigh prices commonly differ. Preserve bone-in/boneless detail in offer metadata.
   display_order: 64
   homepage_group: meat_and_seafood
@@ -1515,6 +1567,9 @@ families:
   - tri-tip roast
   - short ribs
   - New York steak
+  - spare ribs
+  - spareribs
+  - pork ribs
   notes: ''
   confidence: working
   source_basis:
@@ -1533,6 +1588,9 @@ families:
   keep_separate_from:
   - ribeye steak
   - short ribs
+  - spare ribs
+  - spareribs
+  - pork ribs
   notes: ''
   confidence: working
   source_basis:
@@ -1583,3 +1641,425 @@ families:
   - reviewed_weekly_ads_and_transcripts
   display_order: 68
   homepage_group: meat_and_seafood
+- id: cape_cod_chips
+  canonical_tracker_family: Cape Cod potato chips
+  size_format_subtitle: 'regular size, 6.5–8.5 oz'
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Cape Cod
+  - Cape Cod Chips
+  - Cape Cod Kettle Chips
+  - Cape Cod Kettle Cooked Potato Chips
+  - Cape Cod potato chips
+  keep_separate_from:
+  - Kettle Brand
+  - Kettle Brand chips
+  - 'Lay''s Kettle Cooked'
+  - 'Lay''s Kettle'
+  - Miss Vickie
+  - 'Miss Vickie''s'
+  - Sun Chips
+  - Sunchips
+  - Party Size
+  - multipacks
+  - 'Snyder''s'
+  notes: 'Distinct from Kettle Brand and Lay''s Kettle Cooked. Do not take multi-brand mix tiles that only list Cape Cod as a co-brand without a Cape Cod-titled split row.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 69
+  homepage_group: snacks_and_crackers
+- id: smartfood_popcorn
+  canonical_tracker_family: Smartfood popcorn
+  size_format_subtitle: 'regular size, 4.75–11 oz'
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Smartfood
+  - Smartfood Popcorn
+  - Smartfood White Cheddar
+  keep_separate_from:
+  - Party Size
+  - multipacks
+  - variety packs
+  - Frito-Lay Variety Pack
+  - PopCorners
+  - Simply
+  notes: 'Frito-Lay popcorn; often Mix & Match with Doritos / Ruffles / SunChips.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 70
+  homepage_group: snacks_and_crackers
+- id: pringles
+  canonical_tracker_family: Pringles
+  size_format_subtitle: 'regular cans, selected varieties'
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Pringles
+  - Pringles Chips
+  - Pringles potato crisps
+  keep_separate_from:
+  - Cheez-It
+  - Nutri-Grain
+  - Rice Krispies Treats
+  - variety pack
+  - multipack
+  - Snack Stacks
+  - 'Lay''s'
+  - Doritos
+  notes: Match split rows titled Pringles. Avoid inheriting Cheez-It/Nutri-Grain mix-tile package ranges.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 71
+  homepage_group: snacks_and_crackers
+- id: snyders_pretzels
+  canonical_tracker_family: 'Snyder''s pretzels'
+  size_format_subtitle: 'regular size, 10–16 oz'
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - 'Snyder''s'
+  - 'Snyder''s Pretzels'
+  - Snyders Pretzels
+  - 'Snyder''s of Hanover'
+  keep_separate_from:
+  - Cape Cod
+  - 'Dot''s'
+  - Dots Pretzels
+  - Rold Gold
+  - party size
+  - multipacks
+  notes: 'Transcript ASR ''siders'' may mean Snyder''s — only match when offer text says Snyder''s.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 72
+  homepage_group: snacks_and_crackers
+- id: frito_lay_multipack_chips
+  canonical_tracker_family: Frito-Lay variety pack
+  size_format_subtitle: '18 ct multipack'
+  category: chips_salty_snacks
+  organic_status: not_applicable
+  include:
+  - Frito-Lay Variety Pack
+  - Frito Lay Variety Pack
+  - Frito-Lay multipack
+  - Frito Lay Classic Mix Variety Pack
+  keep_separate_from:
+  - 'Lay''s Party Size'
+  - Party Size
+  - regular Doritos
+  - regular Cheetos
+  - Smartfood single bags
+  - single bags
+  notes: Preserves legacy id frito_lay_multipack_chips. Not the same as party-size single bags.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 73
+  homepage_group: snacks_and_crackers
+- id: pop_tarts
+  canonical_tracker_family: Pop-Tarts
+  size_format_subtitle: '8 ct toaster pastries, selected varieties'
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Pop-Tarts
+  - 'Kellogg''s Pop-Tarts'
+  - Kellogg Pop-Tarts
+  - Pop Tarts
+  keep_separate_from:
+  - Nature Valley
+  - Nutri-Grain
+  - Special K Bars
+  - Cheez-It
+  - Rice Krispies Treats
+  - frosting
+  - cake mix
+  notes: Toaster pastries only. Limited-edition flavors stay aliases under this family.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 74
+  homepage_group: snacks_and_crackers
+- id: kellogg_breakfast_bars
+  canonical_tracker_family: 'Nutri-Grain & Special K bars'
+  size_format_subtitle: '5–10 ct breakfast bars'
+  category: bars_snacks
+  organic_status: not_applicable
+  include:
+  - Nutri-Grain
+  - Nutri Grain
+  - 'Kellogg''s Nutri-Grain'
+  - Nutri-Grain Bars
+  - Special K Bars
+  - Special K breakfast bars
+  keep_separate_from:
+  - Special K cereal
+  - Pop-Tarts
+  - Nature Valley
+  - Rice Krispies Treats
+  - Cheez-It
+  - Pringles
+  - protein bars
+  - Kashi
+  - 'Kellogg''s Cereal'
+  notes: 'Umbrella for Nutri-Grain and Special K bar forms that share Mix & Match promos. Not Special K cereal.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 75
+  homepage_group: dairy_breakfast_bakery
+- id: betty_crocker_fruit_snacks
+  canonical_tracker_family: Betty Crocker fruit snacks
+  size_format_subtitle: '5–10 ct pouches (Gushers, Fruit by the Foot, selected)'
+  category: bars_snacks
+  organic_status: not_applicable
+  include:
+  - Betty Crocker Fruit Snacks
+  - Betty Crocker fruit snacks
+  - Gushers
+  - Fruit Gushers
+  - Fruit by the Foot
+  - Fruit Roll-Ups
+  keep_separate_from:
+  - Nature Valley
+  - General Mills cereal
+  - cereal bars
+  - protein bars
+  - Nutri-Grain
+  notes: 'Tracks Betty Crocker fruit-snack Mix & Match tiles including Gushers and Fruit by the Foot. Not a flavor-specific tracker.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 76
+  homepage_group: snacks_and_crackers
+- id: waterloo_sparkling_water
+  canonical_tracker_family: Waterloo sparkling water
+  size_format_subtitle: '8–12 pack, 12 fl oz cans'
+  category: beverages
+  organic_status: not_applicable
+  include:
+  - Waterloo
+  - Waterloo Sparkling Water
+  - Waterloo sparkling water
+  keep_separate_from:
+  - LaCroix
+  - La Croix
+  - soda 12-packs
+  - Coca-Cola
+  - Pepsi
+  - water bottles
+  - still water
+  notes: Distinct from LaCroix. Ads alternate 8-pack and 12-pack cans at similar promo prices.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 77
+  homepage_group: drinks
+- id: bell_peppers
+  canonical_tracker_family: Bell peppers
+  size_format_subtitle: each or multi-buy
+  category: produce
+  organic_status: conventional
+  include:
+  - Bell Pepper
+  - Bell Peppers
+  - Green Bell Peppers
+  - Green Bell Pepper
+  - Yellow Bell Pepper
+  - Red Bell Pepper
+  - Orange Bell Pepper
+  keep_separate_from:
+  - jalapeño
+  - habanero
+  - chili peppers
+  - mini peppers
+  - organic bell
+  - mango
+  - cucumber
+  notes: Track conventional bell peppers. Color variants share the graph when priced interchangeably.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 78
+  homepage_group: produce
+- id: chicken_wings_per_lb
+  canonical_tracker_family: Chicken wings
+  size_format_subtitle: per lb (party wings)
+  category: meat
+  organic_status: not_applicable
+  include:
+  - Chicken Party Wings
+  - Chicken Wings
+  - party wings
+  - fresh chicken wings
+  keep_separate_from:
+  - chicken breast
+  - chicken thighs
+  - chicken tenders
+  - fried chicken
+  - rotisserie
+  - '8-pc'
+  - cooked chicken
+  - breaded
+  notes: Fresh party wings per lb. Exclude deli fried chicken / rotisserie / tenders.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 79
+  homepage_group: meat_and_seafood
+- id: shrimp_16oz
+  canonical_tracker_family: Shrimp
+  size_format_subtitle: '16 oz bags (cooked or raw)'
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - Cooked Shrimp
+  - Raw Shrimp
+  - Waterfront BISTRO Cooked Shrimp
+  - Waterfront BISTRO Raw Shrimp
+  - Waterfront Bistro Shrimp
+  - shrimp 16 oz
+  - shrimp 31-40
+  keep_separate_from:
+  - shrimp ring
+  - shrimp tray
+  - cocktail sauce
+  - salmon
+  - jumbo shrimp previously frozen
+  - scampi
+  - shrimp taco
+  match_eligibility:
+    canonical_intent: bagged_shrimp
+    positive_keywords:
+    - shrimp
+    - '16 oz'
+    - '31-40'
+    - waterfront
+    negative_keywords:
+    - ring
+    - tray
+    - cocktail
+    - scampi
+    - taco
+    - skewers
+    disallowed_package_patterns:
+    - \bring\b
+    - \btray\b
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 40
+  notes: 'Bagged ~16 oz shrimp (often Waterfront Bistro). Exclude rings, trays, and prepared meals.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 80
+  homepage_group: meat_and_seafood
+- id: beef_short_ribs_per_lb
+  canonical_tracker_family: Beef short ribs
+  size_format_subtitle: per lb
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - Beef Chuck Short Ribs
+  - Beef Short Ribs
+  - short ribs
+  - Flanken Style Short Ribs
+  - flanken short ribs
+  keep_separate_from:
+  - ribeye
+  - tri-tip
+  - spare ribs
+  - spareribs
+  - pork ribs
+  - St. Louis
+  - back ribs
+  notes: Beef chuck / flanken short ribs only. Keep separate from pork spare ribs and steaks.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 81
+  homepage_group: meat_and_seafood
+- id: pork_spare_ribs_per_lb
+  canonical_tracker_family: Pork spare ribs
+  size_format_subtitle: per lb
+  category: meat_seafood
+  organic_status: not_applicable
+  include:
+  - Pork Spareribs
+  - pork spare ribs
+  - spareribs
+  - St. Louis Style Pork Ribs
+  - St. Louis Style Pork Back Ribs
+  - St. Louis Style Pork Spareribs
+  - pork back ribs
+  keep_separate_from:
+  - beef short ribs
+  - short ribs
+  - flanken
+  - ribeye
+  - tri-tip
+  - country style ribs
+  - seasoned country style
+  notes: Pork spareribs / St. Louis style. Keep separate from beef short ribs and country-style loin ribs when distinctly priced.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 82
+  homepage_group: meat_and_seafood
+- id: oscar_mayer_hot_dogs
+  canonical_tracker_family: Oscar Mayer hot dogs
+  size_format_subtitle: '15–16 oz packs'
+  category: meat
+  organic_status: not_applicable
+  include:
+  - Oscar Mayer Hot Dogs
+  - Oscar Mayer Beef Franks
+  - Oscar Mayer Franks
+  - Oscar Mayer Meat Franks
+  keep_separate_from:
+  - Oscar Mayer Bacon
+  - Lunchables
+  - lunchmeat
+  - Ball Park
+  - 'Nathan''s'
+  - Signature SELECT hot dogs
+  - bun
+  - footlong
+  notes: Hot dogs / franks only — not bacon or Lunchables.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 83
+  homepage_group: meat_and_seafood
+- id: cake_mix
+  canonical_tracker_family: Cake mix
+  size_format_subtitle: 'boxed mix ~15.25 oz, selected varieties'
+  category: baking
+  organic_status: not_applicable
+  include:
+  - Cake Mix
+  - Pillsbury Cake Mix
+  - Pillsbury Moist Supreme Cake Mix
+  - Betty Crocker Cake Mix
+  - Duncan Hines Cake Mix
+  - 'devil''s food cake mix'
+  keep_separate_from:
+  - frosting
+  - pancake mix
+  - Pillsbury Grands
+  - refrigerated dough
+  - cookie dough
+  - brownie mix
+  - muffin mix
+  notes: 'Boxed cake mixes are interchangeable across flavors (including devil''s food). Do not graph frosting-only or pancake mix.'
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 84
+  homepage_group: dairy_breakfast_bakery

@@ -1,6 +1,6 @@
 # Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-24T15:20:59.355711+00:00
+Generated: 2026-07-26T03:56:35.421686+00:00
 
 ## Summary
 
@@ -15,10 +15,8 @@ Generated: 2026-07-24T15:20:59.355711+00:00
 
 - `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
 - `mangoes_each` (Vons): $0.5: Extra Large Mangoes
-- `chicken_breast_per_lb` (Vons): $1.69: Fresh Split Chicken Breasts Bone-in Value Pack
 - `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
 - `mangoes_each` (Vons): $0.5: Extra Large Mangoes
-- `chicken_breast_per_lb` (Vons): $1.69: Fresh Split Chicken Breasts Bone-in Value Pack
 
 ## Accepted matches
 
@@ -46,7 +44,7 @@ Generated: 2026-07-24T15:20:59.355711+00:00
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
-- `chicken_breast_per_lb` (Vons): 'Fresh Split Chicken Breasts Bone-in Value Pack' @ $1.69 (confidence 0.70)
+- `chicken_breast_per_lb` (Vons): 'Fresh Boneless Skinless Chicken Breasts Value Pack' @ $2.99 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $9.99 (confidence 1.00)
@@ -76,7 +74,7 @@ Generated: 2026-07-24T15:20:59.355711+00:00
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
-- `chicken_breast_per_lb` (Vons): 'Fresh Split Chicken Breasts Bone-in Value Pack' @ $1.69 (confidence 0.70)
+- `chicken_breast_per_lb` (Vons): 'Fresh Boneless Skinless Chicken Breasts Value Pack' @ $2.99 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $9.99 (confidence 1.00)
