@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-26T03:56:35.421686+00:00
+Generated: 2026-07-26T18:49:21.382679+00:00
 
 ## Summary
 
-- **Accepted:** 20
-- **Rejected:** 0
+- **Accepted:** 26
+- **Rejected:** 2
 - **Manual review:** 0
-- **Families updated:** kettle_brand_chips, goldfish_bags, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, eggs_dozen_normalized, lucerne_cream_cheese, chicken_breast_per_lb, salmon
+- **Families updated:** kettle_brand_chips, goldfish_bags, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, eggs_dozen_normalized, lucerne_cream_cheese, chicken_breast_per_lb, salmon, pringles, kellogg_breakfast_bars, chicken_wings_per_lb
 
 ## Graph update safety check
 
@@ -15,8 +15,31 @@ Generated: 2026-07-26T03:56:35.421686+00:00
 
 - `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
 - `mangoes_each` (Vons): $0.5: Extra Large Mangoes
+- `pringles` (Vons): $1.88: Pringles 5.2-5.57 oz
 - `strawberries_1_2lb` (Vons): $1.28: Local Strawberries
 - `mangoes_each` (Vons): $0.5: Extra Large Mangoes
+- `pringles` (Vons): $1.88: Pringles 5.2-5.57 oz
+
+### Graph preview changes
+
+- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand
+- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand
+
+### Blocked from tracker graph
+
+- `cape_cod_chips` (Vons): **rejected**: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88
+  - Reason: hard negative keyword/pattern hit: kettle brand
+  - Hard negatives: kettle brand
+- `cape_cod_chips` (Vons): **rejected**: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88
+  - Reason: hard negative keyword/pattern hit: kettle brand
+  - Hard negatives: kettle brand
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand
+- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand
 
 ## Accepted matches
 
@@ -50,6 +73,15 @@ Generated: 2026-07-26T03:56:35.421686+00:00
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $9.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles 5.2-5.57 oz' @ $1.88 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `kellogg_breakfast_bars` (Vons): 'Nutri-Grain Bars 8 ct' @ $1.88 (confidence 0.70)
+  - Display: Nutri-Grain & Special K bars
+  - Subtitle: 5–10 ct breakfast bars
+- `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $8.99 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5 to 8.5 oz' @ $1.88 (confidence 0.90)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
@@ -80,3 +112,12 @@ Generated: 2026-07-26T03:56:35.421686+00:00
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $9.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles 5.2-5.57 oz' @ $1.88 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `kellogg_breakfast_bars` (Vons): 'Nutri-Grain Bars 8 ct' @ $1.88 (confidence 0.70)
+  - Display: Nutri-Grain & Special K bars
+  - Subtitle: 5–10 ct breakfast bars
+- `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $8.99 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)

@@ -1,0 +1,1122 @@
+schema_version: 1
+generated: '2026-07-25'
+purpose: 'Phase 1 coverage audit: historical Safeway video transcript highlights vs canonical tracker
+  families'
+summary:
+  total_highlighted_mentions_seed: 89
+  unique_normalized_highlighted_products: 89
+  already_covered: 49
+  requiring_aliases_only: 5
+  requiring_rule_changes: 0
+  requiring_new_families: 17
+  requiring_taxonomy_review: 1
+  unresolved_visual_only_or_ambiguous: 17
+  not_appropriate_for_tracking: 0
+  relationship_breakdown:
+    covered by existing umbrella family: 18
+    exact existing family: 31
+    genuinely missing family: 17
+    existing family may need splitting: 1
+    ambiguous: 17
+    existing family needs alias: 5
+products:
+- normalized: Blueberries
+  raw:
+  - blueberries
+  weeks:
+  - transcript inventory; ads 2026-05-12, 2026-06-24
+  family_id: berries_6oz
+  relationship: covered by existing umbrella family
+  package: 6 oz clamshells; large packs excluded
+  recommendation: Reuse berries_6oz; no change
+  confidence: high
+  evidence: YAML include blueberries; match rules require 6 oz
+- normalized: Strawberries
+  raw:
+  - strawberries
+  weeks:
+  - multiple
+  family_id: strawberries_1_2lb
+  relationship: exact existing family
+  package: 1–2 lb conventional
+  recommendation: Reuse
+  confidence: high
+  evidence: strawberries_1_2lb
+- normalized: Blackberries
+  raw:
+  - blackberries
+  weeks:
+  - '2026-05-06'
+  family_id: berries_6oz
+  relationship: covered by existing umbrella family
+  package: 6 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: berries_6oz include
+- normalized: Raspberries
+  raw:
+  - raspberries
+  weeks:
+  - '2026-05-06'
+  family_id: berries_6oz
+  relationship: covered by existing umbrella family
+  package: 6 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: berries_6oz include
+- normalized: Grapes
+  raw:
+  - grapes
+  - seedless grapes
+  weeks:
+  - multiple
+  family_id: seedless_grapes_per_lb
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: seedless_grapes_per_lb
+- normalized: Cherries
+  raw:
+  - red cherries
+  - cherries
+  weeks:
+  - multiple
+  family_id: cherries_per_lb
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: cherries_per_lb
+- normalized: Plums
+  raw:
+  - plums
+  - black plums
+  weeks:
+  - '2026-07-01'
+  - '2026-07-08'
+  family_id: plums_per_lb
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: plums_per_lb
+- normalized: Peaches
+  raw:
+  - peaches
+  weeks:
+  - '2026-06-24'
+  family_id: peaches_per_lb
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: peaches_per_lb
+- normalized: Mangoes
+  raw:
+  - mangoes
+  - mango
+  weeks:
+  - multiple
+  family_id: mangoes_each
+  relationship: exact existing family
+  package: each / multi-buy
+  recommendation: Reuse
+  confidence: high
+  evidence: mangoes_each
+- normalized: Avocados
+  raw:
+  - avocados
+  - hass avocados
+  weeks:
+  - multiple
+  family_id: hass_avocados_each
+  relationship: exact existing family
+  package: each / multi-buy
+  recommendation: Reuse
+  confidence: high
+  evidence: hass_avocados_each
+- normalized: Bell peppers
+  raw:
+  - bell peppers
+  - green bell peppers
+  - yellow bell pepper
+  weeks:
+  - '2026-03-25'
+  - '2026-06-17'
+  family_id: null
+  relationship: genuinely missing family
+  package: each / multi-buy
+  recommendation: Add bell_peppers family
+  confidence: high
+  evidence: split_offer_items green/yellow/red peppers
+- normalized: Sweet corn
+  raw:
+  - sweet corn
+  - corn on the cob
+  weeks:
+  - '2026-04-01'
+  - '2026-05-06'
+  family_id: sweet_corn
+  relationship: exact existing family
+  package: each / multi-buy
+  recommendation: Reuse
+  confidence: high
+  evidence: sweet_corn
+- normalized: Eggs
+  raw:
+  - eggs
+  weeks:
+  - multiple
+  family_id: eggs_dozen_normalized
+  relationship: covered by existing umbrella family
+  package: per dozen; Lucerne-only by design
+  recommendation: Reuse Lucerne eggs tracker; do not broaden to all brands without taxonomy review
+  confidence: high
+  evidence: eggs_dozen_normalized + match rules require lucerne
+- normalized: Butter
+  raw:
+  - butter
+  weeks:
+  - multiple
+  family_id: butter_16oz
+  relationship: exact existing family
+  package: 16 oz sticks
+  recommendation: Reuse
+  confidence: high
+  evidence: butter_16oz
+- normalized: Kerrygold butter
+  raw:
+  - Kerrygold butter
+  weeks:
+  - '2026-04-01'
+  family_id: butter_16oz
+  relationship: existing family may need splitting
+  package: Ads often 8 oz; tracker is 16 oz
+  recommendation: Keep under butter_16oz only when comparable/normalized; leave 8 oz specialty in review
+  confidence: medium
+  evidence: include already notes Kerrygold when comparable; keep_separate 8 oz specialty
+- normalized: Sargento cheese
+  raw:
+  - Sargento cheese
+  - Sargento sliced
+  - Sargento shredded
+  weeks:
+  - '2026-03-25'
+  - '2026-05-12'
+  family_id: sliced_or_shredded_cheese_6_8oz
+  relationship: covered by existing umbrella family
+  package: 6–8 oz sliced or shredded
+  recommendation: Reuse
+  confidence: high
+  evidence: Sargento in include list
+- normalized: Chicken breast value pack
+  raw:
+  - chicken breast value pack
+  - boneless skinless chicken breast
+  weeks:
+  - multiple
+  family_id: chicken_breast_per_lb
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: chicken_breast_per_lb
+- normalized: Chicken wings
+  raw:
+  - chicken wings
+  - chicken party wings
+  - party wings
+  weeks:
+  - '2026-03-25'
+  - '2026-05-12'
+  - '2026-07-22'
+  family_id: null
+  relationship: genuinely missing family
+  package: per lb party wings
+  recommendation: Add chicken_wings_per_lb
+  confidence: high
+  evidence: Chicken Party Wings rows; currently only keep_separate_from on breast/thigh
+- normalized: Shrimp
+  raw:
+  - shrimp
+  - frozen shrimp
+  - cooked shrimp
+  weeks:
+  - '2026-03-25'
+  - '2026-04-01'
+  family_id: null
+  relationship: deliberately not tracked
+  package: prefer 16 oz bag cooked/raw; exclude rings/trays
+  recommendation: Do not add — shrimp_16oz was removed (low audience engagement, 2026-07-26)
+  confidence: high
+  evidence: Waterfront Bistro 16 oz bags recurring; user decided not to track
+- normalized: Salmon
+  raw:
+  - salmon
+  - salmon fillets
+  weeks:
+  - multiple
+  family_id: salmon
+  relationship: exact existing family
+  package: fresh fillet per lb
+  recommendation: Reuse (fresh only)
+  confidence: high
+  evidence: salmon + eligibility
+- normalized: Pork (cut unclear)
+  raw:
+  - pork
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: cut not identified
+  recommendation: Review queue — identify cut from source week
+  confidence: low
+  evidence: many pork cuts in ads; transcript lacks cut
+- normalized: Beef short ribs
+  raw:
+  - beef short ribs
+  - chuck short ribs
+  - flanken
+  weeks:
+  - '2026-06-10'
+  - '2026-07-08'
+  family_id: null
+  relationship: genuinely missing family
+  package: per lb
+  recommendation: Add beef_short_ribs_per_lb
+  confidence: high
+  evidence: USDA Choice Beef Chuck Short Ribs / Flanken
+- normalized: Spare ribs
+  raw:
+  - spare ribs
+  - spareribs
+  - St. Louis ribs
+  - pork back ribs
+  weeks:
+  - '2026-05-12'
+  - '2026-07-01'
+  - '2026-03-25'
+  family_id: null
+  relationship: genuinely missing family
+  package: per lb
+  recommendation: Add pork_spare_ribs_per_lb
+  confidence: high
+  evidence: Pork Spareribs / St. Louis Style
+- normalized: Ribeye steak
+  raw:
+  - ribeye
+  weeks:
+  - '2026-07-01'
+  family_id: ribeye_steak
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: ribeye_steak
+- normalized: Tri-tip roast
+  raw:
+  - tri-tip
+  - tri tip
+  weeks:
+  - multiple
+  family_id: tri_tip_roast
+  relationship: exact existing family
+  package: per lb
+  recommendation: Reuse
+  confidence: high
+  evidence: tri_tip_roast
+- normalized: Oscar Mayer hot dogs
+  raw:
+  - Oscar Mayer hot dogs
+  - Oscar Mayer franks
+  weeks:
+  - '2026-06-17'
+  - '2026-07-15'
+  family_id: null
+  relationship: genuinely missing family
+  package: 15–16 oz packs
+  recommendation: Add oscar_mayer_hot_dogs; exclude bacon/Lunchables
+  confidence: high
+  evidence: Oscar Mayer Hot Dogs 16 oz
+- normalized: Safeway All-American footlong
+  raw:
+  - All-American footlong
+  - footlong sandwich
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: prepared deli sandwich
+  recommendation: Review queue; 0 CSV hits; may be not appropriate for staples tracker
+  confidence: low
+  evidence: no split_offer hits
+- normalized: Waterloo sparkling water
+  raw:
+  - Waterloo
+  - Waterloo sparkling water
+  weeks:
+  - '2026-04-01'
+  - '2026-05-06'
+  - '2026-07-22'
+  family_id: null
+  relationship: genuinely missing family
+  package: 8–12 pack 12 oz cans
+  recommendation: Add waterloo_sparkling_water
+  confidence: high
+  evidence: 3 Safeway weeks @ ~$5
+- normalized: Coke 12-packs
+  raw:
+  - Coke
+  - Coca-Cola 12-pack
+  weeks:
+  - multiple
+  family_id: coca_cola_12packs
+  relationship: exact existing family
+  package: 12-pack cans only
+  recommendation: Reuse
+  confidence: high
+  evidence: coca_cola_12packs + eligibility
+- normalized: Soda multipacks (broad)
+  raw:
+  - soda multipacks
+  - soda mix and match
+  weeks:
+  - multiple
+  family_id: coca_cola_12packs
+  relationship: covered by existing umbrella family
+  package: brand-split 12-packs only
+  recommendation: Keep brand-specific 12-pack families; no generic soda family
+  confidence: high
+  evidence: coke/pepsi/dr_pepper families
+- normalized: Pepsi 12-packs
+  raw:
+  - Pepsi
+  weeks:
+  - multiple
+  family_id: pepsi_12packs
+  relationship: exact existing family
+  package: 12-pack cans
+  recommendation: Reuse
+  confidence: high
+  evidence: pepsi_12packs
+- normalized: Cape Cod potato chips
+  raw:
+  - Cape Cod
+  - Cape Cod Kettle Chips
+  weeks:
+  - '2026-04-01'
+  - '2026-06-24'
+  - '2026-07-22'
+  family_id: null
+  relationship: genuinely missing family
+  package: 6.5–8.5 oz
+  recommendation: Add cape_cod_chips; keep separate from Kettle Brand / Lay's Kettle
+  confidence: high
+  evidence: currently only hard-negatives on kettle families
+- normalized: Hawaiian Brand chips
+  raw:
+  - Hawaiian Brand chips
+  - Sweet Maui Onion
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue — 0 potato-chip ad hits; do not confuse with kings_hawaiian_rolls
+  confidence: low
+  evidence: 0 hawaiian chip CSV hits
+- normalized: Kettle Brand chips
+  raw:
+  - Kettle Brand
+  - Kettle Potato Chips
+  weeks:
+  - '2026-07-22'
+  family_id: kettle_brand_chips
+  relationship: exact existing family
+  package: 6.5–8.5 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: kettle_brand_chips
+- normalized: Lay's potato chips
+  raw:
+  - Lay's
+  - Lays
+  weeks:
+  - multiple
+  family_id: lays_potato_chips_regular
+  relationship: exact existing family
+  package: 5–13 oz
+  recommendation: Reuse; add Poppables as same-promo alias
+  confidence: high
+  evidence: lays_potato_chips_regular
+- normalized: Lay's Kettle Cooked
+  raw:
+  - Lay's Kettle Cooked
+  - Lay's Kettle
+  weeks:
+  - multiple
+  family_id: lays_kettle_cooked
+  relationship: exact existing family
+  package: 7.75–8 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: lays_kettle_cooked
+- normalized: Lay's Poppables
+  raw:
+  - Poppables
+  - Lay's Poppables
+  weeks:
+  - '2026-06-03'
+  family_id: lays_potato_chips_regular
+  relationship: existing family needs alias
+  package: same Mix & Match bag range as Lay's
+  recommendation: Add Poppables / Lay's Poppables include; keep Simply Popables separate
+  confidence: high
+  evidence: Lay's or Poppables co-promo
+- normalized: Lay's flavor collaborations
+  raw:
+  - Lay's Cheetos-inspired
+  - Lay's Doritos-inspired
+  weeks:
+  - transcript
+  family_id: lays_potato_chips_regular
+  relationship: covered by existing umbrella family
+  package: flavor LE within regular bags
+  recommendation: Treat as flavor aliases under Lay's / Doritos / Cheetos as titled
+  confidence: medium
+  evidence: Doritos LE already included; no separate tracker
+- normalized: Doritos
+  raw:
+  - Doritos
+  weeks:
+  - multiple
+  family_id: doritos_5_13oz
+  relationship: exact existing family
+  package: 5–13 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: doritos_5_13oz
+- normalized: Ruffles
+  raw:
+  - Ruffles
+  weeks:
+  - multiple
+  family_id: ruffles_regular_bags
+  relationship: exact existing family
+  package: regular bags
+  recommendation: Reuse
+  confidence: high
+  evidence: ruffles_regular_bags
+- normalized: SunChips
+  raw:
+  - SunChips
+  - Sun Chips
+  weeks:
+  - multiple
+  family_id: sun_chips_7oz
+  relationship: exact existing family
+  package: ~7 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: sun_chips_7oz
+- normalized: Smartfood popcorn
+  raw:
+  - Smartfood
+  weeks:
+  - '2026-05-12'
+  - '2026-06-03'
+  - '2026-06-10'
+  family_id: null
+  relationship: genuinely missing family
+  package: 4.75–11 oz bags
+  recommendation: Add smartfood_popcorn
+  confidence: high
+  evidence: recurring Frito mix tiles
+- normalized: PopCorners
+  raw:
+  - PopCorners
+  - Popcorners
+  weeks:
+  - multiple
+  family_id: popcorners
+  relationship: exact existing family
+  package: 5–10.75 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: popcorners
+- normalized: Pringles
+  raw:
+  - Pringles
+  weeks:
+  - '2026-06-17'
+  - '2026-07-01'
+  - '2026-07-15'
+  family_id: null
+  relationship: genuinely missing family
+  package: cans / selected varieties
+  recommendation: Add pringles; match split rows titled Pringles
+  confidence: high
+  evidence: Pringles Chips split items
+- normalized: Dot's Pretzels
+  raw:
+  - Dot's Pretzels
+  - Dots Pretzels
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue — 0 pretzel hits (CSV Dots = candy)
+  confidence: low
+  evidence: 0 Dot's Pretzels hits
+- normalized: Snyder's pretzels
+  raw:
+  - Snyder's
+  - siders
+  weeks:
+  - '2026-04-01'
+  - '2026-05-12'
+  - '2026-06-24'
+  family_id: null
+  relationship: genuinely missing family
+  package: 10–16 oz
+  recommendation: Add snyders_pretzels; treat transcript 'siders' as ASR for Snyder's after source verify
+  confidence: high
+  evidence: Snyder's Pretzels rows; siders=0 hits
+- normalized: Unidentified kimchi/dill pickle chips
+  raw:
+  - spicy kimchi
+  - dill pickle chips
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: brand unknown
+  recommendation: Review queue; Lay's Dill Pickle already under lays if confirmed Lay's
+  confidence: low
+  evidence: 0 kimchi hits
+- normalized: Frito-Lay variety packs
+  raw:
+  - Frito-Lay Variety Pack
+  - Frito Lay Variety Pack
+  weeks:
+  - '2026-05-12'
+  - '2026-06-03'
+  - '2026-06-17'
+  - '2026-07-08'
+  - '2026-07-15'
+  - '2026-07-22'
+  family_id: frito_lay_multipack_chips
+  relationship: genuinely missing family
+  package: 18 ct multipack
+  recommendation: Add YAML family frito_lay_multipack_chips; fix legacy map away from lays_party_size
+  confidence: high
+  evidence: legacy baseline exists; wrongly mapped to lays_party_size
+- normalized: Ritz crackers
+  raw:
+  - Ritz
+  - Ritz Original
+  weeks:
+  - multiple
+  family_id: ritz_crackers
+  relationship: exact existing family
+  package: crackers (not toasted chips)
+  recommendation: Reuse umbrella
+  confidence: high
+  evidence: ritz_crackers includes Original/Bits/Crisp/Drizzled Minis
+- normalized: Ritz Bits
+  raw:
+  - Ritz Bits
+  weeks:
+  - transcript
+  family_id: ritz_crackers
+  relationship: covered by existing umbrella family
+  package: Bits under Ritz umbrella
+  recommendation: Reuse; no split unless price history diverges
+  confidence: high
+  evidence: include Ritz Bits
+- normalized: Ritz Crisp & Thins
+  raw:
+  - Ritz Crisp & Thins
+  weeks:
+  - transcript
+  family_id: ritz_crackers
+  relationship: covered by existing umbrella family
+  package: same umbrella
+  recommendation: Reuse
+  confidence: high
+  evidence: include
+- normalized: Ritz Minis / Drizzled
+  raw:
+  - Ritz Minis
+  - Ritz Drizzled
+  weeks:
+  - transcript
+  family_id: ritz_crackers
+  relationship: covered by existing umbrella family
+  package: Drizzled Minis in include
+  recommendation: Reuse
+  confidence: high
+  evidence: Ritz Drizzled Minis include
+- normalized: Wheat Thins
+  raw:
+  - Wheat Thins
+  weeks:
+  - '2026-06-03'
+  family_id: nabisco_snack_crackers
+  relationship: covered by existing umbrella family
+  package: family size 11.5–14 oz
+  recommendation: Reuse
+  confidence: high
+  evidence: nabisco_snack_crackers
+- normalized: Triscuit
+  raw:
+  - Triscuit
+  weeks:
+  - '2026-06-03'
+  family_id: nabisco_snack_crackers
+  relationship: covered by existing umbrella family
+  package: family size
+  recommendation: Reuse
+  confidence: high
+  evidence: nabisco_snack_crackers
+- normalized: Chicken in a Biskit
+  raw:
+  - Chicken in a Biskit
+  weeks:
+  - transcript
+  family_id: nabisco_snack_crackers
+  relationship: covered by existing umbrella family
+  package: family size
+  recommendation: Reuse
+  confidence: medium
+  evidence: in allowed_product_lines; rare CSV hits
+- normalized: Cheez-It crackers
+  raw:
+  - Cheez-It
+  weeks:
+  - multiple
+  family_id: cheez_it_crackers
+  relationship: exact existing family
+  package: crackers
+  recommendation: Reuse; add Ultimate Snack Mix alias
+  confidence: high
+  evidence: cheez_it_crackers
+- normalized: Cheez-It Ultimate Snack Mix
+  raw:
+  - Cheez-It Ultimate Snack Mix
+  weeks:
+  - transcript
+  family_id: cheez_it_crackers
+  relationship: existing family needs alias
+  package: snack mix under Cheez-It promo
+  recommendation: Add include alias
+  confidence: medium
+  evidence: no Ultimate CSV hit yet; safe alias
+- normalized: Chips Ahoy
+  raw:
+  - Chips Ahoy
+  weeks:
+  - multiple
+  family_id: chips_ahoy
+  relationship: exact existing family
+  package: cookies
+  recommendation: Reuse
+  confidence: high
+  evidence: chips_ahoy
+- normalized: Oreo cookies
+  raw:
+  - Oreo
+  - Oreo Family Size
+  - oil family size
+  - BTS Brown Sugar Pancake
+  weeks:
+  - multiple
+  family_id: oreo_family_size
+  relationship: exact existing family
+  package: family size / LE flavors as aliases
+  recommendation: Reuse; LE flavors are aliases not separate families
+  confidence: high
+  evidence: oreo_family_size includes LE flavors
+- normalized: Pop-Tarts
+  raw:
+  - Pop-Tarts
+  - Kellogg's Pop-Tarts
+  weeks:
+  - '2026-05-12'
+  - '2026-06-10'
+  family_id: null
+  relationship: genuinely missing family
+  package: 8 ct / selected varieties
+  recommendation: Add pop_tarts
+  confidence: high
+  evidence: Kellogg's Pop-Tarts split rows
+- normalized: Nature Valley bars (forms)
+  raw:
+  - Nature Valley Crunchy
+  - Nature Valley Biscuits
+  - Nature Valley Oatmeal Squares
+  weeks:
+  - multiple
+  family_id: nature_valley_bars
+  relationship: covered by existing umbrella family
+  package: 5–12 ct bar forms
+  recommendation: Reuse umbrella; protein bars stay separate
+  confidence: high
+  evidence: nature_valley_bars includes crunchy/biscuits/oatmeal squares
+- normalized: Special K bars
+  raw:
+  - Special K Bars
+  weeks:
+  - '2026-07-22'
+  family_id: null
+  relationship: genuinely missing family
+  package: 5–6 ct bars
+  recommendation: Add under kellogg_breakfast_bars umbrella with Nutri-Grain
+  confidence: high
+  evidence: Special K Bars 5 ct co-promo with Nutri-Grain
+- normalized: Nutri-Grain bars
+  raw:
+  - Nutri-Grain
+  - Nutrigrain Country Bars
+  weeks:
+  - '2026-07-22'
+  - '2026-07-01'
+  family_id: null
+  relationship: genuinely missing family
+  package: 5–10 ct / 16 ct selected
+  recommendation: Add kellogg_breakfast_bars; ASR 'Country Bars' → review if needed
+  confidence: high
+  evidence: Kellogg's Nutri-Grain Bars
+- normalized: Gushers
+  raw:
+  - Gushers
+  - Fruit Gushers
+  weeks:
+  - '2026-06-17'
+  family_id: null
+  relationship: genuinely missing family
+  package: Betty Crocker fruit snacks multi-ct
+  recommendation: Add betty_crocker_fruit_snacks
+  confidence: high
+  evidence: Betty Crocker Fruit Snacks tiles
+- normalized: Fruit by the Foot
+  raw:
+  - Fruit by the Foot
+  weeks:
+  - '2026-06-17'
+  family_id: null
+  relationship: covered by existing umbrella family
+  package: same Betty Crocker fruit snacks promo
+  recommendation: Include under betty_crocker_fruit_snacks
+  confidence: high
+  evidence: same mix tile as Gushers
+- normalized: General Mills cereal promos
+  raw:
+  - General Mills cereal
+  weeks:
+  - multiple
+  family_id: general_mills_cereal_regular
+  relationship: covered by existing umbrella family
+  package: regular vs family size split
+  recommendation: Reuse regular + family_size families
+  confidence: high
+  evidence: GM cereal families
+- normalized: Honey Nut Cheerios
+  raw:
+  - Honey Nut Cheerios
+  weeks:
+  - '2026-07-22'
+  - '2026-03-25'
+  family_id: general_mills_cereal_regular
+  relationship: existing family needs alias
+  package: regular or family size
+  recommendation: Add explicit Honey Nut Cheerios include
+  confidence: high
+  evidence: Cheerios already matches; explicit alias safer
+- normalized: Plain Cheerios
+  raw:
+  - Cheerios
+  weeks:
+  - multiple
+  family_id: general_mills_cereal_regular
+  relationship: covered by existing umbrella family
+  package: regular size
+  recommendation: Reuse
+  confidence: high
+  evidence: Cheerios include
+- normalized: Cinnamon Toast Crunch
+  raw:
+  - Cinnamon Toast Crunch
+  weeks:
+  - multiple
+  family_id: general_mills_cereal_regular
+  relationship: exact existing family
+  package: regular size
+  recommendation: Reuse
+  confidence: high
+  evidence: include
+- normalized: Special K cereal
+  raw:
+  - Special K cereal
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: cereal vs bars
+  recommendation: Review queue — sampled ads show Special K bars not cereal boxes
+  confidence: low
+  evidence: Special K Bars in CSV, not cereal
+- normalized: Chobani cups (incl Zero Sugar / protein / 4-packs)
+  raw:
+  - Chobani
+  - Chobani Zero Sugar
+  - Chobani 4-pack
+  weeks:
+  - multiple
+  family_id: chobani_yogurt_per_cup
+  relationship: exact existing family
+  package: cups / 4-packs normalize $/cup
+  recommendation: Reuse; add Layered/Flip aliases
+  confidence: high
+  evidence: chobani_yogurt_per_cup
+- normalized: Chobani Layered
+  raw:
+  - Chobani Layered
+  - Chobani Flip
+  weeks:
+  - transcript / ads
+  family_id: chobani_yogurt_per_cup
+  relationship: existing family needs alias
+  package: cups
+  recommendation: Add Layered / Flip / Creations includes
+  confidence: high
+  evidence: Flip/Creations appear with Zero Sugar groups
+- normalized: Breyers ice cream
+  raw:
+  - Breyers
+  - Breyers CarbSmart
+  - Breyers Sundae Swirls
+  weeks:
+  - '2026-03-25'
+  - '2026-06-17'
+  family_id: breyers_ice_cream
+  relationship: existing family needs alias
+  package: tubs
+  recommendation: Fix Sundae spelling (keep Sunday typo alias)
+  confidence: high
+  evidence: include has Sunday Swirls typo
+- normalized: Dreyer's ice cream
+  raw:
+  - Dreyer's
+  - Dreyers
+  weeks:
+  - multiple
+  family_id: dreyers_tubs
+  relationship: exact existing family
+  package: tubs; novelties separate
+  recommendation: Reuse
+  confidence: high
+  evidence: dreyers_tubs + dreyers_novelties
+- normalized: Häagen-Dazs pints
+  raw:
+  - Häagen-Dazs
+  - Haagen Dazs
+  weeks:
+  - multiple
+  family_id: haagen_dazs_pints
+  relationship: exact existing family
+  package: pints
+  recommendation: Reuse
+  confidence: high
+  evidence: haagen_dazs_pints
+- normalized: Häagen-Dazs bars
+  raw:
+  - Häagen-Dazs bars
+  weeks:
+  - multiple
+  family_id: haagen_dazs_bars_novelties
+  relationship: exact existing family
+  package: bars/novelties
+  recommendation: Reuse
+  confidence: high
+  evidence: haagen_dazs_bars_novelties
+- normalized: Ben & Jerry's bars
+  raw:
+  - Ben & Jerry's bars
+  weeks:
+  - multiple
+  family_id: ben_jerrys_ice_cream
+  relationship: covered by existing umbrella family
+  package: pints or 4 ct bars
+  recommendation: Reuse umbrella
+  confidence: high
+  evidence: include Ben & Jerry's bars
+- normalized: Baskin-Robbins ice cream
+  raw:
+  - Baskin-Robbins
+  - Jamaica Almond Fudge
+  - Baskin Robbins novelties
+  weeks:
+  - '2026-07-15'
+  family_id: null
+  relationship: ambiguous
+  package: novelties 3–4 ct once; flavor not in text
+  recommendation: Review queue — possible baskin_robbins_novelties after confirmation
+  confidence: medium
+  evidence: one Baskin Robbins Ice Cream Novelties row
+- normalized: Unidentified frozen Greek yogurt brand
+  raw:
+  - frozen Greek yogurt pints/layers/bars
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: pints/layers/bars
+  recommendation: Review queue — identify brand from source
+  confidence: low
+  evidence: visual-only
+- normalized: Cake mix
+  raw:
+  - cake mix
+  - devil's food cake mix
+  - Pillsbury Cake Mix
+  weeks:
+  - '2026-04-01'
+  - '2026-05-06'
+  family_id: null
+  relationship: genuinely missing family
+  package: ~15.25 oz boxed mix; flavors interchangeable
+  recommendation: Add cake_mix; exclude frosting-only and pancake mix
+  confidence: high
+  evidence: Pillsbury Cake Mix / Moist Supreme
+- normalized: Unidentified $1.67 snack
+  raw:
+  - $1.67 snack
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue
+  confidence: low
+  evidence: visual-only
+- normalized: Unidentified both-of-these $0.99
+  raw:
+  - both of these $0.99
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue (possible Chobani cups)
+  confidence: low
+  evidence: visual-only
+- normalized: Unidentified 10-pack kids snack
+  raw:
+  - 10-pack children's snack
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: 10-pack
+  recommendation: Review queue; nabisco excludes 10-pack snack packs
+  confidence: low
+  evidence: visual-only
+- normalized: Unidentified $5.99→$2 stacked promo
+  raw:
+  - $5.99 to $2
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue
+  confidence: low
+  evidence: mechanic not product
+- normalized: Unidentified produce 8 vs Costco 6
+  raw:
+  - eight at Safeway vs six at Costco
+  weeks:
+  - transcript
+  family_id: hass_avocados_each
+  relationship: ambiguous
+  package: multi-buy vs Costco 6-ct
+  recommendation: 'Review queue; avocados Costco #647465 is candidate if confirmed'
+  confidence: low
+  evidence: visual produce comparison
+- normalized: Unidentified 2 lb vs 5 lb produce
+  raw:
+  - two-pound vs five-pound
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: 2 lb vs 5 lb
+  recommendation: Review queue
+  confidence: low
+  evidence: visual-only
+- normalized: Unidentified crunch-dipped protein snack
+  raw:
+  - crunch dipped
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue
+  confidence: low
+  evidence: visual-only
+- normalized: ASR oil family size
+  raw:
+  - oil family size
+  weeks:
+  - transcript
+  family_id: oreo_family_size
+  relationship: ambiguous
+  package: likely Oreo Family Size
+  recommendation: Review queue — verify from source before counting as Oreo mention
+  confidence: medium
+  evidence: ASR likely Oreo
+- normalized: ASR Cake pod
+  raw:
+  - Cake pod
+  weeks:
+  - transcript
+  family_id: null
+  relationship: ambiguous
+  package: unknown
+  recommendation: Review queue
+  confidence: low
+  evidence: 0 Cake pod hits
+implementation_status:
+  implemented_on: '2026-07-25'
+  new_families_added:
+  - cape_cod_chips
+  - smartfood_popcorn
+  - pringles
+  - snyders_pretzels
+  - frito_lay_multipack_chips
+  - pop_tarts
+  - kellogg_breakfast_bars
+  - betty_crocker_fruit_snacks
+  - waterloo_sparkling_water
+  - bell_peppers
+  - chicken_wings_per_lb
+  - beef_short_ribs_per_lb
+  - pork_spare_ribs_per_lb
+  - oscar_mayer_hot_dogs
+  - cake_mix
+  aliases_extended:
+  - lays_potato_chips_regular (Poppables)
+  - cheez_it_crackers (Ultimate Snack Mix)
+  - general_mills_cereal_* (Honey Nut Cheerios)
+  - chobani_yogurt_per_cup (Layered/Flip)
+  - breyers_ice_cream (Sundae Swirls)
+  - oreo_family_size (Family Size phrasing)
+  review_queue: data/product_matching/highlight_tracker_review.yaml
+  families_split_or_restructured: []
+  notes: Fruit by the Foot / Gushers share betty_crocker_fruit_snacks; Special K bars + Nutri-Grain share
+    kellogg_breakfast_bars.

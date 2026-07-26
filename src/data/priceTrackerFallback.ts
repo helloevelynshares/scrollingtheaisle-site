@@ -372,6 +372,76 @@ export const SAFEWAY_BASELINES: Record<
     source: "Safeway search result CSV",
     retailerProductName: "Signature SELECT Chewy Bars Protein Peanut Butter Dark Chocolate Flavored - 5-1.4 Oz",
   },
+  "beef_short_ribs_per_lb": {
+    price: 7.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26); package $15.98 / 2 lb → $7.99/lb",
+    retailerProductName: "Chuck Short Ribs 2 Lb",
+  },
+  "bell_peppers": {
+    price: 1.49,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26): green $1.49 chart baseline; red $1.99; yellow/orange $2.49",
+    retailerProductName: "Green Bell Pepper",
+  },
+  "betty_crocker_fruit_snacks": {
+    price: 5.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26); Gushers 6-pack and Fruit by the Foot 6-pack both $5.99",
+    retailerProductName: "Betty Crocker Fruit Gushers 6 Count",
+  },
+  "cake_mix": {
+    price: 3.0,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Pillsbury Premium Yellow Cake Mix - 15.25 Oz",
+  },
+  "cape_cod_chips": {
+    price: 4.49,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Cape Cod Original Kettle Cooked Potato Chips - 8 Oz",
+  },
+  "chicken_wings_per_lb": {
+    price: 9.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26); per lb",
+    retailerProductName: "Foster Farms Free Range Party Wings",
+  },
+  "kellogg_breakfast_bars": {
+    price: 3.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Nutri-Grain Breakfast Bars Strawberry - 8 Count",
+  },
+  "oscar_mayer_hot_dogs": {
+    price: 8.49,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Oscar Mayer Classic Beef Franks Hot Dogs 10 Count",
+  },
+  "pop_tarts": {
+    price: 3.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Kellogg's Pop-Tarts Frosted Strawberry 8 Count - 13.5 Oz",
+  },
+  "pork_spare_ribs_per_lb": {
+    price: 5.49,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26); package $24.71 / 4.5 lb → $5.49/lb",
+    retailerProductName: "Signature Select Pork Spareribs 4.5 Lb",
+  },
+  "pringles": {
+    price: 2.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Pringles Original Potato Crisps - 5.2 Oz",
+  },
+  "smartfood_popcorn": {
+    price: 4.79,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Smartfood White Cheddar Popcorn - 6 Oz",
+  },
+  "snyders_pretzels": {
+    price: 3.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Snyder's of Hanover Mini Pretzels - 16 Oz",
+  },
+  "waterloo_sparkling_water": {
+    price: 5.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26)",
+    retailerProductName: "Waterloo Summer Berry Sparkling Water - 8-12 Fl. Oz.",
+  },
 };
 
 function effectiveWeeklyPrice(

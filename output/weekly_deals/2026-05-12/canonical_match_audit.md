@@ -1,20 +1,24 @@
 # Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-26T03:56:33.956847+00:00
+Generated: 2026-07-26T18:49:19.564450+00:00
 
 ## Summary
 
-- **Accepted:** 28
+- **Accepted:** 40
 - **Rejected:** 2
 - **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, dreyers_tubs, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, salmon
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, dreyers_tubs, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, salmon, smartfood_popcorn, snyders_pretzels, frito_lay_multipack_chips, pop_tarts, chicken_wings_per_lb, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `sun_chips_7oz` (Safeway): $1.99: Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.
+- `snyders_pretzels` (Safeway): $2.5: Snyder's Pretzels
+- `chicken_wings_per_lb` (Safeway): $2.99: Chicken Party Wings
 - `sun_chips_7oz` (Safeway): $1.99: Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz.
+- `snyders_pretzels` (Safeway): $2.5: Snyder's Pretzels
+- `chicken_wings_per_lb` (Safeway): $2.99: Chicken Party Wings
 
 ### Graph preview changes
 
@@ -99,6 +103,24 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99 (confidence 0.75)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `smartfood_popcorn` (Safeway): 'Doritos, Ruffles, Smartfood' @ $2.49 (confidence 0.70)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `snyders_pretzels` (Safeway): "Snyder's Pretzels" @ $2.5 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $8.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `pop_tarts` (Safeway): "Kellogg's Pop-Tarts" @ $1.99 (confidence 0.90)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings' @ $2.99 (confidence 0.96)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Pork Spareribs' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Safeway): 'Doritos, Ruffles, Smartfood' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -141,3 +163,21 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99 (confidence 0.75)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `smartfood_popcorn` (Safeway): 'Doritos, Ruffles, Smartfood' @ $2.49 (confidence 0.70)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `snyders_pretzels` (Safeway): "Snyder's Pretzels" @ $2.5 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $8.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `pop_tarts` (Safeway): "Kellogg's Pop-Tarts" @ $1.99 (confidence 0.90)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings' @ $2.99 (confidence 0.96)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Pork Spareribs' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb

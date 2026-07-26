@@ -570,27 +570,6 @@ families:
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
 
-  shrimp_16oz:
-    canonical_intent: bagged_shrimp
-    positive_keywords:
-      - shrimp
-      - 16 oz
-      - 31-40
-      - waterfront
-    negative_keywords:
-      - ring
-      - tray
-      - cocktail
-      - scampi
-      - taco
-      - skewers
-      - salmon
-    disallowed_package_patterns:
-      - \bring\b
-      - \btray\b
-    min_confidence: 0.65
-    atl_requires_confidence: 0.85
-    large_price_change_pct: 40
 
   oscar_mayer_hot_dogs:
     canonical_intent: hot_dogs
@@ -626,8 +605,9 @@ families:
   chicken_wings_per_lb:
     canonical_intent: chicken_wings
     positive_keywords:
-      - wings
       - party wings
+      - chicken wings
+      - chicken party wings
     negative_keywords:
       - breast
       - thigh
@@ -636,6 +616,10 @@ families:
       - rotisserie
       - 8-pc
       - breaded
+      - boneless
+      - rib tips
+      - sausage
+      - potato
     min_confidence: 0.6
     atl_requires_confidence: 0.8
     large_price_change_pct: 40

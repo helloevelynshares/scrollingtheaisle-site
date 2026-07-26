@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-26T03:56:34.259077+00:00
+Generated: 2026-07-26T18:49:19.938756+00:00
 
 ## Summary
 
-- **Accepted:** 72
-- **Rejected:** 0
-- **Manual review:** 4
-- **Families updated:** cheez_it_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, chicken_breast_per_lb, tri_tip_roast, salmon, doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, tostitos_tortilla_chips, keebler_sandwich_crackers, strawberries_1_2lb, clif_bars
+- **Accepted:** 80
+- **Rejected:** 2
+- **Manual review:** 6
+- **Families updated:** cheez_it_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, chicken_breast_per_lb, tri_tip_roast, salmon, pop_tarts, betty_crocker_fruit_snacks, beef_short_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, tostitos_tortilla_chips, keebler_sandwich_crackers, strawberries_1_2lb, clif_bars, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -18,29 +18,52 @@ Generated: 2026-07-26T03:56:34.259077+00:00
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
 - `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
 - `cherries_per_lb` (Vons): $1.49: Red Cherries
+- `pork_spare_ribs_per_lb` (Vons): $1.99: Fresh Pork Spareribs Value Pack
 - `nature_valley_bars` (Safeway): $1.79: Nature Valley Bars 5-6 ct.
 - `general_mills_cereal_regular` (Safeway): $1.79: General Mills Cereal Bars 6.84-8.9 oz.
 - `cheetos_regular_bags` (Vons): $2.49: Lay's, Kettle Cooked, Cheetos, Smartfood, Simply 4.75-10 oz. Tostitos Queso or Lay's Dip 15-15.75 oz. Selected varieties
 - `tostitos_tortilla_chips` (Vons): $1.99: Tostitos Tortilla Chips 9-13 oz
 - `cherries_per_lb` (Vons): $1.49: Red Cherries
+- `pork_spare_ribs_per_lb` (Vons): $1.99: Fresh Pork Spareribs Value Pack
 
 ### Graph preview changes
 
 - `pepsi_12packs` (Vons): blocked $0.67: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.67: confidence 0.55 < min 0.70
+- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `chicken_wings_per_lb` (Vons): blocked $5.0: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
 - `pepsi_12packs` (Vons): blocked $0.67: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.67: confidence 0.55 < min 0.70
+- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `chicken_wings_per_lb` (Vons): blocked $5.0: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
 
 ### Blocked from tracker graph
 
+- `cape_cod_chips` (Vons): **rejected**: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49
+  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Hard negatives: kettle brand
+- `cape_cod_chips` (Vons): **rejected**: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49
+  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Hard negatives: kettle brand
 - `pepsi_12packs` (Vons): **manual_review**: 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67
   - Reason: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): **manual_review**: 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67
   - Reason: confidence 0.55 < min 0.70
+- `chicken_wings_per_lb` (Vons): **manual_review**: 'Signature SELECT Chicken Wings, 20 oz' @ $5.0
+  - Reason: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
 - `pepsi_12packs` (Vons): **manual_review**: 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67
   - Reason: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): **manual_review**: 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67
   - Reason: confidence 0.55 < min 0.70
+- `chicken_wings_per_lb` (Vons): **manual_review**: 'Signature SELECT Chicken Wings, 20 oz' @ $5.0
+  - Reason: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 
 ## Accepted matches
 
@@ -104,6 +127,15 @@ Generated: 2026-07-26T03:56:34.259077+00:00
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen' @ $6.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pop_tarts` (Safeway): 'Kellogg’s Pop-Tarts' @ $None (confidence 0.70)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks 5 to 10 ct.' @ $1.79 (confidence 0.90)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `beef_short_ribs_per_lb` (Safeway): 'USDA Choice Beef Chuck Short Ribs' @ $5.0 (confidence 0.70)
+  - Display: Beef short ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -151,6 +183,9 @@ Generated: 2026-07-26T03:56:34.259077+00:00
   - Subtitle: per bar (multipack price ÷ bar count)
 - `chicken_breast_per_lb` (Vons): 'Signature SELECT® Boneless Skinless Chicken Breasts' @ $2.99 (confidence 0.70)
   - Display: Chicken breast
+  - Subtitle: per lb
+- `pork_spare_ribs_per_lb` (Vons): 'Fresh Pork Spareribs Value Pack' @ $1.99 (confidence 0.70)
+  - Display: Pork spare ribs
   - Subtitle: per lb
 - `cheez_it_crackers` (Safeway): 'Cheez-It Crackers' @ $None (confidence 0.70)
   - Display: Cheez-It crackers
@@ -212,6 +247,15 @@ Generated: 2026-07-26T03:56:34.259077+00:00
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Boneless Fillets Farm Raised Previously Frozen' @ $6.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pop_tarts` (Safeway): 'Kellogg’s Pop-Tarts' @ $None (confidence 0.70)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks 5 to 10 ct.' @ $1.79 (confidence 0.90)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `beef_short_ribs_per_lb` (Safeway): 'USDA Choice Beef Chuck Short Ribs' @ $5.0 (confidence 0.70)
+  - Display: Beef short ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -259,4 +303,7 @@ Generated: 2026-07-26T03:56:34.259077+00:00
   - Subtitle: per bar (multipack price ÷ bar count)
 - `chicken_breast_per_lb` (Vons): 'Signature SELECT® Boneless Skinless Chicken Breasts' @ $2.99 (confidence 0.70)
   - Display: Chicken breast
+  - Subtitle: per lb
+- `pork_spare_ribs_per_lb` (Vons): 'Fresh Pork Spareribs Value Pack' @ $1.99 (confidence 0.70)
+  - Display: Pork spare ribs
   - Subtitle: per lb

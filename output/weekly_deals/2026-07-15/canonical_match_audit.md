@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-07-15 to 2026-07-21
 
-Generated: 2026-07-26T03:56:34.941678+00:00
+Generated: 2026-07-26T18:49:20.790421+00:00
 
 ## Summary
 
-- **Accepted:** 50
-- **Rejected:** 14
+- **Accepted:** 60
+- **Rejected:** 16
 - **Manual review:** 0
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_kettle_cooked, popcorners, ritz_crackers, cheez_it_crackers, chips_ahoy, goldfish_bags, keebler_sandwich_crackers, cherries_per_lb, hass_avocados_each, sweet_corn, eggs_dozen_normalized, butter_16oz, chobani_yogurt_per_cup, tri_tip_roast, seedless_grapes_per_lb, peaches_per_lb, nectarines_per_lb, fage_cups, general_mills_cereal_regular, chicken_breast_per_lb, salmon
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_kettle_cooked, popcorners, ritz_crackers, cheez_it_crackers, chips_ahoy, goldfish_bags, keebler_sandwich_crackers, cherries_per_lb, hass_avocados_each, sweet_corn, eggs_dozen_normalized, butter_16oz, chobani_yogurt_per_cup, tri_tip_roast, pringles, frito_lay_multipack_chips, bell_peppers, oscar_mayer_hot_dogs, cake_mix, seedless_grapes_per_lb, peaches_per_lb, nectarines_per_lb, fage_cups, general_mills_cereal_regular, chicken_breast_per_lb, salmon
 
 ## Graph update safety check
 
@@ -25,6 +25,7 @@ Generated: 2026-07-26T03:56:34.941678+00:00
 - `coca_cola_12packs` (Safeway): blocked $3.99: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
 - `pepsi_12packs` (Safeway): blocked $13.88: hard negative keyword/pattern hit: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
 - `berries_6oz` (Safeway): blocked $5.0: ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `chicken_wings_per_lb` (Safeway): blocked $5.0: hard negative keyword/pattern hit: boneless, sausage, potato
 - `ritz_crackers` (Vons): blocked $5.0: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
 - `pepsi_12packs` (Vons): blocked $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `dr_pepper_12packs` (Vons): blocked $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
@@ -32,6 +33,7 @@ Generated: 2026-07-26T03:56:34.941678+00:00
 - `coca_cola_12packs` (Safeway): blocked $3.99: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
 - `pepsi_12packs` (Safeway): blocked $13.88: hard negative keyword/pattern hit: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
 - `berries_6oz` (Safeway): blocked $5.0: ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `chicken_wings_per_lb` (Safeway): blocked $5.0: hard negative keyword/pattern hit: boneless, sausage, potato
 - `ritz_crackers` (Vons): blocked $5.0: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
 - `pepsi_12packs` (Vons): blocked $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `dr_pepper_12packs` (Vons): blocked $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
@@ -46,6 +48,9 @@ Generated: 2026-07-26T03:56:34.941678+00:00
   - Hard negatives: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries' @ $5.0
   - Reason: ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless Chicken Wings Smoked Sausage Potato Wedges' @ $5.0
+  - Reason: hard negative keyword/pattern hit: boneless, sausage, potato
+  - Hard negatives: boneless, sausage, potato
 - `ritz_crackers` (Vons): **rejected**: 'Nabisco Family Size! Oreo Cookies 12.2-20 oz or Ritz Crackers 17.8-20.6 oz' @ $5.0
   - Reason: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
   - Hard negatives: oreo
@@ -64,6 +69,9 @@ Generated: 2026-07-26T03:56:34.941678+00:00
   - Hard negatives: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries' @ $5.0
   - Reason: ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless Chicken Wings Smoked Sausage Potato Wedges' @ $5.0
+  - Reason: hard negative keyword/pattern hit: boneless, sausage, potato
+  - Hard negatives: boneless, sausage, potato
 - `ritz_crackers` (Vons): **rejected**: 'Nabisco Family Size! Oreo Cookies 12.2-20 oz or Ritz Crackers 17.8-20.6 oz' @ $5.0
   - Reason: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
   - Hard negatives: oreo
@@ -81,10 +89,12 @@ Generated: 2026-07-26T03:56:34.941678+00:00
 These looked like deals but were blocked from updating canonical trackers:
 
 - `pepsi_12packs`: 'Pepsi 12-pack, 12-oz. cans or 8-pack, 12-oz. bottles. Lipton Tea 12-pack, 16.9-oz. Pure Leaf 6-pack, 16.9-oz. Gatorade 8' @ $13.88: hard negative keyword/pattern hit: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `chicken_wings_per_lb`: 'Boneless Chicken Wings Smoked Sausage Potato Wedges' @ $5.0: hard negative keyword/pattern hit: boneless, sausage, potato
 - `ritz_crackers`: 'Nabisco Family Size! Oreo Cookies 12.2-20 oz or Ritz Crackers 17.8-20.6 oz' @ $5.0: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
 - `pepsi_12packs`: 'Pepsi, 7UP, Canada Dry, A&W, Sunkist, Squirt' @ $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `dr_pepper_12packs`: 'Dr Pepper' @ $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs`: 'Pepsi 12-pack, 12-oz. cans or 8-pack, 12-oz. bottles. Lipton Tea 12-pack, 16.9-oz. Pure Leaf 6-pack, 16.9-oz. Gatorade 8' @ $13.88: hard negative keyword/pattern hit: gatorade, lipton, pure leaf, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `chicken_wings_per_lb`: 'Boneless Chicken Wings Smoked Sausage Potato Wedges' @ $5.0: hard negative keyword/pattern hit: boneless, sausage, potato
 - `ritz_crackers`: 'Nabisco Family Size! Oreo Cookies 12.2-20 oz or Ritz Crackers 17.8-20.6 oz' @ $5.0: hard negative keyword/pattern hit: oreo; ad product type 'oreo' is incompatible with canonical intent 'ritz_crackers'; medium pattern confidence 0.73 needs review; large price change 101% vs prior week requires audit
 - `pepsi_12packs`: 'Pepsi, 7UP, Canada Dry, A&W, Sunkist, Squirt' @ $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `dr_pepper_12packs`: 'Dr Pepper' @ $2.5: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 16\.9\s*oz; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
@@ -139,6 +149,21 @@ These looked like deals but were blocked from updating canonical trackers:
 - `tri_tip_roast` (Safeway): 'Chef’s Marinated Tri Tip Roast Boneless' @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
+- `pringles` (Safeway): 'Pringles Chips' @ $1.67 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Safeway): 'Frito Lay Variety Pack' @ $8.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `bell_peppers` (Safeway): 'Green Bell Pepper Medium Size.' @ $1.25 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `oscar_mayer_hot_dogs` (Safeway): 'Oscar Mayer Beef Franks Selected varieties' @ $3.99 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs
+- `cake_mix` (Safeway): 'Betty Crocker Cake Mix' @ $1.99 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties
 - `keebler_sandwich_crackers` (Vons): 'Keebler Sandwich Crackers 8 ct.' @ $2.49 (confidence 0.90)
   - Display: Keebler sandwich crackers
   - Subtitle: 8-pack boxes
@@ -214,6 +239,21 @@ These looked like deals but were blocked from updating canonical trackers:
 - `tri_tip_roast` (Safeway): 'Chef’s Marinated Tri Tip Roast Boneless' @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
+- `pringles` (Safeway): 'Pringles Chips' @ $1.67 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Safeway): 'Frito Lay Variety Pack' @ $8.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `bell_peppers` (Safeway): 'Green Bell Pepper Medium Size.' @ $1.25 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `oscar_mayer_hot_dogs` (Safeway): 'Oscar Mayer Beef Franks Selected varieties' @ $3.99 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs
+- `cake_mix` (Safeway): 'Betty Crocker Cake Mix' @ $1.99 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties
 - `keebler_sandwich_crackers` (Vons): 'Keebler Sandwich Crackers 8 ct.' @ $2.49 (confidence 0.90)
   - Display: Keebler sandwich crackers
   - Subtitle: 8-pack boxes

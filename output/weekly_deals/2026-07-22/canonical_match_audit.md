@@ -1,21 +1,23 @@
 # Canonical match audit: 2026-07-22 to 2026-07-28
 
-Generated: 2026-07-26T03:56:35.071250+00:00
+Generated: 2026-07-26T18:49:20.950912+00:00
 
 ## Summary
 
-- **Accepted:** 56
-- **Rejected:** 12
+- **Accepted:** 72
+- **Rejected:** 14
 - **Manual review:** 2
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, chips_ahoy, tillamook_ice_cream, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, chobani_yogurt_per_cup, general_mills_cereal_regular, pillsbury_refrigerated_dough, chicken_breast_per_lb, salmon, lays_potato_chips_regular, oreo_family_size, cherries_per_lb, berries_6oz, eggs_dozen_normalized, butter_16oz, sliced_or_shredded_cheese_6_8oz, post_cereal_regular
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, chips_ahoy, tillamook_ice_cream, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, chobani_yogurt_per_cup, general_mills_cereal_regular, pillsbury_refrigerated_dough, chicken_breast_per_lb, salmon, frito_lay_multipack_chips, pop_tarts, kellogg_breakfast_bars, waterloo_sparkling_water, bell_peppers, chicken_wings_per_lb, oscar_mayer_hot_dogs, lays_potato_chips_regular, oreo_family_size, cherries_per_lb, berries_6oz, eggs_dozen_normalized, butter_16oz, sliced_or_shredded_cheese_6_8oz, post_cereal_regular
 
 ## Graph update safety check
 
 ### All-time low changes
 
+- `frito_lay_multipack_chips` (Safeway): $4.99: Frito-Lay Variety Pack
 - `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75 to 10.75 oz
 - `simply_snacks` (Vons): $2.49: Simply NKD 4.75 to 10.75 oz
 - `chips_ahoy` (Vons): $1.99: Chips Ahoy! Cookies 7 to 13 oz
+- `frito_lay_multipack_chips` (Safeway): $4.99: Frito-Lay Variety Pack
 - `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75 to 10.75 oz
 - `simply_snacks` (Vons): $2.49: Simply NKD 4.75 to 10.75 oz
 - `chips_ahoy` (Vons): $1.99: Chips Ahoy! Cookies 7 to 13 oz
@@ -27,6 +29,7 @@ Generated: 2026-07-26T03:56:35.071250+00:00
 - `pepsi_12packs` (Safeway): blocked $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz` (Safeway): blocked $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `cape_cod_chips` (Safeway): blocked $2.5: hard negative keyword/pattern hit: sun chips
 - `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `nabisco_snack_crackers` (Safeway): blocked $4.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
@@ -34,6 +37,7 @@ Generated: 2026-07-26T03:56:35.071250+00:00
 - `pepsi_12packs` (Safeway): blocked $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz` (Safeway): blocked $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `cape_cod_chips` (Safeway): blocked $2.5: hard negative keyword/pattern hit: sun chips
 - `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
@@ -50,6 +54,9 @@ Generated: 2026-07-26T03:56:35.071250+00:00
 - `butter_16oz` (Safeway): **rejected**: 'Challenge Spreadable Butter' @ $4.26
   - Reason: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
   - Hard negatives: spread, spreadable
+- `cape_cod_chips` (Safeway): **rejected**: 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5
+  - Reason: hard negative keyword/pattern hit: sun chips
+  - Hard negatives: sun chips
 - `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
@@ -67,6 +74,9 @@ Generated: 2026-07-26T03:56:35.071250+00:00
 - `butter_16oz` (Safeway): **rejected**: 'Challenge Spreadable Butter' @ $4.26
   - Reason: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
   - Hard negatives: spread, spreadable
+- `cape_cod_chips` (Safeway): **rejected**: 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5
+  - Reason: hard negative keyword/pattern hit: sun chips
+  - Hard negatives: sun chips
 - `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
@@ -85,11 +95,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `pepsi_12packs`: 'Pepsi Soda 12-pack, 12-oz cans' @ $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz`: 'O Organics! Organic Blueberries pint' @ $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz`: 'Challenge Spreadable Butter' @ $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `cape_cod_chips`: 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5: hard negative keyword/pattern hit: sun chips
 - `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs`: 'Pepsi Soda 12-pack, 12-oz cans' @ $5.4: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.73 needs review
 - `berries_6oz`: 'O Organics! Organic Blueberries pint' @ $2.5: hard negative keyword/pattern hit: pint, organic; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
 - `butter_16oz`: 'Challenge Spreadable Butter' @ $4.26: hard negative keyword/pattern hit: spread, spreadable; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+- `cape_cod_chips`: 'Cape Cod Kettle Cooked Potato Chips, Sun Chips' @ $2.5: hard negative keyword/pattern hit: sun chips
 - `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 - `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
 
@@ -140,6 +152,27 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion Farm Raised. Seasoned' @ $5.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $4.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `pop_tarts` (Safeway): "Kellogg's Pop-Tarts 12 ct" @ $2.99 (confidence 0.90)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `kellogg_breakfast_bars` (Safeway): "Kellogg's Nutri-Grain Bars" @ $1.99 (confidence 0.70)
+  - Display: Nutri-Grain & Special K bars
+  - Subtitle: 5–10 ct breakfast bars
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water' @ $5.0 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `bell_peppers` (Safeway): 'Red Bell Pepper' @ $1.25 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings' @ $2.99 (confidence 0.96)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `oscar_mayer_hot_dogs` (Safeway): 'Oscar Mayer Meat Franks Selected varieties' @ $3.99 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs
 - `doritos_5_13oz` (Vons): 'Doritos 4.75 to 10.75 oz' @ $2.49 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -179,6 +212,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Vons): 'Orange Bell Peppers' @ $0.99 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
 - `doritos_5_13oz` (Safeway): 'Doritos, Lay’s, Miss Vickie’s' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -224,6 +260,27 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion Farm Raised. Seasoned' @ $5.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $4.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `pop_tarts` (Safeway): "Kellogg's Pop-Tarts 12 ct" @ $2.99 (confidence 0.90)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `kellogg_breakfast_bars` (Safeway): "Kellogg's Nutri-Grain Bars" @ $1.99 (confidence 0.70)
+  - Display: Nutri-Grain & Special K bars
+  - Subtitle: 5–10 ct breakfast bars
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water' @ $5.0 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `bell_peppers` (Safeway): 'Red Bell Pepper' @ $1.25 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings' @ $2.99 (confidence 0.96)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `oscar_mayer_hot_dogs` (Safeway): 'Oscar Mayer Meat Franks Selected varieties' @ $3.99 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs
 - `doritos_5_13oz` (Vons): 'Doritos 4.75 to 10.75 oz' @ $2.49 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -263,3 +320,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Vons): 'Orange Bell Peppers' @ $0.99 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy

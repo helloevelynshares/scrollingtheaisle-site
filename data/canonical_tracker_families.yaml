@@ -1816,6 +1816,7 @@ families:
   homepage_group: dairy_breakfast_bakery
 - id: betty_crocker_fruit_snacks
   canonical_tracker_family: Betty Crocker fruit snacks
+  display_name: Gushers / Fruit by the Foot
   size_format_subtitle: '5–10 ct pouches (Gushers, Fruit by the Foot, selected)'
   category: bars_snacks
   organic_status: not_applicable
@@ -1832,7 +1833,7 @@ families:
   - cereal bars
   - protein bars
   - Nutri-Grain
-  notes: 'Tracks Betty Crocker fruit-snack Mix & Match tiles including Gushers and Fruit by the Foot. Not a flavor-specific tracker.'
+  notes: 'Display as Gushers / Fruit by the Foot. Tracks Betty Crocker fruit-snack Mix & Match tiles including Gushers, Fruit by the Foot, and Fruit Roll-Ups. Safeway everyday regular for 6-pack Gushers and Fruit by the Foot is $5.99 (same); chart baseline uses Gushers 6 ct @ $5.99. Not a flavor-specific tracker.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1882,7 +1883,12 @@ families:
   - organic bell
   - mango
   - cucumber
-  notes: Track conventional bell peppers. Color variants share the graph when priced interchangeably.
+  notes: >-
+    Track conventional bell peppers. Color variants share the graph when priced
+    interchangeably. Safeway everyday regulars (Evelyn 2026-07-26): green $1.49,
+    red $1.99, yellow/orange $2.49 each. Chart baseline uses green $1.49 (cheapest
+    / common ad color). Sales usually apply to all colors together — do not invent
+    a single everyday price from a colored sale tile alone.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1907,59 +1913,17 @@ families:
   - '8-pc'
   - cooked chicken
   - breaded
-  notes: Fresh party wings per lb. Exclude deli fried chicken / rotisserie / tenders.
+  - boneless
+  - rib tips
+  - smoked sausage
+  - potato wedge
+  notes: Fresh party wings per lb. Exclude deli fried chicken / rotisserie / tenders / boneless meal tiles.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
   display_order: 79
   homepage_group: meat_and_seafood
-- id: shrimp_16oz
-  canonical_tracker_family: Shrimp
-  size_format_subtitle: '16 oz bags (cooked or raw)'
-  category: meat_seafood
-  organic_status: not_applicable
-  include:
-  - Cooked Shrimp
-  - Raw Shrimp
-  - Waterfront BISTRO Cooked Shrimp
-  - Waterfront BISTRO Raw Shrimp
-  - Waterfront Bistro Shrimp
-  - shrimp 16 oz
-  - shrimp 31-40
-  keep_separate_from:
-  - shrimp ring
-  - shrimp tray
-  - cocktail sauce
-  - salmon
-  - jumbo shrimp previously frozen
-  - scampi
-  - shrimp taco
-  match_eligibility:
-    canonical_intent: bagged_shrimp
-    positive_keywords:
-    - shrimp
-    - '16 oz'
-    - '31-40'
-    - waterfront
-    negative_keywords:
-    - ring
-    - tray
-    - cocktail
-    - scampi
-    - taco
-    - skewers
-    disallowed_package_patterns:
-    - \bring\b
-    - \btray\b
-    min_confidence: 0.65
-    atl_requires_confidence: 0.85
-    large_price_change_pct: 40
-  notes: 'Bagged ~16 oz shrimp (often Waterfront Bistro). Exclude rings, trays, and prepared meals.'
-  confidence: working
-  source_basis:
-  - reviewed_weekly_ads_and_transcripts
-  display_order: 80
-  homepage_group: meat_and_seafood
+
 - id: beef_short_ribs_per_lb
   canonical_tracker_family: Beef short ribs
   size_format_subtitle: per lb
@@ -2050,14 +2014,16 @@ families:
   - Duncan Hines Cake Mix
   - 'devil''s food cake mix'
   keep_separate_from:
-  - frosting
   - pancake mix
   - Pillsbury Grands
   - refrigerated dough
   - cookie dough
   - brownie mix
   - muffin mix
-  notes: 'Boxed cake mixes are interchangeable across flavors (including devil''s food). Do not graph frosting-only or pancake mix.'
+  - cornbread
+  - gluten free
+  - Krusteaz
+  notes: 'Boxed cake mixes are interchangeable across flavors (including devil''s food). Do not graph frosting-only, pancake, or cornbread mixes. Package lines often say "Cake Mix or Frosting" — frosting alone is a separate split row.'
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts

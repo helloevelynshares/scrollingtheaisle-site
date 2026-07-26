@@ -296,6 +296,25 @@ def normalize_per_bar(row: dict[str, str]) -> float | None:
     return price
 
 
+def normalize_pack_total(row: dict[str, str]) -> float | None:
+    """Keep multipack / bag advertised totals without dividing by count or oz.
+
+    Used for sparkling-water multipacks and Frito variety packs
+    where ``31-40 ct`` / ``18 ct`` / ``12 pack`` describe the SKU, not a unitizer.
+    Still honors explicit ``N for $X`` and Member Price each cues.
+    """
+    price = _parse_price(row.get("advertised_price"))
+    if price is None:
+        return None
+    explicit = _explicit_n_for_x_unit_price(row)
+    if explicit is not None:
+        return explicit
+    member_each = _member_price_each_from_text(row)
+    if member_each is not None and member_each < price:
+        return member_each
+    return round(price, 2)
+
+
 NORMALIZERS: dict[str, Callable[[dict[str, str]], float | None]] = {
     "strawberries_per_lb": normalize_strawberries_per_lb,
     "per_lb": normalize_per_lb,
@@ -304,6 +323,7 @@ NORMALIZERS: dict[str, Callable[[dict[str, str]], float | None]] = {
     "per_16oz": normalize_per_16oz,
     "cheese_6_8oz": normalize_cheese_6_8oz,
     "per_bar": normalize_per_bar,
+    "pack_total": normalize_pack_total,
 }
 
 

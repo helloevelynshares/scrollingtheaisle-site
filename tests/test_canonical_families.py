@@ -228,5 +228,56 @@ class TestKettleBrandChipsMatcher(unittest.TestCase):
                 )
 
 
+class TestHighlightCoverageFamilies(unittest.TestCase):
+    """High-confidence families added from Safeway transcript highlight inventory."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.by_id = {f.id: f for f in load_families()}
+
+    def test_new_family_ids_present(self) -> None:
+        expected = {
+            "cape_cod_chips",
+            "smartfood_popcorn",
+            "pringles",
+            "snyders_pretzels",
+            "frito_lay_multipack_chips",
+            "pop_tarts",
+            "kellogg_breakfast_bars",
+            "betty_crocker_fruit_snacks",
+            "waterloo_sparkling_water",
+            "bell_peppers",
+            "chicken_wings_per_lb",
+            "beef_short_ribs_per_lb",
+            "pork_spare_ribs_per_lb",
+            "oscar_mayer_hot_dogs",
+            "cake_mix",
+        }
+        self.assertTrue(expected.issubset(self.by_id))
+        self.assertNotIn("shrimp_16oz", self.by_id)
+
+    def test_frito_multipack_legacy_maps_to_itself(self) -> None:
+        from price_tracker.canonical_families import LEGACY_CANONICAL_TO_FAMILY
+
+        self.assertEqual(
+            LEGACY_CANONICAL_TO_FAMILY["frito_lay_multipack_chips"],
+            "frito_lay_multipack_chips",
+        )
+
+    def test_cape_cod_not_confused_with_kettle_brand(self) -> None:
+        cape = self.by_id["cape_cod_chips"]
+        kettle = self.by_id["kettle_brand_chips"]
+        joined_sep = " ".join(kettle.keep_separate_from).lower()
+        self.assertIn("cape cod", joined_sep)
+        self.assertTrue(any("cape cod" in p.lower() for p in cape.include))
+
+    def test_pack_total_normalization_for_multipacks(self) -> None:
+        for fid in (
+            "waterloo_sparkling_water",
+            "frito_lay_multipack_chips",
+        ):
+            self.assertEqual(self.by_id[fid].normalization, "pack_total")
+
+
 if __name__ == "__main__":
     unittest.main()

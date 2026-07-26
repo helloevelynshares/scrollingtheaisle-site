@@ -1,0 +1,15 @@
+canonical_id,display_name,search_query,content_theme,candidate_rank,product_name,price,pid,upc,size
+bell_peppers,Bell peppers,green bell pepper,price_tracker_baseline,1,Green Bell Pepper,1.49,,,each
+betty_crocker_fruit_snacks,Gushers / Fruit by the Foot,betty crocker gushers,price_tracker_baseline,1,Betty Crocker Fruit Gushers 6 Count,5.99,,,6 ct
+cape_cod_chips,Cape Cod potato chips,cape cod chips,price_tracker_baseline,1,Cape Cod Original Kettle Cooked Potato Chips - 8 Oz,4.49,,,8 Oz
+smartfood_popcorn,Smartfood popcorn,smartfood white cheddar,price_tracker_baseline,1,Smartfood White Cheddar Popcorn - 6 Oz,4.79,,,6 Oz
+pringles,Pringles,pringles original,price_tracker_baseline,1,Pringles Original Potato Crisps - 5.2 Oz,2.99,,,5.2 Oz
+snyders_pretzels,Snyder's pretzels,snyders mini pretzels,price_tracker_baseline,1,Snyder's of Hanover Mini Pretzels - 16 Oz,3.99,,,16 Oz
+pop_tarts,Pop-Tarts,pop-tarts frosted strawberry,price_tracker_baseline,1,Kellogg's Pop-Tarts Frosted Strawberry 8 Count - 13.5 Oz,3.99,,,13.5 Oz
+kellogg_breakfast_bars,Kellogg breakfast bars,nutri-grain strawberry,price_tracker_baseline,1,Nutri-Grain Breakfast Bars Strawberry - 8 Count,3.99,,,8 ct
+waterloo_sparkling_water,Waterloo sparkling water,waterloo summer berry,price_tracker_baseline,1,Waterloo Summer Berry Sparkling Water - 8-12 Fl. Oz.,5.99,,,8-12 Fl. Oz.
+chicken_wings_per_lb,Chicken wings,foster farms party wings,price_tracker_baseline,1,Foster Farms Free Range Party Wings,9.99,,,per lb
+beef_short_ribs_per_lb,Beef short ribs,chuck short ribs,price_tracker_baseline,1,Chuck Short Ribs 2 Lb,15.98,,,2 Lb
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,1,Signature Select Pork Spareribs 4.5 Lb,24.71,,,4.5 Lb
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,oscar mayer beef franks,price_tracker_baseline,1,Oscar Mayer Classic Beef Franks Hot Dogs 10 Count,8.49,,,10 Count
+cake_mix,Cake mix,pillsbury yellow cake mix,price_tracker_baseline,1,Pillsbury Premium Yellow Cake Mix - 15.25 Oz,3.00,,,15.25 Oz

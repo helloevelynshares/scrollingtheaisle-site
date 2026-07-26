@@ -1,0 +1,229 @@
+schema_version: 1
+last_updated: '2026-07-25'
+purpose: >
+  Ambiguous Safeway video-transcript highlights that need human review before
+  becoming canonical tracker families. Do not invent families from transcript
+  text alone when the product was visual-only or ASR-garbled.
+source_inventory: historical Safeway video transcripts (seed list Jul 2026)
+coverage_audit: data/review/highlight_tracker_coverage_audit.yaml
+
+items:
+  - id: pork_cut_unclear
+    proposed_product_or_family: pork (cut TBD) — possible spare ribs, loin chops, or country-style ribs
+    source_week: transcript inventory (week TBD from source video)
+    transcript_excerpt: pork highlighted without naming the cut
+    possible_matching_source_rows:
+      - Signature SELECT Pork Spareribs (see pork_spare_ribs_per_lb if that is the cut)
+      - St. Louis Style Pork Ribs / back ribs
+      - pork loin chops / country-style ribs in various weeks
+    competing_interpretations:
+      - Map to new pork_spare_ribs_per_lb if video showed spareribs
+      - Separate loin-chop family if that was the highlight
+      - Leave untracked if one-off prepared cut
+    recommended_next_human_action: Open the source week PDF/screenshot and identify the exact cut before adding or linking a family.
+
+  - id: hawaiian_brand_chips
+    proposed_product_or_family: Hawaiian Brand potato chips (Sweet Maui Onion)
+    source_week: transcript inventory
+    transcript_excerpt: Hawaiian Brand chips / Sweet Maui Onion
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - New hawaiian_brand_chips family if ad rows appear
+      - Confusion with King's Hawaiian rolls (already tracked; keep separate)
+    recommended_next_human_action: Search upcoming split_offer_items for Hawaiian chips / Maui Onion; do not alias to kings_hawaiian_rolls.
+
+  - id: dots_pretzels
+    proposed_product_or_family: Dot's Pretzels
+    source_week: transcript inventory
+    transcript_excerpt: Dot's Pretzels
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - New dots_pretzels family when ad evidence exists
+      - CSV "Dots" hits are Tootsie candy, not pretzels
+    recommended_next_human_action: Confirm brand from flyer/screenshot; ignore candy Dots rows.
+
+  - id: siders_asr_snyders
+    proposed_product_or_family: Snyder's pretzels (ASR "siders")
+    source_week: transcript inventory
+    transcript_excerpt: siders
+    possible_matching_source_rows:
+      - Snyder's Pretzels 10–16 oz (2026-04-01, 2026-05-12, 2026-06-24)
+    competing_interpretations:
+      - ASR for Snyder's → covered by new snyders_pretzels once source confirms
+      - Unrelated product
+    recommended_next_human_action: Verify against video/screenshot; if Snyder's, no new family needed (snyders_pretzels added).
+
+  - id: kimchi_dill_pickle_unidentified_chips
+    proposed_product_or_family: unidentified chips (spicy kimchi / dill pickle flavors)
+    source_week: transcript inventory
+    transcript_excerpt: spicy kimchi and dill pickle chip flavors without brand narration
+    possible_matching_source_rows:
+      - Lay's Dill Pickle under lays_potato_chips_regular if brand is Lay's
+      - Kettle Brand or Cape Cod dill variants if those brands
+    competing_interpretations:
+      - Lay's flavor alias
+      - Kettle Brand / Cape Cod / Miss Vickie's LE
+      - Unknown third brand
+    recommended_next_human_action: Identify brand from ad creative before mapping.
+
+  - id: safeway_all_american_footlong
+    proposed_product_or_family: Safeway All-American footlong sandwich
+    source_week: transcript inventory
+    transcript_excerpt: Safeway All-American footlong sandwich
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Prepared deli sandwich — may be not appropriate for staples price tracker
+      - Track only if recurring priced SKU appears in weekly ads
+    recommended_next_human_action: Confirm whether this is a weekly-ad SKU or deli prepared food; default to not tracking.
+
+  - id: special_k_cereal_vs_bars
+    proposed_product_or_family: Special K cereal (boxes)
+    source_week: transcript inventory
+    transcript_excerpt: Special K where unclear if cereal or bars
+    possible_matching_source_rows:
+      - Special K Bars 5 ct (2026-07-22) → kellogg_breakfast_bars
+      - Kashi/Kellogg cereal tiles that may co-list Nutri-Grain bars
+    competing_interpretations:
+      - Bars → kellogg_breakfast_bars (implemented)
+      - Cereal boxes → would need Kellogg cereal family (not GM/Post)
+    recommended_next_human_action: If video showed cereal boxes, consider a Kellogg cereal family; do not map cereal to breakfast-bar graph.
+
+  - id: baskin_robbins_novelties
+    proposed_product_or_family: Baskin-Robbins ice cream / bars / Jamaica Almond Fudge
+    source_week: '2026-07-15'
+    transcript_excerpt: Baskin-Robbins including Jamaica Almond Fudge; bars if confirmed
+    possible_matching_source_rows:
+      - Baskin Robbins Ice Cream Novelties 3–4 ct, 15–16 oz (2026-07-15)
+    competing_interpretations:
+      - New baskin_robbins_novelties family from the one novelty row
+      - Separate pint vs bars if both appear
+      - Flavor Jamaica Almond Fudge not in offer text — visual only
+    recommended_next_human_action: Confirm pint vs novelties from flyer; add family only if recurring.
+
+  - id: frozen_greek_yogurt_brand_unknown
+    proposed_product_or_family: frozen Greek yogurt pints / layers / bars (brand unknown)
+    source_week: transcript inventory
+    transcript_excerpt: frozen Greek-yogurt product described as pints, layers, and bars; coffee-chocolate and crunchy varieties
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Chobani / Fage / other branded frozen line
+      - Not interchangeable with refrigerated Chobani cups
+    recommended_next_human_action: Identify brand from video packaging before creating a frozen-dessert family.
+
+  - id: kerrygold_8oz_butter
+    proposed_product_or_family: Kerrygold butter 8 oz under butter_16oz
+    source_week: '2026-04-01'
+    transcript_excerpt: Kerrygold butter
+    possible_matching_source_rows:
+      - Kerrygold Pure Irish Butter 8 oz ~$3.99 (2026-04-01)
+    competing_interpretations:
+      - Normalize 8 oz into butter_16oz graph
+      - Keep excluded as specialty 8 oz (current keep_separate guidance)
+      - Separate Kerrygold family
+    recommended_next_human_action: Decide normalization policy for 8 oz Kerrygold; do not silently merge pack totals.
+
+  - id: unidentified_1_67_snack
+    proposed_product_or_family: unidentified $1.67 snack deal
+    source_week: transcript inventory
+    transcript_excerpt: $1.67 snack deal without product name
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Could be unit price on produce (e.g. avocado math) or a snack SKU
+    recommended_next_human_action: Recover product from screenshot/OCR for that beat.
+
+  - id: unidentified_both_099
+    proposed_product_or_family: unidentified “both of these” at $0.99
+    source_week: transcript inventory
+    transcript_excerpt: both of these at $0.99
+    possible_matching_source_rows:
+      - Chobani cups often $0.89–$0.99
+    competing_interpretations:
+      - Chobani cup pair
+      - Other dairy/snack pair
+    recommended_next_human_action: Identify both products from video frame.
+
+  - id: unidentified_10pack_kids_snack
+    proposed_product_or_family: unidentified 10-pack children’s snack
+    source_week: transcript inventory
+    transcript_excerpt: 10-pack kids snack
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Nabisco snack packs (excluded from nabisco_snack_crackers family-size tracker)
+      - Other kids multipack
+    recommended_next_human_action: Identify brand/line; do not force onto family-size cracker graph.
+
+  - id: unidentified_599_to_2_stack
+    proposed_product_or_family: unidentified products $5.99 → $2 stacked promotions
+    source_week: transcript inventory
+    transcript_excerpt: products reduced from $5.99 to $2 through stacked promotions
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Mechanic description, not a product identity
+    recommended_next_human_action: Recover SKUs from ad page for that promo stack.
+
+  - id: unidentified_produce_8_vs_costco_6
+    proposed_product_or_family: unidentified produce (8 at Safeway vs 6 at Costco)
+    source_week: transcript inventory
+    transcript_excerpt: eight at Safeway compared with six at Costco
+    possible_matching_source_rows:
+      - Hass avocados (Costco 6-ct #647465) if avocados
+    competing_interpretations:
+      - Avocados
+      - Other produce multipack
+    recommended_next_human_action: Confirm produce type from video; link Costco map only if avocados.
+
+  - id: unidentified_2lb_vs_5lb_produce
+    proposed_product_or_family: unidentified 2 lb vs 5 lb produce comparison
+    source_week: transcript inventory
+    transcript_excerpt: two-pound produce vs five-pound package
+    possible_matching_source_rows:
+      - Strawberries 1–2 lb (strawberries_1_2lb)
+      - Large blueberry packs (excluded from berries_6oz)
+    competing_interpretations:
+      - Strawberries
+      - Blueberries large pack
+      - Other produce
+    recommended_next_human_action: Identify produce from frame before mapping.
+
+  - id: crunch_dipped_protein_snack
+    proposed_product_or_family: unidentified crunch-dipped protein / variety-pack snack
+    source_week: transcript inventory
+    transcript_excerpt: crunch dipped protein or variety-pack snack
+    possible_matching_source_rows: []
+    competing_interpretations:
+      - Quest/Clif or other protein bar with coating
+      - Variety multipack snack
+    recommended_next_human_action: Identify brand from packaging; do not guess.
+
+  - id: asr_oil_family_size
+    proposed_product_or_family: Oreo Family Size (ASR “oil family size”)
+    source_week: transcript inventory
+    transcript_excerpt: oil family size
+    possible_matching_source_rows:
+      - Oreo Family Size under oreo_family_size
+    competing_interpretations:
+      - ASR error for Oreo Family Size
+      - Unrelated oil product
+    recommended_next_human_action: Verify from video; if Oreo, already covered by oreo_family_size.
+
+  - id: asr_cake_pod
+    proposed_product_or_family: unknown (ASR “Cake pod”)
+    source_week: transcript inventory
+    transcript_excerpt: Cake pod
+    possible_matching_source_rows:
+      - Possibly cake mix (cake_mix) if ASR mangled “cake mix”
+    competing_interpretations:
+      - Cake mix
+      - Unrelated product
+    recommended_next_human_action: Verify from video/PDF before linking to cake_mix.
+
+  - id: asr_nutrigrain_country_bars
+    proposed_product_or_family: Nutri-Grain bars (ASR “Nutrigrain Country Bars”)
+    source_week: transcript inventory
+    transcript_excerpt: Nutrigrain Country Bars
+    possible_matching_source_rows:
+      - Kellogg's Nutri-Grain Bars → kellogg_breakfast_bars
+    competing_interpretations:
+      - Nutri-Grain (most likely)
+      - Unrelated “Country” brand bars
+    recommended_next_human_action: Confirm from flyer; if Nutri-Grain, covered by kellogg_breakfast_bars.

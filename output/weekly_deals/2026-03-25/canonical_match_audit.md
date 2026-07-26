@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-03-25 to 2026-03-31
 
-Generated: 2026-07-26T03:56:33.526679+00:00
+Generated: 2026-07-26T18:49:19.028523+00:00
 
 ## Summary
 
-- **Accepted:** 34
+- **Accepted:** 42
 - **Rejected:** 6
 - **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, ritz_toasted_chips, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, general_mills_cereal_regular, post_cereal_regular, clif_bars, chicken_breast_per_lb, salmon
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, ritz_toasted_chips, breyers_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, general_mills_cereal_regular, general_mills_cereal_family_size, post_cereal_regular, clif_bars, chicken_breast_per_lb, salmon, bell_peppers, chicken_wings_per_lb, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -109,6 +109,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `general_mills_cereal_regular` (Safeway): 'Cheerios Family Size, Honey Nut Cheerios Family Size, Cinnamon Cheerios Protein Family Size' @ $None (confidence 0.70)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
+- `general_mills_cereal_family_size` (Safeway): 'Cheerios Family Size, Honey Nut Cheerios Family Size, Cinnamon Cheerios Protein Family Size' @ $None (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal 10 to 14.75 oz' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
@@ -121,6 +124,15 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Safeway): 'Green Bell Peppers' @ $1.0 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `chicken_wings_per_lb` (Safeway): 'Chicken Wings' @ $6.99 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `pork_spare_ribs_per_lb` (Safeway): 'St. Louis Style Pork Back Ribs' @ $4.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips' @ $1.99 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -160,6 +172,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `general_mills_cereal_regular` (Safeway): 'Cheerios Family Size, Honey Nut Cheerios Family Size, Cinnamon Cheerios Protein Family Size' @ $None (confidence 0.70)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
+- `general_mills_cereal_family_size` (Safeway): 'Cheerios Family Size, Honey Nut Cheerios Family Size, Cinnamon Cheerios Protein Family Size' @ $None (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal 10 to 14.75 oz' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
@@ -172,3 +187,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Safeway): 'Green Bell Peppers' @ $1.0 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `chicken_wings_per_lb` (Safeway): 'Chicken Wings' @ $6.99 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
+- `pork_spare_ribs_per_lb` (Safeway): 'St. Louis Style Pork Back Ribs' @ $4.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb

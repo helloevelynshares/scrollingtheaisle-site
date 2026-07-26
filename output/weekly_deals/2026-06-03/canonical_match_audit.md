@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-26T03:56:34.084626+00:00
+Generated: 2026-07-26T18:49:19.723157+00:00
 
 ## Summary
 
-- **Accepted:** 56
+- **Accepted:** 66
 - **Rejected:** 2
-- **Manual review:** 8
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, sun_chips_7oz, simply_snacks, ritz_crackers, ritz_toasted_chips, keebler_sandwich_crackers, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, chobani_yogurt_per_cup, post_cereal_regular, chicken_breast_per_lb, berries_6oz, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon
+- **Manual review:** 10
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, sun_chips_7oz, simply_snacks, ritz_crackers, ritz_toasted_chips, keebler_sandwich_crackers, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, chobani_yogurt_per_cup, post_cereal_regular, chicken_breast_per_lb, smartfood_popcorn, frito_lay_multipack_chips, chicken_wings_per_lb, berries_6oz, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon, bell_peppers, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -28,10 +28,12 @@ Generated: 2026-07-26T03:56:34.084626+00:00
 
 ### Graph preview changes
 
+- `lays_potato_chips_regular` (Safeway): blocked $2.59: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.83: hard negative keyword/pattern hit: 16\.9\s*oz
+- `lays_potato_chips_regular` (Safeway): blocked $2.59: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
@@ -45,6 +47,8 @@ Generated: 2026-07-26T03:56:34.084626+00:00
 - `dr_pepper_12packs` (Vons): **rejected**: 'Dr Pepper' @ $0.83
   - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
   - Hard negatives: 16\.9\s*oz
+- `lays_potato_chips_regular` (Safeway): **manual_review**: 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59
+  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi' @ $None
@@ -53,6 +57,8 @@ Generated: 2026-07-26T03:56:34.084626+00:00
   - Reason: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $6.0
   - Reason: confidence 0.65 < min 0.70
+- `lays_potato_chips_regular` (Safeway): **manual_review**: 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59
+  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi' @ $None
@@ -128,6 +134,15 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
+- `smartfood_popcorn` (Safeway): 'Smartfood' @ $2.49 (confidence 0.70)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack 18 ct. Selected varieties.' @ $9.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings Bulk Pack, Value Pack' @ $2.99 (confidence 0.76)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -155,6 +170,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Vons): 'Orange Bell Peppers' @ $0.99 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `pork_spare_ribs_per_lb` (Vons): 'St. Louis Style Spareribs Previously Frozen' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -212,6 +233,15 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
+- `smartfood_popcorn` (Safeway): 'Smartfood' @ $2.49 (confidence 0.70)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack 18 ct. Selected varieties.' @ $9.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings Bulk Pack, Value Pack' @ $2.99 (confidence 0.76)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -239,3 +269,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `bell_peppers` (Vons): 'Orange Bell Peppers' @ $0.99 (confidence 0.90)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `pork_spare_ribs_per_lb` (Vons): 'St. Louis Style Spareribs Previously Frozen' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb

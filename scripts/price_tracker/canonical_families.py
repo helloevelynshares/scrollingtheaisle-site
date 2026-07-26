@@ -205,6 +205,11 @@ def infer_normalization(family_id: str, notes: str, subtitle: str) -> str | None
         return "per_bar"
     if family_id in ("chicken_breast_per_lb", "chicken_thigh_per_lb", "ribeye_steak", "tri_tip_roast"):
         return "per_lb"
+    if family_id in (
+        "waterloo_sparkling_water",
+        "frito_lay_multipack_chips",
+    ):
+        return "pack_total"
     if "per lb" in subtitle.lower():
         return "per_lb"
     return None

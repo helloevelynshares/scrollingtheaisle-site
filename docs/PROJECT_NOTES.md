@@ -229,6 +229,15 @@ Fix / workaround: New table `tracker_vote_items` with `status` (`pending|approve
 How to verify: Submit a custom item on the tracker → success message about review, item not in list. Approve in admin → item appears and accepts votes via RPC `vote_on_item`.  
 Related files: `supabase/migrations/20260614_tracker_vote_items.sql`, `src/staging-price-tracker/TrackVoteModule.tsx`, `src/admin/suggestions/`, `supabase/functions/validate-admin/`, `supabase/functions/admin-suggestion-actions/`
 
+### Refresh tracker vote seeds when families get covered
+
+Date discovered: 2026-07-26  
+Context: Public “Help pick what we track next” strip reads approved rows from `tracker_vote_items` (fallback seed in `src/lib/trackVote.ts` `SEED_TRACK_ITEMS` only when Supabase is empty/unavailable).  
+What happened: Seed chips still offered Berries, Grapes, Chicken breast, Oreos, Ritz, Kettle chips, Ribeye, Bell pepper after those families were added to `canonical_tracker_families.yaml`.  
+Fix / workaround: Reject covered approved rows and insert new uncovered staples via migration (e.g. `supabase/migrations/20260726_refresh_tracker_vote_seeds.sql`); keep `SEED_TRACK_ITEMS` in sync. Do not re-suggest shrimp (intentionally untracked). Leave unrelated product chips (e.g. Yasso) alone; reject vague non-products (e.g. Household items) so they don’t crowd the top-6 alphabetical strip when all votes are 0.  
+How to verify: `supabase db push` (or run the SQL in the dashboard) → GET approved `tracker_vote_items` no longer includes covered names; new seeds appear. Open `/grocery-price-tracker/#track-vote` (or staging) and confirm pills. Offline fallback: rebuild so `SEED_TRACK_ITEMS` is in the bundle.  
+Related files: `supabase/migrations/20260726_refresh_tracker_vote_seeds.sql`, `supabase/migrations/20260727_reject_household_vote_item.sql`, `src/lib/trackVote.ts`, `src/staging-price-tracker/vote/useTrackVote.ts`, `about/index.html`
+
 ### Grocery finds are moderated before going live
 
 Date discovered: 2026-07-12
@@ -916,12 +925,13 @@ How to verify: `npm run build:price-tracker` → open `/staging-price-tracker/` 
 Related files: `src/staging-price-tracker/vote/TrackVotePanel.tsx`, `src/staging-price-tracker/SectionedTrackerList.tsx`, `src/staging-price-tracker/App.tsx`, `styles.css`
 
 
-Date discovered: 2026-07-05
-Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/grocery-price-tracker/
-What happened: Default Vite 6 listened only on `[::1]:5173`. Browsers and tools using IPv4 `127.0.0.1` could not connect. Agent-background Vite processes also stop when the agent session ends.
-Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`, `strictPort: true`. Run dev server in the user's own terminal: `cd <repo> && npm run dev:price-tracker`. Open http://127.0.0.1:5173/grocery-price-tracker/ (base path `/grocery-price-tracker/`).
-How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; `curl -I http://127.0.0.1:5173/grocery-price-tracker/` returns HTTP 200.
-Related files: `vite.config.ts`, `package.json` (`dev:price-tracker`)
+Date discovered: 2026-07-05  
+Updated: 2026-07-26  
+Context: `npm run dev:price-tracker` / `ERR_CONNECTION_REFUSED` on http://localhost:5173/grocery-price-tracker/  
+What happened: Default Vite 6 listened only on `[::1]:5173`. Browsers and tools using IPv4 `127.0.0.1` could not connect. Agent-background Vite processes also stop when the agent session ends. Separately: with `base: "/grocery-price-tracker/"` and Vite input `src/staging-price-tracker/index.html`, the **live HMR app** is at `/grocery-price-tracker/src/staging-price-tracker/` — bare `/grocery-price-tracker/` in dev can serve the hub homepage HTML (title “Weekly grocery briefing”), not the React tracker. `/staging-price-tracker/` is 404 in current Vite config.  
+Fix / workaround: `vite.config.ts` sets `server.host: "127.0.0.1"`, `port: 5173`, `strictPort: true`. Run `npm run dev:price-tracker`. Open **http://127.0.0.1:5173/grocery-price-tracker/src/staging-price-tracker/** for source/HMR preview. Production/GitHub Pages still uses `/grocery-price-tracker/` after `build:price-tracker` sync.  
+How to verify: `lsof -i :5173` shows `127.0.0.1:5173`; curl that HMR URL returns title `Safeway Price Tracker: Scrolling the Aisle` and `#root` + `main.tsx`.  
+Related files: `vite.config.ts`, `package.json` (`dev:price-tracker`), `src/staging-price-tracker/index.html`
 
 ### Canonical match eligibility gates weekly ad graph updates
 
@@ -1095,4 +1105,55 @@ Gotchas:
 - `content_score` ≠ `canonical_match_score`: a proxy or gap item can still rank high for content; separate the two mentally.  
 How to verify: `PYTHONPATH=scripts /usr/bin/python3 -m unittest tests.test_content_score` (passes), then the generate command above; md and json are internally consistent (item counts, one-liners, section counts, do-not-say list all match).  
 Related files: `scripts/weekly_ad_analysis/content_score.py`, `scripts/weekly_ad_analysis/content_shortlist.py`, `scripts/generate_content_shortlist.py`, `tests/test_content_score.py`, `config/content_shortlist_seed.csv`, `config/content_costco_mappings.csv`, `output/weekly_deals/2026-07-08/content_*.{md,json}`
+
+### Safeway transcript highlight → tracker coverage expansion
+
+Date discovered: 2026-07-25  
+Context: Expand canonical families so grocery products highlighted in historical Safeway video transcripts are mapped, aliased, newly tracked, or queued for review.  
+What happened: Coverage audit found ~49 already covered, ~5 alias-only gaps, ~16 high-confidence missing families, and ~17 ambiguous/ASR/visual-only items.  
+Fix / workaround:
+1. Audit: `data/review/highlight_tracker_coverage_audit.yaml`
+2. Review queue: `data/product_matching/highlight_tracker_review.yaml`
+3. New YAML families (16): Cape Cod, Smartfood, Pringles, Snyder's, Frito-Lay variety pack, Pop-Tarts, Kellogg breakfast bars (Nutri-Grain/Special K), Betty Crocker fruit snacks, Waterloo, bell peppers, chicken wings, shrimp 16 oz, beef short ribs, pork spare ribs, Oscar Mayer hot dogs, cake mix
+4. Legacy fix: `frito_lay_multipack_chips` no longer maps to `lays_party_size`
+5. `pack_total` normalizer for Waterloo / Frito multipack / shrimp so `12 pack` / `18 ct` / `31-40 ct` do not unitize pack totals
+6. Evals: +41 highlight cases; original-suite incorrect accepts unchanged (pre-existing Pepsi Zero Sugar bare-name case only)  
+How to verify: `PYTHONPATH=scripts python3 -m product_matching.eval_runner`; `npm run generate:canonical-families`; `python3 scripts/generate_weekly_ad_prices.py --new-only`; `npm run verify:price-tracker`.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/normalization.py`, `scripts/price_tracker/canonical_families.py`, `data/product_matching/eval_cases.jsonl`, `src/data/weeklyAdPrices.generated.ts`, `src/data/canonicalTrackerFamilies.generated.ts`
+
+### Durable highlight coverage inventory (post-expansion)
+
+Date discovered: 2026-07-26  
+Context: Highlight expansion decisions lived in audit YAML + review queue + notes; no single machine-readable inventory of every highlighted product’s final status.  
+What happened: Consolidation (read-only vs production matching) wrote one row per unique normalized highlight.  
+Fix / workaround: Use `data/product_matching/highlight_mentions.jsonl` + `data/product_matching/highlight_coverage_report.md`. Grain matches audit uniqueness (89). Do not re-extract transcripts to refresh these unless the audit is updated. Shrimp status is `removed` / not tracking. Family count: 68→84 (incl. shrimp)→83.  
+How to verify: `wc -l data/product_matching/highlight_mentions.jsonl` → 89; report headline stats match.  
+Related files: `data/product_matching/highlight_mentions.jsonl`, `data/product_matching/highlight_coverage_report.md`, `data/review/highlight_tracker_coverage_audit.yaml`, `data/product_matching/highlight_tracker_review.yaml`
+
+### Bell pepper multi-color regulars vs all-color sales
+
+Date discovered: 2026-07-26  
+Context: Safeway `bell_peppers` umbrella family (`size_format_subtitle: each or multi-buy`); user provided everyday shelf regulars.  
+What happened: Colors have different everyday prices (green cheapest), but weekly ads usually put **all colors** on sale together. A single chart baseline is required; inventing one price from a colored sale tile or averaging colors is wrong.  
+Fix / workaround: Chart baseline = **green $1.49** (Green Bell Pepper). Document color regulars in YAML notes: red **$1.99**, yellow/orange **$2.49**. Do not invent other-store baselines from this.  
+How to verify: `SAFEWAY_BASELINES["bell_peppers"].price === 1.49` with `retailerProductName` Green Bell Pepper; YAML notes list all four colors.  
+Related files: `src/data/priceTrackerFallback.ts`, `data/canonical_tracker_families.yaml` (`bell_peppers`)
+
+### Gushers / Fruit by the Foot share $5.99 Safeway regular
+
+Date discovered: 2026-07-26  
+Context: Family id `betty_crocker_fruit_snacks`; UI display renamed to **Gushers / Fruit by the Foot**.  
+What happened: User confirmed 6-pack Gushers and 6-pack Fruit by the Foot both shelf at **$5.99**.  
+Fix / workaround: Single chart baseline **$5.99** (`Betty Crocker Fruit Gushers 6 Count`). Keep Betty Crocker / Gushers / Fruit by the Foot / Fruit Roll-Ups includes for Mix & Match matching; id stays `betty_crocker_fruit_snacks`.  
+How to verify: Card title “Gushers / Fruit by the Foot”; baseline $5.99 in `SAFEWAY_BASELINES`.  
+Related files: `data/canonical_tracker_families.yaml`, `src/data/canonicalTrackerFamilies.generated.ts`, `src/data/priceTrackerFallback.ts`
+
+### Shrimp deliberately dropped from tracker (low engagement)
+
+Date discovered: 2026-07-26  
+Context: Highlight coverage had added `shrimp_16oz`; user decided not to track shrimp (audience interest low).  
+What happened: Keeping the family would continue matching weekly ads and prompting baselines.  
+Fix / workaround: Full removal (no soft-delete): deleted YAML family, `config/canonical_match_rules.yaml` block, baseline query/ledger/candidate CSV rows, highlight eval cases, and `shrimp_16oz` keys from Safeway/Vons weekly ad TS. Regenerated canonical families. Audit recommendation updated to “Do not add.” **Do not set a SAFEWAY baseline for shrimp.** Content-mode `raw_shrimp` shortlist rows are unrelated and left alone.  
+How to verify: `shrimp_16oz` absent from `data/canonical_tracker_families.yaml` and `src/data/canonicalTrackerFamilies.generated.ts`; no `SAFEWAY_BASELINES` entry; `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_families.TestHighlightCoverageFamilies -v`.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `data/product_matching/eval_cases.jsonl`, `data/review/highlight_tracker_coverage_audit.yaml`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
 

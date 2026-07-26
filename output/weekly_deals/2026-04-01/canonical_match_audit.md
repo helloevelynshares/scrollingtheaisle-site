@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-04-01 to 2026-04-07
 
-Generated: 2026-07-26T03:56:33.669973+00:00
+Generated: 2026-07-26T18:49:19.205458+00:00
 
 ## Summary
 
-- **Accepted:** 42
-- **Rejected:** 8
+- **Accepted:** 52
+- **Rejected:** 10
 - **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, cheez_it_crackers, simply_refrigerated_juice_lemonade, strawberries_1_2lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, chicken_breast_per_lb, ribeye_steak, salmon
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, sun_chips_7oz, simply_snacks, cheez_it_crackers, simply_refrigerated_juice_lemonade, strawberries_1_2lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, post_cereal_regular, kings_hawaiian_rolls, pillsbury_refrigerated_dough, quest_bars, chicken_breast_per_lb, ribeye_steak, salmon, cape_cod_chips, snyders_pretzels, waterloo_sparkling_water, pork_spare_ribs_per_lb, cake_mix
 
 ## Graph update safety check
 
@@ -17,10 +17,12 @@ Generated: 2026-07-26T03:56:33.669973+00:00
 - `hass_avocados_each` (Safeway): $0.97: Hass Avocado
 - `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
 - `salmon` (Safeway): $0.12: Fresh Atlantic Salmon Portion
+- `pork_spare_ribs_per_lb` (Safeway): $2.5: Signature SELECT St. Louis Style Pork Ribs
 - `strawberries_1_2lb` (Safeway): $2.0: Strawberries 2 lb. Raspberries
 - `hass_avocados_each` (Safeway): $0.97: Hass Avocado
 - `philadelphia_cream_cheese` (Safeway): $1.99: Chunk Cheese 6-8 oz. Philadelphia Cream Cheese 8 oz.
 - `salmon` (Safeway): $0.12: Fresh Atlantic Salmon Portion
+- `pork_spare_ribs_per_lb` (Safeway): $2.5: Signature SELECT St. Louis Style Pork Ribs
 
 ### Graph preview changes
 
@@ -30,12 +32,14 @@ Generated: 2026-07-26T03:56:33.669973+00:00
 - `pepsi_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `oscar_mayer_hot_dogs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: lunchmeat
 - `ritz_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: oz, oz.)
 - `nabisco_snack_crackers` (Safeway): blocked $1.67: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
 - `coca_cola_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `pepsi_12packs` (Safeway): blocked $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `haagen_dazs_pints` (Safeway): blocked $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
 - `berries_6oz` (Safeway): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `oscar_mayer_hot_dogs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: lunchmeat
 
 ### Blocked from tracker graph
 
@@ -51,6 +55,9 @@ Generated: 2026-07-26T03:56:33.669973+00:00
 - `haagen_dazs_pints` (Safeway): **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
   - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
   - Hard negatives: novelties
+- `oscar_mayer_hot_dogs` (Safeway): **rejected**: 'Oscar Mayer Meat Franks Lunchmeat. Selected varieties.' @ $3.99
+  - Reason: hard negative keyword/pattern hit: lunchmeat
+  - Hard negatives: lunchmeat
 - `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79
   - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
   - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
@@ -63,6 +70,9 @@ Generated: 2026-07-26T03:56:33.669973+00:00
 - `haagen_dazs_pints` (Safeway): **rejected**: 'Häagen-Dazs Ice Cream Novelties' @ $3.5
   - Reason: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
   - Hard negatives: novelties
+- `oscar_mayer_hot_dogs` (Safeway): **rejected**: 'Oscar Mayer Meat Franks Lunchmeat. Selected varieties.' @ $3.99
+  - Reason: hard negative keyword/pattern hit: lunchmeat
+  - Hard negatives: lunchmeat
 - `ritz_crackers` (Safeway): **manual_review**: 'Ritz Crackers' @ $2.49
   - Reason: no family-size / eligible-size confirmation (needs one of: oz, oz.)
 - `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers Triscuit, Wheat Thins' @ $1.67
@@ -83,9 +93,11 @@ These looked like deals but were blocked from updating canonical trackers:
 - `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `pepsi_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
+- `oscar_mayer_hot_dogs`: 'Oscar Mayer Meat Franks Lunchmeat. Selected varieties.' @ $3.99: hard negative keyword/pattern hit: lunchmeat
 - `coca_cola_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `pepsi_12packs`: 'Coca-Cola, Pepsi or 7UP. Selected varieties. 2 liter.' @ $2.79: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.40 needs review
 - `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream Novelties' @ $3.5: hard negative keyword/pattern hit: novelties; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
+- `oscar_mayer_hot_dogs`: 'Oscar Mayer Meat Franks Lunchmeat. Selected varieties.' @ $3.99: hard negative keyword/pattern hit: lunchmeat
 
 ## Accepted matches
 
@@ -152,6 +164,21 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $0.12 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `cape_cod_chips` (Safeway): 'Cape Cod Kettle Chips' @ $2.99 (confidence 0.76)
+  - Display: Cape Cod potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `snyders_pretzels` (Safeway): "Snyder's Pretzels" @ $2.99 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water 8 pack 12 fl oz cans' @ $2.5 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT St. Louis Style Pork Ribs' @ $2.5 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
+- `cake_mix` (Safeway): 'Pillsbury Cake Mix 15.25 oz.' @ $2.5 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties
 - `doritos_5_13oz` (Safeway): 'Lay’s, Fritos, Doritos' @ $1.99 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -215,3 +242,18 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $0.12 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `cape_cod_chips` (Safeway): 'Cape Cod Kettle Chips' @ $2.99 (confidence 0.76)
+  - Display: Cape Cod potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `snyders_pretzels` (Safeway): "Snyder's Pretzels" @ $2.99 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water 8 pack 12 fl oz cans' @ $2.5 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT St. Louis Style Pork Ribs' @ $2.5 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
+- `cake_mix` (Safeway): 'Pillsbury Cake Mix 15.25 oz.' @ $2.5 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-26T03:56:34.680338+00:00
+Generated: 2026-07-26T18:49:20.462526+00:00
 
 ## Summary
 
-- **Accepted:** 66
-- **Rejected:** 0
-- **Manual review:** 12
-- **Families updated:** kettle_brand_chips, cheez_it_crackers, coca_cola_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb
+- **Accepted:** 74
+- **Rejected:** 4
+- **Manual review:** 10
+- **Families updated:** kettle_brand_chips, cheez_it_crackers, coca_cola_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, betty_crocker_fruit_snacks, pork_spare_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb, pringles, oscar_mayer_hot_dogs
 
 ## Graph update safety check
 
@@ -20,6 +20,7 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
 - `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `clif_bars` (Safeway): $0.1: CLIF Bars
+- `pringles` (Vons): $1.49: Pringles
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
 - `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `dreyers_tubs` (Safeway): $0.25: Dreyer's Ice Cream
@@ -27,24 +28,35 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
 - `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `clif_bars` (Safeway): $0.1: CLIF Bars
+- `pringles` (Vons): $1.49: Pringles
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Vons): blocked $2.5: confidence 0.55 < min 0.60
 - `popcorners` (Vons): blocked $2.5: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
 - `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
-- `lays_potato_chips_regular` (Vons): blocked $2.5: confidence 0.55 < min 0.60
+- `cape_cod_chips` (Vons): hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
 - `popcorners` (Vons): blocked $2.5: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
 - `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
+- `cape_cod_chips` (Vons): hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
 
 ### Blocked from tracker graph
 
+- `lays_potato_chips_regular` (Vons): **rejected**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
+  - Hard negatives: kettle cooked
+- `cape_cod_chips` (Vons): **rejected**: "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None
+  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
+  - Hard negatives: kettle brand
+- `lays_potato_chips_regular` (Vons): **rejected**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
+  - Hard negatives: kettle cooked
+- `cape_cod_chips` (Vons): **rejected**: "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None
+  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
+  - Hard negatives: kettle brand
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi Zero Sugar' @ $None
   - Reason: confidence 0.25 < min 0.70
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
-  - Reason: confidence 0.55 < min 0.60
 - `lays_kettle_cooked` (Vons): **manual_review**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: confidence 0.53 < min 0.60
 - `popcorners` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
@@ -55,8 +67,6 @@ Generated: 2026-07-26T03:56:34.680338+00:00
   - Reason: confidence 0.65 < min 0.70
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi Zero Sugar' @ $None
   - Reason: confidence 0.25 < min 0.70
-- `lays_potato_chips_regular` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
-  - Reason: confidence 0.55 < min 0.60
 - `lays_kettle_cooked` (Vons): **manual_review**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: confidence 0.53 < min 0.60
 - `popcorners` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
@@ -131,6 +141,12 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks' @ $2.5 (confidence 0.90)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Extra Meaty Pork Back Ribs, St. Louis Style Spareribs' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -167,6 +183,12 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $7.97 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles' @ $1.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `oscar_mayer_hot_dogs` (Vons): 'Oscar Mayer Beef Franks' @ $3.49 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs
 - `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
@@ -230,6 +252,12 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks' @ $2.5 (confidence 0.90)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Extra Meaty Pork Back Ribs, St. Louis Style Spareribs' @ $3.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
 - `doritos_5_13oz` (Vons): "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -266,3 +294,9 @@ Generated: 2026-07-26T03:56:34.680338+00:00
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $7.97 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles' @ $1.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `oscar_mayer_hot_dogs` (Vons): 'Oscar Mayer Beef Franks' @ $3.49 (confidence 0.76)
+  - Display: Oscar Mayer hot dogs
+  - Subtitle: 15–16 oz packs

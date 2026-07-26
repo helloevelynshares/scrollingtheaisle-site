@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-17 to 2026-06-23
 
-Generated: 2026-07-26T03:56:34.363374+00:00
+Generated: 2026-07-26T18:49:20.088956+00:00
 
 ## Summary
 
-- **Accepted:** 54
+- **Accepted:** 60
 - **Rejected:** 10
 - **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, lays_kettle_cooked, ruffles_regular_bags, sun_chips_7oz, popcorners, cheez_it_crackers, goldfish_bags, breyers_ice_cream, strawberries_1_2lb, cherries_per_lb, sweet_corn, butter_16oz, tri_tip_roast, salmon, ritz_crackers, seedless_grapes_per_lb, berries_6oz, plums_per_lb, eggs_dozen_normalized, chicken_breast_per_lb
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, lays_kettle_cooked, ruffles_regular_bags, sun_chips_7oz, popcorners, cheez_it_crackers, goldfish_bags, breyers_ice_cream, strawberries_1_2lb, cherries_per_lb, sweet_corn, butter_16oz, tri_tip_roast, salmon, frito_lay_multipack_chips, chicken_wings_per_lb, ritz_crackers, seedless_grapes_per_lb, berries_6oz, plums_per_lb, eggs_dozen_normalized, chicken_breast_per_lb
 
 ## Graph update safety check
 
@@ -20,6 +20,7 @@ Generated: 2026-07-26T03:56:34.363374+00:00
 - `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
 - `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
 - `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
+- `chicken_wings_per_lb` (Vons): $2.5: Signature SELECT Chicken Wings
 - `cheetos_regular_bags` (Safeway): $2.49: Cheetos Mac'n Cheese
 - `breyers_ice_cream` (Safeway): $2.5: Breyers Ice Cream 48 fl oz
 - `cherries_per_lb` (Safeway): $2.99: Red Cherries
@@ -27,6 +28,7 @@ Generated: 2026-07-26T03:56:34.363374+00:00
 - `ruffles_regular_bags` (Vons): $2.49: Lay's Potato Chips, Fritos, Ruffles
 - `sweet_corn` (Vons): $0.2: Fresh Sweet Corn
 - `salmon` (Vons): $5.0: Fresh Atlantic Salmon Fillets Farm Raised
+- `chicken_wings_per_lb` (Vons): $2.5: Signature SELECT Chicken Wings
 
 ### Graph preview changes
 
@@ -157,6 +159,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $8.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `chicken_wings_per_lb` (Safeway): 'St. Louis Style Chicken Wings Hot, BBQ' @ $5.0 (confidence 0.73)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `ruffles_regular_bags` (Vons): "Lay's Potato Chips, Fritos, Ruffles" @ $2.49 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
@@ -190,6 +198,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $2.5 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `doritos_5_13oz` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -238,6 +249,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Variety Pack' @ $8.99 (confidence 0.90)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `chicken_wings_per_lb` (Safeway): 'St. Louis Style Chicken Wings Hot, BBQ' @ $5.0 (confidence 0.73)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)
 - `ruffles_regular_bags` (Vons): "Lay's Potato Chips, Fritos, Ruffles" @ $2.49 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
@@ -271,3 +288,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $5.0 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $2.5 (confidence 0.93)
+  - Display: Chicken wings
+  - Subtitle: per lb (party wings)

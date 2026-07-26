@@ -1525,7 +1525,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
   },
   {
     "id": "betty_crocker_fruit_snacks",
-    "displayName": "Betty Crocker fruit snacks",
+    "displayName": "Gushers / Fruit by the Foot",
     "subtitle": "5\u201310 ct pouches (Gushers, Fruit by the Foot, selected)",
     "displayOrder": 76,
     "homepageSection": "stock_up_snacks_and_treats",
@@ -1596,27 +1596,6 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "party wings",
       "fresh chicken wings",
       "Chicken wings"
-    ],
-    "legacyCanonicalIds": []
-  },
-  {
-    "id": "shrimp_16oz",
-    "displayName": "Shrimp",
-    "subtitle": "16 oz bags (cooked or raw)",
-    "displayOrder": 80,
-    "homepageSection": "meat_and_seafood",
-    "category": "meat_seafood",
-    "confidence": "working",
-    "costcoComparable": true,
-    "searchAliases": [
-      "Cooked Shrimp",
-      "Raw Shrimp",
-      "Waterfront BISTRO Cooked Shrimp",
-      "Waterfront BISTRO Raw Shrimp",
-      "Waterfront Bistro Shrimp",
-      "shrimp 16 oz",
-      "shrimp 31-40",
-      "Shrimp"
     ],
     "legacyCanonicalIds": []
   },

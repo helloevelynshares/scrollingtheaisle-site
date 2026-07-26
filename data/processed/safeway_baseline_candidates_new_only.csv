@@ -1,1 +1,107 @@
 canonical_id,display_name,search_query,content_theme,candidate_rank,product_name,price,pid,upc,size
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,1,Lays Potato Chips Sour Cream & Onion - 7.75 Oz,4.29,960123886,0002840019963,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,2,Cape Cod Less Fat Original Kettle Cooked Potato Chips - 8 Oz,4.49,960049900,0002068500029,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,3,Cape Cod Original Kettle Cooked Potato Chips - 8 Oz,4.49,960158158,0002068500164,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,4,Kettle Brand Sea Salt Kettle Potato Chips - 13 Oz,6.49,970009629,0008411403216,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,5,Kettle Brand Sea Salt & Vinegar Kettle Potato Chips - 13 Oz,6.49,960084371,0008411412353,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,6,Miss Vickie's Kettle Cooked Potato Chips Applewood Smoked Bbq - 7.5 OZ,4.99,971360377,0002840080078,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,7,Doritos Tortilla Chips Nacho Cheese - 9.25 Oz,5.49,970031900,0002840051646,OUNCE
+cape_cod_chips,Cape Cod potato chips,Cape Cod kettle chips 8 oz,price_tracker_baseline,8,Utz Wavy Chips - 7.75 OZ,4.79,970300857,0004178027218,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,1,Garrett Popcorn Shops White Cheddar Popcorn - 5 Oz,5.99,970692440,0085000066434,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,2,Like Air Puffcorn Cinnamon Bun - 4 Oz,3.99,970577167,0085001433520,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,3,Smartfood Popcorn White Cheddar 6 Oz - 6 OZ,4.79,971360381,0002840080041,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,4,Smartfood Popcorn White Cheddar Party Size - 9.75 Oz,7.29,960543042,0002840031413,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,5,Smartfood Popcorn White Cheddar - 6.25 Oz,6.49,970125598,0002840067909,COUNT
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,6,"Smartfood Popcorn Cheetos Cheddar, 6.25 Oz - 6.25 OZ",4.79,971360364,0002840079976,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,7,Smartfood White Cheddar 1.875oz - 1.875 OZ,2.69,971207922,0002840076826,OUNCE
+smartfood_popcorn,Smartfood popcorn,Smartfood white cheddar popcorn,price_tracker_baseline,8,Smartfood Popcorn Mix Variety Pack - 18 Count,11.99,971196805,0002840076238,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,1,Frito Lay Family Fun Mix Variety Pack - 18 Count,11.99,970586326,0002840073745,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,2,Frito Lay Fiery Mix Variety Pack - 18 Count,11.99,970782386,0002840073756,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,3,Frito Lay Baked & Popped Mix Variety Pack - 18 Count,11.99,970125599,0002840067973,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,4,Frito Lay Variety Pack Cheesy Mix - 18 Count,11.99,970125538,0002840067945,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,5,Frito Lay Variety Pack Flavor Mix - 42 Count,19.99,970125552,0002840073738,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,6,Frito-Lay Doritos & Cheetos Variety Pack - 18 Count,11.99,970125580,0002840067947,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,7,Frito Lay Variety Pack Classic Mix - 42 Count,19.99,970123424,0002840069435,COUNT
+frito_lay_multipack_chips,Frito-Lay variety pack,Frito Lay variety pack 18 count,price_tracker_baseline,8,Lays Variety Mix - 18 Count,11.99,970948036,0002840075056,COUNT
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,1,Foster Farms Individual Fast Frozen Party Chicken Wings - 40 Oz,13.99,960457772,0007527890565,OUNCE
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,2,Signature Select/Farms Frozen Chicken Wings - 48 Oz.,14.49,960149890,0002113021053,OUNCE
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,3,Agrosuper Chicken Wings - 10 LB,21.99,970044857,0089677500277,LB
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,4,Foster Farms Free Range Party Chicken Wings - Lb,9.99,960131634,0026584400000,LB
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,5,Rosie Organic Chicken Party Wings - 1 lb,6.99,960483233,0020563600000,LB
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,6,Signature Select Chicken Wing Value Pack - 3.5 Lb,10.47,188320021,0020787400000,LB
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,7,Meat Service Counter Chicken Wings Seasoned - 1.00 LB,2.99,960263316,0028109900000,LB
+chicken_wings_per_lb,Chicken wings,chicken party wings,price_tracker_baseline,8,ROCKY Chicken Wings Party Tray Pack - 1.25 Lb,7.49,960132144,0020078900000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,1,USDA Choice Beef Chuck Short Ribs - 2 Lb,15.98,188020114,0020197500000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,2,USDA Choice Beef Chuck Flanken Style Ribs - 1.5 Lb,13.49,188020046,0020198300000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,3,USDA Choice Beef Chuck Cross Rib Steak Boneless - 1 Lb,17.99,960109065,0020189200000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,4,USDA Choice Beef Chuck Pot Roast Boneless - 3.25 Lb,35.72,960109081,0020195600000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,5,USDA Choice Beef Back Ribs - 1.75 Lb,10.48,960109098,0020209000000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,6,USDA Choice Beef Chuck Steak Boneless Thin - 1 Lb,11.99,960130146,0020191500000,LB
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,7,Signature SELECT Beef Prime Rib Patties - 16 oz,9.99,970096774,0002113016840,OUNCE
+beef_short_ribs_per_lb,Beef short ribs,beef chuck short ribs,price_tracker_baseline,8,USDA Choice Beef Rib Roast Bone In - Weight Between 9-11 Lb (4-5 ribs),229.9,960109430,0020815300000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,1,Signature SELECT Extra Meaty Pork Loin Back Ribs Previously Frozen - 3.25 Lb,19.47,960037186,0020337600000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,2,Signature Select Pork Spareribs - 4.5 Lb,24.71,971226072,0028282200000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,3,Pork Sparerib Previously Frozen - 4.5 Lb,24.71,188250136,0020346500000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,4,Pork Shoulder Country Style Ribs Value Pack - 4.5 Lb,24.71,188250014,0020319400000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,5,St. Louis Style Previously Frozen Pork Spareribs - 3.5 lb,20.97,960127199,0020345800000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,6,Pork Shoulder Blade Country Style Rib - 2.5 Lb,14.98,188250013,0020319100000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,7,Pork Shoulder Country Style Ribs Boneless - 2 Lb,13.98,188260008,0020319200000,LB
+pork_spare_ribs_per_lb,Pork spare ribs,pork spareribs,price_tracker_baseline,8,Boneless Pork Shoulder Country Style Ribs Value Pack - 3.5 Lb,22.72,188260009,0020319300000,LB
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,1,Oscar Mayer Classic Beef Franks Hot Dogs 10 Count,8.49,960120598,0004470007505,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,2,Oscar Mayer Classic Wieners Hot Dogs 10 Count,4.99,188570013,0004470000063,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,3,Oscar Mayer Bun-Length Beef Franks Hot Dogs 8 Count,8.49,960120669,0004470007502,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,4,Oscar Mayer Stuffed Cheese Hot Dogs 10 Count,8.29,188570027,0004470000053,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,5,Oscar Mayer Bun-Length Wieners Hot Dogs 8 Count,4.99,188570190,0004470000004,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,6,Oscar Mayer Jumbo Beef Franks Hot Dogs 8 count,8.49,960105557,0004470007337,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,7,Oscar Mayer Natural Uncured Turkey Franks Hot Dogs 8 Count,8.79,960038991,0004470000744,OUNCE
+oscar_mayer_hot_dogs,Oscar Mayer hot dogs,Oscar Mayer hot dogs,price_tracker_baseline,8,Oscar Mayer Bologna Deli Lunch Meat - 16 Oz,5.99,960189669,0004470000857,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,1,Like Air American Cheddar Baked PuffCorn - 4 Oz,3.99,970360569,0085001433501,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,2,Utz Ripple Chips - 7.75 OZ,4.79,970300839,0004178027209,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,3,Utz Sc&o Ripple Chips - 7.75 OZ,4.79,970300844,0004178027187,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,4,Utz Wavy Chips - 7.75 OZ,4.79,970300857,0004178027218,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,5,Pringles Potato Crisps Chips Original Lunch Snacks - 5.2  Oz,2.99,960275997,0003800013841,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,6,Pringles Potato Crisps Chips BBQ Lunch Snacks - 5.5 Oz,2.99,960330415,0003800018371,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,7,Pringles Potato Crisps Chips Original Lunch Snacks - 6.8 Oz,3.49,960326587,0003800016966,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,8,Pringles Potato Crisps Chips Lightly Salted Original Lunch Snacks - 5.2 Oz,2.99,960276005,0003800013881,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,9,Pringles Potato Crisps Chips Sour Cream and Onion Lunch Snacks - 5.5 Oz,2.99,960275998,0003800013843,OUNCE
+pringles,Pringles,Pringles original,price_tracker_baseline,10,Pringles Potato Crisps Chips Pizza Lunch Snacks - 5.5 Oz,2.99,960276002,0003800013863,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,1,Reeses Filled Pretzels W/ Peanut Butter 9oz - 9 OZ,3.99,971164532,0081003148028,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,2,Snyder's Of Hanover Honey Mustard & Onion Flavored Pretzel Pieces - 11.25 Oz,3.99,970125097,0007797509512,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,3,Snyder's of Hanover Mini Pretzels - 16 Oz,3.99,109250130,0007797508006,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,4,Snyder's of Hanover Sourdough Nibblers Pretzels - 16 Oz,3.99,109250103,0007797508004,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,5,Snyder's of Hanover Sticks Pretzels - 16 Oz,3.99,109250135,0007797508009,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,6,Snyders Of Hanover Pretzels Honey Oat Flax - 8 OZ,3.99,971363637,0007797509706,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,7,Snyder's of Hanover Sourdough Hard Pretzels - 13.5 Oz,4.79,109250038,0007797502275,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,8,Snyder's of Hanover Old Tyme Pretzels - 16 Oz,3.99,109250105,0007797508005,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,9,Snyder's of Hanover Peanut Butter Filled Pretzel Pieces - 10 Oz,3.99,960158177,0007797509208,OUNCE
+snyders_pretzels,Snyder's pretzels,Snyder's pretzels,price_tracker_baseline,10,Snyder's of Hanover Snaps Pretzels - 16 Oz,3.99,109250131,0007797508007,OUNCE
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,1,Kellogg's Pop-tarts Frosted Strawberry Blast 10.9oz - 5 CT,3.99,971403857,0003800030358,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,2,Pop-Tarts Protein Toaster Pastries Boostin Brown Sugar Cinnamon 10g Protein 8 Count - 14.3 Oz,4.99,971317856,0003800033055,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,3,Pop-Tarts Protein Toaster Pastries Slammin Strawberry 10g Protein 8 Count - 14.3 Oz,4.99,971317858,0003800033057,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,4,Pop-Tarts Toaster Pastries Frosted Strawberry Breakfast Foods 8 Count - 13.5 Oz,3.99,960541033,0003800022271,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,5,Pop-Tarts Toaster Pastries Frosted Lemon Blueberry Crumble Breakfast Foods 8 Count - 13.5 Oz,3.99,971102750,0003800029254,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,6,Pop-Tarts Toaster Pastries Frosted Brown Sugar Cinnamon Breakfast Foods - 8 - 13.5 Oz,3.99,960541031,0003800022261,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,7,Pop-Tarts Toaster Pastries Frosted Strawberry Breakfast Foods 12 Count - 20.3 Oz,5.79,960541034,0003800022273,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,8,Pop-Tarts Toaster Pastries Frosted Smores Breakfast Foods 8 Count - 13.5 Oz,3.99,960541035,0003800022279,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,9,Kellogg's Pop-tarts Frosted Strawberry Blast 10.9oz - 5 CT,3.99,971403857,0003800030358,COUNT
+pop_tarts,Pop-Tarts,Kellogg's Pop-Tarts,price_tracker_baseline,10,Pop-Tarts Protein Toaster Pastries Boostin Brown Sugar Cinnamon 10g Protein 8 Count - 14.3 Oz,4.99,971317856,0003800033055,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,1,Nutri-Grain Breakfast Bars Strawberry Made with 10g Whole Grains - 8 - 10.4 Oz,3.99,111150235,0003800035900,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,2,Nutri-Grain Crunchy Bars Chocolate Chip Chia Fiber Bars 10 Count - 7 Oz,4.99,971317859,0003800033025,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,3,Nutri-Grain Crunchy Bars Honey Oat Flax Fiber Bars 10 Count - 7 Oz,4.99,971317857,0003800033030,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,4,Nutri-Grain Breakfast Bars Apple Cinnamon Made with 10g Whole Grains - 8 - 10.4 Oz,3.99,111150227,0003800035600,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,5,Nutri-Grain Soft Baked Breakfast Bars Blueberry Kids Snacks 8 Count - 10.4 Oz,3.99,111150228,0003800035700,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,6,Nutri-Grain Breakfast Bars Mixed Berry Made with 10g Whole Grains - 8 - 10.4 Oz,3.99,111150226,0003800035500,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,7,Nutri-Grain Breakfast Bars Strawberry Made with 10g Whole Grains - 16 - 20.8 Oz,5.99,960153885,0003800035004,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,8,Nutri-Grain Crunchy Bars Chocolate Chip Chia Fiber Bars 10 Count - 7 Oz,4.99,971317859,0003800033025,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,9,Nutri-Grain Crunchy Bars Honey Oat Flax Fiber Bars 10 Count - 7 Oz,4.99,971317857,0003800033030,COUNT
+kellogg_breakfast_bars,Nutri-Grain & Special K bars,Nutri-Grain bars,price_tracker_baseline,10,Signature SELECT Cereal Bars Fruit & Grain Strawberry - 8-1.3 Oz,2.99,960269910,0002113015275,COUNT
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,1,Spindrift Blood Orange Tangerine Sparkling Water - 8-12 Fl. Oz.,6.49,960188808,0085001714220,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,2,Spindrift Sparkling Water Raspberry Lime - 8-12 Fl. Oz.,6.49,960293038,0085657900231,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,3,Spindrift Lemon Sparkling Water - 8-12 Fl. Oz.,6.49,960519271,0085657900233,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,4,Spindrift Lime Sparkling Water - 8-12 Fl. Oz.,6.49,960519272,0085657900281,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,5,Waterloo Summer Berry Sparkling Water - 8 - 12 Fl Oz,5.99,960210955,0081921502096,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,6,Waterloo Guava Berry 8-12fz - 8-12 FZ,5.99,971233592,0081921502357,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,7,Waterloo Tropical Fruit 8-12fz - 8-12 FZ,5.99,970536209,0081921502199,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,8,Waterloo Apple Pie A La Mode 8-12fz - 8-12 FZ,5.99,971375842,0081921502431,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,9,Waterloo Raspberry Nectarine - 8 -12 FZ,5.99,971229828,0081921502274,FL.OZ
+waterloo_sparkling_water,Waterloo sparkling water,Waterloo sparkling water,price_tracker_baseline,10,Waterloo Lemon Italian Ice Sparking Water - 8 - 12 Fl. Oz.,5.99,971261834,0081921502379,FL.OZ

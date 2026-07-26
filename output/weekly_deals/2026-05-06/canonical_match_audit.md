@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-06 to 2026-05-12
 
-Generated: 2026-07-26T03:56:33.817526+00:00
+Generated: 2026-07-26T18:49:19.393219+00:00
 
 ## Summary
 
-- **Accepted:** 60
+- **Accepted:** 68
 - **Rejected:** 10
 - **Manual review:** 6
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, sun_chips_7oz, oreo_family_size, tillamook_ice_cream, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, chobani_yogurt_per_cup, chicken_breast_per_lb, salmon, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, eggs_dozen_normalized, general_mills_cereal_regular
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, sun_chips_7oz, oreo_family_size, tillamook_ice_cream, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, butter_16oz, chobani_yogurt_per_cup, chicken_breast_per_lb, salmon, waterloo_sparkling_water, cake_mix, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, simply_snacks, cheez_it_crackers, simply_refrigerated_juice_lemonade, breyers_ice_cream, strawberries_1_2lb, eggs_dozen_normalized, general_mills_cereal_regular, pringles, frito_lay_multipack_chips
 
 ## Graph update safety check
 
@@ -15,8 +15,10 @@ Generated: 2026-07-26T03:56:33.817526+00:00
 
 - `sweet_corn` (Safeway): $0.5: Sweet Corn
 - `chobani_yogurt_per_cup` (Safeway): $0.89: Chobani Greek, Less Sugar Yogurt 5.3-oz. 89¢ MEMBER PRICE clip
+- `cake_mix` (Safeway): $1.99: Pillsbury Moist Supreme Cake Mix
 - `sweet_corn` (Safeway): $0.5: Sweet Corn
 - `chobani_yogurt_per_cup` (Safeway): $0.89: Chobani Greek, Less Sugar Yogurt 5.3-oz. 89¢ MEMBER PRICE clip
+- `cake_mix` (Safeway): $1.99: Pillsbury Moist Supreme Cake Mix
 
 ### Graph preview changes
 
@@ -141,6 +143,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water' @ $5.0 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `cake_mix` (Safeway): 'Pillsbury Moist Supreme Cake Mix' @ $1.99 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties
 - `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -189,6 +197,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles' @ $2.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Vons): 'Frito-Lay Multipack' @ $9.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
 - `doritos_5_13oz` (Safeway): 'Lay’s, Doritos, Tostitos' @ $None (confidence 0.70)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -231,6 +245,12 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Safeway): 'Fresh Atlantic Salmon Whole Fillet' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `waterloo_sparkling_water` (Safeway): 'Waterloo Sparkling Water' @ $5.0 (confidence 0.96)
+  - Display: Waterloo sparkling water
+  - Subtitle: 8–12 pack, 12 fl oz cans
+- `cake_mix` (Safeway): 'Pillsbury Moist Supreme Cake Mix' @ $1.99 (confidence 0.93)
+  - Display: Cake mix
+  - Subtitle: boxed mix ~15.25 oz, selected varieties
 - `doritos_5_13oz` (Vons): 'Doritos' @ $2.99 (confidence 0.90)
   - Display: Doritos
   - Subtitle: regular size, 5–13 oz
@@ -279,3 +299,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `salmon` (Vons): 'Signature SELECT Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles' @ $2.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Vons): 'Frito-Lay Multipack' @ $9.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack

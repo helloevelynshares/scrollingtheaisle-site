@@ -1,0 +1,168 @@
+# Durable human corrections / alias notes for product matching.
+#
+# READ-ONLY from the production weekly-ad matcher for now.
+# The product_matching eval runner may load this file for reporting and
+# future opt-in override experiments, but generate_weekly_ad_prices.py
+# does NOT consult it.
+#
+# Schema per entry:
+#   id: stable slug
+#   family_id: canonical tracker family id
+#   offer_text: retailer / flyer string (or baseline SKU name)
+#   decision: accept | reject | manual_review
+#   kind: alias | hard_negative | baseline_bug | note
+#   source: where the correction came from
+#   notes: free-text context
+#   status: open | applied_in_yaml | deferred
+#
+# When you correct a live match:
+# 1. Add/adjust YAML include or keep_separate_from if appropriate.
+# 2. Append a row here documenting the decision.
+# 3. Add a matching line to eval_cases.jsonl (see docs/product_matching.md).
+
+schema_version: 1
+last_updated: '2026-07-25'
+purpose: >
+  Human-reviewed match corrections and alias candidates. Not wired into
+  production matching yet; used as durable memory + eval seed.
+
+corrections:
+  - id: hersheys_strawberries_not_ben_jerrys
+    family_id: ben_jerrys_ice_cream
+    offer_text: "HERSHEY'S Sliced Strawberries Covered in Milk Chocolate - 8 Oz"
+    decision: reject
+    kind: baseline_bug
+    source: vons_feed_matches_seed / priceTrackerFallback
+    status: open
+    notes: >
+      Rank-1 search baseline incorrectly linked this SKU to Ben & Jerry's.
+      Fix in a separate reviewed baseline change; weekly-ad matcher should reject.
+
+  - id: malt_o_meal_not_cheerios
+    family_id: general_mills_cereal_regular
+    offer_text: Malt-O-Meal Cereal Cinnamon Toasters Super Size! - 33 Oz
+    decision: reject
+    kind: baseline_bug
+    source: vons_feed_matches_seed (cheerios)
+    status: open
+    notes: Cheerios legacy id mapped to Malt-O-Meal via rank-1 search.
+
+  - id: bj_nondairy_not_haagen_dazs
+    family_id: haagen_dazs_pints
+    offer_text: "Ben & Jerry's Colin Kaepernick's Change The Whirled Non-Dairy Frozen Dessert - 16 Oz"
+    decision: reject
+    kind: baseline_bug
+    source: vons_feed_matches_seed (haagen_dazs_ice_cream)
+    status: open
+    notes: Ben & Jerry's non-dairy stored as Häagen-Dazs baseline.
+
+  - id: miss_vickies_not_kettle_brand
+    family_id: kettle_brand_chips
+    offer_text: "Miss Vickie's Kettle Cooked Potato Chips Jalapeno - 7.5 OZ"
+    decision: reject
+    kind: baseline_bug
+    source: vons_feed_matches_seed
+    status: open
+    notes: Miss Vickie's (Frito-Lay) stored as Kettle Brand baseline.
+
+  - id: seed_butter_not_butter
+    family_id: butter_16oz
+    offer_text: O Organics Seed Butter
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md Jul 22
+    status: applied_in_yaml
+    notes: keep_separate_from covers seed/bean butter.
+
+  - id: cape_cod_not_lays_kettle
+    family_id: lays_kettle_cooked
+    offer_text: Cape Cod Kettle Cooked Potato Chips
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md Jul 22
+    status: applied_in_yaml
+    notes: Cape Cod excluded from Lay's kettle family.
+
+  - id: kettle_potato_chips_alias
+    family_id: kettle_brand_chips
+    offer_text: Kettle Potato Chips
+    decision: accept
+    kind: alias
+    source: docs/PROJECT_NOTES.md Jul 22
+    status: applied_in_yaml
+    notes: Flyer often omits the literal word Brand.
+
+  - id: chicken_breast_word_order_alias
+    family_id: chicken_breast_per_lb
+    offer_text: chicken boneless skinless breasts
+    decision: accept
+    kind: alias
+    source: docs/PROJECT_NOTES.md Jul 22
+    status: applied_in_yaml
+    notes: Flyer word order puts chicken first.
+
+  - id: smoked_salmon_not_fresh
+    family_id: salmon
+    offer_text: Acme Togarashi or Nova Smoked Salmon 3 oz
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md 2026-07-08
+    status: applied_in_yaml
+    notes: Fresh-fillet tracker; smoked/nova/lox rejected by eligibility.
+
+  - id: goldfish_tub_not_bags
+    family_id: goldfish_bags
+    offer_text: Goldfish Crackers
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md Goldfish 30 oz tub
+    status: applied_in_yaml
+    notes: package_text 30 oz → goldfish_tub; eligibility rejects bags family.
+    package_text: 30 oz
+
+  - id: chocolate_eggs_not_eggs
+    family_id: eggs_dozen_normalized
+    offer_text: Russell Stover Chocolate Eggs
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md
+    status: applied_in_yaml
+    notes: Candy eggs must never update Lucerne eggs tracker.
+
+  - id: lays_kettle_not_kettle_brand
+    family_id: kettle_brand_chips
+    offer_text: "Lay's Kettle Cooked Potato Chips"
+    decision: reject
+    kind: hard_negative
+    source: docs/PROJECT_NOTES.md Kettle Brand notes
+    status: applied_in_yaml
+    notes: Frito-Lay Lay's Kettle ≠ Kettle Brand (Kettle Foods).
+
+  - id: highlight_cape_cod_family
+    family_id: cape_cod_chips
+    offer_text: Cape Cod Kettle Chips
+    decision: accept
+    kind: alias
+    source: highlight inventory / split_offer_items
+    status: applied_in_yaml
+    notes: New Cape Cod family; keep separate from Kettle Brand and Lay's Kettle Cooked.
+
+  - id: highlight_frito_multipack_legacy_fix
+    family_id: frito_lay_multipack_chips
+    offer_text: Frito-Lay Variety Pack 18 ct
+    decision: accept
+    kind: note
+    source: LEGACY_CANONICAL_TO_FAMILY fix
+    status: applied_in_yaml
+    notes: >
+      Legacy id previously mapped to lays_party_size. Now a real YAML family
+      with the same id so baselines and multipack ads graph correctly.
+
+  - id: highlight_ambiguous_review_queue
+    family_id: ''
+    offer_text: ''
+    decision: manual_review
+    kind: note
+    source: data/product_matching/highlight_tracker_review.yaml
+    status: open
+    notes: Ambiguous transcript/ASR/visual-only highlights deferred to review queue.
