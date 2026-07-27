@@ -19,6 +19,7 @@ const VIEW_CONFIG = {
   },
 };
 
+/* Keep in sync with src/data/handpickedCategoryReport.ts (tracker React path). */
 const BADGE_TO_CATEGORY = {
   friday: "Friday",
   produce: "Produce",

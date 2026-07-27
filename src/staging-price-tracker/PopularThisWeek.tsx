@@ -1,16 +1,24 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   POPULAR_THIS_WEEK,
   type PopularThisWeekEntry,
   type PopularThisWeekStore,
 } from "../data/canonicalTrackerFamilies";
 import {
-  isPopularWeekPreview,
+  categorySlug,
+  groupByHandpickedCategory,
+} from "../data/handpickedCategoryReport";
+import {
   leadLineForStore,
   strategyLineForStore,
 } from "../data/popularThisWeekCopy";
-import { isProductOnSale } from "../data/priceTrackerUtils";
+import { formatComparisonUnit } from "../data/priceComparisonUtils";
 import type { FeedProductView } from "../data/priceTrackerTypes";
+import {
+  formatPrice,
+  getCurrentPrice,
+  getDealAdjustedUnitPrice,
+} from "../data/priceTrackerUtils";
 
 type Props = {
   feedStore: PopularThisWeekStore;
@@ -18,15 +26,37 @@ type Props = {
   onJumpToFamily: (familyIds: string[]) => void;
 };
 
-const DEFAULT_VISIBLE = 7;
+type ReportItem = {
+  key: string;
+  entry: PopularThisWeekEntry;
+  unitPrice: string;
+  canJump: boolean;
+};
 
-function badgeClassName(badge: string): string {
-  return `popular-this-week__tag popular-this-week__tag--${badge.toLowerCase()}`;
+function unitPriceDisplay(product: FeedProductView): string {
+  const dealUnit = getDealAdjustedUnitPrice(product);
+  if (dealUnit) {
+    const unit = formatComparisonUnit(dealUnit.unit);
+    return `$${dealUnit.price.toFixed(2)}/${unit}`;
+  }
+
+  const comparison = product.priceComparison;
+  if (comparison?.groceryUnitPrice != null) {
+    const unit = formatComparisonUnit(
+      comparison.groceryUnitType ?? comparison.costcoUnitType,
+    );
+    return `$${comparison.groceryUnitPrice.toFixed(2)}/${unit}`;
+  }
+
+  const price = getCurrentPrice(product);
+  if (price != null && product.sizeLabel) {
+    return `${formatPrice(price)} · ${product.sizeLabel}`;
+  }
+
+  return price != null ? formatPrice(price) : "";
 }
 
 export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) {
-  const [expanded, setExpanded] = useState(false);
-
   const entries = useMemo(
     () =>
       [...(POPULAR_THIS_WEEK[feedStore] ?? [])].sort(
@@ -40,56 +70,34 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
     [products],
   );
 
+  const reportItems = useMemo((): ReportItem[] => {
+    return entries.map((entry) => {
+      const primaryId = entry.trackerFamilyIds[0];
+      const product = primaryId ? productById.get(primaryId) : undefined;
+      return {
+        key: primaryId || entry.title,
+        entry,
+        unitPrice: product ? unitPriceDisplay(product) : "",
+        canJump: entry.trackerFamilyIds.length > 0,
+      };
+    });
+  }, [entries, productById]);
+
+  const groups = useMemo(
+    () =>
+      groupByHandpickedCategory(reportItems, (item) => item.entry.badge),
+    [reportItems],
+  );
+
   const leadLine = useMemo(() => leadLineForStore(feedStore), [feedStore]);
   const strategyLine = useMemo(
     () => strategyLineForStore(feedStore),
     [feedStore],
   );
-  const curatedWeekIsPreview = isPopularWeekPreview();
 
   if (entries.length === 0) {
     return null;
   }
-
-  const hiddenCount = Math.max(entries.length - DEFAULT_VISIBLE, 0);
-  const visibleEntries =
-    expanded || hiddenCount === 0
-      ? entries
-      : entries.slice(0, DEFAULT_VISIBLE);
-
-  const renderCard = (entry: PopularThisWeekEntry) => {
-    const primaryId = entry.trackerFamilyIds[0];
-    const product = primaryId ? productById.get(primaryId) : undefined;
-    const onSale = product ? isProductOnSale(product) : false;
-    const text = entry.subtitle || entry.reason;
-    return (
-      <button
-        key={entry.title}
-        type="button"
-        className="popular-this-week__card"
-        onClick={() => onJumpToFamily(entry.trackerFamilyIds)}
-      >
-        <span className="popular-this-week__card-title">{entry.title}</span>
-        {entry.price ? (
-          <span className="popular-this-week__card-price">{entry.price}</span>
-        ) : null}
-        <span className="popular-this-week__card-reason">{text}</span>
-        {entry.badge ? (
-          <span className={badgeClassName(entry.badge)}>{entry.badge}</span>
-        ) : onSale ? (
-          <span
-            className={`popular-this-week__deal-badge${
-              curatedWeekIsPreview
-                ? " popular-this-week__deal-badge--preview"
-                : ""
-            }`}
-          >
-            {curatedWeekIsPreview ? "Preview deal" : "Deal"}
-          </span>
-        ) : null}
-      </button>
-    );
-  };
 
   return (
     <section className="popular-this-week" aria-label="Popular picks this week">
@@ -99,19 +107,72 @@ export function PopularThisWeek({ feedStore, products, onJumpToFamily }: Props) 
           <p className="popular-this-week__strategy">{strategyLine}</p>
         ) : null}
       </header>
-      <div className="popular-this-week__grid">
-        {visibleEntries.map(renderCard)}
+
+      <div className="hub-picks-report">
+        <div className="hub-picks-cat-columns">
+          {[...groups.entries()].map(([category, items]) => {
+            const slug = categorySlug(category);
+            return (
+              <section
+                key={category}
+                className={`hub-picks-cat-section hub-picks-cat-section--${slug}`}
+                aria-labelledby={`tracker-picks-cat-${slug}`}
+              >
+                <header className="hub-picks-cat-header">
+                  <h3
+                    id={`tracker-picks-cat-${slug}`}
+                    className="hub-picks-cat-title"
+                  >
+                    {category}
+                  </h3>
+                  <span className="hub-picks-cat-count">{items.length}</span>
+                </header>
+                <div className="hub-picks-cat-items">
+                  {items.map((item) => {
+                    const { entry, unitPrice, canJump, key } = item;
+                    const note = entry.subtitle || entry.reason;
+                    return (
+                      <article key={key} className="hub-picks-cat-item">
+                        <div className="hub-picks-cat-item-top">
+                          <h4 className="hub-picks-cat-item-title">
+                            {entry.title}
+                          </h4>
+                          {entry.price ? (
+                            <p className="hub-picks-cat-item-price">
+                              <span className="hub-picks-cat-amount">
+                                {entry.price}
+                              </span>
+                              {unitPrice ? (
+                                <span className="hub-picks-cat-unit">
+                                  {unitPrice}
+                                </span>
+                              ) : null}
+                            </p>
+                          ) : null}
+                        </div>
+                        {note ? (
+                          <p className="hub-picks-cat-item-note">{note}</p>
+                        ) : null}
+                        {canJump ? (
+                          <button
+                            type="button"
+                            className="hub-picks-cat-link"
+                            onClick={() =>
+                              onJumpToFamily(entry.trackerFamilyIds)
+                            }
+                          >
+                            See price history →
+                          </button>
+                        ) : null}
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
+        </div>
       </div>
-      {hiddenCount > 0 ? (
-        <button
-          type="button"
-          className="popular-this-week__more"
-          aria-expanded={expanded}
-          onClick={() => setExpanded((value) => !value)}
-        >
-          {expanded ? "Show fewer deals" : `More handpicked deals (${hiddenCount})`}
-        </button>
-      ) : null}
     </section>
   );
 }

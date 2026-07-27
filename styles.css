@@ -851,11 +851,6 @@ img {
   border-color: #e8d9a8;
 }
 
-.popular-this-week__deal-badge--preview {
-  background: #fff3cd;
-  color: #856404;
-}
-
 .price-tracker-explainer {
   font-size: 15px;
   color: var(--muted);
@@ -2840,6 +2835,7 @@ img {
   outline-offset: 2px;
 }
 
+/* Tracker shell around the shared homepage hub-picks report markup. */
 .popular-this-week {
   margin: 24px 0 8px;
   padding: 16px;
@@ -2849,7 +2845,7 @@ img {
 }
 
 .popular-this-week__header {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .popular-this-week__lead {
@@ -2864,119 +2860,6 @@ img {
   font-size: 15px;
   color: var(--text);
   line-height: 1.55;
-}
-
-.popular-this-week__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-@media (min-width: 768px) {
-  .popular-this-week__grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
-}
-
-.popular-this-week__card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  text-align: left;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  cursor: pointer;
-}
-
-.popular-this-week__card:hover {
-  border-color: var(--accent);
-}
-
-.popular-this-week__card-title {
-  font-weight: 600;
-  font-size: 15px;
-}
-
-.popular-this-week__card-price {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.popular-this-week__card-reason {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.popular-this-week__deal-badge {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #1a7f4b;
-  background: #e8f7ee;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-
-/* Curated editorial badge labels (FRIDAY, DEAL, MEAT, etc.). */
-.popular-this-week__tag {
-  margin-top: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  color: #495057;
-  background: #eef1f4;
-}
-
-.popular-this-week__tag--friday {
-  color: #8a4b00;
-  background: #fff1dd;
-}
-
-.popular-this-week__tag--deal {
-  color: #1a7f4b;
-  background: #e8f7ee;
-}
-
-.popular-this-week__tag--produce {
-  color: #2f7d32;
-  background: #eaf5ea;
-}
-
-.popular-this-week__tag--meat {
-  color: #9c2a2a;
-  background: #fbeaea;
-}
-
-.popular-this-week__tag--snacks,
-.popular-this-week__tag--variety {
-  color: #5a3a91;
-  background: #f0eafb;
-}
-
-.popular-this-week__more {
-  margin-top: 12px;
-  align-self: flex-start;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.popular-this-week__more:hover {
-  border-color: var(--accent);
 }
 
 /* Homepage hub (restored from 758546d for local preview) */
@@ -3272,27 +3155,21 @@ img {
   margin-top: 20px;
 }
 
-/* Homepage highlights: balanced editorial breakout */
+/* Homepage + tracker highlights: one-row category columns */
 .hub-picks-report {
   display: block;
+  min-width: 0;
 }
 
 .hub-picks-cat-columns {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px 28px;
-}
-
-@media (min-width: 640px) {
-  .hub-picks-cat-columns {
-    grid-template-columns: repeat(2, minmax(240px, 1fr));
-  }
-}
-
-@media (min-width: 900px) {
-  .hub-picks-cat-columns {
-    grid-template-columns: repeat(3, minmax(240px, 1fr));
-  }
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+  gap: 22px 20px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
 }
 
 .hub-picks-cat-section {
@@ -3436,6 +3313,20 @@ img {
   white-space: nowrap;
 }
 
+button.hub-picks-cat-link {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  text-align: left;
+}
+
 .hub-picks-cat-link:hover {
   text-decoration: underline;
   color: var(--accent-dark);
@@ -3498,9 +3389,10 @@ img {
   color: #555;
 }
 
-/* Curated editorial badges; palette matches .popular-this-week__tag--* on the tracker.
+/* Curated editorial badges (homepage cards / legacy). Category columns use
+   .hub-picks-cat-section--* instead of per-item pills for the highlights report.
    Scoped under .hub-badge--custom so they never override the existing on-sale
-   .hub-badge--deal pill (Vons cards keep their derived badges). */
+   .hub-badge--deal pill; Vons cards keep their derived badges. */
 .hub-badge--custom {
   font-weight: 700;
   text-transform: uppercase;
