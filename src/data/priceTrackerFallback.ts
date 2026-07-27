@@ -16,7 +16,9 @@ import { getFallbackComparison, getCostcoPriceHistory } from "./priceComparisonU
 import { appendFamiliesToFeedProducts } from "./trackerFamilyUtils";
 import {
   INFERRED_BASELINE_SOURCE,
+  backfillBaselineFallbackWeeks,
   inferBaselineFromWeeklyPrices,
+  sanitizeBaselinePrice,
 } from "./priceTrackerUtils";
 
 const SAFEWAY_FEED_ID = "safeway_bay_area";
@@ -136,6 +138,11 @@ export const SAFEWAY_BASELINES: Record<
     price: 4.29,
     source: "Safeway search result CSV",
     retailerProductName: "Lays Potato Chips Kettle Cooked Original - 8 Oz",
+  },
+  "lays_party_size": {
+    price: 5.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-26); tracked candidates CSV",
+    retailerProductName: "Lays Potato Chips Classic Party Size - 13 Oz",
   },
   "lays_potato_chips_regular": {
     price: 4.29,
@@ -452,13 +459,19 @@ function effectiveWeeklyPrice(
   const adPrice = entry?.price ?? null;
   const matchConfidence = entry?.confidence ?? null;
   const useAd =
-    adPrice != null && matchConfidence != null && matchConfidence !== "low";
+    adPrice != null &&
+    matchConfidence != null &&
+    matchConfidence !== "low" &&
+    sanitizeBaselinePrice(adPrice) != null;
 
-  const fallbackPrice = baselinePrice ?? adPrice ?? 0;
+  const fallbackPrice =
+    sanitizeBaselinePrice(baselinePrice) ??
+    sanitizeBaselinePrice(adPrice) ??
+    0;
 
   return {
     weekStart: "",
-    price: useAd ? adPrice : fallbackPrice,
+    price: useAd ? adPrice! : fallbackPrice,
     adPrice,
     matchConfidence,
     priceType: useAd ? "weekly_ad" : "baseline",
@@ -492,15 +505,9 @@ export function buildSafewayFallbackProducts(): FeedProductView[] {
       (w) => w.adPrice != null && w.matchConfidence !== "low",
     );
     const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
-    const effectiveBaseline = baseline?.price ?? inferredBaseline;
-
-    if (effectiveBaseline != null && baseline == null) {
-      for (const week of weeklyPrices) {
-        if (week.isBaselineFallback) {
-          week.price = effectiveBaseline;
-        }
-      }
-    }
+    const storeBaseline = sanitizeBaselinePrice(baseline?.price);
+    const effectiveBaseline = storeBaseline ?? inferredBaseline;
+    backfillBaselineFallbackWeeks(weeklyPrices, effectiveBaseline);
 
     return {
       canonicalId: canonical.id,

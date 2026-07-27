@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 sys.path.insert(0, str(ROOT / "scripts"))
+from price_tracker.baseline_guardrails import reject_invalid_baseline
 from price_tracker.baseline_per_lb import normalize_baseline_price
 CANDIDATES = ROOT / "data" / "processed" / "vons_baseline_candidates_v1.csv"
 NEW_ONLY_CANDIDATES = ROOT / "data" / "processed" / "vons_baseline_candidates_new_only.csv"
@@ -70,6 +71,12 @@ def main() -> None:
         price, was_normalized = normalize_baseline_price(cid, row.get("product_name", ""), raw_price)
         if was_normalized:
             print(f"  [per-lb] {cid}: ${raw_price} / '{row.get('product_name', '')[:60]}' → ${price}/lb")
+        warning = reject_invalid_baseline(
+            cid, price, product_name=row.get("product_name", "")
+        )
+        if warning:
+            print(warning)
+            continue
         lines.append(
             "insert into feed_product_matches "
             "(canonical_product_id, feed_id, retailer_product_id, upc, "
@@ -92,6 +99,12 @@ def main() -> None:
         if raw_price is None:
             continue
         price, _ = normalize_baseline_price(cid, row.get("product_name", ""), raw_price)
+        warning = reject_invalid_baseline(
+            cid, price, product_name=row.get("product_name", "")
+        )
+        if warning:
+            print(warning)
+            continue
         ts_entries[cid] = {
             "baselinePrice": price,
             "baselineSource": "Vons search result CSV (rank 1)",

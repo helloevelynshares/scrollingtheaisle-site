@@ -28,6 +28,22 @@ export type PricePoint = WeeklyPrice & {
 
 const INFERRED_BASELINE_SOURCE = "Inferred from weekly ad matches";
 
+/**
+ * Reject zero/negative/non-finite baselines that would render as "Usually $0".
+ * Sweet-corn-style cents prices (e.g. $0.79) remain valid.
+ */
+export function isValidBaselinePrice(
+  price: number | null | undefined,
+): price is number {
+  return typeof price === "number" && Number.isFinite(price) && price > 0;
+}
+
+export function sanitizeBaselinePrice(
+  price: number | null | undefined,
+): number | null {
+  return isValidBaselinePrice(price) ? price : null;
+}
+
 /** Highest non-low-confidence weekly ad price; anchor when no store baseline exists. */
 export function inferBaselineFromWeeklyPrices(
   weeklyPrices: WeeklyPrice[],
@@ -37,7 +53,8 @@ export function inferBaselineFromWeeklyPrices(
       (week) =>
         week.adPrice != null &&
         week.matchConfidence != null &&
-        week.matchConfidence !== "low",
+        week.matchConfidence !== "low" &&
+        isValidBaselinePrice(week.adPrice),
     )
     .map((week) => week.adPrice as number);
 
@@ -45,7 +62,26 @@ export function inferBaselineFromWeeklyPrices(
 }
 
 export function getEffectiveBaseline(product: FeedProductView): number | null {
-  return product.baselinePrice ?? inferBaselineFromWeeklyPrices(product.weeklyPrices);
+  return (
+    sanitizeBaselinePrice(product.baselinePrice) ??
+    inferBaselineFromWeeklyPrices(product.weeklyPrices)
+  );
+}
+
+/** When store baseline is missing, fill baseline-fallback weeks with the effective anchor. */
+export function backfillBaselineFallbackWeeks(
+  weeklyPrices: WeeklyPrice[],
+  effectiveBaseline: number | null,
+): void {
+  const baseline = sanitizeBaselinePrice(effectiveBaseline);
+  if (baseline == null) {
+    return;
+  }
+  for (const week of weeklyPrices) {
+    if (week.isBaselineFallback && !isValidBaselinePrice(week.price)) {
+      week.price = baseline;
+    }
+  }
 }
 
 export function hasChartableData(product: FeedProductView): boolean {

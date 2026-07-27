@@ -18,7 +18,9 @@ import { getFallbackComparison, getCostcoPriceHistory } from "../data/priceCompa
 import {
   hasChartableData,
   INFERRED_BASELINE_SOURCE,
+  backfillBaselineFallbackWeeks,
   inferBaselineFromWeeklyPrices,
+  sanitizeBaselinePrice,
 } from "../data/priceTrackerUtils";
 import { getSupabase } from "./supabase";
 
@@ -300,7 +302,6 @@ function mergeCanonicalWithFeed(
   observations: WeeklyPriceObservation[],
   comparison: PriceComparisonView | null | undefined,
 ): FeedProductView {
-  const hasMatch = Boolean(match);
   const weeklyPrices: WeeklyPrice[] = observations.map((obs) => ({
     weekStart: obs.weekStart,
     price: obs.effectivePrice,
@@ -316,7 +317,9 @@ function mergeCanonicalWithFeed(
     (week) => week.adPrice != null && week.matchConfidence !== "low",
   );
   const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
-  const effectiveBaseline = match?.baseline_price ?? inferredBaseline;
+  const storeBaseline = sanitizeBaselinePrice(match?.baseline_price);
+  const effectiveBaseline = storeBaseline ?? inferredBaseline;
+  backfillBaselineFallbackWeeks(weeklyPrices, effectiveBaseline);
 
   return {
     canonicalId: canonical.id,
@@ -329,11 +332,13 @@ function mergeCanonicalWithFeed(
     feedLabel: feed.label,
     regionLabel: feed.regionLabel,
     hasFeedData:
-      (hasMatch && match!.baseline_price != null) || hasAdMatches,
+      storeBaseline != null || hasAdMatches || effectiveBaseline != null,
     baselinePrice: effectiveBaseline,
     baselineSource:
       match?.baseline_source ??
-      (inferredBaseline != null ? INFERRED_BASELINE_SOURCE : null),
+      (inferredBaseline != null && effectiveBaseline != null
+        ? INFERRED_BASELINE_SOURCE
+        : null),
     weeklyPrices,
     priceComparison:
       feed.storeGroup !== "costco"

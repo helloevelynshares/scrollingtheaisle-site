@@ -7,7 +7,9 @@ import { getFallbackComparison, getCostcoPriceHistory } from "./priceComparisonU
 import type { FeedProductView, WeeklyPrice } from "./priceTrackerTypes";
 import {
   INFERRED_BASELINE_SOURCE,
+  backfillBaselineFallbackWeeks,
   inferBaselineFromWeeklyPrices,
+  sanitizeBaselinePrice,
 } from "./priceTrackerUtils";
 import { SAFEWAY_BASELINES } from "./priceTrackerFallback";
 import { VONS_BASELINE_BY_CANONICAL } from "./vonsBaseline.generated";
@@ -59,11 +61,16 @@ function baselineForFamily(
     if (feedId === SAFEWAY_FEED_ID) {
       const entry = SAFEWAY_BASELINES[legacyId];
       if (entry) {
-        const price = normalizeEggsBaselineToDozen(
-          legacyId,
-          entry.price,
-          entry.retailerProductName,
+        const price = sanitizeBaselinePrice(
+          normalizeEggsBaselineToDozen(
+            legacyId,
+            entry.price,
+            entry.retailerProductName,
+          ),
         );
+        if (price == null) {
+          continue;
+        }
         return {
           price,
           source:
@@ -76,11 +83,16 @@ function baselineForFamily(
     if (feedId === VONS_FEED_ID) {
       const entry = VONS_BASELINE_BY_CANONICAL[legacyId];
       if (entry) {
-        const price = normalizeEggsBaselineToDozen(
-          legacyId,
-          entry.baselinePrice,
-          entry.retailerProductName,
+        const price = sanitizeBaselinePrice(
+          normalizeEggsBaselineToDozen(
+            legacyId,
+            entry.baselinePrice,
+            entry.retailerProductName,
+          ),
         );
+        if (price == null) {
+          continue;
+        }
         return {
           price,
           source:
@@ -93,11 +105,20 @@ function baselineForFamily(
   }
 
   if (feedId === SAFEWAY_FEED_ID && SAFEWAY_BASELINES[familyId]) {
-    return SAFEWAY_BASELINES[familyId];
+    const entry = SAFEWAY_BASELINES[familyId];
+    const price = sanitizeBaselinePrice(entry.price);
+    if (price == null) {
+      return null;
+    }
+    return { price, source: entry.source };
   }
   if (feedId === VONS_FEED_ID && VONS_BASELINE_BY_CANONICAL[familyId]) {
     const entry = VONS_BASELINE_BY_CANONICAL[familyId];
-    return { price: entry.baselinePrice, source: entry.baselineSource };
+    const price = sanitizeBaselinePrice(entry.baselinePrice);
+    if (price == null) {
+      return null;
+    }
+    return { price, source: entry.baselineSource };
   }
 
   return null;
@@ -113,14 +134,21 @@ function effectiveWeeklyPrice(
   const adPrice = entry?.price ?? null;
   const matchConfidence = entry?.confidence ?? null;
   const useAd =
-    adPrice != null && matchConfidence != null && matchConfidence !== "low";
-  const fallbackPrice = baselinePrice ?? adPrice ?? 0;
+    adPrice != null &&
+    matchConfidence != null &&
+    matchConfidence !== "low" &&
+    sanitizeBaselinePrice(adPrice) != null;
+  // Never ship $0 as a chart/UI price; prefer store baseline, else valid ad.
+  const fallbackPrice =
+    sanitizeBaselinePrice(baselinePrice) ??
+    sanitizeBaselinePrice(adPrice) ??
+    0;
 
   return {
     weekStart,
     weekEnd,
     isPreviewWeek: isPreviewWeek(weekStart),
-    price: useAd ? adPrice : fallbackPrice,
+    price: useAd ? adPrice! : fallbackPrice,
     adPrice,
     matchConfidence,
     priceType: useAd ? "weekly_ad" : "baseline",
@@ -171,7 +199,10 @@ export function buildYamlFamilyFeedProducts(feedId: string): FeedProductView[] {
       (week) => week.adPrice != null && week.matchConfidence !== "low",
     );
     const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
-    const effectiveBaseline = baseline?.price ?? inferredBaseline;
+    const effectiveBaseline = sanitizeBaselinePrice(
+      baseline?.price ?? inferredBaseline,
+    );
+    backfillBaselineFallbackWeeks(weeklyPrices, effectiveBaseline);
 
     const comparisonKey = comparisonIdForFamily(family.id);
 
@@ -190,11 +221,13 @@ export function buildYamlFamilyFeedProducts(feedId: string): FeedProductView[] {
       feedId: feed.id,
       feedLabel: feed.label,
       regionLabel: feed.regionLabel,
-      hasFeedData: Boolean(baseline) || hasAdMatches || inferredBaseline != null,
+      hasFeedData: Boolean(baseline) || hasAdMatches || effectiveBaseline != null,
       baselinePrice: effectiveBaseline,
       baselineSource:
         baseline?.source ??
-        (inferredBaseline != null ? INFERRED_BASELINE_SOURCE : null),
+        (inferredBaseline != null && effectiveBaseline != null
+          ? INFERRED_BASELINE_SOURCE
+          : null),
       weeklyPrices,
       priceComparison: getFallbackComparison(comparisonKey, feed.id),
       costcoPriceHistory: getCostcoPriceHistory(comparisonKey, feed.id),

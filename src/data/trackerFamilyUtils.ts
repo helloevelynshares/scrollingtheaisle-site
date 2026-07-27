@@ -7,7 +7,10 @@ import type {
 } from "./priceTrackerTypes";
 import {
   INFERRED_BASELINE_SOURCE,
+  backfillBaselineFallbackWeeks,
   inferBaselineFromWeeklyPrices,
+  isValidBaselinePrice,
+  sanitizeBaselinePrice,
 } from "./priceTrackerUtils";
 import {
   TRACKER_FAMILIES,
@@ -78,12 +81,16 @@ function effectiveMemberWeeklyPrice(
   const adPrice = entry?.price ?? null;
   const matchConfidence = entry?.confidence ?? null;
   const useAd =
-    adPrice != null && matchConfidence != null && matchConfidence !== "low";
-  const fallbackPrice = baseline ?? adPrice ?? 0;
+    adPrice != null &&
+    matchConfidence != null &&
+    matchConfidence !== "low" &&
+    isValidBaselinePrice(adPrice);
+  const fallbackPrice =
+    sanitizeBaselinePrice(baseline) ?? sanitizeBaselinePrice(adPrice) ?? 0;
 
   return {
     weekStart,
-    price: useAd ? adPrice : fallbackPrice,
+    price: useAd ? adPrice! : fallbackPrice,
     adPrice,
     matchConfidence,
     priceType: useAd ? "weekly_ad" : "baseline",
@@ -99,7 +106,7 @@ function buildMemberView(
   weeks: WeekMeta[],
   byWeek: Record<string, GeneratedWeeklyAdPrice>,
 ): FamilyMemberPriceView {
-  const baseline = member.baselineByFeed[feedId] ?? null;
+  const baseline = sanitizeBaselinePrice(member.baselineByFeed[feedId] ?? null);
 
   const weeklyPrices: WeeklyPrice[] = weeks.map((week) =>
     effectiveMemberWeeklyPrice(
@@ -112,6 +119,7 @@ function buildMemberView(
 
   const inferredBaseline = inferBaselineFromWeeklyPrices(weeklyPrices);
   const effectiveBaseline = baseline ?? inferredBaseline;
+  backfillBaselineFallbackWeeks(weeklyPrices, effectiveBaseline);
   const sorted = [...weeklyPrices].sort((a, b) =>
     a.weekStart.localeCompare(b.weekStart),
   );

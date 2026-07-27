@@ -1157,3 +1157,16 @@ Fix / workaround: Full removal (no soft-delete): deleted YAML family, `config/ca
 How to verify: `shrimp_16oz` absent from `data/canonical_tracker_families.yaml` and `src/data/canonicalTrackerFamilies.generated.ts`; no `SAFEWAY_BASELINES` entry; `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_families.TestHighlightCoverageFamilies -v`.  
 Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `data/product_matching/eval_cases.jsonl`, `data/review/highlight_tracker_coverage_audit.yaml`, `src/data/weeklyAdPrices.generated.ts`, `src/data/vonsWeeklyAdPrices.generated.ts`
 
+### $0 baseline guardrail (Lay's party size)
+
+Date discovered: 2026-07-26  
+Context: Safeway price tracker card for `lays_party_size` showed a $0 / “Usually $0” style baseline.  
+What happened: Family had **no** `SAFEWAY_BASELINES` entry (never crawled under that id after `frito_lay_multipack_chips` was unmapped). YAML weekly builders used `baseline ?? ad ?? 0`, so unmatched weeks became **price: 0**. Unlike legacy `buildSafewayFallbackProducts`, `yamlFamilyProducts` did not backfill those weeks from an inferred ad max — so current week read as $0 and the UI looked like a $0 regular.  
+Fix / workaround:
+1. Set `SAFEWAY_BASELINES.lays_party_size` = **$5.99** (`Lays Potato Chips Classic Party Size - 13 Oz`; user-confirmed 12.5–13 oz shelf).
+2. Runtime: `sanitizeBaselinePrice` / `backfillBaselineFallbackWeeks` reject `<= 0` and refill baseline-fallback weeks.
+3. Generate: `scripts/price_tracker/baseline_guardrails.py` skips `<= 0` in Safeway + Vons feed-match generators.
+4. Verify: `verify-price-tracker-build.mjs` fails on any shipped baseline `<= 0` and asserts `lays_party_size === 5.99`.  
+How to verify: `npm run build:price-tracker`; Safeway Lay's Party Size card shows Usually ~$5.99, not $0.  
+Related files: `src/data/priceTrackerFallback.ts`, `src/data/yamlFamilyProducts.ts`, `src/data/priceTrackerUtils.ts`, `scripts/generate_safeway_feed_matches.py`, `scripts/generate_vons_feed_matches.py`, `scripts/price_tracker/baseline_guardrails.py`, `scripts/verify-price-tracker-build.mjs`
+

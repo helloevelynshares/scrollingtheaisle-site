@@ -15,6 +15,7 @@ FALLBACK_TS = ROOT / "src" / "data" / "priceTrackerFallback.ts"
 SOURCE_LABEL = "Safeway search result CSV"
 
 sys.path.insert(0, str(ROOT / "scripts"))
+from price_tracker.baseline_guardrails import reject_invalid_baseline
 from price_tracker.baseline_per_lb import normalize_baseline_price
 
 
@@ -86,6 +87,7 @@ def merge_into_fallback(new_entries: dict[str, dict[str, str]]) -> None:
                 existing_ids.add(json.loads(key))
 
     additions: list[str] = []
+    skipped = 0
     for cid, row in sorted(new_entries.items()):
         if cid in existing_ids:
             continue
@@ -93,17 +95,30 @@ def merge_into_fallback(new_entries: dict[str, dict[str, str]]) -> None:
         if raw_price is None:
             continue
         price = effective_price(cid, row.get("product_name", ""), raw_price)
+        warning = reject_invalid_baseline(
+            cid, price, product_name=row.get("product_name", "")
+        )
+        if warning:
+            print(warning)
+            skipped += 1
+            continue
         additions.append(ts_entry(row, price))
 
     if not additions:
-        print("No new Safeway baselines to merge")
+        print(
+            "No new Safeway baselines to merge"
+            + (f" ({skipped} invalid skipped)" if skipped else "")
+        )
         return
 
     insert_at = end
     prefix = ",\n" if existing_block.strip() else "\n"
     updated = text[:insert_at] + prefix + ",\n".join(additions) + text[insert_at:]
     FALLBACK_TS.write_text(updated, encoding="utf-8")
-    print(f"Merged {len(additions)} Safeway baseline(s) into {FALLBACK_TS.relative_to(ROOT)}")
+    print(
+        f"Merged {len(additions)} Safeway baseline(s) into {FALLBACK_TS.relative_to(ROOT)}"
+        + (f" ({skipped} invalid skipped)" if skipped else "")
+    )
 
 
 def main() -> None:
@@ -123,6 +138,12 @@ def main() -> None:
     for cid, row in sorted(rank1.items()):
         raw_price = parse_price(row.get("price", ""))
         price = effective_price(cid, row.get("product_name", ""), raw_price) if raw_price is not None else None
+        warning = reject_invalid_baseline(
+            cid, price, product_name=row.get("product_name", "")
+        )
+        if warning:
+            print(warning)
+            continue
         print(f"{cid}: {price}: {row.get('product_name', '')[:60]}")
 
     if args.merge_fallback:
