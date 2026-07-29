@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrolling the Aisle: Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/styles.css?v=hub26" />
+  <link rel="stylesheet" href="/styles.css?v=hub27" />
 </head>
 <body class="hub-page">
   <header class="page-header">
@@ -69,6 +69,46 @@
             </section>
           </div>
         </div>
+
+        <aside
+          class="hub-coupon-check"
+          id="coupon-check-module"
+          data-poll-id="safeway_pickup_delivery_10off_202608"
+          aria-labelledby="coupon-check-heading"
+        >
+          <p class="hub-coupon-check-kicker">Safeway shoppers</p>
+          <h2 id="coupon-check-heading" class="hub-coupon-check-heading">Do you see this coupon?</h2>
+          <p class="hub-coupon-check-lead">$10 off your next online order — no minimum. Quick check on who is seeing it.</p>
+          <figure class="hub-coupon-check-figure">
+            <img
+              src="/media/coupons/safeway-pickup-delivery-10off.png"
+              alt="$10 off your next online order purchase. PickUp &amp; Delivery. Expires 8/11/26."
+              width="640"
+              height="360"
+              loading="lazy"
+            />
+          </figure>
+          <div class="hub-coupon-check-actions" role="group" aria-label="Do you see this coupon?">
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm hub-coupon-check-btn"
+              data-option-id="safeway_pickup_delivery_10off_202608_yes"
+              data-answer="yes"
+            >
+              Yep
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary btn-sm hub-coupon-check-btn"
+              data-option-id="safeway_pickup_delivery_10off_202608_no"
+              data-answer="no"
+            >
+              Nope
+            </button>
+          </div>
+          <p id="coupon-check-tally" class="hub-coupon-check-tally" aria-live="polite" hidden></p>
+          <p id="coupon-check-status" class="hub-coupon-check-status" role="status" aria-live="polite" hidden></p>
+        </aside>
       </div>
     </section>
     </div>
@@ -111,7 +151,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/homepage.js?v=hub18"></script>
+  <script src="/homepage.js?v=hub19"></script>
   <script src="/analytics.js"></script>
 </body>
 </html>

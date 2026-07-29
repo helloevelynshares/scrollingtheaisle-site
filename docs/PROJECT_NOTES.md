@@ -319,15 +319,15 @@ Add notes here for useful Cursor prompts, commands, migrations, local testing, a
 
 Living notes rule: `.cursor/rules/project-notes.mdc`, agents should read and update `docs/PROJECT_NOTES.md`.
 
-### Homepage coupon check poll (removed from UI)
+### Homepage coupon check poll ($10 off online order)
 
 Date discovered: 2026-07-15  
-Date updated: 2026-07-23  
-Context: Short ask for Safeway shoppers whether they see a specific personalized/stackable coupon (Cheez-It / Pringles / Pop-Tarts $3 off), beside Beehiiv signup.  
-What happened: Module shipped 2026-07-15; removed from public homepage UI on 2026-07-23 (signup/stack left as single column).  
-Fix / workaround: Backend left in place — Supabase tables `coupon_check_polls` + `coupon_check_options`, RPC `vote_coupon_check(text)`, seed poll id `safeway_cheezit_pringles_3off_202607` via `supabase/migrations/20260715_coupon_check_poll.sql`. Client UI/JS/CSS and unused image `media/coupons/safeway-cheezit-pringles-3off.png` removed.  
-How to verify: Homepage hero shows Beehiiv + trackers + store suggest only — no “Do you see this coupon?” module.  
-Related files: `supabase/migrations/20260715_coupon_check_poll.sql` (backend only); formerly `index.html`, `homepage.js`, `styles.css`
+Date updated: 2026-07-29  
+Context: Short ask for Safeway shoppers whether they see a specific personalized coupon, beside Beehiiv signup.  
+What happened: First poll (Cheez-It / Pringles / Pop-Tarts $3 off) shipped 2026-07-15; UI removed 2026-07-23 with backend left in place. Restored 2026-07-29 for PickUp & Delivery **$10 off next online order** (no minimum; expires 8/11/26) as poll id `safeway_pickup_delivery_10off_202608`.  
+Fix / workaround: Tables `coupon_check_polls` + `coupon_check_options`, RPC `vote_coupon_check(text)` from `supabase/migrations/20260715_coupon_check_poll.sql`. New options seeded via `supabase/migrations/20260729_coupon_check_10off_online.sql`. Client: two-column signup row + aside in `index.html`; votes via Supabase + `localStorage` key `sta_coupon_check_votes` (keyed by poll id so prior polls don’t block re-voting). Image: `media/coupons/safeway-pickup-delivery-10off.png`.  
+How to verify: Apply `20260729` migration → `npm run preview:homepage` → http://127.0.0.1:8000/ → Yep/Nope beside signup; tally updates; refresh keeps vote; other browsers see shared counts.  
+Related files: `supabase/migrations/20260715_coupon_check_poll.sql`, `supabase/migrations/20260729_coupon_check_10off_online.sql`, `index.html`, `homepage.js`, `styles.css`, `media/coupons/safeway-pickup-delivery-10off.png`
 
 ### Homepage store vote module (compact chips + Supabase)
 
