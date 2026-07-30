@@ -16,8 +16,8 @@ stores:
     - title: Mandarin oranges (Cuties)
       tracker_family_ids: [mandarins_3lb]
       badge: PRODUCE
-      subtitle: "$3.99 on the 3 lb bag — strong absolute price on Cuties this week."
-      reason: "$3.99 on the 3 lb bag — strong absolute price on Cuties this week."
+      subtitle: "$3.99 on the 3 lb bag of Cuties this week."
+      reason: "$3.99 on the 3 lb bag of Cuties this week."
       price: "$3.99"
       display_order: 2
     - title: Tillamook cheese
@@ -51,8 +51,8 @@ stores:
     - title: Honey mangoes
       tracker_family_ids: [mangoes_each]
       badge: PRODUCE
-      subtitle: "10 for $10 ($1 each) — easy full-week tropical add-on near a recent low."
-      reason: "10 for $10 ($1 each) — easy full-week tropical add-on near a recent low."
+      subtitle: "10 for $10 ($1 each) — easy full-week buy near a recent low."
+      reason: "10 for $10 ($1 each) — easy full-week buy near a recent low."
       price: "10/$10"
       display_order: 7
     - title: Häagen-Dazs ice cream
@@ -65,8 +65,8 @@ stores:
     - title: Nestlé Drumstick ice cream
       tracker_family_ids: []
       badge: DEAL
-      subtitle: "$3.99 on Nestlé Drumstick 4-ct cones — more flavor control than a locked variety pack."
-      reason: "$3.99 on Nestlé Drumstick 4-ct cones — more flavor control than a locked variety pack."
+      subtitle: "$3.99 on Nestlé Drumstick 4-ct cones, minis, and sandwiches."
+      reason: "$3.99 on Nestlé Drumstick 4-ct cones, minis, and sandwiches."
       price: "$3.99"
       display_order: 9
     - title: Pringles

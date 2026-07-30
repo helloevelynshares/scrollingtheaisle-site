@@ -1882,8 +1882,8 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "trackerFamilyIds": [
       "mandarins_3lb"
     ],
-    "reason": "$3.99 on the 3 lb bag \u2014 strong absolute price on Cuties this week.",
-    "subtitle": "$3.99 on the 3 lb bag \u2014 strong absolute price on Cuties this week.",
+    "reason": "$3.99 on the 3 lb bag of Cuties this week.",
+    "subtitle": "$3.99 on the 3 lb bag of Cuties this week.",
     "badge": "PRODUCE",
     "price": "$3.99",
     "availability": "",
@@ -1945,8 +1945,8 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "trackerFamilyIds": [
       "mangoes_each"
     ],
-    "reason": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on near a recent low.",
-    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on near a recent low.",
+    "reason": "10 for $10 ($1 each) \u2014 easy full-week buy near a recent low.",
+    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week buy near a recent low.",
     "badge": "PRODUCE",
     "price": "10/$10",
     "availability": "",
@@ -1969,8 +1969,8 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
   {
     "title": "Nestl\u00e9 Drumstick ice cream",
     "trackerFamilyIds": [],
-    "reason": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones \u2014 more flavor control than a locked variety pack.",
-    "subtitle": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones \u2014 more flavor control than a locked variety pack.",
+    "reason": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones, minis, and sandwiches.",
+    "subtitle": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones, minis, and sandwiches.",
     "badge": "DEAL",
     "price": "$3.99",
     "availability": "",

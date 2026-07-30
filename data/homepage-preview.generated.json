@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T03:57:27.799Z",
+  "generatedAt": "2026-07-30T04:06:45.159Z",
   "popularWeekLabel": "Jul 29–Aug 4",
   "popularPicksSafeway": [
     {
@@ -23,7 +23,7 @@
       "unitPrice": "$3.99/bag",
       "badge": "Stock up",
       "customBadge": "PRODUCE",
-      "explanation": "$3.99 on the 3 lb bag — strong absolute price on Cuties this week.",
+      "explanation": "$3.99 on the 3 lb bag of Cuties this week.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": false,
       "onSale": true
@@ -88,7 +88,7 @@
       "unitPrice": "$1.00 · each or multi-buy",
       "badge": "Lowest seen recently",
       "customBadge": "PRODUCE",
-      "explanation": "10 for $10 ($1 each) — easy full-week tropical add-on near a recent low.",
+      "explanation": "10 for $10 ($1 each) — easy full-week buy near a recent low.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": false,
       "onSale": true
@@ -114,7 +114,7 @@
       "unitPrice": "",
       "badge": "About normal",
       "customBadge": "DEAL",
-      "explanation": "$3.99 on Nestlé Drumstick 4-ct cones — more flavor control than a locked variety pack.",
+      "explanation": "$3.99 on Nestlé Drumstick 4-ct cones, minis, and sandwiches.",
       "trackerUrl": "grocery-price-tracker/",
       "isPlaceholder": true,
       "onSale": false
