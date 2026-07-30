@@ -1,11 +1,11 @@
 # Canonical match audit: 2026-05-12 to 2026-05-19
 
-Generated: 2026-07-26T18:49:19.564450+00:00
+Generated: 2026-07-30T03:20:14.358527+00:00
 
 ## Summary
 
 - **Accepted:** 40
-- **Rejected:** 2
+- **Rejected:** 4
 - **Manual review:** 6
 - **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, sun_chips_7oz, dreyers_tubs, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, salmon, smartfood_popcorn, snyders_pretzels, frito_lay_multipack_chips, pop_tarts, chicken_wings_per_lb, pork_spare_ribs_per_lb
 
@@ -22,31 +22,39 @@ Generated: 2026-07-26T18:49:19.564450+00:00
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Safeway): blocked $1.99: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+- `lays_potato_chips_regular` (Safeway): blocked $1.99: mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+- `kettle_brand_chips` (Safeway): blocked $1.99: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
 - `chips_ahoy` (Safeway): blocked $1.99: confidence 0.65 < min 0.65
 - `pepsi_12packs` (Safeway): blocked $1.85: confidence 0.40 < min 0.70
-- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
-- `lays_potato_chips_regular` (Safeway): blocked $1.99: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `lays_potato_chips_regular` (Safeway): blocked $1.99: mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+- `kettle_brand_chips` (Safeway): blocked $1.99: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
 - `chips_ahoy` (Safeway): blocked $1.99: confidence 0.65 < min 0.65
 - `pepsi_12packs` (Safeway): blocked $1.85: confidence 0.40 < min 0.70
-- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `berries_6oz` (Safeway): blocked $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
 
 ### Blocked from tracker graph
 
+- `kettle_brand_chips` (Safeway): **rejected**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
+  - Reason: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
+  - Hard negatives: sunchips
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
-  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
   - Hard negatives: large pack
+- `kettle_brand_chips` (Safeway): **rejected**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
+  - Reason: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
+  - Hard negatives: sunchips
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries LARGE PACK' @ $3.99
-  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+  - Reason: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
   - Hard negatives: large pack
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
-  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+  - Reason: mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `chips_ahoy` (Safeway): **manual_review**: "Cheez-It or Snap'd Crackers 7.5 to 12.4 oz., Nabisco Premium Crackers 10 to 16 oz., Chips Ahoy! Cookies 7 to 13 oz." @ $1.99
   - Reason: confidence 0.65 < min 0.65
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi, Diet Pepsi, Starry' @ $1.85
   - Reason: confidence 0.40 < min 0.70
 - `lays_potato_chips_regular` (Safeway): **manual_review**: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99
-  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
+  - Reason: mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
 - `chips_ahoy` (Safeway): **manual_review**: "Cheez-It or Snap'd Crackers 7.5 to 12.4 oz., Nabisco Premium Crackers 10 to 16 oz., Chips Ahoy! Cookies 7 to 13 oz." @ $1.99
   - Reason: confidence 0.65 < min 0.65
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi, Diet Pepsi, Starry' @ $1.85
@@ -56,8 +64,10 @@ Generated: 2026-07-26T18:49:19.564450+00:00
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
-- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `kettle_brand_chips`: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `kettle_brand_chips`: "Sunchips 7 oz., Lay's Potato Chips 5-8 oz., Kettle Potato Chips 5 oz." @ $1.99: hard negative keyword/pattern hit: sunchips; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.68 needs review; new all-time low $1.99 requires confidence >= 0.85 (got 0.68)
+- `berries_6oz`: 'Blueberries LARGE PACK' @ $3.99: hard negative keyword/pattern hit: large pack; ad product type 'berries_large_pack' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
 
 ## Accepted matches
 
@@ -91,13 +101,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.70)
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.88)
   - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $1.99 (confidence 0.90)
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $1.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cheerios' @ $1.99 (confidence 0.70)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cheerios' @ $1.99 (confidence 0.91)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `salmon` (Safeway): 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99 (confidence 0.75)
@@ -151,13 +161,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.70)
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.88)
   - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $1.99 (confidence 0.90)
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $1.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cheerios' @ $1.99 (confidence 0.70)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cheerios' @ $1.99 (confidence 0.91)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `salmon` (Safeway): 'Waterfront Bistro Wild Alaskan Sockeye Salmon' @ $6.99 (confidence 0.75)

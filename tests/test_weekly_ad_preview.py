@@ -21,10 +21,17 @@ from price_tracker.weekly_ad_preview import (  # noqa: E402
 
 
 class TestWeeklyAdPreviewDates(unittest.TestCase):
-    def test_preview_when_today_before_week_start(self) -> None:
-        as_of = date(2026, 7, 7)
+    def test_preview_when_today_before_early_publish_window(self) -> None:
+        # Two+ days before week start → still PREVIEW
+        as_of = date(2026, 7, 6)
         self.assertTrue(is_preview_week("2026-07-08", as_of))
         self.assertFalse(is_preview_week("2026-07-07", as_of))
+
+    def test_night_before_week_start_is_active_not_preview(self) -> None:
+        # Late publish the calendar day before week_start → ACTIVE (no Preview chrome)
+        as_of = date(2026, 7, 7)
+        self.assertFalse(is_preview_week("2026-07-08", as_of))
+        self.assertTrue(is_active_week("2026-07-08", "2026-07-14", as_of))
 
     def test_active_on_start_date(self) -> None:
         as_of = date(2026, 7, 8)
@@ -39,6 +46,13 @@ class TestWeeklyAdPreviewDates(unittest.TestCase):
     def test_preview_disappears_after_start(self) -> None:
         as_of = date(2026, 7, 9)
         self.assertFalse(is_preview_week("2026-07-08", as_of))
+
+    def test_jul28_treats_jul29_week_as_active(self) -> None:
+        as_of = date(2026, 7, 28)
+        self.assertFalse(is_preview_week("2026-07-29", as_of))
+        self.assertTrue(is_active_week("2026-07-29", "2026-08-04", as_of))
+        # Prior week still calendar-active; UI picks latest via reverse sort
+        self.assertTrue(is_active_week("2026-07-22", "2026-07-28", as_of))
 
     def test_latest_manifest_entry(self) -> None:
         manifest = [
@@ -80,7 +94,7 @@ class TestWeeklyAdPreviewSafeguards(unittest.TestCase):
             manifest,
             prices,
             ["doritos_5_13oz", "grapes"],
-            as_of=date(2026, 7, 7),
+            as_of=date(2026, 7, 6),  # two days early → still PREVIEW
         )
         self.assertIsNotNone(summary)
         assert summary is not None

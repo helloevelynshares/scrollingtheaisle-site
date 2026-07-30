@@ -34,15 +34,20 @@ families:
       - pouch
       - canned
       - packet
+      - portion
+      - portions
       - 3 oz
       - 4 oz
+      - 7 oz
       - acme
       - echo falls
     allowed_units:
       - lb
       - each
     disallowed_package_patterns:
-      - \b[234]\s*oz\b
+      - \b[2347]\s*oz\b
+      - portion
+      - portions
       - smoked
       - nova
     min_confidence: 0.65
@@ -72,11 +77,32 @@ families:
       - single bottle
       - 8-pack bottle
       - 6-pack bottle
+      - bottle
+      - bottles
     disallowed_package_patterns:
       - 2\s*[- ]?liter
       - 2\s*l\b
       - 20\s*oz
       - 1\s*liter
+      - \bbottles?\b
+    # Bare "Coca-Cola" / "Coca-Cola cans" hits the family-name pattern; require
+    # an explicit 12-pack/count cue before automatic graph update.
+    required_attributes:
+      package_count:
+        any_of:
+          - 12-pack
+          - 12 pack
+          - 12pk
+          - 12 pk
+          - 12 ct
+          - 12-ct
+          - 12 count
+          - 12-count
+          - 12 fl oz cans
+      container_type:
+        any_of:
+          - can
+          - cans
     min_confidence: 0.7
     atl_requires_confidence: 0.9
     large_price_change_pct: 40
@@ -183,6 +209,14 @@ families:
       - tub
       - 13\s*to\s*15
       - 13-15
+    # Size alone is not enough — sticks vs spread must be explicit.
+    required_attributes:
+      product_form:
+        any_of:
+          - quarters
+          - quarter
+          - sticks
+          - stick
     min_confidence: 0.7
     atl_requires_confidence: 0.85
     large_price_change_pct: 30
@@ -276,6 +310,87 @@ families:
     atl_requires_confidence: 0.85
     large_price_change_pct: 30
 
+  nabisco_snack_crackers_regular:
+    # Regular-size Nabisco snack cracker boxes (3.5–9.1 oz): Wheat Thins,
+    # Triscuit, Chicken in a Biskit. Flyer copy usually says "Nabisco Snack
+    # Crackers" even when the eligible shelf SKUs are those three brands.
+    canonical_intent: regular_size_snack_crackers
+    allowed_product_types:
+      - regular_size_snack_crackers
+      - wheat_thins
+      - triscuits
+      - chicken_in_a_biskit
+      - generic_nabisco_block
+    disallowed_product_types:
+      - family_size_snack_crackers
+      - oreo
+      - chips_ahoy
+      - ritz_crackers
+      - single_serve_snack_multipack
+    positive_keywords:
+      - wheat thins
+      - triscuit
+      - chicken in a biskit
+      - chicken in a biscuit
+      - snack crackers
+      - "3.5"
+      - "9.1"
+    negative_keywords:
+      - family size
+      - oreo
+      - chips ahoy
+      - ritz
+      - good thins
+      - belvita
+      - teddy grahams
+      - nilla
+      - premium saltine
+      - kettle
+      - single serve
+      - snack pack
+      - mini pack
+      - 10 pack
+      - cookies
+    # Accept only with an explicit regular-size band signal; bare "Nabisco
+    # snack crackers" with no size → manual review. Do not use broad 10+ oz
+    # disallowed_package_patterns here: polluted multi-SKU package_text on
+    # historical splits often lists sibling ranges (Ritz 11–13 oz) alongside
+    # the real 3.5–9.1 band.
+    require_confirmation_keywords:
+      - "3.5"
+      - 3.5-9.1
+      - 3.5 to 9.1
+      - 3.5–9.1
+      - 7-9.1
+      - 7 to 9.1
+      - 7–9.1
+      - 8 to 9.1
+      - 8-9.1
+      - 8–9.1
+      - 7.6 to 8.5
+      - 7.6-8.5
+      - 7-8.5
+      - 7 to 8.5
+      - 7–8.5
+      - 9.1 oz
+      - 8.5 oz
+      - 8 oz
+      - 7.5 oz
+      - 7.1 oz
+      - 7 oz
+      - 6 oz
+      - 5 oz
+      - 4 oz
+      - 3.5 oz
+    disallowed_package_patterns:
+      - \bfamily\s+size\b
+      - \b11\.5\b
+      - \b10\s*(?:to|-|–)\s*14\b
+      - \b11\.5\s*(?:to|-|–)\s*14\b
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 30
+
   nabisco_snack_crackers:
     # Nabisco family-size snack cracker boxes (11.5–14 oz): Wheat Thins,
     # Triscuit, Chicken in a Biskit. The app title "Nabisco Snack Crackers
@@ -293,6 +408,7 @@ families:
       - chips_ahoy
       - ritz_crackers
       - single_serve_snack_multipack
+      - regular_size_snack_crackers
     positive_keywords:
       - wheat thins
       - triscuit
@@ -315,6 +431,9 @@ families:
       - mini pack
       - 10 pack
       - cookies
+      - 3.5-9.1
+      - 3.5 to 9.1
+      - 3.5–9.1
     # Accept only with an explicit family-size or in-range size signal; a bare
     # "Nabisco snack crackers" with no size / eligible items → manual review.
     require_confirmation_keywords:
@@ -384,6 +503,52 @@ families:
     atl_requires_confidence: 0.85
     large_price_change_pct: 40
 
+  mandarins_3lb:
+    # Conventional 3 lb bagged mandarin oranges/clementines (Cuties / California).
+    # Do NOT match Peelz (user: candy / not this family). Require explicit 3 lb —
+    # Safeway also runs 2 lb Cuties (e.g. 2026-04-01).
+    canonical_intent: mandarins_3lb_bag
+    allowed_product_types:
+      - mandarins_3lb_bag
+    positive_keywords:
+      - cuties
+      - mandarin orange
+      - mandarin oranges
+      - mandarin
+      - mandarins
+      - clementine
+      - clementines
+    negative_keywords:
+      - peelz
+      - navel
+      - geisha
+      - canned
+      - 15 oz
+      - 15-oz
+      - organic
+      - 2 lb
+      - 2-lb
+      - 2-lb.
+      - "2 lb."
+    require_confirmation_keywords:
+      - 3 lb
+      - 3-lb
+      - 3lb
+      - 3-lb.
+      - "3 lb."
+      - 3 lbs
+      - 3-lbs
+    disallowed_package_patterns:
+      - \b2\s*-?\s*lb\.?\b
+      - \b15\s*-?\s*oz\.?\b
+      - \bgeisha\b
+      - \bcanned\b
+      - \bnavel\b
+      - \bpeelz\b
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 40
+
   eggs_dozen_normalized:
     canonical_intent: eggs_dozen
     allowed_product_types:
@@ -397,8 +562,8 @@ families:
       - large eggs
       - dozen
       - 12 ct
-      - 18 ct
-      - 24 ct
+      - 12-ct
+      - 12 count
       - cage free
       - grade a
       - grade aa
@@ -429,9 +594,80 @@ families:
       - happy egg
       - nellie
       - open nature
-    # Lucerne-only carton: brand required, plus a count/grade signal.
+      - 18 ct
+      - 18-ct
+      - 18 count
+      - 18-count
+      - 24 ct
+      - 24-count
+    # Lucerne 12-count: require a dozen / 12-count signal (not 18-count).
     require_confirmation_keywords:
+      - dozen
+      - 12 ct
+      - 12-ct
+      - 12 count
+      - 12-count
+    min_confidence: 0.65
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  lucerne_eggs_18:
+    canonical_intent: eggs_dozen
+    allowed_product_types:
+      - eggs_dozen
+    disallowed_product_types:
+      - egg_whites_liquid
+      - candy_eggs
+    positive_keywords:
       - lucerne
+      - eggs
+      - large eggs
+      - 18 ct
+      - 18-ct
+      - 18 count
+      - 18-count
+      - cage free
+      - grade a
+      - grade aa
+    negative_keywords:
+      - egg whites
+      - liquid eggs
+      - egg beaters
+      - hard boiled
+      - chocolate
+      - candy
+      - russell stover
+      - reese
+      - cadbury
+      - hershey
+      - kinder joy
+      - ferrero
+      - peeps
+      - easter
+      - fillable
+      - dye kit
+      - eggo
+      - waffle
+      - organic
+      - pasture-raised
+      - pasture raised
+      - vital farms
+      - eggland
+      - happy egg
+      - nellie
+      - open nature
+      - 12 ct
+      - 12-ct
+      - 12 count
+      - 12-count
+      - dozen
+      - 24 ct
+      - 24-count
+    require_confirmation_keywords:
+      - 18 ct
+      - 18-ct
+      - 18 count
+      - 18-count
     min_confidence: 0.65
     atl_requires_confidence: 0.85
     large_price_change_pct: 35
@@ -447,6 +683,28 @@ families:
       - party size
       - kettle cooked
       - stax
+      - baked
+    # Bare "Lay's Potato Chips" is ambiguous with party size; require bag size.
+    required_attributes:
+      package_size:
+        any_of:
+          - oz
+          - oz.
+          - 5 to
+          - 5-
+          - 5–
+          - 6 to
+          - 7 to
+          - 8 oz
+          - 8-oz
+          - 8oz
+          - 9 oz
+          - 10 oz
+          - 11 oz
+          - 12 oz
+          - 13 oz
+          - poppables
+          - popables
     min_confidence: 0.6
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
@@ -465,6 +723,22 @@ families:
       - family size
       - kettle brand
       - stax
+      # Explicit competing kettle brands (not Lay's), even with "kettle cooked".
+      - miss vickie
+      - miss vickie's
+      - cape cod
+    # Regular kettle bags only (6–8 oz). Party ~12.5 oz must not auto-accept.
+    allowed_package_patterns:
+      - \b6(?:\.\d+)?\s*oz\b
+      - \b7(?:\.\d+)?\s*oz\b
+      - \b8(?:\.\d+)?\s*oz\b
+      - \b6\s*(?:to|-|–)\s*8\s*oz\b
+      - \b6\s*(?:to|-|–)\s*8\b
+    disallowed_package_patterns:
+      - \bparty\s+size\b
+      - \b12(?:\.\d+)?\s*oz\b
+      - \b1[0-9](?:\.\d+)?\s*oz\b
+      - \b[2-9]\d(?:\.\d+)?\s*oz\b
     min_confidence: 0.6
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
@@ -566,9 +840,198 @@ families:
       - cola
       - pepsi
       - coke
+    required_attributes:
+      package_count:
+        any_of:
+          - 8 pack
+          - 8-pack
+          - 8pk
+          - 8 ct
+          - 8-ct
+          - 12 pack
+          - 12-pack
+          - 12pk
+          - 12 pk
+          - 12 ct
+          - 12-ct
     min_confidence: 0.6
     atl_requires_confidence: 0.8
     large_price_change_pct: 40
+
+  # Kettle Brand bags only. Bare "Kettle Chips" is ambiguous with Lay's Kettle.
+  kettle_brand_chips:
+    canonical_intent: regular_chip_bag
+    allowed_product_types:
+      - regular_chip_bag
+      - kettle_cooked
+    disallowed_product_types:
+      - party_size
+    positive_keywords:
+      - kettle brand
+      - potato chips
+    negative_keywords:
+      - lay's kettle
+      - lays kettle
+      - cape cod
+      - miss vickie
+      - miss vickie's
+      - party size
+      - sun chips
+      - sunchips
+    required_attributes:
+      brand:
+        any_of:
+          - kettle brand
+          - potato chips
+    min_confidence: 0.6
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 40
+
+  # Cups / 4×5.3 oz multipacks only — never 32 oz tubs.
+  chobani_yogurt_per_cup:
+    canonical_intent: yogurt_cup
+    positive_keywords:
+      - chobani
+      - 5.3
+      - 4-pack
+      - 4 pack
+      - 4 ct
+      - layered
+      - flip
+    negative_keywords:
+      - tub
+      - 20g protein
+      - 20 g protein
+      - protein yogurt
+    disallowed_package_patterns:
+      - \b32\s*oz\b
+      - \btub\b
+      - \b20\s*g\s*protein\b
+      - \b20g\s*protein\b
+    required_attributes:
+      package_size:
+        any_of:
+          - 5.3
+          - 5.3 oz
+          - 5.3-oz
+          - 4-pack
+          - 4 pack
+          - 4 ct
+          - 4-ct
+          - 4 count
+          - cup
+          - cups
+          - layered
+          - flip
+          - creations
+          - complete
+    min_confidence: 0.6
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  # 32 oz tubs only.
+  chobani_yogurt_tub:
+    canonical_intent: yogurt_tub
+    positive_keywords:
+      - 32 oz
+      - 32-oz
+      - tub
+    negative_keywords:
+      - 5.3
+      - 4-pack
+      - 4 pack
+      - 4 ct
+      - cup
+      - cups
+      - layered
+      - flip
+    disallowed_package_patterns:
+      - \b5\.3\s*oz\b
+      - \b4\s*[- ]?(?:pack|ct|count)\b
+    required_attributes:
+      package_size:
+        any_of:
+          - 32 oz
+          - 32-oz
+          - 32oz
+          - tub
+    min_confidence: 0.6
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  nature_valley_bars:
+    canonical_intent: granola_bars
+    positive_keywords:
+      - nature valley
+    negative_keywords:
+      - protein bar
+      - nutri-grain
+      - special k
+      - pop-tarts
+      - gushers
+    required_attributes:
+      package_count:
+        any_of:
+          - 5 ct
+          - 6 ct
+          - 8 ct
+          - 10 ct
+          - 12 ct
+          - 5-ct
+          - 6-ct
+          - 8-ct
+          - 10-ct
+          - 12-ct
+          - 5 count
+          - 6 count
+          - 8 count
+          - 10 count
+          - 12 count
+    min_confidence: 0.6
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
+
+  general_mills_cereal_regular:
+    canonical_intent: cereal_regular
+    positive_keywords:
+      - cheerios
+      - cinnamon toast crunch
+      - lucky charms
+      - chex
+      - reese's puffs
+      - general mills
+    negative_keywords:
+      - family size
+      - chex mix
+      - post cereal
+      - kellogg
+    # Regular boxes ≈8.9–15 oz. Family size / 16+ oz must not enter this tracker.
+    allowed_package_patterns:
+      - \b(?:8\.9|9(?:\.\d+)?|1[0-4](?:\.\d+)?|15(?:\.\d+)?)\s*oz\b
+      - \b8\.9\s*(?:to|-|–)\s*1[0-5](?:\.\d+)?\s*oz\b
+      - \b8\.9\s*(?:to|-|–)\s*12\s*oz\b
+      - \b10\s*(?:to|-|–)\s*12\s*oz\b
+    disallowed_package_patterns:
+      - \bfamily\s+size\b
+      - \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b
+    required_attributes:
+      package_size:
+        any_of:
+          - oz
+          - oz.
+          - 8.9
+          - 9 oz
+          - 10.8
+          - 12.25
+          - 8.9-12
+          - 8.9–12
+          - 10-12
+          - 12 oz
+          - 14 oz
+          - 15 oz
+    min_confidence: 0.6
+    atl_requires_confidence: 0.85
+    large_price_change_pct: 35
 
 
   oscar_mayer_hot_dogs:

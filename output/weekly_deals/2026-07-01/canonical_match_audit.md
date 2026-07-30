@@ -1,92 +1,138 @@
 # Canonical match audit: 2026-07-01 to 2026-07-07
 
-Generated: 2026-07-26T18:49:20.462526+00:00
+Generated: 2026-07-30T03:20:15.382767+00:00
 
 ## Summary
 
-- **Accepted:** 74
-- **Rejected:** 4
-- **Manual review:** 10
-- **Families updated:** kettle_brand_chips, cheez_it_crackers, coca_cola_12packs, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, salmon, betty_crocker_fruit_snacks, pork_spare_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, peaches_per_lb, nectarines_per_lb, pringles, oscar_mayer_hot_dogs
+- **Accepted:** 68
+- **Rejected:** 12
+- **Manual review:** 14
+- **Families updated:** kettle_brand_chips, cheez_it_crackers, lacroix_8pack, simply_refrigerated_juice_lemonade, dreyers_tubs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, clif_bars, ribeye_steak, tri_tip_roast, betty_crocker_fruit_snacks, pork_spare_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, nabisco_snack_crackers_regular, peaches_per_lb, nectarines_per_lb, salmon, pringles, oscar_mayer_hot_dogs
 
 ## Graph update safety check
 
 ### All-time low changes
 
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
-- `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `dreyers_tubs` (Safeway): $0.25: Dreyer's Ice Cream
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
-- `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `clif_bars` (Safeway): $0.1: CLIF Bars
 - `pringles` (Vons): $1.49: Pringles
 - `kettle_brand_chips` (Safeway): $1.67: Kettle Brand Potato Chips
-- `coca_cola_12packs` (Safeway): $5.2: Coca-Cola 12-pack 12-oz. cans
 - `dreyers_tubs` (Safeway): $0.25: Dreyer's Ice Cream
 - `cherries_per_lb` (Safeway): $1.99: Red Cherries
 - `sweet_corn` (Safeway): $0.12: Sweet Corn
-- `butter_16oz` (Safeway): $2.99: Challenge Butter
 - `clif_bars` (Safeway): $0.1: CLIF Bars
 - `pringles` (Vons): $1.49: Pringles
 
 ### Graph preview changes
 
+- `coca_cola_12packs` (Safeway): blocked $5.2: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+- `butter_16oz` (Safeway): blocked $2.99: missing required auto-match attribute(s): product_form
+- `salmon` (Safeway): blocked $5.0: hard negative keyword/pattern hit: portion
+- `kettle_brand_chips` (Vons): blocked $11.99: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
 - `popcorners` (Vons): blocked $2.5: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
+- `nabisco_snack_crackers` (Vons): blocked $3.99: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Vons): blocked $5.33: large price change 300% vs prior week requires audit
 - `pepsi_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
+- `general_mills_cereal_regular` (Vons): blocked $2.0: allowed_package_patterns configured but no explicit package signal; missing required auto-match attribute(s): package_size
 - `cape_cod_chips` (Vons): hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
+- `coca_cola_12packs` (Safeway): blocked $5.2: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+- `butter_16oz` (Safeway): blocked $2.99: missing required auto-match attribute(s): product_form
+- `salmon` (Safeway): blocked $5.0: hard negative keyword/pattern hit: portion
+- `kettle_brand_chips` (Vons): blocked $11.99: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
 - `popcorners` (Vons): blocked $2.5: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
-- `coca_cola_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
+- `nabisco_snack_crackers` (Vons): blocked $3.99: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Vons): blocked $5.33: large price change 300% vs prior week requires audit
 - `pepsi_12packs` (Vons): blocked $5.33: confidence 0.65 < min 0.70
+- `general_mills_cereal_regular` (Vons): blocked $2.0: allowed_package_patterns configured but no explicit package signal; missing required auto-match attribute(s): package_size
 - `cape_cod_chips` (Vons): hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
 
 ### Blocked from tracker graph
 
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola 12-pack 12-oz. cans' @ $5.2
+  - Reason: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+  - Hard negatives: \bbottles?\b
+- `salmon` (Safeway): **rejected**: 'Fresh Atlantic Salmon Portion' @ $5.0
+  - Reason: hard negative keyword/pattern hit: portion
+  - Hard negatives: portion
 - `lays_potato_chips_regular` (Vons): **rejected**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
   - Hard negatives: kettle cooked
+- `kettle_brand_chips` (Vons): **rejected**: 'Kettle Brand Chips Party Size 11.25-13 oz.' @ $11.99
+  - Reason: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
+  - Hard negatives: party size
+- `nabisco_snack_crackers` (Vons): **rejected**: 'Select Nabisco Snack Crackers' @ $3.99
+  - Reason: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
 - `cape_cod_chips` (Vons): **rejected**: "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None
   - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
   - Hard negatives: kettle brand
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola 12-pack 12-oz. cans' @ $5.2
+  - Reason: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+  - Hard negatives: \bbottles?\b
+- `salmon` (Safeway): **rejected**: 'Fresh Atlantic Salmon Portion' @ $5.0
+  - Reason: hard negative keyword/pattern hit: portion
+  - Hard negatives: portion
 - `lays_potato_chips_regular` (Vons): **rejected**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
   - Hard negatives: kettle cooked
+- `kettle_brand_chips` (Vons): **rejected**: 'Kettle Brand Chips Party Size 11.25-13 oz.' @ $11.99
+  - Reason: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
+  - Hard negatives: party size
+- `nabisco_snack_crackers` (Vons): **rejected**: 'Select Nabisco Snack Crackers' @ $3.99
+  - Reason: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
 - `cape_cod_chips` (Vons): **rejected**: "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None
   - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review
   - Hard negatives: kettle brand
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi Zero Sugar' @ $None
   - Reason: confidence 0.25 < min 0.70
+- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
+  - Reason: missing required auto-match attribute(s): product_form
 - `lays_kettle_cooked` (Vons): **manual_review**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: confidence 0.53 < min 0.60
 - `popcorners` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.65 < min 0.70
+  - Reason: large price change 300% vs prior week requires audit
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
   - Reason: confidence 0.65 < min 0.70
+- `general_mills_cereal_regular` (Vons): **manual_review**: 'Cheerios' @ $2.0
+  - Reason: allowed_package_patterns configured but no explicit package signal; missing required auto-match attribute(s): package_size
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi Zero Sugar' @ $None
   - Reason: confidence 0.25 < min 0.70
+- `butter_16oz` (Safeway): **manual_review**: 'Challenge Butter' @ $2.99
+  - Reason: missing required auto-match attribute(s): product_form
 - `lays_kettle_cooked` (Vons): **manual_review**: "Lay's Potato Chips, Kettle Cooked Chips" @ $None
   - Reason: confidence 0.53 < min 0.60
 - `popcorners` (Vons): **manual_review**: "Lay's Potato Chips, Doritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $2.5
   - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.63 needs review
 - `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
-  - Reason: confidence 0.65 < min 0.70
+  - Reason: large price change 300% vs prior week requires audit
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $5.33
   - Reason: confidence 0.65 < min 0.70
+- `general_mills_cereal_regular` (Vons): **manual_review**: 'Cheerios' @ $2.0
+  - Reason: allowed_package_patterns configured but no explicit package signal; missing required auto-match attribute(s): package_size
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `coca_cola_12packs`: 'Coca-Cola 12-pack 12-oz. cans' @ $5.2: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+- `salmon`: 'Fresh Atlantic Salmon Portion' @ $5.0: hard negative keyword/pattern hit: portion
+- `kettle_brand_chips`: 'Kettle Brand Chips Party Size 11.25-13 oz.' @ $11.99: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
+- `coca_cola_12packs`: 'Coca-Cola 12-pack 12-oz. cans' @ $5.2: hard negative keyword/pattern hit: \bbottles?\b; mixed-item offer has conflicting package/container cues
+- `salmon`: 'Fresh Atlantic Salmon Portion' @ $5.0: hard negative keyword/pattern hit: portion
+- `kettle_brand_chips`: 'Kettle Brand Chips Party Size 11.25-13 oz.' @ $11.99: hard negative keyword/pattern hit: party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; large price change 538% vs prior week requires audit
 
 ## Accepted matches
 
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `cheez_it_crackers` (Safeway): "Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats" @ $4.99 (confidence 0.90)
   - Display: Cheez-It crackers
   - Subtitle: regular size, 6.5–12.4 oz
-- `coca_cola_12packs` (Safeway): 'Coca-Cola 12-pack 12-oz. cans' @ $5.2 (confidence 1.00)
-  - Display: Coca-Cola
-  - Subtitle: 12-pack, 12 fl oz cans
 - `lacroix_8pack` (Safeway): 'La Croix Sparkling Water 8 pack, 12 oz. cans.' @ $3.49 (confidence 0.70)
   - Display: LaCroix sparkling water
   - Subtitle: 8-pack, 12 fl oz cans
@@ -114,16 +160,13 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenge Butter' @ $2.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 0.90)
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 0.90)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $1.99 (confidence 0.90)
@@ -138,9 +181,6 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast Value Pack' @ $12.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
 - `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks' @ $2.5 (confidence 0.90)
   - Display: Gushers / Fruit by the Foot
   - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
@@ -156,6 +196,13 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `ruffles_regular_bags` (Vons): "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
+- `nabisco_snack_crackers_regular` (Vons): 'Select Nabisco Snack Crackers' @ $3.99 (confidence 0.98)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `seedless_grapes_per_lb` (Vons): 'Large Red Seedless Grapes' @ $2.53 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -171,9 +218,6 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `nectarines_per_lb` (Vons): 'Nectarines' @ $1.99 (confidence 0.90)
   - Display: Nectarines
   - Subtitle: per lb
-- `general_mills_cereal_regular` (Vons): 'Cheerios' @ $2.0 (confidence 0.70)
-  - Display: General Mills cereal
-  - Subtitle: regular size, 8.9–15 oz
 - `ribeye_steak` (Vons): 'Ribeye Steak LIMIT 2 VALUE PACKS' @ $7.99 (confidence 0.90)
   - Display: Ribeye steak
   - Subtitle: per lb
@@ -189,15 +233,12 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `oscar_mayer_hot_dogs` (Vons): 'Oscar Mayer Beef Franks' @ $3.49 (confidence 0.76)
   - Display: Oscar Mayer hot dogs
   - Subtitle: 15–16 oz packs
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 0.90)
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.67 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `cheez_it_crackers` (Safeway): "Cheez-It Crackers 12-ct. Kellogg's Rice Krispies Treats" @ $4.99 (confidence 0.90)
   - Display: Cheez-It crackers
   - Subtitle: regular size, 6.5–12.4 oz
-- `coca_cola_12packs` (Safeway): 'Coca-Cola 12-pack 12-oz. cans' @ $5.2 (confidence 1.00)
-  - Display: Coca-Cola
-  - Subtitle: 12-pack, 12 fl oz cans
 - `lacroix_8pack` (Safeway): 'La Croix Sparkling Water 8 pack, 12 oz. cans.' @ $3.49 (confidence 0.70)
   - Display: LaCroix sparkling water
   - Subtitle: 8-pack, 12 fl oz cans
@@ -225,16 +266,13 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.12 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenge Butter' @ $2.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese 8 oz.' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 0.90)
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5 to 6 ct.' @ $1.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 0.90)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal 8.9 to 12 oz.' @ $1.99 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $1.99 (confidence 0.90)
@@ -249,9 +287,6 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast Value Pack' @ $12.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.0 (confidence 1.00)
-  - Display: Salmon
-  - Subtitle: fresh salmon fillet
 - `betty_crocker_fruit_snacks` (Safeway): 'Betty Crocker Fruit Snacks' @ $2.5 (confidence 0.90)
   - Display: Gushers / Fruit by the Foot
   - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
@@ -267,6 +302,13 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `ruffles_regular_bags` (Vons): "Cheez-It, Pringles, Nabisco Family Size Cookies or Crackers, Doritos, Lay's, Tostitos, Ruffles, Fritos, Smartfood, Cheetos, PopCorners, Stacy's, Cape Cod, Kettle Brand, Snyder's of Hanover, Utz, Pirate's Booty, Angie's Boom Chicka Pop, SkinnyPop, Pop Secret, Orville Redenbacher's, Act II, Crunch 'n Munch, Planters, Blue Diamond, Wonderful Pistachios, Emerald, David Seeds, Jack Link's, Oberto, Slim Jim, Old Wisconsin, Duke's, Lorissa's Kitchen, Krave, Epic, Chomps, Stryve, Country Archer, Chef's Cut, Field Trip, Wild Zora, Vermont, Think Jerky, Perky Jerky, The New Primal, Brooklyn Biltong, Ayoba, Sogo Snacks, Nick's Sticks, People's Choice, Prevail Jerky, Righteous Felon, Baja Vida, Carnivore Candy, Cattleman's Cut, Country Archer Provisions, Duke's Shorty Sausages, Field Trip Jerky, Jack Link's Beef Jerky, Krave Jerky, Lorissa's Kitchen Jerky, Oberto Beef Jerky, Old Trapper, Pacific Gold, People's Choice Beef Jerky, Perky Jerky, Sogo Snacks Jerky, Think Jerky, Vermont Smoke & Cure, Wild Zora Jerky" @ $None (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
+- `nabisco_snack_crackers_regular` (Vons): 'Select Nabisco Snack Crackers' @ $3.99 (confidence 0.98)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `seedless_grapes_per_lb` (Vons): 'Large Red Seedless Grapes' @ $2.53 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -282,9 +324,6 @@ Generated: 2026-07-26T18:49:20.462526+00:00
 - `nectarines_per_lb` (Vons): 'Nectarines' @ $1.99 (confidence 0.90)
   - Display: Nectarines
   - Subtitle: per lb
-- `general_mills_cereal_regular` (Vons): 'Cheerios' @ $2.0 (confidence 0.70)
-  - Display: General Mills cereal
-  - Subtitle: regular size, 8.9–15 oz
 - `ribeye_steak` (Vons): 'Ribeye Steak LIMIT 2 VALUE PACKS' @ $7.99 (confidence 0.90)
   - Display: Ribeye steak
   - Subtitle: per lb

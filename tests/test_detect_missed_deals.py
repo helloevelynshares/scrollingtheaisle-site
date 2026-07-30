@@ -75,6 +75,49 @@ class TestFamilyMatches(unittest.TestCase):
         )
 
 
+class TestKeepSeparateBlockedMiss(unittest.TestCase):
+    """Jul 29 Chips Ahoy class: include hits but keep_separate blocks → flag miss."""
+
+    def test_strips_bang_so_include_hits(self) -> None:
+        row = {
+            "split_product_text": (
+                "Nabisco Chips Ahoy! Cookies 7-13 oz. pkg. "
+                "Nabisco Snack Crackers 3.5 to 9.1 oz."
+            )
+        }
+        text = dmd._match_text(row)
+        self.assertIn("chips ahoy cookies", text)
+        self.assertNotIn("!", text)
+
+    def test_unsplit_nabisco_mix_is_include_plus_exclude(self) -> None:
+        fam = family_by_id()["chips_ahoy"]
+        text = (
+            "nabisco chips ahoy cookies 7-13 oz. pkg. "
+            "nabisco snack crackers 3.5 to 9.1 oz."
+        )
+        self.assertTrue(dmd.family_include_hit(text, fam))
+        self.assertTrue(dmd.family_exclude_hit(text, fam))
+        self.assertFalse(dmd.family_matches(text, fam))
+
+    def test_hallucinated_oreo_ritz_also_excluded(self) -> None:
+        fam = family_by_id()["chips_ahoy"]
+        text = (
+            "nabisco chips ahoy cookies, snack crackers, "
+            "oreo or ritz crackers 3.5–13.7 oz"
+        )
+        self.assertTrue(dmd.family_include_hit(text, fam))
+        self.assertTrue(dmd.family_exclude_hit(text, fam))
+
+    def test_candidate_severity_keep_separate_is_medium(self) -> None:
+        c = dmd.Candidate(feed="safeway", week="2026-07-29", family_id="chips_ahoy")
+        c.in_split = True
+        c.blocked_by_keep_separate = True
+        c.multi_product = True
+        self.assertEqual(c.severity, "medium")
+        self.assertIn("keep_separate_from", c.reason)
+        self.assertIn("manually_added_missed_tile", c.reason)
+
+
 class TestCandidateSeverity(unittest.TestCase):
     def test_raw_only_focused_is_high(self) -> None:
         c = dmd.Candidate(feed="safeway", week="2026-07-08", family_id="x")

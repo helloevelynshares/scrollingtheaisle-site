@@ -19,16 +19,23 @@ def parse_iso_date(value: str) -> date:
     return date.fromisoformat(value)
 
 
+def early_publish_start(week_start: str) -> date:
+    """Ad weeks soft-start one calendar day early for late night-before publishes."""
+    from datetime import timedelta
+
+    return parse_iso_date(week_start) - timedelta(days=1)
+
+
 def is_preview_week(week_start: str, as_of: date | None = None) -> bool:
-    """True when today is strictly before the ad week start date."""
+    """True when today is before the early-publish window (day before week start)."""
     today = parse_iso_date(as_of.isoformat() if as_of else iso_date())
-    return today < parse_iso_date(week_start)
+    return today < early_publish_start(week_start)
 
 
 def is_active_week(week_start: str, week_end: str, as_of: date | None = None) -> bool:
-    """True when today falls within the ad week (inclusive)."""
+    """True when today falls in the soft-start..week_end window (inclusive)."""
     today = parse_iso_date(as_of.isoformat() if as_of else iso_date())
-    start = parse_iso_date(week_start)
+    start = early_publish_start(week_start)
     end = parse_iso_date(week_end)
     return start <= today <= end
 

@@ -1,121 +1,149 @@
 # Canonical match audit: 2026-07-08 to 2026-07-14
 
-Generated: 2026-07-26T18:49:20.618265+00:00
+Generated: 2026-07-30T03:20:15.551364+00:00
 
 ## Summary
 
 - **Accepted:** 62
-- **Rejected:** 16
-- **Manual review:** 4
-- **Families updated:** doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, chips_ahoy, oreo_family_size, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb, smartfood_popcorn, frito_lay_multipack_chips, pop_tarts, bell_peppers, beef_short_ribs_per_lb, pork_spare_ribs_per_lb, ritz_crackers, cheez_it_crackers, simply_refrigerated_juice_lemonade, strawberries_1_2lb, berries_6oz, eggs_dozen_normalized, butter_16oz, chicken_wings_per_lb
+- **Rejected:** 18
+- **Manual review:** 8
+- **Families updated:** doritos_5_13oz, ruffles_regular_bags, nabisco_snack_crackers, chips_ahoy, oreo_family_size, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, pillsbury_refrigerated_dough, chicken_breast_per_lb, smartfood_popcorn, frito_lay_multipack_chips, pop_tarts, bell_peppers, beef_short_ribs_per_lb, pork_spare_ribs_per_lb, ritz_crackers, nabisco_snack_crackers_regular, cheez_it_crackers, simply_refrigerated_juice_lemonade, strawberries_1_2lb, berries_6oz, eggs_dozen_normalized, chicken_wings_per_lb
 
 ## Graph update safety check
 
 ### All-time low changes
 
+- `nabisco_snack_crackers_regular` (Vons): $2.49: Wheat Thins
 - `cheez_it_crackers` (Vons): $1.67: Cheez-It Crackers, Keebler Fudge Shoppe Cookies
 - `berries_6oz` (Vons): $0.99: Blueberries
+- `nabisco_snack_crackers_regular` (Vons): $2.49: Wheat Thins
 - `cheez_it_crackers` (Vons): $1.67: Cheez-It Crackers, Keebler Fudge Shoppe Cookies
 - `berries_6oz` (Vons): $0.99: Blueberries
 
 ### Graph preview changes
 
-- `coca_cola_12packs` (Safeway): blocked $3.99: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
-- `pepsi_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+- `nabisco_snack_crackers_regular` (Safeway): blocked $3.49: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+- `pepsi_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
 - `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: pint
-- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
-- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
+- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
+- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
 - `chicken_wings_per_lb` (Safeway): blocked $5.0: multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
-- `nabisco_snack_crackers` (Vons): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `cape_cod_chips` (Vons): blocked $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
-- `coca_cola_12packs` (Safeway): blocked $3.99: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
-- `pepsi_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+- `nabisco_snack_crackers` (Vons): blocked $2.49: missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `lucerne_eggs_18` (Vons): blocked $2.49: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $3.99: missing required auto-match attribute(s): product_form
+- `cape_cod_chips` (Vons): blocked $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `nabisco_snack_crackers_regular` (Safeway): blocked $3.49: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+- `pepsi_12packs` (Safeway): blocked $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
 - `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: pint
-- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
-- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
+- `butter_16oz` (Safeway): blocked $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
+- `salmon` (Safeway): blocked $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
 - `chicken_wings_per_lb` (Safeway): blocked $5.0: multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
-- `nabisco_snack_crackers` (Vons): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `cape_cod_chips` (Vons): blocked $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `nabisco_snack_crackers` (Vons): blocked $2.49: missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+- `pepsi_12packs` (Vons): blocked $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `lucerne_eggs_18` (Vons): blocked $2.49: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $3.99: missing required auto-match attribute(s): product_form
+- `cape_cod_chips` (Vons): blocked $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
 
 ### Blocked from tracker graph
 
+- `nabisco_snack_crackers_regular` (Safeway): **rejected**: 'Nabisco Family Size Snack Crackers 10-14 oz' @ $3.49
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+  - Hard negatives: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b
 - `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi' @ $3.99
-  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
+  - Reason: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+  - Hard negatives: \bbottles?\b
 - `pepsi_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi' @ $3.99
-  - Reason: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+  - Reason: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
   - Hard negatives: 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries Pint, Raspberries' @ $2.99
   - Reason: hard negative keyword/pattern hit: pint
   - Hard negatives: pint
 - `butter_16oz` (Safeway): **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
-  - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+  - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
   - Hard negatives: spread, 13\s*to\s*15
 - `salmon` (Safeway): **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
-  - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
-  - Hard negatives: smoked, nova, 4 oz, acme, \b[234]\s*oz\b
+  - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
+  - Hard negatives: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b
 - `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
-  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
 - `pepsi_12packs` (Vons): **rejected**: 'Pepsi 2 liter' @ $0.99
-  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
 - `cape_cod_chips` (Vons): **rejected**: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99
-  - Reason: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Reason: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
   - Hard negatives: kettle brand, party size
+- `nabisco_snack_crackers_regular` (Safeway): **rejected**: 'Nabisco Family Size Snack Crackers 10-14 oz' @ $3.49
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+  - Hard negatives: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b
 - `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi' @ $3.99
-  - Reason: ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review; new all-time low $3.99 requires confidence >= 0.90 (got 0.55)
+  - Reason: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+  - Hard negatives: \bbottles?\b
 - `pepsi_12packs` (Safeway): **rejected**: 'Coca-Cola, Pepsi' @ $3.99
-  - Reason: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+  - Reason: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
   - Hard negatives: 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Blueberries Pint, Raspberries' @ $2.99
   - Reason: hard negative keyword/pattern hit: pint
   - Hard negatives: pint
 - `butter_16oz` (Safeway): **rejected**: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49
-  - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
+  - Reason: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
   - Hard negatives: spread, 13\s*to\s*15
 - `salmon` (Safeway): **rejected**: 'Acme Smoked Nova Salmon 4 oz' @ $4.99
-  - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
-  - Hard negatives: smoked, nova, 4 oz, acme, \b[234]\s*oz\b
+  - Reason: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
+  - Hard negatives: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b
 - `coca_cola_12packs` (Vons): **rejected**: 'Coca-Cola 2 liter' @ $0.99
-  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
 - `pepsi_12packs` (Vons): **rejected**: 'Pepsi 2 liter' @ $0.99
-  - Reason: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-  - Hard negatives: 2 liter, 2 l, 2\s*[- ]?liter
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
 - `cape_cod_chips` (Vons): **rejected**: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99
-  - Reason: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Reason: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
   - Hard negatives: kettle brand, party size
 - `chicken_wings_per_lb` (Safeway): **manual_review**: 'Foster Farms Chicken Party Wings or Del Real Entrée Selected varieties' @ $5.0
   - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+  - Reason: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.49
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
 - `chicken_wings_per_lb` (Safeway): **manual_review**: 'Foster Farms Chicken Party Wings or Del Real Entrée Selected varieties' @ $5.0
   - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+  - Reason: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.49
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `pepsi_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+- `nabisco_snack_crackers_regular`: 'Nabisco Family Size Snack Crackers 10-14 oz' @ $3.49: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+- `pepsi_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
 - `berries_6oz`: 'Blueberries Pint, Raspberries' @ $2.99: hard negative keyword/pattern hit: pint
-- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
-- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
-- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `cape_cod_chips`: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
-- `pepsi_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; medium pattern confidence 0.55 needs review
+- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
+- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `cape_cod_chips`: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `nabisco_snack_crackers_regular`: 'Nabisco Family Size Snack Crackers 10-14 oz' @ $3.49: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b10\s*(?:to|-|–)\s*14\b; ad product type 'family_size_snack_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: \bbottles?\b; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
+- `pepsi_12packs`: 'Coca-Cola, Pepsi' @ $3.99: hard negative keyword/pattern hit: 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues; medium pattern confidence 0.55 needs review
 - `berries_6oz`: 'Blueberries Pint, Raspberries' @ $2.99: hard negative keyword/pattern hit: pint
-- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'
-- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[234]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'
-- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2 l, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
-- `cape_cod_chips`: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `butter_16oz`: "Land O'Lakes Butter 16-oz. Spread 13 to 15-oz. Selected varieties." @ $3.49: hard negative keyword/pattern hit: spread, 13\s*to\s*15; ad product type 'butter_spread' is incompatible with canonical intent 'butter_sticks'; missing required auto-match attribute(s): product_form
+- `salmon`: 'Acme Smoked Nova Salmon 4 oz' @ $4.99: hard negative keyword/pattern hit: smoked, nova, 4 oz, acme, \b[2347]\s*oz\b; ad product type 'smoked_salmon' is incompatible with canonical intent 'fresh_salmon_fillets'; new all-time low $4.99 requires confidence >= 0.85 (got 0.75)
+- `coca_cola_12packs`: 'Coca-Cola 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; new all-time low $0.99 requires confidence >= 0.90 (got 0.75)
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $0.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `cape_cod_chips`: 'Weber Seasoning 4.3-6.5 oz. Twinings Refreshers 5 ct. Kettle Brand or Cape Cod 11.25-14 oz., Party Size Selected varieties' @ $3.99: hard negative keyword/pattern hit: kettle brand, party size; ad product type 'party_size' is incompatible with canonical intent 'regular_chip_bag'; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
 
 ## Accepted matches
 
@@ -183,6 +211,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `ritz_crackers` (Vons): 'Ritz Crackers' @ $2.49 (confidence 1.00)
   - Display: Ritz crackers
   - Subtitle: regular size, 8.8–13.7 oz
+- `nabisco_snack_crackers_regular` (Vons): 'Wheat Thins' @ $2.49 (confidence 0.93)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `cheez_it_crackers` (Vons): 'Cheez-It Crackers, Keebler Fudge Shoppe Cookies' @ $1.67 (confidence 0.70)
   - Display: Cheez-It crackers
   - Subtitle: regular size, 6.5–12.4 oz
@@ -209,10 +244,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.49 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `chicken_wings_per_lb` (Vons): 'Chicken Wings' @ $5.0 (confidence 0.93)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)
@@ -280,6 +312,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `ritz_crackers` (Vons): 'Ritz Crackers' @ $2.49 (confidence 1.00)
   - Display: Ritz crackers
   - Subtitle: regular size, 8.8–13.7 oz
+- `nabisco_snack_crackers_regular` (Vons): 'Wheat Thins' @ $2.49 (confidence 0.93)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `cheez_it_crackers` (Vons): 'Cheez-It Crackers, Keebler Fudge Shoppe Cookies' @ $1.67 (confidence 0.70)
   - Display: Cheez-It crackers
   - Subtitle: regular size, 6.5–12.4 oz
@@ -306,10 +345,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.49 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `chicken_wings_per_lb` (Vons): 'Chicken Wings' @ $5.0 (confidence 0.93)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)

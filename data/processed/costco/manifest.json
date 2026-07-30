@@ -1,7 +1,7 @@
 {
-  "importedAt": "2026-07-26T18:49:27.153677+00:00",
+  "importedAt": "2026-07-30T03:20:23.548237+00:00",
   "sourceRoot": "/Users/evelynchan/Documents/costco-mvp/costco_data",
-  "observationCount": 23836,
+  "observationCount": 24458,
   "filesByWarehouse": {
     "san_francisco": [
       "2026-03-30_san-francisco_cereal.csv",
@@ -36,7 +36,8 @@
       "2026-07-08_san-francisco_consolidated.csv",
       "2026-07-12_san-francisco_consolidated.csv",
       "2026-07-15_san-francisco_consolidated.csv",
-      "2026-07-23_san-francisco_consolidated.csv"
+      "2026-07-23_san-francisco_consolidated.csv",
+      "2026-07-29_san-francisco_consolidated.csv"
     ],
     "tustin": [
       "2026-03-30_tustin_cereal.csv",
@@ -105,7 +106,7 @@
   "dateRangeByWarehouse": {
     "san_francisco": {
       "min": "2026-03-30",
-      "max": "2026-07-23"
+      "max": "2026-07-29"
     },
     "tustin": {
       "min": "2026-03-30",

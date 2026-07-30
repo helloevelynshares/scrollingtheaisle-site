@@ -81,7 +81,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_potato_chips_regular
   canonical_tracker_family: Lay's potato chips
-  size_format_subtitle: regular size, 5–13 oz
+  size_format_subtitle: regular bags 5–13 oz, including Poppables
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -100,13 +100,18 @@ families:
   - Lay's Kettle
   - Lay's Stax
   - Lay's Party Size
+  - Lay's Baked
+  - Baked Lay's
   - Simply Lay's
   - Simply Popables
   - Simply Poppables
   - Pringles
   - Cape Cod
   - Smartfood
-  notes: 'Flyers often abbreviate siblings as Lay''s Kettle (no Cooked); keep_separate covers that.'
+  notes: >
+    Poppables share the regular-bag family (same ~$4.29 baseline and sale grouping).
+    Lay's Baked is a different baseline/sale group — keep separate.
+    Flyers often abbreviate siblings as Lay's Kettle (no Cooked); keep_separate covers that.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -114,7 +119,7 @@ families:
   homepage_group: snacks_and_crackers
 - id: lays_kettle_cooked
   canonical_tracker_family: Lay's Kettle Cooked chips
-  size_format_subtitle: regular size, 7.75–8 oz
+  size_format_subtitle: regular kettle bags 6–8 oz
   category: chips_salty_snacks
   organic_status: not_applicable
   include:
@@ -137,7 +142,11 @@ families:
   - Family Size
   - Sun Chips
   - Cape Cod chips
-  notes: 'Ads often print Lay''s Kettle or Kettle Cooked Chips without the full brand+line name. Do not take Cape Cod / Sun Chips mix tiles.'
+  notes: >
+    Lay's Kettle has two size buckets only: regular 6–8 oz (this family) and
+    party size ~12.5 oz (lays_party_size / party-size copy — keep separate).
+    Ads include a size; do not send bare size ambiguity to manual review.
+    Do not take Cape Cod / Sun Chips mix tiles or other Lay's lines.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -235,7 +244,9 @@ families:
   - Simply Ruffles
   - Ruffles Party Size
   - Party Size Ruffles
+  - Party Size!
   - party size
+  - Party Size! Chips
   - Frito-Lay multipack chips
   - Lindt
   - Gourmet Truffles
@@ -372,6 +383,75 @@ families:
   - reviewed_weekly_ads_and_transcripts
   display_order: 14
   homepage_group: snacks_and_crackers
+- id: nabisco_snack_crackers_regular
+  canonical_tracker_family: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  display_name: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  size_format_subtitle: regular size, 3.5–9.1 oz
+  subtitle: regular size, 3.5–9.1 oz
+  manufacturer_family: Nabisco
+  package_type: regular_size_box
+  size_range: 3.5–9.1 oz
+  allowed_product_lines:
+  - Wheat Thins
+  - Triscuit
+  - Chicken in a Biskit
+  eligible_item_examples:
+  - Wheat Thins Original 8–9.1 oz
+  - Wheat Thins Reduced Fat 8–9.1 oz
+  - Triscuit Original 7.6–8.5 oz
+  - Triscuit Reduced Fat 7–8.5 oz
+  - Chicken in a Biskit Original ~7.1–8 oz
+  - Chicken in a Biskit Ranch ~7.1–8 oz
+  category: cookies_crackers
+  organic_status: not_applicable
+  include:
+  - Nabisco Snack Crackers
+  - Nabisco snack crackers
+  - Wheat Thins
+  - Triscuit
+  - Triscuit Crackers
+  - Chicken in a Biskit
+  - Chicken in a Biscuit
+  - Chicken and a Biskit
+  - Chicken and a Biscuit
+  keep_separate_from:
+  - Family Size
+  - family size
+  - Nabisco Snack Crackers Family Size
+  - 11.5-14
+  - 11.5 to 14
+  - 10-14
+  - 10 to 14
+  - Ritz crackers
+  - Ritz Toasted Chips
+  - Chips Ahoy
+  - Oreo
+  - Teddy Grahams
+  - Nilla Wafers
+  - Premium Saltines
+  - Premium minis
+  - Good Thins
+  - Belvita
+  - Kettle Potato Chips
+  - Kettle Brand
+  - Nabisco Single Serve Snacks
+  - snack pack
+  - mini pack
+  - 10 pack
+  - party size
+  - cookies
+  - family size cookies
+  notes: >-
+    Regular-size snack cracker boxes only (3.5–9.1 oz): Wheat Thins, Triscuit,
+    and Chicken in a Biskit. Flyer copy usually says "Nabisco Snack Crackers"
+    3.5–9.1 oz even when the shelf SKUs are those three brands. Keep separate
+    from the family-size nabisco_snack_crackers tracker (11.5–14 oz), Chips Ahoy,
+    Oreo, Ritz, Belvita, Kettle mix-tile siblings, and single-serve packs.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 15
+  homepage_group: snacks_and_crackers
 - id: nabisco_snack_crackers
   canonical_tracker_family: Wheat Thins, Triscuit & Chicken in a Biskit
   display_name: Wheat Thins, Triscuit & Chicken in a Biskit
@@ -420,18 +500,23 @@ families:
   - 10 pack
   - cookies
   - family size cookies
+  - regular size Nabisco snack crackers
+  - Nabisco Snack Crackers 3.5
+  - 3.5-9.1
+  - 3.5 to 9.1
+  - 3.5–9.1
   notes: >-
     Family-size snack cracker boxes only (11.5–14 oz): Wheat Thins, Triscuit,
     and Chicken in a Biskit. Matches the Vons/Safeway "Nabisco Snack Crackers
     Family Size" $3.49 promo (eligible items are Wheat Thins/Triscuit/Chicken in
     a Biskit family-size boxes). Do NOT group with Oreo, Chips Ahoy, Ritz,
-    Nabisco single-serve snack packs, or regular-size cracker boxes outside the
-    11.5–14 oz range. A bare "Nabisco snack crackers" offer with no size and no
-    eligible items is manual review, not an auto graph update.
+    Nabisco single-serve snack packs, or regular-size cracker boxes (3.5–9.1 oz
+    → nabisco_snack_crackers_regular). A bare "Nabisco snack crackers" offer with
+    no size and no eligible items is manual review, not an auto graph update.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
-  display_order: 15
+  display_order: 16
   homepage_group: snacks_and_crackers
 - id: cheez_it_crackers
   canonical_tracker_family: Cheez-It crackers
@@ -928,6 +1013,48 @@ families:
   - reviewed_weekly_ads_and_transcripts
   display_order: 38
   homepage_group: produce
+- id: mandarins_3lb
+  canonical_tracker_family: Mandarin oranges
+  display_name: Mandarin oranges (Cuties)
+  size_format_subtitle: 3 lb bag
+  subtitle: 3 lb bag
+  category: produce
+  organic_status: conventional
+  include:
+  - Cuties Mandarins
+  - Cuties Mandarin Oranges
+  - Cuties
+  - California Mandarins
+  - mandarin oranges
+  - mandarins
+  - clementines
+  - clementine
+  keep_separate_from:
+  - Peelz
+  - Peelz Mandarins
+  - navel oranges
+  - navel
+  - Geisha
+  - canned
+  - mandarin oranges 15 oz
+  - 15 oz
+  - 2 lb
+  - 2-lb
+  - 2-lb.
+  - organic mandarins
+  notes: >-
+    Track conventional 3 lb bagged mandarin oranges/clementines (Cuties, California
+    Mandarins, etc.) as bag totals. Do NOT match Peelz — user intent is fresh
+    mandarin oranges, not Peelz candy (even when ads say "Peelz Mandarins").
+    Require an explicit 3 lb confirmation — Safeway also runs 2 lb Cuties tiles
+    (e.g. 2026-04-01 @ $1.99) that must stay off this graph. Keep navels and
+    canned mandarin oranges separate. Chart baseline $6.99 (Safeway shelf,
+    Evelyn 2026-07-29).
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 80
+  homepage_group: produce
 - category: produce
   organic_status: conventional
   confidence: working
@@ -1013,8 +1140,9 @@ families:
 - id: eggs_dozen_normalized
   canonical_tracker_family: Lucerne eggs
   display_name: Lucerne Eggs
-  size_format_subtitle: per dozen
-  subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+  size_format_subtitle: 12-count carton
+  subtitle: Lucerne large eggs, 12-count
+  display_card_group: lucerne_eggs
   category: dairy
   organic_status: conventional
   include:
@@ -1044,9 +1172,66 @@ families:
   - Nellie's
   - Nellies
   - Open Nature
-  notes: Track Lucerne store-brand large eggs only (interchangeable weekly buy).
-    Normalize 18/24 ct packs to price per dozen. Prefer crawl baseline Lucerne
-    12-count shelf price for the "Usually" anchor.
+  - 18 ct
+  - 18-ct
+  - 18 count
+  - 18-count
+  - 24 ct
+  - 24-count
+  notes: >
+    Lucerne 12-count only. 18-count is tracked separately as lucerne_eggs_18.
+    UI shows one Lucerne Eggs card and picks the better 12- vs 18-count deal.
+  confidence: working
+  source_basis:
+  - reviewed_weekly_ads_and_transcripts
+  display_order: 43
+  homepage_group: dairy_breakfast_bakery
+- id: lucerne_eggs_18
+  canonical_tracker_family: Lucerne eggs 18-count
+  display_name: Lucerne Eggs (18-count)
+  size_format_subtitle: 18-count carton
+  subtitle: Lucerne large eggs, 18-count
+  display_card_group: lucerne_eggs
+  category: dairy
+  organic_status: conventional
+  include:
+  - Lucerne eggs
+  - Lucerne Large Eggs
+  - Lucerne Cage Free Eggs
+  - Lucerne Farms Eggs
+  keep_separate_from:
+  - egg whites
+  - liquid eggs
+  - egg beaters
+  - hard boiled
+  - chocolate eggs
+  - candy eggs
+  - Russell Stover
+  - Reese's Eggs
+  - Cadbury
+  - Kinder Joy
+  - Ferrero Egg
+  - Easter eggs
+  - organic eggs
+  - pasture-raised
+  - pasture raised
+  - Vital Farms
+  - Eggland's Best
+  - Happy Egg
+  - Nellie's
+  - Nellies
+  - Open Nature
+  - 12 ct
+  - 12-ct
+  - 12 count
+  - 12-count
+  - dozen
+  - 24 ct
+  - 24-count
+  notes: >
+    Lucerne 18-count carton only (package price, not scaled to dozen).
+    Shares the Lucerne Eggs display card with eggs_dozen_normalized; UI picks
+    the better per-egg deal between 12- and 18-count.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1060,10 +1245,15 @@ families:
   include:
   - Lucerne butter 16 oz
   - Challenge butter 16 oz
+  - Challenge Butter
+  - Danish Creamery butter 16 oz
+  - Danish Creamery Butter
   - Land O Lakes butter 16 oz
   - Kerrygold butter when comparable size or normalized
   - store-brand butter 16 oz
   - name-brand butter 16 oz
+  - butter 16 oz sticks
+  - butter sticks 16 oz
   keep_separate_from:
   - margarine
   - spreadable tubs
@@ -1152,7 +1342,7 @@ families:
 - id: chobani_yogurt_per_cup
   canonical_tracker_family: Chobani yogurt
   display_name: Chobani yogurt cups
-  size_format_subtitle: single cups or 4-packs; normalize per cup
+  size_format_subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
   category: yogurt
   organic_status: not_applicable
   include:
@@ -1164,7 +1354,6 @@ families:
   - Chobani Zero Sugar
   - Less Sugar Yogurt
   - Zero Sugar Yogurt
-  - Chobani 20g protein
   - Chobani 4-pack
   - Chobani 4 ct
   - Chobani Layered
@@ -1175,6 +1364,10 @@ families:
   - Chobani 32 oz
   - Chobani tub
   - 32 oz tub
+  - Chobani 20g protein
+  - Chobani Protein
+  - 20g protein
+  - Protein Yogurt
   - Fage cups
   - Fage tubs
   - Oikos
@@ -1185,9 +1378,10 @@ families:
   - Challenge Butter
   - Danone Light
   notes: >
-    Cups only — never 32 oz tubs (tracked as chobani_yogurt_tub).
-    Merge single cups and 4-packs; normalize to $/cup.
-    Shelf anchors: regular Greek single cup $1.99; 20g protein 4-pack $9.99 ($2.50/cup).
+    Cups / standard multipacks only — never 32 oz tubs (chobani_yogurt_tub).
+    Layered and other 4×5.3 oz multipacks share this family (multipack shelf ~$6.99;
+    normalize to $/cup). Do NOT merge 20g protein 4–6.7 oz multipacks (~$9.99 baseline).
+    Shelf anchors: regular Greek single cup $1.99; 4×5.3 oz multipack $6.99.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -1337,6 +1531,9 @@ families:
   - family size Chex
   - family size Honey Nut Cheerios
   - Honey Nut Cheerios family size
+  - General Mills Family Size Cereal
+  - General Mills family size cereal
+  - Family Size Cereal
   keep_separate_from:
   - regular-size General Mills cereal
   - Post cereal
@@ -1519,6 +1716,10 @@ families:
   - chicken breast strips
   - chicken strips
   - chicken tenders
+  - Thin Sliced
+  - thin sliced
+  - Chicken Breasts, Thin Sliced
+  - boneless skinless chicken breasts, thin sliced
   - Open Nature Chicken Breast Strips
   - organic chicken unless intentionally grouped
   - split chicken breast
@@ -1528,7 +1729,7 @@ families:
   - Fresh Split Chicken Breasts
   - party wings
   - Chicken Party Wings
-  notes: Separate from thighs because breast and thigh prices commonly differ. Exclude breaded/precooked strips and tenders. Ads sometimes reorder as "chicken boneless skinless breasts". Exclude bone-in split breasts (common Vons front-page value-pack tile).
+  notes: Separate from thighs because breast and thigh prices commonly differ. Exclude breaded/precooked strips, tenders, and thin-sliced breast (often BOGO with tenders). Ads sometimes reorder as "chicken boneless skinless breasts". Exclude bone-in split breasts (common Vons front-page value-pack tile).
   display_order: 63
   homepage_group: meat_and_seafood
 - category: meat

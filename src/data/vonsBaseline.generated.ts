@@ -227,6 +227,14 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "retailerProductName": "Signature SELECT Cereal Shredded Wheat Bite-Sized - 16.4 Oz",
     "size": "OUNCE"
   },
+  "nabisco_snack_crackers_regular": {
+    "baselinePrice": 5.49,
+    "baselineSource": "Aligned to Safeway regular-size Wheat Thins shelf ~$5.49 (Evelyn 2026-07-28); Vons crawl not refreshed for this add",
+    "retailerProductId": null,
+    "upc": null,
+    "retailerProductName": "Wheat Thins Snacks Big 100% Whole Grain - 8 Oz",
+    "size": "OUNCE"
+  },
   "nectarines_per_lb": {
     "baselinePrice": 2.99,
     "baselineSource": "Aligned to Safeway conventional shelf $2.99/lb (Evelyn 2026-07-14); prior crawl was a sale scrape",

@@ -119,6 +119,13 @@ CANONICAL_PACKAGES: dict[str, CanonicalPackageMeta] = {
         (r"seedless grape", r"per lb"),
         costco_not_expected=True,
     ),
+    "mandarins_3lb": CanonicalPackageMeta(
+        # Grocery + Costco both sell ~3 lb bags; compare bag-to-bag (not /lb).
+        "mandarins_3lb", 1, "bag", "bag", "bag", "produce",
+        (r"mandarin",),
+        (r"organic|canned|geisha",),
+        (r"^mandarins?\b", r"3\s*lbs?"),
+    ),
     "eggs_18_count": CanonicalPackageMeta(
         "eggs_18_count", 18, "egg", "egg", "egg", "dairy",
         (r"\beggs\b", r"large eggs", r"cage free eggs",),

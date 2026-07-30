@@ -18,6 +18,15 @@ to baseline. This detector cross-checks the extraction data against the
 generated prices and flags family/weeks where the ad text *does* mention the
 family (with a price) but no price was written.
 
+Related failure mode (Chips Ahoy Jul 29)
+---------------------------------------
+A Nabisco cookie/cracker Mix & Match tile may land as ``group_not_split`` text
+that *does* mention a tracked brand (Chips Ahoy) but also co-lists siblings
+(Oreo, Ritz, Nabisco snack crackers). ``keep_separate_from`` correctly blocks
+the matcher so the chart stays at baseline. The detector now flags that class
+as medium severity (``blocked_by_keep_separate``) so humans add a family-only
+``manually_added_missed_tile`` split — without loosening ``keep_separate``.
+
 What it CANNOT catch
 --------------------
 If a tile was dropped *before* text extraction (no row anywhere in raw or
@@ -202,6 +211,14 @@ def load_audit_dispositions() -> dict[tuple[str, str, str], set[str]]:
 # Matching
 # ---------------------------------------------------------------------------
 
+# Same marks generate_weekly_ad_prices strips (Lucerne®, Chips Ahoy!).
+_TRADEMARK_PUNCT_RE = re.compile(r"[®™©!]+")
+
+
+def _strip_trademark_punct(text: str) -> str:
+    return _TRADEMARK_PUNCT_RE.sub("", text)
+
+
 def _match_text(row: dict[str, str]) -> str:
     """The specific product-name field to match against.
 
@@ -213,7 +230,7 @@ def _match_text(row: dict[str, str]) -> str:
     for key in ("split_product_text", "verified_raw_product_text", "raw_product_text"):
         value = (row.get(key) or "").strip()
         if value:
-            return value.lower()
+            return _strip_trademark_punct(value.lower())
     return ""
 
 
@@ -223,10 +240,18 @@ def _row_price(row: dict[str, str]) -> float | None:
     )
 
 
+def family_include_hit(text: str, family: TrackerFamily) -> bool:
+    return any(re.search(p, text) for p in family.patterns)
+
+
+def family_exclude_hit(text: str, family: TrackerFamily) -> bool:
+    return any(re.search(p, text) for p in family.exclude_patterns)
+
+
 def family_matches(text: str, family: TrackerFamily) -> bool:
-    if not any(re.search(p, text) for p in family.patterns):
+    if not family_include_hit(text, family):
         return False
-    return not any(re.search(p, text) for p in family.exclude_patterns)
+    return not family_exclude_hit(text, family)
 
 
 def _looks_multi_product(text: str) -> bool:
@@ -250,6 +275,8 @@ class Candidate:
     example_text: str = ""
     audit: set[str] = field(default_factory=set)
     multi_product: bool = True
+    # Include hit but keep_separate_from also hit (unsplit Mix & Match class).
+    blocked_by_keep_separate: bool = False
 
     @property
     def candidate_price(self) -> float | None:
@@ -260,6 +287,11 @@ class Candidate:
         # Deliberately blocked by the eligibility gate → informational only.
         if self.audit & {"rejected", "manual_review"}:
             return "info"
+        # keep_separate blocked an otherwise-matching split/raw row → needs a
+        # family-only manual split (Chips Ahoy Jul 29 class). Medium, not high:
+        # the matcher behaved correctly; humans must split, not loosen YAML.
+        if self.blocked_by_keep_separate:
+            return "medium"
         # Present in raw extraction but never promoted to split.
         if self.in_raw and not self.in_split:
             # Focused single-product tile → highest signal; multi-brand block → medium.
@@ -276,6 +308,13 @@ class Candidate:
             return (
                 "ad text mentions family with a price but it was intentionally "
                 f"blocked by the eligibility gate ({', '.join(sorted(self.audit))})"
+            )
+        if self.blocked_by_keep_separate:
+            return (
+                "family include matches extraction text but keep_separate_from "
+                "blocks matching (likely unsplit Mix & Match / multi-brand tile); "
+                "add a family-only manually_added_missed_tile split and rematch "
+                f"— do not remove keep_separate{block}"
             )
         if self.in_raw and not self.in_split:
             return (
@@ -331,8 +370,9 @@ def detect_for_feed(
                     if price is None:
                         continue
                     text = _match_text(row)
-                    if not text or not family_matches(text, family):
+                    if not text or not family_include_hit(text, family):
                         continue
+                    blocked = family_exclude_hit(text, family)
                     key = (week, family.id)
                     cand = candidates.get(key)
                     if cand is None:
@@ -340,13 +380,22 @@ def detect_for_feed(
                         cand.audit = audit.get((feed.label, family.id, week), set())
                         candidates[key] = cand
                     cand.prices.append(price)
+                    if blocked:
+                        cand.blocked_by_keep_separate = True
                     if is_raw:
                         cand.in_raw = True
                     else:
                         cand.in_split = True
                     if not _looks_multi_product(text):
                         cand.multi_product = False
-                    if text and (not cand.example_text or len(text) < len(cand.example_text)):
+                    if text and (
+                        not cand.example_text
+                        or blocked
+                        or (
+                            not cand.blocked_by_keep_separate
+                            and len(text) < len(cand.example_text)
+                        )
+                    ):
                         cand.example_text = text[:160]
 
     consider(raw_by_week, is_raw=True)

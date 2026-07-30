@@ -78,6 +78,12 @@ export const FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-07-28",
     "sourceFile": "safeway 7-22 - 7-28.pdf",
     "sourceLabel": "Safeway weekly ad 07/22\u201307/28"
+  },
+  {
+    "weekStart": "2026-07-29",
+    "weekEnd": "2026-08-04",
+    "sourceFile": "safeway 7-29 - 8-4.pdf",
+    "sourceLabel": "Safeway weekly ad 07/29\u201308/04"
   }
 ];
 
@@ -157,6 +163,12 @@ export const VONS_FAMILY_WEEKLY_AD_WEEKS: WeeklyAdWeek[] = [
     "weekEnd": "2026-07-28",
     "sourceFile": "vons 7-22 - 7-28.pdf",
     "sourceLabel": "Vons weekly ad 07/22\u201307/28"
+  },
+  {
+    "weekStart": "2026-07-29",
+    "weekEnd": "2026-08-04",
+    "sourceFile": "vons 7-29 - 8-4.pdf",
+    "sourceLabel": "Vons weekly ad 07/29\u201308/04"
   }
 ];
 

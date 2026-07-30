@@ -164,6 +164,7 @@ def render_ts() -> str:
                 for legacy, target in LEGACY_CANONICAL_TO_FAMILY.items()
                 if target == f.id
             ],
+            "displayCardGroup": f.display_card_group or "",
         }
         for f in families
     ]
@@ -198,6 +199,8 @@ export type CanonicalTrackerFamily = {{
   searchAliases: string[];
   /** Old canonical_products ids whose historical rows map to this family. */
   legacyCanonicalIds: string[];
+  /** Families sharing this id collapse to one card; UI picks the better deal. */
+  displayCardGroup: string;
 }};
 
 export type HomepageSection = {{

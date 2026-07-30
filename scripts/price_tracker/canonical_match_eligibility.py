@@ -26,6 +26,15 @@ DEFAULT_LARGE_CHANGE_PCT = 40.0
 
 
 @dataclass(frozen=True)
+class RequiredAttribute:
+    """One AND-required auto-match attribute group (OR within the group)."""
+
+    name: str
+    any_of: tuple[str, ...] = ()
+    any_of_patterns: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class FamilyMatchRules:
     family_id: str
     canonical_intent: str | None = None
@@ -41,7 +50,11 @@ class FamilyMatchRules:
     # confirmation keywords (e.g. "family size" or an in-range size). Matches
     # that only hit a generic block type with no confirmation go to manual
     # review instead of updating the tracker graph. Empty = no requirement.
+    # Prefer required_attributes for named missing-attribute reporting.
     require_confirmation_keywords: tuple[str, ...] = ()
+    # Named attribute groups; EVERY group must hit at least one any_of /
+    # any_of_patterns token before automatic accept. Missing groups → review.
+    required_attributes: tuple[RequiredAttribute, ...] = ()
     min_confidence: float = DEFAULT_MIN_CONFIDENCE
     atl_requires_confidence: float = DEFAULT_ATL_CONFIDENCE
     large_price_change_pct: float = DEFAULT_LARGE_CHANGE_PCT
@@ -69,6 +82,10 @@ class MatchEligibilityResult:
     size_range: str | None = None
     allowed_product_lines: list[str] = field(default_factory=list)
     eligible_item_examples: list[str] = field(default_factory=list)
+    # Review-gate attribute accounting (empty when unused).
+    present_attributes: list[str] = field(default_factory=list)
+    missing_attributes: list[str] = field(default_factory=list)
+    reason_code: str | None = None
 
 
 def _normalize_keyword_list(values: Any) -> tuple[str, ...]:
@@ -77,33 +94,86 @@ def _normalize_keyword_list(values: Any) -> tuple[str, ...]:
     return tuple(str(v).strip().lower() for v in values if str(v).strip())
 
 
+def _parse_required_attributes(raw: Any) -> tuple[RequiredAttribute, ...]:
+    """Parse required_attributes from YAML.
+
+    Accepted shapes:
+      required_attributes:
+        package_count:
+          any_of: [12-pack, 12 pack]
+          any_of_patterns: ["\\\\b12\\\\s*ct\\\\b"]
+      # or list form:
+      - name: package_count
+        any_of: [...]
+    """
+    if not raw:
+        return ()
+    out: list[RequiredAttribute] = []
+    if isinstance(raw, dict):
+        items = raw.items()
+        for name, spec in items:
+            if not isinstance(spec, dict):
+                continue
+            out.append(
+                RequiredAttribute(
+                    name=str(name).strip(),
+                    any_of=_normalize_keyword_list(spec.get("any_of")),
+                    any_of_patterns=tuple(
+                        str(p) for p in (spec.get("any_of_patterns") or ()) if str(p).strip()
+                    ),
+                )
+            )
+    elif isinstance(raw, list):
+        for spec in raw:
+            if not isinstance(spec, dict):
+                continue
+            name = str(spec.get("name") or "").strip()
+            if not name:
+                continue
+            out.append(
+                RequiredAttribute(
+                    name=name,
+                    any_of=_normalize_keyword_list(spec.get("any_of")),
+                    any_of_patterns=tuple(
+                        str(p) for p in (spec.get("any_of_patterns") or ()) if str(p).strip()
+                    ),
+                )
+            )
+    return tuple(attr for attr in out if attr.any_of or attr.any_of_patterns)
+
+
+def _parse_family_rules(family_id: str, raw: dict[str, Any]) -> FamilyMatchRules:
+    return FamilyMatchRules(
+        family_id=str(family_id),
+        canonical_intent=raw.get("canonical_intent"),
+        positive_keywords=_normalize_keyword_list(raw.get("positive_keywords")),
+        negative_keywords=_normalize_keyword_list(raw.get("negative_keywords")),
+        allowed_product_types=_normalize_keyword_list(raw.get("allowed_product_types")),
+        disallowed_product_types=_normalize_keyword_list(raw.get("disallowed_product_types")),
+        allowed_units=_normalize_keyword_list(raw.get("allowed_units")),
+        disallowed_units=_normalize_keyword_list(raw.get("disallowed_units")),
+        allowed_package_patterns=tuple(raw.get("allowed_package_patterns") or ()),
+        disallowed_package_patterns=tuple(raw.get("disallowed_package_patterns") or ()),
+        require_confirmation_keywords=_normalize_keyword_list(
+            raw.get("require_confirmation_keywords")
+        ),
+        required_attributes=_parse_required_attributes(raw.get("required_attributes")),
+        min_confidence=float(raw.get("min_confidence", DEFAULT_MIN_CONFIDENCE)),
+        atl_requires_confidence=float(
+            raw.get("atl_requires_confidence", DEFAULT_ATL_CONFIDENCE)
+        ),
+        large_price_change_pct=float(
+            raw.get("large_price_change_pct", DEFAULT_LARGE_CHANGE_PCT)
+        ),
+    )
+
+
 def _parse_rules_doc(doc: dict[str, Any]) -> dict[str, FamilyMatchRules]:
     out: dict[str, FamilyMatchRules] = {}
     for family_id, raw in (doc.get("families") or {}).items():
         if not isinstance(raw, dict):
             continue
-        out[str(family_id)] = FamilyMatchRules(
-            family_id=str(family_id),
-            canonical_intent=raw.get("canonical_intent"),
-            positive_keywords=_normalize_keyword_list(raw.get("positive_keywords")),
-            negative_keywords=_normalize_keyword_list(raw.get("negative_keywords")),
-            allowed_product_types=_normalize_keyword_list(raw.get("allowed_product_types")),
-            disallowed_product_types=_normalize_keyword_list(raw.get("disallowed_product_types")),
-            allowed_units=_normalize_keyword_list(raw.get("allowed_units")),
-            disallowed_units=_normalize_keyword_list(raw.get("disallowed_units")),
-            allowed_package_patterns=tuple(raw.get("allowed_package_patterns") or ()),
-            disallowed_package_patterns=tuple(raw.get("disallowed_package_patterns") or ()),
-            require_confirmation_keywords=_normalize_keyword_list(
-                raw.get("require_confirmation_keywords")
-            ),
-            min_confidence=float(raw.get("min_confidence", DEFAULT_MIN_CONFIDENCE)),
-            atl_requires_confidence=float(
-                raw.get("atl_requires_confidence", DEFAULT_ATL_CONFIDENCE)
-            ),
-            large_price_change_pct=float(
-                raw.get("large_price_change_pct", DEFAULT_LARGE_CHANGE_PCT)
-            ),
-        )
+        out[str(family_id)] = _parse_family_rules(str(family_id), raw)
     return out
 
 
@@ -133,6 +203,14 @@ def merge_family_yaml_rules(
             return getattr(base, field)
         return default
 
+    required_raw = pick("required_attributes", ())
+    if isinstance(required_raw, (dict, list)):
+        required_attrs = _parse_required_attributes(required_raw)
+    elif isinstance(required_raw, tuple):
+        required_attrs = required_raw
+    else:
+        required_attrs = ()
+
     return FamilyMatchRules(
         family_id=family.id,
         canonical_intent=pick("canonical_intent"),
@@ -147,6 +225,7 @@ def merge_family_yaml_rules(
         require_confirmation_keywords=_normalize_keyword_list(
             pick("require_confirmation_keywords", ())
         ),
+        required_attributes=required_attrs,
         min_confidence=float(pick("min_confidence", DEFAULT_MIN_CONFIDENCE)),
         atl_requires_confidence=float(
             pick("atl_requires_confidence", DEFAULT_ATL_CONFIDENCE)
@@ -157,14 +236,68 @@ def merge_family_yaml_rules(
     )
 
 
+def _attribute_hits(text: str, attr: RequiredAttribute) -> list[str]:
+    hits = _keyword_hits(text, attr.any_of)
+    hits.extend(_pattern_hits(text, attr.any_of_patterns))
+    return list(dict.fromkeys(hits))
+
+
+def _evaluate_required_attributes(
+    full_text: str, rules: FamilyMatchRules
+) -> tuple[list[str], list[str]]:
+    """Return (present_attribute_names, missing_attribute_names)."""
+    present: list[str] = []
+    missing: list[str] = []
+    for attr in rules.required_attributes:
+        if _attribute_hits(full_text, attr):
+            present.append(attr.name)
+        else:
+            missing.append(attr.name)
+    # Legacy OR confirmation list acts as a single unnamed confirmation group.
+    if rules.require_confirmation_keywords:
+        name = "confirmation"
+        if _keyword_hits(full_text, rules.require_confirmation_keywords):
+            present.append(name)
+        else:
+            missing.append(name)
+    return present, missing
+
+
+_REASON_CODE_BY_MISSING = {
+    "package_size": "missing_package_size",
+    "package_count": "missing_package_count",
+    "brand": "missing_brand",
+    "product_form": "ambiguous_product_variant",
+    "product_line": "ambiguous_product_variant",
+    "container_type": "ambiguous_product_variant",
+    "confirmation": "insufficient_information",
+}
+
+
+def _reason_code_for_missing(missing: list[str]) -> str | None:
+    if not missing:
+        return None
+    if len(missing) > 1:
+        return "ambiguous_product_variant"
+    return _REASON_CODE_BY_MISSING.get(missing[0], "insufficient_information")
+
+
 def _keyword_hits(text: str, keywords: tuple[str, ...]) -> list[str]:
+    """Return keywords that appear as whole tokens/phrases (not substrings).
+
+    Short tokens like ``ct``, ``cup``, or ``stick`` must not match inside
+    unrelated words (``selected``, ``occupied``, ``stickshift``).
+    """
     lowered = text.lower()
     hits: list[str] = []
     for keyword in keywords:
-        if keyword in lowered:
-            hits.append(keyword)
+        kw = keyword.strip().lower()
+        if not kw:
             continue
-        if re.search(rf"\b{re.escape(keyword)}\b", lowered):
+        escaped = re.escape(kw).replace(r"\ ", r"\s+")
+        # Non-word edges so digits/letters cannot absorb the token, while
+        # apostrophes/punctuation still allow "Eggland" in "Eggland's".
+        if re.search(rf"(?<![\w]){escaped}(?![\w])", lowered):
             hits.append(keyword)
     return hits
 
@@ -172,6 +305,63 @@ def _keyword_hits(text: str, keywords: tuple[str, ...]) -> list[str]:
 def _pattern_hits(text: str, patterns: tuple[str, ...]) -> list[str]:
     lowered = text.lower()
     return [pattern for pattern in patterns if re.search(pattern, lowered)]
+
+
+_EXPLICIT_PACKAGE_SIGNAL = re.compile(
+    r"""
+    \b\d+(?:\.\d+)?\s*
+    (?:oz\.?|fl\.?\s*oz\.?|ct\.?|count|pk|pack|lb\.?|liter|litre|l)\b
+    |
+    \b(?:dozen|party\s+size|family\s+size|tub|cups?|bottles?|cans?)\b
+    |
+    \b\d+\s*(?:to|-|–)\s*\d+(?:\.\d+)?\s*oz\b
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
+
+
+def _has_explicit_package_signal(text: str) -> bool:
+    """True when the offer states a concrete size/count/container cue."""
+    return bool(_EXPLICIT_PACKAGE_SIGNAL.search(text))
+
+
+def _mixed_item_package_ambiguity(text: str) -> bool:
+    """True when an or/comma list mixes distinct containers or oz sizes.
+
+    Same-family Mix & Match with one shared size (Goldfish crackers or crisps
+    4–8 oz) returns False. Distinct containers (cans vs bottles) or distinct
+    oz values return True so we abstain instead of auto-accepting.
+    """
+    lowered = text.lower()
+    is_list = bool(re.search(r"\bor\b", lowered) or lowered.count(",") >= 2)
+    if not is_list:
+        return False
+    containers = [
+        name
+        for name in ("cans", "can", "bottles", "bottle", "tub", "cups", "cup")
+        if re.search(rf"(?<![\w]){name}(?![\w])", lowered)
+    ]
+    # Normalize singular/plural so cans+can counts once.
+    normalized = {
+        c[:-1] if c.endswith("s") and c not in {"cans"} else c for c in containers
+    }
+    # Treat can/cans and bottle/bottles as two families.
+    families = set()
+    for c in containers:
+        if c.startswith("can"):
+            families.add("can")
+        elif c.startswith("bottle"):
+            families.add("bottle")
+        elif c.startswith("cup"):
+            families.add("cup")
+        elif c == "tub":
+            families.add("tub")
+    if len(families) >= 2:
+        return True
+    sizes = re.findall(r"\b(\d+(?:\.\d+)?)\s*oz\b", lowered)
+    if len(set(sizes)) >= 2:
+        return True
+    return False
 
 
 def _confidence_score(
@@ -344,6 +534,23 @@ def evaluate_canonical_match(
                     f"unit {unit_hint!r} not in allowed units {list(rules.allowed_units)}"
                 )
 
+    # allowed_package_patterns: previously parsed but unused. Enforce when set.
+    # - disallowed patterns already feed hard_negatives above
+    # - explicit package outside allowed → reject
+    # - no package signal yet → manual review (do not invent a size)
+    package_missing_for_allowed = False
+    if rules.allowed_package_patterns:
+        allowed_pkg_hits = _pattern_hits(full_text, rules.allowed_package_patterns)
+        if allowed_pkg_hits:
+            package_type_match = package_type_match and True
+        elif _has_explicit_package_signal(full_text):
+            package_type_match = False
+            reject_parts.append(
+                "package size/form present but outside allowed_package_patterns"
+            )
+        else:
+            package_missing_for_allowed = True
+
     price = None
     raw_price = row.get("advertised_price")
     if raw_price:
@@ -367,31 +574,49 @@ def evaluate_canonical_match(
 
     manual_review = False
     # Multi-item Mix & Match copy ("Crackers or Crisps", "A, B, C") is common.
-    # Gate it behind size confirmation below when require_confirmation_keywords
-    # is set; bare multi-item lists still need review.
+    # Gate it behind size confirmation below when required attributes /
+    # require_confirmation_keywords are set; bare multi-item lists still need review.
     lowered_primary = primary_text.lower()
     variant_list = bool(
         re.search(r"\bor\b", lowered_primary) or lowered_primary.count(",") >= 2
     )
+    mixed_package_ambiguity = _mixed_item_package_ambiguity(full_text)
 
-    # Confirmation gate first so a real size/carton signal can boost confidence
-    # before the ATL / large-change / medium-confidence floors run.
-    if rules.require_confirmation_keywords:
-        confirmation_hits = _keyword_hits(full_text, rules.require_confirmation_keywords)
-        if not confirmation_hits:
-            manual_review = True
+    present_attrs, missing_attrs = _evaluate_required_attributes(full_text, rules)
+    reason_code: str | None = None
+
+    if package_missing_for_allowed:
+        manual_review = True
+        if "package_size" not in missing_attrs:
+            missing_attrs = list(missing_attrs) + ["package_size"]
+        reason_code = _reason_code_for_missing(missing_attrs)
+        reject_parts.append(
+            "allowed_package_patterns configured but no explicit package signal"
+        )
+
+    # Confirmation / required-attribute gate first so a real size/carton signal
+    # can boost confidence before the ATL / large-change / medium-confidence floors.
+    if missing_attrs:
+        manual_review = True
+        reason_code = reason_code or _reason_code_for_missing(missing_attrs)
+        if "missing required auto-match attribute(s)" not in " ".join(reject_parts):
             reject_parts.append(
-                "no family-size / eligible-size confirmation "
-                f"(needs one of: {', '.join(rules.require_confirmation_keywords)})"
+                "missing required auto-match attribute(s): " + ", ".join(missing_attrs)
             )
-        else:
-            # Confirmed size/carton signal is strong evidence — boost so a
-            # legitimate new low (e.g. berries $2.99 after a $5 week) is not
-            # stuck in manual_review by the ATL confidence floor.
-            confidence = min(1.0, confidence + 0.15)
-            # Size-confirmed Mix & Match ("Goldfish Crackers or Crisps 4 to 8-oz")
-            # should update the graph; do not force review solely for "or".
-            variant_list = False
+    elif present_attrs and not mixed_package_ambiguity:
+        # Confirmed size/carton/brand signal is strong evidence — boost so a
+        # legitimate new low is not stuck in manual_review by the ATL floor.
+        confidence = min(1.0, confidence + 0.15)
+        # Size-confirmed Mix & Match should update the graph; do not force review
+        # solely for "or" when package attrs are unambiguous.
+        variant_list = False
+
+    if mixed_package_ambiguity:
+        manual_review = True
+        reject_parts.append(
+            "mixed-item offer has conflicting package/container cues"
+        )
+        reason_code = reason_code or "ambiguous_product_variant"
 
     if variant_list:
         manual_review = True
@@ -444,6 +669,9 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="ad_deal_only",
+            present_attributes=present_attrs,
+            missing_attributes=missing_attrs,
+            reason_code="explicit_attribute_conflict",
             **meta,
         )
 
@@ -462,6 +690,9 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="manual_review_required",
+            present_attributes=present_attrs,
+            missing_attributes=missing_attrs,
+            reason_code=reason_code or "insufficient_information",
             **meta,
         )
 
@@ -478,6 +709,9 @@ def evaluate_canonical_match(
             package_type_match=package_type_match,
             unit_match=unit_match,
             output_class="manual_review_required",
+            present_attributes=present_attrs,
+            missing_attributes=missing_attrs,
+            reason_code=reason_code or "insufficient_information",
             **meta,
         )
 
@@ -495,6 +729,9 @@ def evaluate_canonical_match(
         package_type_match=package_type_match,
         unit_match=unit_match,
         output_class="canonical_tracker_match",
+        present_attributes=present_attrs,
+        missing_attributes=missing_attrs,
+        reason_code="none",
         **meta,
     )
 

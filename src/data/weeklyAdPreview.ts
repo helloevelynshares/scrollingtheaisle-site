@@ -8,8 +8,20 @@ export function isoDateOnly(value: Date = new Date()): string {
   return `${year}-${month}-${day}`;
 }
 
+/** Calendar day before an ISO date (local noon parse avoids DST edge cases). */
+export function isoDateMinusDays(isoDate: string, days: number): string {
+  const value = new Date(`${isoDate}T12:00:00`);
+  value.setDate(value.getDate() - days);
+  return isoDateOnly(value);
+}
+
+/**
+ * True when today is before the early-publish window for this ad week.
+ * The calendar day immediately before week_start is treated as live (no Preview
+ * chrome) so late-evening publishes the night before an ad starts are ACTIVE.
+ */
 export function isPreviewWeek(weekStart: string, asOf: Date = new Date()): boolean {
-  return isoDateOnly(asOf) < weekStart;
+  return isoDateOnly(asOf) < isoDateMinusDays(weekStart, 1);
 }
 
 export function isActiveAdWeek(
@@ -18,7 +30,9 @@ export function isActiveAdWeek(
   asOf: Date = new Date(),
 ): boolean {
   const today = isoDateOnly(asOf);
-  return today >= weekStart && today <= weekEnd;
+  // Soft-start one calendar day early so night-before publishes become "this week".
+  // When two weeks overlap (ending week + soft-started next), callers pick the latest.
+  return today >= isoDateMinusDays(weekStart, 1) && today <= weekEnd;
 }
 
 export function getLatestAdWeek(weeks: WeeklyAdWeek[]): WeeklyAdWeek | null {

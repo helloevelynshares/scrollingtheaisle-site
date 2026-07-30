@@ -1,0 +1,395 @@
+# Canonical match audit: 2026-07-29 to 2026-08-04
+
+Generated: 2026-07-30T03:20:16.135860+00:00
+
+## Summary
+
+- **Accepted:** 92
+- **Rejected:** 14
+- **Manual review:** 2
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, tostitos_tortilla_chips, simply_snacks, ritz_crackers, nabisco_snack_crackers_regular, chips_ahoy, haagen_dazs_pints, hass_avocados_each, mangoes_each, plums_per_lb, sweet_corn, butter_16oz, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_family_size, tri_tip_roast, pringles, frito_lay_multipack_chips, betty_crocker_fruit_snacks, mandarins_3lb, pork_spare_ribs_per_lb, cheetos_regular_bags, lays_kettle_cooked, kettle_brand_chips, coca_cola_12packs, pepsi_12packs, dr_pepper_12packs, dreyers_tubs, seedless_grapes_per_lb, peaches_per_lb, nectarines_per_lb, lucerne_cream_cheese, chicken_breast_per_lb, chicken_thigh_per_lb, cape_cod_chips, snyders_pretzels
+
+## Graph update safety check
+
+### All-time low changes
+
+- `chips_ahoy` (Safeway): $1.99: Nabisco Chips Ahoy! Cookies 7-13 oz.
+- `butter_16oz` (Safeway): $3.49: Challenge Butter 16 oz sticks
+- `lucerne_cream_cheese` (Vons): $0.99: Lucerne® Cream Cheese Brick 8 oz.
+- `chips_ahoy` (Safeway): $1.99: Nabisco Chips Ahoy! Cookies 7-13 oz.
+- `butter_16oz` (Safeway): $3.49: Challenge Butter 16 oz sticks
+- `lucerne_cream_cheese` (Vons): $0.99: Lucerne® Cream Cheese Brick 8 oz.
+
+### Graph preview changes
+
+- `nabisco_snack_crackers` (Safeway): blocked $1.99: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+- `berries_6oz` (Safeway): blocked $4.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `general_mills_cereal_regular` (Safeway): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+- `salmon` (Safeway): blocked $5.99: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `chicken_wings_per_lb` (Safeway): blocked $5.0: confidence 0.58 < min 0.60
+- `nabisco_snack_crackers_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+- `nabisco_snack_crackers` (Vons): blocked $1.99: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `general_mills_cereal_regular` (Vons): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+- `nabisco_snack_crackers` (Safeway): blocked $1.99: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+- `berries_6oz` (Safeway): blocked $4.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `general_mills_cereal_regular` (Safeway): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+- `salmon` (Safeway): blocked $5.99: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `chicken_wings_per_lb` (Safeway): blocked $5.0: confidence 0.58 < min 0.60
+- `nabisco_snack_crackers_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+- `nabisco_snack_crackers` (Vons): blocked $1.99: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `general_mills_cereal_regular` (Vons): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+
+### Blocked from tracker graph
+
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Nabisco Chips Ahoy! Cookies 7-13 oz. pkg. Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99
+  - Reason: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+  - Hard negatives: chips ahoy, cookies, 3.5 to 9.1
+- `berries_6oz` (Safeway): **rejected**: 'Strawberries Blueberries' @ $4.99
+  - Reason: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+  - Hard negatives: strawberries
+- `general_mills_cereal_regular` (Safeway): **rejected**: 'General Mills Family Size Cereal' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+  - Hard negatives: family size, \bfamily\s+size\b
+- `salmon` (Safeway): **rejected**: 'Waterfront BISTRO Fresh Atlantic Salmon Portions 7 oz' @ $5.99
+  - Reason: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+  - Hard negatives: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `nabisco_snack_crackers_regular` (Vons): **rejected**: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99
+  - Reason: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+  - Hard negatives: ritz, good thins
+- `nabisco_snack_crackers` (Vons): **rejected**: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99
+  - Reason: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Hard negatives: ritz
+- `general_mills_cereal_regular` (Vons): **rejected**: 'Family size Cheerios 14-24 oz' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+  - Hard negatives: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Nabisco Chips Ahoy! Cookies 7-13 oz. pkg. Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99
+  - Reason: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+  - Hard negatives: chips ahoy, cookies, 3.5 to 9.1
+- `berries_6oz` (Safeway): **rejected**: 'Strawberries Blueberries' @ $4.99
+  - Reason: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+  - Hard negatives: strawberries
+- `general_mills_cereal_regular` (Safeway): **rejected**: 'General Mills Family Size Cereal' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+  - Hard negatives: family size, \bfamily\s+size\b
+- `salmon` (Safeway): **rejected**: 'Waterfront BISTRO Fresh Atlantic Salmon Portions 7 oz' @ $5.99
+  - Reason: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+  - Hard negatives: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `nabisco_snack_crackers_regular` (Vons): **rejected**: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99
+  - Reason: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+  - Hard negatives: ritz, good thins
+- `nabisco_snack_crackers` (Vons): **rejected**: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99
+  - Reason: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Hard negatives: ritz
+- `general_mills_cereal_regular` (Vons): **rejected**: 'Family size Cheerios 14-24 oz' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+  - Hard negatives: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b
+- `chicken_wings_per_lb` (Safeway): **manual_review**: 'Chicken Wings 22-26 oz. Selected varieties. Includes Hot & Spicy, Buffalo Style, Honey BBQ, or Teriyaki. Frozen.' @ $5.0
+  - Reason: confidence 0.58 < min 0.60
+- `chicken_wings_per_lb` (Safeway): **manual_review**: 'Chicken Wings 22-26 oz. Selected varieties. Includes Hot & Spicy, Buffalo Style, Honey BBQ, or Teriyaki. Frozen.' @ $5.0
+  - Reason: confidence 0.58 < min 0.60
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `nabisco_snack_crackers`: 'Nabisco Chips Ahoy! Cookies 7-13 oz. pkg. Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+- `berries_6oz`: 'Strawberries Blueberries' @ $4.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `general_mills_cereal_regular`: 'General Mills Family Size Cereal' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+- `salmon`: 'Waterfront BISTRO Fresh Atlantic Salmon Portions 7 oz' @ $5.99: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `nabisco_snack_crackers_regular`: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+- `nabisco_snack_crackers`: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `general_mills_cereal_regular`: 'Family size Cheerios 14-24 oz' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+- `nabisco_snack_crackers`: 'Nabisco Chips Ahoy! Cookies 7-13 oz. pkg. Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99: hard negative keyword/pattern hit: chips ahoy, cookies, 3.5 to 9.1; ad product type 'chips_ahoy' is incompatible with canonical intent 'family_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.63)
+- `berries_6oz`: 'Strawberries Blueberries' @ $4.99: hard negative keyword/pattern hit: strawberries; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'; missing required auto-match attribute(s): confirmation
+- `general_mills_cereal_regular`: 'General Mills Family Size Cereal' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns; missing required auto-match attribute(s): package_size
+- `salmon`: 'Waterfront BISTRO Fresh Atlantic Salmon Portions 7 oz' @ $5.99: hard negative keyword/pattern hit: portions, 7 oz, \b[2347]\s*oz\b, portion
+- `nabisco_snack_crackers_regular`: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99: hard negative keyword/pattern hit: ritz, good thins; ad product type 'ritz_crackers' is incompatible with canonical intent 'regular_size_snack_crackers'; new all-time low $1.99 requires confidence >= 0.85 (got 0.76)
+- `nabisco_snack_crackers`: 'Nabisco Ritz, Wheat Thins, Triscuit or Good Thins Crackers' @ $1.99: hard negative keyword/pattern hit: ritz; ad product type 'ritz_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `general_mills_cereal_regular`: 'Family size Cheerios 14-24 oz' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b, \b(?:1[6-9]|[2-9]\d)(?:\.\d+)?\s*oz\b; package size/form present but outside allowed_package_patterns
+
+## Accepted matches
+
+- `doritos_5_13oz` (Safeway): 'Tostitos, Lay’s, Doritos' @ $2.75 (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips 5-13 oz" @ $2.75 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips 5-13 oz' @ $2.75 (confidence 0.90)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Safeway): 'Simply NKD Potato Chips 4.75-13 oz' @ $2.75 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `ritz_crackers` (Safeway): 'Nabisco Ritz Crackers or BelVita Breakfast Biscuits' @ $2.5 (confidence 0.83)
+  - Display: Ritz crackers
+  - Subtitle: regular size, 8.8–13.7 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99 (confidence 1.00)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
+- `chips_ahoy` (Safeway): 'Nabisco Chips Ahoy! Cookies 7-13 oz.' @ $1.99 (confidence 1.00)
+  - Display: Chips Ahoy cookies
+  - Subtitle: regular size, 9.5–13 oz
+- `haagen_dazs_pints` (Safeway): 'Häagen-Dazs Ice Cream 14 oz' @ $2.99 (confidence 0.86)
+  - Display: Häagen-Dazs ice cream pints
+  - Subtitle: 14 oz pints
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Honey Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `plums_per_lb` (Safeway): 'Black Plums' @ $2.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter 16 oz sticks' @ $3.49 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt 5.3 oz' @ $0.89 (confidence 0.91)
+  - Display: Chobani yogurt cups
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $3.99 (confidence 1.00)
+  - Display: Nature Valley bars
+  - Subtitle: roughly 5–12 ct boxes
+- `general_mills_cereal_family_size` (Safeway): 'General Mills Family Size Cereal' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
+- `tri_tip_roast` (Safeway): 'Chef’s Counter Marinated Tri Tip Roast' @ $10.99 (confidence 0.70)
+  - Display: Tri-tip roast
+  - Subtitle: per lb
+- `pringles` (Safeway): 'Pringles Potato Crisps 5.2-5.5 oz.' @ $1.67 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Multipack Snacks' @ $7.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `betty_crocker_fruit_snacks` (Safeway): "Betty Crocker Fruit Snacks or Annie's Fruit Snacks" @ $3.99 (confidence 0.70)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `mandarins_3lb` (Safeway): 'Cuties Mandarins' @ $3.99 (confidence 1.00)
+  - Display: Mandarin oranges (Cuties)
+  - Subtitle: 3 lb bag
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Pork Spareribs 2 lbs' @ $2.5 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
+- `doritos_5_13oz` (Vons): 'Doritos 9 to 13 oz' @ $2.75 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `cheetos_regular_bags` (Vons): 'Cheetos 6.25 to 11 oz' @ $2.99 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: regular size, 6.5–10 oz
+- `lays_kettle_cooked` (Vons): "Lay's Kettle Cooked Potato Chips 4.75 to 8 oz" @ $1.99 (confidence 0.83)
+  - Display: Lay's Kettle Cooked chips
+  - Subtitle: regular kettle bags 6–8 oz
+- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5 to 8 oz' @ $1.99 (confidence 1.00)
+  - Display: Kettle Brand potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Tortilla Chips 9 to 13 oz' @ $2.75 (confidence 0.90)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Vons): 'Simply NKD 9 to 13 oz' @ $2.75 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `coca_cola_12packs` (Vons): 'Coca-Cola 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.98)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
+- `pepsi_12packs` (Vons): 'Pepsi 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.83)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `dr_pepper_12packs` (Vons): 'Dr Pepper 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.83)
+  - Display: Dr Pepper
+  - Subtitle: 12-pack, 12 fl oz cans
+- `haagen_dazs_pints` (Vons): 'Häagen-Dazs Ice Cream 14 oz' @ $2.99 (confidence 0.86)
+  - Display: Häagen-Dazs ice cream pints
+  - Subtitle: 14 oz pints
+- `dreyers_tubs` (Vons): "Dreyer's Ice Cream 1.5 qt" @ $2.99 (confidence 0.90)
+  - Display: Dreyer's ice cream
+  - Subtitle: 1.5 qt tubs
+- `seedless_grapes_per_lb` (Vons): 'Green or Red Seedless Grapes' @ $1.99 (confidence 0.70)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `peaches_per_lb` (Vons): 'Large White Peaches' @ $1.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Vons): 'White Nectarines' @ $1.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `plums_per_lb` (Vons): 'Plums' @ $1.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `lucerne_cream_cheese` (Vons): 'Lucerne® Cream Cheese Brick 8 oz.' @ $0.99 (confidence 0.90)
+  - Display: Lucerne cream cheese
+  - Subtitle: 8 oz
+- `chobani_yogurt_per_cup` (Vons): 'Chobani Greek Yogurt 4.5-5.3 oz' @ $1.0 (confidence 0.91)
+  - Display: Chobani yogurt cups
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Vons): 'Nature Valley Bars 10-12 ct' @ $3.99 (confidence 1.00)
+  - Display: Nature Valley bars
+  - Subtitle: roughly 5–12 ct boxes
+- `general_mills_cereal_family_size` (Vons): 'Family size Cheerios 14-24 oz' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
+- `chicken_breast_per_lb` (Vons): 'Signature SELECT Boneless Skinless Chicken Breast' @ $2.99 (confidence 0.90)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `chicken_thigh_per_lb` (Vons): 'Signature SELECT Boneless Skinless Chicken Thighs' @ $2.99 (confidence 0.90)
+  - Display: Chicken thighs
+  - Subtitle: per lb
+- `cape_cod_chips` (Vons): 'Cape Cod Potato Chips 6.5 to 8 oz' @ $1.99 (confidence 0.93)
+  - Display: Cape Cod potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `snyders_pretzels` (Vons): "Snyder's Pretzels 8 to 16 oz" @ $1.99 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `pork_spare_ribs_per_lb` (Vons): 'Fresh St. Louis Style Pork Spareribs' @ $4.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
+- `doritos_5_13oz` (Safeway): 'Tostitos, Lay’s, Doritos' @ $2.75 (confidence 0.70)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips 5-13 oz" @ $2.75 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `tostitos_tortilla_chips` (Safeway): 'Tostitos Tortilla Chips 5-13 oz' @ $2.75 (confidence 0.90)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Safeway): 'Simply NKD Potato Chips 4.75-13 oz' @ $2.75 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `ritz_crackers` (Safeway): 'Nabisco Ritz Crackers or BelVita Breakfast Biscuits' @ $2.5 (confidence 0.83)
+  - Display: Ritz crackers
+  - Subtitle: regular size, 8.8–13.7 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Nabisco Snack Crackers 3.5 to 9.1 oz.' @ $1.99 (confidence 1.00)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
+- `chips_ahoy` (Safeway): 'Nabisco Chips Ahoy! Cookies 7-13 oz.' @ $1.99 (confidence 1.00)
+  - Display: Chips Ahoy cookies
+  - Subtitle: regular size, 9.5–13 oz
+- `haagen_dazs_pints` (Safeway): 'Häagen-Dazs Ice Cream 14 oz' @ $2.99 (confidence 0.86)
+  - Display: Häagen-Dazs ice cream pints
+  - Subtitle: 14 oz pints
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Honey Mango' @ $1.0 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `plums_per_lb` (Safeway): 'Black Plums' @ $2.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter 16 oz sticks' @ $3.49 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt 5.3 oz' @ $0.89 (confidence 0.91)
+  - Display: Chobani yogurt cups
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars' @ $3.99 (confidence 1.00)
+  - Display: Nature Valley bars
+  - Subtitle: roughly 5–12 ct boxes
+- `general_mills_cereal_family_size` (Safeway): 'General Mills Family Size Cereal' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
+- `tri_tip_roast` (Safeway): 'Chef’s Counter Marinated Tri Tip Roast' @ $10.99 (confidence 0.70)
+  - Display: Tri-tip roast
+  - Subtitle: per lb
+- `pringles` (Safeway): 'Pringles Potato Crisps 5.2-5.5 oz.' @ $1.67 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `frito_lay_multipack_chips` (Safeway): 'Frito-Lay Multipack Snacks' @ $7.99 (confidence 0.70)
+  - Display: Frito-Lay variety pack
+  - Subtitle: 18 ct multipack
+- `betty_crocker_fruit_snacks` (Safeway): "Betty Crocker Fruit Snacks or Annie's Fruit Snacks" @ $3.99 (confidence 0.70)
+  - Display: Gushers / Fruit by the Foot
+  - Subtitle: 5–10 ct pouches (Gushers, Fruit by the Foot, selected)
+- `mandarins_3lb` (Safeway): 'Cuties Mandarins' @ $3.99 (confidence 1.00)
+  - Display: Mandarin oranges (Cuties)
+  - Subtitle: 3 lb bag
+- `pork_spare_ribs_per_lb` (Safeway): 'Signature SELECT Pork Spareribs 2 lbs' @ $2.5 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb
+- `doritos_5_13oz` (Vons): 'Doritos 9 to 13 oz' @ $2.75 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `cheetos_regular_bags` (Vons): 'Cheetos 6.25 to 11 oz' @ $2.99 (confidence 0.90)
+  - Display: Cheetos
+  - Subtitle: regular size, 6.5–10 oz
+- `lays_kettle_cooked` (Vons): "Lay's Kettle Cooked Potato Chips 4.75 to 8 oz" @ $1.99 (confidence 0.83)
+  - Display: Lay's Kettle Cooked chips
+  - Subtitle: regular kettle bags 6–8 oz
+- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5 to 8 oz' @ $1.99 (confidence 1.00)
+  - Display: Kettle Brand potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `tostitos_tortilla_chips` (Vons): 'Tostitos Tortilla Chips 9 to 13 oz' @ $2.75 (confidence 0.90)
+  - Display: Tostitos tortilla chips
+  - Subtitle: regular size, 9–13 oz
+- `simply_snacks` (Vons): 'Simply NKD 9 to 13 oz' @ $2.75 (confidence 0.70)
+  - Display: Simply snacks
+  - Subtitle: regular size, 4.5–13 oz
+- `coca_cola_12packs` (Vons): 'Coca-Cola 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.98)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
+- `pepsi_12packs` (Vons): 'Pepsi 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.83)
+  - Display: Pepsi
+  - Subtitle: 12-pack, 12 fl oz cans
+- `dr_pepper_12packs` (Vons): 'Dr Pepper 10-12 pack, 7.5-12 oz cans' @ $6.0 (confidence 0.83)
+  - Display: Dr Pepper
+  - Subtitle: 12-pack, 12 fl oz cans
+- `haagen_dazs_pints` (Vons): 'Häagen-Dazs Ice Cream 14 oz' @ $2.99 (confidence 0.86)
+  - Display: Häagen-Dazs ice cream pints
+  - Subtitle: 14 oz pints
+- `dreyers_tubs` (Vons): "Dreyer's Ice Cream 1.5 qt" @ $2.99 (confidence 0.90)
+  - Display: Dreyer's ice cream
+  - Subtitle: 1.5 qt tubs
+- `seedless_grapes_per_lb` (Vons): 'Green or Red Seedless Grapes' @ $1.99 (confidence 0.70)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `peaches_per_lb` (Vons): 'Large White Peaches' @ $1.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Vons): 'White Nectarines' @ $1.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `plums_per_lb` (Vons): 'Plums' @ $1.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `lucerne_cream_cheese` (Vons): 'Lucerne® Cream Cheese Brick 8 oz.' @ $0.99 (confidence 0.90)
+  - Display: Lucerne cream cheese
+  - Subtitle: 8 oz
+- `chobani_yogurt_per_cup` (Vons): 'Chobani Greek Yogurt 4.5-5.3 oz' @ $1.0 (confidence 0.91)
+  - Display: Chobani yogurt cups
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `nature_valley_bars` (Vons): 'Nature Valley Bars 10-12 ct' @ $3.99 (confidence 1.00)
+  - Display: Nature Valley bars
+  - Subtitle: roughly 5–12 ct boxes
+- `general_mills_cereal_family_size` (Vons): 'Family size Cheerios 14-24 oz' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
+- `chicken_breast_per_lb` (Vons): 'Signature SELECT Boneless Skinless Chicken Breast' @ $2.99 (confidence 0.90)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `chicken_thigh_per_lb` (Vons): 'Signature SELECT Boneless Skinless Chicken Thighs' @ $2.99 (confidence 0.90)
+  - Display: Chicken thighs
+  - Subtitle: per lb
+- `cape_cod_chips` (Vons): 'Cape Cod Potato Chips 6.5 to 8 oz' @ $1.99 (confidence 0.93)
+  - Display: Cape Cod potato chips
+  - Subtitle: regular size, 6.5–8.5 oz
+- `snyders_pretzels` (Vons): "Snyder's Pretzels 8 to 16 oz" @ $1.99 (confidence 0.90)
+  - Display: Snyder's pretzels
+  - Subtitle: regular size, 10–16 oz
+- `pork_spare_ribs_per_lb` (Vons): 'Fresh St. Louis Style Pork Spareribs' @ $4.99 (confidence 0.70)
+  - Display: Pork spare ribs
+  - Subtitle: per lb

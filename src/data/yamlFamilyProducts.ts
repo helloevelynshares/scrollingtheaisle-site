@@ -181,7 +181,7 @@ export function buildYamlFamilyFeedProducts(feedId: string): FeedProductView[] {
   const pricesByFamily =
     feedId === VONS_FEED_ID ? VONS_WEEKLY_AD_PRICES : WEEKLY_AD_PRICES;
 
-  return CANONICAL_TRACKER_FAMILIES.map((family) => {
+  const products = CANONICAL_TRACKER_FAMILIES.map((family) => {
     const baseline = baselineForFamily(family.id, feedId);
     const byWeek = pricesByFamily[family.id] ?? {};
 
@@ -231,12 +231,145 @@ export function buildYamlFamilyFeedProducts(feedId: string): FeedProductView[] {
       weeklyPrices,
       priceComparison: getFallbackComparison(comparisonKey, feed.id),
       costcoPriceHistory: getCostcoPriceHistory(comparisonKey, feed.id),
-      trackerType: "brand_family",
-      chartMode: "single",
+      trackerType: "brand_family" as const,
+      chartMode: "single" as const,
       homepageSection: family.homepageSection,
       displayOrder: family.displayOrder,
+      displayCardGroup: family.displayCardGroup || undefined,
     };
   }).sort((a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999));
+
+  return mergeDisplayCardGroups(products);
+}
+
+/** Egg carton size used for per-egg deal comparison within a display card group. */
+function eggPackCount(canonicalId: string): number | null {
+  if (canonicalId === "lucerne_eggs_18") return 18;
+  if (canonicalId === "eggs_dozen_normalized") return 12;
+  return null;
+}
+
+function unitDealPrice(product: FeedProductView, week: WeeklyPrice): number | null {
+  const pack = eggPackCount(product.canonicalId);
+  if (pack == null || week.price == null || week.price <= 0) {
+    return week.price ?? null;
+  }
+  return week.price / pack;
+}
+
+function preferAdWeek(week: WeeklyPrice): boolean {
+  return (
+    week.adPrice != null &&
+    week.matchConfidence != null &&
+    week.matchConfidence !== "low"
+  );
+}
+
+/**
+ * Collapse families that share displayCardGroup into one card.
+ * For Lucerne eggs, pick the better per-egg price each week (12 vs 18 count)
+ * and surface that count in the subtitle / preview.
+ */
+function mergeDisplayCardGroups(
+  products: FeedProductView[],
+): FeedProductView[] {
+  const byGroup = new Map<string, FeedProductView[]>();
+  const ungrouped: FeedProductView[] = [];
+
+  for (const product of products) {
+    const group = product.displayCardGroup?.trim();
+    if (!group) {
+      ungrouped.push(product);
+      continue;
+    }
+    const list = byGroup.get(group) ?? [];
+    list.push(product);
+    byGroup.set(group, list);
+  }
+
+  const merged: FeedProductView[] = [...ungrouped];
+
+  for (const [, members] of byGroup) {
+    if (members.length === 1) {
+      merged.push(members[0]);
+      continue;
+    }
+
+    // Prefer the 12-count family as the stable card identity / scroll target.
+    const primary =
+      members.find((m) => m.canonicalId === "eggs_dozen_normalized") ??
+      members[0];
+
+    type OwnedWeek = { member: FeedProductView; week: WeeklyPrice };
+    const mergedWeeks: WeeklyPrice[] = primary.weeklyPrices.map((anchor) => {
+      const owned: OwnedWeek[] = members
+        .map((member) => {
+          const week = member.weeklyPrices.find(
+            (w) => w.weekStart === anchor.weekStart,
+          );
+          return week ? { member, week } : null;
+        })
+        .filter((row): row is OwnedWeek => Boolean(row));
+
+      const adOwned = owned.filter((row) => preferAdWeek(row.week));
+      const pool = adOwned.length ? adOwned : owned;
+
+      let best = pool[0];
+      for (const row of pool.slice(1)) {
+        const bestUnit = unitDealPrice(best.member, best.week);
+        const rowUnit = unitDealPrice(row.member, row.week);
+        if (rowUnit == null) continue;
+        if (bestUnit == null || rowUnit < bestUnit) {
+          best = row;
+        }
+      }
+
+      return {
+        ...best.week,
+        offerText:
+          best.week.offerText ||
+          (best.member.canonicalId === "lucerne_eggs_18"
+            ? "Lucerne Eggs 18-count"
+            : "Lucerne Eggs 12-count"),
+      };
+    });
+
+    // Subtitle reflects the better current/preview ad deal when present.
+    const previewOrCurrent =
+      [...mergedWeeks].reverse().find((w) => preferAdWeek(w)) ??
+      mergedWeeks[mergedWeeks.length - 1];
+    const winnerNow =
+      members.find((m) =>
+        m.weeklyPrices.some(
+          (w) =>
+            w.weekStart === previewOrCurrent?.weekStart &&
+            w.adPrice != null &&
+            w.adPrice === previewOrCurrent?.adPrice,
+        ),
+      ) ?? primary;
+    const countLabel =
+      winnerNow.canonicalId === "lucerne_eggs_18" ? "18-count" : "12-count";
+
+    const baselines = members
+      .map((m) => m.baselinePrice)
+      .filter((p): p is number => p != null && p > 0);
+    const baselinePrice =
+      baselines.length > 0 ? Math.min(...baselines) : primary.baselinePrice;
+
+    merged.push({
+      ...primary,
+      displayName: "Lucerne Eggs",
+      subtitle: `${countLabel} deal shown when better per egg; tracks 12- and 18-count`,
+      sizeLabel: "12- or 18-count Lucerne cartons",
+      weeklyPrices: mergedWeeks,
+      baselinePrice,
+      hasFeedData: members.some((m) => m.hasFeedData),
+    });
+  }
+
+  return merged.sort(
+    (a, b) => (a.displayOrder ?? 999) - (b.displayOrder ?? 999),
+  );
 }
 
 export function buildSafewayYamlProducts(): FeedProductView[] {

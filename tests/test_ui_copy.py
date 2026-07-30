@@ -41,6 +41,7 @@ class TestNoInternalIdsExposed(unittest.TestCase):
             ("ruffles_regular_bags", "regular size,"),
             ("oreo_family_size", "family size,"),
             ("nabisco_snack_crackers", "family size,"),
+            ("nabisco_snack_crackers_regular", "regular size,"),
             ("doritos_5_13oz", "regular size,"),
             ("general_mills_cereal_regular", "regular size,"),
             ("general_mills_cereal_family_size", "family size,"),

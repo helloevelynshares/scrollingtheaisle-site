@@ -20,6 +20,8 @@ export type CanonicalTrackerFamily = {
   searchAliases: string[];
   /** Old canonical_products ids whose historical rows map to this family. */
   legacyCanonicalIds: string[];
+  /** Families sharing this id collapse to one card; UI picks the better deal. */
+  displayCardGroup: string;
 };
 
 export type HomepageSection = {
@@ -97,7 +99,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "doritos_nacho_cheese"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "cheetos_regular_bags",
@@ -121,7 +124,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "cheetos_crunchy"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "cheetos_party_size",
@@ -136,12 +140,13 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Cheetos Party Size",
       "Cheetos Party Size"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "lays_potato_chips_regular",
     "displayName": "Lay's potato chips",
-    "subtitle": "regular size, 5\u201313 oz",
+    "subtitle": "regular bags 5\u201313 oz, including Poppables",
     "displayOrder": 4,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -160,12 +165,13 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lay's Popables",
       "Lay's potato chips"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "lays_kettle_cooked",
     "displayName": "Lay's Kettle Cooked chips",
-    "subtitle": "regular size, 7.75\u20138 oz",
+    "subtitle": "regular kettle bags 6\u20138 oz",
     "displayOrder": 5,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "chips_salty_snacks",
@@ -183,7 +189,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Kettle Cooked Chips",
       "Lay's Kettle Cooked chips"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "lays_party_size",
@@ -198,7 +205,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lay's Party Size",
       "Lay's Party Size"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "kettle_brand_chips",
@@ -223,7 +231,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "kettle_brand_chips"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "ruffles_regular_bags",
@@ -242,7 +251,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Ruffles potato chips",
       "Ruffles"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "sun_chips_7oz",
@@ -262,7 +272,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "SunChips",
       "Sun Chips"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "tostitos_tortilla_chips",
@@ -282,7 +293,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "mission_tortilla_chips"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "simply_snacks",
@@ -304,7 +316,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Simply snacks",
       "Simply snacks"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "simply_party_size",
@@ -320,7 +333,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Simply large bags",
       "Simply Party Size"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "popcorners",
@@ -337,7 +351,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pop Corners",
       "PopCorners"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "ritz_crackers",
@@ -358,7 +373,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "ritz_crackers_snacks"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "ritz_toasted_chips",
@@ -373,13 +389,38 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Ritz Toasted Chips",
       "Nabisco Ritz Toasted Chips"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
+  },
+  {
+    "id": "nabisco_snack_crackers_regular",
+    "displayName": "Wheat Thins, Triscuit & Chicken in a Biskit \u2014 regular size",
+    "subtitle": "regular size, 3.5\u20139.1 oz",
+    "displayOrder": 15,
+    "homepageSection": "stock_up_snacks_and_treats",
+    "category": "cookies_crackers",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Nabisco Snack Crackers",
+      "Nabisco snack crackers",
+      "Wheat Thins",
+      "Triscuit",
+      "Triscuit Crackers",
+      "Chicken in a Biskit",
+      "Chicken in a Biscuit",
+      "Chicken and a Biskit",
+      "Chicken and a Biscuit",
+      "Wheat Thins, Triscuit & Chicken in a Biskit \u2014 regular size"
+    ],
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "nabisco_snack_crackers",
     "displayName": "Wheat Thins, Triscuit & Chicken in a Biskit",
     "subtitle": "family size, 11.5\u201314 oz",
-    "displayOrder": 15,
+    "displayOrder": 16,
     "homepageSection": "stock_up_snacks_and_treats",
     "category": "cookies_crackers",
     "confidence": "working",
@@ -395,7 +436,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Nabisco snack crackers",
       "Wheat Thins, Triscuit & Chicken in a Biskit"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "cheez_it_crackers",
@@ -416,7 +458,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Cheez-It Snack Mix",
       "Cheez-It crackers"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chips_ahoy",
@@ -435,7 +478,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Chips Ahoy limited edition flavors",
       "Chips Ahoy cookies"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "oreo_family_size",
@@ -459,7 +503,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "oreos_sandwich_cookies"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "goldfish_bags",
@@ -477,7 +522,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Goldfish bags in size range",
       "Goldfish"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "keebler_sandwich_crackers",
@@ -494,7 +540,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Keebler peanut butter crackers",
       "Keebler sandwich crackers"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "coca_cola_12packs",
@@ -515,7 +562,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "coke_zero"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "pepsi_12packs",
@@ -532,7 +580,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pepsi Zero 12-pack",
       "Pepsi"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "dr_pepper_12packs",
@@ -549,7 +598,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Dr Pepper Zero Sugar 12-pack",
       "Dr Pepper"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "lacroix_8pack",
@@ -567,7 +617,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "LaCroix 8-pack",
       "LaCroix sparkling water"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "simply_refrigerated_juice_lemonade",
@@ -586,7 +637,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Simply Limeade",
       "Simply juice"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "haagen_dazs_pints",
@@ -607,7 +659,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "haagen_dazs_ice_cream"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "ben_jerrys_ice_cream",
@@ -628,7 +681,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "ben_jerrys_ice_cream"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "dreyers_tubs",
@@ -645,7 +699,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Dreyer's 1.5 qt",
       "Dreyer's ice cream"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "breyers_ice_cream",
@@ -665,7 +720,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Breyers CarbSmart",
       "Breyers ice cream"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "tillamook_ice_cream",
@@ -684,7 +740,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "tillamook_ice_cream"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "haagen_dazs_bars_novelties",
@@ -701,7 +758,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Haagen Dazs novelties",
       "H\u00e4agen-Dazs bars / novelties"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "dreyers_novelties",
@@ -718,7 +776,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Dreyer's novelties 4 ct",
       "Dreyer's novelties"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "strawberries_1_2lb",
@@ -738,7 +797,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "strawberries"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "seedless_grapes_per_lb",
@@ -758,7 +818,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "grapes"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "cherries_per_lb",
@@ -775,7 +836,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "fresh cherries",
       "Cherries"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "berries_6oz",
@@ -796,7 +858,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "berries 6 oz",
       "Blueberries / raspberries / blackberries"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "hass_avocados_each",
@@ -816,7 +879,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "avocados"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "mangoes_each",
@@ -834,7 +898,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "mango each",
       "Mangoes"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "peaches_per_lb",
@@ -852,7 +917,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "peaches per lb",
       "Peaches"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "nectarines_per_lb",
@@ -870,7 +936,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "nectarines per lb",
       "Nectarines"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "plums_per_lb",
@@ -888,7 +955,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "plums per lb",
       "Plums"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "sweet_corn",
@@ -906,12 +974,13 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "corn 3 for",
       "Sweet corn"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "eggs_dozen_normalized",
     "displayName": "Lucerne Eggs",
-    "subtitle": "Lucerne large eggs; per dozen (18 ct scaled to 12)",
+    "subtitle": "Lucerne large eggs, 12-count",
     "displayOrder": 43,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "dairy",
@@ -926,7 +995,27 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "eggs_18_count"
-    ]
+    ],
+    "displayCardGroup": "lucerne_eggs"
+  },
+  {
+    "id": "lucerne_eggs_18",
+    "displayName": "Lucerne Eggs (18-count)",
+    "subtitle": "Lucerne large eggs, 18-count",
+    "displayOrder": 43,
+    "homepageSection": "dairy_breakfast_bakery",
+    "category": "dairy",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Lucerne eggs",
+      "Lucerne Large Eggs",
+      "Lucerne Cage Free Eggs",
+      "Lucerne Farms Eggs",
+      "Lucerne eggs 18-count"
+    ],
+    "legacyCanonicalIds": [],
+    "displayCardGroup": "lucerne_eggs"
   },
   {
     "id": "butter_16oz",
@@ -940,13 +1029,19 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     "searchAliases": [
       "Lucerne butter 16 oz",
       "Challenge butter 16 oz",
+      "Challenge Butter",
+      "Danish Creamery butter 16 oz",
+      "Danish Creamery Butter",
       "Land O Lakes butter 16 oz",
       "Kerrygold butter when comparable size or normalized",
       "store-brand butter 16 oz",
       "name-brand butter 16 oz",
+      "butter 16 oz sticks",
+      "butter sticks 16 oz",
       "Butter"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "sliced_or_shredded_cheese_6_8oz",
@@ -971,7 +1066,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "store-brand sliced or shredded cheese",
       "Sliced or shredded cheese"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "philadelphia_cream_cheese",
@@ -988,7 +1084,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Philadelphia spread",
       "Philadelphia cream cheese"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "lucerne_cream_cheese",
@@ -1005,12 +1102,13 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lucerne cream cheese tub",
       "Lucerne cream cheese"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chobani_yogurt_per_cup",
     "displayName": "Chobani yogurt cups",
-    "subtitle": "single cups or 4-packs; normalize per cup",
+    "subtitle": "single cups or 4\u00d75.3 oz multipacks (incl. Layered); normalize per cup",
     "displayOrder": 48,
     "homepageSection": "dairy_breakfast_bakery",
     "category": "yogurt",
@@ -1025,7 +1123,6 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Chobani Zero Sugar",
       "Less Sugar Yogurt",
       "Zero Sugar Yogurt",
-      "Chobani 20g protein",
       "Chobani 4-pack",
       "Chobani 4 ct",
       "Chobani Layered",
@@ -1034,7 +1131,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Chobani Complete",
       "Chobani yogurt"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chobani_yogurt_tub",
@@ -1052,7 +1150,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "chobani_greek_yogurt"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "fage_cups",
@@ -1069,7 +1168,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Fage Total cup",
       "Fage Greek yogurt cups"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "fage_tub",
@@ -1088,7 +1188,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "fage_greek_yogurt"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "lucerne_yogurt_tubs",
@@ -1104,7 +1205,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Lucerne Greek yogurt tub",
       "Lucerne yogurt tubs"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "nature_valley_bars",
@@ -1125,7 +1227,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "nature_valley_bars"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "general_mills_cereal_regular",
@@ -1149,7 +1252,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "cheerios"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "general_mills_cereal_family_size",
@@ -1167,9 +1271,13 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "family size Chex",
       "family size Honey Nut Cheerios",
       "Honey Nut Cheerios family size",
+      "General Mills Family Size Cereal",
+      "General Mills family size cereal",
+      "Family Size Cereal",
       "General Mills cereal (family size)"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "post_cereal_regular",
@@ -1188,7 +1296,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Post cereal",
       "Post cereal"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "post_cereal_giant_size",
@@ -1205,7 +1314,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "giant-size Pebbles",
       "Post cereal (giant size)"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "thomas_bagels_muffins_bread",
@@ -1223,7 +1333,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Thomas breakfast bread",
       "Thomas bagels / English muffins / swirl bread"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "kings_hawaiian_rolls",
@@ -1240,7 +1351,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "King's Hawaiian slider rolls",
       "King's Hawaiian rolls"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "pillsbury_refrigerated_dough",
@@ -1259,7 +1371,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pillsbury cookie dough",
       "Pillsbury ready-to-bake dough"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "quest_bars",
@@ -1279,7 +1392,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "protein_bars"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "clif_bars",
@@ -1297,7 +1411,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Clif Builders if intentionally included",
       "Clif bars"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chicken_breast_per_lb",
@@ -1319,7 +1434,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "fresh chicken breasts",
       "Chicken breast"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chicken_thigh_per_lb",
@@ -1337,7 +1453,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "fresh chicken thighs",
       "Chicken thighs"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "ribeye_steak",
@@ -1354,7 +1471,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "USDA Choice ribeye",
       "Ribeye steak"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "tri_tip_roast",
@@ -1371,7 +1489,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "trimmed tri-tip",
       "Tri-tip roast"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "salmon",
@@ -1392,7 +1511,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "farm raised salmon",
       "Salmon"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "cape_cod_chips",
@@ -1411,7 +1531,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Cape Cod potato chips",
       "Cape Cod potato chips"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "smartfood_popcorn",
@@ -1428,7 +1549,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Smartfood White Cheddar",
       "Smartfood popcorn"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "pringles",
@@ -1445,7 +1567,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pringles potato crisps",
       "Pringles"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "snyders_pretzels",
@@ -1463,7 +1586,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Snyder's of Hanover",
       "Snyder's pretzels"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "frito_lay_multipack_chips",
@@ -1483,7 +1607,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     ],
     "legacyCanonicalIds": [
       "frito_lay_multipack_chips"
-    ]
+    ],
+    "displayCardGroup": ""
   },
   {
     "id": "pop_tarts",
@@ -1501,7 +1626,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Pop Tarts",
       "Pop-Tarts"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "kellogg_breakfast_bars",
@@ -1521,7 +1647,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Special K breakfast bars",
       "Nutri-Grain & Special K bars"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "betty_crocker_fruit_snacks",
@@ -1541,7 +1668,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Fruit Roll-Ups",
       "Betty Crocker fruit snacks"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "waterloo_sparkling_water",
@@ -1558,7 +1686,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Waterloo sparkling water",
       "Waterloo sparkling water"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "bell_peppers",
@@ -1579,7 +1708,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Orange Bell Pepper",
       "Bell peppers"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "chicken_wings_per_lb",
@@ -1597,7 +1727,31 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "fresh chicken wings",
       "Chicken wings"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
+  },
+  {
+    "id": "mandarins_3lb",
+    "displayName": "Mandarin oranges (Cuties)",
+    "subtitle": "3 lb bag",
+    "displayOrder": 80,
+    "homepageSection": "fresh_produce",
+    "category": "produce",
+    "confidence": "working",
+    "costcoComparable": true,
+    "searchAliases": [
+      "Cuties Mandarins",
+      "Cuties Mandarin Oranges",
+      "Cuties",
+      "California Mandarins",
+      "mandarin oranges",
+      "mandarins",
+      "clementines",
+      "clementine",
+      "Mandarin oranges"
+    ],
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "beef_short_ribs_per_lb",
@@ -1616,7 +1770,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "flanken short ribs",
       "Beef short ribs"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "pork_spare_ribs_per_lb",
@@ -1637,7 +1792,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "pork back ribs",
       "Pork spare ribs"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "oscar_mayer_hot_dogs",
@@ -1655,7 +1811,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Oscar Mayer Meat Franks",
       "Oscar Mayer hot dogs"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   },
   {
     "id": "cake_mix",
@@ -1675,7 +1832,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "devil's food cake mix",
       "Cake mix"
     ],
-    "legacyCanonicalIds": []
+    "legacyCanonicalIds": [],
+    "displayCardGroup": ""
   }
 ];
 
@@ -1702,150 +1860,173 @@ export const LEGACY_CANONICAL_TO_FAMILY: Record<string, string> = {
   "protein_bars": "quest_bars"
 };
 
-export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-22";
+export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-29";
 
 export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntry[]> = {
   safeway: [
-  {
-    "title": "Blueberries",
-    "trackerFamilyIds": [],
-    "reason": "Friday large pack $5 \u2014 the standout $5 Friday berry this week.",
-    "subtitle": "Friday large pack $5 \u2014 the standout $5 Friday berry this week.",
-    "badge": "FRIDAY",
-    "price": "$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 1
-  },
-  {
-    "title": "Strawberries",
-    "trackerFamilyIds": [],
-    "reason": "Friday large pack $5 \u2014 easy berry add-on alongside the blueberries.",
-    "subtitle": "Friday large pack $5 \u2014 easy berry add-on alongside the blueberries.",
-    "badge": "FRIDAY",
-    "price": "$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 2
-  },
-  {
-    "title": "Waterloo sparkling water",
-    "trackerFamilyIds": [],
-    "reason": "Friday 2 for $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
-    "subtitle": "Friday 2 for $5 on 12-packs \u2014 mix flavors like guava berry, banana berry, and apple pie a la mode.",
-    "badge": "FRIDAY",
-    "price": "2/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 3
-  },
-  {
-    "title": "Cape Cod / Sun Chips",
-    "trackerFamilyIds": [
-      "sun_chips_7oz"
-    ],
-    "reason": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from.",
-    "subtitle": "Friday only \u2014 Cape Cod kettle or Sun Chips 2 for $5, with plenty of flavors to pick from.",
-    "badge": "FRIDAY",
-    "price": "2/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 4
-  },
   {
     "title": "Chobani yogurt cups",
     "trackerFamilyIds": [
       "chobani_yogurt_per_cup"
     ],
-    "reason": "4-pack $3.49 (~$0.87/cup) \u2014 mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch).",
-    "subtitle": "4-pack $3.49 (~$0.87/cup) \u2014 mix & match cups, including layered and Zero Sugar; good week to grab Layers and bars too (coffee chocolate crunch).",
+    "reason": "89\u00a2 when you buy 10 \u2014 near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar.",
+    "subtitle": "89\u00a2 when you buy 10 \u2014 near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar.",
+    "badge": "DEAL",
+    "price": "$0.89",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 1
+  },
+  {
+    "title": "Challenge / Danish Creamery butter",
+    "trackerFamilyIds": [
+      "butter_16oz"
+    ],
+    "reason": "$3.49 for 16 oz sticks \u2014 an all-time low on the butter chart this week.",
+    "subtitle": "$3.49 for 16 oz sticks \u2014 an all-time low on the butter chart this week.",
     "badge": "DEAL",
     "price": "$3.49",
     "availability": "",
     "fridayOnly": false,
+    "displayOrder": 2
+  },
+  {
+    "title": "Honey mangoes",
+    "trackerFamilyIds": [
+      "mangoes_each"
+    ],
+    "reason": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on.",
+    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on.",
+    "badge": "PRODUCE",
+    "price": "10/$10",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 3
+  },
+  {
+    "title": "H\u00e4agen-Dazs ice cream",
+    "trackerFamilyIds": [
+      "haagen_dazs_pints"
+    ],
+    "reason": "$2.99 on 14 oz pints when you buy 3 \u2014 strong freezer stock-up.",
+    "subtitle": "$2.99 on 14 oz pints when you buy 3 \u2014 strong freezer stock-up.",
+    "badge": "DEAL",
+    "price": "$2.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 4
+  },
+  {
+    "title": "Doritos / Lay's / Tostitos",
+    "trackerFamilyIds": [
+      "doritos_5_13oz",
+      "lays_potato_chips_regular",
+      "tostitos_tortilla_chips"
+    ],
+    "reason": "Buy 2 Get 2 Free on 5\u201313 oz bags \u2014 effective about $2.75 when you use the full mix & match.",
+    "subtitle": "Buy 2 Get 2 Free on 5\u201313 oz bags \u2014 effective about $2.75 when you use the full mix & match.",
+    "badge": "SNACKS",
+    "price": "B2G2F",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 5
+  },
+  {
+    "title": "Ritz crackers",
+    "trackerFamilyIds": [
+      "ritz_crackers"
+    ],
+    "reason": "2 for $5 with belVita in the mix \u2014 solid cracker week.",
+    "subtitle": "2 for $5 with belVita in the mix \u2014 solid cracker week.",
+    "badge": "SNACKS",
+    "price": "2/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 6
+  },
+  {
+    "title": "General Mills family-size cereal",
+    "trackerFamilyIds": [
+      "general_mills_cereal_family_size"
+    ],
+    "reason": "$3.99 family-size boxes on the Back-to-School 4x points tile.",
+    "subtitle": "$3.99 family-size boxes on the Back-to-School 4x points tile.",
+    "badge": "DEAL",
+    "price": "$3.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 7
+  },
+  {
+    "title": "Sweet corn",
+    "trackerFamilyIds": [
+      "sweet_corn"
+    ],
+    "reason": "Friday only \u2014 10 for $5 (50\u00a2 each) on local sweet corn.",
+    "subtitle": "Friday only \u2014 10 for $5 (50\u00a2 each) on local sweet corn.",
+    "badge": "FRIDAY",
+    "price": "10/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 8
   },
   {
     "title": "Hass avocados",
     "trackerFamilyIds": [
       "hass_avocados_each"
     ],
-    "reason": "4 for $5 ($1.25 each) \u2014 solid full-week produce deal.",
-    "subtitle": "4 for $5 ($1.25 each) \u2014 solid full-week produce deal.",
-    "badge": "PRODUCE",
+    "reason": "Friday only \u2014 4 for $5 ($1.25 each).",
+    "subtitle": "Friday only \u2014 4 for $5 ($1.25 each).",
+    "badge": "FRIDAY",
     "price": "4/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 6
-  },
-  {
-    "title": "Bell peppers",
-    "trackerFamilyIds": [],
-    "reason": "4 for $5 with the avocado mix \u2014 strong absolute pepper price this week.",
-    "subtitle": "4 for $5 with the avocado mix \u2014 strong absolute pepper price this week.",
-    "badge": "PRODUCE",
-    "price": "4/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 7
-  },
-  {
-    "title": "Honey Nut Cheerios & Cinnamon Toast Crunch",
-    "trackerFamilyIds": [
-      "general_mills_cereal_regular"
-    ],
-    "reason": "$1.99 mix & match when you buy 4 \u2014 more box flavors to choose from.",
-    "subtitle": "$1.99 mix & match when you buy 4 \u2014 more box flavors to choose from.",
-    "badge": "DEAL",
-    "price": "$1.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 8
-  },
-  {
-    "title": "Kettle Brand chips",
-    "trackerFamilyIds": [
-      "kettle_brand_chips"
-    ],
-    "reason": "Near a recent low at $1.99 \u2014 grab flavors like spicy kimchi and dill pickle.",
-    "subtitle": "Near a recent low at $1.99 \u2014 grab flavors like spicy kimchi and dill pickle.",
-    "badge": "SNACKS",
-    "price": "$1.99",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 9
   },
   {
-    "title": "Nature Valley biscuits",
+    "title": "Pringles",
     "trackerFamilyIds": [
-      "nature_valley_bars"
+      "pringles"
     ],
-    "reason": "$1.99 in the mix & match \u2014 strong value on the biscuit boxes.",
-    "subtitle": "$1.99 in the mix & match \u2014 strong value on the biscuit boxes.",
-    "badge": "SNACKS",
-    "price": "$1.99",
+    "reason": "Friday only \u2014 3 for $5 on Pringles cans (mix with Signature SELECT chips).",
+    "subtitle": "Friday only \u2014 3 for $5 on Pringles cans (mix with Signature SELECT chips).",
+    "badge": "FRIDAY",
+    "price": "3/$5",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 10
   },
   {
-    "title": "Special K & Nutri-Grain bars",
-    "trackerFamilyIds": [],
-    "reason": "$1.99 with digital coupon \u2014 easy mix & match on Special K and Nutri-Grain.",
-    "subtitle": "$1.99 with digital coupon \u2014 easy mix & match on Special K and Nutri-Grain.",
-    "badge": "DEAL",
-    "price": "$1.99",
+    "title": "Peaches, nectarines & plums",
+    "trackerFamilyIds": [
+      "plums_per_lb"
+    ],
+    "reason": "$2.99/lb on yellow peaches, nectarines, or black plums \u2014 local stone fruit.",
+    "subtitle": "$2.99/lb on yellow peaches, nectarines, or black plums \u2014 local stone fruit.",
+    "badge": "PRODUCE",
+    "price": "$2.99/lb",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 11
+  },
+  {
+    "title": "Large strawberries or blueberries",
+    "trackerFamilyIds": [],
+    "reason": "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz).",
+    "subtitle": "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz).",
+    "badge": "PRODUCE",
+    "price": "$4.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 12
   }
 ],
   vons: [
   {
     "title": "Hand-picked deals updating soon",
     "trackerFamilyIds": [],
-    "reason": "Vons ad for Jul 22\u201328 isn't imported yet \u2014 hand-picked deals will update when that flyer lands.",
-    "subtitle": "Vons ad for Jul 22\u201328 isn't imported yet \u2014 hand-picked deals will update when that flyer lands.",
+    "reason": "Safeway Jul 29\u2013Aug 4 is live \u2014 Vons hand-picked deals will update when that shortlist is curated.",
+    "subtitle": "Safeway Jul 29\u2013Aug 4 is live \u2014 Vons hand-picked deals will update when that shortlist is curated.",
     "badge": "DEAL",
     "price": "Soon",
     "availability": "",

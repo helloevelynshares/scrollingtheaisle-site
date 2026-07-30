@@ -74,6 +74,8 @@ export type FeedProductView = {
   homepageSection?: string;
   /** YAML display order within section. */
   displayOrder?: number;
+  /** Families sharing this id collapse to one card; UI picks the better deal. */
+  displayCardGroup?: string;
 };
 
 /** feed_product_matches row; maps canonical item to a retailer SKU for price fetching. */

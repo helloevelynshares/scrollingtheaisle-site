@@ -169,6 +169,16 @@ export const SAFEWAY_BASELINES: Record<
     source: "Safeway search result CSV",
     retailerProductName: "Large Mango",
   },
+  "mandarins_3lb": {
+    price: 6.99,
+    source: "User-confirmed Safeway shelf (Evelyn 2026-07-29); 3 lb bag Cuties/mandarin oranges",
+    retailerProductName: "Cuties Mandarins 3 lb bag",
+  },
+  "nabisco_snack_crackers_regular": {
+    price: 5.49,
+    source: "Safeway shelf / search (regular-size Wheat Thins ~8 oz)",
+    retailerProductName: "Wheat Thins Snacks Big 100% Whole Grain - 8 Oz",
+  },
   "nabisco_snack_crackers": {
     price: 5.49,
     source: "Safeway search result CSV",

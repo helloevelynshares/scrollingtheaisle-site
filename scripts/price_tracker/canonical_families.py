@@ -98,6 +98,8 @@ class TrackerFamily:
     size_range: str = ""
     allowed_product_lines: tuple[str, ...] = ()
     eligible_item_examples: tuple[str, ...] = ()
+    # Optional: multiple families share one tracker card; UI picks the better deal.
+    display_card_group: str = ""
 
 
 # Marketing / size qualifiers that ad copy commonly inserts *between* a brand
@@ -193,8 +195,12 @@ def infer_normalization(family_id: str, notes: str, subtitle: str) -> str | None
         return "per_lb"
     if family_id in ("cherries_per_lb", "peaches_per_lb", "nectarines_per_lb", "plums_per_lb"):
         return "per_lb"
-    if family_id == "eggs_dozen_normalized" or "per dozen" in combined or "12-count" in combined:
+    if family_id == "eggs_dozen_normalized" or (
+        "per dozen" in combined and "egg" in combined
+    ):
         return "per_dozen"
+    if family_id == "lucerne_eggs_18":
+        return "pack_total"
     if family_id == "chobani_yogurt_per_cup" or "per cup" in combined and "chobani" in combined:
         return "per_cup"
     if family_id == "butter_16oz" or "16 oz" in combined and "butter" in combined:
@@ -208,6 +214,7 @@ def infer_normalization(family_id: str, notes: str, subtitle: str) -> str | None
     if family_id in (
         "waterloo_sparkling_water",
         "frito_lay_multipack_chips",
+        "mandarins_3lb",
     ):
         return "pack_total"
     if "per lb" in subtitle.lower():
@@ -251,6 +258,7 @@ def parse_family(raw: dict[str, Any]) -> TrackerFamily:
         size_range=str(raw.get("size_range") or ""),
         allowed_product_lines=tuple(raw.get("allowed_product_lines") or ()),
         eligible_item_examples=tuple(raw.get("eligible_item_examples") or ()),
+        display_card_group=str(raw.get("display_card_group") or ""),
     )
 
 

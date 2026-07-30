@@ -130,6 +130,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
         "itemNumber": "27003"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 5.99,
+        "unitPrice": 2.995,
+        "packageDescription": "STRAWBERRIES 2 LBS",
+        "availability": "low stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "27003"
       }
     ],
     "tustin": [
@@ -378,6 +388,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
         "itemNumber": "647465"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 7.99,
+        "unitPrice": 1.3317,
+        "packageDescription": "AVOCADOS HASS VARIETY 6 COUNT",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "647465"
       }
     ],
     "tustin": [
@@ -625,6 +645,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "DORITOS NACHO CHEESE 30 OUNCES",
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "933402"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 6.99,
+        "unitPrice": 0.233,
+        "packageDescription": "DORITOS NACHO CHEESE 30 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "933402"
       }
     ],
@@ -1073,6 +1103,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-15_san-francisco_consolidated.csv",
         "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
       }
     ]
   },
@@ -1207,6 +1247,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-15_san-francisco_consolidated.csv",
         "itemNumber": "2059712"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 6.79,
+        "unitPrice": 0.1698,
+        "packageDescription": "CHOBANI 20G PROTEIN PLAIN GREEK YOGURT 40 OUNCES",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "2059712"
       }
     ]
   },
@@ -1320,6 +1370,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "1005641"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 17.89,
+        "unitPrice": 0.8945,
+        "packageDescription": "CHOBANI GREEK YOGURT VARIETY 20 COUNT 5.3 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "1005641"
       }
     ],
@@ -1729,6 +1789,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
         "itemNumber": "522107"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 6.99,
+        "unitPrice": 0.1717,
+        "packageDescription": "GENERAL MILLS CHEERIOS 2 PACK 20.35 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "522107"
       }
     ],
     "tustin": [
@@ -1978,6 +2048,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "NATURE VALLEY OATS 'N HONEY BAR 49 BARS 1.5 OUNCES EA",
         "availability": "low stock",
         "sourceFile": "2026-05-03_san-francisco_consolidated.csv",
+        "itemNumber": "846156"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 14.99,
+        "unitPrice": 0.3059,
+        "packageDescription": "NATURE VALLEY OATS 'N HONEY BAR 49 BARS 1.5 OUNCES EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "846156"
       }
     ],
@@ -2254,6 +2334,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "FAGE TOTAL GREEK NONFAT YOGURT 48 OUNCES",
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "824383"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 7.79,
+        "unitPrice": 0.1623,
+        "packageDescription": "FAGE TOTAL GREEK NONFAT YOGURT 48 OUNCES",
+        "availability": "low stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "824383"
       }
     ],
@@ -2710,6 +2800,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
         "itemNumber": "1059995"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 8.49,
+        "unitPrice": 2.83,
+        "packageDescription": "ORGANIC GREEN SEEDLESS GRAPES 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "1059995"
       }
     ],
     "tustin": [
@@ -2857,6 +2957,274 @@ export const COSTCO_PRICE_HISTORY: Record<
       }
     ]
   },
+  "mandarins_3lb": {
+    "san_francisco": [
+      {
+        "date": "2026-06-19",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "low stock",
+        "sourceFile": "2026-06-18_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-23",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-23_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-24",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-24_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-02",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-01_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-08",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-08_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-12",
+        "region": "san_francisco",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-12_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-15",
+        "region": "san_francisco",
+        "price": 5.99,
+        "unitPrice": 5.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-15_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-23",
+        "region": "san_francisco",
+        "price": 5.99,
+        "unitPrice": 5.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 5.99,
+        "unitPrice": 5.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
+        "itemNumber": "1801"
+      }
+    ],
+    "tustin": [
+      {
+        "date": "2026-06-19",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-18_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-24",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-24_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-02",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-01_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-08",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-08_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-12",
+        "region": "tustin",
+        "price": 4.99,
+        "unitPrice": 4.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-12_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-15",
+        "region": "tustin",
+        "price": 5.99,
+        "unitPrice": 5.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-15_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-23",
+        "region": "tustin",
+        "price": 5.99,
+        "unitPrice": 5.99,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-23_tustin_consolidated.csv",
+        "itemNumber": "1801"
+      }
+    ],
+    "seattle": [
+      {
+        "date": "2026-06-19",
+        "region": "seattle",
+        "price": 5.49,
+        "unitPrice": 5.49,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-18_seattle_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-06-27",
+        "region": "seattle",
+        "price": 5.49,
+        "unitPrice": 5.49,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-06-27_seattle_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-05",
+        "region": "seattle",
+        "price": 5.49,
+        "unitPrice": 5.49,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-05_seattle_consolidated.csv",
+        "itemNumber": "1801"
+      },
+      {
+        "date": "2026-07-07",
+        "region": "seattle",
+        "price": 5.49,
+        "unitPrice": 5.49,
+        "packageDescription": "MANDARINS 3 LBS",
+        "availability": "in stock",
+        "sourceFile": "2026-07-07_seattle_consolidated.csv",
+        "itemNumber": "1801"
+      }
+    ]
+  },
   "eggs_18_count": {
     "san_francisco": [
       {
@@ -2967,6 +3335,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "KIRKLAND SIGNATURE CAGE FREE LARGE EGGS USDA GRADE AA 5 DOZEN",
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "1025795"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 11.99,
+        "unitPrice": 11.99,
+        "packageDescription": "KIRKLAND SIGNATURE CAGE FREE LARGE EGGS USDA GRADE AA 5 DOZEN",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "1025795"
       }
     ],
@@ -3521,6 +3899,16 @@ export const COSTCO_PRICE_HISTORY: Record<
         "packageDescription": "KIRKLAND SIGNATURE PROTEIN BAR VARIETY 20 BARS 2.12 OUNCE EA",
         "availability": "in stock",
         "sourceFile": "2026-07-23_san-francisco_consolidated.csv",
+        "itemNumber": "1014809"
+      },
+      {
+        "date": "2026-07-29",
+        "region": "san_francisco",
+        "price": 23.69,
+        "unitPrice": 1.1845,
+        "packageDescription": "KIRKLAND SIGNATURE PROTEIN BAR VARIETY 20 BARS 2.12 OUNCE EA",
+        "availability": "in stock",
+        "sourceFile": "2026-07-29_san-francisco_consolidated.csv",
         "itemNumber": "1014809"
       }
     ],

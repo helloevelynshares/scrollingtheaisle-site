@@ -134,6 +134,15 @@ Fix / workaround: Manually correct dedicated + consolidated `split_offer_items.c
 How to verify: Vons Jul 22 — Doritos/Lay’s/Simply $2.49, Post $1.88, eggs $1.33/dozen, cherries $3.99, butter $2.99, blueberries $0.99, Oreo/Chips Ahoy $1.99; no chicken_breast / strawberries / Ruffles / kettle for that week. Bundle includes `2026-07-22`.  
 Related files: `data/canonical_tracker_families.yaml`, `src/data/vonsWeeklyAdPrices.generated.ts`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`, `output/weekly_deals/2026-07-22/`
 
+### Vons 2026-07-29 import: front-page miss + Pick 4 pollution
+
+Date discovered: 2026-07-28  
+Context: Vons-only night-before publish of `vons 7-29 - 8-4.pdf` (week `2026-07-29` → `2026-08-04`) via `/usr/bin/python3 scripts/import_weekly_ad.py --week-start 2026-07-29 --week-end 2026-08-04 --vons-pdf "vons 7-29 - 8-4.pdf"`. Soft-start already marks Jul 28 as ACTIVE (no Preview).  
+What happened: (1) Vision mostly captured the digital-coupon sidebar + chicken hero on page 1 and missed front-page produce/B2G2/grocery tiles (grapes, white peaches/nectarines/plums $1.99 digital; Doritos/Simply NKD/Tostitos B2G2; soda B2G2; Chobani 10/$10; Häagen-Dazs/Dreyer’s $2.99 buy 2; GM family cereal/Nature Valley $3.99 buy 3). (2) Page 2 Pick 4 rows had polluted package blobs; hallucinated Lay’s/Simply @ $4.99; Kettle/Cape Cod blocked as mixed-item. (3) First vision run hit truncated JSON on page 2 (retry succeeded; page 1 cache HIT). (4) Cream cheese brick is **$0.99** Pick 4 (not the $1.99 spread tile). B2G2 chips effective **$2.75** from “save up to $10.98 on 4” ($5.49 ref).  
+Fix / workaround: Manually add/correct dedicated + consolidated `split_offer_items.csv` (`review_reasons=manual_pdf_verified_2026-07-28`); rematch `--feed vons`; `npm run build:price-tracker`. WoW chicken $1.99→$2.99 and Coke B2G2 effective $6 are real flyer prices.  
+How to verify: `isPreviewWeek("2026-07-29", Jul 28) === false`. Vons Jul 29 — grapes/peaches/plums $1.99, Doritos/Simply/Tostitos $2.75, Kettle/Cape Cod/Lay’s Kettle $1.99, cream cheese $0.99, Chobani $1.00, HD pints $2.99, GM family Cheerios $3.99, chicken $2.99. Bundle includes `2026-07-29`.  
+Related files: `src/data/vonsWeeklyAdPrices.generated.ts`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`, `output/weekly_deals/2026-07-29/`
+
 **Vons baselines (SoCal):** Same Albertsons `pgmsearch` API: `python scripts/seed_vons_baseline_playwright.py --http-only` (curl transport in `vons_client.py`; Playwright fallback). Env: `VONS_COOKIE`, `VONS_VISITOR_ID`, `VONS_STORE_ID=2053`, `VONS_ZIPCODE=92110`, `VONS_CHANNEL=instore`, `VONS_USER_AGENT` (Safari), optional `VONS_UUID`, `VONS_SUBSCRIPTION_KEY`. Then `npm run generate:vons-feed-matches` → `src/data/vonsBaseline.generated.ts`. **Vons weekly ads** via `vonsWeeklyAdPrices.generated.ts`.
 
 TikTok mentions: `python scripts/extract_tiktok_food_mentions.py` reads `bulk_transcripts.csv` → `data/processed/tiktok_item_mentions.csv`.
@@ -173,8 +182,8 @@ Related files: `data/canonical_tracker_families.yaml`, `src/data/priceTrackerUti
 
 Date discovered: 2026-07-12
 Context: Homepage “Scrolling the Aisle's highlights of the week” after layout exploration.
-What happened: Chose exploration **Version 1: Balanced editorial breakout** as the public layout. Category columns grouped by editorial `customBadge` → Friday / Produce / Meat / Snacks / Variety / Other Deals (`DEAL` and missing badges → Other Deals). Colored category titles + borders; name and price sit side-by-side on each row; 2 cols from 640px, 3 from 900px. Safeway/Vons toggle unchanged; data from `data/homepage-preview.generated.json`.
-How to verify: Open `index.html` → picks show grouped columns with colored category heads; name/price on one row; no layout switcher; toggle Safeway/Vons.
+What happened: Chose exploration **Version 1: Balanced editorial breakout** as the public layout. Category columns grouped by editorial `customBadge` → Friday / Produce / Meat / Snacks / Variety / Other Deals (`DEAL` and missing badges → Other Deals). Colored category titles + borders; name and price sit side-by-side on each row. **One horizontal row of four equal columns** (`.hub-picks-cat-columns`: `grid-template-columns: repeat(4, minmax(160px, 1fr))` with `overflow-x: auto` so phones scroll sideways instead of wrapping to 2×2). Safeway/Vons toggle unchanged; data from `data/homepage-preview.generated.json`.
+How to verify: Open `index.html` → picks show four category columns on one row (desktop fills width; narrow screens scroll horizontally); name/price on one row; no layout switcher; toggle Safeway/Vons.
 Related files: `homepage.js` (`groupPicksByCategory`, `renderPicksReport`), `styles.css` (`.hub-picks-cat-*`), `index.html` (`#picks-grid.hub-picks-report`)
 
 ### Never ship layout exploration switchers to production
@@ -186,28 +195,30 @@ Fix / workaround: **Always true:** never ship version explorers, A/B layout swit
 How to verify: Public homepage has no “Layout exploration” chrome, no version tabs/arrows, and no `*-explore/` scripts linked from `index.html`.
 Related files: `index.html`, `homepage.js`, `styles.css`
 
-### "Hand-picked deals" section has TWO independent render paths (tracker React vs homepage briefing)
+### "Hand-picked deals" section has TWO data paths, ONE shared UI layout
 
-Date discovered: 2026-07-08
-Context: The curated "Hand-picked deals I'm watching…this week" editorial section is rendered by two totally separate code paths that both read from `data/popular_this_week.yaml`, so a change in one does NOT automatically appear in the other:
-1. **Staging price tracker** (`/staging-price-tracker/`): React component `src/staging-price-tracker/PopularThisWeek.tsx`, fed by `POPULAR_THIS_WEEK` in `canonicalTrackerFamilies.generated.ts`. Requires `npm run build:price-tracker`. Still uses card grid + top-7 expander + per-card badge pills.
-2. **Homepage briefing** ("Scrolling the Aisle's highlights of the week", Safeway/Vons toggle): plain `homepage.js` category report (`renderPicksReport` / `groupPicksByCategory`), fed by `data/homepage-preview.generated.json` (built via `npm run generate:homepage-preview` → `src/homepage/previewData.ts`). Served statically. No bundle rebuild. Homepage maps `customBadge` to section groups rather than rendering pills on every item.
-Gotcha: When adding a field like the editorial `customBadge`, you must wire it into BOTH surfaces (tracker pills + homepage category grouping). Empty/`DEAL` badges land in “Other Deals” on the homepage.
-How to verify: Tracker still shows pills + expander; homepage shows category columns with the same underlying pick data.
-Related files: `homepage.js`, `styles.css` (`.hub-picks-cat-*`, `.hub-badge--custom`), `src/homepage/previewData.ts`, `src/staging-price-tracker/PopularThisWeek.tsx`, `data/homepage-preview.generated.json`
+Date discovered: 2026-07-08  
+Updated: 2026-07-26  
+Context: The curated "Hand-picked deals I'm watching…this week" editorial section is fed by two data paths that both read from `data/popular_this_week.yaml`, but they now share the same **balanced editorial breakout** UI (category columns via `.hub-picks-cat-*`).
+1. **Staging price tracker** (`/staging-price-tracker/` / `grocery-price-tracker/`): React `PopularThisWeek.tsx` → same `hub-picks-report` markup as homepage; grouping via `src/data/handpickedCategoryReport.ts`. Fed by `POPULAR_THIS_WEEK` in `canonicalTrackerFamilies.generated.ts`. Jump link is a button that scrolls to the family card (`onJumpToFamily`). Requires `npm run build:price-tracker`.
+2. **Homepage briefing** ("Scrolling the Aisle's highlights of the week"): plain `homepage.js` (`renderPicksReport` / `groupPicksByCategory`), fed by `data/homepage-preview.generated.json` (`npm run generate:homepage-preview`). Served statically. Links out to the tracker.
+Gotcha: Data wiring still differs (tracker live products vs homepage JSON). Keep badge→category maps in sync between `homepage.js` and `handpickedCategoryReport.ts`. Empty/`DEAL` badges → “Other Deals”.
+How to verify: Homepage and tracker both show Friday / Produce / Meat / Snacks / Variety / Other Deals columns with name+price on one row; no card-grid pills or top-7 expander on the tracker.
+Related files: `homepage.js`, `styles.css` (`.hub-picks-cat-*`), `src/data/handpickedCategoryReport.ts`, `src/homepage/previewData.ts`, `src/staging-price-tracker/PopularThisWeek.tsx`, `data/homepage-preview.generated.json`
 
 ### "Hand-picked deals this week" cards support editorial badge + subtitle overrides
 
-Date discovered: 2026-07-08
-Context: The Safeway/Vons "Hand-picked deals I'm watching…this week" section on `/staging-price-tracker/` is an **editorial/content** shortlist curated in `data/popular_this_week.yaml`. It is NOT canonical tracker graph data. Cards needed explicit badges (FRIDAY/DEAL/MEAT/etc.) and custom subtitle copy that the original schema (title/tracker_family_ids/reason/display_order) couldn't express.
+Date discovered: 2026-07-08  
+Updated: 2026-07-26  
+Context: The Safeway/Vons "Hand-picked deals I'm watching…this week" section is an **editorial/content** shortlist curated in `data/popular_this_week.yaml`. It is NOT canonical tracker graph data. Entries need explicit badges (FRIDAY/DEAL/MEAT/etc.) and custom subtitle copy that the original schema (title/tracker_family_ids/reason/display_order) couldn't express.
 What changed:
-1. YAML schema gained two OPTIONAL per-entry fields: `badge` (label string, e.g. `FRIDAY`) and `subtitle` (display copy that overrides `reason` on the card). Vons entries omit them and keep old behavior.
+1. YAML schema gained two OPTIONAL per-entry fields: `badge` (label string, e.g. `FRIDAY`) and `subtitle` (display copy that overrides `reason`). Vons entries omit them and keep old behavior.
 2. `scripts/generate_canonical_families.py` `_normalize_popular_entries()` passes `subtitle`/`badge` through (empty string when absent) and the generated `PopularThisWeekEntry` type now includes `subtitle: string` and `badge: string`. Re-run `npm run generate:canonical-families` (or `build:price-tracker`) to regenerate `src/data/canonicalTrackerFamilies.generated.ts`.
-3. `src/staging-price-tracker/PopularThisWeek.tsx` renders `entry.subtitle || entry.reason`, shows `entry.badge` as a pill when set (falls back to the old on-sale "Deal"/"Preview deal" pill otherwise), and collapses to the first 7 cards (`DEFAULT_VISIBLE`) with a "More handpicked deals (N)" toggle: 7 matches one full row at the widest `auto-fit minmax(180px)` breakpoint. Card order = `displayOrder`, so put the priority picks as `display_order` 1–7.
-4. `src/homepage/previewData.ts` `PopularPick` gained `customBadge?` and now uses `entry.subtitle || entry.reason` as `explanation` (homepage stays consistent).
-Guardrails learned: leave `tracker_family_ids: []` when no clean canonical family exists. Do NOT invent/loosen matches to make a card link to a graph. Empty ids render as pure editorial cards (keyed by unique `title`, no collision). This section must never pull/alter canonical graph data, and must never mention fresh/smoked salmon. Also call Nestlé ice cream "Nestlé Drumstick ice cream", never bare "drumsticks".
-How to verify: `npm run build:price-tracker` passes `verify-price-tracker-build.mjs`; `npm run dev:price-tracker` → Safeway tab shows the 12 Jul 8–14 cards (7 visible + "More handpicked deals (5)"), badges/subtitles correct, lead line "week of Jul 8–Jul 14".
-Related files: `data/popular_this_week.yaml`, `scripts/generate_canonical_families.py`, `src/data/canonicalTrackerFamilies.generated.ts`, `src/staging-price-tracker/PopularThisWeek.tsx`, `src/homepage/previewData.ts`, `styles.css` (`.popular-this-week__tag--*`, `.popular-this-week__more`)
+3. Homepage + tracker both group by `badge` into Friday / Produce / Meat / Snacks / Variety / Other Deals columns (`handpickedCategoryReport.ts` / `homepage.js`). `entry.subtitle || entry.reason` is the note under each row. Tracker "See price history →" jumps to family cards when `tracker_family_ids` is non-empty.
+4. `src/homepage/previewData.ts` `PopularPick` gained `customBadge?` and uses `entry.subtitle || entry.reason` as `explanation`.
+Guardrails learned: leave `tracker_family_ids: []` when no clean canonical family exists. Do NOT invent/loosen matches to make a card link to a graph. Empty ids render as pure editorial rows (keyed by unique `title`, no collision). This section must never pull/alter canonical graph data, and must never mention fresh/smoked salmon. Also call Nestlé ice cream "Nestlé Drumstick ice cream", never bare "drumsticks".
+How to verify: `npm run build:price-tracker` passes `verify-price-tracker-build.mjs`; tracker + homepage show the same category-column layout for the curated week.
+Related files: `data/popular_this_week.yaml`, `scripts/generate_canonical_families.py`, `src/data/canonicalTrackerFamilies.generated.ts`, `src/data/handpickedCategoryReport.ts`, `src/staging-price-tracker/PopularThisWeek.tsx`, `src/homepage/previewData.ts`, `styles.css` (`.hub-picks-cat-*`)
 
 ### Section items ordered by deal quality (best deals first, row by row)
 
@@ -590,7 +601,7 @@ Context: First time loading a weekly ad before its effective start date (Jul 8�
 What happened: Price tracker had no concept of preview vs active ad weeks; UI said "this week" for prices that were not yet in stores.
 Fix / workaround:
 1. **Import orchestrator:** `/usr/bin/python3 scripts/import_weekly_ad.py --week-start YYYY-MM-DD --week-end YYYY-MM-DD --safeway-pdf "safeway …pdf" --vons-pdf "vons …pdf"`. Use **system Python** (or any env with sibling-repo deps: pandas/openai/PyMuPDF), not the site `.venv` which lacks them. Updates manifests (site + sibling repo), runs vision extraction (`discover_product_candidates.py` with `--only-file` banner+start token e.g. `safeway 7-15` — not bare end-date `7-21`, which matches both banners), merges banner-filtered rows into sibling `split_offer_items.csv`, regenerates TS. Use `--skip-extraction` when CSV already exists; `--verify-only` to audit counts.
-2. **Preview detection:** `today < week_start` → preview (date-based, no manual flag). Python: `scripts/price_tracker/weekly_ad_preview.py`. TypeScript: `src/data/weeklyAdPreview.ts` + `isPreviewWeek` on each `WeeklyPrice` in `yamlFamilyProducts.ts`.
+2. **Preview detection:** Ad weeks soft-start **one calendar day early** so late night-before publishes are ACTIVE (no Preview chrome). Preview only when `today < week_start − 1 day`. Active window: `week_start − 1 day` through `week_end`. When the ending week and soft-started next week both match, UI picks the **latest** via reverse sort (`getCurrentWeeklyPrice`). Python: `scripts/price_tracker/weekly_ad_preview.py`. TypeScript: `src/data/weeklyAdPreview.ts` + `isPreviewWeek` on each `WeeklyPrice` in `yamlFamilyProducts.ts`.
 3. **UI:** `WeeklyAdPreviewBanner` below feed tabs. Card Preview callout / green deal styling only when the upcoming real ad match **beats this week's charted price** (`hasHighlightablePreviewDeal`). Preview label must use the upcoming week's price (graph point), not this week's. Non-improving or unmatched upcoming weeks still plot on the chart (ad point or baseline fill) but keep "this week" / usual copy without Preview green. Helpers: `getPreviewWeeklyPrice`, `getPriorAdWeekPriceForPreview`, `hasHighlightablePreviewDeal` in `priceTrackerUtils.ts`. `saleRangeFromWeekly` must ignore preview weeks.
 4. **Safeguards:** `generate_weekly_ad_prices.py` validates canonical product IDs unchanged (66 families) before/after; logs matched/unmatched per feed.
 Weekly command (Jul 15–21 example):
@@ -603,8 +614,17 @@ npm run verify:weekly-ad
 npm run audit:weekly-ad-import -- --week-start 2026-07-15
 npm run build:price-tracker
 ```
-Verify: `/usr/bin/python3 scripts/import_weekly_ad.py --verify-only` → tracked product count unchanged, PREVIEW status when `--as-of` before week start. `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`. After import, read `output/weekly_deals/{week}/import_qa_audit.md` for crop price overrides and tracked WoW worsens before publishing.
+Verify: `/usr/bin/python3 scripts/import_weekly_ad.py --verify-only` → tracked product count unchanged; PREVIEW when `--as-of` is **two+ days** before week start; ACTIVE on the night before (`--as-of` = week_start − 1). `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview -v`. After import, read `output/weekly_deals/{week}/import_qa_audit.md` for crop price overrides and tracked WoW worsens before publishing.
 Related files: `scripts/import_weekly_ad.py`, `scripts/price_tracker/weekly_ad_preview.py`, `src/data/weeklyAdPreview.ts`, `src/staging-price-tracker/WeeklyAdPreviewBanner.tsx`, `data/weekly_ads/flyer_manifest_*.csv`
+
+### Night-before publish: one-day early ACTIVE window (no Preview)
+
+Date discovered: 2026-07-28  
+Context: Publishing Safeway week `2026-07-29` late on Jul 28; user wanted live "this week" prices with no Preview banner/labels.  
+What happened: Strict `today < week_start` still marked Jul 29 as preview on Jul 28, while Jul 22–28 remained calendar-active through end of Jul 28 — so `getCurrentWeeklyPrice` would keep showing the old week even if Preview chrome were forced off.  
+Fix / workaround: Soft-start ad weeks one calendar day early in both TS (`weeklyAdPreview.ts`) and Python (`weekly_ad_preview.py`). On the night before, both the ending week and the next week can be "active"; reverse-sort picks the latest (`2026-07-29`). Two+ days early still PREVIEW.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_weekly_ad_preview.TestWeeklyAdPreviewDates -v` (Jul 28 → Jul 29 ACTIVE / not preview). After build, tracker shows Jul 29 prices as this week with no Preview banner.  
+Related files: `src/data/weeklyAdPreview.ts`, `scripts/price_tracker/weekly_ad_preview.py`, `tests/test_weekly_ad_preview.py`
 
 ### Preview highlight only when beating this week's price
 
@@ -651,6 +671,28 @@ What happened: YAML include phrases are `Chips Ahoy cookies` → regex requires 
 Fix / workaround: Strip trademark-style `!` alongside `®™©` in `split_text` / `row_text` (`_strip_trademark_punct` in `generate_weekly_ad_prices.py`). Rematch: `python3 scripts/generate_weekly_ad_prices.py --product-ids chips_ahoy --feed safeway`.  
 How to verify: `chips_ahoy["2026-07-15"].price === 2.49`; `PYTHONPATH=scripts python3 -m unittest tests.test_split_text_trademark -v`.  
 Related files: `scripts/generate_weekly_ad_prices.py`, `tests/test_split_text_trademark.py`, `src/data/weeklyAdPrices.generated.ts`, `data/canonical_tracker_families.yaml` (`chips_ahoy`)
+
+### Chips Ahoy Jul 29 missed: unsplit Nabisco mix-tile + Oreo/Ritz hallucination
+
+Date discovered: 2026-07-28  
+Context: Safeway week `2026-07-29` page-1 clip-or-CLICK digital coupon: **Chips Ahoy! Cookies 7–13 oz + Nabisco Snack Crackers 3.5–9.1 oz @ $1.99 EA** (Member Price; Limit 4; 4x points). Tracker showed baseline only.  
+What happened: (1) Vision wrote one `group_not_split` row as **"Nabisco Chips Ahoy! Cookies, Snack Crackers, Oreo or Ritz Crackers 3.5–13.7 oz"** — Oreo/Ritz were hallucinated; real tile is Chips Ahoy + snack crackers only (crop for offer 18 also mismatched onto Danish Butter). (2) Even with PDF-correct combined text, `chips_ahoy` `keep_separate_from` includes **Nabisco snack crackers** / Oreo / Ritz, so the unsplit blob cannot match. Not a bang/`!` miss (that was Jul 15).  
+Fix / workaround: Correct the group row text in dedicated + consolidated `split_offer_items.csv`; add Chips Ahoy–only manual split (`split_item_id=049ce2fe83ac`, `split_product_text="Nabisco Chips Ahoy! Cookies 7-13 oz."`, `advertised_price=1.99`, `review_reasons=manually_added_missed_tile|manual_pdf_verified_2026-07-28`). Rematch + `npm run build:price-tracker`. Do **not** attach standard 3.5–9.1 oz snack crackers to `nabisco_snack_crackers` (family-size-only).  
+Prevention: (1) After import run `PYTHONPATH=scripts /usr/bin/python3 scripts/detect_missed_deals.py --week YYYY-MM-DD` — medium `blocked_by_keep_separate` flags this class (brand present + keep_separate blocking + null chart). (2) PDF spot-check Oreo / Chips Ahoy / Nabisco Mix & Match tiles; if `group_not_split`, add family-only splits before publish. Do **not** loosen `keep_separate_from` to force a match.  
+How to verify: `chips_ahoy["2026-07-29"].price === 1.99` with offerText `Nabisco Chips Ahoy! Cookies 7-13 oz.`; audit accepts confidence 1.00. PDF: `safeway 7-29 - 8-4.pdf` p.1 right-rail coupon. `PYTHONPATH=scripts python3 -m unittest tests.test_detect_missed_deals.TestKeepSeparateBlockedMiss -v`.  
+Related files: sibling `product_discovery_safeway*/split_offer_items.csv` (`049ce2fe83ac` / `4dbee9be22e1`), `src/data/weeklyAdPrices.generated.ts`, `data/canonical_tracker_families.yaml` (`chips_ahoy`), `scripts/detect_missed_deals.py`, `output/weekly_deals/2026-07-29/canonical_match_audit.md`
+
+### Regular-size Nabisco snack crackers tracker (separate from family-size)
+
+Date discovered: 2026-07-28  
+Context: Safeway ads often print **"Nabisco Snack Crackers" 3.5–9.1 oz** for the regular-size Wheat Thins / Triscuit / Chicken in a Biskit trio (UI shows brand names; ad copy is the Nabisco block label). Family-size stays on `nabisco_snack_crackers` (11.5–14 oz). Jul 29 Mix & Match was Chips Ahoy 7–13 oz + snack crackers 3.5–9.1 oz @ $1.99; Chips Ahoy got split `049ce2fe83ac`, crackers needed their own split.  
+What happened: Prior keep_separate on Chips Ahoy / family-size-only gating left regular-size weeks null (and blocked the crackers half of unsplit mix tiles).  
+Fix / workaround:
+1. New family `nabisco_snack_crackers_regular` — display **"Wheat Thins, Triscuit & Chicken in a Biskit — regular size"**; size **3.5–9.1 oz**; includes Nabisco Snack Crackers + brand names (Biskit/Biscuit spellings); Safeway baseline **$5.49**.
+2. Match rules require regular-size band confirmation; keep_separate family-size / Chips Ahoy / Oreo / Ritz / Belvita / Kettle siblings.
+3. Manual splits: Jul 29 `7b3e1a90c2d4` (crackers half), Jun 17 `a1c4e8f02b67`; cleaned Jun 3 Wheat Thins/Triscuit package_text.
+How to verify: `nabisco_snack_crackers_regular["2026-07-29"].price === 1.99`; family-size `nabisco_snack_crackers["2026-07-08"].price === 3.49` unchanged. `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility.TestNabiscoRegularSizeSnackCrackers tests.test_canonical_families -v`.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `src/data/priceTrackerFallback.ts`, sibling `split_offer_items.csv`, `src/data/weeklyAdPrices.generated.ts`
 
 ### Lay's / Lay's Kettle Jul 15 missed: unsplit Mix & Match + abbreviated names
 
@@ -1071,10 +1113,33 @@ What happened: Off-sale weeks charted ~$7.99 (tub) next to sale weeks at ~$1/cup
 Fix / workaround:
 1. New YAML family `chobani_yogurt_tub` (32 oz only). Remap legacy `chobani_greek_yogurt` → `chobani_yogurt_tub` (not cups).
 2. Cups family (`chobani_yogurt_per_cup`) only matches single cups / 4-packs; normalize per cup. Exclude tubs and multi-brand Mix tiles (Simply Juice, Frigo, Oikos, etc.).
-3. User-confirmed shelf anchors: regular Greek single cup **$1.99**; 20g protein 4-pack **$9.99** ($2.50/cup); 32 oz tub **$7.99**. Store cup/tub baselines under quoted keys in `SAFEWAY_BASELINES` so `load_feed_baselines` parses them (regex only matches `"id": { price:`).
+3. User-confirmed shelf anchors: regular Greek single cup **$1.99**; 4×5.3 oz multipack (incl. Layered) **$6.99**; 20g protein 4–6.7 oz multipack **$9.99** (separate — do not merge into cups/Layered family); 32 oz tub **$7.99**. Store cup/tub baselines under quoted keys in `SAFEWAY_BASELINES` so `load_feed_baselines` parses them (regex only matches `"id": { price:`).
 4. Costco: cups → 20-ct 5.3 oz (#1005641) compared as each/cup; tubs → 40 oz (#2059712). `parse_item_sign(..., target_unit="each")` treats `20 COUNT 5.3 OZ` / `20/5.3 OZ` as 20 each.  
 How to verify: Cups chart baseline ~$1.99 with sale weeks ≤$1.25; tub chart baseline $7.99 and never inherits cup deals; `LEGACY_CANONICAL_TO_FAMILY["chobani_greek_yogurt"] == "chobani_yogurt_tub"`.  
 Related files: `data/canonical_tracker_families.yaml`, `scripts/price_tracker/canonical_families.py`, `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`, `config/costco_item_mappings.csv`, `scripts/price_comparison/unit_normalize.py`, `scripts/price_comparison/canonical_metadata.py`
+
+### Lay's Poppables vs Baked; Chobani Layered vs 20g protein
+
+Date discovered: 2026-07-26  
+Context: Policy confirmation for eval aliases `alias_lays_poppables` and `alias_chobani_layered`.  
+What happened: Needed clarity on whether Poppables / Layered share existing tracker families.  
+Fix / workaround:
+1. **Lay's Poppables** stay on `lays_potato_chips_regular` (same ~$4.29 baseline and sale grouping as regular bags). Site subtitle: `regular bags 5–13 oz, including Poppables`. **Lay's Baked** is a different baseline/sale group — `keep_separate_from` includes Baked.
+2. **Chobani Layered** stays on `chobani_yogurt_per_cup` with other 4×5.3 oz multipacks (~$6.99). **20g protein** 4–6.7 oz (~$9.99) must not update that family — removed from include; added to `keep_separate_from`. Subtitle calls out Layered multipacks.
+How to verify: `npm run generate:canonical-families`; Poppables accept / Baked reject on `lays_potato_chips_regular`; Layered accept / 20g Protein reject on `chobani_yogurt_per_cup`; `npm run eval:product-matching`.  
+Related files: `data/canonical_tracker_families.yaml`, `src/data/canonicalTrackerFamilies.generated.ts`, `evals/product-matching.jsonl`
+
+### Lucerne eggs 12 vs 18; Lay's Kettle sizes; Honey Nut under GM
+
+Date discovered: 2026-07-26  
+Context: Remaining eval policy confirmations for eggs, Lay's Kettle, Honey Nut Cheerios.  
+What happened: Needed clear tracking/display rules without over-merging pack sizes.  
+Fix / workaround:
+1. **Eggs:** Track Lucerne **12-count** (`eggs_dozen_normalized`) and **18-count** (`lucerne_eggs_18`) separately (no 18→dozen scaling). `display_card_group: lucerne_eggs` collapses them to **one card**; weekly/preview price is the better **per-egg** deal. Subtitle notes which count is shown.
+2. **Lay's Kettle:** Regular **6–8 oz** only on `lays_kettle_cooked`; party ~12.5 oz stays off that family. Separate from other Lay's. Ads include size — do not use size-missing needs_review for kettle.
+3. **Honey Nut Cheerios:** Confirmed under `general_mills_cereal_regular`.
+How to verify: `npm run generate:canonical-families`; eligibility tests for 12 vs 18; one Lucerne Eggs card in tracker; `npm run eval:product-matching`.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `src/data/yamlFamilyProducts.ts`, `evals/product-matching.jsonl`
 
 ### Vons Lucerne eggs Jul 15 $4.99 BOGO was crop bleed (not in ad)
 
@@ -1139,6 +1204,38 @@ Fix / workaround: Chart baseline = **green $1.49** (Green Bell Pepper). Document
 How to verify: `SAFEWAY_BASELINES["bell_peppers"].price === 1.49` with `retailerProductName` Green Bell Pepper; YAML notes list all four colors.  
 Related files: `src/data/priceTrackerFallback.ts`, `data/canonical_tracker_families.yaml` (`bell_peppers`)
 
+### Mandarins 3 lb tracker family (`mandarins_3lb`)
+
+Date discovered: 2026-07-29  
+Context: User asked to track 3 lb bagged mandarin oranges (Cuties / similar) with Safeway baseline $6.99 and include in Jul 29 highlight analysis. Prior note incorrectly said Jul 29 Cuties was a **2 lb** bag.  
+What happened: PDF `/Users/evelynchan/Downloads/safeway 7-29 - 8-4.pdf` coupon rail shows **Cuties Mandarins 3-lb. bag @ $3.99**. Apr 1 hero was a different size: **2 lb @ $1.99** (must not join the 3 lb graph). Early matching also pulled **Peelz Mandarins** @ $3.49 (2026-06-10, 2026-06-17); user corrected that Peelz is **not** this product (candy / wrong intent).  
+Fix / workaround:
+1. YAML family `mandarins_3lb` display **Mandarin oranges (Cuties)**; includes Cuties / mandarin oranges / clementines; **hard-negative Peelz** (include/exclude + match-rule negatives / `\bpeelz\b`).
+2. Match rules require **3 lb** confirmation; also hard-negative **2 lb** / Geisha canned / navels.
+3. Safeway baseline **$6.99** in `SAFEWAY_BASELINES`; pack_total normalization.
+4. After Peelz removal rematch: Safeway matched weeks = **2026-07-29 only** ($3.99 Cuties). Vons still has California Mandarins 3 lb @ $2.99 (2026-05-13).
+5. Costco SF item **#1801** `MANDARINS 3 LBS` mapped bag-to-bag.
+How to verify: Display name contains mandarin + oranges; Jul 29 $3.99; 6/10 & 6/17 nulled; Peelz rejected in audit. Writeup: `output/weekly_deals/2026-07-29/fresh_costco_highlight_recommendations.md`.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/product_type_taxonomy.py`, `src/data/priceTrackerFallback.ts`
+
+### Peelz is not mandarin oranges (do not match)
+
+Date discovered: 2026-07-29  
+Context: `mandarins_3lb` family initially included Peelz because some Safeway ads say “Peelz Mandarins” on citrus bag tiles.  
+What happened: User clarified Peelz is a **candy** / wrong product intent for this tracker — do not treat Peelz as Cuties/mandarin oranges even when the ad title says mandarins.  
+Fix / workaround: Remove Peelz from YAML `include`; add to `keep_separate_from` + match-rule `negative_keywords` / `disallowed_package_patterns` (`\bpeelz\b`); drop `\bpeelz\b` from `mandarins_3lb_bag` taxonomy positives. Rematch with `python3 scripts/generate_weekly_ad_prices.py --product-id mandarins_3lb --feed safeway`.  
+How to verify: Audit shows Peelz rejected; weeklyAdPrices 2026-06-10 / 2026-06-17 price null.  
+Related files: `data/canonical_tracker_families.yaml`, `config/canonical_match_rules.yaml`, `scripts/price_tracker/product_type_taxonomy.py`
+
+### Tracker highlight writeups omit untracked produce (Cuties mandarins) — RESOLVED
+
+Date discovered: 2026-07-29  
+Context: Cuties Mandarins missing from Jul 29 highlight writeup because no YAML family existed.  
+What happened: Coverage gap (not a matcher bug). Secondary: extraction omitted package size; early PDF spot-check incorrectly called it 2 lb.  
+Fix / workaround: Added `mandarins_3lb` (see note above). Supersedes the “intentional coverage gap” workaround.  
+How to verify: Family present in YAML / `weeklyAdPrices.generated.ts`; ranked report includes mandarins.  
+Related files: `data/canonical_tracker_families.yaml`, `output/weekly_deals/2026-07-29/fresh_costco_highlight_recommendations.md`
+
 ### Gushers / Fruit by the Foot share $5.99 Safeway regular
 
 Date discovered: 2026-07-26  
@@ -1169,4 +1266,54 @@ Fix / workaround:
 4. Verify: `verify-price-tracker-build.mjs` fails on any shipped baseline `<= 0` and asserts `lays_party_size === 5.99`.  
 How to verify: `npm run build:price-tracker`; Safeway Lay's Party Size card shows Usually ~$5.99, not $0.  
 Related files: `src/data/priceTrackerFallback.ts`, `src/data/yamlFamilyProducts.ts`, `src/data/priceTrackerUtils.ts`, `scripts/generate_safeway_feed_matches.py`, `scripts/generate_vons_feed_matches.py`, `scripts/price_tracker/baseline_guardrails.py`, `scripts/verify-price-tracker-build.mjs`
+
+### Product-matching v2 eval harness (`evals/` + npm script)
+
+Date discovered: 2026-07-26  
+Context: Local regression harness for weekly-ad matching with `matched` / `needs_review` / `no_match` outcomes.  
+What happened: Needed labeled cases + metrics without changing production matcher output.  
+Fix / workaround: Dataset `evals/product-matching.jsonl` (v2 schema with `expected.status|product_id|match_type|reason_code`, `must_not_match_product_ids`, optional `boundary_group`). Runner `npm run eval:product-matching` → `scripts/run-product-matching-eval.ts` calls eval-only adapter `scripts/product_matching/eval_match_batch.py`, which wraps the production facade and maps accept/reject/manual_review → matched/no_match/needs_review. Production `match_type`/`reason_code` are `not_reported`. Hard-negative `no_match` rows with `must_not_match_product_ids` probe only those families (do not treat a correct alternate-family hit as a false match). Execution errors are reported separately from match outcomes. Legacy Python suite remains at `data/product_matching/eval_cases.jsonl` / `python3 -m product_matching.eval_runner`.  
+How to verify: `npm run eval:product-matching` (exit 2 if wrong automatic matches).  
+Related files: `evals/product-matching.jsonl`, `scripts/run-product-matching-eval.ts`, `scripts/product_matching/eval_match_batch.py`, `package.json`
+
+### Safer auto-match gate (`required_attributes` + brand/size negatives)
+
+Date discovered: 2026-07-26  
+Context: Frozen v1 product-matching evals showed 9 wrong automatic matches (needs_review cases auto-accepted) and 2 false-eligible candidate checks (Chobani 32 oz tub → per-cup; Miss Vickie's → Lay's Kettle). Branch: `matcher/safer-auto-match-gate`.  
+What happened: Several trackers accepted on family-name / broad include patterns alone (e.g. `\bcoca-cola\b`, bare "Chobani yogurt", "Kettle chips") with no pack/size/form/brand confirmation. Legacy `require_confirmation_keywords` already existed for Goldfish/eggs/berries; it was not applied to these families. Miss Vickie's hit `lays_kettle_cooked` via include "Kettle Cooked Potato Chips". Chobani tub did not trip per-cup `keep_separate` because "Chobani tub" is not contiguous in "Chobani Greek Yogurt Tub".  
+Fix / workaround:
+1. Added named `required_attributes` groups on `FamilyMatchRules` (AND across groups; OR within). Missing groups → `manual_review` with `missing_attributes` + `reason_code`. Legacy `require_confirmation_keywords` still maps to a `confirmation` group.
+2. Configured rules in `config/canonical_match_rules.yaml` for: `coca_cola_12packs` (package_count), `butter_16oz` (product_form sticks/quarters), `lays_potato_chips_regular` (package_size), `kettle_brand_chips` (brand: "kettle brand" or "potato chips"), `chobani_yogurt_per_cup` / `chobani_yogurt_tub` (package_size + tub/32 oz reject on cups), `nature_valley_bars` (package_count), `waterloo_sparkling_water` (package_count), `general_mills_cereal_regular` (package_size).
+3. Brand negatives: Miss Vickie's (+ Cape Cod) on `lays_kettle_cooked`; Miss Vickie's on `kettle_brand_chips`.
+4. Do not infer absent size/count/brand/form from the most common catalog variant.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility.TestSaferAutoMatchGate -v`; `npm run eval:product-matching`; `npm run eval:candidate-eligibility` → 74/74 and 27/27 on frozen v1.  
+Related files: `scripts/price_tracker/canonical_match_eligibility.py`, `config/canonical_match_rules.yaml`, `tests/test_canonical_match_eligibility.py`, `evals/product-matching-end-to-end-v1.jsonl`, `evals/candidate-eligibility-v1.jsonl`
+
+### `allowed_package_patterns` were parsed but unused until safer-gate tightening
+
+Date discovered: 2026-07-26  
+Context: Review of `canonical_match_eligibility.py` while tightening safer-gate tests.  
+What happened: `FamilyMatchRules.allowed_package_patterns` was loaded from YAML and merged, but `evaluate_canonical_match` never consulted it (only `disallowed_package_patterns` fed hard negatives). Short keyword hits also used a substring `in` check before word boundaries, so tokens like `ct` / `cup` / `stick` could match inside `selected` / `occupied` / `stickshift`.  
+Fix / workaround:
+1. Enforce `allowed_package_patterns`: hit → OK; explicit package signal outside patterns → **reject**; no package signal → **manual_review** (do not invent size).
+2. Boundary-safe `_keyword_hits` only (no substring shortcut).
+3. Mixed-item cans+bottles / distinct oz sizes → abstain even when some required attrs are present.
+4. Wired ranges for `lays_kettle_cooked` (6–8 oz) and `general_mills_cereal_regular` (≈8.9–15 oz); Coke cans tracker rejects bottles.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_canonical_match_eligibility -v` (56 OK); frozen evals still 74/74 and 27/27.  
+Related files: `scripts/price_tracker/canonical_match_eligibility.py`, `config/canonical_match_rules.yaml`, `tests/test_canonical_match_eligibility.py`
+
+### Shadow LLM product-attribute extraction (no production coupling)
+
+Date discovered: 2026-07-26  
+Context: Experiment whether gpt-4o-mini can extract structured grocery attributes from messy weekly-ad text better than rule taxonomy, without changing match decisions.  
+What happened: Needed an isolated extractor + labeled eval separate from frozen matching evals.  
+Fix / workaround:
+1. Schema + validator: `scripts/product_matching/attribute_schema.py` (null-safe scalars; reject malformed output).
+2. Shadow extractor: `scripts/product_matching/llm_attribute_extractor.py` (`OPENAI_API_KEY` from `scripts/.env` or sibling-repo `.env`; never browser-exposed).
+3. Eval set: `evals/product-attribute-extraction-v1.jsonl` (52 human-reviewable labels).
+4. Runner: `npm run eval:attribute-extraction` → `eval_attribute_extraction.py`.
+5. Weekly-ad shadow log: `npm run shadow:attribute-extraction` → `output/shadow_attribute_extraction/` (gitignored).
+6. Deterministic eligibility remains sole authority for accept/review/reject.  
+How to verify: Frozen matching evals still 74/74 and 27/27; `PYTHONPATH=scripts python3 -m unittest tests.test_attribute_schema -v`; attribute eval requires API key.  
+Related files: `evals/product-attribute-extraction-v1.jsonl`, `evals/README.md`, `scripts/product_matching/llm_attribute_extractor.py`, `scripts/shadow_weekly_ad_attribute_extraction.py`
 

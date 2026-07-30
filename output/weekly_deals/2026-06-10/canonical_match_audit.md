@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-10 to 2026-06-16
 
-Generated: 2026-07-26T18:49:19.938756+00:00
+Generated: 2026-07-30T03:20:14.807284+00:00
 
 ## Summary
 
-- **Accepted:** 80
-- **Rejected:** 2
-- **Manual review:** 6
-- **Families updated:** cheez_it_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, chicken_breast_per_lb, tri_tip_roast, salmon, pop_tarts, betty_crocker_fruit_snacks, beef_short_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, tostitos_tortilla_chips, keebler_sandwich_crackers, strawberries_1_2lb, clif_bars, pork_spare_ribs_per_lb
+- **Accepted:** 74
+- **Rejected:** 8
+- **Manual review:** 12
+- **Families updated:** cheez_it_crackers, oreo_family_size, pepsi_12packs, seedless_grapes_per_lb, cherries_per_lb, hass_avocados_each, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, lucerne_eggs_18, philadelphia_cream_cheese, nature_valley_bars, general_mills_cereal_regular, post_cereal_regular, chicken_breast_per_lb, tri_tip_roast, salmon, pop_tarts, betty_crocker_fruit_snacks, beef_short_ribs_per_lb, doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, ruffles_regular_bags, tostitos_tortilla_chips, keebler_sandwich_crackers, strawberries_1_2lb, clif_bars, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -28,29 +28,71 @@ Generated: 2026-07-26T18:49:19.938756+00:00
 
 ### Graph preview changes
 
+- `eggs_dozen_normalized` (Safeway): blocked $0.11: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+- `butter_16oz` (Safeway): blocked $3.99: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): blocked $0.99: missing required auto-match attribute(s): package_size
+- `mandarins_3lb` (Safeway): blocked $3.49: hard negative keyword/pattern hit: peelz, \bpeelz\b
+- `kettle_brand_chips` (Vons): blocked $3.99: mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): blocked $0.67: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.67: confidence 0.55 < min 0.70
-- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `eggs_dozen_normalized` (Vons): blocked $1.99: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 - `chicken_wings_per_lb` (Vons): blocked $5.0: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
+- `eggs_dozen_normalized` (Safeway): blocked $0.11: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+- `butter_16oz` (Safeway): blocked $3.99: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): blocked $0.99: missing required auto-match attribute(s): package_size
+- `mandarins_3lb` (Safeway): blocked $3.49: hard negative keyword/pattern hit: peelz, \bpeelz\b
+- `kettle_brand_chips` (Vons): blocked $3.99: mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): blocked $0.67: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.67: confidence 0.55 < min 0.70
-- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `eggs_dozen_normalized` (Vons): blocked $1.99: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips` (Vons): blocked $2.49: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 - `chicken_wings_per_lb` (Vons): blocked $5.0: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
 
 ### Blocked from tracker graph
 
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11
+  - Reason: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 18-ct
+- `mandarins_3lb` (Safeway): **rejected**: 'Peelz Mandarins' @ $3.49
+  - Reason: hard negative keyword/pattern hit: peelz, \bpeelz\b
+  - Hard negatives: peelz, \bpeelz\b
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 18 ct' @ $1.99
+  - Reason: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 18 ct
 - `cape_cod_chips` (Vons): **rejected**: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49
-  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Reason: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
   - Hard negatives: kettle brand
+- `eggs_dozen_normalized` (Safeway): **rejected**: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11
+  - Reason: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 18-ct
+- `mandarins_3lb` (Safeway): **rejected**: 'Peelz Mandarins' @ $3.49
+  - Reason: hard negative keyword/pattern hit: peelz, \bpeelz\b
+  - Hard negatives: peelz, \bpeelz\b
+- `eggs_dozen_normalized` (Vons): **rejected**: 'Lucerne Large Eggs 18 ct' @ $1.99
+  - Reason: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 18 ct
 - `cape_cod_chips` (Vons): **rejected**: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49
-  - Reason: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+  - Reason: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
   - Hard negatives: kettle brand
+- `butter_16oz` (Safeway): **manual_review**: 'Danish Creamery Butter 15-16 oz.' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): **manual_review**: 'Chobani Greek Yogurt' @ $0.99
+  - Reason: missing required auto-match attribute(s): package_size
+- `kettle_brand_chips` (Vons): **manual_review**: 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99
+  - Reason: mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): **manual_review**: 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67
   - Reason: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): **manual_review**: 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67
   - Reason: confidence 0.55 < min 0.70
 - `chicken_wings_per_lb` (Vons): **manual_review**: 'Signature SELECT Chicken Wings, 20 oz' @ $5.0
   - Reason: new all-time low $5.00 requires confidence >= 0.80 (got 0.73)
+- `butter_16oz` (Safeway): **manual_review**: 'Danish Creamery Butter 15-16 oz.' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): **manual_review**: 'Chobani Greek Yogurt' @ $0.99
+  - Reason: missing required auto-match attribute(s): package_size
+- `kettle_brand_chips` (Vons): **manual_review**: 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99
+  - Reason: mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): **manual_review**: 'Coke, Diet Coke, Sprite, Pepsi, Diet Pepsi, Mountain Dew' @ $0.67
   - Reason: confidence 0.40 < min 0.70
 - `dr_pepper_12packs` (Vons): **manual_review**: 'Dr Pepper 6 pack, 16.9-oz. bot.' @ $0.67
@@ -62,8 +104,14 @@ Generated: 2026-07-26T18:49:19.938756+00:00
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
-- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `eggs_dozen_normalized`: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+- `mandarins_3lb`: 'Peelz Mandarins' @ $3.49: hard negative keyword/pattern hit: peelz, \bpeelz\b
+- `eggs_dozen_normalized`: 'Lucerne Large Eggs 18 ct' @ $1.99: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
+- `eggs_dozen_normalized`: 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11: hard negative keyword/pattern hit: 18-ct; missing required auto-match attribute(s): confirmation
+- `mandarins_3lb`: 'Peelz Mandarins' @ $3.49: hard negative keyword/pattern hit: peelz, \bpeelz\b
+- `eggs_dozen_normalized`: 'Lucerne Large Eggs 18 ct' @ $1.99: hard negative keyword/pattern hit: 18 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips`: 'Cheez-Its, Club, Town House 9-13.8 oz. Kellogg’s Bagged Crackers 5.75-7.5 oz. Keebler Sandwich Crackers 8 ct. Late July 7.5-10.1 oz. Kettle Brand or Cape Cod Chips 6.5-8 oz. Selected varieties' @ $2.49: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues; multi-item variant list (or/comma) needs review; medium pattern confidence 0.61 needs review
 
 ## Accepted matches
 
@@ -97,22 +145,16 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `lucerne_eggs_18` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99 (confidence 1.00)
+  - Display: Lucerne Eggs (18-count)
+  - Subtitle: Lucerne large eggs, 18-count
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese Selected varieties.' @ $3.99 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.70)
-  - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 0.90)
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 0.90)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $2.49 (confidence 0.90)
@@ -144,10 +186,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: regular size, 6.5–10 oz
 - `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz." @ $3.99 (confidence 1.00)
   - Display: Lay's potato chips
-  - Subtitle: regular size, 5–13 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
+  - Subtitle: regular bags 5–13 oz, including Poppables
 - `ruffles_regular_bags` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
@@ -169,13 +208,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Vons): 'Sweet Corn' @ $0.67 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
+- `lucerne_eggs_18` (Vons): 'Lucerne Large Eggs 18 ct' @ $2.99 (confidence 1.00)
+  - Display: Lucerne Eggs (18-count)
+  - Subtitle: Lucerne large eggs, 18-count
+- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 0.90)
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)
@@ -217,22 +256,16 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.5 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $0.11 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Safeway): 'Danish Creamery Butter 15-16 oz.' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `lucerne_eggs_18` (Safeway): 'Lucerne Cage Free Eggs Grade AA, 18-ct.' @ $2.99 (confidence 1.00)
+  - Display: Lucerne Eggs (18-count)
+  - Subtitle: Lucerne large eggs, 18-count
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese Selected varieties.' @ $3.99 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek Yogurt' @ $0.99 (confidence 0.70)
-  - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
-- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 0.90)
+- `nature_valley_bars` (Safeway): 'Nature Valley Bars 5-6 ct.' @ $1.79 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 0.90)
+- `general_mills_cereal_regular` (Safeway): 'General Mills Cereal Bars 6.84-8.9 oz.' @ $1.79 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `post_cereal_regular` (Safeway): 'Post Cereal' @ $2.49 (confidence 0.90)
@@ -264,10 +297,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: regular size, 6.5–10 oz
 - `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz." @ $3.99 (confidence 1.00)
   - Display: Lay's potato chips
-  - Subtitle: regular size, 5–13 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5-8.5 oz.' @ $3.99 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
+  - Subtitle: regular bags 5–13 oz, including Poppables
 - `ruffles_regular_bags` (Vons): 'Doritos, Ruffles' @ $3.99 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
@@ -289,13 +319,13 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Vons): 'Sweet Corn' @ $0.67 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 18 ct' @ $1.99 (confidence 1.00)
-  - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 0.90)
+- `lucerne_eggs_18` (Vons): 'Lucerne Large Eggs 18 ct' @ $2.99 (confidence 1.00)
+  - Display: Lucerne Eggs (18-count)
+  - Subtitle: Lucerne large eggs, 18-count
+- `nature_valley_bars` (Vons): 'General Mills Nature Valley Bars 5-6 ct' @ $2.99 (confidence 1.00)
   - Display: Nature Valley bars
   - Subtitle: roughly 5–12 ct boxes
-- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 0.90)
+- `general_mills_cereal_regular` (Vons): 'General Mills Cereal 8.9 to 12 oz' @ $2.0 (confidence 1.00)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `clif_bars` (Vons): 'Clif Bars 6 ct.' @ $1.33 (confidence 0.90)

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-05-13 to 2026-05-19
 
-Generated: 2026-07-26T18:49:21.382679+00:00
+Generated: 2026-07-30T03:20:16.626143+00:00
 
 ## Summary
 
-- **Accepted:** 26
-- **Rejected:** 2
-- **Manual review:** 0
-- **Families updated:** kettle_brand_chips, goldfish_bags, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, eggs_dozen_normalized, lucerne_cream_cheese, chicken_breast_per_lb, salmon, pringles, kellogg_breakfast_bars, chicken_wings_per_lb
+- **Accepted:** 24
+- **Rejected:** 4
+- **Manual review:** 4
+- **Families updated:** strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, eggs_dozen_normalized, lucerne_cream_cheese, chicken_breast_per_lb, salmon, pringles, kellogg_breakfast_bars, chicken_wings_per_lb, mandarins_3lb
 
 ## Graph update safety check
 
@@ -22,33 +22,49 @@ Generated: 2026-07-26T18:49:21.382679+00:00
 
 ### Graph preview changes
 
-- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand
-- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand
+- `kettle_brand_chips` (Vons): blocked $1.88: mixed-item offer has conflicting package/container cues
+- `goldfish_bags` (Vons): blocked $1.88: mixed-item offer has conflicting package/container cues
+- `lucerne_eggs_18` (Vons): blocked $2.5: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
+- `kettle_brand_chips` (Vons): blocked $1.88: mixed-item offer has conflicting package/container cues
+- `goldfish_bags` (Vons): blocked $1.88: mixed-item offer has conflicting package/container cues
+- `lucerne_eggs_18` (Vons): blocked $2.5: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips` (Vons): blocked $1.88: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
 
 ### Blocked from tracker graph
 
+- `lucerne_eggs_18` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
+  - Reason: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 12 ct
 - `cape_cod_chips` (Vons): **rejected**: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88
-  - Reason: hard negative keyword/pattern hit: kettle brand
+  - Reason: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
   - Hard negatives: kettle brand
+- `lucerne_eggs_18` (Vons): **rejected**: 'Lucerne Large Eggs 12 ct' @ $2.5
+  - Reason: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+  - Hard negatives: 12 ct
 - `cape_cod_chips` (Vons): **rejected**: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88
-  - Reason: hard negative keyword/pattern hit: kettle brand
+  - Reason: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
   - Hard negatives: kettle brand
+- `kettle_brand_chips` (Vons): **manual_review**: 'Kettle Brand Potato Chips 6.5 to 8.5 oz' @ $1.88
+  - Reason: mixed-item offer has conflicting package/container cues
+- `goldfish_bags` (Vons): **manual_review**: 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.88
+  - Reason: mixed-item offer has conflicting package/container cues
+- `kettle_brand_chips` (Vons): **manual_review**: 'Kettle Brand Potato Chips 6.5 to 8.5 oz' @ $1.88
+  - Reason: mixed-item offer has conflicting package/container cues
+- `goldfish_bags` (Vons): **manual_review**: 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.88
+  - Reason: mixed-item offer has conflicting package/container cues
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand
-- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand
+- `lucerne_eggs_18`: 'Lucerne Large Eggs 12 ct' @ $2.5: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
+- `lucerne_eggs_18`: 'Lucerne Large Eggs 12 ct' @ $2.5: hard negative keyword/pattern hit: 12 ct; missing required auto-match attribute(s): confirmation
+- `cape_cod_chips`: 'Kettle Brand 6.5-8 oz, Cape Cod 6.5-8 oz' @ $1.88: hard negative keyword/pattern hit: kettle brand; mixed-item offer has conflicting package/container cues
 
 ## Accepted matches
 
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5 to 8.5 oz' @ $1.88 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
-- `goldfish_bags` (Vons): 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.88 (confidence 1.00)
-  - Display: Goldfish
-  - Subtitle: regular size, 6–8 oz
 - `strawberries_1_2lb` (Vons): 'Local Strawberries' @ $1.28 (confidence 0.70)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
@@ -63,7 +79,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+  - Subtitle: Lucerne large eggs, 12-count
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -82,12 +98,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $8.99 (confidence 0.93)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 6.5 to 8.5 oz' @ $1.88 (confidence 0.90)
-  - Display: Kettle Brand potato chips
-  - Subtitle: regular size, 6.5–8.5 oz
-- `goldfish_bags` (Vons): 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.88 (confidence 1.00)
-  - Display: Goldfish
-  - Subtitle: regular size, 6–8 oz
+- `mandarins_3lb` (Vons): 'California Mandarins 3 lb bag' @ $2.99 (confidence 0.98)
+  - Display: Mandarin oranges (Cuties)
+  - Subtitle: 3 lb bag
 - `strawberries_1_2lb` (Vons): 'Local Strawberries' @ $1.28 (confidence 0.70)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
@@ -102,7 +115,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs 12 ct' @ $2.5 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+  - Subtitle: Lucerne large eggs, 12-count
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.29 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -121,3 +134,6 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_wings_per_lb` (Vons): 'Signature SELECT Chicken Wings' @ $8.99 (confidence 0.93)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)
+- `mandarins_3lb` (Vons): 'California Mandarins 3 lb bag' @ $2.99 (confidence 0.98)
+  - Display: Mandarin oranges (Cuties)
+  - Subtitle: 3 lb bag

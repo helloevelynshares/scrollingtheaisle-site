@@ -69,6 +69,11 @@ def parse_item_sign(item_sign: str, target_unit: str | None = None) -> ParsedPac
     if PER_LB_RE.search(lower):
         return ParsedPackage(text, 1.0, "lb", "lb", "high")
 
+    # Weight-only produce packs (e.g. "MANDARINS 3 LBS") compared as one bag when
+    # the grocery tracker family is bag-priced (Cuties mandarin oranges 3 lb, etc.).
+    if target_unit == "bag" and LB_RE.search(lower) and not COUNT_RE.search(lower):
+        return ParsedPackage(text, 1.0, "bag", "bag", "high")
+
     m = MULTI_PACK_RE.search(lower)
     if m:
         packs = float(m.group(1))

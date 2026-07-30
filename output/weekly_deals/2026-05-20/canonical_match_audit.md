@@ -1,12 +1,12 @@
 # Canonical match audit: 2026-05-20 to 2026-05-26
 
-Generated: 2026-07-26T18:49:21.522072+00:00
+Generated: 2026-07-30T03:20:16.776381+00:00
 
 ## Summary
 
 - **Accepted:** 26
 - **Rejected:** 4
-- **Manual review:** 2
+- **Manual review:** 4
 - **Families updated:** doritos_5_13oz, cheetos_regular_bags, ruffles_regular_bags, tostitos_tortilla_chips, strawberries_1_2lb, cherries_per_lb, eggs_dozen_normalized, general_mills_cereal_regular, ribeye_steak, salmon, smartfood_popcorn, frito_lay_multipack_chips, chicken_wings_per_lb
 
 ## Graph update safety check
@@ -18,39 +18,45 @@ Generated: 2026-07-26T18:49:21.522072+00:00
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Vons): blocked $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+- `lays_potato_chips_regular` (Vons): blocked $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
 - `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
-- `berries_6oz` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
-- `lays_potato_chips_regular` (Vons): blocked $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+- `berries_6oz` (Vons): blocked $3.99: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): blocked $2.99: confidence 0.64 < min 0.65
+- `lays_potato_chips_regular` (Vons): blocked $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
 - `haagen_dazs_pints` (Vons): blocked $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
-- `berries_6oz` (Vons): blocked $3.99: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+- `berries_6oz` (Vons): blocked $3.99: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): blocked $2.99: confidence 0.64 < min 0.65
 
 ### Blocked from tracker graph
 
 - `lays_potato_chips_regular` (Vons): **rejected**: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67
-  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
   - Hard negatives: kettle cooked
 - `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
   - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
   - Hard negatives: bars
 - `lays_potato_chips_regular` (Vons): **rejected**: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67
-  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
   - Hard negatives: kettle cooked
 - `haagen_dazs_pints` (Vons): **rejected**: 'Häagen-Dazs Ice Cream, Bars' @ $4.5
   - Reason: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
   - Hard negatives: bars
 - `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+  - Reason: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.99
+  - Reason: confidence 0.64 < min 0.65
 - `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: 6 oz, 6-oz, 6oz, 6 oz.)
+  - Reason: missing required auto-match attribute(s): confirmation
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.99
+  - Reason: confidence 0.64 < min 0.65
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `lays_potato_chips_regular`: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+- `lays_potato_chips_regular`: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
 - `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
-- `lays_potato_chips_regular`: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
+- `lays_potato_chips_regular`: "Lay's, Kettle Cooked, Poppables, Doritos, Ruffles, Smartfood, Cheetos, Fritos" @ $3.67: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'
 - `haagen_dazs_pints`: 'Häagen-Dazs Ice Cream, Bars' @ $4.5: hard negative keyword/pattern hit: bars; ad product type 'bars_or_novelties' is incompatible with canonical intent 'pint'; medium pattern confidence 0.73 needs review
 
 ## Accepted matches
@@ -75,8 +81,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: per lb
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.99 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.70)
+  - Subtitle: Lucerne large eggs, 12-count
+- `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.80)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `ribeye_steak` (Vons): 'Ribeye Steak' @ $7.99 (confidence 0.90)
@@ -114,8 +120,8 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: per lb
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.99 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.70)
+  - Subtitle: Lucerne large eggs, 12-count
+- `general_mills_cereal_regular` (Vons): "General Mills Cereal Cheerios, Cinnamon Toast Crunch, Lucky Charms, Reese's Puffs, Cookie Crisp, Trix, Cocoa Puffs" @ $2.5 (confidence 0.80)
   - Display: General Mills cereal
   - Subtitle: regular size, 8.9–15 oz
 - `ribeye_steak` (Vons): 'Ribeye Steak' @ $7.99 (confidence 0.90)

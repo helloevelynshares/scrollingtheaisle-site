@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-24 to 2026-06-30
 
-Generated: 2026-07-26T18:49:20.263634+00:00
+Generated: 2026-07-30T03:20:15.166738+00:00
 
 ## Summary
 
-- **Accepted:** 98
-- **Rejected:** 12
-- **Manual review:** 12
-- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, oreo_family_size, goldfish_bags, coca_cola_12packs, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cape_cod_chips, snyders_pretzels, pop_tarts, betty_crocker_fruit_snacks, bell_peppers, cheetos_regular_bags, lays_kettle_cooked, simply_snacks, ritz_crackers, berries_6oz, hass_avocados_each, lucerne_cream_cheese, chicken_breast_per_lb, smartfood_popcorn, pringles, pork_spare_ribs_per_lb
+- **Accepted:** 96
+- **Rejected:** 16
+- **Manual review:** 22
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, lays_party_size, kettle_brand_chips, ruffles_regular_bags, nabisco_snack_crackers_regular, oreo_family_size, goldfish_bags, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, cherries_per_lb, mangoes_each, peaches_per_lb, nectarines_per_lb, sweet_corn, eggs_dozen_normalized, butter_16oz, philadelphia_cream_cheese, chobani_yogurt_per_cup, general_mills_cereal_family_size, kings_hawaiian_rolls, clif_bars, tri_tip_roast, salmon, cape_cod_chips, snyders_pretzels, pop_tarts, betty_crocker_fruit_snacks, bell_peppers, cheetos_regular_bags, simply_snacks, coca_cola_12packs, berries_6oz, hass_avocados_each, lucerne_cream_cheese, chicken_breast_per_lb, smartfood_popcorn, pringles, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -22,6 +22,7 @@ Generated: 2026-07-26T18:49:20.263634+00:00
 - `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `simply_snacks` (Vons): $2.5: Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz
+- `coca_cola_12packs` (Vons): $4.0: Coca-Cola, Pepsi
 - `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
 - `peaches_per_lb` (Vons): $1.99: White Peaches
 - `nectarines_per_lb` (Vons): $1.99: Nectarines
@@ -35,6 +36,7 @@ Generated: 2026-07-26T18:49:20.263634+00:00
 - `doritos_5_13oz` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `cheetos_regular_bags` (Vons): $1.99: Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties
 - `simply_snacks` (Vons): $2.5: Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz
+- `coca_cola_12packs` (Vons): $4.0: Coca-Cola, Pepsi
 - `hass_avocados_each` (Vons): $0.99: Medium Ripe Hass Avocados
 - `peaches_per_lb` (Vons): $1.99: White Peaches
 - `nectarines_per_lb` (Vons): $1.99: Nectarines
@@ -42,109 +44,155 @@ Generated: 2026-07-26T18:49:20.263634+00:00
 
 ### Graph preview changes
 
-- `lays_kettle_cooked` (Safeway): blocked $4.99: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lays_kettle_cooked` (Safeway): blocked $4.99: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Safeway): blocked $5.99: missing required auto-match attribute(s): package_count, container_type
 - `pepsi_12packs` (Safeway): blocked $2.5: confidence 0.50 < min 0.70
-- `dr_pepper_12packs` (Safeway): blocked $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `dr_pepper_12packs` (Safeway): blocked $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
 - `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
+- `lucerne_eggs_18` (Safeway): confidence 0.59 < min 0.65
+- `general_mills_cereal_regular` (Safeway): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
 - `chicken_wings_per_lb` (Safeway): blocked $5.0: hard negative keyword/pattern hit: boneless, rib tips
-- `lays_potato_chips_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
-- `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lays_potato_chips_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
+- `lays_kettle_cooked` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `ritz_crackers` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers_regular` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Vons): blocked $2.99: missing required auto-match attribute(s): confirmation; mixed-item offer has conflicting package/container cues
 - `oreo_family_size` (Vons): blocked $4.99: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
-- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `pepsi_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
-- `lays_kettle_cooked` (Safeway): blocked $4.99: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lucerne_eggs_18` (Vons): blocked $2.55: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $3.99: missing required auto-match attribute(s): product_form
+- `lays_kettle_cooked` (Safeway): blocked $4.99: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
+- `coca_cola_12packs` (Safeway): blocked $5.99: missing required auto-match attribute(s): package_count, container_type
 - `pepsi_12packs` (Safeway): blocked $2.5: confidence 0.50 < min 0.70
-- `dr_pepper_12packs` (Safeway): blocked $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `dr_pepper_12packs` (Safeway): blocked $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
 - `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
+- `lucerne_eggs_18` (Safeway): confidence 0.59 < min 0.65
+- `general_mills_cereal_regular` (Safeway): blocked $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
 - `chicken_wings_per_lb` (Safeway): blocked $5.0: hard negative keyword/pattern hit: boneless, rib tips
-- `lays_potato_chips_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
-- `nabisco_snack_crackers` (Vons): blocked $2.99: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lays_potato_chips_regular` (Vons): blocked $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
+- `lays_kettle_cooked` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `ritz_crackers` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers_regular` (Vons): blocked $2.99: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Vons): blocked $2.99: missing required auto-match attribute(s): confirmation; mixed-item offer has conflicting package/container cues
 - `oreo_family_size` (Vons): blocked $4.99: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
-- `coca_cola_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `pepsi_12packs` (Vons): blocked $1.67: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): blocked $4.99: confidence 0.58 < min 0.60
+- `lucerne_eggs_18` (Vons): blocked $2.55: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $3.99: missing required auto-match attribute(s): product_form
 
 ### Blocked from tracker graph
 
 - `lays_kettle_cooked` (Safeway): **rejected**: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99
-  - Reason: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-  - Hard negatives: party size, family size
+  - Reason: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: party size, family size, \bparty\s+size\b
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Nabisco Snack Crackers' @ $2.49
+  - Reason: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
 - `dr_pepper_12packs` (Safeway): **rejected**: 'Dr Pepper' @ $7.21
-  - Reason: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+  - Reason: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
   - Hard negatives: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
   - Hard negatives: strawberries, 1 lb
+- `general_mills_cereal_regular` (Safeway): **rejected**: 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
+  - Hard negatives: family size, \bfamily\s+size\b
 - `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless BBQ Rib Tips, Fresh Chicken Wings' @ $5.0
   - Reason: hard negative keyword/pattern hit: boneless, rib tips
   - Hard negatives: boneless, rib tips
 - `lays_potato_chips_regular` (Vons): **rejected**: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99
-  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
   - Hard negatives: kettle cooked
 - `oreo_family_size` (Vons): **rejected**: 'Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties' @ $4.99
   - Reason: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
   - Hard negatives: ritz, chips ahoy
 - `lays_kettle_cooked` (Safeway): **rejected**: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99
-  - Reason: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-  - Hard negatives: party size, family size
+  - Reason: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+  - Hard negatives: party size, family size, \bparty\s+size\b
+- `nabisco_snack_crackers` (Safeway): **rejected**: 'Nabisco Snack Crackers' @ $2.49
+  - Reason: ad product type 'regular_size_snack_crackers' is incompatible with canonical intent 'family_size_snack_crackers'; missing required auto-match attribute(s): confirmation
 - `dr_pepper_12packs` (Safeway): **rejected**: 'Dr Pepper' @ $7.21
-  - Reason: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+  - Reason: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
   - Hard negatives: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle
 - `berries_6oz` (Safeway): **rejected**: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99
   - Reason: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
   - Hard negatives: strawberries, 1 lb
+- `general_mills_cereal_regular` (Safeway): **rejected**: 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99
+  - Reason: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
+  - Hard negatives: family size, \bfamily\s+size\b
 - `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless BBQ Rib Tips, Fresh Chicken Wings' @ $5.0
   - Reason: hard negative keyword/pattern hit: boneless, rib tips
   - Hard negatives: boneless, rib tips
 - `lays_potato_chips_regular` (Vons): **rejected**: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99
-  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
+  - Reason: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
   - Hard negatives: kettle cooked
 - `oreo_family_size` (Vons): **rejected**: 'Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties' @ $4.99
   - Reason: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
   - Hard negatives: ritz, chips ahoy
-- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola 6-pk. 16.9-oz. btls. Selected varieties.' @ $5.99
+  - Reason: missing required auto-match attribute(s): package_count, container_type
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi, Dr. Pepper, 7UP, A&W, Sunkist, Canada Dry, Squirt, Mug' @ $2.5
   - Reason: confidence 0.50 < min 0.70
+- `lucerne_eggs_18` (Safeway): **manual_review**: 'Lucerne® Cage Free Eggs' @ $None
+  - Reason: confidence 0.59 < min 0.65
+- `lays_kettle_cooked` (Vons): **manual_review**: 'Kettle Cooked Chips' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
+- `ritz_crackers` (Vons): **manual_review**: 'Nabisco Ritz Crackers' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers_regular` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
-  - Reason: confidence 0.55 < min 0.70
+  - Reason: missing required auto-match attribute(s): confirmation; mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
   - Reason: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
-- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Nabisco Snack Crackers' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.55
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `coca_cola_12packs` (Safeway): **manual_review**: 'Coca-Cola 6-pk. 16.9-oz. btls. Selected varieties.' @ $5.99
+  - Reason: missing required auto-match attribute(s): package_count, container_type
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi, Dr. Pepper, 7UP, A&W, Sunkist, Canada Dry, Squirt, Mug' @ $2.5
   - Reason: confidence 0.50 < min 0.70
+- `lucerne_eggs_18` (Safeway): **manual_review**: 'Lucerne® Cage Free Eggs' @ $None
+  - Reason: confidence 0.59 < min 0.65
+- `lays_kettle_cooked` (Vons): **manual_review**: 'Kettle Cooked Chips' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
+- `ritz_crackers` (Vons): **manual_review**: 'Nabisco Ritz Crackers' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers_regular` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
+  - Reason: mixed-item offer has conflicting package/container cues
 - `nabisco_snack_crackers` (Vons): **manual_review**: 'Wheat Thins' @ $2.99
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
-  - Reason: confidence 0.55 < min 0.70
+  - Reason: missing required auto-match attribute(s): confirmation; mixed-item offer has conflicting package/container cues
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $1.67
   - Reason: confidence 0.55 < min 0.70
 - `ben_jerrys_ice_cream` (Vons): **manual_review**: "Ben & Jerry's Ice Cream or Non-Dairy 16 oz Selected varieties" @ $4.99
   - Reason: confidence 0.58 < min 0.60
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $2.55
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
-- `lays_kettle_cooked`: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-- `dr_pepper_12packs`: 'Dr Pepper' @ $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `lays_kettle_cooked`: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs`: 'Dr Pepper' @ $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
 - `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
+- `general_mills_cereal_regular`: 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
 - `chicken_wings_per_lb`: 'Boneless BBQ Rib Tips, Fresh Chicken Wings' @ $5.0: hard negative keyword/pattern hit: boneless, rib tips
-- `lays_potato_chips_regular`: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
+- `lays_potato_chips_regular`: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
 - `oreo_family_size`: 'Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties' @ $4.99: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
-- `lays_kettle_cooked`: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99: hard negative keyword/pattern hit: party size, family size; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review; large price change 132% vs prior week requires audit
-- `dr_pepper_12packs`: 'Dr Pepper' @ $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'
+- `lays_kettle_cooked`: "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99: hard negative keyword/pattern hit: party size, family size, \bparty\s+size\b; ad product type 'party_size' is incompatible with canonical intent 'kettle_cooked'; package size/form present but outside allowed_package_patterns; multi-item variant list (or/comma) needs review; medium pattern confidence 0.58 needs review
+- `dr_pepper_12packs`: 'Dr Pepper' @ $7.21: hard negative keyword/pattern hit: 6\s*[- ]?pack.{0,20}bottle, 8\s*[- ]?pack.{0,20}bottle; ad product type '8_pack_bottles' is incompatible with canonical intent '12_pack_cans'; mixed-item offer has conflicting package/container cues
 - `berries_6oz`: 'Strawberries 1 lb, Blueberries, Raspberries or Blackberries 6 oz' @ $2.99: hard negative keyword/pattern hit: strawberries, 1 lb; ad product type 'strawberries_clamshell' is incompatible with canonical intent 'berries_6oz_clamshell'
+- `general_mills_cereal_regular`: 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99: hard negative keyword/pattern hit: family size, \bfamily\s+size\b; package size/form present but outside allowed_package_patterns
 - `chicken_wings_per_lb`: 'Boneless BBQ Rib Tips, Fresh Chicken Wings' @ $5.0: hard negative keyword/pattern hit: boneless, rib tips
-- `lays_potato_chips_regular`: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review; new all-time low $1.99 requires confidence >= 0.80 (got 0.55)
+- `lays_potato_chips_regular`: "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99: hard negative keyword/pattern hit: kettle cooked; ad product type 'kettle_cooked' is incompatible with canonical intent 'regular_chip_bag'; new all-time low $1.99 requires confidence >= 0.80 (got 0.70)
 - `oreo_family_size`: 'Nabisco Family Size! Oreo, Chips Ahoy! or Ritz 12.2-20 oz Selected varieties' @ $4.99: hard negative keyword/pattern hit: ritz, chips ahoy; ad product type 'ritz_crackers' is incompatible with canonical intent 'oreo'; multi-item variant list (or/comma) needs review; medium pattern confidence 0.55 needs review
 
 ## Accepted matches
@@ -154,25 +202,29 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: regular size, 5–13 oz
 - `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $2.99 (confidence 1.00)
   - Display: Lay's potato chips
-  - Subtitle: regular size, 5–13 oz
+  - Subtitle: regular bags 5–13 oz, including Poppables
 - `lays_party_size` (Safeway): "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99 (confidence 0.70)
   - Display: Lay's Party Size
   - Subtitle: family size, 12.5–13 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $2.5 (confidence 0.90)
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $2.5 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `ruffles_regular_bags` (Safeway): 'Fritos, Ruffles, Doritos' @ $2.49 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Nabisco Snack Crackers' @ $2.49 (confidence 0.98)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.5 (confidence 1.00)
   - Display: Oreo cookies
   - Subtitle: family size, 10.68–18.71 oz
 - `goldfish_bags` (Safeway): 'Goldfish Crackers or Crisps 4 to 8-oz.' @ $2.0 (confidence 0.86)
   - Display: Goldfish
   - Subtitle: regular size, 6–8 oz
-- `coca_cola_12packs` (Safeway): 'Coca-Cola 6-pk. 16.9-oz. btls. Selected varieties.' @ $5.99 (confidence 0.75)
-  - Display: Coca-Cola
-  - Subtitle: 12-pack, 12 fl oz cans
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream' @ $3.5 (confidence 0.90)
   - Display: Tillamook ice cream
   - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
@@ -199,16 +251,19 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+  - Subtitle: Lucerne large eggs, 12-count
 - `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek, Less Sugar Yogurt 5.3 oz' @ $0.89 (confidence 0.70)
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek, Less Sugar Yogurt 5.3 oz' @ $0.89 (confidence 0.91)
   - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `general_mills_cereal_family_size` (Safeway): 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
 - `kings_hawaiian_rolls` (Safeway): "King's Hawaiian Rolls" @ $4.99 (confidence 0.90)
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
@@ -218,7 +273,7 @@ These looked like deals but were blocked from updating canonical trackers:
 - `tri_tip_roast` (Safeway): "Chef's Counter Marinated Tri Tip Roast selected varieties" @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.99 (confidence 1.00)
+- `salmon` (Safeway): 'Waterfront BISTRO Wild Sockeye Salmon Fillets' @ $6.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
 - `cape_cod_chips` (Safeway): 'Cape Cod Chips' @ $2.5 (confidence 0.76)
@@ -242,18 +297,15 @@ These looked like deals but were blocked from updating canonical trackers:
 - `cheetos_regular_bags` (Vons): "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99 (confidence 0.70)
   - Display: Cheetos
   - Subtitle: regular size, 6.5–10 oz
-- `lays_kettle_cooked` (Vons): 'Kettle Cooked Chips' @ $2.99 (confidence 0.83)
-  - Display: Lay's Kettle Cooked chips
-  - Subtitle: regular size, 7.75–8 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 0.90)
+- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `simply_snacks` (Vons): 'Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz' @ $2.5 (confidence 0.70)
   - Display: Simply snacks
   - Subtitle: regular size, 4.5–13 oz
-- `ritz_crackers` (Vons): 'Nabisco Ritz Crackers' @ $2.99 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: regular size, 8.8–13.7 oz
+- `coca_cola_12packs` (Vons): 'Coca-Cola, Pepsi' @ $4.0 (confidence 0.80)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
 - `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.5 (confidence 0.70)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
@@ -274,10 +326,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: per lb
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.57 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz
@@ -301,25 +350,29 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: regular size, 5–13 oz
 - `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $2.99 (confidence 1.00)
   - Display: Lay's potato chips
-  - Subtitle: regular size, 5–13 oz
+  - Subtitle: regular bags 5–13 oz, including Poppables
 - `lays_party_size` (Safeway): "Lay's Party Size Potato Chips or Kettle Cooked Chips or Rold Gold Selects or Chex Mix Family Size" @ $4.99 (confidence 0.70)
   - Display: Lay's Party Size
   - Subtitle: family size, 12.5–13 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $2.5 (confidence 0.90)
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $2.5 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `ruffles_regular_bags` (Safeway): 'Fritos, Ruffles, Doritos' @ $2.49 (confidence 0.70)
   - Display: Ruffles
   - Subtitle: regular size, 5–13 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Nabisco Snack Crackers' @ $2.49 (confidence 0.98)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `oreo_family_size` (Safeway): 'Nabisco Family Size Oreo Cookies 10.68 to 18.71-oz.' @ $3.5 (confidence 1.00)
   - Display: Oreo cookies
   - Subtitle: family size, 10.68–18.71 oz
 - `goldfish_bags` (Safeway): 'Goldfish Crackers or Crisps 4 to 8-oz.' @ $2.0 (confidence 0.86)
   - Display: Goldfish
   - Subtitle: regular size, 6–8 oz
-- `coca_cola_12packs` (Safeway): 'Coca-Cola 6-pk. 16.9-oz. btls. Selected varieties.' @ $5.99 (confidence 0.75)
-  - Display: Coca-Cola
-  - Subtitle: 12-pack, 12 fl oz cans
 - `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream' @ $3.5 (confidence 0.90)
   - Display: Tillamook ice cream
   - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
@@ -346,16 +399,19 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Safeway): 'Lucerne® Cage Free Eggs' @ $None (confidence 0.74)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
+  - Subtitle: Lucerne large eggs, 12-count
 - `butter_16oz` (Safeway): 'Lucerne Quarters Butter' @ $3.99 (confidence 1.00)
   - Display: Butter
   - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
 - `philadelphia_cream_cheese` (Safeway): 'Philadelphia Cream Cheese' @ $2.49 (confidence 0.90)
   - Display: Philadelphia cream cheese
   - Subtitle: 7.5–8 oz tubs or bricks
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek, Less Sugar Yogurt 5.3 oz' @ $0.89 (confidence 0.70)
+- `chobani_yogurt_per_cup` (Safeway): 'Chobani Greek, Less Sugar Yogurt 5.3 oz' @ $0.89 (confidence 0.91)
   - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
+  - Subtitle: single cups or 4×5.3 oz multipacks (incl. Layered); normalize per cup
+- `general_mills_cereal_family_size` (Safeway): 'General Mills Family Size Cereal 15 to 24-oz.' @ $3.99 (confidence 0.70)
+  - Display: General Mills cereal (family size)
+  - Subtitle: family size, 15–18 oz
 - `kings_hawaiian_rolls` (Safeway): "King's Hawaiian Rolls" @ $4.99 (confidence 0.90)
   - Display: King's Hawaiian rolls
   - Subtitle: 12 ct / 12 oz
@@ -365,7 +421,7 @@ These looked like deals but were blocked from updating canonical trackers:
 - `tri_tip_roast` (Safeway): "Chef's Counter Marinated Tri Tip Roast selected varieties" @ $10.99 (confidence 0.70)
   - Display: Tri-tip roast
   - Subtitle: per lb
-- `salmon` (Safeway): 'Fresh Atlantic Salmon Portion' @ $5.99 (confidence 1.00)
+- `salmon` (Safeway): 'Waterfront BISTRO Wild Sockeye Salmon Fillets' @ $6.99 (confidence 1.00)
   - Display: Salmon
   - Subtitle: fresh salmon fillet
 - `cape_cod_chips` (Safeway): 'Cape Cod Chips' @ $2.5 (confidence 0.76)
@@ -389,18 +445,15 @@ These looked like deals but were blocked from updating canonical trackers:
 - `cheetos_regular_bags` (Vons): "Frito-Lay Chips Lay's, Kettle Cooked, Poppables, Doritos, Cheetos, Fritos or Smartfood 4.75-10.25 oz Selected varieties" @ $1.99 (confidence 0.70)
   - Display: Cheetos
   - Subtitle: regular size, 6.5–10 oz
-- `lays_kettle_cooked` (Vons): 'Kettle Cooked Chips' @ $2.99 (confidence 0.83)
-  - Display: Lay's Kettle Cooked chips
-  - Subtitle: regular size, 7.75–8 oz
-- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 0.90)
+- `kettle_brand_chips` (Vons): 'Kettle Brand Potato Chips 4.5-8.5 oz. bag' @ $1.88 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `simply_snacks` (Vons): 'Tostitos Salsa 15.5 oz, Rold Gold Pretzels 10-16 oz, Smartfood 5-7.75 oz, Simply NKD 8-9.25 oz' @ $2.5 (confidence 0.70)
   - Display: Simply snacks
   - Subtitle: regular size, 4.5–13 oz
-- `ritz_crackers` (Vons): 'Nabisco Ritz Crackers' @ $2.99 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: regular size, 8.8–13.7 oz
+- `coca_cola_12packs` (Vons): 'Coca-Cola, Pepsi' @ $4.0 (confidence 0.80)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
 - `strawberries_1_2lb` (Vons): 'Strawberries' @ $1.5 (confidence 0.70)
   - Display: Strawberries
   - Subtitle: 1 lb or 2 lb packs; normalize per lb
@@ -421,10 +474,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: per lb
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $2.55 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `lucerne_cream_cheese` (Vons): 'Lucerne Cream Cheese' @ $2.57 (confidence 0.90)
   - Display: Lucerne cream cheese
   - Subtitle: 8 oz

@@ -121,7 +121,12 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
     "oreo": (r"\boreo\b",),
     "wheat_thins": (r"wheat\s+thins",),
     "triscuits": (r"triscuit",),
-    "chicken_in_a_biskit": (r"chicken\s+in\s+a\s+biskit",),
+    "chicken_in_a_biskit": (
+        r"chicken\s+in\s+a\s+biskit",
+        r"chicken\s+in\s+a\s+biscuit",
+        r"chicken\s+and\s+a\s+biskit",
+        r"chicken\s+and\s+a\s+biscuit",
+    ),
     # Goldfish large tubs / cartons (≈20–45 oz) must beat the generic crackers
     # type so 6–8 oz bag tracking never ingests tub prices (e.g. 30 oz @ $7.99).
     "goldfish_tub": (
@@ -151,6 +156,14 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
         r"family\s+size.{0,20}snack\s+crackers",
         r"snack\s+crackers.{0,20}family\s+size",
     ),
+    # Regular-size Nabisco snack crackers block (3.5–9.1 oz). Prefer this over
+    # bare generic_nabisco_block when the ad states the standard size band.
+    "regular_size_snack_crackers": (
+        r"snack\s+crackers.{0,40}3\.5\s*(?:to|-|–)\s*9\.1",
+        r"3\.5\s*(?:to|-|–)\s*9\.1.{0,40}snack\s+crackers",
+        r"nabisco\s+snack\s+crackers.{0,40}3\.5",
+        r"snack\s+crackers.{0,40}7\s*(?:to|-|–)\s*9\.1",
+    ),
     "generic_nabisco_block": (
         r"nabisco",
         r"snack\s+crackers",
@@ -170,6 +183,13 @@ PRODUCT_TYPE_PATTERNS: dict[str, tuple[str, ...]] = {
         r"(?:blueberr|raspberr|blackberr).{0,20}(?:18|24)\s*oz",
         r"(?:blueberr|raspberr|blackberr).{0,20}large\s+pack",
         r"large\s+pack.{0,20}(?:blueberr|raspberr|blackberr)",
+    ),
+    "mandarins_3lb_bag": (
+        r"\bcuties\b",
+        r"\bmandarin\s+oranges?\b",
+        r"\bmandarins?\b",
+        r"\bclementines?\b",
+        r"california\s+mandarins?",
     ),
     # Eggs — candy / seasonal chocolate eggs first so they don't classify as
     # cartons. Carton eggs require poultry/carton signals, not bare "egg".

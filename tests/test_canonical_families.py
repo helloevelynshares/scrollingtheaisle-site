@@ -71,6 +71,26 @@ class TestCanonicalFamiliesYaml(unittest.TestCase):
         joined = " ".join(family.keep_separate_from).lower()
         for term in ("oreo", "chips ahoy", "ritz", "single serve", "cookies"):
             self.assertIn(term, joined)
+        self.assertIn("3.5-9.1", joined)
+
+    def test_nabisco_regular_size_snack_crackers_metadata(self) -> None:
+        family = {f.id: f for f in load_families()}["nabisco_snack_crackers_regular"]
+        self.assertEqual(
+            family.display_name,
+            "Wheat Thins, Triscuit & Chicken in a Biskit — regular size",
+        )
+        self.assertEqual(family.subtitle, "regular size, 3.5–9.1 oz")
+        self.assertEqual(family.package_type, "regular_size_box")
+        self.assertEqual(
+            tuple(family.allowed_product_lines),
+            ("Wheat Thins", "Triscuit", "Chicken in a Biskit"),
+        )
+        joined_includes = " ".join(family.include).lower()
+        self.assertIn("nabisco snack crackers", joined_includes)
+        self.assertIn("chicken in a biskit", joined_includes)
+        joined = " ".join(family.keep_separate_from).lower()
+        for term in ("family size", "chips ahoy", "oreo", "ritz"):
+            self.assertIn(term, joined)
 
 
 class TestPopularThisWeek(unittest.TestCase):

@@ -1,13 +1,13 @@
 # Canonical match audit: 2026-06-03 to 2026-06-09
 
-Generated: 2026-07-26T18:49:19.723157+00:00
+Generated: 2026-07-30T03:20:14.535267+00:00
 
 ## Summary
 
-- **Accepted:** 66
-- **Rejected:** 2
-- **Manual review:** 10
-- **Families updated:** doritos_5_13oz, cheetos_regular_bags, kettle_brand_chips, ruffles_regular_bags, sun_chips_7oz, simply_snacks, ritz_crackers, ritz_toasted_chips, keebler_sandwich_crackers, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, chobani_yogurt_per_cup, post_cereal_regular, chicken_breast_per_lb, smartfood_popcorn, frito_lay_multipack_chips, chicken_wings_per_lb, berries_6oz, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon, bell_peppers, pork_spare_ribs_per_lb
+- **Accepted:** 64
+- **Rejected:** 4
+- **Manual review:** 16
+- **Families updated:** doritos_5_13oz, cheetos_regular_bags, lays_potato_chips_regular, kettle_brand_chips, ruffles_regular_bags, sun_chips_7oz, simply_snacks, ritz_toasted_chips, nabisco_snack_crackers_regular, keebler_sandwich_crackers, tillamook_ice_cream, strawberries_1_2lb, seedless_grapes_per_lb, hass_avocados_each, mangoes_each, sweet_corn, post_cereal_regular, chicken_breast_per_lb, smartfood_popcorn, frito_lay_multipack_chips, chicken_wings_per_lb, coca_cola_12packs, berries_6oz, peaches_per_lb, nectarines_per_lb, eggs_dozen_normalized, salmon, bell_peppers, pork_spare_ribs_per_lb
 
 ## Graph update safety check
 
@@ -16,63 +16,87 @@ Generated: 2026-07-26T18:49:19.723157+00:00
 - `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
 - `seedless_grapes_per_lb` (Safeway): $1.67: Red Seedless Grapes
 - `sweet_corn` (Safeway): $0.33: Sweet Corn
-- `chobani_yogurt_per_cup` (Safeway): $0.87: Chobani Zero Sugar Yogurt
 - `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
-- `butter_16oz` (Vons): $2.99: Lucerne Butter
 - `kettle_brand_chips` (Safeway): $1.99: Kettle Brand Potato Chips
 - `seedless_grapes_per_lb` (Safeway): $1.67: Red Seedless Grapes
 - `sweet_corn` (Safeway): $0.33: Sweet Corn
-- `chobani_yogurt_per_cup` (Safeway): $0.87: Chobani Zero Sugar Yogurt
 - `seedless_grapes_per_lb` (Vons): $1.97: Black Seedless Grapes
-- `butter_16oz` (Vons): $2.99: Lucerne Butter
 
 ### Graph preview changes
 
-- `lays_potato_chips_regular` (Safeway): blocked $2.59: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
-- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
+- `ritz_crackers` (Safeway): blocked $2.49: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: missing required auto-match attribute(s): confirmation
+- `butter_16oz` (Safeway): blocked $3.99: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): blocked $0.87: missing required auto-match attribute(s): package_size; large price change 253% vs prior week requires audit
+- `mandarins_3lb` (Safeway): blocked $2.5: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
 - `pepsi_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.83: hard negative keyword/pattern hit: 16\.9\s*oz
-- `lays_potato_chips_regular` (Safeway): blocked $2.59: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
-- `nabisco_snack_crackers` (Safeway): blocked $2.49: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
-- `coca_cola_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
+- `lucerne_eggs_18` (Vons): blocked $1.99: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $2.99: missing required auto-match attribute(s): product_form
+- `ritz_crackers` (Safeway): blocked $2.49: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Safeway): blocked $2.49: missing required auto-match attribute(s): confirmation
+- `butter_16oz` (Safeway): blocked $3.99: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): blocked $0.87: missing required auto-match attribute(s): package_size; large price change 253% vs prior week requires audit
+- `mandarins_3lb` (Safeway): blocked $2.5: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
 - `pepsi_12packs` (Vons): blocked $6.0: confidence 0.65 < min 0.70
 - `dr_pepper_12packs` (Vons): blocked $0.83: hard negative keyword/pattern hit: 16\.9\s*oz
+- `lucerne_eggs_18` (Vons): blocked $1.99: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): blocked $2.99: missing required auto-match attribute(s): product_form
 
 ### Blocked from tracker graph
 
+- `mandarins_3lb` (Safeway): **rejected**: 'Geisha Mandarin Oranges 15 oz.' @ $2.5
+  - Reason: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
+  - Hard negatives: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b
 - `dr_pepper_12packs` (Vons): **rejected**: 'Dr Pepper' @ $0.83
   - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
   - Hard negatives: 16\.9\s*oz
+- `mandarins_3lb` (Safeway): **rejected**: 'Geisha Mandarin Oranges 15 oz.' @ $2.5
+  - Reason: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
+  - Hard negatives: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b
 - `dr_pepper_12packs` (Vons): **rejected**: 'Dr Pepper' @ $0.83
   - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
   - Hard negatives: 16\.9\s*oz
-- `lays_potato_chips_regular` (Safeway): **manual_review**: 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59
-  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
-- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `ritz_crackers` (Safeway): **manual_review**: 'Ritz Crackers' @ $2.49
+  - Reason: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins 8 to 9.1 oz.' @ $2.49
+  - Reason: missing required auto-match attribute(s): confirmation
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi' @ $None
   - Reason: confidence 0.35 < min 0.70
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $6.0
-  - Reason: confidence 0.65 < min 0.70
+- `butter_16oz` (Safeway): **manual_review**: 'Challenger Creamery Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): **manual_review**: 'Chobani Zero Sugar Yogurt' @ $0.87
+  - Reason: missing required auto-match attribute(s): package_size; large price change 253% vs prior week requires audit
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $6.0
   - Reason: confidence 0.65 < min 0.70
-- `lays_potato_chips_regular` (Safeway): **manual_review**: 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59
-  - Reason: multi-item variant list (or/comma) needs review; medium pattern confidence 0.65 needs review
-- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins' @ $2.49
-  - Reason: no family-size / eligible-size confirmation (needs one of: family size, family-size, 11.5, 12 oz, 12.5, 13 oz, 14 oz, 11.5-14, 11.5 to 14, 10-14, 10 to 14)
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $1.99
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $2.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `ritz_crackers` (Safeway): **manual_review**: 'Ritz Crackers' @ $2.49
+  - Reason: mixed-item offer has conflicting package/container cues
+- `nabisco_snack_crackers` (Safeway): **manual_review**: 'Wheat Thins 8 to 9.1 oz.' @ $2.49
+  - Reason: missing required auto-match attribute(s): confirmation
 - `pepsi_12packs` (Safeway): **manual_review**: 'Pepsi' @ $None
   - Reason: confidence 0.35 < min 0.70
-- `coca_cola_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $6.0
-  - Reason: confidence 0.65 < min 0.70
+- `butter_16oz` (Safeway): **manual_review**: 'Challenger Creamery Butter' @ $3.99
+  - Reason: missing required auto-match attribute(s): product_form
+- `chobani_yogurt_per_cup` (Safeway): **manual_review**: 'Chobani Zero Sugar Yogurt' @ $0.87
+  - Reason: missing required auto-match attribute(s): package_size; large price change 253% vs prior week requires audit
 - `pepsi_12packs` (Vons): **manual_review**: 'Coca-Cola, Pepsi' @ $6.0
   - Reason: confidence 0.65 < min 0.70
+- `lucerne_eggs_18` (Vons): **manual_review**: 'Lucerne Large Eggs' @ $1.99
+  - Reason: confidence 0.64 < min 0.65
+- `butter_16oz` (Vons): **manual_review**: 'Lucerne Butter' @ $2.99
+  - Reason: missing required auto-match attribute(s): product_form
 
 ## Rejected tempting items
 
 These looked like deals but were blocked from updating canonical trackers:
 
+- `mandarins_3lb`: 'Geisha Mandarin Oranges 15 oz.' @ $2.5: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
 - `dr_pepper_12packs`: 'Dr Pepper' @ $0.83: hard negative keyword/pattern hit: 16\.9\s*oz
+- `mandarins_3lb`: 'Geisha Mandarin Oranges 15 oz.' @ $2.5: hard negative keyword/pattern hit: geisha, 15 oz, \b15\s*-?\s*oz\.?\b, \bgeisha\b; missing required auto-match attribute(s): confirmation
 - `dr_pepper_12packs`: 'Dr Pepper' @ $0.83: hard negative keyword/pattern hit: 16\.9\s*oz
 
 ## Accepted matches
@@ -83,7 +107,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `cheetos_regular_bags` (Safeway): 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59 (confidence 0.70)
   - Display: Cheetos
   - Subtitle: regular size, 6.5–10 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.99 (confidence 0.90)
+- `lays_potato_chips_regular` (Safeway): 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59 (confidence 0.80)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.99 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `ruffles_regular_bags` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
@@ -95,12 +122,16 @@ These looked like deals but were blocked from updating canonical trackers:
 - `simply_snacks` (Safeway): 'Cheetos, Rold Gold, Select Simply Cheetos 6.5-10 oz. Selected varieties.' @ $4.99 (confidence 0.70)
   - Display: Simply snacks
   - Subtitle: regular size, 4.5–13 oz
-- `ritz_crackers` (Safeway): 'Ritz Crackers' @ $2.49 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: regular size, 8.8–13.7 oz
 - `ritz_toasted_chips` (Safeway): 'Ritz Toasted Chips' @ $2.49 (confidence 0.70)
   - Display: Nabisco Ritz Toasted Chips
   - Subtitle: regular size, 7–8.1 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Wheat Thins 8 to 9.1 oz.' @ $2.49 (confidence 0.96)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `keebler_sandwich_crackers` (Safeway): "Keebler Sandwich Crackers 8-pack, 13.8-oz. Kellogg's Nutri Grain Bars 8 to 10-ct. Protein Pop Tarts 8-ct. Rice Krispies Treats 8-ct. Special K Bars 6-ct. Selected varieties." @ $2.49 (confidence 0.70)
   - Display: Keebler sandwich crackers
   - Subtitle: 8-pack boxes
@@ -122,16 +153,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.33 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Zero Sugar Yogurt' @ $0.87 (confidence 0.70)
-  - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
 - `post_cereal_regular` (Safeway): 'Post Cereal 10.5 to 15.5 oz Selected varieties' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
-- `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
+- `chicken_breast_per_lb` (Safeway): 'Rosie Organic Boneless Skinless Chicken Breasts Fresh Value Pack' @ $8.99 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
 - `smartfood_popcorn` (Safeway): 'Smartfood' @ $2.49 (confidence 0.70)
@@ -143,6 +168,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings Bulk Pack, Value Pack' @ $2.99 (confidence 0.76)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)
+- `coca_cola_12packs` (Vons): 'Coca-Cola, Pepsi' @ $6.0 (confidence 0.80)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -160,10 +188,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `chicken_breast_per_lb` (Vons): 'Fresh Bulk Boneless Skinless Chicken Breasts available at the full service meat counter' @ $2.49 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
@@ -182,7 +207,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `cheetos_regular_bags` (Safeway): 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59 (confidence 0.70)
   - Display: Cheetos
   - Subtitle: regular size, 6.5–10 oz
-- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.99 (confidence 0.90)
+- `lays_potato_chips_regular` (Safeway): 'Lay’s Potato Chips or Poppables 5 to 8-oz. Doritos or Cheetos Minis 3.62 to 5.12-oz. Selected varieties.' @ $2.59 (confidence 0.80)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `kettle_brand_chips` (Safeway): 'Kettle Brand Potato Chips' @ $1.99 (confidence 1.00)
   - Display: Kettle Brand potato chips
   - Subtitle: regular size, 6.5–8.5 oz
 - `ruffles_regular_bags` (Safeway): 'Ruffles, Doritos, SunChips' @ $2.49 (confidence 0.70)
@@ -194,12 +222,16 @@ These looked like deals but were blocked from updating canonical trackers:
 - `simply_snacks` (Safeway): 'Cheetos, Rold Gold, Select Simply Cheetos 6.5-10 oz. Selected varieties.' @ $4.99 (confidence 0.70)
   - Display: Simply snacks
   - Subtitle: regular size, 4.5–13 oz
-- `ritz_crackers` (Safeway): 'Ritz Crackers' @ $2.49 (confidence 1.00)
-  - Display: Ritz crackers
-  - Subtitle: regular size, 8.8–13.7 oz
 - `ritz_toasted_chips` (Safeway): 'Ritz Toasted Chips' @ $2.49 (confidence 0.70)
   - Display: Nabisco Ritz Toasted Chips
   - Subtitle: regular size, 7–8.1 oz
+- `nabisco_snack_crackers_regular` (Safeway): 'Wheat Thins 8 to 9.1 oz.' @ $2.49 (confidence 0.96)
+  - Display: Wheat Thins, Triscuit & Chicken in a Biskit — regular size
+  - Subtitle: regular size, 3.5–9.1 oz
+  - Manufacturer family: Nabisco
+  - Allowed product lines: Wheat Thins, Triscuit, Chicken in a Biskit
+  - Package: regular_size_box, 3.5–9.1 oz
+  - Eligible item examples: Wheat Thins Original 8–9.1 oz, Wheat Thins Reduced Fat 8–9.1 oz, Triscuit Original 7.6–8.5 oz, Triscuit Reduced Fat 7–8.5 oz, Chicken in a Biskit Original ~7.1–8 oz, Chicken in a Biskit Ranch ~7.1–8 oz
 - `keebler_sandwich_crackers` (Safeway): "Keebler Sandwich Crackers 8-pack, 13.8-oz. Kellogg's Nutri Grain Bars 8 to 10-ct. Protein Pop Tarts 8-ct. Rice Krispies Treats 8-ct. Special K Bars 6-ct. Selected varieties." @ $2.49 (confidence 0.70)
   - Display: Keebler sandwich crackers
   - Subtitle: 8-pack boxes
@@ -221,16 +253,10 @@ These looked like deals but were blocked from updating canonical trackers:
 - `sweet_corn` (Safeway): 'Sweet Corn' @ $0.33 (confidence 0.90)
   - Display: Sweet corn
   - Subtitle: each or multi-buy
-- `butter_16oz` (Safeway): 'Challenger Creamery Butter' @ $3.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
-- `chobani_yogurt_per_cup` (Safeway): 'Chobani Zero Sugar Yogurt' @ $0.87 (confidence 0.70)
-  - Display: Chobani yogurt cups
-  - Subtitle: single cups or 4-packs; normalize per cup
 - `post_cereal_regular` (Safeway): 'Post Cereal 10.5 to 15.5 oz Selected varieties' @ $1.99 (confidence 0.90)
   - Display: Post cereal
   - Subtitle: regular size, 10–16 oz
-- `chicken_breast_per_lb` (Safeway): 'Foster Farms Simply Raised Boneless Skinless Chicken Breasts, Thin Sliced' @ $4.5 (confidence 0.70)
+- `chicken_breast_per_lb` (Safeway): 'Rosie Organic Boneless Skinless Chicken Breasts Fresh Value Pack' @ $8.99 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
 - `smartfood_popcorn` (Safeway): 'Smartfood' @ $2.49 (confidence 0.70)
@@ -242,6 +268,9 @@ These looked like deals but were blocked from updating canonical trackers:
 - `chicken_wings_per_lb` (Safeway): 'Chicken Party Wings Bulk Pack, Value Pack' @ $2.99 (confidence 0.76)
   - Display: Chicken wings
   - Subtitle: per lb (party wings)
+- `coca_cola_12packs` (Vons): 'Coca-Cola, Pepsi' @ $6.0 (confidence 0.80)
+  - Display: Coca-Cola
+  - Subtitle: 12-pack, 12 fl oz cans
 - `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $1.97 (confidence 0.90)
   - Display: Seedless grapes
   - Subtitle: per lb; normalize bags to per lb
@@ -259,10 +288,7 @@ These looked like deals but were blocked from updating canonical trackers:
   - Subtitle: each or multi-buy
 - `eggs_dozen_normalized` (Vons): 'Lucerne Large Eggs' @ $1.99 (confidence 1.00)
   - Display: Lucerne Eggs
-  - Subtitle: Lucerne large eggs; per dozen (18 ct scaled to 12)
-- `butter_16oz` (Vons): 'Lucerne Butter' @ $2.99 (confidence 0.85)
-  - Display: Butter
-  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+  - Subtitle: Lucerne large eggs, 12-count
 - `chicken_breast_per_lb` (Vons): 'Fresh Bulk Boneless Skinless Chicken Breasts available at the full service meat counter' @ $2.49 (confidence 0.70)
   - Display: Chicken breast
   - Subtitle: per lb
