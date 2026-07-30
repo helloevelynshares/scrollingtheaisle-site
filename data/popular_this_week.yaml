@@ -1,73 +1,73 @@
 week: "2026-07-29"
 stores:
   # Editorial/content shortlist only. NOT canonical tracker graph data.
-  # Curated from Safeway Jul 29–Aug 4 flyer + ranked deal report (night-before publish).
+  # Curated from Evelyn's Safeway Jul 29 video script (order ≈ video emphasis).
   # Only link tracker_family_ids when a clean canonical family already exists;
   # otherwise leave empty so the card renders as pure editorial copy.
   # Do not mention Costco in handpicked summary copy; skip fresh/smoked salmon.
   safeway:
-    - title: Chobani yogurt cups
-      tracker_family_ids: [chobani_yogurt_per_cup]
-      badge: DEAL
-      subtitle: "89¢ when you buy 10 — near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar."
-      reason: "89¢ when you buy 10 — near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar."
-      price: "$0.89"
-      display_order: 1
     - title: Challenge / Danish Creamery butter
       tracker_family_ids: [butter_16oz]
       badge: DEAL
       subtitle: "$3.49 for 16 oz sticks — an all-time low on the butter chart this week."
       reason: "$3.49 for 16 oz sticks — an all-time low on the butter chart this week."
       price: "$3.49"
+      display_order: 1
+    - title: Mandarin oranges (Cuties)
+      tracker_family_ids: [mandarins_3lb]
+      badge: PRODUCE
+      subtitle: "$3.99 on the 3 lb bag — strong absolute price on Cuties this week."
+      reason: "$3.99 on the 3 lb bag — strong absolute price on Cuties this week."
+      price: "$3.99"
       display_order: 2
+    - title: Tillamook cheese
+      tracker_family_ids: []
+      badge: DEAL
+      subtitle: "$2.49 on 6–12 oz shredded, sliced, snack/cracker cuts, or string — mix & match."
+      reason: "$2.49 on 6–12 oz shredded, sliced, snack/cracker cuts, or string — mix & match."
+      price: "$2.49"
+      display_order: 3
+    - title: Chobani yogurt cups
+      tracker_family_ids: [chobani_yogurt_per_cup]
+      badge: DEAL
+      subtitle: "89¢ when you buy 10 — mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups."
+      reason: "89¢ when you buy 10 — mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups."
+      price: "$0.89"
+      display_order: 4
+    - title: Chips Ahoy cookies
+      tracker_family_ids: [chips_ahoy]
+      badge: SNACKS
+      subtitle: "$1.99 on 7–13 oz bags — an all-time low; great week to stock up (World Cup flavors too)."
+      reason: "$1.99 on 7–13 oz bags — an all-time low; great week to stock up (World Cup flavors too)."
+      price: "$1.99"
+      display_order: 5
+    - title: Wheat Thins / Triscuit / Chicken in a Biskit
+      tracker_family_ids: [nabisco_snack_crackers_regular]
+      badge: SNACKS
+      subtitle: "$1.99 on regular-size 3.5–9.1 oz boxes — Wheat Thins, Triscuit, and Chicken in a Biskit."
+      reason: "$1.99 on regular-size 3.5–9.1 oz boxes — Wheat Thins, Triscuit, and Chicken in a Biskit."
+      price: "$1.99"
+      display_order: 6
     - title: Honey mangoes
       tracker_family_ids: [mangoes_each]
       badge: PRODUCE
-      subtitle: "10 for $10 ($1 each) — easy full-week tropical add-on."
-      reason: "10 for $10 ($1 each) — easy full-week tropical add-on."
+      subtitle: "10 for $10 ($1 each) — easy full-week tropical add-on near a recent low."
+      reason: "10 for $10 ($1 each) — easy full-week tropical add-on near a recent low."
       price: "10/$10"
-      display_order: 3
+      display_order: 7
     - title: Häagen-Dazs ice cream
       tracker_family_ids: [haagen_dazs_pints]
       badge: DEAL
-      subtitle: "$2.99 on 14 oz pints when you buy 3 — strong freezer stock-up."
-      reason: "$2.99 on 14 oz pints when you buy 3 — strong freezer stock-up."
+      subtitle: "$2.99 on 14 oz pints when you buy 3 — mix flavors like cookie crumble and coffee."
+      reason: "$2.99 on 14 oz pints when you buy 3 — mix flavors like cookie crumble and coffee."
       price: "$2.99"
-      display_order: 4
-    - title: Doritos / Lay's / Tostitos
-      tracker_family_ids: [doritos_5_13oz, lays_potato_chips_regular, tostitos_tortilla_chips]
-      badge: SNACKS
-      subtitle: "Buy 2 Get 2 Free on 5–13 oz bags — effective about $2.75 when you use the full mix & match."
-      reason: "Buy 2 Get 2 Free on 5–13 oz bags — effective about $2.75 when you use the full mix & match."
-      price: "B2G2F"
-      display_order: 5
-    - title: Ritz crackers
-      tracker_family_ids: [ritz_crackers]
-      badge: SNACKS
-      subtitle: "2 for $5 with belVita in the mix — solid cracker week."
-      reason: "2 for $5 with belVita in the mix — solid cracker week."
-      price: "2/$5"
-      display_order: 6
-    - title: General Mills family-size cereal
-      tracker_family_ids: [general_mills_cereal_family_size]
-      badge: DEAL
-      subtitle: "$3.99 family-size boxes on the Back-to-School 4x points tile."
-      reason: "$3.99 family-size boxes on the Back-to-School 4x points tile."
-      price: "$3.99"
-      display_order: 7
-    - title: Sweet corn
-      tracker_family_ids: [sweet_corn]
-      badge: FRIDAY
-      subtitle: "Friday only — 10 for $5 (50¢ each) on local sweet corn."
-      reason: "Friday only — 10 for $5 (50¢ each) on local sweet corn."
-      price: "10/$5"
       display_order: 8
-    - title: Hass avocados
-      tracker_family_ids: [hass_avocados_each]
-      badge: FRIDAY
-      subtitle: "Friday only — 4 for $5 ($1.25 each)."
-      reason: "Friday only — 4 for $5 ($1.25 each)."
-      price: "4/$5"
+    - title: Nestlé Drumstick ice cream
+      tracker_family_ids: []
+      badge: DEAL
+      subtitle: "$3.99 on Nestlé Drumstick 4-ct cones — more flavor control than a locked variety pack."
+      reason: "$3.99 on Nestlé Drumstick 4-ct cones — more flavor control than a locked variety pack."
+      price: "$3.99"
       display_order: 9
     - title: Pringles
       tracker_family_ids: [pringles]
@@ -76,20 +76,13 @@ stores:
       reason: "Friday only — 3 for $5 on Pringles cans (mix with Signature SELECT chips)."
       price: "3/$5"
       display_order: 10
-    - title: Peaches, nectarines & plums
-      tracker_family_ids: [plums_per_lb]
-      badge: PRODUCE
-      subtitle: "$2.99/lb on yellow peaches, nectarines, or black plums — local stone fruit."
-      reason: "$2.99/lb on yellow peaches, nectarines, or black plums — local stone fruit."
-      price: "$2.99/lb"
-      display_order: 11
-    - title: Large strawberries or blueberries
+    - title: Ground turkey
       tracker_family_ids: []
-      badge: PRODUCE
-      subtitle: "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz)."
-      reason: "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz)."
-      price: "$4.99"
-      display_order: 12
+      badge: FRIDAY
+      subtitle: "Friday only — $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties."
+      reason: "Friday only — $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties."
+      price: "$5"
+      display_order: 11
   vons:
     - title: Hand-picked deals updating soon
       tracker_family_ids: []

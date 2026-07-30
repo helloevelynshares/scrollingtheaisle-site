@@ -1865,19 +1865,6 @@ export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-29";
 export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntry[]> = {
   safeway: [
   {
-    "title": "Chobani yogurt cups",
-    "trackerFamilyIds": [
-      "chobani_yogurt_per_cup"
-    ],
-    "reason": "89\u00a2 when you buy 10 \u2014 near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar.",
-    "subtitle": "89\u00a2 when you buy 10 \u2014 near a recent low on single cups; mix Greek, Less Sugar, and Zero Sugar.",
-    "badge": "DEAL",
-    "price": "$0.89",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 1
-  },
-  {
     "title": "Challenge / Danish Creamery butter",
     "trackerFamilyIds": [
       "butter_16oz"
@@ -1888,97 +1875,104 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "price": "$3.49",
     "availability": "",
     "fridayOnly": false,
+    "displayOrder": 1
+  },
+  {
+    "title": "Mandarin oranges (Cuties)",
+    "trackerFamilyIds": [
+      "mandarins_3lb"
+    ],
+    "reason": "$3.99 on the 3 lb bag \u2014 strong absolute price on Cuties this week.",
+    "subtitle": "$3.99 on the 3 lb bag \u2014 strong absolute price on Cuties this week.",
+    "badge": "PRODUCE",
+    "price": "$3.99",
+    "availability": "",
+    "fridayOnly": false,
     "displayOrder": 2
+  },
+  {
+    "title": "Tillamook cheese",
+    "trackerFamilyIds": [],
+    "reason": "$2.49 on 6\u201312 oz shredded, sliced, snack/cracker cuts, or string \u2014 mix & match.",
+    "subtitle": "$2.49 on 6\u201312 oz shredded, sliced, snack/cracker cuts, or string \u2014 mix & match.",
+    "badge": "DEAL",
+    "price": "$2.49",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 3
+  },
+  {
+    "title": "Chobani yogurt cups",
+    "trackerFamilyIds": [
+      "chobani_yogurt_per_cup"
+    ],
+    "reason": "89\u00a2 when you buy 10 \u2014 mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups.",
+    "subtitle": "89\u00a2 when you buy 10 \u2014 mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups.",
+    "badge": "DEAL",
+    "price": "$0.89",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 4
+  },
+  {
+    "title": "Chips Ahoy cookies",
+    "trackerFamilyIds": [
+      "chips_ahoy"
+    ],
+    "reason": "$1.99 on 7\u201313 oz bags \u2014 an all-time low; great week to stock up (World Cup flavors too).",
+    "subtitle": "$1.99 on 7\u201313 oz bags \u2014 an all-time low; great week to stock up (World Cup flavors too).",
+    "badge": "SNACKS",
+    "price": "$1.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 5
+  },
+  {
+    "title": "Wheat Thins / Triscuit / Chicken in a Biskit",
+    "trackerFamilyIds": [
+      "nabisco_snack_crackers_regular"
+    ],
+    "reason": "$1.99 on regular-size 3.5\u20139.1 oz boxes \u2014 Wheat Thins, Triscuit, and Chicken in a Biskit.",
+    "subtitle": "$1.99 on regular-size 3.5\u20139.1 oz boxes \u2014 Wheat Thins, Triscuit, and Chicken in a Biskit.",
+    "badge": "SNACKS",
+    "price": "$1.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 6
   },
   {
     "title": "Honey mangoes",
     "trackerFamilyIds": [
       "mangoes_each"
     ],
-    "reason": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on.",
-    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on.",
+    "reason": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on near a recent low.",
+    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week tropical add-on near a recent low.",
     "badge": "PRODUCE",
     "price": "10/$10",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 3
+    "displayOrder": 7
   },
   {
     "title": "H\u00e4agen-Dazs ice cream",
     "trackerFamilyIds": [
       "haagen_dazs_pints"
     ],
-    "reason": "$2.99 on 14 oz pints when you buy 3 \u2014 strong freezer stock-up.",
-    "subtitle": "$2.99 on 14 oz pints when you buy 3 \u2014 strong freezer stock-up.",
+    "reason": "$2.99 on 14 oz pints when you buy 3 \u2014 mix flavors like cookie crumble and coffee.",
+    "subtitle": "$2.99 on 14 oz pints when you buy 3 \u2014 mix flavors like cookie crumble and coffee.",
     "badge": "DEAL",
     "price": "$2.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 4
-  },
-  {
-    "title": "Doritos / Lay's / Tostitos",
-    "trackerFamilyIds": [
-      "doritos_5_13oz",
-      "lays_potato_chips_regular",
-      "tostitos_tortilla_chips"
-    ],
-    "reason": "Buy 2 Get 2 Free on 5\u201313 oz bags \u2014 effective about $2.75 when you use the full mix & match.",
-    "subtitle": "Buy 2 Get 2 Free on 5\u201313 oz bags \u2014 effective about $2.75 when you use the full mix & match.",
-    "badge": "SNACKS",
-    "price": "B2G2F",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 5
-  },
-  {
-    "title": "Ritz crackers",
-    "trackerFamilyIds": [
-      "ritz_crackers"
-    ],
-    "reason": "2 for $5 with belVita in the mix \u2014 solid cracker week.",
-    "subtitle": "2 for $5 with belVita in the mix \u2014 solid cracker week.",
-    "badge": "SNACKS",
-    "price": "2/$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 6
-  },
-  {
-    "title": "General Mills family-size cereal",
-    "trackerFamilyIds": [
-      "general_mills_cereal_family_size"
-    ],
-    "reason": "$3.99 family-size boxes on the Back-to-School 4x points tile.",
-    "subtitle": "$3.99 family-size boxes on the Back-to-School 4x points tile.",
-    "badge": "DEAL",
-    "price": "$3.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 7
-  },
-  {
-    "title": "Sweet corn",
-    "trackerFamilyIds": [
-      "sweet_corn"
-    ],
-    "reason": "Friday only \u2014 10 for $5 (50\u00a2 each) on local sweet corn.",
-    "subtitle": "Friday only \u2014 10 for $5 (50\u00a2 each) on local sweet corn.",
-    "badge": "FRIDAY",
-    "price": "10/$5",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 8
   },
   {
-    "title": "Hass avocados",
-    "trackerFamilyIds": [
-      "hass_avocados_each"
-    ],
-    "reason": "Friday only \u2014 4 for $5 ($1.25 each).",
-    "subtitle": "Friday only \u2014 4 for $5 ($1.25 each).",
-    "badge": "FRIDAY",
-    "price": "4/$5",
+    "title": "Nestl\u00e9 Drumstick ice cream",
+    "trackerFamilyIds": [],
+    "reason": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones \u2014 more flavor control than a locked variety pack.",
+    "subtitle": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones \u2014 more flavor control than a locked variety pack.",
+    "badge": "DEAL",
+    "price": "$3.99",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 9
@@ -1997,28 +1991,15 @@ export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntr
     "displayOrder": 10
   },
   {
-    "title": "Peaches, nectarines & plums",
-    "trackerFamilyIds": [
-      "plums_per_lb"
-    ],
-    "reason": "$2.99/lb on yellow peaches, nectarines, or black plums \u2014 local stone fruit.",
-    "subtitle": "$2.99/lb on yellow peaches, nectarines, or black plums \u2014 local stone fruit.",
-    "badge": "PRODUCE",
-    "price": "$2.99/lb",
+    "title": "Ground turkey",
+    "trackerFamilyIds": [],
+    "reason": "Friday only \u2014 $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties.",
+    "subtitle": "Friday only \u2014 $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties.",
+    "badge": "FRIDAY",
+    "price": "$5",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 11
-  },
-  {
-    "title": "Large strawberries or blueberries",
-    "trackerFamilyIds": [],
-    "reason": "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz).",
-    "subtitle": "$4.99 on large-pack strawberries (2 lb) or blueberries (18 oz).",
-    "badge": "PRODUCE",
-    "price": "$4.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 12
   }
 ],
   vons: [
