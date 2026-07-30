@@ -1317,3 +1317,14 @@ Fix / workaround:
 How to verify: Frozen matching evals still 74/74 and 27/27; `PYTHONPATH=scripts python3 -m unittest tests.test_attribute_schema -v`; attribute eval requires API key.  
 Related files: `evals/product-attribute-extraction-v1.jsonl`, `evals/README.md`, `scripts/product_matching/llm_attribute_extractor.py`, `scripts/shadow_weekly_ad_attribute_extraction.py`
 
+### Clif Bars baseline $7.99 shown as per bar
+
+Date discovered: 2026-07-29  
+Context: Price tracker Clif card read like **$7.99 / bar** on off-sale weeks (incl. 2026-07-29). Family charts **per bar**; weekly ads already divide (e.g. $14.99÷12 → $1.25).  
+What happened: Safeway baseline crawl stored pack total for **CLIF BAR … 5 Count @ $7.99** without ÷5 (`SAFEWAY_BASELINES.clif_bars`). UI appends ` / bar` from subtitle, so pack price looked like a single-bar shelf price. Vons rank-1 baseline was wrong brand (**GoMacro** $4.00). Week 2026-07-29 has **no** regular Clif Bars weekly-ad match (Builders 2/$5 is separate); card was pure baseline fallback.  
+Fix / workaround:
+1. Safeway baseline → **$1.60/bar** ($7.99÷5); Vons → Clif 5-count **$8.99÷5 = $1.80/bar**.
+2. Extend `scripts/price_tracker/baseline_per_lb.py` `normalize_baseline_price` for `per bar` families (same generator path as per-lb).  
+How to verify: Off-sale Clif card shows ~$1.60 / bar (not $7.99); `PYTHONPATH=scripts python3 -m unittest tests.test_baseline_normalize -v`.  
+Related files: `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`, `scripts/price_tracker/baseline_per_lb.py`, `data/review/baseline_refresh_audit_2026-07-05.csv`, `data/canonical_tracker_families.yaml` (`clif_bars`)
+

@@ -1,10 +1,8 @@
-"""Per-lb baseline price normalization for seed pipelines.
+"""Baseline price normalization to match chart axis units.
 
-When a YAML tracker family has size_format_subtitle containing "per lb" and the
-scraped product name includes a package weight like "3.5 Lb", the seed pipeline
-stores the full package price instead of the per-lb rate.  This module converts
-the raw package price to per-lb at the point of baseline generation so the stored
-value matches the chart axis unit (dollars per pound).
+When a YAML tracker family charts a unit rate (per lb, per bar) but the scraped
+pgmsearch hit is a multi-unit package, the seed pipeline must divide package
+price by package size before storing the baseline.
 
 Used by:
   scripts/generate_safeway_feed_matches.py
@@ -14,7 +12,6 @@ Used by:
 from __future__ import annotations
 
 import re
-from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -27,8 +24,14 @@ except ImportError:
 
 
 _PER_LB_RE = re.compile(r"\bper\s*lb\b", re.IGNORECASE)
+_PER_BAR_RE = re.compile(r"\bper\s*bar\b", re.IGNORECASE)
 # Matches weights like "3.5 Lb", "3 lb", "1.75 Lbs" in a product name.
 _WEIGHT_RE = re.compile(r"\b(\d+(?:\.\d+)?)\s*lbs?\b", re.IGNORECASE)
+# Matches bar multipacks like "5 Count", "12 ct", "6-Pack", "12 Bars".
+_BAR_COUNT_RE = re.compile(
+    r"\b(\d+)\s*(?:count|ct|pk|pack|bars?)\b",
+    re.IGNORECASE,
+)
 
 
 def _resolve_family_id(canonical_id: str) -> str:
@@ -38,6 +41,10 @@ def _resolve_family_id(canonical_id: str) -> str:
 
 def _is_per_lb_family(family: "TrackerFamily | None") -> bool:
     return family is not None and bool(_PER_LB_RE.search(family.size_format_subtitle))
+
+
+def _is_per_bar_family(family: "TrackerFamily | None") -> bool:
+    return family is not None and bool(_PER_BAR_RE.search(family.size_format_subtitle))
 
 
 def extract_package_weight_lbs(product_name: str) -> float | None:
@@ -54,16 +61,31 @@ def extract_package_weight_lbs(product_name: str) -> float | None:
     return None
 
 
+def extract_bar_count(product_name: str) -> float | None:
+    """Return multipack bar count from a product name, or None.
+
+    Examples:
+      "CLIF BAR White Chocolate Macadamia Nut Energy Protein Bars - 5 Count" → 5
+      "CLIF BAR Chocolate Chip Energy Protein Bars - 12 ct" → 12
+    """
+    m = _BAR_COUNT_RE.search(product_name)
+    if m:
+        count = float(m.group(1))
+        if count > 1:
+            return count
+    return None
+
+
 def normalize_baseline_price(
     canonical_id: str,
     product_name: str,
     price: float,
     families: "dict[str, TrackerFamily] | None" = None,
 ) -> tuple[float, bool]:
-    """Return (per_lb_price, was_normalized).
+    """Return (unit_price, was_normalized).
 
-    If the canonical family is a per-lb tracker and the product name contains a
-    package weight, divides price by that weight and returns (per_lb_price, True).
+    For per-lb families with a package weight in the product name, divides by lb.
+    For per-bar families with a multipack count (e.g. "5 Count"), divides by count.
     Otherwise returns (price, False) unchanged.
 
     Args:
@@ -78,12 +100,16 @@ def normalize_baseline_price(
     family_id = _resolve_family_id(canonical_id)
     family = families.get(family_id) or families.get(canonical_id)
 
-    if not _is_per_lb_family(family):
+    if _is_per_lb_family(family):
+        weight = extract_package_weight_lbs(product_name)
+        if weight and weight > 0:
+            return round(price / weight, 2), True
         return price, False
 
-    weight = extract_package_weight_lbs(product_name)
-    if not weight or weight <= 0:
+    if _is_per_bar_family(family):
+        count = extract_bar_count(product_name)
+        if count and count > 1:
+            return round(price / count, 2), True
         return price, False
 
-    per_lb = round(price / weight, 2)
-    return per_lb, True
+    return price, False

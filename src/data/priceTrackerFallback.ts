@@ -80,8 +80,9 @@ export const SAFEWAY_BASELINES: Record<
     retailerProductName: "Chips Ahoy! Original Chocolate Chip Cookies - 13 Oz",
   },
   "clif_bars": {
-    price: 7.99,
-    source: "Safeway search result CSV",
+    // Pack $7.99 ÷ 5 bars → per-bar shelf anchor (chart is $/bar)
+    price: 1.6,
+    source: "Safeway search result CSV (5-count pack $7.99 ÷ 5)",
     retailerProductName: "CLIF BAR White Chocolate Macadamia Nut Energy Protein Bars - 5 Count",
   },
   "dr_pepper_12packs": {

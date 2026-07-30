@@ -92,11 +92,11 @@ export const VONS_BASELINE_BY_CANONICAL: Record<string, VonsBaselineEntry> = {
     "size": "OUNCE"
   },
   "clif_bars": {
-    "baselinePrice": 4.0,
-    "baselineSource": "Vons search result CSV (rank 1)",
-    "retailerProductId": "970078975",
-    "upc": "0085355500654",
-    "retailerProductName": "GoMacro Oatmeal Chocolate Chip - 2.3 Oz",
+    "baselinePrice": 1.8,
+    "baselineSource": "Vons search result CSV (rank 2 Clif 5-count $8.99 ÷ 5; rank 1 GoMacro was wrong brand)",
+    "retailerProductId": "970839033",
+    "upc": "0072225206874",
+    "retailerProductName": "CLIF BAR Chocolate Chip Energy Protein Bars - 5 Count",
     "size": "OUNCE"
   },
   "dr_pepper_12packs": {
