@@ -1389,10 +1389,23 @@ Context: Final activation checks against live `submit_aislecheck_example`.
 What happened: Space-only and empty queries correctly returned 400, but tab/newline/mixed whitespace (`\t`, `\n`, ` \n\t `) returned 200 and inserted rows. Cause: Postgres `btrim(text)` removes only ASCII spaces by default, unlike JS `String.trim()`. Homepage JS trims before calling RPC, but direct anon RPC callers could insert junk.  
 Fix / workaround:
 1. Immediately revoked `execute` from `anon` (flag stayed `exampleSubmitEnabled: false`).
-2. Pending harden migration: `supabase/migrations/20260805_aislecheck_examples_trim.sql` uses `trim(both E' \t\n\r' from ...)`, then re-grants execute to anon.
+2. Harden migration: `supabase/migrations/20260805_aislecheck_examples_trim.sql` uses `trim(both E' \t\n\r' from ...)`, then re-grants execute to anon.
 3. Do not enable frontend until that migration is applied and whitespace checks pass.  
 How to verify: After push, RPC with `"\t\t"` / `"\n\n"` / `" \n\t "` → 400 `Query is required`; normal query still 200.  
 Related files: `supabase/migrations/20260805_aislecheck_examples_trim.sql`
+
+### AisleCheck hosted interpretation API (Render)
+
+Date discovered: 2026-08-04  
+Context: GitHub Pages cannot run Python; live interpretation needs a hosted deterministic FastAPI service.  
+What happened: Scaffold lives under `services/aislecheck_api/` (Docker + uvicorn). Matcher needs `scripts/`, `data/canonical_tracker_families.yaml`, and `config/canonical_match_rules.yaml` in the image. `shopper_query.schema` must not import untracked `holdout_labeler` at runtime (inline promotion/price-basis constants).  
+Fix / workaround:
+1. Branch `feature/aislecheck-hosted-api`: FastAPI app, Dockerfile (repo-root context), `render.yaml`, tests `tests/test_aislecheck_api.py`.
+2. Never log raw queries (`AISLECHECK_DEBUG_LOG` logs action + latency only).
+3. Keep production `liveApiEnabled: false` until hosted `/health` + sample POSTs + local CORS check pass; then a separate activation commit sets `apiBaseUrl` + `liveApiEnabled: true`.
+4. Rollback: `liveApiEnabled: false` on Pages (instant) and/or suspend the Render service.  
+How to verify: `npm run test:aislecheck-api`; `npm run dev:aislecheck-api` → `GET /health` and Doritos POST; after deploy, same against `https://…onrender.com`.  
+Related files: `services/aislecheck_api/`, `render.yaml`, `scripts/shopper_query/schema.py`, `index.html`
 
 ### AisleCheck wired to deterministic shopper_query (no LLM)
 

@@ -1,7 +1,7 @@
 """Structured fields extracted from a shopper query (deterministic).
 
-Reuses holdout promotion / price-basis vocabularies so labels stay aligned
-with the weekly-ad labeling schema.
+Promotion / price-basis vocabularies stay aligned with the weekly-ad
+labeling schema (same values as holdout_labeler.paths).
 """
 
 from __future__ import annotations
@@ -9,7 +9,30 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from holdout_labeler.paths import PRICE_BASIS_VALUES, PROMOTION_TYPES
+# Keep in sync with holdout_labeler.paths (avoid importing that package at runtime).
+PROMOTION_TYPES = (
+    "regular_price",
+    "simple_sale",
+    "member_price",
+    "digital_coupon",
+    "multi_buy",
+    "buy_x_get_y",
+    "bogo",
+    "price_per_pound",
+    "mixed_or_unclear",
+    "unknown",
+)
+
+PRICE_BASIS_VALUES = (
+    "each",
+    "per_lb",
+    "per_oz",
+    "multi_buy",
+    "bogo",
+    "buy_x_get_y",
+    "per_pack",
+    "unknown",
+)
 
 PROMOTION_TYPE_SET = frozenset(PROMOTION_TYPES)
 PRICE_BASIS_SET = frozenset(PRICE_BASIS_VALUES)

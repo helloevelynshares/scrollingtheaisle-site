@@ -1,0 +1,17 @@
+# Optional Render blueprint copy kept next to the service.
+# Prefer the repo-root render.yaml for blueprint deploys.
+services:
+  - type: web
+    name: aislecheck-api
+    runtime: docker
+    dockerfilePath: ./services/aislecheck_api/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: AISLECHECK_CORS_ORIGINS
+        value: https://scrollingtheaisle.com,http://127.0.0.1:8000,http://localhost:8000
+      - key: AISLECHECK_DEBUG_LOG
+        value: "0"
+      - key: AISLECHECK_RATE_LIMIT_PER_MINUTE
+        value: "30"

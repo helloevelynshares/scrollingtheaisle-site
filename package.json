@@ -25,7 +25,9 @@
     "preview:homepage:static": "python3 -m http.server 8000 --bind 127.0.0.1",
     "shopper-query": "PYTHONPATH=scripts python3 -m shopper_query",
     "test:shopper-query": "PYTHONPATH=scripts python3 -m unittest tests.test_shopper_query tests.test_aislecheck_shopper_query -v",
-    "test:aislecheck-prototype": "python3 -m unittest tests.test_aislecheck_prototype tests.test_aislecheck_shopper_query -v"
+    "test:aislecheck-prototype": "python3 -m unittest tests.test_aislecheck_prototype tests.test_aislecheck_shopper_query -v",
+    "test:aislecheck-api": "PYTHONPATH=scripts:. python3 -m unittest tests.test_aislecheck_api -v",
+    "dev:aislecheck-api": "PYTHONPATH=scripts:. python3 -m uvicorn services.aislecheck_api.app:app --host 127.0.0.1 --port 8080"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",
