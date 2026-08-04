@@ -10,6 +10,9 @@ from typing import Any
 from product_matching.engine import ProductionMatcherFacade, get_facade
 from shopper_query.pipeline import PipelineResult, process_query
 
+# Bump when the homepage JSON contract shape/semantics change.
+AISLECHECK_CONTRACT_VERSION = "aislecheck.v1"
+
 # Clarification priority when multiple fields are missing (highest first).
 _MISSING_FIELD_PRIORITY = (
     "product_text",
@@ -278,6 +281,7 @@ def build_aislecheck_response(
         normalizations = [s.to_dict() for s in result.normalized.steps]
 
     return {
+        "contract_version": AISLECHECK_CONTRACT_VERSION,
         "original_query": result.original_query,
         "normalized_query": result.query_used,
         "normalizations_applied": normalizations,

@@ -2,9 +2,6 @@
 
 Run locally:
   PYTHONPATH=scripts uvicorn services.aislecheck_api.app:app --reload --port 8080
-
-Or from this directory after installing requirements:
-  uvicorn app:app --port 8080
 """
 
 from __future__ import annotations
@@ -12,12 +9,14 @@ from __future__ import annotations
 import os
 import sys
 import time
+import uuid
 from collections import defaultdict, deque
 from pathlib import Path
 from threading import Lock
 from typing import Any, Optional
 
 from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
@@ -27,7 +26,10 @@ SCRIPTS = REPO_ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-from shopper_query.aislecheck_contract import run_aislecheck_query  # noqa: E402
+from shopper_query.aislecheck_contract import (  # noqa: E402
+    AISLECHECK_CONTRACT_VERSION,
+    run_aislecheck_query,
+)
 
 MAX_QUERY_CHARS = int(os.environ.get("AISLECHECK_MAX_QUERY_CHARS", "500"))
 REQUEST_TIMEOUT_MS = int(os.environ.get("AISLECHECK_TIMEOUT_MS", "8000"))
@@ -76,6 +78,10 @@ class QueryBody(BaseModel):
     session_id: Optional[str] = Field(default=None, max_length=80)
 
 
+def _new_request_id() -> str:
+    return str(uuid.uuid4())
+
+
 def _client_key(request: Request) -> str:
     forwarded = request.headers.get("x-forwarded-for", "")
     if forwarded:
@@ -109,6 +115,37 @@ def _record(behavior: str | None, latency_ms: float, *, error: bool = False) -> 
             _metrics["behavior_counts"][behavior] += 1
 
 
+def _attach_meta(result: dict[str, Any], request_id: str) -> dict[str, Any]:
+    out = dict(result)
+    out["contract_version"] = out.get("contract_version") or AISLECHECK_CONTRACT_VERSION
+    out["request_id"] = request_id
+    if not DEBUG_LOG:
+        out.pop("debug", None)
+    return out
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error_handler(_request: Request, exc: RequestValidationError) -> Response:
+    # Never echo the submitted query (or other input) back in error payloads.
+    safe_errors = []
+    for err in exc.errors():
+        item = {
+            "type": err.get("type"),
+            "loc": err.get("loc"),
+            "msg": err.get("msg"),
+        }
+        safe_errors.append(item)
+    return JSONResponse(
+        status_code=422,
+        content={
+            "detail": "invalid_request",
+            "errors": safe_errors,
+            "request_id": _new_request_id(),
+            "contract_version": AISLECHECK_CONTRACT_VERSION,
+        },
+    )
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok", "service": "aislecheck-query"}
@@ -133,6 +170,7 @@ def metrics() -> dict[str, Any]:
 
 @app.post("/api/aislecheck")
 def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
+    request_id = _new_request_id()
     _rate_limit(request)
     query = (body.query or "").strip()
     if not query:
@@ -142,16 +180,12 @@ def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
 
     started = time.perf_counter()
     try:
-        # Soft timeout: Python matcher is sync; enforce budget after return path.
         result = run_aislecheck_query(
             query,
             session_id=body.session_id,
             apply_normalization=body.apply_normalization,
         )
-        # Strip heavy debug blob from production responses unless debug enabled.
-        if not DEBUG_LOG:
-            result = dict(result)
-            result.pop("debug", None)
+        result = _attach_meta(result, request_id)
         elapsed_ms = (time.perf_counter() - started) * 1000.0
         if elapsed_ms > REQUEST_TIMEOUT_MS:
             _record(None, elapsed_ms, error=True)
@@ -160,8 +194,8 @@ def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
         if DEBUG_LOG:
             # Never log raw query text.
             print(
-                f"aislecheck ok action={result.get('next_action')} "
-                f"latency_ms={elapsed_ms:.1f}"
+                f"aislecheck ok request_id={request_id} "
+                f"action={result.get('next_action')} latency_ms={elapsed_ms:.1f}"
             )
         return result
     except HTTPException:
@@ -170,7 +204,7 @@ def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
         elapsed_ms = (time.perf_counter() - started) * 1000.0
         _record(None, elapsed_ms, error=True)
         if DEBUG_LOG:
-            print(f"aislecheck error latency_ms={elapsed_ms:.1f}")
+            print(f"aislecheck error request_id={request_id} latency_ms={elapsed_ms:.1f}")
         raise HTTPException(
             status_code=500,
             detail="Something went wrong checking that deal. Please try again.",
@@ -181,5 +215,9 @@ def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
 async def unhandled(_request: Request, _exc: Exception) -> Response:
     return JSONResponse(
         status_code=500,
-        content={"detail": "Something went wrong checking that deal. Please try again."},
+        content={
+            "detail": "Something went wrong checking that deal. Please try again.",
+            "request_id": _new_request_id(),
+            "contract_version": AISLECHECK_CONTRACT_VERSION,
+        },
     )

@@ -42,7 +42,13 @@ class TestAisleCheckApi(unittest.TestCase):
         data = res.json()
         self.assertEqual(data["next_action"], "continue")
         self.assertEqual(data["selected_tracker"]["id"], "doritos_5_13oz")
+        self.assertEqual(data["contract_version"], "aislecheck.v1")
+        self.assertTrue(data.get("request_id"))
         self.assertNotIn("debug", data)
+        blob = res.text.lower()
+        self.assertNotIn("traceback", blob)
+        self.assertNotIn("/users/", blob)
+        self.assertNotIn("scripts/shopper_query", blob)
 
     def test_conversational_query(self) -> None:
         res = self.client.post(
@@ -103,11 +109,19 @@ class TestAisleCheckApi(unittest.TestCase):
         self.assertIn(res.status_code, {400, 422})
 
     def test_oversized_query(self) -> None:
+        oversized = "x" * 600
         res = self.client.post(
             "/api/aislecheck",
-            json={"query": "x" * 600},
+            json={"query": oversized},
         )
         self.assertIn(res.status_code, {400, 422})
+        body = res.text
+        self.assertNotIn(oversized, body)
+        self.assertNotIn("xxxx", body)
+        data = res.json()
+        self.assertEqual(data.get("detail"), "invalid_request")
+        self.assertTrue(data.get("request_id"))
+        self.assertEqual(data.get("contract_version"), "aislecheck.v1")
 
     def test_malformed_json(self) -> None:
         res = self.client.post(
