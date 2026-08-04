@@ -1401,11 +1401,21 @@ Context: GitHub Pages cannot run Python; live interpretation needs a hosted dete
 What happened: Scaffold lives under `services/aislecheck_api/` (Docker + uvicorn). Matcher needs `scripts/`, `data/canonical_tracker_families.yaml`, and `config/canonical_match_rules.yaml` in the image. `shopper_query.schema` must not import untracked `holdout_labeler` at runtime (inline promotion/price-basis constants).  
 Fix / workaround:
 1. Branch `feature/aislecheck-hosted-api`: FastAPI app, Dockerfile (repo-root context), `render.yaml`, tests `tests/test_aislecheck_api.py`.
-2. Never log raw queries (`AISLECHECK_DEBUG_LOG` logs action + latency only).
+2. Never log raw queries (`AISLECHECK_DEBUG_LOG` logs action + latency only). Responses include `contract_version` (`aislecheck.v1`) + `request_id`; validation errors must not echo the query string.
 3. Keep production `liveApiEnabled: false` until hosted `/health` + sample POSTs + local CORS check pass; then a separate activation commit sets `apiBaseUrl` + `liveApiEnabled: true`.
-4. Rollback: `liveApiEnabled: false` on Pages (instant) and/or suspend the Render service.  
-How to verify: `npm run test:aislecheck-api`; `npm run dev:aislecheck-api` → `GET /health` and Doritos POST; after deploy, same against `https://…onrender.com`.  
-Related files: `services/aislecheck_api/`, `render.yaml`, `scripts/shopper_query/schema.py`, `index.html`
+4. Rollback: `liveApiEnabled: false` on Pages (instant) and/or suspend the Render service.
+5. Free-tier flake: intermittent plain-text `404 Not Found` with `x-render-routing: no-server` means the instance is asleep/unavailable — retry; not an app routing bug.  
+How to verify: `npm run test:aislecheck-api`; `npm run dev:aislecheck-api` → `GET /health` and Doritos POST; after deploy, same against `https://aislecheck-api.onrender.com`.  
+Related files: `services/aislecheck_api/`, `render.yaml`, `scripts/shopper_query/schema.py`, `scripts/shopper_query/aislecheck_contract.py`, `index.html`, `docs/AISLECHECK_API_ACTIVATION.patch.txt`
+
+### AisleCheck hosted API validation (Render live)
+
+Date discovered: 2026-08-04  
+Context: Post-deploy checks against `https://aislecheck-api.onrender.com` before public homepage activation.  
+What happened: Health + query matrix OK after retries; CORS allows `scrollingtheaisle.com` / localhost:8000 and blocks `evil.example`. Successful responses carry `contract_version` + `request_id` and omit `debug`. Oversized input returns sanitized `422 invalid_request` (no query echo). Sample outcomes: Doritos continue/`doritos_5_13oz`; Chobani clarify/ambiguous; cereal clarify brand; Oreo BOGO unsupported (no tracker match); Tillamook continue; quinoa unsupported; conflicting prices invalid; empty `400 empty_query`. Warm POST ~1.5s; health ~80–100ms when the free instance is awake.  
+Fix / workaround: Activation patch uses real URL; do not merge to `main` until explicit go-ahead. Render dashboard login required to eyeball logs (no API token in this environment); code path with `AISLECHECK_DEBUG_LOG=0` never prints query text.  
+How to verify: Retry POSTs until `x-render-routing` is absent; confirm response keys and CORS OPTIONS. Local: set config → `npm run preview:homepage`.  
+Related files: `docs/AISLECHECK_API_ACTIVATION.patch.txt`, `services/aislecheck_api/app.py`
 
 ### AisleCheck wired to deterministic shopper_query (no LLM)
 

@@ -1,11 +1,13 @@
-# Prepared production activation (DO NOT APPLY until hosted API is verified)
+# Prepared production activation (DO NOT MERGE/PUSH TO main until confirmed)
 #
-# After Render URL is known and validated, apply this change to index.html on a
-# release branch, bump cache to ?v=ac13, run npm run test:aislecheck-prototype,
-# then ask for explicit confirmation before merge/push to main.
+# Hosted API validated at https://aislecheck-api.onrender.com
+# Apply on a release branch from main (or use the commit prepared on
+# release/aislecheck-enable-live-api), bump cache to ?v=ac13, run
+# npm run test:aislecheck-prototype, then ask for explicit confirmation
+# before merge/push to main.
 #
 # Keep exampleSubmitEnabled: true
-# Set liveApiEnabled: true only with a real HTTPS apiBaseUrl
+# Set liveApiEnabled: true only with the real HTTPS apiBaseUrl
 
 --- a/index.html
 +++ b/index.html
@@ -13,7 +15,7 @@
      window.__AISLECHECK_CONFIG__ = {
 -      apiBaseUrl: "",
 -      liveApiEnabled: false,
-+      apiBaseUrl: "https://REPLACE-WITH-RENDER-HOST.onrender.com",
++      apiBaseUrl: "https://aislecheck-api.onrender.com",
 +      liveApiEnabled: true,
        exampleSubmitEnabled: true
      };
