@@ -1394,6 +1394,15 @@ Fix / workaround:
 How to verify: After push, RPC with `"\t\t"` / `"\n\n"` / `" \n\t "` → 400 `Query is required`; normal query still 200.  
 Related files: `supabase/migrations/20260805_aislecheck_examples_trim.sql`
 
+### AisleCheck live API published on homepage
+
+Date discovered: 2026-08-04  
+Context: Production activation of hosted deterministic interpretation after Render validation.  
+What happened: Merged `release/aislecheck-enable-live-api` (`7b58d23`) into `main` as `dc2b1e5`. Live config: `apiBaseUrl=https://aislecheck-api.onrender.com`, `liveApiEnabled: true`, `exampleSubmitEnabled: true`, assets `?v=ac13`. Diff vs main was only `index.html` + prototype test assertion (no matcher/LLM/scoring changes).  
+Fix / workaround: Instant rollback = set `liveApiEnabled: false` on `main` and push (keep `exampleSubmitEnabled: true` unless that flow fails). Free-tier cold start can take ~2–3s on first POST; intermittent edge `404` with `x-render-routing: no-server` until awake. Outage still shows “AisleCheck is almost ready” with preserved query + optional Submit this example.  
+How to verify: https://scrollingtheaisle.com/ source shows `ac13` + live flags; Doritos → understood; cereal → clarify; quinoa → unsupported; conflict → invalid; Check this price → “Still in progress” placeholder.  
+Related files: `index.html`, `aislecheck-prototype/aislecheck.js`, `docs/AISLECHECK_API_ACTIVATION.patch.txt`
+
 ### AisleCheck wired to deterministic shopper_query (no LLM)
 
 Date discovered: 2026-08-03  
