@@ -57,10 +57,9 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
             "Doritos are $2.49 each when I buy four.",
             "Works with products in our Bay Area Safeway price tracker.",
             "Looking this up…",
-            "Here’s what we understood",
-            "Which product did you mean?",
-            "We don’t track this product yet.",
-            "Fix it",
+            "Here’s what AisleCheck understood",
+            "AisleCheck is almost ready",
+            "Submit this example",
             "/api/aislecheck",
         ):
             self.assertIn(needle, text)
@@ -72,20 +71,36 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
         self.assertNotIn('"Good deal"', text)
         self.assertNotIn("coming next", text.lower())
         self.assertNotIn("NEXT STEP PLACEHOLDER", text)
-        self.assertIn("still in progress", text)
+        self.assertIn("almost ready", text.lower())
+        self.assertIn("showAlmostReady", text)
 
     def test_index_loads_publicly(self) -> None:
         html = INDEX.read_text(encoding="utf-8")
         self.assertIn('id="aislecheck-root"', html)
         self.assertIn("aislecheck-prototype/aislecheck.js", html)
-        self.assertIn("aislecheck-prototype/aislecheck.css", html)
-        # Must not gate on localhost anymore.
+        self.assertIn("__AISLECHECK_CONFIG__", html)
+        self.assertIn("apiBaseUrl", html)
+        self.assertIn("liveApiEnabled: false", html)
+        self.assertIn("exampleSubmitEnabled: true", html)
         self.assertNotIn("if (!local) return;", html)
         lead_idx = html.index("hub-hero-lead")
         root_idx = html.index('id="aislecheck-root"')
         trackers_idx = html.index('id="hub-tracker-module"')
         self.assertLess(lead_idx, root_idx)
         self.assertLess(root_idx, trackers_idx)
+
+    def test_fallback_copy_contracts(self) -> None:
+        text = JS.read_text(encoding="utf-8")
+        self.assertIn("AisleCheck is almost ready", text)
+        self.assertIn(
+            "We’re testing how shoppers describe deals before turning on live price checks.",
+            text,
+        )
+        self.assertIn("showAlmostReady", text)
+        self.assertIn("p_client_submission_id", text)
+        self.assertIn("exampleSubmitEnabled: cfg.exampleSubmitEnabled === true", text)
+        self.assertNotIn('"Good deal"', text)
+        self.assertNotIn("deal_assistant", text)
 
     def test_css_and_readme_exist(self) -> None:
         self.assertTrue(CSS.is_file())

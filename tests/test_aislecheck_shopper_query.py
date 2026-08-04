@@ -222,14 +222,17 @@ const out = {
   rebuilt: API.buildQueryFromCorrection(API.correctionFromResponse(continueResp)),
   apiUrl: API.API_URL,
   noDealAssistant: !fs.readFileSync(path, "utf8").includes("deal_assistant"),
-  hasUnderstood: fs.readFileSync(path, "utf8").includes("Here’s what we understood"),
+  hasUnderstood: fs.readFileSync(path, "utf8").includes("Here’s what AisleCheck understood"),
   hasPlaceholder: fs.readFileSync(path, "utf8").includes("still in progress"),
+  hasAlmostReady: fs.readFileSync(path, "utf8").includes("AisleCheck is almost ready"),
+  hasOptIn: fs.readFileSync(path, "utf8").includes("Submit this example"),
   debugGated: fs.readFileSync(path, "utf8").includes('get("aislecheckDebug") === "1"'),
   debugOffByDefault: API.isDebugEnabled() === false,
   noGoodDealVerdict: !fs.readFileSync(path, "utf8").includes('"Good deal"'),
   noInternalPlan: !fs.readFileSync(path, "utf8").includes("Day 1") && !fs.readFileSync(path, "utf8").toLowerCase().includes("coming next"),
   hasReset: typeof API.resetToEmpty === "function",
   hasCorrectionFields: fs.readFileSync(path, "utf8").includes("ac-corr-product"),
+  liveApiFlag: typeof API.isLiveApiEnabled === "function",
 };
 API.applyResponse(continueResp);
 const afterApply = API.getState().view;
@@ -275,10 +278,13 @@ process.stdout.write(JSON.stringify(out));
         self.assertTrue(self.logic["noDealAssistant"])
         self.assertTrue(self.logic["hasUnderstood"])
         self.assertTrue(self.logic["hasPlaceholder"])
+        self.assertTrue(self.logic["hasAlmostReady"])
+        self.assertTrue(self.logic["hasOptIn"])
         self.assertTrue(self.logic["debugGated"])
         self.assertTrue(self.logic["debugOffByDefault"])
         self.assertTrue(self.logic["noGoodDealVerdict"])
         self.assertTrue(self.logic["noInternalPlan"])
+        self.assertTrue(self.logic["liveApiFlag"])
 
 
 class TestAisleCheckServerEndpoint(unittest.TestCase):

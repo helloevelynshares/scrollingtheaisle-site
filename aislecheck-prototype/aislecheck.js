@@ -10,9 +10,12 @@
   var EXAMPLE_QUERY = "Doritos are $2.49 each when I buy four.";
   var STORAGE_KEY = "sta_aislecheck_variant";
   var SESSION_KEY = "sta_aislecheck_session";
-  var API_URL = "/api/aislecheck";
-  var EVENT_URL = "/api/aislecheck/event";
+  var DEFAULT_API_PATH = "/api/aislecheck";
+  var EVENT_PATH = "/api/aislecheck/event";
   var PUBLIC_VARIANT = 4;
+  var MAX_QUERY_CHARS = 500;
+  var SUPABASE_URL = "https://wurmdtqysegytsjcudve.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_8Wt-it-oIHHIkQOi0D9y_g_qMoH51ZX";
 
   var COPY = {
     brand: "AisleCheck",
@@ -27,7 +30,7 @@
       "Works with products in our Bay Area Safeway price tracker. We’ll ask if anything’s unclear.",
     loading: "Looking this up…",
     conversationalPrompt: "What deal did you see?",
-    understoodHeading: "Here’s what we understood",
+    understoodHeading: "Here’s what AisleCheck understood",
     checkPrice: "Check this price",
     fixIt: "Fix it",
     checkAnother: "Check another deal",
@@ -40,8 +43,15 @@
       "Try again with the product name, the advertised price, and any buy requirement (for example: Doritos $2.49 when I buy 4).",
     placeholderVerdict:
       "Price history for this deal is still in progress. Thanks for checking — please try again soon.",
-    apiMissing:
-      "AisleCheck is still in progress. Thanks for trying — please check back soon.",
+    almostReadyHeading: "AisleCheck is almost ready",
+    almostReadyBody:
+      "We’re testing how shoppers describe deals before turning on live price checks.",
+    submitExample: "Submit this example",
+    exampleSubmitted: "Thanks — example submitted",
+    privacyNote:
+      "If you submit, we may review your example to improve AisleCheck. We don’t send it to third-party analytics.",
+    thanksNoStore:
+      "Thanks for trying AisleCheck. Live checks are coming soon.",
     clarifySubmit: "Continue",
   };
 
@@ -115,10 +125,13 @@
     variant: PUBLIC_VARIANT,
     view: "empty",
     // empty | loading | understood | clarify_field | clarify_product |
-    // unsupported | invalid | correction | placeholder | error
+    // unsupported | invalid | correction | placeholder | almost_ready | error
     query: "",
     loadingLocked: false,
     requestedProduct: false,
+    exampleSubmitted: false,
+    exampleSubmitBusy: false,
+    exampleClientSubmissionId: null,
     response: null,
     clarifyAnswer: "",
     lastError: "",
@@ -134,6 +147,26 @@
       store: "Safeway",
     },
   };
+
+  function readConfig() {
+    var cfg = (window.__AISLECHECK_CONFIG__ || {});
+    return {
+      apiBaseUrl: String(cfg.apiBaseUrl || "").replace(/\/$/, ""),
+      // Require explicit true — safer public default is fallback-only.
+      liveApiEnabled: cfg.liveApiEnabled === true,
+      exampleSubmitEnabled: cfg.exampleSubmitEnabled === true,
+    };
+  }
+
+  function apiUrl(path) {
+    var cfg = readConfig();
+    if (!cfg.apiBaseUrl) return path;
+    return cfg.apiBaseUrl + path;
+  }
+
+  function isLiveApiEnabled() {
+    return readConfig().liveApiEnabled;
+  }
 
   function isLocalHost(hostname, protocol) {
     var host = String(hostname || "").toLowerCase();
@@ -189,6 +222,38 @@
     } catch (err) {
       return "ac_anonymous";
     }
+  }
+
+  function newClientSubmissionId() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID();
+      }
+    } catch (err) {
+      /* fall through */
+    }
+    var hex = "";
+    for (var i = 0; i < 32; i++) {
+      hex += Math.floor(Math.random() * 16).toString(16);
+    }
+    return (
+      hex.slice(0, 8) +
+      "-" +
+      hex.slice(8, 12) +
+      "-4" +
+      hex.slice(13, 16) +
+      "-a" +
+      hex.slice(17, 20) +
+      "-" +
+      hex.slice(20, 32)
+    );
+  }
+
+  function ensureExampleClientSubmissionId() {
+    if (!state.exampleClientSubmissionId) {
+      state.exampleClientSubmissionId = newClientSubmissionId();
+    }
+    return state.exampleClientSubmissionId;
   }
 
   function escapeHtml(str) {
@@ -260,16 +325,56 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     }).then(function (res) {
-      return res.json().then(function (data) {
-        if (!res.ok) {
-          var err = new Error((data && data.message) || "request_failed");
-          err.payload = data;
-          err.status = res.status;
-          throw err;
-        }
-        return data;
-      });
+      return res
+        .json()
+        .catch(function () {
+          return {};
+        })
+        .then(function (data) {
+          if (!res.ok) {
+            var err = new Error(
+              (data && data.message) ||
+                (data && data.detail) ||
+                "request_failed"
+            );
+            err.payload = data;
+            err.status = res.status;
+            throw err;
+          }
+          return data;
+        });
     });
+  }
+
+  function getSupabaseClient() {
+    try {
+      if (window.supabase && typeof window.supabase.createClient === "function") {
+        return window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch (err) {
+      /* ignore */
+    }
+    return null;
+  }
+
+  function submitExampleOptIn(query) {
+    var q = String(query || "").trim();
+    if (!q || q.length > MAX_QUERY_CHARS) {
+      return Promise.reject(new Error("invalid_query"));
+    }
+    var client = getSupabaseClient();
+    if (!client) {
+      return Promise.reject(new Error("storage_unavailable"));
+    }
+    return client
+      .rpc("submit_aislecheck_example", {
+        p_query: q,
+        p_client_submission_id: ensureExampleClientSubmissionId(),
+      })
+      .then(function (result) {
+        if (result.error) throw result.error;
+        return result.data;
+      });
   }
 
   function logEvent(event, extra) {
@@ -292,7 +397,7 @@
       fields_corrected: extra.fields_corrected || state.fieldsCorrected || [],
       final_confirmed_interpretation: extra.final_confirmed_interpretation || null,
     };
-    return postJson(EVENT_URL, body).catch(function () {
+    return postJson(apiUrl(EVENT_PATH), body).catch(function () {
       /* local logging best-effort */
     });
   }
@@ -501,6 +606,57 @@
     );
   }
 
+  function renderAlmostReady() {
+    var canSubmit = readConfig().exampleSubmitEnabled && !!getSupabaseClient();
+    var actions;
+    if (state.exampleSubmitted) {
+      actions =
+        '<p class="ac-example-thanks" role="status">' +
+        escapeHtml(COPY.exampleSubmitted) +
+        "</p>";
+    } else if (canSubmit) {
+      actions =
+        '<div class="ac-result-actions">' +
+        '<button type="button" class="btn btn-primary" id="ac-submit-example"' +
+        (state.exampleSubmitBusy ? " disabled" : "") +
+        ">" +
+        escapeHtml(COPY.submitExample) +
+        "</button>" +
+        '<button type="button" class="btn btn-ghost ac-reset" id="ac-check-another">' +
+        escapeHtml(COPY.checkAnother) +
+        "</button>" +
+        "</div>" +
+        '<p class="ac-privacy-note">' +
+        escapeHtml(COPY.privacyNote) +
+        "</p>";
+    } else {
+      actions =
+        '<p class="ac-example-thanks">' +
+        escapeHtml(COPY.thanksNoStore) +
+        "</p>" +
+        '<button type="button" class="btn btn-ghost ac-reset" id="ac-check-another">' +
+        escapeHtml(COPY.checkAnother) +
+        "</button>";
+    }
+    return (
+      '<div class="ac-state ac-state--almost-ready" role="region" aria-label="AisleCheck almost ready">' +
+      '<h3 class="ac-almost-heading">' +
+      escapeHtml(COPY.almostReadyHeading) +
+      "</h3>" +
+      "<p>" +
+      escapeHtml(COPY.almostReadyBody) +
+      "</p>" +
+      (state.query
+        ? '<p class="ac-preserved-query"><span class="ac-ev-label">Your example</span> ' +
+          '<span class="ac-ev-value">“' +
+          escapeHtml(state.query) +
+          "”</span></p>"
+        : "") +
+      actions +
+      "</div>"
+    );
+  }
+
   function renderClarifyField() {
     var r = state.response || {};
     var prompt = r.clarify_prompt || "Can you add a bit more detail?";
@@ -602,7 +758,7 @@
     return (
       '<div class="ac-state ac-state--error" role="alert">' +
       "<p>" +
-      escapeHtml(state.lastError || COPY.apiMissing) +
+      escapeHtml(state.lastError || COPY.thanksNoStore) +
       "</p>" +
       '<button type="button" class="btn btn-primary ac-reset" id="ac-check-another">Try again</button>' +
       "</div>"
@@ -653,6 +809,7 @@
     if (state.view === "loading") return renderLoading();
     if (state.view === "understood") return renderUnderstood();
     if (state.view === "placeholder") return renderPlaceholder();
+    if (state.view === "almost_ready") return renderAlmostReady();
     if (state.view === "clarify_field") return renderClarifyField();
     if (state.view === "clarify_product") return renderClarifyProduct();
     if (state.view === "unsupported") return renderUnsupported();
@@ -906,6 +1063,9 @@
     state.view = "empty";
     state.loadingLocked = false;
     state.requestedProduct = false;
+    state.exampleSubmitted = false;
+    state.exampleSubmitBusy = false;
+    state.exampleClientSubmissionId = null;
     state.response = null;
     state.clarifyAnswer = "";
     state.lastError = "";
@@ -913,6 +1073,15 @@
     render();
     var input = document.getElementById("ac-deal-input");
     if (input) input.focus();
+  }
+
+  function showAlmostReady() {
+    state.loadingLocked = false;
+    state.view = "almost_ready";
+    state.response = null;
+    state.lastError = "";
+    render();
+    // Preserve the typed query in the input after returning to empty is opt-in via Check another.
   }
 
   function applyResponse(response) {
@@ -927,10 +1096,16 @@
     opts = opts || {};
     var q = String(query || "").trim();
     if (!q || state.loadingLocked) return;
+    if (q.length > MAX_QUERY_CHARS) {
+      state.query = q.slice(0, MAX_QUERY_CHARS);
+      q = state.query;
+    }
     state.query = q;
     state.view = "loading";
     state.loadingLocked = true;
     state.requestedProduct = false;
+    state.exampleSubmitted = false;
+    state.exampleClientSubmissionId = null;
     state.lastError = "";
     state.clarifyAnswer = "";
     if (opts.fieldsCorrected) {
@@ -938,16 +1113,23 @@
     }
     render();
 
-    postJson(API_URL, { query: q, session_id: getSessionId() })
+    if (!isLiveApiEnabled()) {
+      // Fallback path: never store the query here. Opt-in submit is separate.
+      showAlmostReady();
+      return;
+    }
+
+    postJson(apiUrl(DEFAULT_API_PATH), {
+      query: q,
+      session_id: getSessionId(),
+      apply_normalization: true,
+    })
       .then(function (response) {
         applyResponse(response);
       })
       .catch(function () {
-        // Production GitHub Pages has no /api/aislecheck yet — stay user-friendly.
-        state.loadingLocked = false;
-        state.view = "placeholder";
-        state.lastError = "";
-        render();
+        // Preserve query in state; show friendly almost-ready fallback (no fake interpretation).
+        showAlmostReady();
       });
   }
 
@@ -1118,6 +1300,31 @@
       });
     }
 
+    var submitExampleBtn = root.querySelector("#ac-submit-example");
+    if (submitExampleBtn) {
+      submitExampleBtn.addEventListener("click", function () {
+        if (state.exampleSubmitBusy || state.exampleSubmitted) return;
+        state.exampleSubmitBusy = true;
+        render();
+        submitExampleOptIn(state.query)
+          .then(function () {
+            state.exampleSubmitted = true;
+            state.exampleSubmitBusy = false;
+            render();
+          })
+          .catch(function () {
+            state.exampleSubmitBusy = false;
+            // Storage failed — stay friendly, keep query, no silent retry loop.
+            state.exampleSubmitted = false;
+            render();
+            var note = root.querySelector(".ac-privacy-note");
+            if (note) {
+              note.textContent = COPY.thanksNoStore;
+            }
+          });
+      });
+    }
+
     var debug = root.querySelector("#ac-debug");
     if (debug) {
       debug.addEventListener("toggle", function () {
@@ -1260,15 +1467,19 @@
     buildQueryFromCorrection: buildQueryFromCorrection,
     isDebugEnabled: isDebugEnabled,
     PUBLIC_VARIANT: PUBLIC_VARIANT,
+    readConfig: readConfig,
+    apiUrl: apiUrl,
+    isLiveApiEnabled: isLiveApiEnabled,
     VARIATION_META: VARIATION_META,
     COPY: COPY,
     EXAMPLE_QUERY: EXAMPLE_QUERY,
-    API_URL: API_URL,
+    API_URL: DEFAULT_API_PATH,
     getState: function () {
       return state;
     },
     resetToEmpty: resetToEmpty,
     applyResponse: applyResponse,
+    showAlmostReady: showAlmostReady,
   };
 
   if (document.readyState === "loading") {

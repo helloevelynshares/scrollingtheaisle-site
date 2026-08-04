@@ -174,11 +174,29 @@
 .ac-understood-heading,
 .ac-clarify-heading,
 .ac-unsupported-heading,
-.ac-invalid-heading {
+.ac-invalid-heading,
+.ac-almost-heading {
   margin: 0 0 0.65rem;
   font-size: 1.1rem;
   font-weight: 650;
   color: var(--text);
+}
+
+.ac-privacy-note,
+.ac-example-thanks {
+  margin: 0.65rem 0 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.ac-preserved-query {
+  margin: 0 0 0.75rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.92rem;
 }
 
 .ac-placeholder-text {
