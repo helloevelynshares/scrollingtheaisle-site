@@ -1,0 +1,28 @@
+# Prepared production activation (DO NOT APPLY until hosted API is verified)
+#
+# After Render URL is known and validated, apply this change to index.html on a
+# release branch, bump cache to ?v=ac13, run npm run test:aislecheck-prototype,
+# then ask for explicit confirmation before merge/push to main.
+#
+# Keep exampleSubmitEnabled: true
+# Set liveApiEnabled: true only with a real HTTPS apiBaseUrl
+
+--- a/index.html
++++ b/index.html
+@@
+     window.__AISLECHECK_CONFIG__ = {
+-      apiBaseUrl: "",
+-      liveApiEnabled: false,
++      apiBaseUrl: "https://REPLACE-WITH-RENDER-HOST.onrender.com",
++      liveApiEnabled: true,
+       exampleSubmitEnabled: true
+     };
+   </script>
+-  <link rel="stylesheet" href="/aislecheck-prototype/aislecheck.css?v=ac12" />
+-  <script src="/aislecheck-prototype/aislecheck.js?v=ac12"></script>
++  <link rel="stylesheet" href="/aislecheck-prototype/aislecheck.css?v=ac13" />
++  <script src="/aislecheck-prototype/aislecheck.js?v=ac13"></script>
+
+# Rollback after activation:
+#   liveApiEnabled: false  (Pages redeploy) — instant public kill-switch
+#   and/or suspend the Render web service
