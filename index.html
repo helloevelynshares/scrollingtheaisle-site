@@ -124,8 +124,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/homepage.js?v=hub19"></script>
   <script src="/analytics.js"></script>
-  <!-- AisleCheck: public Variation 4 -->
-  <link rel="stylesheet" href="/aislecheck-prototype/aislecheck.css?v=ac9" />
-  <script src="/aislecheck-prototype/aislecheck.js?v=ac9"></script>
+  <!-- AisleCheck: public Variation 4 (fallback-only release) -->
+  <script>
+    window.__AISLECHECK_CONFIG__ = {
+      apiBaseUrl: "",
+      liveApiEnabled: false,
+      exampleSubmitEnabled: false
+    };
+  </script>
+  <link rel="stylesheet" href="/aislecheck-prototype/aislecheck.css?v=ac11" />
+  <script src="/aislecheck-prototype/aislecheck.js?v=ac11"></script>
 </body>
 </html>

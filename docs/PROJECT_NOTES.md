@@ -1363,10 +1363,9 @@ What happened: GitHub Pages cannot run the Python `/api/aislecheck` adapter. Ful
 Fix / workaround:
 1. Public default: Variation 4 only (`PUBLIC_VARIANT = 4`). Always load CSS/JS on all hosts (no localhost gate).
 2. Hide prototype toolbar unless `?aislecheckProto=1`. Hide developer debug unless `?aislecheckDebug=1`.
-3. Copy stays shopper-facing (no Day 1 / roadmap language). API/unavailable → friendly “still in progress” placeholder.
-4. Local full pipeline: `npm run preview:homepage` (static + `POST /api/aislecheck`).  
-How to verify: Live homepage shows AisleCheck Variation 4 under signup; no variation toolbar; Check deal is friendly if API missing. Locally with server, Doritos query reaches understood state.  
-Related files: `aislecheck-prototype/aislecheck.js`, `index.html`, `styles.css`, `scripts/shopper_query/aislecheck_contract.py`
+3. Fallback-only release: `liveApiEnabled: false`, `exampleSubmitEnabled: false` → **AisleCheck is almost ready** with preserved query; no fake interpretation; no silent storage; submit-example hidden.  
+How to verify: Submit a deal on the homepage → almost-ready copy; query still shown; no verdict.  
+Related files: `aislecheck-prototype/aislecheck.js`, `index.html`, `styles.css`
 
 ### AisleCheck wired to deterministic shopper_query (no LLM)
 
