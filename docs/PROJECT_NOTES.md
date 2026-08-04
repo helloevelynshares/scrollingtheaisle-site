@@ -1402,9 +1402,22 @@ What happened: API failure/timeout previously reused the **AisleCheck is almost 
 Fix / workaround:
 1. **State A** (`liveApiEnabled: true` + network/timeout/non-OK): heading **We couldn’t check that deal right now**, body about waking up, preserved query, primary **Try again**, secondary **Submit as an example**, tertiary **Check another deal**. Client aborts hung POSTs after 15s (`API_TIMEOUT_MS`; override via `__AISLECHECK_CONFIG__.apiTimeoutMs`).
 2. **State B** (`liveApiEnabled: false` only): keep **AisleCheck is almost ready** + opt-in example / check another — **no Try again**.
-3. Never auto-store queries; no fake interpretation/verdict on either path. Assets `?v=ac14`.  
-How to verify: `npm run test:aislecheck-prototype` (includes `tests/aislecheck_fallback_harness.cjs`). Local: break `apiBaseUrl` or set short `apiTimeoutMs` → temporary copy; set `liveApiEnabled: false` → almost-ready.  
+3. Never auto-store queries; no fake interpretation/verdict on either path. Assets `?v=ac14` (later bumps may coexist).  
+How to verify: `npm run test:aislecheck-prototype` (includes `tests/aislecheck_fallback_harness.cjs`). Local: break `apiBaseUrl` or set short `apiTimeoutMs` → temporary copy; set `liveApiEnabled: false` → almost-ready. Harness must snapshot `getState()` fields after each wait — it returns the live state object.  
 Related files: `aislecheck-prototype/aislecheck.js`, `aislecheck-prototype/aislecheck.css`, `tests/test_aislecheck_prototype.py`, `tests/aislecheck_fallback_harness.cjs`, `index.html`
+
+### AisleCheck deterministic historical deal assessment (local)
+
+Date discovered: 2026-08-04  
+Context: Wire “Check this price” to grounded historical scoring without LLM / without `deal_assistant`.  
+What happened: Interpretation API existed; assessment did not. Grocery history truth is generated TS (`weeklyAdPrices.generated.ts` / Vons twin), not live Supabase (UI bypasses DB for grocery feeds).  
+Fix / workaround:
+1. Domain module `scripts/deal_assessment/` — `normalize_offer` → `history_repository` (generated TS via `weekly_ad_analysis.benchmarks`) → `comparability` → `scorer` → `assess_deal(tracker_id, retailer, submitted_offer)`.
+2. Local API only: `POST /api/aislecheck/assess` in `aislecheck-prototype/server.py` (structured fields only; never reparses free text).
+3. Homepage gate: `assessEnabled: false` in production `index.html` — Check this price stays placeholder until Render gets the endpoint. Local preview: set `assessEnabled: true` and empty/`localhost` `apiBaseUrl`.
+4. Refuse verdicts for insufficient history (&lt;2 obs), unsupported retailer, out-of-range package size, or unnormalizable price.  
+How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_deal_assessment -v`. Local: `npm run preview:homepage` with `assessEnabled: true` → Doritos understood → Check this price → evidence panel.  
+Related files: `scripts/deal_assessment/`, `aislecheck-prototype/server.py`, `aislecheck-prototype/aislecheck.js`, `tests/test_deal_assessment.py`, `config/price_benchmark_thresholds.json`
 
 ### AisleCheck live API published on homepage
 

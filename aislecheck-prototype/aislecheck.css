@@ -157,7 +157,8 @@
 }
 
 .ac-fixture-tag,
-.ac-placeholder-tag {
+.ac-placeholder-tag,
+.ac-assessment-tag {
   display: inline-block;
   margin: 0 0 0.5rem;
   padding: 0.12rem 0.4rem;
@@ -169,6 +170,36 @@
   color: var(--muted);
   background: #f0f0f0;
   border: 1px solid var(--border);
+}
+
+.ac-assessment-heading {
+  margin: 0 0 0.65rem;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.ac-assessment-evidence {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.75rem;
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.ac-assessment-evidence dt {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.ac-assessment-evidence dd {
+  margin: 0.1rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .ac-understood-heading,
@@ -738,6 +769,10 @@ body[data-aislecheck-variant="4"] .hub-signup-stack {
 
 @media (max-width: 639px) {
   .ac-correction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ac-assessment-evidence {
     grid-template-columns: 1fr;
   }
 

@@ -23,6 +23,8 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 from shopper_query.aislecheck_contract import run_aislecheck_query  # noqa: E402
+from deal_assessment.service import assess_deal_dict  # noqa: E402
+from deal_assessment.models import SubmittedOffer  # noqa: E402
 
 RECORDS_DIR = ROOT / "output" / "aislecheck_query_records"
 RECORDS_FILE = RECORDS_DIR / "records.jsonl"
@@ -168,6 +170,53 @@ class AisleCheckHandler(SimpleHTTPRequestHandler):
                 return
             append_record(_record_from_response(response, event="query"))
             self._send_json(200, response)
+            return
+
+        if path == "/api/aislecheck/assess":
+            try:
+                payload = self._read_json()
+            except ValueError:
+                self._send_json(400, {"error": "invalid_json"})
+                return
+            tracker_id = str(payload.get("tracker_id") or "").strip()
+            retailer = str(payload.get("retailer") or "").strip() or "Safeway"
+            offer_raw = payload.get("submitted_offer")
+            if not tracker_id:
+                self._send_json(400, {"error": "missing_tracker_id"})
+                return
+            if not isinstance(offer_raw, dict):
+                self._send_json(400, {"error": "missing_submitted_offer"})
+                return
+            # Assessment operates on confirmed structured fields only — never
+            # reparses payload["query"] even if a client sends one.
+            try:
+                assessment = assess_deal_dict(tracker_id, retailer, offer_raw)
+            except Exception as exc:  # noqa: BLE001
+                self._send_json(
+                    500,
+                    {
+                        "error": "assessment_failed",
+                        "message": "Something went wrong assessing that deal. Try again.",
+                        "detail": f"{type(exc).__name__}",
+                    },
+                )
+                return
+            append_record(
+                {
+                    "session_id": str(payload.get("session_id") or "anonymous"),
+                    "event": "assess",
+                    "tracker_id": tracker_id,
+                    "retailer": retailer,
+                    "submitted_offer": SubmittedOffer.from_mapping(offer_raw).to_dict(),
+                    "assessment": {
+                        "verdict": assessment.get("verdict"),
+                        "ok": assessment.get("ok"),
+                        "feed_id": assessment.get("feed_id"),
+                    },
+                    "analytics_destination": "local_file_only",
+                }
+            )
+            self._send_json(200, assessment)
             return
 
         if path == "/api/aislecheck/event":

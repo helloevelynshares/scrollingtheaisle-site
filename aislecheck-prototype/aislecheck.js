@@ -12,6 +12,7 @@
   var SESSION_KEY = "sta_aislecheck_session";
   var DEFAULT_API_PATH = "/api/aislecheck";
   var EVENT_PATH = "/api/aislecheck/event";
+  var ASSESS_PATH = "/api/aislecheck/assess";
   var PUBLIC_VARIANT = 4;
   var MAX_QUERY_CHARS = 500;
   /** Client abort for cold-start / hung Render free-tier wakes. */
@@ -34,6 +35,7 @@
     conversationalPrompt: "What deal did you see?",
     understoodHeading: "Here’s what AisleCheck understood",
     checkPrice: "Check this price",
+    assessing: "Checking price history…",
     fixIt: "Fix it",
     checkAnother: "Check another deal",
     noneOfThese: "None of these",
@@ -44,7 +46,12 @@
     invalidBody:
       "Try again with the product name, the advertised price, and any buy requirement (for example: Doritos $2.49 when I buy 4).",
     placeholderVerdict:
-      "Price history for this deal is still in progress. Thanks for checking — please try again soon.",
+      "Price history for this deal is still in progress. Historical scoring stays off in production until the assess API is deployed.",
+    assessmentEvidenceLabel: "Evidence from tracked ads",
+    assessmentUnitPriceLabel: "Comparable unit price",
+    assessmentAtlLabel: "All-time low",
+    assessmentMedianLabel: "Median ad price",
+    assessmentWeeksLabel: "Comparable weeks",
     almostReadyHeading: "AisleCheck is almost ready",
     almostReadyBody:
       "We’re testing how shoppers describe deals before turning on live price checks.",
@@ -133,7 +140,7 @@
     view: "empty",
     // empty | loading | understood | clarify_field | clarify_product |
     // unsupported | invalid | correction | placeholder | almost_ready |
-    // temporary_unavailable | error
+    // temporary_unavailable | assessing | assessed | error
     query: "",
     loadingLocked: false,
     requestedProduct: false,
@@ -141,6 +148,7 @@
     exampleSubmitBusy: false,
     exampleClientSubmissionId: null,
     response: null,
+    assessment: null,
     clarifyAnswer: "",
     lastError: "",
     debugOpen: false,
@@ -163,6 +171,8 @@
       // Require explicit true — safer public default is fallback-only.
       liveApiEnabled: cfg.liveApiEnabled === true,
       exampleSubmitEnabled: cfg.exampleSubmitEnabled === true,
+      // Historical scoring stays off until assess is intentionally enabled.
+      assessEnabled: cfg.assessEnabled === true,
       apiTimeoutMs:
         typeof cfg.apiTimeoutMs === "number" && cfg.apiTimeoutMs > 0
           ? cfg.apiTimeoutMs
@@ -178,6 +188,10 @@
 
   function isLiveApiEnabled() {
     return readConfig().liveApiEnabled;
+  }
+
+  function isAssessEnabled() {
+    return readConfig().assessEnabled;
   }
 
   function isLocalHost(hostname, protocol) {
@@ -659,6 +673,79 @@
     );
   }
 
+  function formatMoney(value) {
+    if (value == null || value === "") return "—";
+    var n = Number(value);
+    if (!isFinite(n)) return "—";
+    return "$" + n.toFixed(2);
+  }
+
+  function renderAssessment() {
+    var a = state.assessment || {};
+    var evidence = a.evidence || {};
+    var rows =
+      '<dl class="ac-assessment-evidence">' +
+      "<div><dt>" +
+      escapeHtml(COPY.assessmentUnitPriceLabel) +
+      "</dt><dd>" +
+      escapeHtml(formatMoney(evidence.comparable_unit_price)) +
+      "</dd></div>" +
+      "<div><dt>" +
+      escapeHtml(COPY.assessmentAtlLabel) +
+      "</dt><dd>" +
+      escapeHtml(formatMoney(evidence.all_time_low_unit_price)) +
+      "</dd></div>" +
+      "<div><dt>" +
+      escapeHtml(COPY.assessmentMedianLabel) +
+      "</dt><dd>" +
+      escapeHtml(formatMoney(evidence.median_unit_price)) +
+      "</dd></div>" +
+      "<div><dt>" +
+      escapeHtml(COPY.assessmentWeeksLabel) +
+      "</dt><dd>" +
+      escapeHtml(
+        evidence.observation_count != null ? String(evidence.observation_count) : "—"
+      ) +
+      "</dd></div>" +
+      "</dl>";
+    return (
+      '<div class="ac-state ac-state--assessed" role="region" aria-label="Deal assessment result">' +
+      '<p class="ac-assessment-tag">' +
+      escapeHtml(a.verdict_label || a.verdict || "Result") +
+      "</p>" +
+      '<h3 class="ac-assessment-heading">' +
+      escapeHtml(a.headline || "") +
+      "</h3>" +
+      "<p>" +
+      escapeHtml(a.summary || "") +
+      "</p>" +
+      '<p class="ac-ev-label">' +
+      escapeHtml(COPY.assessmentEvidenceLabel) +
+      "</p>" +
+      rows +
+      '<div class="ac-result-actions">' +
+      '<button type="button" class="btn btn-secondary" id="ac-fix-it">' +
+      escapeHtml(COPY.fixIt) +
+      "</button>" +
+      '<button type="button" class="btn btn-ghost ac-reset" id="ac-check-another">' +
+      escapeHtml(COPY.checkAnother) +
+      "</button>" +
+      "</div>" +
+      renderDebugPanel() +
+      "</div>"
+    );
+  }
+
+  function renderAssessing() {
+    return (
+      '<div class="ac-state ac-state--loading" role="status" aria-live="polite">' +
+      '<p class="ac-loading-text">' +
+      escapeHtml(COPY.assessing) +
+      "</p>" +
+      "</div>"
+    );
+  }
+
   function renderPreservedQuery() {
     if (!state.query) return "";
     return (
@@ -928,6 +1015,8 @@
     if (state.view === "loading") return renderLoading();
     if (state.view === "understood") return renderUnderstood();
     if (state.view === "placeholder") return renderPlaceholder();
+    if (state.view === "assessing") return renderAssessing();
+    if (state.view === "assessed") return renderAssessment();
     if (state.view === "almost_ready") return renderAlmostReady();
     if (state.view === "temporary_unavailable") return renderTemporaryUnavailable();
     if (state.view === "clarify_field") return renderClarifyField();
@@ -1187,6 +1276,7 @@
     state.exampleSubmitBusy = false;
     state.exampleClientSubmissionId = null;
     state.response = null;
+    state.assessment = null;
     state.clarifyAnswer = "";
     state.lastError = "";
     state.fieldsCorrected = [];
@@ -1214,10 +1304,86 @@
 
   function applyResponse(response) {
     state.response = response;
+    state.assessment = null;
     state.view = viewFromResponse(response);
     state.loadingLocked = false;
     state.correction = correctionFromResponse(response);
     render();
+  }
+
+  function startAssess() {
+    if (state.loadingLocked) return;
+    var response = state.response || {};
+    var tracker = response.selected_tracker || {};
+    var extracted = response.extracted || {};
+    var trackerId = tracker.id || tracker.tracker_id || "";
+    if (!trackerId) {
+      state.view = "placeholder";
+      render();
+      return;
+    }
+    if (!isAssessEnabled()) {
+      logEvent("check_price_placeholder", {
+        user_confirmed: true,
+        final_confirmed_interpretation: {
+          extracted: extracted,
+          selected_tracker: tracker,
+        },
+      });
+      state.view = "placeholder";
+      render();
+      return;
+    }
+
+    var submittedOffer = {
+      price: extracted.price,
+      price_basis: extracted.price_basis,
+      required_quantity: extracted.required_quantity,
+      promotion_type: extracted.promotion_type,
+      package_size: extracted.package_size,
+      product_text: extracted.product_text,
+      retailer: extracted.retailer,
+    };
+    var retailer =
+      extracted.retailer ||
+      (state.correction && state.correction.store) ||
+      "Safeway";
+
+    state.view = "assessing";
+    state.loadingLocked = true;
+    state.assessment = null;
+    render();
+
+    logEvent("check_price_assess", {
+      user_confirmed: true,
+      final_confirmed_interpretation: {
+        extracted: extracted,
+        selected_tracker: tracker,
+      },
+    });
+
+    postJson(apiUrl(ASSESS_PATH), {
+      tracker_id: trackerId,
+      retailer: retailer,
+      submitted_offer: submittedOffer,
+      session_id: getSessionId(),
+    })
+      .then(function (assessment) {
+        state.assessment = assessment;
+        state.view = "assessed";
+        state.loadingLocked = false;
+        render();
+      })
+      .catch(function () {
+        state.loadingLocked = false;
+        // Live assess path failed — reuse temporary-unavailable recovery.
+        if (isLiveApiEnabled()) {
+          showTemporaryUnavailable();
+        } else {
+          state.view = "placeholder";
+          render();
+        }
+      });
   }
 
   function startCheck(query, opts) {
@@ -1234,6 +1400,7 @@
     state.requestedProduct = false;
     state.exampleSubmitted = false;
     state.exampleClientSubmissionId = null;
+    state.assessment = null;
     state.lastError = "";
     state.clarifyAnswer = "";
     if (opts.fieldsCorrected) {
@@ -1301,15 +1468,7 @@
     var checkPrice = root.querySelector("#ac-check-price");
     if (checkPrice) {
       checkPrice.addEventListener("click", function () {
-        logEvent("check_price_placeholder", {
-          user_confirmed: true,
-          final_confirmed_interpretation: {
-            extracted: state.response && state.response.extracted,
-            selected_tracker: state.response && state.response.selected_tracker,
-          },
-        });
-        state.view = "placeholder";
-        render();
+        startAssess();
       });
     }
 
@@ -1606,10 +1765,12 @@
     readConfig: readConfig,
     apiUrl: apiUrl,
     isLiveApiEnabled: isLiveApiEnabled,
+    isAssessEnabled: isAssessEnabled,
     VARIATION_META: VARIATION_META,
     COPY: COPY,
     EXAMPLE_QUERY: EXAMPLE_QUERY,
     API_URL: DEFAULT_API_PATH,
+    ASSESS_PATH: ASSESS_PATH,
     getState: function () {
       return state;
     },
@@ -1622,6 +1783,7 @@
         exampleSubmitted: state.exampleSubmitted,
         exampleSubmitBusy: state.exampleSubmitBusy,
         response: state.response,
+        assessment: state.assessment,
       };
     },
     resetToEmpty: resetToEmpty,
@@ -1629,9 +1791,11 @@
     showAlmostReady: showAlmostReady,
     showTemporaryUnavailable: showTemporaryUnavailable,
     startCheck: startCheck,
+    startAssess: startAssess,
     submitExampleOptIn: submitExampleOptIn,
     renderTemporaryUnavailable: renderTemporaryUnavailable,
     renderAlmostReady: renderAlmostReady,
+    renderAssessment: renderAssessment,
     API_TIMEOUT_MS: API_TIMEOUT_MS,
   };
 
