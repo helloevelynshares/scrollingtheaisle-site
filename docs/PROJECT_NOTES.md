@@ -1363,9 +1363,36 @@ What happened: GitHub Pages cannot run the Python `/api/aislecheck` adapter. Ful
 Fix / workaround:
 1. Public default: Variation 4 only (`PUBLIC_VARIANT = 4`). Always load CSS/JS on all hosts (no localhost gate).
 2. Hide prototype toolbar unless `?aislecheckProto=1`. Hide developer debug unless `?aislecheckDebug=1`.
-3. Fallback-only release: `liveApiEnabled: false`, `exampleSubmitEnabled: false` → **AisleCheck is almost ready** with preserved query; no fake interpretation; no silent storage; submit-example hidden.  
-How to verify: Submit a deal on the homepage → almost-ready copy; query still shown; no verdict.  
+3. Fallback release: `liveApiEnabled: false` → **AisleCheck is almost ready** with preserved query; no fake interpretation; no silent storage on Check deal.
+4. Opt-in examples: `exampleSubmitEnabled: true` shows **Submit this example** → RPC `submit_aislecheck_example` only (migration `20260804` + trim harden `20260805`).  
+How to verify: Submit a deal → almost-ready; query still shown; no verdict. Click submit → thanks; no third-party analytics of raw query.  
 Related files: `aislecheck-prototype/aislecheck.js`, `index.html`, `styles.css`
+
+### AisleCheck opt-in example storage (Supabase RPC)
+
+Date discovered: 2026-08-04  
+Context: Collect homepage deal-phrasing examples only after explicit “Submit this example.”  
+What happened: Need write-only storage without public reads, silent capture, or personal data. Local Supabase (`supabase start`) requires Docker, which was not available on the agent host.  
+Fix / workaround:
+1. Migration `supabase/migrations/20260804_aislecheck_examples.sql`: table `aislecheck_examples` + security-definer RPC `submit_aislecheck_example(text, uuid)` with fixed `search_path`, trim/length checks, unique `client_submission_id`, revoke table access from anon/authenticated, grant execute to anon only.
+2. Frontend passes `p_client_submission_id` only when `exampleSubmitEnabled === true` (keep false until post-migration security checks pass).
+3. Emergency disable: set `exampleSubmitEnabled: false` and/or `revoke execute on function public.submit_aislecheck_example(text, uuid) from anon`.
+4. Full removal SQL: `supabase/rollbacks/20260804_aislecheck_examples.sql` (not auto-applied).
+5. Local SQL harness: `scripts/test_aislecheck_examples_migration.sh` (needs `psql` + local Postgres).  
+How to verify: After local SQL tests pass, `supabase db push --linked` only with explicit confirmation; then anon RPC ok, direct DML denied.  
+Related files: `supabase/migrations/20260804_aislecheck_examples.sql`, `aislecheck-prototype/aislecheck.js`, `index.html`
+
+### AisleCheck example RPC: Postgres btrim misses tabs/newlines
+
+Date discovered: 2026-08-04  
+Context: Final activation checks against live `submit_aislecheck_example`.  
+What happened: Space-only and empty queries correctly returned 400, but tab/newline/mixed whitespace (`\t`, `\n`, ` \n\t `) returned 200 and inserted rows. Cause: Postgres `btrim(text)` removes only ASCII spaces by default, unlike JS `String.trim()`. Homepage JS trims before calling RPC, but direct anon RPC callers could insert junk.  
+Fix / workaround:
+1. Immediately revoked `execute` from `anon` (flag stayed `exampleSubmitEnabled: false`).
+2. Pending harden migration: `supabase/migrations/20260805_aislecheck_examples_trim.sql` uses `trim(both E' \t\n\r' from ...)`, then re-grants execute to anon.
+3. Do not enable frontend until that migration is applied and whitespace checks pass.  
+How to verify: After push, RPC with `"\t\t"` / `"\n\n"` / `" \n\t "` → 400 `Query is required`; normal query still 200.  
+Related files: `supabase/migrations/20260805_aislecheck_examples_trim.sql`
 
 ### AisleCheck wired to deterministic shopper_query (no LLM)
 

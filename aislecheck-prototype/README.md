@@ -2,7 +2,7 @@
 
 Homepage AisleCheck ships as **Variation 4**.
 
-This release is **fallback-only**: live API and example submission stay off.
+Live interpretation API stays off. Opt-in example submission is on.
 
 ## Public behavior
 
@@ -13,8 +13,8 @@ When a shopper clicks **Check deal**:
 3. Their submitted query is preserved and shown
 4. No fake product interpretation
 5. No fake deal verdict
-6. No silent query storage
-7. **Submit this example** stays hidden
+6. No silent query storage on Check deal
+7. Optional **Submit this example** stores the query via Supabase RPC only after explicit click
 
 ## Production config (`index.html`)
 
@@ -22,7 +22,7 @@ When a shopper clicks **Check deal**:
 window.__AISLECHECK_CONFIG__ = {
   apiBaseUrl: "",
   liveApiEnabled: false,
-  exampleSubmitEnabled: false
+  exampleSubmitEnabled: true
 };
 ```
 

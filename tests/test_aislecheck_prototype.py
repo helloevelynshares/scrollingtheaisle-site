@@ -81,7 +81,7 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
         self.assertIn("__AISLECHECK_CONFIG__", html)
         self.assertIn("apiBaseUrl", html)
         self.assertIn("liveApiEnabled: false", html)
-        self.assertIn("exampleSubmitEnabled: false", html)
+        self.assertIn("exampleSubmitEnabled: true", html)
         self.assertNotIn("if (!local) return;", html)
         lead_idx = html.index("hub-hero-lead")
         root_idx = html.index('id="aislecheck-root"')
@@ -97,6 +97,8 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
             text,
         )
         self.assertIn("showAlmostReady", text)
+        self.assertIn("p_client_submission_id", text)
+        self.assertIn("exampleSubmitEnabled: cfg.exampleSubmitEnabled === true", text)
         self.assertNotIn('"Good deal"', text)
         self.assertNotIn("deal_assistant", text)
 

@@ -131,6 +131,7 @@
     requestedProduct: false,
     exampleSubmitted: false,
     exampleSubmitBusy: false,
+    exampleClientSubmissionId: null,
     response: null,
     clarifyAnswer: "",
     lastError: "",
@@ -221,6 +222,38 @@
     } catch (err) {
       return "ac_anonymous";
     }
+  }
+
+  function newClientSubmissionId() {
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") {
+        return window.crypto.randomUUID();
+      }
+    } catch (err) {
+      /* fall through */
+    }
+    var hex = "";
+    for (var i = 0; i < 32; i++) {
+      hex += Math.floor(Math.random() * 16).toString(16);
+    }
+    return (
+      hex.slice(0, 8) +
+      "-" +
+      hex.slice(8, 12) +
+      "-4" +
+      hex.slice(13, 16) +
+      "-a" +
+      hex.slice(17, 20) +
+      "-" +
+      hex.slice(20, 32)
+    );
+  }
+
+  function ensureExampleClientSubmissionId() {
+    if (!state.exampleClientSubmissionId) {
+      state.exampleClientSubmissionId = newClientSubmissionId();
+    }
+    return state.exampleClientSubmissionId;
   }
 
   function escapeHtml(str) {
@@ -334,7 +367,10 @@
       return Promise.reject(new Error("storage_unavailable"));
     }
     return client
-      .rpc("submit_aislecheck_example", { p_query: q })
+      .rpc("submit_aislecheck_example", {
+        p_query: q,
+        p_client_submission_id: ensureExampleClientSubmissionId(),
+      })
       .then(function (result) {
         if (result.error) throw result.error;
         return result.data;
@@ -1029,6 +1065,7 @@
     state.requestedProduct = false;
     state.exampleSubmitted = false;
     state.exampleSubmitBusy = false;
+    state.exampleClientSubmissionId = null;
     state.response = null;
     state.clarifyAnswer = "";
     state.lastError = "";
@@ -1068,6 +1105,7 @@
     state.loadingLocked = true;
     state.requestedProduct = false;
     state.exampleSubmitted = false;
+    state.exampleClientSubmissionId = null;
     state.lastError = "";
     state.clarifyAnswer = "";
     if (opts.fieldsCorrected) {
@@ -1076,6 +1114,7 @@
     render();
 
     if (!isLiveApiEnabled()) {
+      // Fallback path: never store the query here. Opt-in submit is separate.
       showAlmostReady();
       return;
     }
