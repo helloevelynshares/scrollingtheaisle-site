@@ -101,6 +101,7 @@ class TestAisleCheckContractCases(unittest.TestCase):
     def test_response_contract_keys(self) -> None:
         result = run_aislecheck_query("Safeway Doritos $2.49")
         for key in (
+            "contract_version",
             "original_query",
             "normalized_query",
             "normalizations_applied",
