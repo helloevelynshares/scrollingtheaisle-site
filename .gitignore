@@ -11,6 +11,7 @@ supabase/.branches
 supabase/.temp
 scripts/.env
 scripts/output/
+output/aislecheck_query_records/
 scripts/.playwright-profile/
 # Keep data/processed and data/canonical tracked in git; ignore raw transcripts if large
 data/raw/bulk_transcripts.csv

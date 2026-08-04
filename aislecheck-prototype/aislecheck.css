@@ -1,0 +1,729 @@
+/* AisleCheck homepage prototype — loaded only in local prototype mode */
+
+.ac-prototype-active {
+  padding-bottom: 7.5rem;
+}
+
+#aislecheck-root {
+  margin: 1.25rem 0 0.25rem;
+  width: 100%;
+}
+
+#aislecheck-root[hidden] {
+  display: none !important;
+}
+
+.ac-panel {
+  width: 100%;
+  max-width: 40rem;
+}
+
+.ac-brand {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.ac-brand--sm {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.ac-brand--soft {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+  color: var(--accent-dark);
+}
+
+.ac-brand--wordmark {
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text);
+}
+
+.ac-brand--inline {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.ac-heading {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.ac-heading--tool {
+  font-size: 1.2rem;
+}
+
+.ac-desc {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.ac-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ac-label {
+  font-size: 0.92rem;
+  font-weight: 560;
+  color: var(--text);
+}
+
+.ac-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: 1rem;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.ac-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.ac-input:disabled {
+  opacity: 0.7;
+}
+
+.ac-input--area {
+  min-height: 4.5rem;
+  resize: vertical;
+}
+
+.ac-input--sm {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.92rem;
+}
+
+.ac-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ac-submit {
+  min-width: 8.5rem;
+}
+
+.ac-example {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.ac-example-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ac-example-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.ac-scope,
+.ac-result-scope,
+.ac-disclosure {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.ac-fixture-tag,
+.ac-placeholder-tag {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: #f0f0f0;
+  border: 1px solid var(--border);
+}
+
+.ac-understood-heading,
+.ac-clarify-heading,
+.ac-unsupported-heading,
+.ac-invalid-heading {
+  margin: 0 0 0.65rem;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.ac-placeholder-text {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.ac-clarify-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ac-clarify-form .ac-input {
+  flex: 1 1 12rem;
+}
+
+.ac-debug {
+  margin-top: 1rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 0.65rem;
+  font-size: 0.8rem;
+}
+
+.ac-debug summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.ac-debug-body pre {
+  margin: 0.5rem 0 0;
+  padding: 0.65rem;
+  overflow: auto;
+  max-height: 18rem;
+  background: #f7f7f7;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.ac-verdict {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ac-result-summary {
+  margin: 0 0 0.35rem;
+  font-weight: 600;
+}
+
+.ac-result-detail {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+}
+
+.ac-evidence {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.ac-evidence li,
+.ac-preview-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.92rem;
+}
+
+.ac-ev-label {
+  color: var(--muted);
+}
+
+.ac-ev-value {
+  font-weight: 650;
+}
+
+.ac-ev-value--muted {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.ac-result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.ac-loading-text {
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ac-clarify-list {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.ac-clarify-heading,
+.ac-unsupported-heading {
+  margin: 0 0 0.65rem;
+  font-size: 1.1rem;
+}
+
+.ac-correction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem 0.65rem;
+  margin-bottom: 0.5rem;
+}
+
+.ac-corr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ac-corr-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.ac-correction-lead {
+  margin: 0 0 0.65rem;
+  color: var(--muted);
+}
+
+/* Variation 1 — minimal inline */
+.ac-v1 .ac-heading {
+  font-size: 1.15rem;
+}
+
+.ac-v1 .ac-desc {
+  margin-bottom: 0.55rem;
+  font-size: 0.92rem;
+}
+
+.ac-v1 .ac-form {
+  gap: 0.45rem;
+}
+
+.ac-v1 .ac-actions {
+  margin-top: 0.15rem;
+}
+
+.ac-v1 .ac-submit {
+  min-width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .ac-v1 .ac-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: 0.55rem;
+  }
+
+  .ac-v1 .ac-label,
+  .ac-v1 .visually-hidden {
+    grid-column: 1 / -1;
+  }
+
+  .ac-v1 #ac-deal-input {
+    grid-column: 1;
+  }
+
+  .ac-v1 .ac-actions {
+    grid-column: 2;
+    margin: 0;
+  }
+
+  .ac-v1 .ac-example,
+  .ac-v1 .ac-scope {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Variation 2 — featured card */
+.ac-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.15rem 1.2rem 1.2rem;
+}
+
+.ac-v2 .ac-brand {
+  font-size: 0.85rem;
+}
+
+.ac-v2 .ac-heading {
+  font-size: 1.45rem;
+}
+
+/* Variation 3 — hero-integrated */
+.ac-v3 {
+  margin-top: 0.35rem;
+  padding: 0.85rem 0 0.15rem;
+  border-top: 1px solid var(--border);
+}
+
+.ac-v3-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.ac-v3 .ac-brand--inline {
+  margin-bottom: 0.25rem;
+}
+
+body[data-aislecheck-variant="3"] .hub-hero-lead {
+  margin-bottom: 0.35rem;
+}
+
+/* Variation 4 — conversational, side-by-side with signup / aisles / vote */
+.ac-card--soft {
+  background: linear-gradient(180deg, #fff 0%, #fff7f8 100%);
+  border-color: #f3d6dc;
+}
+
+.ac-convo-prompt {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.ac-v4 .ac-heading {
+  font-size: 1.25rem;
+}
+
+.ac-v4 .ac-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Default split wrapper stays stacked for other variations */
+.hub-hero-actions-split {
+  display: block;
+}
+
+body[data-aislecheck-variant="4"] .hub-hero {
+  max-width: 1100px;
+}
+
+body[data-aislecheck-variant="4"] .hub-hero-actions-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "signup signup"
+    "side aislecheck";
+  gap: 14px 16px;
+  align-items: stretch;
+  text-align: left;
+  max-width: 1100px;
+  margin: 0 auto 8px;
+}
+
+body[data-aislecheck-variant="4"] #hero-signup {
+  grid-area: signup;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body[data-aislecheck-variant="4"] #aislecheck-root {
+  grid-area: aislecheck;
+  margin: 0;
+  min-width: 0;
+  display: flex;
+}
+
+body[data-aislecheck-variant="4"] #aislecheck-root .ac-panel {
+  max-width: none;
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body[data-aislecheck-variant="4"] .ac-v4 .ac-form,
+body[data-aislecheck-variant="4"] .ac-v4 .ac-state {
+  flex: 1 1 auto;
+}
+
+body[data-aislecheck-variant="4"] .ac-v4 .ac-desc {
+  margin-bottom: 0.7rem;
+}
+
+body[data-aislecheck-variant="4"] .ac-v4 .ac-input--area {
+  min-height: 5.25rem;
+}
+
+body[data-aislecheck-variant="4"] .hub-signup-row {
+  grid-area: side;
+  max-width: none;
+  margin: 0;
+  min-width: 0;
+}
+
+body[data-aislecheck-variant="4"] .hub-signup-stack {
+  height: 100%;
+}
+
+@media (max-width: 839px) {
+  body[data-aislecheck-variant="4"] .hub-hero {
+    max-width: 920px;
+  }
+
+  body[data-aislecheck-variant="4"] .hub-hero-actions-split {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "signup"
+      "side"
+      "aislecheck";
+    gap: 12px;
+  }
+}
+
+/* Variation 5 — evidence-led */
+.ac-v5 .ac-heading {
+  font-size: 1.3rem;
+}
+
+.ac-evidence-preview {
+  margin: 0 0 0.9rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px dashed #e2e2e2;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+
+.ac-preview-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.ac-evidence--preview {
+  margin-bottom: 0;
+}
+
+/* Variation 6 — compact branded tool */
+.ac-v6.ac-tool {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 0.95rem 1rem 1.05rem;
+}
+
+.ac-tool {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 0.95rem 1rem 1.05rem;
+}
+
+.ac-tool-header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
+.ac-tool-icon {
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.ac-tool-sub {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.ac-tool-titles {
+  min-width: 0;
+}
+
+.ac-tool .ac-brand--wordmark {
+  margin: 0;
+}
+
+/* Prototype toolbar (local only) */
+#aislecheck-toolbar-host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.ac-proto-toolbar {
+  pointer-events: auto;
+  margin: 0 auto;
+  max-width: 72rem;
+  background: rgba(34, 34, 34, 0.94);
+  color: #fff;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
+  padding: 0.65rem 0.85rem 0.75rem;
+}
+
+.ac-proto-toolbar-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.55rem;
+}
+
+.ac-proto-title {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.ac-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.ac-switch-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.ac-switch-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ac-switch-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.ac-switch-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 650;
+}
+
+.ac-proto-toolbar .btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.ac-proto-toolbar .btn-ghost {
+  color: #fff;
+  border-color: transparent;
+}
+
+.ac-notes-panel {
+  margin-top: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.ac-notes-panel p {
+  margin: 0 0 0.35rem;
+}
+
+.ac-notes-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.ac-proto-hint {
+  margin: 0.35rem 0 0;
+  min-height: 1em;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 639px) {
+  .ac-correction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ac-panel {
+    max-width: none;
+  }
+
+  .ac-proto-toolbar {
+    border-radius: 0;
+    max-width: none;
+  }
+
+  .ac-switch-btn {
+    padding: 0.34rem 0.5rem;
+  }
+
+  .ac-result-actions .btn,
+  .ac-actions .btn {
+    width: 100%;
+  }
+}

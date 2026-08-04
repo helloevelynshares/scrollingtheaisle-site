@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scrolling the Aisle: Weekly grocery briefing</title>
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/styles.css?v=hub28" />
+  <link rel="stylesheet" href="/styles.css?v=hub34" />
 </head>
 <body class="hub-page">
   <header class="page-header">
@@ -33,40 +33,51 @@
         Every week, Scrolling the Aisle (or Evelyn, the human behind it, really) helps you navigate the grocery ads, comparing sales against Costco, past prices, and unit prices.
       </p>
 
-      <div class="hub-signup-row">
-        <div class="hub-signup-stack">
-          <div id="hero-signup" class="hub-signup beehiiv-form-wrapper" tabindex="-1">
+      <!-- Split row: AisleCheck beside aisle hop / vote; signup spans full width -->
+      <div class="hub-hero-actions-split" id="hub-hero-actions-split">
+        <div id="aislecheck-root" data-aislecheck-root hidden></div>
+
+        <div id="hero-signup" class="hub-signup" tabindex="-1">
+          <div class="hub-signup-copy">
+            <p class="hub-signup-label">Get the highlights of the week right in your inbox</p>
+            <p class="hub-signup-note">Coming soon — sign up now and we’ll email you when the highlights start going out.</p>
+          </div>
+          <div class="beehiiv-form-wrapper hub-signup-form">
             <script
               async
               src="https://subscribe-forms.beehiiv.com/v3/loader.js"
               data-beehiiv-form="55ee22f3-880a-4a81-b96e-56f2be101b07">
             </script>
           </div>
+        </div>
 
-          <div class="hub-hero-trackers" id="hub-tracker-module">
-            <p class="hub-hero-trackers-intro">Hop into the live aisles we've got going:</p>
-            <div class="hub-hero-actions">
-              <a href="grocery-price-tracker/?feed=safeway_bay_area" class="btn btn-secondary hub-hero-cta">Scroll through the Safeway aisle</a>
-              <a href="grocery-price-tracker/?feed=vons_albertsons_socal" class="btn btn-secondary hub-hero-cta">Scroll through the Vons aisle</a>
+        <div class="hub-signup-row">
+          <div class="hub-signup-stack">
+            <div class="hub-hero-trackers" id="hub-tracker-module">
+              <p class="hub-hero-trackers-intro">Hop into the live aisles we've got going:</p>
+              <div class="hub-hero-actions">
+                <a href="grocery-price-tracker/?feed=safeway_bay_area" class="btn btn-secondary hub-hero-cta">Scroll through the Safeway aisle</a>
+                <a href="grocery-price-tracker/?feed=vons_albertsons_socal" class="btn btn-secondary hub-hero-cta">Scroll through the Vons aisle</a>
+              </div>
             </div>
-          </div>
 
-          <div class="hub-store-suggest" id="store-suggest-module">
-            <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
-              <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
-              <p id="store-vote-list-status" class="hub-store-vote-strip-msg" hidden></p>
-              <div class="price-tracker-vote-strip" id="store-vote-strip" role="list" aria-label="Popular grocery stores" aria-busy="true"></div>
-              <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
-                <div class="price-tracker-vote-custom-row">
-                  <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
-                  <input id="store-input-custom" type="text" name="store" placeholder="Suggest another store…" autocomplete="organization" maxlength="80" required />
-                  <label class="visually-hidden" for="store-city-custom">City (optional)</label>
-                  <input id="store-city-custom" type="text" name="city" placeholder="City (optional)" autocomplete="address-level2" maxlength="80" />
-                  <button type="submit" class="btn btn-primary btn-sm price-tracker-vote-submit">Suggest</button>
-                </div>
-              </form>
-              <p id="store-suggest-status" class="price-tracker-vote-status" role="status" aria-live="polite" hidden></p>
-            </section>
+            <div class="hub-store-suggest" id="store-suggest-module">
+              <section class="hub-store-vote price-tracker-vote" aria-labelledby="store-suggest-heading">
+                <p id="store-suggest-heading" class="price-tracker-vote-label">Where should we track prices next?</p>
+                <p id="store-vote-list-status" class="hub-store-vote-strip-msg" hidden></p>
+                <div class="price-tracker-vote-strip" id="store-vote-strip" role="list" aria-label="Popular grocery stores" aria-busy="true"></div>
+                <form class="price-tracker-vote-custom price-tracker-vote-custom--inline" id="store-custom-form">
+                  <div class="price-tracker-vote-custom-row">
+                    <label class="visually-hidden" for="store-input-custom">Suggest another store</label>
+                    <input id="store-input-custom" type="text" name="store" placeholder="Suggest another store…" autocomplete="organization" maxlength="80" required />
+                    <label class="visually-hidden" for="store-city-custom">City (optional)</label>
+                    <input id="store-city-custom" type="text" name="city" placeholder="City (optional)" autocomplete="address-level2" maxlength="80" />
+                    <button type="submit" class="btn btn-primary btn-sm price-tracker-vote-submit">Suggest</button>
+                  </div>
+                </form>
+                <p id="store-suggest-status" class="price-tracker-vote-status" role="status" aria-live="polite" hidden></p>
+              </section>
+            </div>
           </div>
         </div>
       </div>
@@ -113,5 +124,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="/homepage.js?v=hub19"></script>
   <script src="/analytics.js"></script>
+  <!-- AisleCheck: public Variation 4 -->
+  <link rel="stylesheet" href="/aislecheck-prototype/aislecheck.css?v=ac9" />
+  <script src="/aislecheck-prototype/aislecheck.js?v=ac9"></script>
 </body>
 </html>

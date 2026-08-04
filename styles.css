@@ -2951,6 +2951,71 @@ img {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   border: 1px solid rgba(255, 56, 92, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.hub-signup-label {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+  text-align: left;
+}
+
+.hub-signup-copy {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hub-signup-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: left;
+}
+
+.hub-signup .hub-signup-form.beehiiv-form-wrapper {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  display: block;
+  justify-content: flex-start;
+}
+
+.hub-signup .hub-signup-form.beehiiv-form-wrapper iframe,
+.hub-signup .hub-signup-form.beehiiv-form-wrapper div {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 720px) {
+  .hub-signup {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px 24px;
+  }
+
+  .hub-signup-copy {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .hub-signup .hub-signup-form.beehiiv-form-wrapper {
+    flex: 0 1 520px;
+    width: 100%;
+    max-width: 520px;
+    margin-left: auto;
+  }
 }
 
 .hub-hero-row {

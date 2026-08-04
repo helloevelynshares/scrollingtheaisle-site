@@ -1328,3 +1328,57 @@ Fix / workaround:
 How to verify: Off-sale Clif card shows ~$1.60 / bar (not $7.99); `PYTHONPATH=scripts python3 -m unittest tests.test_baseline_normalize -v`.  
 Related files: `src/data/priceTrackerFallback.ts`, `src/data/vonsBaseline.generated.ts`, `scripts/price_tracker/baseline_per_lb.py`, `data/review/baseline_refresh_audit_2026-07-05.csv`, `data/canonical_tracker_families.yaml` (`clif_bars`)
 
+### Deterministic shopper-query experiment (no LLM)
+
+Date discovered: 2026-08-03  
+Context: Evaluate how well existing weekly-ad text patterns + production canonical matching handle natural-language shopper questions, with an optional lightweight normalization layer. Separate from the LLM `deal_assistant/` vertical slice (do not expand deal-verdict work).  
+What happened: There is **no** dedicated free-text shopper parser in production. Weekly ads are vision-extracted into structured CSV (`split_product_text`, `advertised_price`, `promo_text`, `price_basis`, package fields). Matching consumes those rows via `generate_weekly_ad_prices.matches` / `ProductionMatcherFacade.match_offer`.  
+Fix / workaround:
+1. New package `scripts/shopper_query/` — deterministic parser adapted from weekly-ad regex families (`price_tracker.normalization` multi-buy/BOGO/`N for $X`, `generate_weekly_ad_prices` BOGO cues) + holdout `PROMOTION_TYPES` / `PRICE_BASIS_VALUES`.
+2. Matcher reuse only: `product_matching.engine.ProductionMatcherFacade` / `match_offer` (full catalog; no demo allowlist). Behavior map: `continue|clarify|unsupported|invalid` — no deal verdict.
+3. Normalization layer (`normalize.py`) rewrites bucks/verbal prices/BOGO synonyms/`gotta buy N` → ad-like text; records step metadata; does **not** silently resolve product identity or map “big box” to a tracker.
+4. Eval: `evals/shopper-query-v1.jsonl` (22 hand-authored cases). Baseline + compare → `output/shopper_query_eval/`.
+5. Commands: `npm run eval:shopper-query`, `npm run eval:shopper-query:compare`, `npm run shopper-query -- query|serve`, `npm run test:shopper-query`.
+6. Gotcha: production include phrases often assume flyer word order (`family size Cheerios`); shopper “Cheerios family size” may miss. Strip `$N` **after** `N for $X` or dangling quantity tokens remain. Leave `deal_assistant/` alone.  
+How to verify: `npm run test:shopper-query`; `npm run eval:shopper-query:compare` — normalization lifts price/promo/qty vs raw; no new incorrect continues.  
+Related files: `scripts/shopper_query/`, `evals/shopper-query-v1.jsonl`, `evals/README.md`, `scripts/product_matching/engine.py`, `scripts/price_tracker/normalization.py`, `scripts/holdout_labeler/paths.py`
+
+### AisleCheck homepage prototype (local-only, six variations)
+
+Date discovered: 2026-08-03  
+Context: Explore homepage placement + six UI variations for **AisleCheck** (“Is this a good deal?”) without shipping to production or adding LLM/backend.  
+What happened: Needed fair visual comparison with mocked empty/loading/result/clarify/unsupported/correction states, while keeping GitHub Pages (`main` only) untouched.  
+Fix / workaround:
+1. Work started on branch `prototype/aislecheck-homepage`.
+2. Assets live under `aislecheck-prototype/` (`aislecheck.js`, `aislecheck.css`, `server.py`, README).
+3. Variation switcher is now opt-in: `?aislecheckProto=1`.
+4. Local preview: `npm run preview:homepage`. Tests: `npm run test:aislecheck-prototype`.  
+Related files: `aislecheck-prototype/`, `index.html`, `tests/test_aislecheck_prototype.py`
+
+### AisleCheck Variation 4 public on homepage
+
+Date discovered: 2026-08-03  
+Context: Ship Variation 4 + user-friendly copy to https://scrollingtheaisle.com/ (GitHub Pages from `main`).  
+What happened: GitHub Pages cannot run the Python `/api/aislecheck` adapter. Full understand/match flow needs a hosted API; without it, Check deal must not look broken.  
+Fix / workaround:
+1. Public default: Variation 4 only (`PUBLIC_VARIANT = 4`). Always load CSS/JS on all hosts (no localhost gate).
+2. Hide prototype toolbar unless `?aislecheckProto=1`. Hide developer debug unless `?aislecheckDebug=1`.
+3. Copy stays shopper-facing (no Day 1 / roadmap language). API/unavailable → friendly “still in progress” placeholder.
+4. Local full pipeline: `npm run preview:homepage` (static + `POST /api/aislecheck`).  
+How to verify: Live homepage shows AisleCheck Variation 4 under signup; no variation toolbar; Check deal is friendly if API missing. Locally with server, Doritos query reaches understood state.  
+Related files: `aislecheck-prototype/aislecheck.js`, `index.html`, `styles.css`, `scripts/shopper_query/aislecheck_contract.py`
+
+### AisleCheck wired to deterministic shopper_query (no LLM)
+
+Date discovered: 2026-08-03  
+Context: Connect homepage AisleCheck prototype to real normalize → parse → production matcher without deal scoring or `deal_assistant`.  
+What happened: Homepage was static JS with keyword fixtures; `shopper_query` is Python (`process_query`) and cannot run in the browser. Subprocess-per-request and TS reimplementation are unnecessary.  
+Fix / workaround:
+1. Thin local adapter: `aislecheck-prototype/server.py` serves the site and `POST /api/aislecheck` calling `shopper_query.aislecheck_contract.run_aislecheck_query` **in-process** (normalization on).
+2. Contract mapper: `scripts/shopper_query/aislecheck_contract.py` → `original_query`, `normalized_query`, `normalizations_applied`, extracted fields, `missing_fields`, `matcher_status`, selected/plausible trackers, `next_action` (`continue|clarify|unsupported|invalid`), reason codes, debug blob.
+3. UI states: understood confirmation (“Here’s what AisleCheck understood”) → **Check this price** is a labeled placeholder only; clarify field/product; unsupported; invalid; **Fix it** correction; expandable **Developer debug**.
+4. Local query log: `output/aislecheck_query_records/records.jsonl` (gitignored). No third-party analytics of raw queries. Inspect via file or `GET /api/aislecheck/records`.
+5. Do not extract parser/matcher into TypeScript for this slice; keep Python as source of truth.  
+How to verify: `npm run preview:homepage`; submit “Safeway Doritos 9.75 oz are $2.49 each when I buy four”; expand Developer debug. `npm run test:aislecheck-prototype`.  
+Related files: `aislecheck-prototype/server.py`, `aislecheck-prototype/aislecheck.js`, `scripts/shopper_query/aislecheck_contract.py`, `tests/test_aislecheck_shopper_query.py`, `output/aislecheck_query_records/`
+
