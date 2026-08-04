@@ -175,7 +175,8 @@
 .ac-clarify-heading,
 .ac-unsupported-heading,
 .ac-invalid-heading,
-.ac-almost-heading {
+.ac-almost-heading,
+.ac-temp-heading {
   margin: 0 0 0.65rem;
   font-size: 1.1rem;
   font-weight: 650;
@@ -193,10 +194,23 @@
 .ac-preserved-query {
   margin: 0 0 0.75rem;
   padding: 0.45rem 0.6rem;
-  border: 1px solid var(--border);
+  border: 1px dashed var(--border);
   border-radius: 8px;
-  background: #fff;
+  background: rgba(15, 23, 42, 0.03);
   font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.ac-state--temporary-unavailable .ac-preserved-query,
+.ac-state--almost-ready .ac-preserved-query {
+  /* Keep pending/preserved queries visually distinct from understood results. */
+  box-shadow: none;
+}
+
+.ac-state--temporary-unavailable .ac-result-actions,
+.ac-state--almost-ready .ac-result-actions {
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .ac-placeholder-text {

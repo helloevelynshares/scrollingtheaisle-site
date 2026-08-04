@@ -59,11 +59,14 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
             "Looking this up…",
             "Here’s what AisleCheck understood",
             "AisleCheck is almost ready",
-            "Submit this example",
+            "We couldn’t check that deal right now",
+            "AisleCheck may still be waking up. Try again in a moment.",
+            "Submit as an example",
             "/api/aislecheck",
         ):
             self.assertIn(needle, text)
         self.assertNotIn("Day 1", text)
+        self.assertNotIn("Submit this example", text)
 
     def test_no_internal_plan_language(self) -> None:
         text = JS.read_text(encoding="utf-8")
@@ -97,11 +100,67 @@ class TestAisleCheckPublicAssets(unittest.TestCase):
             "We’re testing how shoppers describe deals before turning on live price checks.",
             text,
         )
+        self.assertIn("We couldn’t check that deal right now", text)
+        self.assertIn("AisleCheck may still be waking up. Try again in a moment.", text)
+        self.assertIn("Submit as an example", text)
+        self.assertIn(
+            "Submitted examples may be reviewed to improve AisleCheck. Don’t include personal information.",
+            text,
+        )
         self.assertIn("showAlmostReady", text)
+        self.assertIn("showTemporaryUnavailable", text)
         self.assertIn("p_client_submission_id", text)
         self.assertIn("exampleSubmitEnabled: cfg.exampleSubmitEnabled === true", text)
+        self.assertNotIn("Submit this example", text)
         self.assertNotIn('"Good deal"', text)
         self.assertNotIn("deal_assistant", text)
+
+    def test_temporary_vs_disabled_fallback_behavior(self) -> None:
+        harness = ROOT / "tests" / "aislecheck_fallback_harness.cjs"
+        result = subprocess.run(
+            ["node", str(harness), str(JS), str(CSS)],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(result.stderr or result.stdout or "harness failed")
+        data = json.loads(result.stdout)
+        self.assertTrue(data["liveBefore"])
+        self.assertEqual(data["failView"], "temporary_unavailable")
+        self.assertEqual(data["failQuery"], "Doritos are $2.49 each when I buy four")
+        self.assertGreaterEqual(data["failFetchCount"], 1)
+        self.assertEqual(data["failRpcCount"], 0)
+        self.assertTrue(data["failHasTempCopy"])
+        self.assertTrue(data["failHasTryAgain"])
+        self.assertTrue(data["failTryIsPrimary"])
+        self.assertTrue(data["failSubmitSecondary"])
+        self.assertTrue(data["failNoVerdict"])
+        self.assertTrue(data["failNoAutoStore"])
+        self.assertEqual(data["timeoutView"], "temporary_unavailable")
+        self.assertEqual(data["timeoutQuery"], "Doritos are $2.49 each when I buy four")
+        self.assertTrue(data["timeoutNoVerdict"])
+        self.assertEqual(data["lockedCalls"], 1)
+        self.assertTrue(data["locked"])
+        self.assertEqual(data["retryBodies"], ["Doritos are $2.49 each when I buy four"])
+        self.assertEqual(data["retryView"], "temporary_unavailable")
+        self.assertEqual(data["retryQuery"], "Doritos are $2.49 each when I buy four")
+        self.assertEqual(data["successView"], "understood")
+        self.assertTrue(data["successHasTracker"])
+        self.assertEqual(data["optInRpcName"], "submit_aislecheck_example")
+        self.assertEqual(data["optInQuery"], "Doritos are $2.49 each when I buy four")
+        self.assertEqual(data["disabledView"], "almost_ready")
+        self.assertEqual(data["disabledFetchCalls"], 0)
+        self.assertTrue(data["disabledHasAlmost"])
+        self.assertTrue(data["disabledNoTryAgain"])
+        self.assertTrue(data["disabledHasSubmit"])
+        self.assertTrue(data["disabledNoVerdict"])
+        self.assertTrue(data["optInCopy"])
+        self.assertTrue(data["privacy"])
+        self.assertTrue(data["almostHtmlAtFailHasNoTry"])
+        self.assertTrue(data["mobileCss"])
+        self.assertTrue(data["hasClientTimeout"])
 
     def test_css_and_readme_exist(self) -> None:
         self.assertTrue(CSS.is_file())
