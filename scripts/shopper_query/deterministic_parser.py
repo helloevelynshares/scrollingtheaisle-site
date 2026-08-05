@@ -245,10 +245,12 @@ def _build_product_text(text: str) -> str:
         cleaned,
         flags=re.I,
     )
-    cleaned = re.sub(r"[?!,:;\"']+", " ", cleaned)
-    # Strip periods that are not decimal points.
+    cleaned = re.sub(r"[?!,:;\"]+", " ", cleaned)
+    # Keep brand apostrophes/hyphens (Lay's, Cheez-It, Coca-Cola). Only drop
+    # standalone hyphen separators and normalize curly quotes to ASCII.
+    cleaned = cleaned.replace("’", "'").replace("‘", "'")
     cleaned = re.sub(r"(?<!\d)\.(?!\d)", " ", cleaned)
-    cleaned = re.sub(r"(?<!\d)-(?!\d)", " ", cleaned)
+    cleaned = re.sub(r"\s+-\s+", " ", cleaned)
     # Drop common conversational filler but keep size tier / brand words.
     tokens = []
     for tok in cleaned.split():
@@ -348,24 +350,36 @@ def parse_shopper_query(raw_query: str) -> ParsedShopperQuery:
         missing.append("retailer")
 
     # Ambiguous identity heuristics (conservative — do not auto-pick trackers).
-    # "Chips Ahoy" is a cookie brand that contains the word "chips"; do not treat
-    # it as an unspecified potato-chip brand (that caused an AisleCheck clarify loop).
-    if (
-        re.search(r"\bchips?\b", product_text, re.I)
-        and not re.search(r"\bchips\s*ahoy\b", product_text, re.I)
-        and not re.search(
-            r"\b(doritos|lays|lay'?s|ruffles|kettle|cheetos|tostitos|sun\s*chips|"
-            r"pringles|miss\s+vickie'?s|cape\s+cod)\b",
-            product_text,
-            re.I,
-        )
-    ):
-        ambiguities.append("product_brand_unspecified:chips")
-    if re.search(r"\bcereal\b", product_text, re.I) and not re.search(
-        r"\b(cheerios|cinnamon\s+toast|lucky\s+charms|honey\s+nut|"
-        r"general\s+mills|post|kellogg)\b",
+    # Protected multiword phrases (Chips Ahoy, Sun Chips, …) are derived from the
+    # canonical catalog + overlays so category tokens inside brands do not fire.
+    from shopper_query.entity_resolution.protected_phrases import (
+        get_protected_phrase_registry,
+    )
+
+    registry = get_protected_phrase_registry()
+    known_chip_brands = re.search(
+        r"\b(doritos|lays|lay'?s|ruffles|kettle|cheetos|tostitos|sun\s*chips|"
+        r"pringles|miss\s+vickie'?s|cape\s+cod|popcorners|pop\s*corners)\b",
         product_text,
         re.I,
+    )
+    if (
+        re.search(r"\bchips?\b", product_text, re.I)
+        and not known_chip_brands
+        and not registry.suppresses_category(product_text, "chips")
+    ):
+        ambiguities.append("product_brand_unspecified:chips")
+
+    known_cereal_brands = re.search(
+        r"\b(cheerios|cinnamon\s+toast|lucky\s+charms|honey\s+nut|"
+        r"general\s+mills|post|kellogg|apple\s+jacks|honey\s+bunches)\b",
+        product_text,
+        re.I,
+    )
+    if (
+        re.search(r"\bcereal\b", product_text, re.I)
+        and not known_cereal_brands
+        and not registry.suppresses_category(product_text, "cereal")
     ):
         ambiguities.append("product_brand_unspecified:cereal")
 

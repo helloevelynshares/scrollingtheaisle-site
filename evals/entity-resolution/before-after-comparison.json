@@ -1,0 +1,93 @@
+{
+  "before": {
+    "label": "before",
+    "continue": 8,
+    "clarify": 3,
+    "unsupported": 3,
+    "n": 14
+  },
+  "after": {
+    "label": "after",
+    "continue": 9,
+    "clarify": 5,
+    "unsupported": 0,
+    "n": 14
+  },
+  "wrong_confident_multifamily_before": 2,
+  "wrong_confident_multifamily_after": 0,
+  "protected_phrases_before_review": 144,
+  "protected_phrases_after_review": 47,
+  "catalog_eval_after": {
+    "total": 276,
+    "passed": 276,
+    "wrong_confident": 0
+  },
+  "probe_deltas": [
+    {
+      "query": "Safeway Cheetos are $2.49",
+      "before": [
+        "continue",
+        "cheetos_regular_bags"
+      ],
+      "after": [
+        "clarify",
+        null
+      ]
+    },
+    {
+      "query": "Safeway family size General Mills cereal are $3.99",
+      "before": [
+        "unsupported",
+        null
+      ],
+      "after": [
+        "continue",
+        "general_mills_cereal_family_size"
+      ]
+    },
+    {
+      "query": "Safeway Goldfish are $2.49",
+      "before": [
+        "clarify",
+        null
+      ],
+      "after": [
+        "continue",
+        "goldfish_bags"
+      ]
+    },
+    {
+      "query": "Safeway Chobani are $3.99",
+      "before": [
+        "unsupported",
+        null
+      ],
+      "after": [
+        "clarify",
+        null
+      ]
+    },
+    {
+      "query": "Safeway Lay's Classic are $2.49",
+      "before": [
+        "unsupported",
+        null
+      ],
+      "after": [
+        "continue",
+        "lays_potato_chips_regular"
+      ]
+    },
+    {
+      "query": "Safeway Post cereal are $1.88",
+      "before": [
+        "continue",
+        "post_cereal_regular"
+      ],
+      "after": [
+        "clarify",
+        null
+      ]
+    }
+  ]
+}

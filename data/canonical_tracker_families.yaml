@@ -272,6 +272,13 @@ families:
   - Sun Chips French Onion
   - Sun Chips 7 oz bags
   - SunChips
+  aliases:
+  - sun chips
+  - sunchips
+  protected_phrases:
+  - sun chips
+  clarification:
+    product_label: Sun Chips
   keep_separate_from:
   - Frito-Lay variety packs
   - party-size snack bags
@@ -553,6 +560,16 @@ families:
   - Chips Ahoy Chunky
   - Chips Ahoy Mini
   - Chips Ahoy limited edition flavors
+  # Shopper-facing aliases / protected phrases for AisleCheck entity resolution.
+  # These do not change weekly-ad include regex matching unless also listed above.
+  aliases:
+  - chips ahoy
+  - chips ahoy cookies
+  - nabisco chips ahoy
+  protected_phrases:
+  - chips ahoy
+  clarification:
+    product_label: Chips Ahoy cookies
   keep_separate_from:
   - Oreo
   - Nabisco snack crackers
@@ -596,6 +613,13 @@ families:
   - Goldfish crisps
   - Goldfish flavor blasted
   - Goldfish bags in size range
+  aliases:
+  - goldfish
+  - goldfish crackers
+  protected_phrases:
+  - goldfish
+  clarification:
+    product_label: Goldfish crackers
   keep_separate_from:
   - Milano cookies
   - Pepperidge Farm cookies
@@ -1882,6 +1906,13 @@ families:
   - Smartfood
   - Smartfood Popcorn
   - Smartfood White Cheddar
+  aliases:
+  - smartfood
+  - smartfood popcorn
+  protected_phrases:
+  - smartfood
+  clarification:
+    product_label: Smartfood popcorn
   keep_separate_from:
   - Party Size
   - multipacks

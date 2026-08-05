@@ -1,0 +1,795 @@
+{
+  "generated_on": "2026-08-04",
+  "source": "data/canonical_tracker_families.yaml + data/entity_resolution/phrase_overlays.yaml",
+  "phrase_count": 47,
+  "risk_counts": {
+    "safe_exact_phrase": 47
+  },
+  "validation_failure_count": 0,
+  "validation_failures": [],
+  "phrases": [
+    {
+      "phrase": "cape cod kettle cooked potato chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "cape_cod_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy limited edition flavors",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "general mills cereal (family size)",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "general_mills_cereal_family_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "general mills family size cereal",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "general_mills_cereal_family_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle cooked potato chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "lays_kettle_cooked"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "nabisco ritz toasted chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "ritz_toasted_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "honey nut cheerios cereal",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "general_mills_cereal_regular"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle brand potato chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "kettle_brand_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "lay's kettle cooked chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "lays_kettle_cooked"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips harvest cheddar",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "post cereal (giant size)",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "post_cereal_giant_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "tostitos tortilla chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "tostitos_tortilla_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "giant size post cereal",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "post_cereal_giant_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "post giant size cereal",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "post_cereal_giant_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips french onion",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips garden salsa",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "cape cod kettle chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "cape_cod_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "cape cod potato chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "cape_cod_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "honey bunches of oats",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "post_cereal_giant_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    },
+    {
+      "phrase": "general mills cereal",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "general_mills_cereal_regular"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "ruffles potato chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "ruffles_regular_bags"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy original",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle cooked chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "lays_kettle_cooked"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle potato chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "kettle_brand_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips 7 oz bags",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy cookies",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "family size cereal",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "general_mills_cereal_family_size"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle brand chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "kettle_brand_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "lay's potato chips",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "lays_potato_chips_regular"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "nabisco chips ahoy",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "ritz toasted chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "ritz_toasted_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips original",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy chunky",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy chewy",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy mini",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "cape cod chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "cape_cod_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "pringles chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "pringles"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "kettle chips",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "kettle_brand_chips"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "apple jacks",
+      "source": "manual_overlay",
+      "tracker_ids": [],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 0,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chex cereal",
+      "source": "generated_catalog_phrase",
+      "tracker_ids": [
+        "general_mills_cereal_regular"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "post cereal",
+      "source": "canonical_display_name",
+      "tracker_ids": [
+        "post_cereal_regular"
+      ],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 1,
+      "multi_tracker_brand": true,
+      "package_clarification_required": true,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "cereal"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "chips ahoy",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "chips_ahoy"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "skinny pop",
+      "source": "manual_overlay",
+      "tracker_ids": [],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 0,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    },
+    {
+      "phrase": "skinnypop",
+      "source": "manual_overlay",
+      "tracker_ids": [],
+      "resolves_tracker": false,
+      "suppresses_only": true,
+      "collision_count": 0,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    },
+    {
+      "phrase": "smartfood",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "smartfood_popcorn"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    },
+    {
+      "phrase": "sun chips",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "sun_chips_7oz"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [
+        "chips"
+      ],
+      "validation_errors": []
+    },
+    {
+      "phrase": "goldfish",
+      "source": "manual_overlay",
+      "tracker_ids": [
+        "goldfish_bags"
+      ],
+      "resolves_tracker": true,
+      "suppresses_only": false,
+      "collision_count": 1,
+      "multi_tracker_brand": false,
+      "package_clarification_required": false,
+      "risk": "safe_exact_phrase",
+      "live_categories": [],
+      "validation_errors": []
+    }
+  ],
+  "overlays_path_tracked": true,
+  "overlays_path": "data/entity_resolution/phrase_overlays.yaml"
+}
