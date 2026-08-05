@@ -1,0 +1,124 @@
+{
+  "baseline_id": "deterministic-baseline-v1",
+  "frozen_eval_policy": "Frozen evals may only change through an explicit baseline-version update. New production failures go into evals/development/ or a candidate JSONL \u2014 never silently append to frozen files.",
+  "artifacts": [
+    {
+      "path": "evals/entity-resolution/catalog-resolution-v1.jsonl",
+      "case_count": 276,
+      "sha256": "4ffbe815036d5eaaf5929428ce0a70c36d65555734735c7dedee68b357b12408",
+      "purpose": "Full-catalog entity-resolution offline eval (positive, negative, multifamily, loop).",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/catalog-resolution-v1.meta.json",
+      "case_count": null,
+      "sha256": "b9f76e971390ebba863b36e317f8511672991661d70234d35d96e36cb3617bbd",
+      "purpose": "Catalog eval metadata (schema catalog-resolution-v1, 86 active trackers).",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/catalog-resolution-v1.report.json",
+      "case_count": null,
+      "sha256": "a1ad1df2c1632836a3d1f0589a8f4093db67b06993ec3498d00ea158f5f6d7bc",
+      "purpose": "Last committed catalog-eval report snapshot at freeze.",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/catalog-resolution-waivers.json",
+      "case_count": 1,
+      "sha256": "53780b7d4d323eeafa55cd30fbbb21dbcae7b3307bf6f4bb382081173317c087",
+      "purpose": "Explicit waivers for catalog-resolution-v1.",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/protected-phrase-audit.json",
+      "case_count": 47,
+      "sha256": "0c20da02afad17f6761ed8df9b520769aaa337eeba70227f64fd579b49b17c7f",
+      "purpose": "Protected-phrase audit (47 phrases, 0 validation failures).",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/tracker-coverage-report.json",
+      "case_count": null,
+      "sha256": "09217b793bec512e471ba052933347430d48670de49d1cf51b1058b04d7374e8",
+      "purpose": "Language coverage report for all active trackers.",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/collision-report.json",
+      "case_count": null,
+      "sha256": "384f753b4983295598de6c487b14de00e066292c4bd6c1e875925bf5472e478d",
+      "purpose": "Embedded-token / collision audit.",
+      "status": "frozen"
+    },
+    {
+      "path": "evals/entity-resolution/before-after-comparison.json",
+      "case_count": null,
+      "sha256": "d8ba107b6d61c37acee9580bf8ccbf6f16108de4cf05c83067de3651982219a9",
+      "purpose": "Before/after comparison examples for entity-resolution hardening.",
+      "status": "frozen"
+    },
+    {
+      "path": "tests/test_entity_resolution.py",
+      "case_count": null,
+      "sha256": "458d7458928fbc84abefef7aef0e0502347aacb81ace1d3827e902100bdf9917",
+      "purpose": "Entity-resolution + clarification-loop unit tests.",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_shopper_query.py",
+      "case_count": null,
+      "sha256": "5ec2acdc9028ef661e7b6f8f1584c7c084c2280bd790cfec75a68f1b2080f886",
+      "purpose": "Deterministic parser / normalize tests.",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_aislecheck_shopper_query.py",
+      "case_count": null,
+      "sha256": "d99fec3bb877fb7b3c756ea82e62f8e549cc556abfb9456e0747251c09a0af1e",
+      "purpose": "AisleCheck contract + clarification UI helper tests.",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_aislecheck_api.py",
+      "case_count": null,
+      "sha256": "7a4fd48d49bd9a6ef77104ecec64be7acfcdeba86c7182780038b361f84b283c",
+      "purpose": "Hosted API query + assessment contract tests.",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_aislecheck_api_container_import.py",
+      "case_count": null,
+      "sha256": "e39025c8e11195913b931ca964cb682b97b254178d67ce0e3124eb192061ca25",
+      "purpose": "Production import smoke (no holdout_labeler).",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_deal_assessment.py",
+      "case_count": null,
+      "sha256": "8a5bf2d922161eea9768e8c2b85e18972b62ca77654a26725d595e11901d757f",
+      "purpose": "Deal-assessment policy + normalize + UI gate tests (includes ac18 / structuredClarificationEnabled true).",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_aislecheck_prototype.py",
+      "case_count": null,
+      "sha256": "74a14db5be56869eb8c6338fe10b9b1eef791d6edb3f0b581f131e5037f5553a",
+      "purpose": "Frontend/prototype public contract tests.",
+      "status": "frozen_reference"
+    },
+    {
+      "path": "tests/test_canonical_match_eligibility.py",
+      "case_count": null,
+      "sha256": "234718dc7ce5438532a09fd2d4905bd7b65a67ebd4806438ffeadae1b8ac4e3e",
+      "purpose": "Matcher eligibility / weekly-ad package gate tests.",
+      "status": "frozen_reference"
+    }
+  ],
+  "development_eval_dir": "evals/development/",
+  "notes": [
+    "Shopper-query JSONL under evals/shopper-query-v1.jsonl is local/untracked and is NOT part of this freeze.",
+    "Holdout labeler datasets under evals/holdout/ are local/untracked and are NOT part of this freeze.",
+    "Deal-assessment eval cases live inside tests/test_deal_assessment.py (run_cases helpers), not a separate JSONL."
+  ]
+}

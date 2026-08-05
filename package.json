@@ -30,7 +30,9 @@
     "test:entity-resolution": "PYTHONPATH=scripts python3 -m unittest tests.test_entity_resolution -v",
     "audit:entity-resolution": "PYTHONPATH=scripts python3 -m shopper_query.entity_resolution.audit && PYTHONPATH=scripts python3 -m shopper_query.entity_resolution.phrase_audit",
     "gen:entity-resolution-eval": "PYTHONPATH=scripts python3 -m shopper_query.entity_resolution.generate_catalog_eval",
-    "eval:entity-resolution": "PYTHONPATH=scripts python3 -m shopper_query.entity_resolution.run_catalog_eval"
+    "eval:entity-resolution": "PYTHONPATH=scripts python3 -m shopper_query.entity_resolution.run_catalog_eval",
+    "verify:deterministic-baseline-v1": "PYTHONPATH=scripts python3 -m baselines.verify_deterministic_baseline_v1",
+    "report:deterministic-baseline-v1": "PYTHONPATH=scripts python3 -m baselines.report_deterministic_baseline_v1"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",

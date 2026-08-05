@@ -34,6 +34,9 @@ class TestAisleCheckApi(unittest.TestCase):
         self.assertIn("query", data["contracts"])
         self.assertIn("assessment", data["contracts"])
         self.assertIn("/api/aislecheck/assess", data["endpoints"])
+        self.assertIn("versions", data)
+        self.assertEqual(data["versions"]["baseline_id"], "deterministic-baseline-v1")
+        self.assertIs(data["versions"]["llm_used"], False)
 
     def test_assess_each_price(self) -> None:
         res = self.client.post(

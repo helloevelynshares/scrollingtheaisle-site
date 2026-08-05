@@ -1493,3 +1493,12 @@ Fix / workaround:
 How to verify: `npm run test:entity-resolution`; Chips Ahoy / Sun Chips / Goldfish / Smartfood continue; generic chips still clarifies; second identical brand-clarify escalates with `clarify_loop_broken`.
 Related files: `scripts/shopper_query/entity_resolution/`, `docs/AISLECHECK_ENTITY_RESOLUTION_ROOT_CAUSE.md`, `tests/test_entity_resolution.py`, `index.html`
 
+### AisleCheck deterministic-baseline-v1 freeze
+
+Date discovered: 2026-08-05  
+Context: Public pre-LLM freeze after structured clarification activation (`44ff557`, asset `ac18`, Render backend `0096b89`).  
+What happened: Need an immutable offline + documentation baseline before any LLM shadow work.  
+Fix / workaround: Branch `chore/freeze-deterministic-baseline-v1` adds version constants (`scripts/shopper_query/baseline_versions.py`, exposed under `/health` → `versions`), manifests under `docs/baselines/`, frozen eval hashes, integrity command `npm run verify:deterministic-baseline-v1`, and report skeleton `PYTHONPATH=scripts python3 -m baselines.report_deterministic_baseline_v1`. No matching/scoring/UI policy change.  
+How to verify: `npm run verify:deterministic-baseline-v1`; catalog eval 276/276; tag `deterministic-baseline-v1` after merge.  
+Related files: `docs/baselines/deterministic-baseline-v1.json`, `docs/baselines/deterministic-baseline-v1-policy.md`, `docs/baselines/deterministic-baseline-v1-metrics.md`, `tests/test_deterministic_baseline_v1.py`
+

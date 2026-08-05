@@ -32,6 +32,7 @@ from shopper_query.aislecheck_contract import (  # noqa: E402
 )
 from deal_assessment.service import assess_deal_dict  # noqa: E402
 from deal_assessment.policy import POLICY_VERSION  # noqa: E402
+from shopper_query.baseline_versions import versions_for_health  # noqa: E402
 
 MAX_QUERY_CHARS = int(os.environ.get("AISLECHECK_MAX_QUERY_CHARS", "500"))
 REQUEST_TIMEOUT_MS = int(os.environ.get("AISLECHECK_TIMEOUT_MS", "8000"))
@@ -169,6 +170,7 @@ def health() -> dict[str, Any]:
             "query": AISLECHECK_CONTRACT_VERSION,
             "assessment": POLICY_VERSION,
         },
+        "versions": versions_for_health(),
         "endpoints": ["/api/aislecheck", "/api/aislecheck/assess"],
     }
 

@@ -1,0 +1,93 @@
+{
+  "baseline_id": "deterministic-baseline-v1",
+  "created_at": "2026-08-05T05:00:00Z",
+  "description": "Public pre-LLM AisleCheck deterministic baseline: structured interpretation, catalog entity resolution, clarification, and historical assessment.",
+  "main_sha": "44ff557aac25d70e1eef5f5035e5be6ff9741319",
+  "main_sha_short": "44ff557",
+  "frontend_asset_version": "ac18",
+  "deployed_branches": {
+    "main": "44ff557aac25d70e1eef5f5035e5be6ff9741319",
+    "deploy_backend": "deploy/aislecheck-catalog-entity-resolution",
+    "render_backend_sha": "0096b8927089d5bfd235cbb878884d7c106ab5dc",
+    "render_backend_sha_short": "0096b89",
+    "render_backend_note": "Render serves deploy/aislecheck-catalog-entity-resolution tip 0096b89. Activation commit 44ff557 only flips public FE flag/cache; backend entity-resolution and assessment code are present at 0096b89."
+  },
+  "query_contract_version": "aislecheck.v1",
+  "assessment_contract_version": "aislecheck_history_v1",
+  "deterministic_pipeline_version": "deterministic_pipeline_v1",
+  "catalog_version": "catalog_v1",
+  "catalog_yaml_sha256": "74acc1e7508f8d9979d0f507e08caac05f7c98ad8782f7fb28e41f606e481355",
+  "phrase_overlays_sha256": "8768002f7edc1f51cef69c19b7f725feff71ff262d509190924a077c7acddad7",
+  "entity_resolution_version": "entity_resolution_v1",
+  "assessment_policy_version": "aislecheck_history_v1",
+  "clarification_policy_version": "structured_clarification_v1",
+  "active_tracker_count": 86,
+  "protected_phrase_count": 47,
+  "catalog_eval_version": "catalog-resolution-v1",
+  "catalog_eval_case_count": 276,
+  "llm_used": false,
+  "llm_invoked": false,
+  "llm_token_cost_usd": 0,
+  "llm_invocation_count": 0,
+  "feature_flags": {
+    "liveApiEnabled": true,
+    "assessEnabled": true,
+    "structuredClarificationEnabled": true,
+    "exampleSubmitEnabled": true
+  },
+  "hosted_health_snapshot": {
+    "status": "ok",
+    "service": "aislecheck-api",
+    "contracts": {
+      "query": "aislecheck.v1",
+      "assessment": "aislecheck_history_v1"
+    },
+    "endpoints": ["/api/aislecheck", "/api/aislecheck/assess"]
+  },
+  "evals_manifest": "docs/baselines/deterministic-baseline-v1-evals.json",
+  "policy_doc": "docs/baselines/deterministic-baseline-v1-policy.md",
+  "metrics_doc": "docs/baselines/deterministic-baseline-v1-metrics.md",
+  "test_results_doc": "docs/baselines/deterministic-baseline-v1-test-results.md",
+  "measurement_window_doc": "docs/baselines/deterministic-baseline-v1-measurement-window.md",
+  "comparison_schema": "docs/baselines/comparison-schema-v1.json",
+  "evals": {
+    "catalog_entity_resolution": {
+      "path": "evals/entity-resolution/catalog-resolution-v1.jsonl",
+      "case_count": 276,
+      "passed_at_freeze": 276,
+      "wrong_confident_match_count": 0,
+      "status": "frozen"
+    }
+  },
+  "tests": {
+    "integrity_command": "npm run verify:deterministic-baseline-v1",
+    "results_doc": "docs/baselines/deterministic-baseline-v1-test-results.md",
+    "clean_checkout_recorded_at": "2026-08-05",
+    "suites_passed": [
+      "entity-resolution (24)",
+      "catalog-eval (276/276, wrong_confident=0)",
+      "shopper-query (39)",
+      "matcher-eligibility (63)",
+      "api-query-assess (23)",
+      "deal-assessment (26)",
+      "frontend-prototype (33)",
+      "container-import (3)",
+      "baseline-integrity (7)",
+      "production-app-smoke"
+    ],
+    "preexisting_unrelated_failures": [
+      "tests.test_canonical_families: week expectation 2026-07-08 vs 2026-07-29; multi_family popular refs empty — homepage popular week only, not AisleCheck runtime"
+    ]
+  },
+  "known_limitations": [
+    "Week-level ad history only (not daily shelf scrapes).",
+    "Safeway and Vons history series are never mixed in assessment.",
+    "Some trackers have sparse or empty comparable weeks → insufficient_data / limited_data.",
+    "Clarification answers are still reparsed as free text; loop fingerprints prevent identical non-progress loops.",
+    "Shopper aliases do not change weekly-ad YAML include matching.",
+    "Apple Jacks and similar absent products are unsupported (protected from wrong heuristics, not inventing trackers).",
+    "Production instrumentation for full metric reporting is not yet live; production metrics marked unavailable until collected.",
+    "Untracked local packages (holdout_labeler, deal_assistant tooling) must not be required by the production API path."
+  ],
+  "public_behavior_changed_by_this_freeze": false
+}

@@ -1,0 +1,33 @@
+{
+  "schema_id": "aislecheck_experiment_comparison_v1",
+  "description": "Compare deterministic baseline to future LLM experiment stages without requiring LLM code in this freeze.",
+  "arms": [
+    "deterministic-baseline-v1",
+    "llm-shadow-v1",
+    "llm-fallback-v1"
+  ],
+  "dimensions": [
+    {"id": "eligible_query_count", "type": "count"},
+    {"id": "safe_resolution_rate", "type": "rate", "requires_review": true},
+    {"id": "wrong_confident_match_rate", "type": "rate", "requires_review": true},
+    {"id": "clarification_rate", "type": "rate"},
+    {"id": "assessment_completion_rate", "type": "rate"},
+    {"id": "helpfulness_rate", "type": "rate", "requires_feedback": true},
+    {"id": "query_latency_ms_p50", "type": "latency"},
+    {"id": "query_latency_ms_p95", "type": "latency"},
+    {"id": "assessment_latency_ms_p50", "type": "latency"},
+    {"id": "assessment_latency_ms_p95", "type": "latency"},
+    {"id": "llm_token_cost_usd", "type": "cost"},
+    {"id": "llm_invocation_count", "type": "count"},
+    {"id": "provider_error_count", "type": "count"}
+  ],
+  "deterministic_baseline_v1_cost": {
+    "llm_token_cost_usd": 0,
+    "llm_invocation_count": 0,
+    "provider_error_count": 0
+  },
+  "notes": [
+    "Do not invent production rates. Mark unavailable when instrumentation is missing.",
+    "Wrong-confident rates require human review denominators."
+  ]
+}
