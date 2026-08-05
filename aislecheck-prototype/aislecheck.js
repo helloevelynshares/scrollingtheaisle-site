@@ -39,6 +39,9 @@
     fixIt: "Fix it",
     checkAnother: "Check another deal",
     noneOfThese: "None of these",
+    clarifyLoopHeading: "I still need a clearer product name",
+    clarifyLoopBody:
+      "Try brand plus size or form (for example: Chobani tub, Cheetos party size). Price history was not checked.",
     requestProduct: "Request this product",
     unsupportedHeading: "We don’t track this product yet.",
     unsupportedBody: "You can request it for a future price tracker.",
@@ -150,6 +153,7 @@
     response: null,
     assessment: null,
     clarifyAnswer: "",
+    clarifyDigests: [],
     lastError: "",
     debugOpen: false,
     fieldsCorrected: [],
@@ -924,19 +928,26 @@
   }
 
   function renderUnsupported() {
+    var r = state.response || {};
+    var codes = r.reason_codes || [];
+    var loopTerminal = codes.indexOf("clarify_loop_broken") !== -1;
+    var heading = loopTerminal ? COPY.clarifyLoopHeading : COPY.unsupportedHeading;
+    var body = loopTerminal ? COPY.clarifyLoopBody : COPY.unsupportedBody;
     return (
       '<div class="ac-state ac-state--unsupported" role="region" aria-label="Unsupported product">' +
       '<h3 class="ac-unsupported-heading">' +
-      escapeHtml(COPY.unsupportedHeading) +
+      escapeHtml(heading) +
       "</h3>" +
       "<p>" +
-      escapeHtml(COPY.unsupportedBody) +
+      escapeHtml(body) +
       "</p>" +
-      '<button type="button" class="btn btn-primary" id="ac-request-product"' +
-      (state.requestedProduct ? " disabled" : "") +
-      ">" +
-      (state.requestedProduct ? "Requested" : escapeHtml(COPY.requestProduct)) +
-      "</button>" +
+      (loopTerminal
+        ? ""
+        : '<button type="button" class="btn btn-primary" id="ac-request-product"' +
+          (state.requestedProduct ? " disabled" : "") +
+          ">" +
+          (state.requestedProduct ? "Requested" : escapeHtml(COPY.requestProduct)) +
+          "</button>") +
       '<button type="button" class="btn btn-ghost ac-reset" id="ac-check-another">' +
       escapeHtml(COPY.checkAnother) +
       "</button>" +
@@ -1278,6 +1289,7 @@
     state.response = null;
     state.assessment = null;
     state.clarifyAnswer = "";
+    state.clarifyDigests = [];
     state.lastError = "";
     state.fieldsCorrected = [];
     render();
@@ -1308,6 +1320,15 @@
     state.view = viewFromResponse(response);
     state.loadingLocked = false;
     state.correction = correctionFromResponse(response);
+    if (response && response.clarify_fingerprint) {
+      var digests = state.clarifyDigests || [];
+      if (digests.indexOf(response.clarify_fingerprint) === -1) {
+        digests = digests.concat([response.clarify_fingerprint]).slice(-8);
+      }
+      state.clarifyDigests = digests;
+    } else if (response && response.next_action === "continue") {
+      state.clarifyDigests = [];
+    }
     render();
   }
 
@@ -1405,6 +1426,10 @@
     state.clarifyAnswer = "";
     if (opts.fieldsCorrected) {
       state.fieldsCorrected = opts.fieldsCorrected;
+    } else {
+      // Fresh submit — drop prior clarify fingerprints.
+      state.clarifyDigests = [];
+      state.fieldsCorrected = [];
     }
     render();
 
@@ -1418,6 +1443,7 @@
       query: q,
       session_id: getSessionId(),
       apply_normalization: true,
+      prior_clarify_digests: state.clarifyDigests || [],
     })
       .then(function (response) {
         applyResponse(response);

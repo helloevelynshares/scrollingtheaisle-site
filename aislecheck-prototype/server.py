@@ -156,8 +156,16 @@ class AisleCheckHandler(SimpleHTTPRequestHandler):
                 self._send_json(400, {"error": "empty_query"})
                 return
             session_id = str(payload.get("session_id") or "").strip() or str(uuid.uuid4())
+            prior = payload.get("prior_clarify_digests") or []
+            if not isinstance(prior, list):
+                prior = []
+            prior = [str(x)[:32] for x in prior[:8] if x]
             try:
-                response = run_aislecheck_query(query, session_id=session_id)
+                response = run_aislecheck_query(
+                    query,
+                    session_id=session_id,
+                    prior_clarify_digests=prior or None,
+                )
             except Exception as exc:  # noqa: BLE001
                 self._send_json(
                     500,

@@ -246,6 +246,7 @@ def build_aislecheck_response(
     result: PipelineResult,
     *,
     session_id: str | None = None,
+    prior_clarify_digests: list[str] | None = None,
 ) -> dict[str, Any]:
     """Build the homepage AisleCheck JSON contract from a pipeline result."""
     facade = get_facade()
@@ -276,6 +277,50 @@ def build_aislecheck_response(
         ).startswith("package_synonym"):
             missing_field = "package_size"
 
+    clarify_fingerprint = None
+    if next_action == "clarify":
+        from shopper_query.entity_resolution.clarify_progress import (
+            build_clarify_fingerprint,
+            should_break_clarify_loop,
+        )
+
+        fp = build_clarify_fingerprint(
+            clarify_kind=clarify_kind,
+            clarify_prompt=clarify_prompt,
+            reason=result.behavior.reason,
+            matcher_status=result.match.status,
+            missing_fields=parsed.get("missing_fields") or [],
+            product_text=parsed.get("product_text") or "",
+        )
+        clarify_fingerprint = fp.digest
+        if should_break_clarify_loop(fp, prior_clarify_digests):
+            reason_codes = list(reason_codes) + ["clarify_loop_broken"]
+            # Terminal shopper-facing state: prefer product picks when available,
+            # otherwise unsupported — never claim assessment happened.
+            if plausible:
+                next_action = "clarify"
+                clarify_kind = "ambiguous_product"
+                clarify_prompt = (
+                    "I still can't tell which product you mean. "
+                    "Pick one of these, or try a more specific name "
+                    "(brand plus size or form)."
+                )
+                missing_field = "product_text"
+            else:
+                next_action = "unsupported"
+                clarify_kind = None
+                clarify_prompt = None
+                missing_field = None
+                reason_codes = list(reason_codes) + ["clarify_loop_terminal"]
+            clarify_fingerprint = build_clarify_fingerprint(
+                clarify_kind=clarify_kind or "unsupported",
+                clarify_prompt=clarify_prompt or "unsupported",
+                reason="clarify_loop_broken",
+                matcher_status=result.match.status,
+                missing_fields=["product_text"] if next_action == "clarify" else [],
+                product_text=parsed.get("product_text") or "",
+            ).digest
+
     normalizations = []
     if result.normalized:
         normalizations = [s.to_dict() for s in result.normalized.steps]
@@ -304,6 +349,7 @@ def build_aislecheck_response(
         "clarify_kind": clarify_kind,
         "clarify_prompt": clarify_prompt,
         "clarify_field": missing_field,
+        "clarify_fingerprint": clarify_fingerprint,
         "reason_codes": reason_codes,
         "session_id": session_id,
         "debug": {
@@ -316,6 +362,7 @@ def build_aislecheck_response(
                 "next_action": next_action,
                 "clarify_kind": clarify_kind,
                 "clarify_field": missing_field,
+                "clarify_fingerprint": clarify_fingerprint,
             },
         },
     }
@@ -326,7 +373,12 @@ def run_aislecheck_query(
     *,
     session_id: str | None = None,
     apply_normalization: bool = True,
+    prior_clarify_digests: list[str] | None = None,
 ) -> dict[str, Any]:
     """Process a shopper query and return the AisleCheck contract."""
     result = process_query(query, apply_normalization=apply_normalization)
-    return build_aislecheck_response(result, session_id=session_id)
+    return build_aislecheck_response(
+        result,
+        session_id=session_id,
+        prior_clarify_digests=prior_clarify_digests,
+    )
