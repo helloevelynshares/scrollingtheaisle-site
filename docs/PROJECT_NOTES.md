@@ -1460,3 +1460,12 @@ Fix / workaround: Fast-forwarded `release/aislecheck-deal-assessment` (incl. imp
 How to verify: Live `index.html` shows `assessEnabled: false`, assets `ac15`; `GET https://aislecheck-api.onrender.com/health` includes both contracts; `8561208` not ancestor of `main`.  
 Related files: `index.html`, `services/aislecheck_api/app.py`, `scripts/deal_assessment/`, `release/aislecheck-enable-assessment`
 
+### AisleCheck public scoring activated
+
+Date discovered: 2026-08-04  
+Context: User approved merging activation commit after Day 2 hosted validation.  
+What happened: Cherry-picked `8561208` onto `main` as `bf6d52a` (`assessEnabled: true`, assets `ac16`). Live Pages verified Doritos `normal_sale`, Tillamook `weak_sale`, ribs `limited_data`, Chobani tub `insufficient_data`, 30 oz Doritos `not_comparable`, and assess outage → temporary unavailable + Try again (no fake verdict). Hosted `/api/aislecheck/event` remains absent (404s are best-effort local logging only; query/assess unaffected).  
+Fix / workaround: Instant rollback = set `assessEnabled: false` in `index.html` and push `main` (optionally bump cache beyond `ac16`).  
+How to verify: Live source shows `assessEnabled: true` + `ac16`; Check this price returns evidence panel.  
+Related files: `index.html`, `tests/test_deal_assessment.py`
+
