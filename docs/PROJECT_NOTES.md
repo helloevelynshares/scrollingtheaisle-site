@@ -1469,3 +1469,12 @@ Fix / workaround: Instant rollback = set `assessEnabled: false` in `index.html` 
 How to verify: Live source shows `assessEnabled: true` + `ac16`; Check this price returns evidence panel.  
 Related files: `index.html`, `tests/test_deal_assessment.py`
 
+### AisleCheck Chips Ahoy brand-clarify loop
+
+Date discovered: 2026-08-04  
+Context: Live AisleCheck after public scoring; user query like “Safeway Chips Ahoy are $1.99”.  
+What happened: Parser treated “Chips” inside **Chips Ahoy** as generic chips → `product_brand_unspecified:chips` → “Which brand of chips was it?”. Answering “Chips Ahoy” re-triggered the same prompt. Bare “Chips Ahoy” also failed matcher includes (patterns required “cookies” / flavor words from family includes).  
+Fix / workaround: (1) Exclude `\bchips\s*ahoy\b` from the chips brand-unspecified heuristic. (2) Don’t block unique matcher hits on brand-unspecified (package-synonym clarify still blocks). (3) Add YAML include `Chips Ahoy` under `chips_ahoy`. Redeploy Render API — this is server-side, not an `ac*` frontend bump.  
+How to verify: `PYTHONPATH=scripts python3 -c "from shopper_query.aislecheck_contract import run_aislecheck_query; print(run_aislecheck_query('Safeway Chips Ahoy are \$1.99')['next_action'], run_aislecheck_query('Safeway Chips Ahoy are \$1.99')['selected_tracker']['id'])"` → `continue chips_ahoy`. Generic “Safeway chips are $2.49” still clarifies brand.  
+Related files: `scripts/shopper_query/deterministic_parser.py`, `scripts/shopper_query/behavior.py`, `data/canonical_tracker_families.yaml`, `tests/test_aislecheck_shopper_query.py`
+
