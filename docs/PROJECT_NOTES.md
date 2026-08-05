@@ -1451,3 +1451,12 @@ Fix / workaround: Single source of truth in committed `scripts/shopper_query/off
 How to verify: `PYTHONPATH=scripts python3 -c "from services.aislecheck_api.app import app; print('import ok')"`; `PYTHONPATH=scripts python3 -m unittest tests.test_aislecheck_api_container_import -v`; Docker: `docker build -f services/aislecheck_api/Dockerfile -t aislecheck-api . && docker run --rm aislecheck-api python -c "from services.aislecheck_api.app import app; print('import ok')"`.  
 Related files: `scripts/shopper_query/offer_vocab.py`, `scripts/shopper_query/schema.py`, `services/aislecheck_api/Dockerfile`, `tests/test_aislecheck_api_container_import.py`
 
+### AisleCheck Day 2 hosted assessment validated; scoring still off on main
+
+Date discovered: 2026-08-04  
+Context: After Render ran `12090f7` on `deploy/aislecheck-assessment-api`, complete Day 2 gates before public scoring.  
+What happened: Hosted `/health` advertises `query: aislecheck.v1` + `assessment: aislecheck_history_v1`. Query regression + assess cases (each / multi-buy / BOGO / limited_data / insufficient_data / invalid_offer / not_comparable / unknown tracker / malformed) passed. CORS allows `https://scrollingtheaisle.com`, blocks unapproved origins. Local homepage × hosted API with temporary `assessEnabled: true` completed interpretation → Fix it → Check this price → verdict, plus failure/retry and mobile. Usefulness feedback UI is **not implemented** yet.  
+Fix / workaround: Fast-forwarded `release/aislecheck-deal-assessment` (incl. import fix) to `main` as `3c6d5b8` with **`assessEnabled: false`**. Do **not** merge `8561208` (`release/aislecheck-enable-assessment`) until explicit activation approval. Rollback scoring forever: keep/set `assessEnabled: false`. Rollback interpretation: `liveApiEnabled: false`.  
+How to verify: Live `index.html` shows `assessEnabled: false`, assets `ac15`; `GET https://aislecheck-api.onrender.com/health` includes both contracts; `8561208` not ancestor of `main`.  
+Related files: `index.html`, `services/aislecheck_api/app.py`, `scripts/deal_assessment/`, `release/aislecheck-enable-assessment`
+
