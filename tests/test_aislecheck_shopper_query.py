@@ -225,7 +225,9 @@ const out = {
   hasUnderstood: fs.readFileSync(path, "utf8").includes("Here’s what AisleCheck understood"),
   hasPlaceholder: fs.readFileSync(path, "utf8").includes("still in progress"),
   hasAlmostReady: fs.readFileSync(path, "utf8").includes("AisleCheck is almost ready"),
-  hasOptIn: fs.readFileSync(path, "utf8").includes("Submit this example"),
+  hasTemporaryUnavailable: fs.readFileSync(path, "utf8").includes("We couldn’t check that deal right now"),
+  hasOptIn: fs.readFileSync(path, "utf8").includes("Submit as an example"),
+  noOldOptIn: !fs.readFileSync(path, "utf8").includes("Submit this example"),
   debugGated: fs.readFileSync(path, "utf8").includes('get("aislecheckDebug") === "1"'),
   debugOffByDefault: API.isDebugEnabled() === false,
   noGoodDealVerdict: !fs.readFileSync(path, "utf8").includes('"Good deal"'),
@@ -279,7 +281,9 @@ process.stdout.write(JSON.stringify(out));
         self.assertTrue(self.logic["hasUnderstood"])
         self.assertTrue(self.logic["hasPlaceholder"])
         self.assertTrue(self.logic["hasAlmostReady"])
+        self.assertTrue(self.logic["hasTemporaryUnavailable"])
         self.assertTrue(self.logic["hasOptIn"])
+        self.assertTrue(self.logic["noOldOptIn"])
         self.assertTrue(self.logic["debugGated"])
         self.assertTrue(self.logic["debugOffByDefault"])
         self.assertTrue(self.logic["noGoodDealVerdict"])

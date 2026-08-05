@@ -1394,12 +1394,24 @@ Fix / workaround:
 How to verify: After push, RPC with `"\t\t"` / `"\n\n"` / `" \n\t "` → 400 `Query is required`; normal query still 200.  
 Related files: `supabase/migrations/20260805_aislecheck_examples_trim.sql`
 
+### AisleCheck temporary-failure vs almost-ready UX
+
+Date discovered: 2026-08-04  
+Context: Live API on homepage (`liveApiEnabled: true`) with Render free-tier cold starts / intermittent outages.  
+What happened: API failure/timeout previously reused the **AisleCheck is almost ready** copy, which implied the feature had not launched; opt-in submit looked primary.  
+Fix / workaround:
+1. **State A** (`liveApiEnabled: true` + network/timeout/non-OK): heading **We couldn’t check that deal right now**, body about waking up, preserved query, primary **Try again**, secondary **Submit as an example**, tertiary **Check another deal**. Client aborts hung POSTs after 15s (`API_TIMEOUT_MS`; override via `__AISLECHECK_CONFIG__.apiTimeoutMs`).
+2. **State B** (`liveApiEnabled: false` only): keep **AisleCheck is almost ready** + opt-in example / check another — **no Try again**.
+3. Never auto-store queries; no fake interpretation/verdict on either path. Assets `?v=ac14`.  
+How to verify: `npm run test:aislecheck-prototype` (includes `tests/aislecheck_fallback_harness.cjs`). Local: break `apiBaseUrl` or set short `apiTimeoutMs` → temporary copy; set `liveApiEnabled: false` → almost-ready.  
+Related files: `aislecheck-prototype/aislecheck.js`, `aislecheck-prototype/aislecheck.css`, `tests/test_aislecheck_prototype.py`, `tests/aislecheck_fallback_harness.cjs`, `index.html`
+
 ### AisleCheck live API published on homepage
 
 Date discovered: 2026-08-04  
 Context: Production activation of hosted deterministic interpretation after Render validation.  
 What happened: Merged `release/aislecheck-enable-live-api` (`7b58d23`) into `main` as `dc2b1e5`. Live config: `apiBaseUrl=https://aislecheck-api.onrender.com`, `liveApiEnabled: true`, `exampleSubmitEnabled: true`, assets `?v=ac13`. Diff vs main was only `index.html` + prototype test assertion (no matcher/LLM/scoring changes).  
-Fix / workaround: Instant rollback = set `liveApiEnabled: false` on `main` and push (keep `exampleSubmitEnabled: true` unless that flow fails). Free-tier cold start can take ~2–3s on first POST; intermittent edge `404` with `x-render-routing: no-server` until awake. Outage still shows “AisleCheck is almost ready” with preserved query + optional Submit this example.  
+Fix / workaround: Instant rollback = set `liveApiEnabled: false` on `main` and push (keep `exampleSubmitEnabled: true` unless that flow fails). Free-tier cold start can take ~2–3s on first POST; intermittent edge `404` with `x-render-routing: no-server` until awake. Outage/timeout with live API enabled shows temporary-unavailable copy (**We couldn’t check that deal right now**) with Try again + preserved query + optional Submit as an example — not the almost-ready launch-preview messaging.  
 How to verify: https://scrollingtheaisle.com/ source shows `ac13` + live flags; Doritos → understood; cereal → clarify; quinoa → unsupported; conflict → invalid; Check this price → “Still in progress” placeholder.  
 Related files: `index.html`, `aislecheck-prototype/aislecheck.js`, `docs/AISLECHECK_API_ACTIVATION.patch.txt`
 
