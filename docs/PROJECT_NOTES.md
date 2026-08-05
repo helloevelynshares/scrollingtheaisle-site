@@ -1442,3 +1442,12 @@ Fix / workaround:
 How to verify: `npm run preview:homepage`; submit “Safeway Doritos 9.75 oz are $2.49 each when I buy four”; expand Developer debug. `npm run test:aislecheck-prototype`.  
 Related files: `aislecheck-prototype/server.py`, `aislecheck-prototype/aislecheck.js`, `scripts/shopper_query/aislecheck_contract.py`, `tests/test_aislecheck_shopper_query.py`, `output/aislecheck_query_records/`
 
+### AisleCheck API must not import untracked holdout_labeler
+
+Date discovered: 2026-08-04  
+Context: Render deploy of `deploy/aislecheck-assessment-api` built Docker successfully but Uvicorn crashed on import.  
+What happened: `shopper_query.schema` imported `PRICE_BASIS_VALUES` / `PROMOTION_TYPES` from `holdout_labeler.paths`. Locally that package exists as **untracked** `scripts/holdout_labeler/` (not in git), so unit tests passed. Render builds from git only, so `COPY scripts` never included it → `ModuleNotFoundError: No module named 'holdout_labeler'`.  
+Fix / workaround: Single source of truth in committed `scripts/shopper_query/offer_vocab.py`. Production `shopper_query.schema` imports from there. Local `holdout_labeler.paths` re-exports the same constants (do not duplicate the tuples). Never make production API code depend on labeling-only packages.  
+How to verify: `PYTHONPATH=scripts python3 -c "from services.aislecheck_api.app import app; print('import ok')"`; `PYTHONPATH=scripts python3 -m unittest tests.test_aislecheck_api_container_import -v`; Docker: `docker build -f services/aislecheck_api/Dockerfile -t aislecheck-api . && docker run --rm aislecheck-api python -c "from services.aislecheck_api.app import app; print('import ok')"`.  
+Related files: `scripts/shopper_query/offer_vocab.py`, `scripts/shopper_query/schema.py`, `services/aislecheck_api/Dockerfile`, `tests/test_aislecheck_api_container_import.py`
+

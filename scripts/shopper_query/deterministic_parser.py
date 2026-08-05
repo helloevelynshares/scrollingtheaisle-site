@@ -6,7 +6,7 @@ regex families already used when interpreting offer / promo text:
 
 - ``price_tracker.normalization`` multi-buy / BOGO / price parsing cues
 - ``generate_weekly_ad_prices._BOGO_PROMO_RE`` BOGO wording
-- holdout ``PROMOTION_TYPES`` / ``PRICE_BASIS_VALUES``
+- shared ``PROMOTION_TYPES`` / ``PRICE_BASIS_VALUES`` (``shopper_query.offer_vocab``)
 
 It does NOT call an LLM and does NOT invent product identity.
 """
