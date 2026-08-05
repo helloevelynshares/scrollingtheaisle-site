@@ -1415,9 +1415,9 @@ Fix / workaround:
 1. Domain module `scripts/deal_assessment/` — `normalize_offer` → `history_repository` (generated TS via `weekly_ad_analysis.benchmarks`) → `comparability` → `scorer` → `assess_deal(tracker_id, retailer, submitted_offer)`.
 2. Local API only: `POST /api/aislecheck/assess` in `aislecheck-prototype/server.py` (structured fields only; never reparses free text).
 3. Homepage gate: `assessEnabled: false` in production `index.html` — Check this price stays placeholder until Render gets the endpoint. Local preview: set `assessEnabled: true` and empty/`localhost` `apiBaseUrl`.
-4. Refuse verdicts for insufficient history (&lt;2 obs), unsupported retailer, out-of-range package size, or unnormalizable price.  
+4. Refuse strong verdicts below 4 comparable weeks: 0–1 → `insufficient_data`; 2–3 → `limited_data` (Early price signal); 4+ → normal benchmark buckets. See `docs/AISLECHECK_ASSESSMENT_POLICY.md` and `scripts/deal_assessment/policy.py`.  
 How to verify: `PYTHONPATH=scripts python3 -m unittest tests.test_deal_assessment -v`. Local: `npm run preview:homepage` with `assessEnabled: true` → Doritos understood → Check this price → evidence panel.  
-Related files: `scripts/deal_assessment/`, `aislecheck-prototype/server.py`, `aislecheck-prototype/aislecheck.js`, `tests/test_deal_assessment.py`, `config/price_benchmark_thresholds.json`
+Related files: `scripts/deal_assessment/`, `docs/AISLECHECK_ASSESSMENT_POLICY.md`, `aislecheck-prototype/server.py`, `aislecheck-prototype/aislecheck.js`, `tests/test_deal_assessment.py`, `config/price_benchmark_thresholds.json`
 
 ### AisleCheck live API published on homepage
 

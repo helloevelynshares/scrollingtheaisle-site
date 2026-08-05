@@ -10,6 +10,7 @@ from .comparability import check_comparability
 from .history_repository import load_family_meta, load_observation_series
 from .models import DealAssessment, SubmittedOffer
 from .normalize_offer import normalize_submitted_offer
+from .policy import history_tier
 from .scorer import (
     build_summary,
     evidence_from_benchmark,
@@ -28,6 +29,11 @@ def assess_deal(
 
     Interpretation (free-text → structured fields) must already be done.
     This function never reparses a shopper sentence and never uses an LLM.
+
+    Minimum-history policy (see policy.py):
+    - 0–1 comparable weeks → insufficient_data (no verdict)
+    - 2–3 weeks → limited_data (evidence only; no strong sale label)
+    - 4+ weeks → normal benchmark verdict
     """
     offer = (
         submitted_offer
@@ -71,9 +77,8 @@ def assess_deal(
         )
 
     if not comparability.ok or not comparability.feed_id:
-        # Prefer insufficient_history label when that is the only hard blocker.
-        if comparability.reasons == ("insufficient_history",):
-            verdict = "insufficient_history"
+        if "insufficient_history" in comparability.reasons:
+            verdict = "insufficient_data"
         else:
             verdict = "not_comparable"
         observations = (
@@ -116,6 +121,66 @@ def assess_deal(
     benchmark = compute_benchmark_from_values(
         values, normalized.comparable_unit_price
     )
+    tier = history_tier(len(values))
+
+    if tier == "insufficient_data":
+        verdict = "insufficient_data"
+        return DealAssessment(
+            ok=False,
+            verdict=verdict,
+            verdict_label=label_for_verdict(verdict),
+            headline=headline_for_verdict(verdict),
+            summary=build_summary(
+                verdict=verdict,
+                unit_price=normalized.comparable_unit_price,
+                benchmark=benchmark,
+                tracker_label=tracker_label,
+            ),
+            tracker_id=tracker_id,
+            retailer=retailer,
+            feed_id=comparability.feed_id,
+            submitted_offer=offer,
+            normalized_offer=normalized,
+            comparability=comparability,
+            evidence=evidence_from_benchmark(
+                benchmark,
+                unit_price=normalized.comparable_unit_price,
+                feed_id=comparability.feed_id,
+                tracker_id=tracker_id,
+                history_tier_name=tier,
+            ),
+            recent_observations=tuple(observations[-5:]),
+        )
+
+    if tier == "limited_data":
+        verdict = "limited_data"
+        return DealAssessment(
+            ok=True,
+            verdict=verdict,
+            verdict_label=label_for_verdict(verdict),
+            headline=headline_for_verdict(verdict),
+            summary=build_summary(
+                verdict=verdict,
+                unit_price=normalized.comparable_unit_price,
+                benchmark=benchmark,
+                tracker_label=tracker_label,
+            ),
+            tracker_id=tracker_id,
+            retailer=retailer,
+            feed_id=comparability.feed_id,
+            submitted_offer=offer,
+            normalized_offer=normalized,
+            comparability=comparability,
+            evidence=evidence_from_benchmark(
+                benchmark,
+                unit_price=normalized.comparable_unit_price,
+                feed_id=comparability.feed_id,
+                tracker_id=tracker_id,
+                history_tier_name=tier,
+            ),
+            recent_observations=tuple(observations[-5:]),
+        )
+
     verdict = verdict_from_bucket(benchmark.benchmark_bucket)
     return DealAssessment(
         ok=True,
@@ -139,6 +204,7 @@ def assess_deal(
             unit_price=normalized.comparable_unit_price,
             feed_id=comparability.feed_id,
             tracker_id=tracker_id,
+            history_tier_name=tier,
         ),
         recent_observations=tuple(observations[-5:]),
     )
