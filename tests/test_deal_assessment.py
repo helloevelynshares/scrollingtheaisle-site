@@ -254,7 +254,8 @@ class TestAssessEndpointContract(unittest.TestCase):
         self.assertIn("startAssess", js)
         self.assertIn("/api/aislecheck/assess", js)
         self.assertIn("assessEnabled: true", html)
-        self.assertIn("aislecheck.js?v=ac16", html)
+        self.assertIn("structuredClarificationEnabled: false", html)
+        self.assertIn("aislecheck.js?v=ac17", html)
         self.assertNotIn("deal_assistant", js)
 
     def test_policy_module_present(self) -> None:

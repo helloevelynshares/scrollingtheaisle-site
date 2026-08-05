@@ -130,10 +130,25 @@ class TestClarifyLoop(unittest.TestCase):
             prior_clarify_digests=[fp],
         )
         self.assertIn("clarify_loop_broken", second.get("reason_codes") or [])
-        # Terminal: unsupported (no candidates) or product clarify (with candidates).
+        # Public default (structured_clarification=False): plain unsupported terminal.
+        self.assertEqual(second.get("next_action"), "unsupported")
+        self.assertIn("clarify_loop_terminal", second.get("reason_codes") or [])
+
+    def test_loop_break_structured_can_offer_candidates(self) -> None:
+        first = run_aislecheck_query(
+            "Safeway Cheetos are $2.49",
+            structured_clarification=True,
+        )
+        self.assertEqual(first["next_action"], "clarify")
+        fp = first.get("clarify_fingerprint")
+        second = run_aislecheck_query(
+            "Safeway Cheetos are $2.49 Cheetos",
+            prior_clarify_digests=[fp],
+            structured_clarification=True,
+        )
+        self.assertIn("clarify_loop_broken", second.get("reason_codes") or [])
+        # With candidates + structured opt-in, terminal may remain clarify with picks.
         self.assertIn(second.get("next_action"), {"unsupported", "clarify"})
-        if second.get("next_action") == "clarify":
-            self.assertEqual(second.get("clarify_kind"), "ambiguous_product")
 
 
 class TestCatalogCollisions(unittest.TestCase):

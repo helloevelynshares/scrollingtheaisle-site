@@ -1489,6 +1489,7 @@ Fix / workaround:
 3. Shopper alias layer on top of YAML matching (`shopper_aliases.py`) — does not change weekly-ad includes.
 4. Clarify fingerprints ignore product-text drift; frontend sends `prior_clarify_digests` on clarify retries.
 5. Audits: `npm run audit:entity-resolution` → `evals/entity-resolution/tracker-coverage-report.json`, `collision-report.json`, `docs/AISLECHECK_TRACKER_LANGUAGE_COVERAGE.md`.
+6. Public structured clarification UX gated by `structuredClarificationEnabled` (default **false**). See `docs/AISLECHECK_STRUCTURED_CLARIFICATION_FLAG.md`.
 How to verify: `npm run test:entity-resolution`; Chips Ahoy / Sun Chips / Goldfish / Smartfood continue; generic chips still clarifies; second identical brand-clarify escalates with `clarify_loop_broken`.
-Related files: `scripts/shopper_query/entity_resolution/`, `docs/AISLECHECK_ENTITY_RESOLUTION_ROOT_CAUSE.md`, `tests/test_entity_resolution.py`
+Related files: `scripts/shopper_query/entity_resolution/`, `docs/AISLECHECK_ENTITY_RESOLUTION_ROOT_CAUSE.md`, `tests/test_entity_resolution.py`, `index.html`
 

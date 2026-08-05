@@ -80,6 +80,9 @@ class QueryBody(BaseModel):
     session_id: Optional[str] = Field(default=None, max_length=80)
     # Digests from prior clarify turns — used to break non-progressing loops.
     prior_clarify_digests: Optional[list[str]] = None
+    # Opt-in structured clarification UX (candidate picks on loop terminal).
+    # Public homepage keeps this false until activation.
+    structured_clarification: bool = False
 
 
 class AssessBody(BaseModel):
@@ -206,6 +209,7 @@ def aislecheck(body: QueryBody, request: Request) -> dict[str, Any]:
             session_id=body.session_id,
             apply_normalization=body.apply_normalization,
             prior_clarify_digests=prior or None,
+            structured_clarification=bool(body.structured_clarification),
         )
         result = _attach_meta(result, request_id)
         elapsed_ms = (time.perf_counter() - started) * 1000.0

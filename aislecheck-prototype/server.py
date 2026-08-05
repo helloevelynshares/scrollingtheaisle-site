@@ -160,11 +160,13 @@ class AisleCheckHandler(SimpleHTTPRequestHandler):
             if not isinstance(prior, list):
                 prior = []
             prior = [str(x)[:32] for x in prior[:8] if x]
+            structured = payload.get("structured_clarification") is True
             try:
                 response = run_aislecheck_query(
                     query,
                     session_id=session_id,
                     prior_clarify_digests=prior or None,
+                    structured_clarification=structured,
                 )
             except Exception as exc:  # noqa: BLE001
                 self._send_json(

@@ -177,6 +177,10 @@
       exampleSubmitEnabled: cfg.exampleSubmitEnabled === true,
       // Historical scoring stays off until assess is intentionally enabled.
       assessEnabled: cfg.assessEnabled === true,
+      // Structured clarification UX (loop-terminal copy / opt-in API mode).
+      // Public default is false until a dedicated activation commit.
+      structuredClarificationEnabled:
+        cfg.structuredClarificationEnabled === true,
       apiTimeoutMs:
         typeof cfg.apiTimeoutMs === "number" && cfg.apiTimeoutMs > 0
           ? cfg.apiTimeoutMs
@@ -196,6 +200,10 @@
 
   function isAssessEnabled() {
     return readConfig().assessEnabled;
+  }
+
+  function isStructuredClarificationEnabled() {
+    return readConfig().structuredClarificationEnabled;
   }
 
   function isLocalHost(hostname, protocol) {
@@ -930,7 +938,9 @@
   function renderUnsupported() {
     var r = state.response || {};
     var codes = r.reason_codes || [];
-    var loopTerminal = codes.indexOf("clarify_loop_broken") !== -1;
+    var loopTerminal =
+      isStructuredClarificationEnabled() &&
+      codes.indexOf("clarify_loop_broken") !== -1;
     var heading = loopTerminal ? COPY.clarifyLoopHeading : COPY.unsupportedHeading;
     var body = loopTerminal ? COPY.clarifyLoopBody : COPY.unsupportedBody;
     return (
@@ -1444,6 +1454,7 @@
       session_id: getSessionId(),
       apply_normalization: true,
       prior_clarify_digests: state.clarifyDigests || [],
+      structured_clarification: isStructuredClarificationEnabled(),
     })
       .then(function (response) {
         applyResponse(response);
@@ -1792,6 +1803,7 @@
     apiUrl: apiUrl,
     isLiveApiEnabled: isLiveApiEnabled,
     isAssessEnabled: isAssessEnabled,
+    isStructuredClarificationEnabled: isStructuredClarificationEnabled,
     VARIATION_META: VARIATION_META,
     COPY: COPY,
     EXAMPLE_QUERY: EXAMPLE_QUERY,

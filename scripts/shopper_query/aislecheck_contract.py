@@ -247,8 +247,14 @@ def build_aislecheck_response(
     *,
     session_id: str | None = None,
     prior_clarify_digests: list[str] | None = None,
+    structured_clarification: bool = False,
 ) -> dict[str, Any]:
-    """Build the homepage AisleCheck JSON contract from a pipeline result."""
+    """Build the homepage AisleCheck JSON contract from a pipeline result.
+
+    ``structured_clarification`` opts into loop-terminal candidate pick lists and
+    related prompts. When false (public default), loop breaks become plain
+    ``unsupported`` so older frontends keep their existing contract.
+    """
     facade = get_facade()
     parsed = result.parsed.to_dict()
     reason_codes = _reason_codes(result)
@@ -295,9 +301,8 @@ def build_aislecheck_response(
         clarify_fingerprint = fp.digest
         if should_break_clarify_loop(fp, prior_clarify_digests):
             reason_codes = list(reason_codes) + ["clarify_loop_broken"]
-            # Terminal shopper-facing state: prefer product picks when available,
-            # otherwise unsupported — never claim assessment happened.
-            if plausible:
+            if structured_clarification and plausible:
+                # Opt-in: show candidate picks as the terminal clarify step.
                 next_action = "clarify"
                 clarify_kind = "ambiguous_product"
                 clarify_prompt = (
@@ -307,10 +312,12 @@ def build_aislecheck_response(
                 )
                 missing_field = "product_text"
             else:
+                # Public / legacy-safe terminal: unsupported, no new pick-list UX.
                 next_action = "unsupported"
                 clarify_kind = None
                 clarify_prompt = None
                 missing_field = None
+                plausible = []
                 reason_codes = list(reason_codes) + ["clarify_loop_terminal"]
             clarify_fingerprint = build_clarify_fingerprint(
                 clarify_kind=clarify_kind or "unsupported",
@@ -363,6 +370,7 @@ def build_aislecheck_response(
                 "clarify_kind": clarify_kind,
                 "clarify_field": missing_field,
                 "clarify_fingerprint": clarify_fingerprint,
+                "structured_clarification": bool(structured_clarification),
             },
         },
     }
@@ -374,6 +382,7 @@ def run_aislecheck_query(
     session_id: str | None = None,
     apply_normalization: bool = True,
     prior_clarify_digests: list[str] | None = None,
+    structured_clarification: bool = False,
 ) -> dict[str, Any]:
     """Process a shopper query and return the AisleCheck contract."""
     result = process_query(query, apply_normalization=apply_normalization)
@@ -381,4 +390,5 @@ def run_aislecheck_query(
         result,
         session_id=session_id,
         prior_clarify_digests=prior_clarify_digests,
+        structured_clarification=structured_clarification,
     )
