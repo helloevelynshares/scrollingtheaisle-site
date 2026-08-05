@@ -546,6 +546,8 @@ families:
   category: cookies_crackers
   organic_status: not_applicable
   include:
+  - Chips Ahoy cookies
+  - Chips Ahoy
   - Chips Ahoy Original
   - Chips Ahoy Chewy
   - Chips Ahoy Chunky

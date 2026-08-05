@@ -101,6 +101,15 @@ class TestDeterministicParser(unittest.TestCase):
         parsed = parse_shopper_query("Cheerios are five bucks")
         self.assertIsNone(parsed.price)
 
+    def test_chips_ahoy_is_not_unspecified_chip_brand(self) -> None:
+        parsed = parse_shopper_query("Safeway Chips Ahoy are $1.99")
+        self.assertNotIn("product_brand_unspecified:chips", parsed.ambiguities)
+        self.assertIn("chips ahoy", parsed.product_text.lower())
+
+    def test_generic_chips_still_asks_for_brand(self) -> None:
+        parsed = parse_shopper_query("Safeway chips are $2.49")
+        self.assertIn("product_brand_unspecified:chips", parsed.ambiguities)
+
 
 class TestBehavior(unittest.TestCase):
     def test_invalid_on_conflict(self) -> None:

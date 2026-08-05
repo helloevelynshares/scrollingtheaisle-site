@@ -58,27 +58,27 @@ def decide_behavior(
             candidate_family_ids=candidate_family_ids,
         )
 
-    # Package synonym / brand ambiguity → clarify even if a matcher hit exists.
-    blocking_ambiguities = [
-        a
-        for a in parsed.ambiguities
-        if a.startswith("package_synonym_ambiguous")
-        or a.startswith("product_brand_unspecified")
+    # Package synonym ambiguity → clarify even if a matcher hit exists (size still
+    # unclear). Brand-unspecified only blocks when matching did not resolve a brand.
+    package_ambiguities = [
+        a for a in parsed.ambiguities if a.startswith("package_synonym_ambiguous")
     ]
-    if blocking_ambiguities and match_status != "matched":
+    brand_ambiguities = [
+        a for a in parsed.ambiguities if a.startswith("product_brand_unspecified")
+    ]
+    if package_ambiguities:
         return BehaviorDecision(
             behavior="clarify",
             automatic_continuation_safe=False,
-            reason=blocking_ambiguities[0],
+            reason=package_ambiguities[0],
             matched_family_id=matched_family_id,
             candidate_family_ids=candidate_family_ids,
         )
-    if blocking_ambiguities and match_status == "matched":
-        # Matched despite synonym — still unsafe to auto-continue without size.
+    if brand_ambiguities and match_status != "matched":
         return BehaviorDecision(
             behavior="clarify",
             automatic_continuation_safe=False,
-            reason=blocking_ambiguities[0],
+            reason=brand_ambiguities[0],
             matched_family_id=matched_family_id,
             candidate_family_ids=candidate_family_ids,
         )

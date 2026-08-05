@@ -85,6 +85,17 @@ class TestAisleCheckContractCases(unittest.TestCase):
         self.assertLessEqual(len(result["plausible_trackers"]), 3)
         self.assertIn("ambiguous_tracker_match", result["reason_codes"])
 
+    def test_chips_ahoy_continues_without_brand_loop(self) -> None:
+        """Chips Ahoy is a brand; do not ask 'which brand of chips?' in a loop."""
+        result = run_aislecheck_query("Safeway Chips Ahoy are $1.99")
+        self.assertEqual(result["next_action"], "continue")
+        self.assertEqual(result["selected_tracker"]["id"], "chips_ahoy")
+        self.assertNotIn("product_brand_unspecified:chips", result["reason_codes"])
+        self.assertNotEqual(
+            (result.get("clarify_prompt") or "").lower(),
+            "which brand of chips was it?",
+        )
+
     def test_unsupported_product(self) -> None:
         result = run_aislecheck_query("quinoa crackers $2.99 at Safeway")
         self.assertEqual(result["next_action"], "unsupported")

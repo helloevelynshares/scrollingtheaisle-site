@@ -348,10 +348,17 @@ def parse_shopper_query(raw_query: str) -> ParsedShopperQuery:
         missing.append("retailer")
 
     # Ambiguous identity heuristics (conservative — do not auto-pick trackers).
-    if re.search(r"\bchips?\b", product_text, re.I) and not re.search(
-        r"\b(doritos|lays|lay'?s|ruffles|kettle|cheetos|tostitos|sun\s*chips)\b",
-        product_text,
-        re.I,
+    # "Chips Ahoy" is a cookie brand that contains the word "chips"; do not treat
+    # it as an unspecified potato-chip brand (that caused an AisleCheck clarify loop).
+    if (
+        re.search(r"\bchips?\b", product_text, re.I)
+        and not re.search(r"\bchips\s*ahoy\b", product_text, re.I)
+        and not re.search(
+            r"\b(doritos|lays|lay'?s|ruffles|kettle|cheetos|tostitos|sun\s*chips|"
+            r"pringles|miss\s+vickie'?s|cape\s+cod)\b",
+            product_text,
+            re.I,
+        )
     ):
         ambiguities.append("product_brand_unspecified:chips")
     if re.search(r"\bcereal\b", product_text, re.I) and not re.search(
