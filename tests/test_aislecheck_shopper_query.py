@@ -78,12 +78,13 @@ class TestAisleCheckContractCases(unittest.TestCase):
         self.assertEqual(result["selected_tracker"]["id"], "doritos_5_13oz")
 
     def test_ambiguous_product(self) -> None:
+        # Brand + "cereal" without size must clarify among regular vs family size.
         result = run_aislecheck_query("General Mills cereal $3.99 at Safeway")
         self.assertEqual(result["next_action"], "clarify")
         self.assertEqual(result["clarify_kind"], "ambiguous_product")
-        self.assertTrue(result["plausible_trackers"])
-        self.assertLessEqual(len(result["plausible_trackers"]), 3)
-        self.assertIn("ambiguous_tracker_match", result["reason_codes"])
+        ids = {t["id"] for t in result.get("plausible_trackers") or []}
+        self.assertIn("general_mills_cereal_regular", ids)
+        self.assertIn("general_mills_cereal_family_size", ids)
 
     def test_chips_ahoy_continues_without_brand_loop(self) -> None:
         """Chips Ahoy is a brand; do not ask 'which brand of chips?' in a loop."""

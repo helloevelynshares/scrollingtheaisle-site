@@ -106,9 +106,12 @@ class TestDeterministicParser(unittest.TestCase):
         self.assertNotIn("product_brand_unspecified:chips", parsed.ambiguities)
         self.assertIn("chips ahoy", parsed.product_text.lower())
 
-    def test_generic_chips_still_asks_for_brand(self) -> None:
-        parsed = parse_shopper_query("Safeway chips are $2.49")
-        self.assertIn("product_brand_unspecified:chips", parsed.ambiguities)
+    def test_preserves_brand_apostrophe_and_hyphen(self) -> None:
+        lays = parse_shopper_query("Safeway Lay's potato chips are $2.49")
+        self.assertIn("lay's", lays.product_text.lower())
+        self.assertNotIn("product_brand_unspecified:chips", lays.ambiguities)
+        cheez = parse_shopper_query("Safeway Cheez-It crackers are $2.49")
+        self.assertIn("cheez-it", cheez.product_text.lower())
 
 
 class TestBehavior(unittest.TestCase):

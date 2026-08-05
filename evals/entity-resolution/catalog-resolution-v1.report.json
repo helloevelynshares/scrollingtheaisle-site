@@ -1,0 +1,23 @@
+{
+  "eval_path": "evals/entity-resolution/catalog-resolution-v1.jsonl",
+  "total": 276,
+  "passed": 276,
+  "failed": 0,
+  "wrong_confident_match_count": 0,
+  "coverage_type_counts": {
+    "positive_full": 81,
+    "positive_alternate": 82,
+    "negative_wrong_brand": 69,
+    "positive_full_clarify": 5,
+    "negative_brand_only": 16,
+    "positive_alternate_clarify": 4,
+    "negative_underspecified": 2,
+    "multifamily_brand_only": 8,
+    "multifamily_broad_category": 8,
+    "loop_setup": 1
+  },
+  "coverage_type_failures": {},
+  "loop_termination_ok": true,
+  "failures": [],
+  "failure_count_total": 0
+}

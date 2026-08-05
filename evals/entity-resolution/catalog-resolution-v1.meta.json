@@ -1,0 +1,19 @@
+{
+  "generated_on": "2026-08-04",
+  "schema_version": "catalog-resolution-v1",
+  "active_trackers": 86,
+  "case_count": 276,
+  "waiver_count": 1,
+  "coverage_types": {
+    "positive_full": 81,
+    "positive_alternate": 82,
+    "negative_wrong_brand": 69,
+    "positive_full_clarify": 5,
+    "negative_brand_only": 16,
+    "positive_alternate_clarify": 4,
+    "negative_underspecified": 2,
+    "multifamily_brand_only": 8,
+    "multifamily_broad_category": 8,
+    "loop_setup": 1
+  }
+}

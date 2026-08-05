@@ -1478,3 +1478,17 @@ Fix / workaround: (1) Exclude `\bchips\s*ahoy\b` from the chips brand-unspecifie
 How to verify: `PYTHONPATH=scripts python3 -c "from shopper_query.aislecheck_contract import run_aislecheck_query; print(run_aislecheck_query('Safeway Chips Ahoy are \$1.99')['next_action'], run_aislecheck_query('Safeway Chips Ahoy are \$1.99')['selected_tracker']['id'])"` → `continue chips_ahoy`. Generic “Safeway chips are $2.49” still clarifies brand.  
 Related files: `scripts/shopper_query/deterministic_parser.py`, `scripts/shopper_query/behavior.py`, `data/canonical_tracker_families.yaml`, `tests/test_aislecheck_shopper_query.py`
 
+### AisleCheck catalog-wide entity resolution
+
+Date discovered: 2026-08-04  
+Context: Feature branch `feature/aislecheck-catalog-entity-resolution` — catalog-wide hardening after the Chips Ahoy one-off.  
+What happened: Generic category tokens inside brand names, missing shopper aliases, free-text clarify reparsing, and no clarify progress fingerprint caused misclassification / loops / unreachable trackers beyond Chips Ahoy.  
+Fix / workaround:
+1. Derive protected phrases + language profiles from `data/canonical_tracker_families.yaml` (+ optional family YAML keys `aliases` / `protected_phrases` / `clarification`, plus `data/entity_resolution/phrase_overlays.yaml`).
+2. Parser uses `entity_resolution.protected_phrases` registry instead of one-off brand regexes.
+3. Shopper alias layer on top of YAML matching (`shopper_aliases.py`) — does not change weekly-ad includes.
+4. Clarify fingerprints ignore product-text drift; frontend sends `prior_clarify_digests` on clarify retries.
+5. Audits: `npm run audit:entity-resolution` → `evals/entity-resolution/tracker-coverage-report.json`, `collision-report.json`, `docs/AISLECHECK_TRACKER_LANGUAGE_COVERAGE.md`.
+How to verify: `npm run test:entity-resolution`; Chips Ahoy / Sun Chips / Goldfish / Smartfood continue; generic chips still clarifies; second identical brand-clarify escalates with `clarify_loop_broken`.
+Related files: `scripts/shopper_query/entity_resolution/`, `docs/AISLECHECK_ENTITY_RESOLUTION_ROOT_CAUSE.md`, `tests/test_entity_resolution.py`
+
