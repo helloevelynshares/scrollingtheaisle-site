@@ -1,0 +1,60 @@
+# Optional entity-resolution overlays.
+# Prefer putting aliases / protected_phrases on canonical family YAML when possible.
+# This file is for catalog-wide phrases that are unsafe as match includes but must
+# suppress generic category heuristics, or for safe shopper aliases that should not
+# yet change weekly-ad matching.
+#
+# Never invent aliases that could map to multiple families.
+
+schema_version: 1
+
+# Phrases that suppress category heuristics even if not tied to one tracker yet.
+global_protected_phrases:
+  - chips ahoy
+  - apple jacks
+  - honey bunches of oats
+  - sun chips
+  - skinny pop
+  - skinnypop
+  - smartfood
+  - goldfish
+
+# Per-tracker overlays (aliases here do NOT auto-add YAML includes).
+trackers:
+  chips_ahoy:
+    protected_phrases:
+      - chips ahoy
+      - chips ahoy cookies
+      - nabisco chips ahoy
+    aliases:
+      - chips ahoy
+      - nabisco chips ahoy
+  sun_chips_7oz:
+    protected_phrases:
+      - sun chips
+    aliases:
+      - sun chips
+  post_cereal_giant_size:
+    protected_phrases:
+      - giant size post
+      - giant-size post cereal
+      - honey bunches of oats
+    aliases:
+      - giant size post cereal
+      - giant-size post cereal
+      - post giant size cereal
+  chobani_yogurt_tub:
+    aliases:
+      - chobani tub
+      - chobani yogurt tub
+  chobani_yogurt_per_cup:
+    aliases:
+      - chobani cups
+      - chobani yogurt cups
+  # Brandless "sliced or shredded cheese" stays unresolved on purpose.
+  sliced_or_shredded_cheese_6_8oz:
+    aliases:
+      - lucerne shredded cheese
+      - lucerne sliced cheese
+      - sargento shredded cheese
+      - sargento sliced cheese
