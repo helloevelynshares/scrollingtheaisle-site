@@ -1,0 +1,277 @@
+# Canonical match audit: 2026-08-05 to 2026-08-11
+
+Generated: 2026-08-06T05:28:03.582841+00:00
+
+## Summary
+
+- **Accepted:** 56
+- **Rejected:** 14
+- **Manual review:** 4
+- **Families updated:** doritos_5_13oz, lays_potato_chips_regular, ruffles_regular_bags, oreo_family_size, goldfish_bags, tillamook_ice_cream, strawberries_1_2lb, hass_avocados_each, mangoes_each, sweet_corn, butter_16oz, tri_tip_roast, smartfood_popcorn, pop_tarts, bell_peppers, lays_kettle_cooked, popcorners, seedless_grapes_per_lb, peaches_per_lb, nectarines_per_lb, plums_per_lb, chicken_breast_per_lb, salmon, pringles
+
+## Graph update safety check
+
+### All-time low changes
+
+- `lays_potato_chips_regular` (Safeway): $1.99: Lay's Potato Chips
+- `goldfish_bags` (Safeway): $1.88: Pepperidge Farm Goldfish Crackers 4-8 oz
+- `bell_peppers` (Safeway): $0.99: Green Bell Pepper
+- `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75-8 oz
+- `lays_potato_chips_regular` (Safeway): $1.99: Lay's Potato Chips
+- `goldfish_bags` (Safeway): $1.88: Pepperidge Farm Goldfish Crackers 4-8 oz
+- `bell_peppers` (Safeway): $0.99: Green Bell Pepper
+- `lays_potato_chips_regular` (Vons): $2.49: Lay's Potato Chips 4.75-8 oz
+
+### Graph preview changes
+
+- `coca_cola_12packs` (Safeway): blocked $1.99: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+- `pepsi_12packs` (Safeway): blocked $2.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: pint
+- `salmon` (Safeway): blocked $5.0: hard negative keyword/pattern hit: portion
+- `chicken_wings_per_lb` (Safeway): blocked $5.99: hard negative keyword/pattern hit: boneless
+- `berries_6oz` (Vons): blocked $3.99: confidence 0.48 < min 0.65
+- `coca_cola_12packs` (Safeway): blocked $1.99: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+- `pepsi_12packs` (Safeway): blocked $2.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `berries_6oz` (Safeway): blocked $2.99: hard negative keyword/pattern hit: pint
+- `salmon` (Safeway): blocked $5.0: hard negative keyword/pattern hit: portion
+- `chicken_wings_per_lb` (Safeway): blocked $5.99: hard negative keyword/pattern hit: boneless
+- `berries_6oz` (Vons): blocked $3.99: confidence 0.48 < min 0.65
+
+### Blocked from tracker graph
+
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola Made in Mexico 355 ml' @ $1.99
+  - Reason: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+  - Hard negatives: 20\s*oz
+- `pepsi_12packs` (Safeway): **rejected**: 'Pepsi 2 liter' @ $2.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
+- `berries_6oz` (Safeway): **rejected**: 'Blueberries Pint' @ $2.99
+  - Reason: hard negative keyword/pattern hit: pint
+  - Hard negatives: pint
+- `salmon` (Safeway): **rejected**: 'Fresh Atlantic Salmon Portion' @ $5.0
+  - Reason: hard negative keyword/pattern hit: portion
+  - Hard negatives: portion
+- `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless Chicken Wings' @ $5.99
+  - Reason: hard negative keyword/pattern hit: boneless
+  - Hard negatives: boneless
+- `pepsi_12packs` (Vons): **rejected**: 'Pepsi' @ $None
+  - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
+  - Hard negatives: 16\.9\s*oz
+- `dr_pepper_12packs` (Vons): **rejected**: 'Dr Pepper' @ $None
+  - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
+  - Hard negatives: 16\.9\s*oz
+- `coca_cola_12packs` (Safeway): **rejected**: 'Coca-Cola Made in Mexico 355 ml' @ $1.99
+  - Reason: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+  - Hard negatives: 20\s*oz
+- `pepsi_12packs` (Safeway): **rejected**: 'Pepsi 2 liter' @ $2.99
+  - Reason: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+  - Hard negatives: 2 liter, 2\s*[- ]?liter
+- `berries_6oz` (Safeway): **rejected**: 'Blueberries Pint' @ $2.99
+  - Reason: hard negative keyword/pattern hit: pint
+  - Hard negatives: pint
+- `salmon` (Safeway): **rejected**: 'Fresh Atlantic Salmon Portion' @ $5.0
+  - Reason: hard negative keyword/pattern hit: portion
+  - Hard negatives: portion
+- `chicken_wings_per_lb` (Safeway): **rejected**: 'Boneless Chicken Wings' @ $5.99
+  - Reason: hard negative keyword/pattern hit: boneless
+  - Hard negatives: boneless
+- `pepsi_12packs` (Vons): **rejected**: 'Pepsi' @ $None
+  - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
+  - Hard negatives: 16\.9\s*oz
+- `dr_pepper_12packs` (Vons): **rejected**: 'Dr Pepper' @ $None
+  - Reason: hard negative keyword/pattern hit: 16\.9\s*oz
+  - Hard negatives: 16\.9\s*oz
+- `chips_ahoy` (Safeway): **manual_review**: 'Chips Ahoy!' @ $None
+  - Reason: confidence 0.50 < min 0.65
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
+  - Reason: confidence 0.48 < min 0.65
+- `chips_ahoy` (Safeway): **manual_review**: 'Chips Ahoy!' @ $None
+  - Reason: confidence 0.50 < min 0.65
+- `berries_6oz` (Vons): **manual_review**: 'Blueberries' @ $3.99
+  - Reason: confidence 0.48 < min 0.65
+
+## Rejected tempting items
+
+These looked like deals but were blocked from updating canonical trackers:
+
+- `coca_cola_12packs`: 'Coca-Cola Made in Mexico 355 ml' @ $1.99: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $2.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `berries_6oz`: 'Blueberries Pint' @ $2.99: hard negative keyword/pattern hit: pint
+- `salmon`: 'Fresh Atlantic Salmon Portion' @ $5.0: hard negative keyword/pattern hit: portion
+- `chicken_wings_per_lb`: 'Boneless Chicken Wings' @ $5.99: hard negative keyword/pattern hit: boneless
+- `coca_cola_12packs`: 'Coca-Cola Made in Mexico 355 ml' @ $1.99: hard negative keyword/pattern hit: 20\s*oz; ad product type 'single_bottle' is incompatible with canonical intent '12_pack_cans'; missing required auto-match attribute(s): package_count, container_type; mixed-item offer has conflicting package/container cues
+- `pepsi_12packs`: 'Pepsi 2 liter' @ $2.99: hard negative keyword/pattern hit: 2 liter, 2\s*[- ]?liter; ad product type '2_liter_bottle' is incompatible with canonical intent '12_pack_cans'
+- `berries_6oz`: 'Blueberries Pint' @ $2.99: hard negative keyword/pattern hit: pint
+- `salmon`: 'Fresh Atlantic Salmon Portion' @ $5.0: hard negative keyword/pattern hit: portion
+- `chicken_wings_per_lb`: 'Boneless Chicken Wings' @ $5.99: hard negative keyword/pattern hit: boneless
+
+## Accepted matches
+
+- `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips 5.25-10.75 oz' @ $2.75 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $1.99 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `ruffles_regular_bags` (Safeway): 'Ruffles Potato Chips 6-8.5 oz' @ $4.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular size, 5–13 oz
+- `oreo_family_size` (Safeway): 'Oreo Cookies 12.2-20 oz' @ $3.99 (confidence 0.90)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `goldfish_bags` (Safeway): 'Pepperidge Farm Goldfish Crackers 4-8 oz' @ $1.88 (confidence 1.00)
+  - Display: Goldfish
+  - Subtitle: regular size, 6–8 oz
+- `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 1.5 qt' @ $3.99 (confidence 0.90)
+  - Display: Tillamook ice cream
+  - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
+- `strawberries_1_2lb` (Safeway): 'Strawberries 1 lb.' @ $2.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Honey Mango, Eggplant, Cucumber, Red, Orange, Yellow' @ $0.99 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.25 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter 16 oz sticks' @ $4.49 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast' @ $6.99 (confidence 0.70)
+  - Display: Tri-tip roast
+  - Subtitle: per lb
+- `smartfood_popcorn` (Safeway): 'Smartfood Popcorn 5.25-10.75 oz' @ $2.75 (confidence 0.90)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `pop_tarts` (Safeway): 'Pop-Tarts' @ $None (confidence 0.70)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `bell_peppers` (Safeway): 'Green Bell Pepper' @ $0.99 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz" @ $2.49 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `lays_kettle_cooked` (Vons): "Lay's Kettle Cooked Potato Chips 4.75-8 oz" @ $2.49 (confidence 0.83)
+  - Display: Lay's Kettle Cooked chips
+  - Subtitle: regular kettle bags 6–8 oz
+- `popcorners` (Vons): 'Popcorners 4.75-8 oz' @ $2.49 (confidence 0.98)
+  - Display: PopCorners
+  - Subtitle: regular size, 5–10.75 oz
+- `oreo_family_size` (Vons): 'Nabisco Oreo Cookies Family Size 10.68-20 oz' @ $3.99 (confidence 0.90)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `goldfish_bags` (Vons): 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.69 (confidence 1.00)
+  - Display: Goldfish
+  - Subtitle: regular size, 6–8 oz
+- `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $2.53 (confidence 0.90)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `peaches_per_lb` (Vons): 'Large Yellow Peaches' @ $1.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Vons): 'Yellow Nectarines' @ $1.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `plums_per_lb` (Vons): 'Plums' @ $1.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `butter_16oz` (Vons): 'Lucerne Butter 16 oz sticks' @ $2.99 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chicken_breast_per_lb` (Vons): 'Fresh Boneless Skinless Chicken Breasts Value Pack' @ $1.99 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles 5.2-5.57 oz.' @ $1.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties
+- `doritos_5_13oz` (Safeway): 'Doritos Tortilla Chips 5.25-10.75 oz' @ $2.75 (confidence 0.90)
+  - Display: Doritos
+  - Subtitle: regular size, 5–13 oz
+- `lays_potato_chips_regular` (Safeway): "Lay's Potato Chips" @ $1.99 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `ruffles_regular_bags` (Safeway): 'Ruffles Potato Chips 6-8.5 oz' @ $4.99 (confidence 0.90)
+  - Display: Ruffles
+  - Subtitle: regular size, 5–13 oz
+- `oreo_family_size` (Safeway): 'Oreo Cookies 12.2-20 oz' @ $3.99 (confidence 0.90)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `goldfish_bags` (Safeway): 'Pepperidge Farm Goldfish Crackers 4-8 oz' @ $1.88 (confidence 1.00)
+  - Display: Goldfish
+  - Subtitle: regular size, 6–8 oz
+- `tillamook_ice_cream` (Safeway): 'Tillamook Ice Cream 1.5 qt' @ $3.99 (confidence 0.90)
+  - Display: Tillamook ice cream
+  - Subtitle: 1.5 qt tubs or 4 ct bars when grouped
+- `strawberries_1_2lb` (Safeway): 'Strawberries 1 lb.' @ $2.99 (confidence 0.90)
+  - Display: Strawberries
+  - Subtitle: 1 lb or 2 lb packs; normalize per lb
+- `hass_avocados_each` (Safeway): 'Hass Avocado' @ $1.25 (confidence 0.70)
+  - Display: Hass avocados
+  - Subtitle: each or multi-buy
+- `mangoes_each` (Safeway): 'Honey Mango, Eggplant, Cucumber, Red, Orange, Yellow' @ $0.99 (confidence 0.70)
+  - Display: Mangoes
+  - Subtitle: each or multi-buy
+- `sweet_corn` (Safeway): 'Sweet Corn' @ $0.25 (confidence 0.90)
+  - Display: Sweet corn
+  - Subtitle: each or multi-buy
+- `butter_16oz` (Safeway): 'Challenge Butter 16 oz sticks' @ $4.49 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `tri_tip_roast` (Safeway): 'USDA Choice Boneless Beef Tri Tip Roast' @ $6.99 (confidence 0.70)
+  - Display: Tri-tip roast
+  - Subtitle: per lb
+- `smartfood_popcorn` (Safeway): 'Smartfood Popcorn 5.25-10.75 oz' @ $2.75 (confidence 0.90)
+  - Display: Smartfood popcorn
+  - Subtitle: regular size, 4.75–11 oz
+- `pop_tarts` (Safeway): 'Pop-Tarts' @ $None (confidence 0.70)
+  - Display: Pop-Tarts
+  - Subtitle: 8 ct toaster pastries, selected varieties
+- `bell_peppers` (Safeway): 'Green Bell Pepper' @ $0.99 (confidence 0.70)
+  - Display: Bell peppers
+  - Subtitle: each or multi-buy
+- `lays_potato_chips_regular` (Vons): "Lay's Potato Chips 4.75-8 oz" @ $2.49 (confidence 1.00)
+  - Display: Lay's potato chips
+  - Subtitle: regular bags 5–13 oz, including Poppables
+- `lays_kettle_cooked` (Vons): "Lay's Kettle Cooked Potato Chips 4.75-8 oz" @ $2.49 (confidence 0.83)
+  - Display: Lay's Kettle Cooked chips
+  - Subtitle: regular kettle bags 6–8 oz
+- `popcorners` (Vons): 'Popcorners 4.75-8 oz' @ $2.49 (confidence 0.98)
+  - Display: PopCorners
+  - Subtitle: regular size, 5–10.75 oz
+- `oreo_family_size` (Vons): 'Nabisco Oreo Cookies Family Size 10.68-20 oz' @ $3.99 (confidence 0.90)
+  - Display: Oreo cookies
+  - Subtitle: family size, 10.68–18.71 oz
+- `goldfish_bags` (Vons): 'Pepperidge Farm Goldfish 5.9-8 oz' @ $1.69 (confidence 1.00)
+  - Display: Goldfish
+  - Subtitle: regular size, 6–8 oz
+- `seedless_grapes_per_lb` (Vons): 'Black Seedless Grapes' @ $2.53 (confidence 0.90)
+  - Display: Seedless grapes
+  - Subtitle: per lb; normalize bags to per lb
+- `peaches_per_lb` (Vons): 'Large Yellow Peaches' @ $1.99 (confidence 0.90)
+  - Display: Peaches
+  - Subtitle: per lb
+- `nectarines_per_lb` (Vons): 'Yellow Nectarines' @ $1.99 (confidence 0.90)
+  - Display: Nectarines
+  - Subtitle: per lb
+- `plums_per_lb` (Vons): 'Plums' @ $1.99 (confidence 0.90)
+  - Display: Plums
+  - Subtitle: per lb
+- `butter_16oz` (Vons): 'Lucerne Butter 16 oz sticks' @ $2.99 (confidence 1.00)
+  - Display: Butter
+  - Subtitle: 16 oz sticks / quarters; normalize to 16 oz
+- `chicken_breast_per_lb` (Vons): 'Fresh Boneless Skinless Chicken Breasts Value Pack' @ $1.99 (confidence 0.70)
+  - Display: Chicken breast
+  - Subtitle: per lb
+- `salmon` (Vons): 'Fresh Atlantic Salmon Fillets Farm Raised' @ $8.99 (confidence 1.00)
+  - Display: Salmon
+  - Subtitle: fresh salmon fillet
+- `pringles` (Vons): 'Pringles 5.2-5.57 oz.' @ $1.49 (confidence 0.90)
+  - Display: Pringles
+  - Subtitle: regular cans, selected varieties

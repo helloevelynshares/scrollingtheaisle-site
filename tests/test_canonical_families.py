@@ -184,7 +184,7 @@ class TestRobustPhraseMatching(unittest.TestCase):
 
 
 class TestKettleBrandChipsMatcher(unittest.TestCase):
-    """Safeway/Vons flyers often omit 'Brand' from Kettle titles (Jul 22 miss)."""
+    """Kettle Brand requires the literal words 'Kettle Brand' (Aug 5 Lay's false positive)."""
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -210,30 +210,35 @@ class TestKettleBrandChipsMatcher(unittest.TestCase):
             "price_basis": "each",
         }
 
-    def test_yaml_has_brand_optional_includes(self) -> None:
-        # Regression: if includes again require the literal word Brand, Jul-style
-        # "Kettle Potato Chips" / "Kettle chips" titles stop matching.
+    def test_yaml_requires_literal_kettle_brand(self) -> None:
+        # Bare "Kettle Potato Chips" / "Kettle chips" are Lay's-Kettle false-positive bait
+        # (Safeway 2026-08-05). Includes must require the words Kettle Brand.
         includes_lower = [p.lower() for p in self.family.include]
-        self.assertTrue(
-            any("brand" not in p and "kettle" in p and "chip" in p for p in includes_lower),
-            "kettle_brand_chips must include Brand-optional flyer phrases",
-        )
-        self.assertIn("kettle potato chips", includes_lower)
-        self.assertIn("kettle chips", includes_lower)
+        self.assertTrue(all("kettle brand" in p for p in includes_lower))
+        self.assertNotIn("kettle potato chips", includes_lower)
+        self.assertNotIn("kettle chips", includes_lower)
+        sep = " ".join(self.family.keep_separate_from).lower()
+        self.assertIn("lay's kettle", sep)
+        # Do not put bare "Kettle Potato Chips" in keep_separate_from — QUALIFIER_WORD
+        # "brand" would also exclude true "Kettle Brand Potato Chips".
+        self.assertNotIn("kettle potato chips", [p.lower() for p in self.family.keep_separate_from])
 
-    def test_flyer_titles_without_brand_match(self) -> None:
+    def test_kettle_brand_titles_match(self) -> None:
         for title in (
-            "Kettle Potato Chips",
-            "Kettle chips",
-            "Kettle Chips",
             "Kettle Brand Potato Chips 6.5 to 8.5 oz",
             "Kettle Brand Chips",
+            "Kettle Brand Sea Salt",
         ):
             with self.subTest(title=title):
                 self.assertTrue(self.matches(self._row(title), self.matcher))
 
-    def test_excludes_cape_cod_lays_party_and_mix_tiles(self) -> None:
+    def test_bare_kettle_and_lays_kettle_do_not_match(self) -> None:
         for title in (
+            "Kettle Potato Chips",
+            "Kettle chips",
+            "Kettle Chips",
+            "Kettle Potato Chips 7-8 oz",
+            "Lay's Potato Chips or Poppables or Kettle Potato Chips",
             "Cape Cod Kettle Chips",
             "Cape Cod Kettle Cooked Potato Chips",
             "Lay's Kettle Cooked Chips",

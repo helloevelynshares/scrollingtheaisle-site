@@ -1,93 +1,114 @@
-week: "2026-07-29"
+week: "2026-08-05"
 stores:
   # Editorial/content shortlist only. NOT canonical tracker graph data.
-  # Curated from Evelyn's Safeway Jul 29 video script (order ≈ video emphasis).
+  # Curated from Evelyn's Safeway Aug 5 video transcript (order ≈ video emphasis).
   # Only link tracker_family_ids when a clean canonical family already exists;
   # otherwise leave empty so the card renders as pure editorial copy.
   # Do not mention Costco in handpicked summary copy; skip fresh/smoked salmon.
   safeway:
-    - title: Challenge / Danish Creamery butter
-      tracker_family_ids: [butter_16oz]
-      badge: DEAL
-      subtitle: "$3.49 for 16 oz sticks — an all-time low on the butter chart this week."
-      reason: "$3.49 for 16 oz sticks — an all-time low on the butter chart this week."
-      price: "$3.49"
-      display_order: 1
-    - title: Mandarin oranges (Cuties)
-      tracker_family_ids: [mandarins_3lb]
+    - title: Honey mangoes, peppers & cucumbers
+      tracker_family_ids: [mangoes_each, bell_peppers]
       badge: PRODUCE
-      subtitle: "$3.99 on the 3 lb bag of Cuties this week."
-      reason: "$3.99 on the 3 lb bag of Cuties this week."
-      price: "$3.99"
+      subtitle: "99¢ each on honey mangoes, eggplant, cucumbers, and bell peppers — all-time lows; six of them land at $6."
+      reason: "99¢ each on honey mangoes, eggplant, cucumbers, and bell peppers — all-time lows; six of them land at $6."
+      price: "99¢"
+      display_order: 1
+    - title: Goldfish crackers
+      tracker_family_ids: [goldfish_bags]
+      badge: SNACKS
+      subtitle: "$1.88 on 4–8 oz Goldfish and Goldfish Crisps — an all-time low (great week for crisps and Flavor Blasted)."
+      reason: "$1.88 on 4–8 oz Goldfish and Goldfish Crisps — an all-time low (great week for crisps and Flavor Blasted)."
+      price: "$1.88"
       display_order: 2
-    - title: Tillamook cheese
+    - title: Lay's potato chips
+      tracker_family_ids: [lays_potato_chips_regular]
+      badge: SNACKS
+      subtitle: "$1.99 on regular Lay's — all-time low (was $2.49). Includes Poppables, Wavy, and Lay's Kettle Cooked varieties."
+      reason: "$1.99 on regular Lay's — all-time low (was $2.49). Includes Poppables, Wavy, and Lay's Kettle Cooked varieties."
+      price: "$1.99"
+      display_order: 3
+    - title: Strawberries
+      tracker_family_ids: [strawberries_1_2lb]
+      badge: PRODUCE
+      subtitle: "$2.99 on 1 lb strawberries — easy pound buy this week."
+      reason: "$2.99 on 1 lb strawberries — easy pound buy this week."
+      price: "$2.99"
+      display_order: 4
+    - title: Kellogg's large cereal
       tracker_family_ids: []
       badge: DEAL
-      subtitle: "$2.49 on 6–12 oz shredded, sliced, snack/cracker cuts, or string — mix & match."
-      reason: "$2.49 on 6–12 oz shredded, sliced, snack/cracker cuts, or string — mix & match."
+      subtitle: "$2.99 on Kellogg's large-size cereal when you buy 3 — an all-time-style smash vs recent $8+ shelves."
+      reason: "$2.99 on Kellogg's large-size cereal when you buy 3 — an all-time-style smash vs recent $8+ shelves."
+      price: "$2.99"
+      display_order: 5
+    - title: Fage Greek yogurt
+      tracker_family_ids: []
+      badge: DEAL
+      subtitle: "$5.99 on Fage this week — solid yogurt deal if you want varieties you don't always find in bulk."
+      reason: "$5.99 on Fage this week — solid yogurt deal if you want varieties you don't always find in bulk."
+      price: "$5.99"
+      display_order: 6
+    - title: Hass avocados
+      tracker_family_ids: [hass_avocados_each]
+      badge: FRIDAY
+      subtitle: "Friday only — 4 for $5 on Hass avocados ($1.25 each)."
+      reason: "Friday only — 4 for $5 on Hass avocados ($1.25 each)."
+      price: "4/$5"
+      display_order: 7
+    - title: Seedless grapes (2 lb)
+      tracker_family_ids: []
+      badge: FRIDAY
+      subtitle: "Friday only — $5 on Signature SELECT Autumn Crisp or Holiday seedless grapes (2 lb pack)."
+      reason: "Friday only — $5 on Signature SELECT Autumn Crisp or Holiday seedless grapes (2 lb pack)."
+      price: "$5"
+      display_order: 8
+  vons:
+    - title: Boneless skinless chicken breasts
+      tracker_family_ids: [chicken_breast_per_lb]
+      badge: MEAT
+      subtitle: "$1.99/lb on fresh boneless skinless chicken breasts — a strong meat-counter week."
+      reason: "$1.99/lb on fresh boneless skinless chicken breasts — a strong meat-counter week."
+      price: "$1.99/lb"
+      display_order: 1
+    - title: Goldfish crackers
+      tracker_family_ids: [goldfish_bags]
+      badge: SNACKS
+      subtitle: "$1.69 on 5.9–8 oz Goldfish when you buy 3 — easy snack stock-up."
+      reason: "$1.69 on 5.9–8 oz Goldfish when you buy 3 — easy snack stock-up."
+      price: "$1.69"
+      display_order: 2
+    - title: Lay's, kettle cooked & Popcorners
+      tracker_family_ids: [lays_potato_chips_regular, lays_kettle_cooked, popcorners]
+      badge: SNACKS
+      subtitle: "$2.49 each when you buy 3 on Lay's, Lay's Kettle Cooked, and Popcorners (4.75–8 oz)."
+      reason: "$2.49 each when you buy 3 on Lay's, Lay's Kettle Cooked, and Popcorners (4.75–8 oz)."
       price: "$2.49"
       display_order: 3
-    - title: Chobani yogurt cups
-      tracker_family_ids: [chobani_yogurt_per_cup]
-      badge: DEAL
-      subtitle: "89¢ when you buy 10 — mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups."
-      reason: "89¢ when you buy 10 — mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups."
-      price: "$0.89"
-      display_order: 4
-    - title: Chips Ahoy cookies
-      tracker_family_ids: [chips_ahoy]
-      badge: SNACKS
-      subtitle: "$1.99 on 7–13 oz bags — an all-time low; great week to stock up (World Cup flavors too)."
-      reason: "$1.99 on 7–13 oz bags — an all-time low; great week to stock up (World Cup flavors too)."
-      price: "$1.99"
-      display_order: 5
-    - title: Wheat Thins / Triscuit / Chicken in a Biskit
-      tracker_family_ids: [nabisco_snack_crackers_regular]
-      badge: SNACKS
-      subtitle: "$1.99 on regular-size 3.5–9.1 oz boxes — Wheat Thins, Triscuit, and Chicken in a Biskit."
-      reason: "$1.99 on regular-size 3.5–9.1 oz boxes — Wheat Thins, Triscuit, and Chicken in a Biskit."
-      price: "$1.99"
-      display_order: 6
-    - title: Honey mangoes
-      tracker_family_ids: [mangoes_each]
+    - title: Peaches, nectarines & plums
+      tracker_family_ids: [peaches_per_lb, nectarines_per_lb, plums_per_lb]
       badge: PRODUCE
-      subtitle: "10 for $10 ($1 each) — easy full-week buy near a recent low."
-      reason: "10 for $10 ($1 each) — easy full-week buy near a recent low."
-      price: "10/$10"
-      display_order: 7
-    - title: Häagen-Dazs ice cream
-      tracker_family_ids: [haagen_dazs_pints]
+      subtitle: "$1.99/lb on large yellow peaches, nectarines, or plums."
+      reason: "$1.99/lb on large yellow peaches, nectarines, or plums."
+      price: "$1.99/lb"
+      display_order: 4
+    - title: Lucerne butter
+      tracker_family_ids: [butter_16oz]
       badge: DEAL
-      subtitle: "$2.99 on 14 oz pints when you buy 3 — mix flavors like cookie crumble and coffee."
-      reason: "$2.99 on 14 oz pints when you buy 3 — mix flavors like cookie crumble and coffee."
+      subtitle: "$2.99 on Lucerne 16 oz butter when you buy 2."
+      reason: "$2.99 on Lucerne 16 oz butter when you buy 2."
       price: "$2.99"
-      display_order: 8
-    - title: Nestlé Drumstick ice cream
-      tracker_family_ids: []
-      badge: DEAL
-      subtitle: "$3.99 on Nestlé Drumstick 4-ct cones, minis, and sandwiches."
-      reason: "$3.99 on Nestlé Drumstick 4-ct cones, minis, and sandwiches."
+      display_order: 5
+    - title: Oreo family size
+      tracker_family_ids: [oreo_family_size]
+      badge: SNACKS
+      subtitle: "$3.99 on family-size Oreo when you buy 4 or more Pick 4 items."
+      reason: "$3.99 on family-size Oreo when you buy 4 or more Pick 4 items."
       price: "$3.99"
-      display_order: 9
+      display_order: 6
     - title: Pringles
       tracker_family_ids: [pringles]
-      badge: FRIDAY
-      subtitle: "Friday only — 3 for $5 on Pringles cans (mix with Signature SELECT chips)."
-      reason: "Friday only — 3 for $5 on Pringles cans (mix with Signature SELECT chips)."
-      price: "3/$5"
-      display_order: 10
-    - title: Ground turkey
-      tracker_family_ids: []
-      badge: FRIDAY
-      subtitle: "Friday only — $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties."
-      reason: "Friday only — $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties."
-      price: "$5"
-      display_order: 11
-  vons:
-    - title: Hand-picked deals updating soon
-      tracker_family_ids: []
-      badge: DEAL
-      subtitle: "Safeway Jul 29–Aug 4 is live — Vons hand-picked deals will update when that shortlist is curated."
-      reason: "Safeway Jul 29–Aug 4 is live — Vons hand-picked deals will update when that shortlist is curated."
-      price: "Soon"
-      display_order: 1
+      badge: SNACKS
+      subtitle: "$1.49 on Pringles (5.2–5.57 oz) in the Pick 4 mix-and-match."
+      reason: "$1.49 on Pringles (5.2–5.57 oz) in the Pick 4 mix-and-match."
+      price: "$1.49"
+      display_order: 7

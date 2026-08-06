@@ -225,8 +225,7 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
       "Kettle Brand Honey Dijon",
       "Kettle Brand Chips",
       "Kettle Brand potato chips",
-      "Kettle Potato Chips",
-      "Kettle chips",
+      "Kettle Brand",
       "Kettle Brand potato chips"
     ],
     "legacyCanonicalIds": [
@@ -471,6 +470,8 @@ export const CANONICAL_TRACKER_FAMILIES: CanonicalTrackerFamily[] = [
     "confidence": "working",
     "costcoComparable": true,
     "searchAliases": [
+      "Chips Ahoy cookies",
+      "Chips Ahoy",
       "Chips Ahoy Original",
       "Chips Ahoy Chewy",
       "Chips Ahoy Chunky",
@@ -1860,159 +1861,205 @@ export const LEGACY_CANONICAL_TO_FAMILY: Record<string, string> = {
   "protein_bars": "quest_bars"
 };
 
-export const POPULAR_THIS_WEEK_WEEK: string = "2026-07-29";
+export const POPULAR_THIS_WEEK_WEEK: string = "2026-08-05";
 
 export const POPULAR_THIS_WEEK: Record<PopularThisWeekStore, PopularThisWeekEntry[]> = {
   safeway: [
   {
-    "title": "Challenge / Danish Creamery butter",
+    "title": "Honey mangoes, peppers & cucumbers",
     "trackerFamilyIds": [
-      "butter_16oz"
+      "mangoes_each",
+      "bell_peppers"
     ],
-    "reason": "$3.49 for 16 oz sticks \u2014 an all-time low on the butter chart this week.",
-    "subtitle": "$3.49 for 16 oz sticks \u2014 an all-time low on the butter chart this week.",
-    "badge": "DEAL",
-    "price": "$3.49",
+    "reason": "99\u00a2 each on honey mangoes, eggplant, cucumbers, and bell peppers \u2014 all-time lows; six of them land at $6.",
+    "subtitle": "99\u00a2 each on honey mangoes, eggplant, cucumbers, and bell peppers \u2014 all-time lows; six of them land at $6.",
+    "badge": "PRODUCE",
+    "price": "99\u00a2",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 1
   },
   {
-    "title": "Mandarin oranges (Cuties)",
+    "title": "Goldfish crackers",
     "trackerFamilyIds": [
-      "mandarins_3lb"
+      "goldfish_bags"
     ],
-    "reason": "$3.99 on the 3 lb bag of Cuties this week.",
-    "subtitle": "$3.99 on the 3 lb bag of Cuties this week.",
-    "badge": "PRODUCE",
-    "price": "$3.99",
+    "reason": "$1.88 on 4\u20138 oz Goldfish and Goldfish Crisps \u2014 an all-time low (great week for crisps and Flavor Blasted).",
+    "subtitle": "$1.88 on 4\u20138 oz Goldfish and Goldfish Crisps \u2014 an all-time low (great week for crisps and Flavor Blasted).",
+    "badge": "SNACKS",
+    "price": "$1.88",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 2
   },
   {
-    "title": "Tillamook cheese",
+    "title": "Lay's potato chips",
+    "trackerFamilyIds": [
+      "lays_potato_chips_regular"
+    ],
+    "reason": "$1.99 on regular Lay's \u2014 all-time low (was $2.49). Includes Poppables, Wavy, and Lay's Kettle Cooked varieties.",
+    "subtitle": "$1.99 on regular Lay's \u2014 all-time low (was $2.49). Includes Poppables, Wavy, and Lay's Kettle Cooked varieties.",
+    "badge": "SNACKS",
+    "price": "$1.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 3
+  },
+  {
+    "title": "Strawberries",
+    "trackerFamilyIds": [
+      "strawberries_1_2lb"
+    ],
+    "reason": "$2.99 on 1 lb strawberries \u2014 easy pound buy this week.",
+    "subtitle": "$2.99 on 1 lb strawberries \u2014 easy pound buy this week.",
+    "badge": "PRODUCE",
+    "price": "$2.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 4
+  },
+  {
+    "title": "Kellogg's large cereal",
     "trackerFamilyIds": [],
-    "reason": "$2.49 on 6\u201312 oz shredded, sliced, snack/cracker cuts, or string \u2014 mix & match.",
-    "subtitle": "$2.49 on 6\u201312 oz shredded, sliced, snack/cracker cuts, or string \u2014 mix & match.",
+    "reason": "$2.99 on Kellogg's large-size cereal when you buy 3 \u2014 an all-time-style smash vs recent $8+ shelves.",
+    "subtitle": "$2.99 on Kellogg's large-size cereal when you buy 3 \u2014 an all-time-style smash vs recent $8+ shelves.",
     "badge": "DEAL",
+    "price": "$2.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 5
+  },
+  {
+    "title": "Fage Greek yogurt",
+    "trackerFamilyIds": [],
+    "reason": "$5.99 on Fage this week \u2014 solid yogurt deal if you want varieties you don't always find in bulk.",
+    "subtitle": "$5.99 on Fage this week \u2014 solid yogurt deal if you want varieties you don't always find in bulk.",
+    "badge": "DEAL",
+    "price": "$5.99",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 6
+  },
+  {
+    "title": "Hass avocados",
+    "trackerFamilyIds": [
+      "hass_avocados_each"
+    ],
+    "reason": "Friday only \u2014 4 for $5 on Hass avocados ($1.25 each).",
+    "subtitle": "Friday only \u2014 4 for $5 on Hass avocados ($1.25 each).",
+    "badge": "FRIDAY",
+    "price": "4/$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 7
+  },
+  {
+    "title": "Seedless grapes (2 lb)",
+    "trackerFamilyIds": [],
+    "reason": "Friday only \u2014 $5 on Signature SELECT Autumn Crisp or Holiday seedless grapes (2 lb pack).",
+    "subtitle": "Friday only \u2014 $5 on Signature SELECT Autumn Crisp or Holiday seedless grapes (2 lb pack).",
+    "badge": "FRIDAY",
+    "price": "$5",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 8
+  }
+],
+  vons: [
+  {
+    "title": "Boneless skinless chicken breasts",
+    "trackerFamilyIds": [
+      "chicken_breast_per_lb"
+    ],
+    "reason": "$1.99/lb on fresh boneless skinless chicken breasts \u2014 a strong meat-counter week.",
+    "subtitle": "$1.99/lb on fresh boneless skinless chicken breasts \u2014 a strong meat-counter week.",
+    "badge": "MEAT",
+    "price": "$1.99/lb",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 1
+  },
+  {
+    "title": "Goldfish crackers",
+    "trackerFamilyIds": [
+      "goldfish_bags"
+    ],
+    "reason": "$1.69 on 5.9\u20138 oz Goldfish when you buy 3 \u2014 easy snack stock-up.",
+    "subtitle": "$1.69 on 5.9\u20138 oz Goldfish when you buy 3 \u2014 easy snack stock-up.",
+    "badge": "SNACKS",
+    "price": "$1.69",
+    "availability": "",
+    "fridayOnly": false,
+    "displayOrder": 2
+  },
+  {
+    "title": "Lay's, kettle cooked & Popcorners",
+    "trackerFamilyIds": [
+      "lays_potato_chips_regular",
+      "lays_kettle_cooked",
+      "popcorners"
+    ],
+    "reason": "$2.49 each when you buy 3 on Lay's, Lay's Kettle Cooked, and Popcorners (4.75\u20138 oz).",
+    "subtitle": "$2.49 each when you buy 3 on Lay's, Lay's Kettle Cooked, and Popcorners (4.75\u20138 oz).",
+    "badge": "SNACKS",
     "price": "$2.49",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 3
   },
   {
-    "title": "Chobani yogurt cups",
+    "title": "Peaches, nectarines & plums",
     "trackerFamilyIds": [
-      "chobani_yogurt_per_cup"
+      "peaches_per_lb",
+      "nectarines_per_lb",
+      "plums_per_lb"
     ],
-    "reason": "89\u00a2 when you buy 10 \u2014 mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups.",
-    "subtitle": "89\u00a2 when you buy 10 \u2014 mix Greek, Less Sugar, Zero Sugar, Flip, and Protein cups.",
-    "badge": "DEAL",
-    "price": "$0.89",
+    "reason": "$1.99/lb on large yellow peaches, nectarines, or plums.",
+    "subtitle": "$1.99/lb on large yellow peaches, nectarines, or plums.",
+    "badge": "PRODUCE",
+    "price": "$1.99/lb",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 4
   },
   {
-    "title": "Chips Ahoy cookies",
+    "title": "Lucerne butter",
     "trackerFamilyIds": [
-      "chips_ahoy"
+      "butter_16oz"
     ],
-    "reason": "$1.99 on 7\u201313 oz bags \u2014 an all-time low; great week to stock up (World Cup flavors too).",
-    "subtitle": "$1.99 on 7\u201313 oz bags \u2014 an all-time low; great week to stock up (World Cup flavors too).",
-    "badge": "SNACKS",
-    "price": "$1.99",
+    "reason": "$2.99 on Lucerne 16 oz butter when you buy 2.",
+    "subtitle": "$2.99 on Lucerne 16 oz butter when you buy 2.",
+    "badge": "DEAL",
+    "price": "$2.99",
     "availability": "",
     "fridayOnly": false,
     "displayOrder": 5
   },
   {
-    "title": "Wheat Thins / Triscuit / Chicken in a Biskit",
+    "title": "Oreo family size",
     "trackerFamilyIds": [
-      "nabisco_snack_crackers_regular"
+      "oreo_family_size"
     ],
-    "reason": "$1.99 on regular-size 3.5\u20139.1 oz boxes \u2014 Wheat Thins, Triscuit, and Chicken in a Biskit.",
-    "subtitle": "$1.99 on regular-size 3.5\u20139.1 oz boxes \u2014 Wheat Thins, Triscuit, and Chicken in a Biskit.",
+    "reason": "$3.99 on family-size Oreo when you buy 4 or more Pick 4 items.",
+    "subtitle": "$3.99 on family-size Oreo when you buy 4 or more Pick 4 items.",
     "badge": "SNACKS",
-    "price": "$1.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 6
-  },
-  {
-    "title": "Honey mangoes",
-    "trackerFamilyIds": [
-      "mangoes_each"
-    ],
-    "reason": "10 for $10 ($1 each) \u2014 easy full-week buy near a recent low.",
-    "subtitle": "10 for $10 ($1 each) \u2014 easy full-week buy near a recent low.",
-    "badge": "PRODUCE",
-    "price": "10/$10",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 7
-  },
-  {
-    "title": "H\u00e4agen-Dazs ice cream",
-    "trackerFamilyIds": [
-      "haagen_dazs_pints"
-    ],
-    "reason": "$2.99 on 14 oz pints when you buy 3 \u2014 mix flavors like cookie crumble and coffee.",
-    "subtitle": "$2.99 on 14 oz pints when you buy 3 \u2014 mix flavors like cookie crumble and coffee.",
-    "badge": "DEAL",
-    "price": "$2.99",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 8
-  },
-  {
-    "title": "Nestl\u00e9 Drumstick ice cream",
-    "trackerFamilyIds": [],
-    "reason": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones, minis, and sandwiches.",
-    "subtitle": "$3.99 on Nestl\u00e9 Drumstick 4-ct cones, minis, and sandwiches.",
-    "badge": "DEAL",
     "price": "$3.99",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 9
+    "displayOrder": 6
   },
   {
     "title": "Pringles",
     "trackerFamilyIds": [
       "pringles"
     ],
-    "reason": "Friday only \u2014 3 for $5 on Pringles cans (mix with Signature SELECT chips).",
-    "subtitle": "Friday only \u2014 3 for $5 on Pringles cans (mix with Signature SELECT chips).",
-    "badge": "FRIDAY",
-    "price": "3/$5",
+    "reason": "$1.49 on Pringles (5.2\u20135.57 oz) in the Pick 4 mix-and-match.",
+    "subtitle": "$1.49 on Pringles (5.2\u20135.57 oz) in the Pick 4 mix-and-match.",
+    "badge": "SNACKS",
+    "price": "$1.49",
     "availability": "",
     "fridayOnly": false,
-    "displayOrder": 10
-  },
-  {
-    "title": "Ground turkey",
-    "trackerFamilyIds": [],
-    "reason": "Friday only \u2014 $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties.",
-    "subtitle": "Friday only \u2014 $5 on 16 oz Jennie-O or Open Nature lean ground turkey / patties.",
-    "badge": "FRIDAY",
-    "price": "$5",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 11
-  }
-],
-  vons: [
-  {
-    "title": "Hand-picked deals updating soon",
-    "trackerFamilyIds": [],
-    "reason": "Safeway Jul 29\u2013Aug 4 is live \u2014 Vons hand-picked deals will update when that shortlist is curated.",
-    "subtitle": "Safeway Jul 29\u2013Aug 4 is live \u2014 Vons hand-picked deals will update when that shortlist is curated.",
-    "badge": "DEAL",
-    "price": "Soon",
-    "availability": "",
-    "fridayOnly": false,
-    "displayOrder": 1
+    "displayOrder": 7
   }
 ],
 };

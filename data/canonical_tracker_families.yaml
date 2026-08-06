@@ -201,17 +201,14 @@ families:
   - Kettle Brand Honey Dijon
   - Kettle Brand Chips
   - Kettle Brand potato chips
-  # Flyer coupon titles often omit "Brand" (e.g. "Kettle Potato Chips"); "brand"
-  # is already a QUALIFIER_WORD so these still match "Kettle Brand …" copy.
-  - Kettle Potato Chips
-  - Kettle chips
+  - Kettle Brand
   keep_separate_from:
   - Lay's Kettle Cooked
+  - Lay's Kettle
   - store-brand kettle chips
   - Kettle Brand Chips Party Size
   - Party Size
-  # Cape Cod kettle-cooked (not Kettle Brand); defensive for short titles like
-  # "Cape Cod Kettle Chips" that would otherwise hit include "Kettle chips".
+  # Cape Cod kettle-cooked (not Kettle Brand).
   - Cape Cod
   - Cape Cod Kettle
   # Unsplit mix tiles that mention Kettle among other brands (no eligibility rules
@@ -223,7 +220,15 @@ families:
   - Nabisco
   - Triscuit
   - Tim's Cascade
-  notes: 'Party Size (11+ oz) is a different SKU; tracked bags are 6.5–8.5 oz. Exclude ceiling/Up-To prices. Ads often say "Kettle Potato Chips" without the word Brand. Also exclude Cape Cod / Lay''s Kettle / multi-brand mix tiles.'
+  notes: >
+    Party Size (11+ oz) is a different SKU; tracked bags are 6.5–8.5 oz.
+    Require the literal words "Kettle Brand" — bare "Kettle Potato Chips" /
+    "Kettle chips" can mean Lay's Kettle Cooked on Frito-Lay mix tiles
+    (2026-08-05). Do not add bare "Kettle Potato Chips" as keep_separate_from:
+    QUALIFIER_WORD "brand" would also exclude true "Kettle Brand Potato Chips".
+    If a verified Kettle Brand flyer omits Brand, correct the split row to
+    include "Kettle Brand" rather than broadening includes.
+    Also exclude Cape Cod / Lay's Kettle / multi-brand mix tiles.
   confidence: working
   source_basis:
   - reviewed_weekly_ads_and_transcripts
@@ -541,6 +546,8 @@ families:
   keep_separate_from:
   - Goldfish
   - Nabisco snack crackers
+  - Family Size
+  - Party Size
   notes: ''
   confidence: working
   source_basis:
@@ -574,6 +581,8 @@ families:
   - Oreo
   - Nabisco snack crackers
   - Ritz
+  - Family Size
+  - Party Size
   notes: ''
   confidence: working
   source_basis:

@@ -116,14 +116,14 @@ Fix / workaround: YAML `keep_separate_from` for seed/bean butter, chicken strips
 How to verify: `chicken_breast_per_lb["2026-07-22"].price === 2.99` with offerText Signature SELECT breasts; no Jul 22 rows for `butter_16oz` / `lays_kettle_cooked`.  
 Related files: `data/canonical_tracker_families.yaml`, `src/data/weeklyAdPrices.generated.ts`, `output/weekly_deals/2026-07-22/`
 
-### Kettle Brand Safeway 2026-07-22 missed: include required “Brand”
+### Kettle Brand requires literal “Kettle Brand” (not bare “Kettle Potato Chips”)
 
-Date discovered: 2026-07-23  
-Context: Safeway week `2026-07-22` coupon-grid tile “Kettle Potato Chips” @ $1.99 Member Price (page 3) not on `kettle_brand_chips` chart.  
-What happened: (1) All YAML includes required the literal word **Brand** (`Kettle Brand potato chips`, etc.), but flyer title is **Kettle Potato Chips** (bags still say Kettle Brand). Matcher returned no hit → null week. (2) Extraction OCR’d package as `1.5-2 oz`; PDF shows **6 to 7.5-oz.** (bags net wt 7.5 oz). Size error did not gate the miss (family has no `match_eligibility` size rules). (3) Broadening includes alone also matched unsplit multi-brand tiles (e.g. SunChips/Lay’s/Kettle, Chips Ahoy/Nabisco/Triscuit/Kettle) because this family has no eligibility multi-item gate.  
-Fix / workaround: Add includes `Kettle Potato Chips` and `Kettle chips` (QUALIFIER_WORD `brand` still matches “Kettle Brand …”); add `keep_separate_from` for Cape Cod / Cape Cod Kettle, party size, Lay’s Kettle, and co-listed mix-tile brands (`Sun Chips`/`Sunchips`, `Lay's Potato Chips`, `Chips Ahoy`, `Nabisco`, `Triscuit`, `Tim's Cascade`). Rematch + `npm run build:price-tracker`. Regression coverage: `tests/test_canonical_families.py` (`TestKettleBrandChipsMatcher`).  
-How to verify: `kettle_brand_chips["2026-07-22"].price === 1.99` with offerText `Kettle Potato Chips`; May 12 / Jun 17 multi-brand blobs stay null. `python -m unittest tests.test_canonical_families.TestKettleBrandChipsMatcher`. PDF: `safeway 7-22 - 7-28.pdf` p.3 coupon grid.  
-Related files: `data/canonical_tracker_families.yaml` (`kettle_brand_chips`), `src/data/weeklyAdPrices.generated.ts`, `tests/test_canonical_families.py`, sibling `split_offer_items.csv` row `8849a49be6b6`
+Date discovered: 2026-07-23 (updated 2026-08-05)  
+Context: `kettle_brand_chips` matcher vs Safeway flyer titles that say “Kettle Potato Chips” / “Kettle chips”.  
+What happened: (1) Jul 22 true Kettle Brand coupon titled **Kettle Potato Chips** (no “Brand”) missed when includes required Brand. Broadening to bare `Kettle Potato Chips` / `Kettle chips` fixed Jul 22 but (2) on **2026-08-05** falsely matched a Lay’s-kettle-style “Kettle Potato Chips” tile @ $1.99 onto `kettle_brand_chips`.  
+Fix / workaround: **Require literal “Kettle Brand”** in YAML includes. Keep `Lay's Kettle` / Cape Cod / mix-tile brands in `keep_separate_from`. Do **not** put bare `Kettle Potato Chips` in excludes — QUALIFIER_WORD `brand` would also block true `Kettle Brand Potato Chips`. When a verified Kettle Brand flyer omits Brand (Jul 22), correct the split row text to include “Kettle Brand” rather than broadening includes.  
+How to verify: `python -m unittest tests.test_canonical_families.TestKettleBrandChipsMatcher`. `kettle_brand_chips["2026-08-05"]` is null; `["2026-07-22"].price === 1.99` with offerText containing `Kettle Brand`.  
+Related files: `data/canonical_tracker_families.yaml` (`kettle_brand_chips`), `tests/test_canonical_families.py`, `src/data/weeklyAdPrices.generated.ts`, sibling `split_offer_items.csv`
 
 ### Vons 2026-07-22 import: chips/eggs/chicken vision errors
 
@@ -142,6 +142,15 @@ What happened: (1) Vision mostly captured the digital-coupon sidebar + chicken h
 Fix / workaround: Manually add/correct dedicated + consolidated `split_offer_items.csv` (`review_reasons=manual_pdf_verified_2026-07-28`); rematch `--feed vons`; `npm run build:price-tracker`. WoW chicken $1.99→$2.99 and Coke B2G2 effective $6 are real flyer prices.  
 How to verify: `isPreviewWeek("2026-07-29", Jul 28) === false`. Vons Jul 29 — grapes/peaches/plums $1.99, Doritos/Simply/Tostitos $2.75, Kettle/Cape Cod/Lay’s Kettle $1.99, cream cheese $0.99, Chobani $1.00, HD pints $2.99, GM family Cheerios $3.99, chicken $2.99. Bundle includes `2026-07-29`.  
 Related files: `src/data/vonsWeeklyAdPrices.generated.ts`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`, `output/weekly_deals/2026-07-29/`
+
+### Vons 2026-08-05 import: page-2 token cap + front-page miss
+
+Date discovered: 2026-08-05  
+Context: Vons-only import of `vons 8-5 - 8-11.pdf` via `import_weekly_ad.py --week-start 2026-08-05 --week-end 2026-08-11 --vons-pdf "vons 8-5 - 8-11.pdf"`.  
+What happened: (1) Full-page vision on **page 2** hit `finish_reason=length` at 32k completion tokens (model expanded Pick 4 into endless Western Family lists) → `JSONDecodeError`. Workaround: extract page 2 as **top/bottom halves** with an anti-verbosity prompt, merge into `cache/.../page_002.json`, then rerun import. (2) Page 1 again missed buy-3 Goldfish/Lay’s/Kellogg tiles and mislabeled **New York Steak** as Ribeye; Pick 4 polluted Doritos/Cheez-It onto wrong tiles. (3) Discover exited 1 on empty `baseline_price_candidates.csv` but `split_offer_items.csv` existed — import continued. (4) Oreo/Chips Ahoy/Kettle Brand on Pick 4 are **Family/Party Size** ($3.99); regular `kettle_brand_chips` / `chips_ahoy` / `cheez_it` stay unmatched (`Family Size`/`Party Size` excludes).  
+Fix / workaround: Manual PDF-verified splits (`review_reasons=manual_pdf_verified_2026-08-05`) with **clean single-product** `raw_offer_text` (mixed group blobs block auto-match). Add `Family Size`/`Party Size` to `cheez_it_crackers` + `chips_ahoy` `keep_separate_from`. Rematch `--feed vons`; `npm run build:price-tracker`.  
+How to verify: Vons Aug 5 — chicken $1.99, Goldfish $1.69, Lay’s/Kettle/Popcorners $2.49, peaches/nectarines/plums $1.99, butter $2.99, Oreo family $3.99, Pringles $1.49; `ribeye_steak`/`doritos_5_13oz`/`cheez_it_crackers`/`kettle_brand_chips` null. Bundle includes `2026-08-05`.  
+Related files: `src/data/vonsWeeklyAdPrices.generated.ts`, `data/canonical_tracker_families.yaml`, `~/Documents/scrolling-the-aisle/outputs/product_discovery_vons*/split_offer_items.csv`, `output/weekly_deals/2026-08-05/`
 
 **Vons baselines (SoCal):** Same Albertsons `pgmsearch` API: `python scripts/seed_vons_baseline_playwright.py --http-only` (curl transport in `vons_client.py`; Playwright fallback). Env: `VONS_COOKIE`, `VONS_VISITOR_ID`, `VONS_STORE_ID=2053`, `VONS_ZIPCODE=92110`, `VONS_CHANNEL=instore`, `VONS_USER_AGENT` (Safari), optional `VONS_UUID`, `VONS_SUBSCRIPTION_KEY`. Then `npm run generate:vons-feed-matches` → `src/data/vonsBaseline.generated.ts`. **Vons weekly ads** via `vonsWeeklyAdPrices.generated.ts`.
 
